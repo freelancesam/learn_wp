@@ -1,0 +1,17 @@
+[11-Apr-2016 07:07:21 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/nirvana15/public_html/wp-content/themes/Avada/404.php on line 49
+[06-May-2016 06:08:18 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:08:18 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:08:21 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:08:21 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:08:21 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:08:21 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:54:36 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:54:36 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:54:38 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:54:39 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:54:39 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 06:54:39 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[06-May-2016 07:04:55 UTC] PHP Fatal error:  Call to undefined function do_action() in /home/nirvana15/public_html/wp-content/themes/Avada/footer.php on line 1
+[06-May-2016 07:04:55 UTC] PHP Fatal error:  Call to undefined function Avada() in /home/nirvana15/public_html/wp-content/themes/Avada/header.php on line 3
+[06-May-2016 07:04:56 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1
+[07-May-2016 19:52:42 UTC] PHP Fatal error:  Call to undefined function get_header() in /home/nirvana15/public_html/wp-content/themes/Avada/index.php on line 1

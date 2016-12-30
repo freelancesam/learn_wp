@@ -1,0 +1,428 @@
+/*
+
+Theme Name: Avada Child
+
+Description: Child theme for Avada theme
+
+Author: ThemeFusion
+
+Author URI: https://theme-fusion.com
+
+Template: Avada
+
+Version: 1.0.0
+
+Text Domain:  Avada
+
+*/
+
+
+
+/*
+
+ * Created on : Feb 20, 2016, 8:32:08 AM
+
+ * Author: Tran Trong Thang
+
+ * Email: trantrongthang1207@gmail.com
+
+ * Skype: trantrongthang1207
+
+ */
+
+.tvfusion-logo {
+
+    display: block;
+
+    float: left;
+
+    max-width: 100%;
+
+}
+
+.tvfusion-headertop{
+
+    background: url('images/nirvana_header_background.jpg') no-repeat 0 -80px;
+
+    background-size: cover;
+
+}
+
+#tv-navigation{
+
+    float: right;
+
+}
+
+#menu-menuheader{
+
+    margin: 4.4% 0;
+
+    overflow: hidden;
+
+    padding: 0;
+
+}
+
+#tv-navigation li{
+
+    float: left;
+
+    list-style: none;
+
+    padding-left: 20px;
+
+}
+
+.tvfusion-headertop .tvfusion-logo{
+
+    margin: 0;
+
+    position: relative;
+
+    top: 22px;
+
+}
+
+.tvfusion-headerbottom .fusion-logo{
+
+    display: none;
+
+}
+
+.tvfusion-headerbottom .fusion-row{
+
+
+
+}
+
+.fusion-main-menu{
+
+    float: none;
+
+    text-align: center;
+
+}
+
+.fusion-main-menu #menu-main-menu > li{
+
+    float: none;
+
+    display: inline-block;
+
+    vertical-align: middle;
+
+}
+
+.tvfusion-headerbottom .fusion-main-menu > ul > li > a{
+
+    height: 65px;
+
+    line-height: 65px;
+
+    font-weight: bold;
+
+}
+
+.tvfusion-headerbottom .fusion-main-menu .current-menu-ancestor > a,
+
+.tvfusion-headerbottom .fusion-main-menu .current-menu-item > a,
+
+.tvfusion-headerbottom .fusion-main-menu .current-menu-parent > a,
+
+.tvfusion-headerbottom .fusion-main-menu .current_page_item > a {
+
+    border-color: #3F7CD4;
+
+    color: #3F7CD4;
+
+    font-weight: bold;
+
+}
+
+.tvfusion-headerbottom .fusion-main-menu > ul > li > a:hover{
+
+    border-color: #3F7CD4;
+
+}
+
+.tvfusion-headerbottom .fusion-main-menu .fusion-widget-cart-counter > a:hover::before,
+
+.tvfusion-headerbottom .fusion-main-menu > ul > li > a:hover{
+
+    color: #3F7CD4;
+
+}
+
+.tvfusion-headerbottom .fusion-main-menu .fusion-megamenu-holder,
+
+.tvfusion-headerbottom .fusion-main-menu .sub-menu{
+
+    border-top: 3px solid #3F7CD4;
+
+}
+
+.tvfusion-headerbottom .menu-text.fusion-button{
+
+    background: #3F7CD4 !important;
+
+}
+.woocommerce-tabs.wc-tabs-wrapper,
+.product_meta > span.sku_wrapper,
+.stock.in-stock{
+    display: none;
+}
+.woocommerce-tabs.wc-tabs-wrapper + .fusion-clearfix + .social-share{
+    display: none;
+}
+.related.products .fusion-title{
+    display: block;
+    text-align: center;
+}
+.related.products .title-heading-left{
+    background: #ffffff none repeat scroll 0 0;
+    display: inline-block;
+    padding: 0 10px;
+    position: relative;
+    z-index: 9999;
+}
+.related.products .fusion-title .title-sep-container{
+    top: -16px;
+}
+.related.products .product .product-buttons{
+    margin-left: 0;
+    margin-right: 0;
+}
+ul.products > li > a.product-images{
+    position: absolute;
+}
+.woocommerce-invalid-required-field input{
+    border: 1px solid red;
+}
+.woocommerce-invalid input{
+    border: 1px solid red;
+}
+@media(max-width: 900px){
+
+    #tv-navigation li {
+
+        display: inline-block;
+
+        float: none;
+
+        padding: 0;
+
+        width: 32%
+
+    }
+
+    #tv-navigation {
+
+        width: 60%;
+
+    }
+
+    #menu-menuheader{
+
+        margin-top: 7%;
+
+    }
+
+}
+
+@media(max-width: 658px){
+
+    .tvfusion-headertop .tvfusion-logo {
+
+        top: 15px;
+
+    }
+
+    .tvfusion-logo {
+
+        float: none;
+
+        text-align: center;
+
+    }
+
+    #tv-navigation {
+
+        float: none;
+
+        text-align: center;
+
+        width: 100%;
+
+    }
+
+    #tv-navigation li {
+
+        display: inline-block;
+
+        float: none;
+
+        padding: 0;
+
+        width: 32%
+
+    }
+
+}
+
+
+
+.catalog-ordering {
+
+    display: none;
+
+}
+
+/*Align shipping section in checkout page*/
+
+.checkout .shop_table tfoot th {
+
+    width: 75% !important;
+
+}
+
+
+
+.checkout .shop_table th.product-total {
+
+    text-align: left !important;
+
+}
+
+
+
+.checkout .shop_table tbody .product-total {
+
+    text-align: left !important;
+
+}
+
+.checkout .shop_table tfoot td {
+
+    text-align: left !important;
+
+}
+
+.checkout .shop_table #shipping_method {
+
+    float: left !important;
+
+    text-align: left !important;
+
+}
+
+.checkout .shop_table tfoot td {
+
+    text-align: left !important;
+
+}
+
+
+
+/*Customize price in product*/
+
+.price > .amount {
+
+    font-style: normal;
+
+    font-weight: bold;
+
+}
+
+.paypal-button-widget button.paypal-button{
+
+    display: none;
+
+}
+
+.paypal-button.paypal-style-checkout.paypal-size-medium.paypal-shape-rect .paypal-button-content {
+
+    text-align: center;
+
+}
+
+/*22 April 2016 - Phuong An*/
+
+.fusion-alignright .fusion-contact-info br{
+    display: none;
+}
+@media (max-width: 413px) {
+    .fusion-alignright .fusion-contact-info br{
+        display: block;
+    }
+    .fusion-alignright .fusion-contact-info span{
+        display: none;
+    }
+}
+@media (max-width: 415px) {
+    .page-template-100-width #main , .home #main{
+        padding-left: 30px !important;
+        padding-right: 30px !important;
+    }
+    .woocommerce-content-box , .cart-collaterals .woocommerce-shipping-calculator , .cart-collaterals .coupon{
+        padding: 30px 20px !important;
+    }
+    .page-template-100-width .shop_table .product-quantity {
+        display: block !important;
+
+    }
+    .page-template-100-width .shop_table tbody .product-quantity{
+        margin-top: 50%;
+    }
+    .page-template-100-width .shop_table .product-remove{
+        padding-left: 10px;
+    }
+    .page-template-100-width .quantity.buttons_added{
+        width: 30px;
+        border: none;
+    }
+    .page-template-100-width .quantity.buttons_added input{
+        border: 1px solid #ccc;
+    }
+    .page-template-100-width .quantity.buttons_added .qty{
+        width: 26px;
+        border: none;
+        border-left: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+
+    }
+}
+
+/*Header text*/
+.header-text {
+    text-align: center;
+}
+.mc4wp-checkbox-woocommerce {
+    float: right;
+}
+.product-details-container.fgc-product-details-container h3 {
+    min-height: 48px;
+}
+@media only screen
+and (min-width: 801px)
+and (max-width: 1125px) {
+    .product-details-container.fgc-product-details-container h3 {
+        font-size: 0.9em;
+    }
+}
+
+/*Remove Roll Over*/
+.fusion-image-wrapper:hover .fusion-rollover {
+    display: none;
+}
+
+/**
+ * Layout checkbox mailchimp
+ * Author: Hung Tran
+ */
+@media only screen
+and (max-width: 480px) {
+    .mc4wp-checkbox-woocommerce input {
+        margin-left: 5px !important;
+    }
+}
