@@ -1,0 +1,94 @@
+<div class="tv-cart-popup-products-content">
+    <div class="tv-cart-popup-products-content-body">
+        <?php
+        global $woocommerce;
+
+        $productsCount = $woocommerce->cart->get_cart_contents_count();
+
+        $product_id = $_REQUEST['product_id'];
+        foreach ($woocommerce->cart->cart_contents as $cart_item_key => $cart_item) {
+
+            $product = $cart_item['data'];
+            $productId = $product->ID == '' ? $product->id : $product->ID;
+            if ($productId == $product_id) {
+                $productImg = '';
+
+                $productId = ($cart_item['variation_id']) ? $product->id : $product->ID;
+
+                $variationId = ($cart_item['variation_id']) ? $cart_item['variation_id'] : '';
+
+                if (!has_post_thumbnail($productId) && !has_post_thumbnail($variationId)) {
+                    $img = $product->get_image(array(250, 200));
+                } else {
+                    $img = $product->get_image(array(250, 200));
+                }
+
+
+                $productImg = apply_filters('woocommerce_cart_item_thumbnail', $img, $cart_item, $cart_item_key);
+
+                if ($product->is_visible()) {
+                    $productImg = '<a class="tv-cart-img" href="' . $product->get_permalink() . '">' . $productImg . '</a>';
+                } elseif ($product->post->post_parent) {
+                    $productImg = '<a class="tv-cart-img" href="' . get_permalink($product->post->post_parent) . '">' . $productImg . '</a>';
+                } else {
+                    $productImg = '<span class="tv-cart-img">' . $productImg . '</span>';
+                }
+
+
+                $productTitle = '';
+
+                if ($product->is_visible()) {
+                    $productTitle = apply_filters('woocommerce_cart_item_name', sprintf('<a class="tv-cart-title" href="%s">%s</a>', $product->get_permalink(), $product->get_title()), $cart_item, $cart_item_key);
+                } elseif ($product->post->post_parent) {
+                    $productTitle = apply_filters('woocommerce_cart_item_name', sprintf('<a class="tv-cart-title" href="%s">%s</a>', get_permalink($product->post->post_parent), $product->get_title()), $cart_item, $cart_item_key);
+                } else {
+                    $productTitle = apply_filters('woocommerce_cart_item_name', '<span class="tv-cart-title">' . $product->get_title() . '</span>', $cart_item, $cart_item_key);
+                }
+
+                $productTitle .= '<br>';
+
+                if (($cart_item['variation_id'])) {
+                    $content = $woocommerce->cart->get_item_data($cart_item, true);
+                    $content = explode("\n", $content);
+
+                    foreach ($content as $value) {
+                        if (!$value) {
+                            continue;
+                        }
+                        $productTitle .= '<span class="tv-cart-product-variation-attribut">' . $value . '</span>';
+                    }
+                }
+                ?>         
+
+                <div class="tv-cart-item">
+                    <div class="tv-cart-product-title" >
+                        <h3 class="product-title">
+                            <?php echo $productTitle; ?>
+                        </h3>
+                        <div>Has Been Added to Your Cart</div>
+                    </div>
+                    <div class="tv-cart-product-img">
+                        <?php ?>
+                        <?php echo $productImg; ?>
+                    </div>                    
+                </div>
+                <?php
+            }
+        }
+        ?> 
+
+
+
+        <?php
+        if ($productsCount > 0) {
+            ?> 
+            <div class="tv-cart-buttons">
+                <a class="tv-continue-shopping" href="#" >Continue shopping</a><br/>
+                <a class="tv-cart-view-cart" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" >View cart & checkout</a>             
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+</div>
+

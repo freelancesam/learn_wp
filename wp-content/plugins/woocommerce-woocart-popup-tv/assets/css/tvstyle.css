@@ -1,0 +1,52 @@
+/* 
+ * Created on : Jun 24, 2016, 9:00:17 AM
+ * Author: Tran Trong Thang
+ * Email: trantrongthang1207@gmail.com
+ * Skype: trantrongthang1207
+ */
+
+.fancybox-overlay{
+    z-index: 99999;
+}
+.fancybox-opened{
+    z-index: 999999;
+}
+.fancybox-skin{
+    background: #fff;
+}
+.tvwrapfancybox{
+    text-align: center;
+}
+.tv-cart-buttons{
+    margin: 15px 0;
+}
+.tv-continue-shopping{
+    background: #808080 none repeat scroll 0 0;
+    border: 1px solid #808080;
+    color: #ffffff;
+    padding: 6px 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.tv-cart-view-cart{
+    background: #96c346 none repeat scroll 0 0;
+    color: #ffffff;
+    letter-spacing: normal;
+    padding: 7px 7px 7px 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.tv-cart-view-cart, .tv-continue-shopping {
+    display: inline-block;
+    margin: 5px 0;
+    min-width: 190px;
+    padding: 6px 0;
+    text-align: center;
+}
+.tv-cart-view-cart:hover,
+.tv-continue-shopping:hover{
+    color: #fff;
+}
+.shipping_option{
+    display: none;
+}
