@@ -71,3 +71,20 @@ function is_phone() {
         }
     }
 }
+
+remove_action('woocommerce_shipping_init', 'wcso_shipping_methods_init');
+
+function wcso_review_order_shipping_options_custom() {
+    echo 'hehe';
+}
+
+add_action('init', 'custom_add_style_files', 10);
+
+function custom_add_style_files() {
+
+    remove_action('woocommerce_cart_totals_after_shipping', 'wcso_review_order_shipping_options', 10);
+    add_action('woocommerce_cart_totals_after_shipping', 'wcso_review_order_shipping_options_custom', 10);
+    
+    remove_action('woocommerce_review_order_after_shipping', 'wcso_review_order_shipping_options', 10);
+    add_action('woocommerce_review_order_after_shipping', 'wcso_review_order_shipping_options_custom', 10);
+}
