@@ -1,0 +1,18 @@
+/*
+ Theme Name:   thangtran
+ Theme URI:    http://divi.space/
+ Description:  A Child Theme built for Divi on Divi Space
+ Author:       Thang Tran Trong
+ Author URI:   http://trongthang.byethost33.com/wp/
+ Template:     Divi
+ Version:      1
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*
+* about page
+*/ 
+#post-936 p{
+    margin-bottom: 15px;
+}
