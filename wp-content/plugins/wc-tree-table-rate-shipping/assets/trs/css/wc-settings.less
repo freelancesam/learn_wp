@@ -1,0 +1,107 @@
+.trs-wc-settings() {
+    p.submit {
+        overflow: auto;
+        display: none;
+
+        [type="submit"] {
+            float: left;
+        }
+
+        .spinner {
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            float: left;
+        }
+
+        [type="submit"].inprogress + .spinner {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .trs-messages {
+        .message {
+            margin: 0 !important;
+            border-top: 1px solid #ccc;
+
+            .dismiss {
+                margin-right: 0.5em;
+                cursor: pointer;
+
+                &:hover {
+                    color: #d54e21;
+                }
+            }
+        }
+    }
+
+    #mainform {
+        .titledesc {
+            display: none;
+        }
+
+        .forminp {
+            padding: 0;
+        }
+
+        .form-table {
+            display: none;
+        }
+    }
+
+    .select2 {
+        &.select2-container {
+            width: auto !important;
+            display: inline-block !important;
+            min-width: 20em;
+        }
+
+        &.select2-container--focus {
+            .select2-selection {
+                border: 1px solid #777 !important;
+            }
+        }
+
+        .select2-selection {
+            font-size: 0;
+            line-height: normal;
+        }
+
+        .select2-search {
+            width: auto;
+            padding: 0;
+            margin: 0;
+            outline: none;
+            z-index: auto;
+        }
+
+        .select2-selection__rendered {
+            font-size: 14px;
+            li {
+                margin: 3px 3px 3px 0 !important;
+            }
+        }
+
+        .select2-search__field {
+            box-shadow: none !important;
+            margin-top: 0 !important;
+            padding: 0 !important;
+        }
+    }
+
+    .select2-container {
+        .select2-results__option {
+            padding: 0 5px;
+            margin: 0;
+        }
+
+        .select2-selection--multiple {
+            min-height: 0 !important;
+        }
+    }
+
+    #woocommerce_tree_table_rate_tax_status ~ .select2-container {
+        min-width: 15.7em;
+    }
+}

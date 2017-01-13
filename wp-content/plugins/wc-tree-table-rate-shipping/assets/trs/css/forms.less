@@ -1,0 +1,318 @@
+@import (reference) "prefixer.less";
+
+.trs-forms() {
+
+    option {
+        &.meaningless {
+            font-style: italic;
+            color: #ccc;
+        }
+
+        &.separator {
+            color: lightgrey;
+        }
+    }
+
+    .button {
+        height: 26px;
+        line-height: 24px;
+        font-weight: normal;
+    }
+
+    .operation-add {
+        display: none;
+    }
+
+    .form {
+        @indent: 0.5em;
+        @first-level-indent: @indent;
+        @condition-first-select-width: 8em;
+        @operation-first-select-width: 15em;
+
+        fieldset {
+            @row-color-light: rgba(0,0,0,0.025);
+            @row-color-dark: rgba(0,0,0,0.01);
+
+            display: table;
+            width: 100%;
+            padding-bottom: 0.5em;
+
+            .section-hint {
+                padding-left: @indent;
+            }
+
+            legend {
+                padding: 0 0 0 @first-level-indent;
+                line-height: 3em;
+
+                .strong {
+                    font-size: 120%;
+                    font-weight: bold;
+                    padding-right: 0.15em;
+                }
+
+                .hint {
+                    .handle {
+                        vertical-align: baseline;
+                    }
+
+                    .content {
+                        margin-top: 0;
+                        padding-bottom: 1em;
+                    }
+                }
+
+                select {
+                    vertical-align: baseline;
+                }
+            }
+
+            label, .row {
+                display: table-row;
+                background: @row-color-light;
+
+                &:nth-child(odd) {
+                    background: @row-color-dark;
+                }
+
+                &::after {
+                    content: "";
+                    display: table-cell;
+                }
+
+                > * {
+                    display: table-cell;
+                    padding: 0.3em;
+                    vertical-align: top;
+                    line-height: 26px;
+
+                    &:first-child {
+                        padding-left: @indent;
+                    }
+
+                    &.main-cell {
+                        width: 100%;
+                    }
+                }
+
+                .label {
+                    font-weight: bold;
+                    padding-right: 2em;
+                    white-space: nowrap;
+                }
+
+                .afterlabel {
+                    vertical-align: middle;
+                    display: inline;
+                    padding-left: 0.5em;
+                }
+            }
+
+            li.row {
+                > * {
+                    &.main-cell {
+                        padding-left: @condition-first-select-width;
+                        font-size: 14px;
+
+                        > :first-child {
+                            width: @condition-first-select-width;
+                            margin-left: -@condition-first-select-width;
+                        }
+
+                        .nowrap {
+                            margin-left: 3px;
+                        }
+                    }
+                }
+            }
+
+            li.operation.row {
+                > * {
+                    &.main-cell {
+                        padding-left: @operation-first-select-width;
+
+                        > :nth-child(2) {
+                            width: @operation-first-select-width;
+                            margin-left: -@operation-first-select-width;
+                        }
+                    }
+                }
+            }
+
+            .row-add {
+                display: block;
+                overflow: hidden;
+                background: transparent;
+            }
+
+            label {
+                background: @row-color-dark;
+                &:nth-child(odd) {
+                    background: @row-color-light;
+                }
+            }
+        }
+
+        .helper {
+            vertical-align: middle;
+            border-bottom: 1px dashed rgba(0,0,0,0.08);
+            padding-bottom: 4px;
+
+            &.prefix {
+                margin-left: 1em;
+            }
+        }
+
+        .hint {
+            display: inline;
+
+            .handle {
+                cursor: help;
+                text-decoration: none;
+                border: none;
+                font-size: 120%;
+                padding: 0.3em;
+                color: #999;
+                vertical-align: -3px;
+
+                &:hover {
+                    text-decoration: none;
+                    border-bottom: none;
+                }
+
+                .fa:before {
+                    content: '\f059';
+                }
+
+                &.warning {
+                    .fa:before {
+                        content: '\f071';
+                    }
+                }
+            }
+
+            .content {
+                display: none;
+                margin-top: 0.5em;
+                max-width: 40em;
+                font-size: small;
+                line-height: normal;
+                font-weight: normal;
+            }
+
+            ul {
+                li {
+                    margin: 0;
+                    padding: 0;
+                    line-height: normal;
+                    display: list-item;
+
+                    &:before {
+                        content: " \2014  ";
+                    }
+                }
+            }
+
+            &.expanded {
+                .content {
+                    display: block;
+                }
+            }
+        }
+
+        .hint-link {
+            &, &:hover, &:focus, &:link, &:active, &:visited {
+                text-decoration: none;
+                border: 0;
+                border-bottom: 1px dashed;
+                cursor: pointer;
+            }
+
+            &:hover, &:focus, &:active {
+                border: 0
+            }
+        }
+
+        .rate-title {
+            padding: .6em .5em .5em @first-level-indent;
+        }
+
+        .rows {
+            padding-left: @indent;
+        }
+    }
+
+    .input-group, .decorated-input {
+        display: inline-block;
+        position: relative;
+        line-height: normal;
+        white-space: normal; /* fix FF moving input-decorator to the next line when white-space: nowrap applied to a parent element */
+        vertical-align: middle; /* fix line alignment issue is Safari 9 */
+
+        .input-decorator {
+            line-height: 26px;
+            height: 26px;
+            border: 1px solid #ddd;
+            padding: 0 0.5em;
+            border-radius: 5px;
+
+            sup {
+                font-size: 50%;
+            }
+        }
+
+        .input-decorator.button:hover {
+            border-color: #999;
+        }
+
+        .input-decorator.right {
+            float: right;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: none;
+        }
+
+        .input-decorator.left {
+            float: left;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+        }
+
+        .main-input.right {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            margin-right: 0;
+            float: none;
+        }
+
+        .main-input.left {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            margin-left: 0;
+            float: none;
+        }
+    }
+
+    .inactive-input {
+
+        color: rgba(0,0,0,0.5);
+
+        input {
+            background-color: transparent;
+        }
+    }
+
+    .section-header {
+        box-sizing: border-box;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.08);
+        position: relative;
+        margin-bottom: 0.5em;
+    }
+
+    .advanced-settings-button {
+        opacity: 0.75;
+        float: right;
+    }
+}

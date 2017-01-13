@@ -1,0 +1,260 @@
+.trs-rules() {
+    .rules {
+        @row-height: 35px;
+        @group-header-border-radius: 8px;
+        @content: "defined in unparsable.txt";
+        @import (reference) "unparsable.txt";
+
+        .rule-list {
+            margin-left: 30px;
+
+            .rule-item {
+                display: block;
+                clear: both;
+                position: relative;
+                border: 1px dotted #aaa;
+                margin: -1px 0 0 0;
+
+                .m-toggle();
+                .m-header();
+                .m-actions();
+                .m-settings();
+
+                .handles, .header {
+                    line-height: @row-height;
+                }
+
+                &.has-children {
+                    margin-top: 5px;
+                    border: none;
+
+                    &::before {
+                        content: ".";
+                        position: absolute;
+                        margin-left: 18px;
+                        width: 0;
+                        border-left: 1px dotted;
+                        overflow: hidden;
+                        //noinspection CssOverwrittenProperties
+                        height: 100%;
+                        //noinspection CssOverwrittenProperties,CssInvalidPropertyValue
+                        height: calc(~"100% - @{row-height} / 2");
+                        z-index: -1;
+                    }
+                }
+
+                &.settings-open {
+                    border-width: 0 0 1px 0;
+                }
+            }
+        }
+
+        .root > .rule-list {
+            margin-left: 0;
+        }
+
+        ul:first-child > li > .content .header::before {
+            display: none;
+        }
+
+        .root-options {
+            padding: 3em 0 1em 0;
+        }
+
+        .greeting {
+            margin-top: 3em;
+
+            p {
+                font-size: 105%;
+            }
+        }
+
+        .bigger-button {
+            height: 32px;
+            font-size: 15px;
+            line-height: 30px;
+        }
+
+        .snippet-button {
+            margin-bottom: 0.5em;
+            width: 30em;
+            text-align: left;
+            border-color: transparent;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            display: block;
+            float: none;
+            height: 4em;
+            line-height: normal;
+            color: #333;
+
+            &:hover,
+            &:focus {
+                border: 1px solid #999;
+            }
+        }
+
+        .snippet-button-subline {
+            display: block;
+            float: none;
+            color: #888;
+            font-size: 85%;
+        }
+
+        .empty-snippet-button {
+            .bigger-button();
+            margin-top: 3em;
+        }
+
+        .m-header() {
+            @{content} .header {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 0 5px;
+                cursor: pointer;
+                overflow: visible;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 12px;
+                    border-top: 1px dotted;
+                    overflow: hidden;
+                    top: (@row-height / 2);
+                    left: -12px;
+                    color: black;
+                }
+
+                &:hover {
+                    background-color: #ccc !important;
+                }
+
+                .rule-enable {
+                    vertical-align: -4px;
+                    margin-left: 4px;
+                }
+
+                .rule-label {
+                    margin: 0;
+                    border: none;
+                    background: inherit;
+                    font-family: monospace;
+                    cursor: text;
+                    box-shadow: none;
+                    border-radius: 3px;
+                    height: auto;
+                    color: inherit;
+
+                    &:hover {
+                        background-color: rgba(255,255,255,0.5);
+                        color: black;
+                    }
+                }
+
+                .rule-hint {
+                    display: inline-block;
+                    padding: 0 1em;
+                    pointer-events: none;
+                    color: grey;
+                    font-style: italic;
+                    font-weight: normal;
+                    position: absolute;
+                    white-space: nowrap;
+                }
+
+                .rule-toggle {
+                    text-decoration: none;
+                    border-bottom: 1px dashed;
+                }
+
+                .rule-drag {
+                    cursor: move;
+                    margin-left: 1em;
+                    pointer-events: all;
+                }
+            }
+
+            &.has-children @{content} .header {
+                .m-super-header;
+
+                background-color: #ddd;
+                font-weight: bold;
+                border-radius: @group-header-border-radius;
+            }
+
+            &.expanded @{content} .header {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &.settings-open @{content} .header {
+                .m-super-header;
+            }
+        }
+
+        .m-settings() {
+            .settings {
+                position: relative;
+                top: -5px;
+                margin: 0 2px 20px 40px;
+                border-radius: 0 0 12px 12px;
+                background: rgba(0, 0, 0, 0.03);
+            }
+        }
+
+        .m-actions() {
+            .actions {
+                display: none;
+                float: right;
+
+                .button {
+                    vertical-align: baseline;
+
+                    .fa {
+                        font-size: 110%;
+                    }
+                }
+
+                > * {
+                    display: inline-block;
+                    float: none;
+                }
+
+                .dropdown-menu {
+                    left: auto;
+                    right: 0;
+                }
+            }
+
+            @{content} .header:hover .actions {
+                display: inline-block;
+            }
+        }
+
+        .m-toggle() {
+            .toggle {
+                display: none;
+                cursor: pointer;
+                font-size: 150%;
+                float: left;
+                line-height: @row-height + 3px;
+                padding-left: 7px;
+                margin-right: 5px;
+                color: black;
+            }
+
+            &.has-children:not(.expanded) @{content} .toggle.expand {
+                display: inline-block;
+            }
+
+            &.has-children.expanded @{content} .toggle.collapse {
+                display: inline-block;
+            }
+        }
+
+        .m-super-header() {
+            //noinspection LessUnresolvedMixin
+            .panel;
+            margin-bottom: 5px;
+        }
+    }
+}

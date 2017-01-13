@@ -1,0 +1,50 @@
+.trs-commons() {
+    @text-color-default: #444;
+    @text-color-light: white;
+
+    input, select, textarea {
+        margin: 0;
+        width: auto;
+        font-size: inherit;
+    }
+
+    input[type=email], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text],
+    select {
+        height: 28px;
+        vertical-align: middle;
+    }
+
+    input[type=number], .wc_input_decimal {
+        text-align: right;
+        width: 5em;
+    }
+
+    [contenteditable] {
+        cursor: text;
+    }
+
+    .button {
+        vertical-align: middle;
+    }
+
+    .panel {
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    .sort-handle {
+        cursor: move;
+    }
+
+    .placeholder {
+        border: 2px dashed;
+    }
+
+    .hoverable:not(:hover) .hoverable-target {
+        display: none !important;
+    }
+
+    .nowrap {
+        display: inline-block;
+        white-space: nowrap;
+    }
+}
