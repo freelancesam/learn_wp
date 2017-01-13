@@ -406,3 +406,12 @@ class SB_WC_UpSell {
 
 $sb_wc_upsell = new SB_WC_UpSell();
 $sb_wc_upsell->Init();
+if (!function_exists('tv_frontendHead')) {
+
+    function tv_frontendHead() {
+        wp_register_script('custom.js', plugin_dir_url(__FILE__) . 'js/custom.js');
+        wp_enqueue_script('custom.js');
+    }
+
+}
+add_action('wp_enqueue_scripts', 'tv_frontendHead');

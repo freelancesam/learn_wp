@@ -102,6 +102,7 @@ jQuery(function()
 		}
 		
 	}
+        /*
 	jQuery(document).on('click change', '.its_fee', function(e)
 	{
 		var obj 	= window.kk = jQuery(this);
@@ -137,7 +138,7 @@ jQuery(function()
 				wc_addon_add_fee.call(obj, name, this.value); 
 			}
 		}
-	});
+	});*/
 });
 //]]>
 </script>

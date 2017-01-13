@@ -123,14 +123,14 @@ class SB_WC_UpSellHelper
 				$val	= $addon_item['ops']; 
 				if( is_numeric($val) )
 				{
-					$label .= sprintf(" (%s %s)", $symb, $val);
+					$label .= ': ';/*sprintf(" (%s %s)", $symb, $val);*/
 				}
 				$fee_id = str_replace('-', '_', sanitize_title($label));
 				?>
 			<input id="<?php print $fee_id; ?>" type="checkbox" name="addon[<?php print $id; ?>]" value="<?php print $val; ?>" data-fee_name="<?php print $label; ?>" 
 					data-fee_amount="<?php print $val; ?>" <?php print (!empty($val) && is_numeric($val)) ? 'class="its_fee"' : ''; ?>
 					<?php print self::IsFeeInSession($fee_id) ? 'checked data-fee_id="'.$fee_id.'"' : ''; ?> />
-			<span><?php print $label; ?></span>
+			<span><?php print $label; echo wc_price($val);?></span>
 			<?php if($addon_item['required'] == 1): ?><i class="required">*</i><?php endif;?>
 			<?php endif; ?>
 		</div>
