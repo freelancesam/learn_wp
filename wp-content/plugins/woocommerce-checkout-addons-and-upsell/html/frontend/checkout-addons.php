@@ -16,6 +16,13 @@ function on_add_tag(val)
 }
 function wc_addon_add_fee(name, amount)
 {
+        jQuery( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table' ).block({
+				message: null,
+				overlayCSS: {
+					background: '#fff',
+					opacity: 0.6
+				}
+			});
 	var obj = jQuery(this);
 	var params = 'task=sb_wc_addon_add_fee&name='+name+'&amount='+amount; 
 	jQuery.post('<?php print home_url('/index.php'); ?>', params, function(res)
@@ -36,6 +43,13 @@ function wc_addon_add_fee(name, amount)
 }
 function wc_addon_remove_fee(fee_id)
 {
+    jQuery( '.woocommerce-checkout-payment, .woocommerce-checkout-review-order-table' ).block({
+				message: null,
+				overlayCSS: {
+					background: '#fff',
+					opacity: 0.6
+				}
+			});
 	var obj = jQuery(this);
 	var params = 'task=sb_wc_addon_remove_fee&fee_id='+fee_id; 
 	jQuery.post('<?php print home_url('/index.php'); ?>', params, function(res)
