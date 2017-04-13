@@ -2,7 +2,7 @@
 Contributors: dangoodman
 Tags: woocommerce, shipping, woocommerce shipping, woocommerce shipping plugin, weight-based shipping, volumetric shipping, per-item shipping, shipping class, table rate, table rate shipping
 Requires at least: 4.0
-Tested up to: 4.6
+Tested up to: 4.7
 WC requires at least: 2.3
 WC tested up to: 2.6
 
@@ -16,6 +16,14 @@ calculation system allowing you to build virtually any shipping configuration yo
 
 
 == Changelog ==
+
+= 1.13 =
+* Support Woocommerce 2.6+ Shipping Zones for the "other shipping plugins' rates" charge. Review your shipping rules referencing external shipping methods after update.
+* Remove 'enabled' checkbox in TRS methods within shipping zones in favor of the Woocommerce built-in way to manage shipping methods active status.
+* UI tweaks.
+
+= 1.12.4-rc1 =
+* Fix broken conditions against shipping classes, tags and categories with active WPML
 
 = 1.12.3 =
 * Handle updating errors better

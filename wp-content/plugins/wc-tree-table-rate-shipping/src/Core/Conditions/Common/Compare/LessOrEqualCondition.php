@@ -1,9 +1,6 @@
 <?php
 namespace Trs\Core\Conditions\Common\Compare;
 
-use Trs\Core\Conditions\Common\AggregateCondition;
-use Trs\Core\Conditions\Common\Logic\OrCondition;
-
 
 class LessOrEqualCondition extends CompareCondition
 {

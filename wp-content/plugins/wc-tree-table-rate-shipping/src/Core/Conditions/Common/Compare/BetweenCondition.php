@@ -1,14 +1,9 @@
 <?php
 namespace Trs\Core\Conditions\Common\Compare;
 
-use Trs\Common\ClassNameAware;
 use Trs\Common\Interfaces\IComparator;
 use Trs\Common\Range;
 use Trs\Core\Conditions\Common\AbstractCondition;
-use Trs\Core\Conditions\Common\AggregateCondition;
-use Trs\Core\Conditions\Common\Logic\AndCondition;
-use Trs\Core\Conditions\Common\Logic\OrCondition;
-use Trs\Core\Interfaces\ICondition;
 
 
 class BetweenCondition extends AbstractCondition
@@ -21,8 +16,8 @@ class BetweenCondition extends AbstractCondition
 
     public function isSatisfiedBy($value)
     {
-        $min = $this->range->getMin();
-        $max = $this->range->getMax();
+        $min = $this->range->min;
+        $max = $this->range->max;
 
         return
             (!isset($min) || $this->comparator->equals($value, $min) || $value > $min) &&

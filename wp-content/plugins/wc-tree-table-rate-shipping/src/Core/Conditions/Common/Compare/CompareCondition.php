@@ -1,10 +1,8 @@
 <?php
 namespace Trs\Core\Conditions\Common\Compare;
 
-use Trs\Common\ClassNameAware;
 use Trs\Common\Interfaces\IComparator;
 use Trs\Core\Conditions\Common\AbstractCondition;
-use Trs\Core\Interfaces\ICondition;
 
 
 abstract class CompareCondition extends AbstractCondition

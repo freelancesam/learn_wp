@@ -11,7 +11,7 @@ use Trs\Core\Model\Destination;
 use Trs\Core\Model\Dimensions;
 use Trs\Core\Model\Package;
 use Trs\Core\Model\Price;
-use Trs\Woocommerce\Model\Item;
+use Trs\Woocommerce\Model\WpmlAwareItem;
 use WC_Cart;
 use WC_Product;
 use WC_Product_Variation;
@@ -58,7 +58,7 @@ class PackageConverter
             $product = $itemData['data'];
             
             while ($quantity--) {
-                $item = new Item();
+                $item = new WpmlAwareItem();
                 $item->setPrice($price);
                 $item->setDimensions(new Dimensions((float)$product->length, (float)$product->width, (float)$product->height));
                 $item->setProductId((string)$product->id);

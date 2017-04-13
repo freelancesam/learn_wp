@@ -1,33 +1,37 @@
 <?php
 namespace Trs\Woocommerce;
 
+use Trs\Common\Arrays;
 use Trs\Core\Calculators\AggregatedCalculator;
 use Trs\Core\Conditions\Common\StringPatternCondition;
 use Trs\Mapping\Interfaces\IMappingContext;
 use Trs\Mapping\Interfaces\IReader;
 use Trs\Mapping\Mappers\AbstractMapper;
-use WC_Shipping_Method;
+use Trs\Woocommerce\Model\Shipping\ShippingMethodPersistentId;
 
 
 class ShippingMethodCalculatorMapper extends AbstractMapper
 {
-    public function __construct(array $availableShippingMethods)
+    public function __construct(ShippingMethodLoader $loader)
     {
-        $this->availableShippingMethods = array();
-        foreach ($availableShippingMethods as $method) {
-            $this->availableShippingMethods[self::getShippingMethodPersistentId($method)] = $method;
-        }
+        $this->loader = $loader;
     }
 
     public function read($data, IReader $reader, IMappingContext $context = null)
     {
         $methods = array();
         if (isset($data['ids'])) {
-            foreach ($data['ids'] as $methodId) {
-                if ($method = @$this->availableShippingMethods[$methodId]) {
-                    $methods[] = $method;
+            $methods = Arrays::filter(Arrays::map($data['ids'], function($id) {
+
+                $id = ShippingMethodPersistentId::unserialize($id);
+
+                try {
+                    return $this->loader->load($id);
+                } catch (ShippingMethodNotLoaded $e) {
+                    //TODO log a warning to admin
+                    return null;
                 }
-            }
+            }));
         }
 
         $rateNamePattern = (string)@$data['rate_name'];
@@ -39,21 +43,5 @@ class ShippingMethodCalculatorMapper extends AbstractMapper
         );
     }
 
-    public static function getShippingMethodPersistentId(WC_Shipping_Method $shippingMethod)
-    {
-        $id = null;
-
-        if (!empty($shippingMethod->instance_id)) {
-            $id = $shippingMethod->instance_id;
-        } else {
-            $id = $shippingMethod->id;
-            if (!empty($shippingMethod->number)) {
-                $id .= '_'.$shippingMethod->number;
-            }
-        }
-
-        return $id;
-    }
-
-    private $availableShippingMethods;
+    private $loader;
 }

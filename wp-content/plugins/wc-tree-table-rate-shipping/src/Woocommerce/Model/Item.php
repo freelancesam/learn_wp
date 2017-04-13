@@ -4,7 +4,6 @@ namespace Trs\Woocommerce\Model;
 use RuntimeException;
 use Trs\Common\Arrays;
 use WC_Product;
-use WP_Error;
 
 
 class Item extends \Trs\Core\Model\Item
@@ -60,7 +59,7 @@ class Item extends \Trs\Core\Model\Item
         $terms = Arrays::map($termsResult, function ($term) {
             return $term->term_id;
         });
-        
+
         return $terms;
     }
 

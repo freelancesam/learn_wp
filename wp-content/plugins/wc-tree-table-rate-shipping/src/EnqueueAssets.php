@@ -113,12 +113,21 @@ class EnqueueAssets
             'trs-admin-js',
             $this->meta->getAssetUrl('trs/js/admin.js'),
             array(
-                'jquery', 'jquery-color', 'jquery-ui-sortable', 'jquery-form', 'underscore',
-                'trs-jquery-nestedsortable-js', 'trs-jquery-scrollTo-js',
-                'trs-ractive', 'trs-ractive-transitions-slide',
-                'trs-ractive-decorators-select2', 'trs-ractive-decorators-sortable', 'trs-ractive-mixins',
-                'trs-ractive-decorators-combine', 'trs-ractive-decorators-destination-list',
-                'trs-ractive-decorators-autosize'
+                'jquery',
+                'jquery-color',
+                'jquery-ui-sortable',
+                'jquery-form',
+                'underscore',
+                'trs-jquery-nestedsortable-js',
+                'trs-jquery-scrollTo-js',
+                'trs-ractive',
+                'trs-ractive-mixins',
+                'trs-ractive-transitions-slide',
+                'trs-ractive-decorators-select2',
+                'trs-ractive-decorators-sortable',
+                'trs-ractive-decorators-combine',
+                'trs-ractive-decorators-destination-list',
+                'trs-ractive-decorators-autosize',
             )
         );
     }

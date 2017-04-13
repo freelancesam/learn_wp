@@ -13,6 +13,10 @@ use WC_Shipping_Method;
 
 class ShippingMethodCalculator implements ICalculator
 {
+    /**
+     * @param WC_Shipping_Method[] $shippingMethods
+     * @param ICondition $rateNameFilter
+     */
     public function __construct(array $shippingMethods, ICondition $rateNameFilter)
     {
         $this->shippingMethods = $shippingMethods;
@@ -25,7 +29,6 @@ class ShippingMethodCalculator implements ICalculator
 
         $wcPackage = PackageConverter::fromCoreToWoocommerce($package);
 
-        /** @var WC_Shipping_Method $shippingMethod */
         foreach ($this->shippingMethods as $shippingMethod) {
 
             $ratesBkp = $shippingMethod->rates;

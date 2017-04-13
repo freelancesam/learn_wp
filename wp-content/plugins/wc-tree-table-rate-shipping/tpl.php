@@ -45,17 +45,7 @@ $userRoles = $roles->role_names;
 
 $currencyDecoratorPosition = @reset(explode('_', get_option('woocommerce_currency_pos'), 2));
 
-$shippingMethods = array();
-foreach (WcTools::getGlobalShippingMethods() as $method) {
-
-    if ($method instanceof tree_table_rate) {
-        continue;
-    }
-
-    $id = ShippingMethodCalculatorMapper::getShippingMethodPersistentId($method);
-    $title = $method->get_title();
-    $shippingMethods[$id] = "{$title} ({$id})";
-}
+require(__DIR__.'/tpl/shipping-methods.php');
 
 ?>
 
@@ -687,13 +677,9 @@ foreach (WcTools::getGlobalShippingMethods() as $method) {
                                         <?php priceKind() ?>
                                     {{/if}}
                                 {{elseif calculator == 'shipping_method'}}
-                                    <select multiple value="{{.ids}}" class="multiselect" decorator="select2" data-placeholder="Select shipping method(s)">
-                                        <?php foreach ($shippingMethods as $id => $title): ?>
-                                            <option value="<?php echo esc_html($id) ?>">
-                                                <?php echo esc_html($title) ?>
-                                            </option>
-                                        <?php endforeach; ?>
+                                    <select multiple value="{{.ids}}" class="multiselect" decorator="select2:shipping-methods">
                                     </select>
+
                                     {{>aggregator}}
 
                                     <span class="nowrap">

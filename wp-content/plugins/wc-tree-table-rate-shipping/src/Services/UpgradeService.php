@@ -9,10 +9,12 @@ use Trs\Migration\Storage\StorageBucket;
 use Trs\Migration\Storage\StorageItem;
 use Trs\Migration\Storage\WordpressOptionsStorage;
 use Trs\PluginMeta;
+use Trs\Services\Interfaces\IService;
+use Trs\Services\Interfaces\IServiceReady;
 use Trs\Woocommerce\WcTools;
 
 
-class UpgradeService implements IService
+class UpgradeService implements IService, IServiceReady
 {
     const CONFIG_OPTION_NAME = 'woocommerce_tree_table_rate_settings'; 
     const CONFIG_BACKUP_OPTIONS_PREFIX  = 'woocommerce_tree_table_rate_settings__bkp__';
@@ -22,14 +24,12 @@ class UpgradeService implements IService
         $this->pluginMeta = $pluginMeta;
     }
 
-    public function install(ServiceRegistry $registry)
+    public function install()
     {
         $message = null;
         if (!$this->ready($message)) {
             throw new BadMethodCallException($message);
         }
-
-        $registry->register($this);
 
         if (did_action('plugins_loaded')) {
             $this->maybeUpgrade();
@@ -92,7 +92,7 @@ class UpgradeService implements IService
             
             // Although, in theory, we don't need to purge shipping cache since we always expect to produce
             // a similar functioning config after migrations, in practice, we'd better allow a user to test
-            // a new config right after migration in case there is any issue with that, rather than showing
+            // a new config right after migration in case there is any issue with that rather than showing
             // results cached from a previous config.
             WcTools::purgeWoocommerceShippingCache();
         }

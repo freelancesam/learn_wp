@@ -1,14 +1,16 @@
 <?php
 namespace Trs\Core;
 
+use Trs\Common\ValueObject;
 use Trs\Core\Interfaces\IGrouping;
+
 
 /**
  * @property-read bool $capture
  * @property-read IGrouping $grouping
  * @property-read bool $requireAllPackages
  */
-class RuleMatcherMeta
+class RuleMatcherMeta extends ValueObject
 {
     public function __construct($capture, IGrouping $grouping, $requireAllPackages = false)
     {
@@ -17,12 +19,8 @@ class RuleMatcherMeta
         $this->requireAllPackages = $requireAllPackages;
     }
 
-    public function __get($property)
-    {
-        return $this->{$property};
-    }
 
-    private $capture;
-    private $grouping;
-    private $requireAllPackages;
+    protected $capture;
+    protected $grouping;
+    protected $requireAllPackages;
 }

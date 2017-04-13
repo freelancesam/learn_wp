@@ -2,7 +2,7 @@
 /**
  * Plugin Name: WooCommerce Tree Table Rate Shipping
  * Description: Ultimate shipping plugin for WooCommerce
- * Version: 1.12.3
+ * Version: 1.13.0
  * Author: tablerateshipping.com
  * Plugin URI: http://tablerateshipping.com
  * Author URI: http://tablerateshipping.com

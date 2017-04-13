@@ -1,23 +1,16 @@
 <?php
 namespace Trs\Common;
 
-
-class Range
+/**
+ * @property-read mixed $min
+ * @property-read mixed $max
+ */
+class Range extends ValueObject
 {
     public function __construct($min, $max)
     {
         $this->min = $min;
         $this->max = $max;
-    }
-
-    public function getMin()
-    {
-        return $this->min;
-    }
-
-    public function getMax()
-    {
-        return $this->max;
     }
 
     public function clamp($value)
@@ -33,6 +26,6 @@ class Range
         return $value;
     }
 
-    private $min;
-    private $max;
+    protected $min;
+    protected $max;
 }

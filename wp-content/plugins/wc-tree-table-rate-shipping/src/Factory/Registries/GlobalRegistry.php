@@ -2,8 +2,8 @@
 namespace Trs\Factory\Registries;
 
 use BoxPacking\Packer;
-use Trs\Core\PlatformSettings;
 use Trs\Core\Interfaces\IProcessor;
+use Trs\Core\PlatformSettings;
 use Trs\Core\Processing\Processor;
 use Trs\Factory\Interfaces\IRegistry;
 use Trs\Factory\Registry;

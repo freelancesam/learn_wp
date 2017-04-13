@@ -3,6 +3,7 @@ namespace Trs\Services;
 
 use PluginUpdateChecker_3_0;
 use Trs\PluginMeta;
+use Trs\Services\Interfaces\IService;
 use WP_Error;
 
 
@@ -13,10 +14,8 @@ class UpdateService implements IService
         $this->pluginMeta = $pluginMeta;
     }
 
-    public function install(ServiceRegistry $registry)
+    public function install()
     {
-        $registry->register($this);
-
         $meta = $this->pluginMeta;
 
         require($meta->getLibsPath('yahnis-elsts/plugin-update-checker/plugin-update-checker.php'));
@@ -31,7 +30,7 @@ class UpdateService implements IService
             return $queryArgs;
         });
 
-        add_filter('upgrader_pre_download', function($response, $downloadUrl, $upgrader) use($apiUpdatesEndpoint, $entryFile) {
+        add_filter('upgrader_pre_download', function($response, $downloadUrl) use($apiUpdatesEndpoint, $entryFile) {
 
             if (strpos($downloadUrl, $apiUpdatesEndpoint) !== false) {
 

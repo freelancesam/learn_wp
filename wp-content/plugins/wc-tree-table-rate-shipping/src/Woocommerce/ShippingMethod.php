@@ -26,6 +26,7 @@ class ShippingMethod extends WC_Shipping_Method
             'settings',
             'shipping-zones',
             'instance-settings',
+            'global-instance',
         );
 
         add_action('woocommerce_update_options_shipping_' . $this->id, array($this, 'process_admin_options'));
@@ -110,6 +111,8 @@ class ShippingMethod extends WC_Shipping_Method
                 ),
             ) +
             $rules;
+
+        unset($this->instance_form_fields['enabled']);
     }
 
     public function generate_rule_html()
@@ -197,11 +200,12 @@ class ShippingMethod extends WC_Shipping_Method
         $result = $empty_value;
 
         /** @noinspection PhpUndefinedConstantInspection */
-        if (version_compare(WC_VERSION, '2.6', '>=') &&  empty($this->instance_id)) {
+        if (version_compare(WC_VERSION, '2.6', '>=') && empty($this->instance_id)) {
 
-            add_filter($filter = "woocommerce_shipping_instance_form_fields_{$this->id}", $stub = function() {
-                return array();
-            });
+            add_filter(
+                $filter = "woocommerce_shipping_instance_form_fields_{$this->id}",
+                $stub = function() { return array(); }
+            );
 
             $exception = null;
             try {
@@ -227,7 +231,7 @@ class ShippingMethod extends WC_Shipping_Method
     {
         // A hack to prevent Woocommerce 2.6 from skipping global method instance
         // rates in WC_Shipping::calculate_shipping_for_package()
-        return parent::get_instance_id() ?: -1;
+        return (method_exists('parent', 'get_instance_id') ? parent::get_instance_id() : $this->instance_id) ?: -1;
     }
 
     private function loadRule(IReader $reader, $ruleData = null)
@@ -272,7 +276,7 @@ class ShippingMethod extends WC_Shipping_Method
         $globalRegistry = new GlobalRegistry($settings, $lazy);
 
         $globalRegistry->mappers->register('shipping_method_calculator', function() {
-            return new ShippingMethodCalculatorMapper(WcTools::getGlobalShippingMethods());
+            return new ShippingMethodCalculatorMapper(new ShippingMethodLoader());
         });
 
         return $globalRegistry;

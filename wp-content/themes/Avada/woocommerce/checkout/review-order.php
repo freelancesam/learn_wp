@@ -49,9 +49,9 @@ if (!defined('ABSPATH')) {
                         </div>
                     </td>
                     <!--<td class="product-name">-->
-                    <!--	--><?php //echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );        ?>
-                    <!--	--><?php //echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key );        ?>
-                    <!--	--><?php //echo WC()->cart->get_item_data( $cart_item );        ?>
+                    <!--	--><?php //echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key );         ?>
+                    <!--	--><?php //echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key );         ?>
+                    <!--	--><?php //echo WC()->cart->get_item_data( $cart_item );         ?>
                     <!--</td>-->
                     <td class="product-total">
                         <?php echo apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key); ?>
@@ -87,6 +87,10 @@ if (!defined('ABSPATH')) {
             <?php do_action('woocommerce_review_order_after_shipping'); ?>
 
         <?php endif; ?>
+        <tr>
+            <th>&nbsp;</th>
+            <td><?php do_action('woocommerce_checkout_insurance2'); ?></td>
+        </tr>
         <?php
         $ischeck = true;
 
@@ -126,9 +130,9 @@ if (!defined('ABSPATH')) {
                 <td><?php do_action('woocommerce_checkout_insurance'); ?></td>
             </tr>
         <script>
-            jQuery(document).ready(function ($){
+            jQuery(document).ready(function ($) {
                 var isits_fee = $('.its_fee').attr('checked');
-                if($.trim(isits_fee)=='checked'){
+                if ($.trim(isits_fee) == 'checked') {
                     $('.its_fee').click();
                 }
             })

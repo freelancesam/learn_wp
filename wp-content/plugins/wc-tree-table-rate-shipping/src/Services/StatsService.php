@@ -2,6 +2,7 @@
 namespace Trs\Services;
 
 use Trs\PluginMeta;
+use Trs\Services\Interfaces\IService;
 use WooCommerce;
 
 
@@ -15,10 +16,8 @@ class StatsService implements IService
         $this->pluginMeta = $pluginMeta;
     }
 
-    public function install(ServiceRegistry $registry)
+    public function install()
     {
-        $registry->register($this);
-
         $hook = self::SCHEDULE_HOOK_NAME;
 
         add_action($hook, array($this, 'send'));

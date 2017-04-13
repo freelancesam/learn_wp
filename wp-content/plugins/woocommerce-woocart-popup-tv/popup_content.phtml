@@ -4,6 +4,7 @@
         global $woocommerce;
 
         $productsCount = $woocommerce->cart->get_cart_contents_count();
+        //echo $woocommerce->cart->get_cart_total();
 
         $product_id = $_REQUEST['product_id'];
         foreach ($woocommerce->cart->cart_contents as $cart_item_key => $cart_item) {

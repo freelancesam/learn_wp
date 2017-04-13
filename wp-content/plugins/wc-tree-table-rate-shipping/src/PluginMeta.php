@@ -78,7 +78,6 @@ class PluginMeta
         return plugin_basename($this->getEntryFile());
     }
 
-
     private $entryFile;
     private $dir;
     private $license = false;

@@ -1,13 +1,15 @@
 <?php
 namespace Trs\Core;
 
+use Trs\Common\ValueObject;
+
 
 /**
  * @property-read float $weightPrecision
  * @property-read float $dimensionPrecision
  * @property-read float $pricePrecision
  */
-class PlatformSettings
+class PlatformSettings extends ValueObject
 {
     public function __construct($weightPrecision, $dimensionPrecision, $pricePrecision)
     {
@@ -16,13 +18,8 @@ class PlatformSettings
         $this->pricePrecision = $pricePrecision;
     }
 
-    public function __get($property)
-    {
-        return $this->{$property};
-    }
 
-
-    private $weightPrecision;
-    private $dimensionPrecision;
-    private $pricePrecision;
+    protected $weightPrecision;
+    protected $dimensionPrecision;
+    protected $pricePrecision;
 }

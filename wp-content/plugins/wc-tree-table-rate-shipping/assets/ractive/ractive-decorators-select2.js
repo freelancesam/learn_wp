@@ -64,7 +64,7 @@
         var options = {};
         if (type) {
             if (!select2Decorator.type.hasOwnProperty(type)) {
-                throw new Error( 'Ractive Select2 type "' + type + '" is not defined!' );
+                throw new Error('Ractive Select2 type "' + type + '" is not defined!');
             }
 
             options = select2Decorator.type[type];
@@ -72,6 +72,18 @@
                 options = options.call(this, node);
             }
         }
+
+        var templateSelectionBkp = options.templateSelection;
+        options.templateSelection = function(data) {
+
+            var result = templateSelectionBkp && templateSelectionBkp(data) || data.text;
+
+            if (!data.title) {
+                data.title = ' ';
+            }
+
+            return result;
+        };
 
         var update = function (newvalue) {
 
@@ -97,6 +109,7 @@
                                 $(node).append(
                                     $(document.createElement('option'))
                                         .attr('value', v)
+                                        .attr('title', 'The referenced item has been deleted from Woocommerce.')
                                         .text('#' + v + ' (missing)')
                                 );
                             }
