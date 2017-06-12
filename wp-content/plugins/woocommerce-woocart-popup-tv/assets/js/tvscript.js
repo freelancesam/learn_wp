@@ -6,7 +6,7 @@
  * Skype: trantrongthang1207
  */
 jQuery(document).ready(function ($) {
-    $('body').on('added_to_cart', function () {
+    $('body').on('added_to_cart', function (event, fragments, cart_hash, $button) {
         $.fancybox("#tvcart_popup", {
             minWidth: 280,
             padding: [15, 0, 15, 0],
@@ -14,6 +14,7 @@ jQuery(document).ready(function ($) {
             autoHeight: true,
             wrapCSS: 'tvwrapfancybox'
         })
+        console.log(fragments.selectorName);
     });
     $(document).on('click', '.tv-continue-shopping', function () {
         $.fancybox.close()

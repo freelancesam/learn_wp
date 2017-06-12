@@ -1,0 +1,642 @@
+/* 
+* Stylesheet for "Singapore Maps" Wordpress plugin 
+*/
+@font-face {
+    font-family: 'ProximaNova-Semibold';
+    src: url('ProximaNova-Semibold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'proximanova-semibold-webfont';
+    src: url('proximanova-semibold-webfont.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+#singapore_maps {
+    /*  overflow: hidden;*/
+    position: relative;
+    left: 0;
+    top: 0;
+    /*    background: #fff*/
+}
+
+#singapore_maps #maps_container {
+    height: 362px;
+    width: 583px;
+    position: relative;
+    left: 0;top: 0;
+    display: none;
+}
+
+#singapore_maps .maps_center {
+    margin: 0 auto;
+}
+
+#singapore_maps .maps_right {
+    float: right;
+}
+
+#singapore_maps #regional_map img {
+    max-width: 100%;
+}
+
+#singapore_maps .google_map {
+    display: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#singapore_maps .google_infobox {
+    -moz-box-sizing: content-box;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    min-height: 80px;
+    padding: 4px;
+    width: 270px !important;
+}
+.chrome #singapore_maps .google_infobox {
+    min-height: 105px
+}
+#singapore_maps .google_details {
+    /*    border: 1px solid #393C3D;
+        border-radius: 3px 3px 3px 3px;
+        height: 185px;
+        position: relative;
+        left: 0;
+        top: 0;*/   
+    border: 1px solid #D3D3D3;
+    border-radius: 2px 2px 2px 2px;
+    height: 209px;
+    left: 0;
+    position: relative;
+    top: 0;
+
+
+}
+
+#singapore_maps .google_sidebar {
+    /*    float: left;
+        margin-left: -90px;
+        width: 80px;*/
+    display:inline
+}
+.chrome #singapore_maps .google_thumbnail,
+.opera #singapore_maps .google_thumbnail,
+.ie #singapore_maps .google_thumbnail{width: 260px}
+#singapore_maps .google_thumbnail {
+    border-radius: 2px 2px 0 0;
+    display: inline;
+    height: 183px;
+    width: 268px;
+    position: relative;
+    top: -24px;
+}
+
+#singapore_maps .google_infobox  a.title{
+    /*    font-size: 12px;
+        position: absolute;
+        bottom: 9px;
+        font-weight: bold;
+        color: #ffffff;
+        text-transform: uppercase;
+        left: 7px;
+    
+        overflow: hidden;
+        position: absolute;
+        text-overflow: ellipsis;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.8);
+        white-space: nowrap;
+        width: 85%;
+        z-index: 1;*/
+    bottom: 9px;
+    color: #6F6F6F;
+    font-size: 13px;
+    left: 14px;
+    overflow: hidden;
+    position: absolute;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 85%;
+    z-index: 1;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif
+}
+#singapore_maps  .infoBox >img{
+    left: 12px;
+    position: relative;
+    top: -11px;
+    z-index: 999;
+    background: #fff;
+    border-radius: 15px;
+    border: 1px solid #999;
+    padding: 2px 1px 1px 2px;
+}
+#singapore_maps .google_readmore {
+    position: absolute;
+    bottom: 32px;
+    left: 7px;
+}
+
+#singapore_maps .google_readmore a {
+    /*    background-color: #f38713;
+        border: 2px solid #fff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        box-shadow: 0 0 2px #999999;
+        color: #fff;
+        font-size: 12px;
+        height: 16px;
+        padding: 2px 5px;
+        text-align: center;
+        text-decoration: none;*/
+    -moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+    box-shadow:inset 0px 1px 0px 0px #caefab;
+
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811));
+    background:-moz-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+    background:-webkit-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+    background:-o-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+    background:-ms-linear-gradient(top, #77d42a 5%, #5cb811 100%);
+    background:linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811',GradientType=0);
+
+    background-color:#77d42a;
+
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    border-radius:6px;
+
+    border:1px solid #268a16;
+
+    display:inline-block;
+    /*      box-shadow: 0 0 0.2em rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.2), 0 0 0 #000000;*/
+    font-family: "proximanova-semibold-webfont",Helvetica,Arial,sans-serif;
+    font-size: 12px;
+    padding: 0.3em 1em 0.1em 1em;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    color: #FFFFFF;
+    line-height: 19px
+
+}
+#singapore_maps .google_readmore a:hover{
+
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a));
+    background:-moz-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+    background:-webkit-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+    background:-o-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+    background:-ms-linear-gradient(top, #5cb811 5%, #77d42a 100%);
+    background:linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a',GradientType=0);
+
+    background-color:#5cb811;
+
+    text-decoration: none;
+}
+
+#singapore_maps .google_readmore a:hover {
+    background-color: #cc4900;
+}
+/*fgc*/
+#regional_map .fgctooltip{
+    background-color: #f5f5f5;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 2px 4px rgba(43, 77, 100, 0.2);
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 49px;
+    left: 0;
+    line-height: 18px;
+    padding: 4px 20px;
+    position: absolute;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+    top: 0;
+    border: 1px solid #DDDDDD;
+}
+#regional_map .fgctooltip .arrow{
+    background: url("images/arrow.png") no-repeat 28px 7px;
+    display: block;
+    height: 36px;
+    width: 100px
+}
+#regional_map .fgctooltip a{
+    color: #1E73AD;
+    font-weight: normal
+}
+#regional_map .fgctooltip a:hover{
+    text-decoration: underline
+}
+#regional_map .west_tooltip{
+    left: 84px;
+    top: 151px;
+}
+#regional_map .north_tooltip{
+    left: 306px;
+    top: 75px;
+}
+#regional_map .central_tooltip{
+    left: 301px;
+    top: 239px;
+}
+#regional_map .northeast_tooltip{
+    left: 440px;
+    top: 139px;
+}
+#regional_map .east_tooltip{
+    left: 583px;
+    top: 203px;
+}
+/*#regional_map .fgctooltip .map-label:hover span{
+      background: url("images/arrow1.png") no-repeat 28px 4px;
+}*/
+.button-back-map{
+    margin: 0 auto;
+    text-align: right;
+    width: 100%;
+    position: relative;
+    right: 22px;
+    height: 30px;
+    float: right;
+    top: -56px;
+}
+.fgcback{
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffe0b5;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #ffe0b5;
+    box-shadow:inset 0px 1px 0px 0px #ffe0b5;
+
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fbb450), color-stop(1, #f89306));
+    background:-moz-linear-gradient(top, #fbb450 5%, #f89306 100%);
+    background:-webkit-linear-gradient(top, #fbb450 5%, #f89306 100%);
+    background:-o-linear-gradient(top, #fbb450 5%, #f89306 100%);
+    background:-ms-linear-gradient(top, #fbb450 5%, #f89306 100%);
+    background:linear-gradient(to bottom, #fbb450 5%, #f89306 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endColorstr='#f89306',GradientType=0);        
+    background-color:#fbb450;        
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;        
+    border: 1px solid #C97E1C;
+    box-shadow: 0 1px 0 0 #FFE0B5 inset;
+    color: #FFFFFF;
+    display: none;
+    font-family: Trebuchet MS;
+    font-size: 16px;
+    font-weight: bold;
+
+
+    margin: 0;
+    padding: 4px 0;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #8F7F24;
+    width: 186px;
+
+}
+.fgcback:hover{
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f89306), color-stop(1, #fbb450));
+    background:-moz-linear-gradient(top, #f89306 5%, #fbb450 100%);
+    background:-webkit-linear-gradient(top, #f89306 5%, #fbb450 100%);
+    background:-o-linear-gradient(top, #f89306 5%, #fbb450 100%);
+    background:-ms-linear-gradient(top, #f89306 5%, #fbb450 100%);
+    background:linear-gradient(to bottom, #f89306 5%, #fbb450 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f89306', endColorstr='#fbb450',GradientType=0);   
+    background-color:#f89306;
+
+}
+
+
+#singapore_maps .fgcmapimage{
+    margin: 0 auto;
+    display: block;
+    width: 1000px;
+}
+.opera #singapore_maps .fgcmapimage{
+    margin-left: 0px
+}
+.opera #regional_map .west_tooltip{
+    left: 123px;
+    top: 169px;
+}
+.opera #regional_map .north_tooltip{
+    left: 335px;
+    top: 106px;
+}
+.opera #regional_map .central_tooltip{
+    left: 343px;
+    top: 235px;
+}
+.opera #regional_map .northeast_tooltip{
+    left: 496px;
+    top: 61px;
+}
+.opera #regional_map .east_tooltip{
+    left: 610px;
+    top: 129px;
+}
+#singapore_maps #regional_map{
+    position: relative;
+    left: 0;top: 0;
+    margin-bottom: 20px;
+}
+/*sidebar*/
+#sidebar-map-singapo{
+    background: #333;
+    font-size: 20px;
+    font-weight: bold;
+    /*position: absolute;*/
+    right: 0;
+    top: 0;
+    width: 220px;
+    /*width: 250px;*/
+    z-index: 999;
+    float: left;
+    height: 100%;
+}
+.ie #sidebar-map-singapo{
+    /*    right: -15px!important;*/
+}
+.ie8 .container{
+    width: 980px
+}
+#sidebar-map-singapo ul.list ul{display: none}
+#sidebar-map-singapo ul.list{
+    background-color: #333333;
+    border-top: 1px solid #CCCCCC;
+
+    right: 0;
+    top: 0;
+    z-index: 3;
+}
+#sidebar-map-singapo ul.list .category {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    *border-bottom: 1px solid #3d3d3d;
+    color: #EEEEEE;
+    font-size: 11pt;
+    overflow: hidden;
+
+}
+#sidebar-map-singapo ul.list .category  a{
+    color: #FFFFFF;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#sidebar-map-singapo ul.list .category  a:focus{
+    text-decoration: none;
+    outline: none
+}
+#sidebar-map-singapo ul.list .category  a:hover{
+    text-decoration: none
+}
+#sidebar-map-singapo ul.list .category  a span{
+    color: #939393;
+    padding-left: 6px;
+}
+#sidebar-map-singapo ul.list .category img{
+    margin-right: 4px
+}
+.list .category .category_item {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    *border-top: 1px solid #3D3D3D;
+
+
+}
+.list .category .category_toggle {
+    background-image: url("./images/check.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 30px;
+}
+.list .category .category_toggle {
+    cursor: pointer;
+    float: right;
+    height: 26px;
+    padding: 10px;
+    opacity: 0.15;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=15)";
+    filter: alpha(opacity=15);
+}
+.list .category .category_toggle.inactive {
+    opacity: 1;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+}
+
+.list .category .category_item:hover ,
+.list .child-content li:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+
+    cursor: pointer
+}
+#sidebar-map-singapo  ul.child-content li{
+
+
+    line-height: 1.4em;
+    outline: medium none;
+    padding: 5px 10px;
+}
+#sidebar-map-singapo  ul.child-content li a{
+    color: #CCCCCC!important;
+    display: block;
+    font-size: 8pt;
+    font-weight: normal;
+    outline: medium none;
+}
+.list .child-content li {
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    *border-top: 1px solid #3D3D3D;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.list .category .category_info {
+    color: #EEEEEE;
+    display: block;
+    overflow: hidden;
+    padding: 3px 6px;
+}
+.ie9 #singapore_maps .google_infobox,
+.opera #singapore_maps .google_infobox{
+    min-height: 100px;   
+}
+.opera #singapore_maps .google_infobox{
+    min-height: 120px;   
+}
+.ie9 .regional_map{
+    display: !important;
+}
+
+
+@media all and (min-width: 1000px) {
+    div#mapster_wrap_0 > *, div#mapster_wrap_0 {
+        width: 950px !important;
+        height: 550px !important;
+    }
+    div#mapster_wrap_1 > *, div#mapster_wrap_1 {
+        width: 950px !important;
+        height: 550px !important;
+    }
+    div#mapster_wrap_2 > *, div#mapster_wrap_2 {
+        width: 950px !important;
+        height: 550px !important;
+    }
+    #regional_map .west_tooltip {
+        top: 250px !important;
+        left: 152px !important;
+    }
+    #regional_map .east_tooltip {
+        left: 730px !important;
+        top: 250px !important;
+    }
+    #regional_map .northeast_tooltip {
+        left: 580px !important;
+        top: 180px !important;
+    }
+    #regional_map .central_tooltip {
+        left: 430px !important;
+        top: 300px !important;
+    }
+    #regional_map .north_tooltip {
+        left: 400px !important;
+        top: 100px !important;
+    }
+}
+
+@media all and (min-width: 1200px) {
+    div#mapster_wrap_0 > *, div#mapster_wrap_0 {
+        width: 1050px !important;
+        height: 600px !important;
+    }
+    div#mapster_wrap_1 > *, div#mapster_wrap_1 {
+        width: 1050px !important;
+        height: 600px !important;
+    }
+    div#mapster_wrap_2 > *, div#mapster_wrap_2 {
+        width: 1050px !important;
+        height: 600px !important;
+    }
+    #regional_map .west_tooltip {
+        top: 250px !important;
+        left: 152px !important;
+    }
+    #regional_map .east_tooltip {
+        left: 800px !important;
+        top: 280px !important;
+    }
+    #regional_map .northeast_tooltip {
+        left: 650px !important;
+        top: 200px !important;
+    }
+    #regional_map .central_tooltip {
+        left: 480px !important;
+        top: 350px !important;
+    }
+    #regional_map .north_tooltip {
+        left: 450px !important;
+        top: 100px !important;
+    }
+}
+
+/*
+* added date 31 July 2014
+* added by Tran Trong Thang<@trantrongthang1207@gmail.com>
+* resale map
+*/
+#singapore_maps .google_details{
+    height: 100%;
+    min-height: 209px;
+}
+.singapore_maps_rental .infoBox,
+.singapore_maps_resale .infoBox{
+    padding:10px;
+    background:#fff;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border-radius:2px;
+    -webkit-box-shadow:0 2px 4px rgba(0,0,0,0.3);
+    box-shadow:0 2px 4px rgba(0,0,0,0.3)
+}
+.singapore_maps_rental .infoBox:before,
+.singapore_maps_resale .infoBox:before {
+    border-color: #fff transparent transparent;
+    border-style: solid;
+    border-width: 15px;
+    bottom: -30px;
+    content: "";
+    display: inline-block;
+    margin: 0 0 0 115px;
+    position: absolute;
+}
+#singapore_maps.singapore_maps_rental .infoBox > img,
+#singapore_maps.singapore_maps_resale .infoBox > img{
+    left: 90%;
+    margin: 2px;
+    position: absolute !important;
+    top: 5px;
+}
+#singapore_maps.singapore_maps_rental img.google_thumbnail,
+#singapore_maps.singapore_maps_resale img.google_thumbnail{
+    position: static;
+}
+#singapore_maps.singapore_maps_rental .google_details,
+#singapore_maps.singapore_maps_rental .google_infobox,
+#singapore_maps.singapore_maps_resale .google_details,
+#singapore_maps.singapore_maps_resale .google_infobox{
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+.np_bottom{
+    background: #F3F3F2;
+    margin: 10px 0 0;
+    padding: 5px;
+}
+#singapore_maps .google_infobox .np_bottom a.title{
+    color: #373C3C;
+    font-weight: bold;
+    position: static;
+}
+.np_bottom .np_des{
+    color: #616A73;
+}
+.currency {
+    font-size: 14px;
+}
+.np_price{
+    background-color:#3c3f40;
+    background-color:rgba(60,63,64,0.9);
+    padding:5px 10px;
+    color:#fff;
+    position: absolute;
+    top: 150px;
+}
+.price_amount {
+    color: #fff;
+    font-size: 20px;
+}
+.np_icon {
+    font-size: 24px;
+    padding: 0 0 0 5px;
+}
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('font/fontawesome-webfont.eot?v=3.2.1');
+    src: url('font/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'),
+        url('font/fontawesome-webfont.woff?v=3.2.1') format('woff'), 
+        url('font/fontawesome-webfont.ttf?v=3.2.1') format('truetype'),
+        url('font/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+.icon-bolt{
+    font-family: 'FontAwesome';
+    color: #ffb400;
+}
+.icon-bolt:before {
+    content: "\f0e7";
+}
+.np_icon{
+    display: none;
+}

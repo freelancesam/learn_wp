@@ -1,12 +1,12 @@
 ﻿=== simplesurance WooCommerce Plugin ===
 Contributors: simplesurance, kritek
-Tags: insurance, kritek, insurtech, product insurance, Schutzklick, simplesurance, smartphone insurance, laptop insurance, iphone insurance, samsung insurance, warranty extension, phone damage protection, Cliccasicuro, Klikzeker, Klikochron, Trygtklikk, Kliksikker, Klickskydd, Protègeclic, Allianz
+Tags: insurance, kritek, insurtech, product insurance, Schutzklick, simplesurance, smartphone insurance, laptop insurance, iphone insurance, samsung insurance, warranty extension, phone damage protection, Cliccasicuro, Klikzeker, Klikochron, Kliksikker, Klickskydd, Protègeclic, Allianz
 
 
 Requires at least: 4.5.3
-Tested up to: 4.6.1
-Stable tag: 4.5.3
-Version: 1.0.0
+Tested up to: 4.8
+Stable tag: 4.8
+Version: 1.0.1
 Author: simplesurance
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -44,12 +44,12 @@ Please contact us in order to receive your activation data. We work in the follo
 * [Germany](https://www.schutzklick.de/ecommerce-partner)
 * [Italy](https://www.cliccasicuro.it/e-commerce)
 * [Netherlands](https://www.klikzeker.nl/ecommerce)
-* [Poland](https://www.klikochron.pl/e-commerce)
+* [Poland](https://www.klikochron.pl/)
 * [Austria](https://www.schutzklick.at/ecommerce-partner)
-* [Norway](https://www.trygtklikk.no/e-handel)
 * [Denmark](https://www.kliksikker.dk/e-handel)
 * [Sweden](https://www.klickskydd.se/e-handel)
 * [France](https://www.protegeclic.fr/partenaire-e-commerce)
+* [United Kingdom](https://www.simplesurance.co.uk/ecommerce-partner)
 
 
 
@@ -91,5 +91,8 @@ For most of us, our mobile devices are our connection to the outside world. But 
 
 == Changelog ==
 
+
+= 1.0.1 =
+Compatibility to wordpress 4.8 and WooCommerce 3.0.8
 
 = 1.0.0 =

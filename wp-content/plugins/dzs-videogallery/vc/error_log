@@ -1,0 +1,1 @@
+[28-Jul-2016 14:48:29 UTC] PHP Fatal error:  Call to undefined function __() in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/vc/part-vcintegration.php on line 20

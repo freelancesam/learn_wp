@@ -44,6 +44,11 @@ function woocommerce_popupcart_fragment($fragments) {
 
     $cssSelectors[$selectorName] = $content;
 
+    if (is_user_logged_in()) {
+        $cssSelectors['selectorName'] = true;
+    } else {
+        $cssSelectors['selectorName'] = false;
+    }
     return $cssSelectors;
 }
 

@@ -1,0 +1,1 @@
+[28-Jul-2016 14:45:46 UTC] PHP Fatal error:  Call to undefined function add_action() in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/class_parts/extras_featured.php on line 4

@@ -4,7 +4,7 @@
  * Plugin Name: Simplesurance plugin
  * Plugin URI:
  * Description: Simplesurance plugin for woocommerce
- * Version: 1.0.0
+ * Version: 1.0.1
  * Developer: KRITEK, s.r.o.
  * Developer URI: http://www.kritek.eu
  * Author: simplesurance GmbH

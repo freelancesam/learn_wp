@@ -1,0 +1,16 @@
+[09-Jul-2016 21:42:21 UTC] PHP Fatal error:  Call to undefined function add_action() in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/extras.php on line 4
+[09-Jul-2016 21:42:27 UTC] PHP Notice:  Undefined index: width in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 25
+[09-Jul-2016 21:42:27 UTC] PHP Notice:  Undefined index: height in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 26
+[09-Jul-2016 21:42:27 UTC] PHP Notice:  Undefined index: source in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 28
+[09-Jul-2016 21:42:27 UTC] PHP Notice:  Undefined index: source in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 35
+[09-Jul-2016 21:42:27 UTC] PHP Notice:  Undefined index: type in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 35
+[09-Jul-2016 21:42:36 UTC] PHP Fatal error:  Call to undefined function add_action() in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/widget.php on line 4
+[09-Jul-2016 21:42:52 UTC] PHP Fatal error:  Call to undefined function plugins_url() in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/class-dzsvg.php on line 59
+[28-Jul-2016 14:41:59 UTC] PHP Fatal error:  Call to undefined function add_action() in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/extras.php on line 4
+[28-Jul-2016 14:42:03 UTC] PHP Notice:  Undefined index: width in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 25
+[28-Jul-2016 14:42:03 UTC] PHP Notice:  Undefined index: height in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 26
+[28-Jul-2016 14:42:03 UTC] PHP Notice:  Undefined index: source in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 28
+[28-Jul-2016 14:42:03 UTC] PHP Notice:  Undefined index: source in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 35
+[28-Jul-2016 14:42:03 UTC] PHP Notice:  Undefined index: type in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/ajax.php on line 35
+[28-Jul-2016 14:42:07 UTC] PHP Fatal error:  Call to undefined function add_action() in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/widget.php on line 4
+[28-Jul-2016 14:42:11 UTC] PHP Fatal error:  Call to undefined function plugins_url() in /home/reptilep/public_html/wp-content/plugins/dzs-videogallery/class-dzsvg.php on line 59
