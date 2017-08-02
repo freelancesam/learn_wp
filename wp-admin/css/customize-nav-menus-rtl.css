@@ -25,20 +25,6 @@
 	margin-right: 6px;
 	vertical-align: middle;
 	line-height: 28px;
-<<<<<<< HEAD
-=======
-	color: #0073aa;
-	text-decoration: underline;
-}
-
-.customize-control-nav_menu_location .edit-menu:hover,
-.customize-control-nav_menu_location .edit-menu:active {
-	color: #00a0d2;
-}
-
-.customize-control-nav_menu_location .edit-menu:focus {
-	color: #124964;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .wp-customizer .menu-item-bar .menu-item-handle,
@@ -164,16 +150,10 @@
 	outline: none;
 	overflow: hidden;
 	cursor: pointer;
-<<<<<<< HEAD
 	text-align: center;
 }
 
 .wp-customizer .menu-item.menu-item-edit-active .item-edit .toggle-indicator:before {
-=======
-}
-
-.wp-customizer .menu-item.menu-item-edit-active .item-edit .toggle-indicator:after {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	content: "\f142";
 }
 
@@ -291,29 +271,18 @@
 	display: inline-block;
 	font-size: 20px;
 	line-height: 1;
-<<<<<<< HEAD
-=======
-	text-indent: -1px; /* account for the dashicon alignment */
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .rtl .wp-customizer .toggle-indicator {
 	text-indent: 1px; /* account for the dashicon alignment */
 }
 
-<<<<<<< HEAD
 .wp-customizer .menu-item .item-edit .toggle-indicator:before,
 #available-menu-items .accordion-section-title .toggle-indicator:before {
 	content: "\f140";
 	display: block;
 	padding: 1px 0px 1px 2px;
 	speak: none;
-=======
-.wp-customizer .toggle-indicator:after {
-	content: "\f140";
-	speak: none;
-	vertical-align: top;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	color: #72777c;
@@ -526,7 +495,6 @@
 	content: none !important;
 }
 
-<<<<<<< HEAD
 #available-menu-items .accordion-section-title:hover .toggle-indicator:before,
 #available-menu-items .button-link:hover .toggle-indicator:before,
 #available-menu-items .button-link:focus .toggle-indicator:before {
@@ -534,15 +502,6 @@
 }
 
 #available-menu-items .open .accordion-section-title .toggle-indicator:before {
-=======
-#available-menu-items .accordion-section-title:hover .toggle-indicator:after,
-#available-menu-items .button-link:hover .toggle-indicator:after,
-#available-menu-items .button-link:focus .toggle-indicator:after {
-	color: #23282d;
-}
-
-#available-menu-items .open .accordion-section-title .toggle-indicator:after {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	content: "\f142";
 	color: #23282d;
 }
@@ -564,10 +523,7 @@
 	box-shadow: none;
 	outline: none;
 	cursor: pointer;
-<<<<<<< HEAD
 	text-align: center;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 #available-menu-items .accordion-section-title .no-items,
@@ -659,10 +615,7 @@
 	box-shadow: none;
 	outline: none;
 	cursor: pointer;
-<<<<<<< HEAD
 	text-align: center;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 #available-menu-items .menu-item-handle .item-add:focus {
@@ -759,13 +712,10 @@ body.adding-menu-items #customize-preview {
 	opacity: 0.4;
 }
 
-<<<<<<< HEAD
 body.adding-menu-items #customize-preview iframe {
 	pointer-events: none;
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .menu-item-handle .spinner {
 	display: none;
 	float: right;
@@ -849,20 +799,6 @@ li.assigned-to-menu-location .add-new-menu-item {
 	margin-bottom: 1em;
 }
 
-<<<<<<< HEAD
-=======
-.menu-delete {
-	color: #a00;
-	cursor: pointer;
-	text-decoration: underline;
-}
-
-.menu-delete:hover,
-.menu-delete:focus {
-	color: #f00;
-}
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .menu-item-handle {
 	margin-top: -1px;
 }
@@ -902,11 +838,7 @@ li.assigned-to-menu-location .add-new-menu-item {
 .wp-customizer .menu-item .submitbox .submitdelete:focus,
 .customize-screen-options-toggle:focus:before,
 #customize-controls .customize-info .customize-help-toggle:focus:before,
-<<<<<<< HEAD
 .wp-customizer button:focus .toggle-indicator:before,
-=======
-.wp-customizer button:focus .toggle-indicator:after,
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .menu-delete:focus,
 .menu-item-bar .item-delete:focus:before,
 #available-menu-items .item-add:focus:before {

@@ -172,15 +172,10 @@ class WC_Admin_Settings {
 	/**
 	 * Get a setting from the settings API.
 	 *
-<<<<<<< HEAD
 	 * @param string $option_name
 	 * @param mixed $default
 	 *
 	 * @return mixed
-=======
-	 * @param mixed $option_name
-	 * @return string
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function get_option( $option_name, $default = '' ) {
 		// Array value
@@ -221,11 +216,7 @@ class WC_Admin_Settings {
 	 *
 	 * Loops though the woocommerce options array and outputs each field.
 	 *
-<<<<<<< HEAD
 	 * @param array[] $options Opens array to output
-=======
-	 * @param array $options Opens array to output
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function output_fields( $options ) {
 		foreach ( $options as $value ) {

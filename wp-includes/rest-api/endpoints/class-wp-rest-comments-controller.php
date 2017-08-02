@@ -76,11 +76,7 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 				'args'     => array(
 					'context'          => $this->get_context_param( array( 'default' => 'view' ) ),
 					'password' => array(
-<<<<<<< HEAD
 						'description' => __( 'The password for the parent post of the comment (if the post is password protected).' ),
-=======
-						'description' => __( 'The password for the post if it is password protected.' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						'type'        => 'string',
 					),
 				),
@@ -102,11 +98,7 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 						'description' => __( 'Whether to bypass trash and force deletion.' ),
 					),
 					'password' => array(
-<<<<<<< HEAD
 						'description' => __( 'The password for the parent post of the comment (if the post is password protected).' ),
-=======
-						'description' => __( 'The password for the post if it is password protected.' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						'type'        => 'string',
 					),
 				),
@@ -584,7 +576,6 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 		 * Filters a comment before it is inserted via the REST API.
 		 *
 		 * Allows modification of the comment right before it is inserted via wp_insert_comment().
-<<<<<<< HEAD
 		 * Returning a WP_Error value from the filter will shortcircuit insertion and allow
 		 * skipping further processing.
 		 *
@@ -598,15 +589,6 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 		if ( is_wp_error( $prepared_comment ) ) {
 			return $prepared_comment;
 		}
-=======
-		 *
-		 * @since 4.7.0
-		 *
-		 * @param array           $prepared_comment The prepared comment data for wp_insert_comment().
-		 * @param WP_REST_Request $request          Request used to insert the comment.
-		 */
-		$prepared_comment = apply_filters( 'rest_pre_insert_comment', $prepared_comment, $request );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$comment_id = wp_insert_comment( wp_filter_comment( wp_slash( (array) $prepared_comment ) ) );
 
@@ -755,11 +737,7 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 
 		$comment = get_comment( $id );
 
-<<<<<<< HEAD
 		/** This action is documented in wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php */
-=======
-		/* This action is documented in lib/endpoints/class-wp-rest-comments-controller.php */
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		do_action( 'rest_insert_comment', $comment, $request, false );
 
 		$schema = $this->get_item_schema();
@@ -1640,10 +1618,7 @@ class WP_REST_Comments_Controller extends WP_REST_Controller {
 	 * string is allowed when a comment is being updated.
 	 *
 	 * @since 4.7.0
-<<<<<<< HEAD
 	 * @access public
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param string          $value   Author email value submitted.
 	 * @param WP_REST_Request $request Full details about the request.

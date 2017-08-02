@@ -204,11 +204,7 @@ class WXR_Parser_SimpleXML {
 						);
 					}
 				}
-<<<<<<< HEAD
-
-=======
 			
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$post['comments'][] = array(
 					'comment_id' => (int) $comment->comment_id,
 					'comment_author' => (string) $comment->comment_author,
@@ -405,24 +401,14 @@ class WXR_Parser_Regex {
 	var $terms = array();
 	var $base_url = '';
 
-<<<<<<< HEAD
-	function __construct() {
-		$this->has_gzip = is_callable( 'gzopen' );
-	}
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	function WXR_Parser_Regex() {
 		$this->__construct();
 	}
 
-<<<<<<< HEAD
-=======
 	function __construct() {
 		$this->has_gzip = is_callable( 'gzopen' );
 	}
 
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	function parse( $file ) {
 		$wxr_version = $in_post = false;
 
@@ -555,23 +541,6 @@ class WXR_Parser_Regex {
 	}
 
 	function process_post( $post ) {
-<<<<<<< HEAD
-		$post_id        = $this->get_tag( $post, 'wp:post_id' );
-		$post_title     = $this->get_tag( $post, 'title' );
-		$post_date      = $this->get_tag( $post, 'wp:post_date' );
-		$post_date_gmt  = $this->get_tag( $post, 'wp:post_date_gmt' );
-		$comment_status = $this->get_tag( $post, 'wp:comment_status' );
-		$ping_status    = $this->get_tag( $post, 'wp:ping_status' );
-		$status         = $this->get_tag( $post, 'wp:status' );
-		$post_name      = $this->get_tag( $post, 'wp:post_name' );
-		$post_parent    = $this->get_tag( $post, 'wp:post_parent' );
-		$menu_order     = $this->get_tag( $post, 'wp:menu_order' );
-		$post_type      = $this->get_tag( $post, 'wp:post_type' );
-		$post_password  = $this->get_tag( $post, 'wp:post_password' );
-		$is_sticky      = $this->get_tag( $post, 'wp:is_sticky' );
-		$guid           = $this->get_tag( $post, 'guid' );
-		$post_author    = $this->get_tag( $post, 'dc:creator' );
-=======
 		$post_id		= $this->get_tag( $post, 'wp:post_id' );
 		$post_title	 = $this->get_tag( $post, 'title' );
 		$post_date	  = $this->get_tag( $post, 'wp:post_date' );
@@ -587,7 +556,6 @@ class WXR_Parser_Regex {
 		$is_sticky	  = $this->get_tag( $post, 'wp:is_sticky' );
 		$guid		   = $this->get_tag( $post, 'guid' );
 		$post_author	= $this->get_tag( $post, 'dc:creator' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$post_excerpt = $this->get_tag( $post, 'excerpt:encoded' );
 		$post_excerpt = preg_replace_callback( '|<(/?[A-Z]+)|', array( &$this, '_normalize_tag' ), $post_excerpt );

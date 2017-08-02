@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 (function () {
 
 var defs = {}; // id -> {dependencies, definition, instance (possibly undefined)}
@@ -110,19 +109,11 @@ define(
  *
  * Released under LGPL License.
  * Copyright (c) 1999-2017 Ephox Corp. All rights reserved
-=======
-/**
- * plugin.js
- *
- * Released under LGPL License.
- * Copyright (c) 1999-2015 Ephox Corp. All rights reserved
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * License: http://www.tinymce.com/license
  * Contributing: http://www.tinymce.com/contributing
  */
 
-<<<<<<< HEAD
 /**
  * This class contains all core logic for the hr plugin.
  *
@@ -159,25 +150,3 @@ define(
 );
 dem('tinymce.plugins.hr.Plugin')();
 })();
-=======
-/*global tinymce:true */
-
-tinymce.PluginManager.add('hr', function(editor) {
-	editor.addCommand('InsertHorizontalRule', function() {
-		editor.execCommand('mceInsertContent', false, '<hr />');
-	});
-
-	editor.addButton('hr', {
-		icon: 'hr',
-		tooltip: 'Horizontal line',
-		cmd: 'InsertHorizontalRule'
-	});
-
-	editor.addMenuItem('hr', {
-		icon: 'hr',
-		text: 'Horizontal line',
-		cmd: 'InsertHorizontalRule',
-		context: 'insert'
-	});
-});
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

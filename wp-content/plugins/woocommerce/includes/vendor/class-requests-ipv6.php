@@ -6,13 +6,10 @@
  * @subpackage Utilities
  */
 
-<<<<<<< HEAD
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * Class to validate and to work with IPv6 addresses
  *

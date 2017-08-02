@@ -52,13 +52,8 @@ function wp_dashboard_setup() {
 		wp_add_dashboard_widget( 'dashboard_quick_press', $quick_draft_title, 'wp_dashboard_quick_press' );
 	}
 
-<<<<<<< HEAD
 	// WordPress Events and News
 	wp_add_dashboard_widget( 'dashboard_primary', __( 'WordPress Events and News' ), 'wp_dashboard_events_news' );
-=======
-	// WordPress News
-	wp_add_dashboard_widget( 'dashboard_primary', __( 'WordPress News' ), 'wp_dashboard_primary' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( is_network_admin() ) {
 
@@ -196,11 +191,7 @@ function wp_add_dashboard_widget( $widget_id, $widget_name, $callback, $control_
  * @param array $meta_box
  */
 function _wp_dashboard_control_callback( $dashboard, $meta_box ) {
-<<<<<<< HEAD
 	echo '<form method="post" class="dashboard-widget-control-form wp-clearfix">';
-=======
-	echo '<form method="post" class="dashboard-widget-control-form">';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	wp_dashboard_trigger_widget_control( $meta_box['id'] );
 	wp_nonce_field( 'edit-dashboard-widget_' . $meta_box['id'], 'dashboard-widget-nonce' );
 	echo '<input type="hidden" name="widget_id" value="' . esc_attr($meta_box['id']) . '" />';
@@ -496,11 +487,7 @@ function wp_dashboard_quick_press( $error_msg = false ) {
 		$post = get_default_post_to_edit( 'post' , true);
 		$user_id = get_current_user_id();
 		// Don't create an option if this is a super admin who does not belong to this site.
-<<<<<<< HEAD
 		if ( in_array( get_current_blog_id(), array_keys( get_blogs_of_user( $user_id ) ) ) )
-=======
-		if ( ! ( is_super_admin( $user_id ) && ! in_array( get_current_blog_id(), array_keys( get_blogs_of_user( $user_id ) ) ) ) )
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			update_user_option( $user_id, 'dashboard_quick_press_last_post_id', (int) $post->ID ); // Save post_ID
 	}
 
@@ -981,11 +968,7 @@ function wp_dashboard_rss_output( $widget_id ) {
  * @return bool False on failure. True on success.
  */
 function wp_dashboard_cached_rss_widget( $widget_id, $callback, $check_urls = array() ) {
-<<<<<<< HEAD
 	$loading = '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><div class="hide-if-js notice notice-error inline"><p>' . __( 'This widget requires JavaScript.' ) . '</p></div>';
-=======
-	$loading = '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><p class="hide-if-js">' . __( 'This widget requires JavaScript.' ) . '</p>';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$doing_ajax = wp_doing_ajax();
 
 	if ( empty($check_urls) ) {
@@ -997,13 +980,8 @@ function wp_dashboard_cached_rss_widget( $widget_id, $callback, $check_urls = ar
 		$check_urls = array( $widgets[$widget_id]['url'] );
 	}
 
-<<<<<<< HEAD
 	$locale = get_user_locale();
 	$cache_key = 'dash_v2_' . md5( $widget_id . '_' . $locale );
-=======
-	$locale = get_locale();
-	$cache_key = 'dash_' . md5( $widget_id . '_' . $locale );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( false !== ( $output = get_transient( $cache_key ) ) ) {
 		echo $output;
 		return true;
@@ -1084,19 +1062,14 @@ function wp_dashboard_rss_control( $widget_id, $form_inputs = array() ) {
 			}
 		}
 		update_option( 'dashboard_widget_options', $widget_options );
-<<<<<<< HEAD
 		$locale = get_user_locale();
 		$cache_key = 'dash_v2_' . md5( $widget_id . '_' . $locale );
-=======
-		$cache_key = 'dash_' . md5( $widget_id );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		delete_transient( $cache_key );
 	}
 
 	wp_widget_rss_form( $widget_options[$widget_id], $form_inputs );
 }
 
-<<<<<<< HEAD
 
 /**
  * Renders the Events and News dashboard widget.
@@ -1295,16 +1268,11 @@ function wp_print_community_events_templates() {
 	<?php
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * WordPress News dashboard widget.
  *
  * @since 2.7.0
-<<<<<<< HEAD
  * @since 4.8.0 Removed popular plugins feed.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function wp_dashboard_primary() {
 	$feeds = array(
@@ -1337,15 +1305,9 @@ function wp_dashboard_primary() {
 			 */
 			'title'        => apply_filters( 'dashboard_primary_title', __( 'WordPress Blog' ) ),
 			'items'        => 1,
-<<<<<<< HEAD
 			'show_summary' => 0,
 			'show_author'  => 0,
 			'show_date'    => 0,
-=======
-			'show_summary' => 1,
-			'show_author'  => 0,
-			'show_date'    => 1,
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		),
 		'planet' => array(
 
@@ -1390,23 +1352,6 @@ function wp_dashboard_primary() {
 		)
 	);
 
-<<<<<<< HEAD
-=======
-	if ( ( ! defined( 'DISALLOW_FILE_MODS' ) || ! DISALLOW_FILE_MODS ) && ( ! is_multisite() && is_blog_admin() && current_user_can( 'install_plugins' ) ) || ( is_network_admin() && current_user_can( 'manage_network_plugins' ) && current_user_can( 'install_plugins' ) ) ) {
-		$feeds['plugins'] = array(
-			'link'         => '',
-			'url'          => array(
-				'popular' => 'http://wordpress.org/plugins/rss/browse/popular/',
-			),
-			'title'        => '',
-			'items'        => 1,
-			'show_summary' => 0,
-			'show_author'  => 0,
-			'show_date'    => 0,
-		);
-	}
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	wp_dashboard_cached_rss_widget( 'dashboard_primary', 'wp_dashboard_primary_output', $feeds );
 }
 
@@ -1414,10 +1359,7 @@ function wp_dashboard_primary() {
  * Display the WordPress news feeds.
  *
  * @since 3.8.0
-<<<<<<< HEAD
  * @since 4.8.0 Removed popular plugins feed.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * @param string $widget_id Widget ID.
  * @param array  $feeds     Array of RSS feeds.
@@ -1426,102 +1368,12 @@ function wp_dashboard_primary_output( $widget_id, $feeds ) {
 	foreach ( $feeds as $type => $args ) {
 		$args['type'] = $type;
 		echo '<div class="rss-widget">';
-<<<<<<< HEAD
 			wp_widget_rss_output( $args['url'], $args );
-=======
-		if ( $type === 'plugins' ) {
-			wp_dashboard_plugins_output( $args['url'], $args );
-		} else {
-			wp_widget_rss_output( $args['url'], $args );
-		}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		echo "</div>";
 	}
 }
 
 /**
-<<<<<<< HEAD
-=======
- * Display plugins text for the WordPress news widget.
- *
- * @since 2.5.0
- *
- * @param string $rss  The RSS feed URL.
- * @param array  $args Array of arguments for this RSS feed.
- */
-function wp_dashboard_plugins_output( $rss, $args = array() ) {
-	// Plugin feeds plus link to install them
-	$popular = fetch_feed( $args['url']['popular'] );
-
-	if ( false === $plugin_slugs = get_transient( 'plugin_slugs' ) ) {
-		$plugin_slugs = array_keys( get_plugins() );
-		set_transient( 'plugin_slugs', $plugin_slugs, DAY_IN_SECONDS );
-	}
-
-	echo '<ul>';
-
-	foreach ( array( $popular ) as $feed ) {
-		if ( is_wp_error( $feed ) || ! $feed->get_item_quantity() )
-			continue;
-
-		$items = $feed->get_items(0, 5);
-
-		// Pick a random, non-installed plugin
-		while ( true ) {
-			// Abort this foreach loop iteration if there's no plugins left of this type
-			if ( 0 == count($items) )
-				continue 2;
-
-			$item_key = array_rand($items);
-			$item = $items[$item_key];
-
-			list($link, $frag) = explode( '#', $item->get_link() );
-
-			$link = esc_url($link);
-			if ( preg_match( '|/([^/]+?)/?$|', $link, $matches ) )
-				$slug = $matches[1];
-			else {
-				unset( $items[$item_key] );
-				continue;
-			}
-
-			// Is this random plugin's slug already installed? If so, try again.
-			reset( $plugin_slugs );
-			foreach ( $plugin_slugs as $plugin_slug ) {
-				if ( $slug == substr( $plugin_slug, 0, strlen( $slug ) ) ) {
-					unset( $items[$item_key] );
-					continue 2;
-				}
-			}
-
-			// If we get to this point, then the random plugin isn't installed and we can stop the while().
-			break;
-		}
-
-		// Eliminate some common badly formed plugin descriptions
-		while ( ( null !== $item_key = array_rand($items) ) && false !== strpos( $items[$item_key]->get_description(), 'Plugin Name:' ) )
-			unset($items[$item_key]);
-
-		if ( !isset($items[$item_key]) )
-			continue;
-
-		$raw_title = $item->get_title();
-
-		$ilink = wp_nonce_url('plugin-install.php?tab=plugin-information&plugin=' . $slug, 'install-plugin_' . $slug) . '&amp;TB_iframe=true&amp;width=600&amp;height=800';
-		echo '<li class="dashboard-news-plugin"><span>' . __( 'Popular Plugin' ) . ':</span> ' . esc_html( $raw_title ) .
-			'&nbsp;<a href="' . $ilink . '" class="thickbox open-plugin-details-modal" aria-label="' .
-			/* translators: %s: plugin name */
-			esc_attr( sprintf( __( 'Install %s' ), $raw_title ) ) . '">(' . __( 'Install' ) . ')</a></li>';
-
-		$feed->__destruct();
-		unset( $feed );
-	}
-
-	echo '</ul>';
-}
-
-/**
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * Display file upload quota on dashboard.
  *
  * Runs on the {@see 'activity_box_end'} hook in wp_dashboard_right_now().
@@ -1669,21 +1521,13 @@ function wp_check_browser_version() {
 
 		/**
 		 * Response should be an array with:
-<<<<<<< HEAD
 		 *  'platform' - string - A user-friendly platform name, if it can be determined
 		 *  'name' - string - A user-friendly browser name
-=======
-		 *  'name' - string - A user friendly browser name
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		 *  'version' - string - The version of the browser the user is using
 		 *  'current_version' - string - The most recent version of the browser
 		 *  'upgrade' - boolean - Whether the browser needs an upgrade
 		 *  'insecure' - boolean - Whether the browser is deemed insecure
-<<<<<<< HEAD
 		 *  'update_url' - string - The url to visit to upgrade
-=======
-		 *  'upgrade_url' - string - The url to visit to upgrade
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		 *  'img_src' - string - An image representing the browser
 		 *  'img_src_ssl' - string - An image (over SSL) representing the browser
 		 */

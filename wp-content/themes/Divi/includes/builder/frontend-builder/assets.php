@@ -2,15 +2,10 @@
 
 // Register assets that need to be fired at head
 function et_fb_enqueue_assets_head() {
-<<<<<<< HEAD
-	// Setup WP media.
-	wp_enqueue_media();
-=======
 	if ( et_fb_is_enabled() ) {
 		// Setup WP media.
 		wp_enqueue_media();
 	}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 add_action( 'wp_enqueue_scripts', 'et_fb_enqueue_assets_head' );
 
@@ -29,17 +24,6 @@ function et_fb_enqueue_main_assets() {
 		wp_enqueue_style( 'et-frontend-builder', "{$assets}/css/style.css", array(
 			'et_pb_admin_date_css',
 			'wp-mediaelement',
-<<<<<<< HEAD
-			'wp-color-picker',
-			'et-core-admin',
-		), $ver );
-	}
-
-	// Load Divi Builder style.css file with hardcore CSS resets and Full Open Sans font if the Divi Builder plugin is active
-	if ( et_is_builder_plugin_active() ) {
-		wp_enqueue_style( 'et-builder-divi-builder-styles', "{$assets}/css/divi-builder-style.css", array( 'et-core-admin' ), $ver );
-		et_fb_enqueue_open_sans();
-=======
 			'wp-color-picker'
 		), $ver );
 	}
@@ -47,7 +31,6 @@ function et_fb_enqueue_main_assets() {
 	// Load Divi Builder style.css file with hardcore CSS resets if the Divi Builder plugin is active
 	if ( et_is_builder_plugin_active() ) {
 		wp_enqueue_style( 'et-builder-divi-builder-styles', "{$assets}/css/divi-builder-style.css", array(), $ver );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	wp_enqueue_style( 'et-frontend-builder-failure-modal', "{$assets}/css/failure_modal.css", array(), $ver );
@@ -55,19 +38,6 @@ function et_fb_enqueue_main_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'et_fb_enqueue_main_assets' );
 
-<<<<<<< HEAD
-function et_fb_enqueue_open_sans() {
-	$protocol = is_ssl() ? 'https' : 'http';
-	$query_args = array(
-		'family' => 'Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800',
-		'subset' => 'latin,latin-ext',
-	);
-
-	wp_enqueue_style( 'et-fb-fonts', esc_url_raw( add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ) ), array(), null );
-}
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 function et_fb_enqueue_google_maps_dependency( $dependencies ) {
 
 	if ( et_pb_enqueue_google_maps_script() ) {
@@ -132,11 +102,7 @@ function et_fb_enqueue_assets() {
 
 	wp_register_script( 'et_pb_admin_date_addon_js', "{$root}/scripts/ext/jquery-ui-timepicker-addon.js", array( 'et_pb_admin_date_js' ), $ver, true );
 
-<<<<<<< HEAD
-	wp_register_script( 'wp-shortcode', includes_url() . 'js/shortcode.js', array(), $wp_version );
-=======
 	wp_register_script( 'wp-shortcode', includes_url() . '/js/shortcode.js', array(), $wp_version );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	$fb_bundle_dependencies = apply_filters( 'et_fb_bundle_dependencies', array(
 		'jquery',
@@ -156,23 +122,8 @@ function et_fb_enqueue_assets() {
 		'salvattore',
 		'hashchange',
 		'wp-shortcode',
-<<<<<<< HEAD
-		'heartbeat',
-		'wp-mediaelement',
 	) );
 
-	// enqueue the Avada script before 'et-frontend-builder' to make sure easypiechart ( and probably some others ) override the scripts from Avada.
-	if ( wp_script_is( 'avada' ) ) {
-		// dequeue Avada script
-		wp_dequeue_script( 'avada' );
-		// enqueue it before 'et-frontend-builder'
-		wp_enqueue_script( 'avada' );
-	}
-
-=======
-	) );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// Enqueue scripts.
 	wp_enqueue_script( 'et-frontend-builder', "{$app}/bundle.js", $fb_bundle_dependencies, $ver, true );
 
@@ -185,40 +136,5 @@ function et_fb_enqueue_assets() {
 		'memory_limit_not_increased' => esc_html__( "Your memory limit can't be changed automatically", 'et_builder' ),
 	) );
 
-<<<<<<< HEAD
-	// WP Auth Check (allows user to log in again when session expires).
-	wp_enqueue_style( 'wp-auth-check' );
-	wp_enqueue_script( 'wp-auth-check' );
-	add_action( 'wp_print_footer_scripts', 'et_fb_output_wp_auth_check_html', 5 );
-
 	do_action( 'et_fb_enqueue_assets' );
 }
-
-function et_fb_output_wp_auth_check_html() {
-	// A <button> element is used for the close button which looks ugly in Chrome. Use <a> element instead.
-	ob_start();
-	wp_auth_check_html();
-	$output = ob_get_contents();
-	ob_end_clean();
-
-	$output = str_replace(
-		array( '<button type="button"', '</button>' ),
-		array( '<a href="#"', '</a>' ),
-		$output
-	);
-
-	echo $output;
-}
-
-function et_fb_set_editor_available_cookie() {
-	global $post;
-	$post_id = isset( $post->ID ) ? $post->ID : false;
-	if ( ! headers_sent() && !empty( $post_id ) ) {
-		setcookie( 'et-editor-available-post-' . $post_id . '-fb', 'fb', time() + ( MINUTE_IN_SECONDS * 30 ), SITECOOKIEPATH, false, is_ssl() );
-	}
-}
-add_action( 'et_fb_framework_loaded', 'et_fb_set_editor_available_cookie' );
-=======
-	do_action( 'et_fb_enqueue_assets' );
-}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

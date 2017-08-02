@@ -380,10 +380,7 @@ var wpLink;
 
 			wpLink.close();
 			textarea.focus();
-<<<<<<< HEAD
 			$( textarea ).trigger( 'change' );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// Audible confirmation message when a link has been inserted in the Editor.
 			wp.a11y.speak( wpLinkL10n.linkInserted );

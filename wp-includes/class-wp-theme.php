@@ -148,11 +148,7 @@ final class WP_Theme implements ArrayAccess {
 	 * URL to the theme root, usually an absolute URL to wp-content/themes
 	 *
 	 * @access private
-<<<<<<< HEAD
 	 * @var string
-=======
-	 * var string
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	private $theme_root_uri;
 
@@ -197,11 +193,8 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Constructor for WP_Theme.
 	 *
-<<<<<<< HEAD
 	 * @since  3.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @global array $wp_theme_directories
 	 *
 	 * @param string $theme_dir Directory of the theme within the theme_root.
@@ -342,11 +335,8 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * When converting the object to a string, the theme name is returned.
 	 *
-<<<<<<< HEAD
 	 * @since  3.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string Theme name, ready for display (translated)
 	 */
 	public function __toString() {
@@ -358,11 +348,8 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * @staticvar array $properties
 	 *
-<<<<<<< HEAD
 	 * @since  3.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param string $offset Property to check if set.
 	 * @return bool Whether the given property is set.
 	 */
@@ -378,11 +365,8 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * __get() magic method for properties formerly returned by current_theme_info()
 	 *
-<<<<<<< HEAD
 	 * @since  3.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param string $offset Property to get.
 	 * @return mixed Property value.
 	 */
@@ -425,11 +409,8 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Method to implement ArrayAccess for keys formerly returned by get_themes()
 	 *
-<<<<<<< HEAD
 	 * @since  3.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param mixed $offset
 	 * @param mixed $value
 	 */
@@ -438,11 +419,8 @@ final class WP_Theme implements ArrayAccess {
 	/**
 	 * Method to implement ArrayAccess for keys formerly returned by get_themes()
 	 *
-<<<<<<< HEAD
 	 * @since  3.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param mixed $offset
 	 */
 	public function offsetUnset( $offset ) {}
@@ -452,11 +430,8 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * @staticvar array $keys
 	 *
-<<<<<<< HEAD
 	 * @since  3.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param mixed $offset
 	 * @return bool
 	 */
@@ -480,11 +455,8 @@ final class WP_Theme implements ArrayAccess {
 	 * and care should be taken to use `$theme::display( 'Name' )` to get a properly
 	 * translated header.
 	 *
-<<<<<<< HEAD
 	 * @since  3.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param mixed $offset
 	 * @return mixed
 	 */
@@ -1183,7 +1155,6 @@ final class WP_Theme implements ArrayAccess {
 		$results = scandir( $path );
 		$files = array();
 
-<<<<<<< HEAD
 		/**
 		 * Filters the array of excluded directories and files while scanning theme folder.
 		 *
@@ -1199,13 +1170,6 @@ final class WP_Theme implements ArrayAccess {
 			}
 			if ( is_dir( $path . '/' . $result ) ) {
 				if ( ! $depth )
-=======
-		foreach ( $results as $result ) {
-			if ( '.' == $result[0] )
-				continue;
-			if ( is_dir( $path . '/' . $result ) ) {
-				if ( ! $depth || 'CVS' == $result )
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					continue;
 				$found = self::scandir( $path . '/' . $result, $extensions, $depth - 1 , $relative_path . $result );
 				$files = array_merge_recursive( $files, $found );
@@ -1289,11 +1253,8 @@ final class WP_Theme implements ArrayAccess {
 	 *
 	 * This hits the filesystem.
 	 *
-<<<<<<< HEAD
 	 * @since  4.4.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return WP_Theme|false Object, or false if no theme is installed, which would be bad.
 	 */
 	public static function get_core_default_theme() {

@@ -99,15 +99,10 @@ function wpcf7_akismet_submitted_params() {
 
 				if ( 'author' == $akismet ) {
 					$params[$akismet] = trim( $params[$akismet] . ' ' . $val );
-<<<<<<< HEAD
 					continue;
 				} elseif ( '' == $params[$akismet] ) {
 					$params[$akismet] = $val;
 					continue;
-=======
-				} elseif ( '' == $params[$akismet] ) {
-					$params[$akismet] = $val;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			}
 		}

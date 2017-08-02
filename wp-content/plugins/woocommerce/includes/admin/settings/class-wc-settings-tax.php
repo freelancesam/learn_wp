@@ -36,13 +36,10 @@ class WC_Settings_Tax extends WC_Settings_Page {
 
 	/**
 	 * Add this page to settings.
-<<<<<<< HEAD
 	 *
 	 * @param array $pages
 	 *
 	 * @return array|mixed
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function add_settings_page( $pages ) {
 		if ( wc_tax_enabled() ) {
@@ -76,7 +73,6 @@ class WC_Settings_Tax extends WC_Settings_Page {
 	/**
 	 * Get settings array.
 	 *
-<<<<<<< HEAD
 	 * @param string $current_section
 	 * @return array
 	 */
@@ -87,12 +83,6 @@ class WC_Settings_Tax extends WC_Settings_Page {
 	 		$settings = include( 'views/settings-tax.php' );
  		}
 		return apply_filters( 'woocommerce_get_settings_' . $this->id, $settings, $current_section );
-=======
-	 * @return array
-	 */
-	public function get_settings() {
-		return apply_filters( 'woocommerce_get_settings_' . $this->id, include( 'views/settings-tax.php' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -116,11 +106,7 @@ class WC_Settings_Tax extends WC_Settings_Page {
 	 * Save settings.
 	 */
 	public function save() {
-<<<<<<< HEAD
 		global $current_section;
-=======
-		global $current_section, $wpdb;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		if ( ! $current_section ) {
 			$settings = $this->get_settings();
@@ -137,11 +123,7 @@ class WC_Settings_Tax extends WC_Settings_Page {
 	 * Output tax rate tables.
 	 */
 	public function output_tax_rates() {
-<<<<<<< HEAD
 		global $current_section;
-=======
-		global $wpdb, $current_section;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$current_class = $this->get_current_tax_class();
 

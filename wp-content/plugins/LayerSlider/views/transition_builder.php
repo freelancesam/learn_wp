@@ -47,11 +47,7 @@
 
 <div id="ls-screen-options" class="metabox-prefs hidden">
 	<div id="screen-options-wrap" class="hidden">
-<<<<<<< HEAD
-		<form id="ls-screen-options-form" method="post">
-=======
 		<form id="ls-screen-options-form" action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<h5><?php _e('Show on screen', 'LayerSlider') ?></h5>
 			<label>
 				<input type="checkbox" name="showTooltips"<?php echo $lsScreenOptions['showTooltips'] == 'true' ? ' checked="checked"' : ''?>> <?php _e('Tooltips', 'LayerSlider') ?>
@@ -517,11 +513,7 @@
 	<?php  endif; ?>
 
 	<!-- Editor box -->
-<<<<<<< HEAD
-	<form method="post" id="ls-tr-builder-form">
-=======
 	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" id="ls-tr-builder-form">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<input type="hidden" name="ls-user-transitions" value="1">
 		<?php wp_nonce_field('save-user-transitions'); ?>
 		<div class="ls-box ls-tr-builder">
@@ -1088,17 +1080,12 @@
 <!-- Help menu WP Pointer -->
 <?php
 
-<<<<<<< HEAD
-if(get_user_meta(get_current_user_id(), 'layerslider_builder_help_wp_pointer', true) != '1') {
-add_user_meta(get_current_user_id(), 'layerslider_builder_help_wp_pointer', '1'); ?>
-=======
 // Get users data
 global $current_user;
 get_currentuserinfo();
 
 if(get_user_meta($current_user->ID, 'layerslider_builder_help_wp_pointer', true) != '1') {
 add_user_meta($current_user->ID, 'layerslider_builder_help_wp_pointer', '1'); ?>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		jQuery('#contextual-help-link-wrap').pointer({

@@ -79,15 +79,9 @@ $document.ready(function(){columns.init();});
 validateForm = function( form ) {
 	return !$( form )
 		.find( '.form-required' )
-<<<<<<< HEAD
 		.filter( function() { return $( ':input:visible', this ).val() === ''; } )
 		.addClass( 'form-invalid' )
 		.find( ':input:visible' )
-=======
-		.filter( function() { return $( 'input:visible', this ).val() === ''; } )
-		.addClass( 'form-invalid' )
-		.find( 'input:visible' )
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		.change( function() { $( this ).closest( '.form-invalid' ).removeClass( 'form-invalid' ); } )
 		.length;
 };
@@ -424,11 +418,7 @@ $document.ready( function() {
 	screenMeta.init();
 
 	// This event needs to be delegated. Ticket #37973.
-<<<<<<< HEAD
 	$body.on( 'click', 'tbody > tr > .check-column :checkbox', function( event ) {
-=======
-	$body.on( 'click', 'tbody .check-column :checkbox', function( event ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Shift click to select a range of checkboxes.
 		if ( 'undefined' == event.shiftKey ) { return true; }
 		if ( event.shiftKey ) {
@@ -988,7 +978,6 @@ $document.ready( function() {
 
 	// Set initial focus on a specific element.
 	$( '.wp-initial-focus' ).focus();
-<<<<<<< HEAD
 
 	// Toggle update details on update-core.php.
 	$body.on( 'click', '.js-update-details-toggle', function() {
@@ -1008,8 +997,6 @@ $document.ready( function() {
 		// Toggle the Show Details button expanded state.
 		$( this ).attr( 'aria-expanded', $progressDiv.is( ':visible' ) );
 	});
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 });
 
 // Fire a custom jQuery event at the end of window resize

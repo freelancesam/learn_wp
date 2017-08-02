@@ -152,11 +152,8 @@ class WC_Admin_Reports {
 
 	/**
 	 * Get a report from our reports subfolder.
-<<<<<<< HEAD
 	 *
 	 * @param string $name
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function get_report( $name ) {
 		$name  = sanitize_title( str_replace( '_', '-', $name ) );
@@ -164,14 +161,9 @@ class WC_Admin_Reports {
 
 		include_once( apply_filters( 'wc_admin_reports_path', 'reports/class-wc-report-' . $name . '.php', $name, $class ) );
 
-<<<<<<< HEAD
 		if ( ! class_exists( $class ) ) {
 			return;
 		}
-=======
-		if ( ! class_exists( $class ) )
-			return;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$report = new $class();
 		$report->output_report();

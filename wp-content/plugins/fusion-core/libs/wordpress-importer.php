@@ -63,11 +63,7 @@ class WP_Import extends WP_Importer {
 	var $url_remap = array();
 	var $featured_images = array();
 
-<<<<<<< HEAD
-	function __construct() { /* nothing */ }
-=======
 	function WP_Import() { /* nothing */ }
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	/**
 	 * Registered callback function for the WordPress Importer
@@ -682,20 +678,6 @@ class WP_Import extends WP_Importer {
 				$inserted_comments = array();
 				foreach ( $post['comments'] as $comment ) {
 					$comment_id	= $comment['comment_id'];
-<<<<<<< HEAD
-					$newcomments[$comment_id]['comment_post_ID']      = $comment_post_ID;
-					$newcomments[$comment_id]['comment_author']       = $comment['comment_author'];
-					$newcomments[$comment_id]['comment_author_email'] = $comment['comment_author_email'];
-					$newcomments[$comment_id]['comment_author_IP']    = $comment['comment_author_IP'];
-					$newcomments[$comment_id]['comment_author_url']   = $comment['comment_author_url'];
-					$newcomments[$comment_id]['comment_date']         = $comment['comment_date'];
-					$newcomments[$comment_id]['comment_date_gmt']     = $comment['comment_date_gmt'];
-					$newcomments[$comment_id]['comment_content']      = $comment['comment_content'];
-					$newcomments[$comment_id]['comment_approved']     = $comment['comment_approved'];
-					$newcomments[$comment_id]['comment_type']         = $comment['comment_type'];
-					$newcomments[$comment_id]['comment_parent'] 	  = $comment['comment_parent'];
-					$newcomments[$comment_id]['commentmeta']          = isset( $comment['commentmeta'] ) ? $comment['commentmeta'] : array();
-=======
 					$newcomments[$comment_id]['comment_post_ID']	  = $comment_post_ID;
 					$newcomments[$comment_id]['comment_author']	   = $comment['comment_author'];
 					$newcomments[$comment_id]['comment_author_email'] = $comment['comment_author_email'];
@@ -708,7 +690,6 @@ class WP_Import extends WP_Importer {
 					$newcomments[$comment_id]['comment_type']		 = $comment['comment_type'];
 					$newcomments[$comment_id]['comment_parent'] 	  = $comment['comment_parent'];
 					$newcomments[$comment_id]['commentmeta']		  = isset( $comment['commentmeta'] ) ? $comment['commentmeta'] : array();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					if ( isset( $this->processed_authors[$comment['comment_user_id']] ) )
 						$newcomments[$comment_id]['user_id'] = $this->processed_authors[$comment['comment_user_id']];
 				}
@@ -1126,11 +1107,7 @@ class WP_Import extends WP_Importer {
 	 * Added to http_request_timeout filter to force timeout at 60 seconds during import
 	 * @return int 60
 	 */
-<<<<<<< HEAD
-	function bump_request_timeout( $val ) {
-=======
 	function bump_request_timeout() {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return 60;
 	}
 
@@ -1140,20 +1117,4 @@ class WP_Import extends WP_Importer {
 	}
 }
 
-<<<<<<< HEAD
 } // class_exists( 'WP_Importer' )
-
-function wordpress_importer_init() {
-	load_plugin_textdomain( 'wordpress-importer', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-
-	/**
-	 * WordPress Importer object for registering the import callback
-	 * @global WP_Import $wp_import
-	 */
-	$GLOBALS['wp_import'] = new WP_Import();
-	register_importer( 'wordpress', 'WordPress', __('Import <strong>posts, pages, comments, custom fields, categories, and tags</strong> from a WordPress export file.', 'wordpress-importer'), array( $GLOBALS['wp_import'], 'dispatch' ) );
-}
-add_action( 'admin_init', 'wordpress_importer_init' );
-=======
-} // class_exists( 'WP_Importer' )
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

@@ -35,14 +35,9 @@ if ( $downloads = WC()->customer->get_downloadable_products() ) : ?>
 				<?php
 					do_action( 'woocommerce_available_download_start', $download );
 
-<<<<<<< HEAD
 					if ( is_numeric( $download['downloads_remaining'] ) ) {
 						echo apply_filters( 'woocommerce_available_download_count', '<span class="woocommerce-Count count">' . sprintf( _n( '%s download remaining', '%s downloads remaining', $download['downloads_remaining'], 'woocommerce' ), $download['downloads_remaining'] ) . '</span> ', $download );
 					}
-=======
-					if ( is_numeric( $download['downloads_remaining'] ) )
-						echo apply_filters( 'woocommerce_available_download_count', '<span class="woocommerce-Count count">' . sprintf( _n( '%s download remaining', '%s downloads remaining', $download['downloads_remaining'], 'woocommerce' ), $download['downloads_remaining'] ) . '</span> ', $download );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					echo apply_filters( 'woocommerce_available_download_link', '<a href="' . esc_url( $download['download_url'] ) . '">' . $download['download_name'] . '</a>', $download );
 

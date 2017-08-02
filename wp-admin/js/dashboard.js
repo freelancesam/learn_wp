@@ -1,9 +1,6 @@
 /* global pagenow, ajaxurl, postboxes, wpActiveEditor:true */
 var ajaxWidgets, ajaxPopulateWidgets, quickPressLoad;
-<<<<<<< HEAD
 window.wp = window.wp || {};
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 jQuery(document).ready( function($) {
 	var welcomePanel = $( '#welcome-panel' ),
@@ -191,7 +188,6 @@ jQuery(document).ready( function($) {
 	}
 
 } );
-<<<<<<< HEAD
 
 jQuery( function( $ ) {
 	'use strict';
@@ -498,5 +494,3 @@ jQuery( function( $ ) {
 		});
 	}
 });
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

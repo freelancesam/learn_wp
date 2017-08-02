@@ -15,11 +15,7 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
-<<<<<<< HEAD
  * @version     3.1.0
-=======
- * @version     3.0.0
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -64,11 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$values = $attribute->get_options();
 
 					foreach ( $values as &$value ) {
-<<<<<<< HEAD
 						$value = make_clickable( esc_html( $value ) );
-=======
-						$value = esc_html( $value );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					}
 				}
 

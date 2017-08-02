@@ -74,11 +74,7 @@ if ( is_multisite() ) {
 	}
 }
 
-<<<<<<< HEAD
 if ( is_multisite() && ! current_user_can( 'manage_network_options' ) && 'update' != $action ) {
-=======
-if ( is_multisite() && ! is_super_admin() && 'update' != $action ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	wp_die(
 		'<h1>' . __( 'Cheatin&#8217; uh?' ) . '</h1>' .
 		'<p>' . __( 'Sorry, you are not allowed to delete these items.' ) . '</p>',
@@ -144,11 +140,7 @@ if ( !is_multisite() ) {
  *
  * @since 2.7.0
  *
-<<<<<<< HEAD
  * @param array $whitelist_options White list options.
-=======
- * @param array White list options.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 $whitelist_options = apply_filters( 'whitelist_options', $whitelist_options );
 
@@ -168,14 +160,9 @@ if ( 'update' == $action ) {
 		wp_die( __( '<strong>ERROR</strong>: options page not found.' ) );
 
 	if ( 'options' == $option_page ) {
-<<<<<<< HEAD
 		if ( is_multisite() && ! current_user_can( 'manage_network_options' ) ) {
 			wp_die( __( 'Sorry, you are not allowed to modify unregistered settings for this site.' ) );
 		}
-=======
-		if ( is_multisite() && ! is_super_admin() )
-			wp_die( __( 'Sorry, you are not allowed to modify unregistered settings for this site.' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$options = explode( ',', wp_unslash( $_POST[ 'page_options' ] ) );
 	} else {
 		$options = $whitelist_options[ $option_page ];

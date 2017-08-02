@@ -71,14 +71,9 @@ class WC_Settings_Integrations extends WC_Settings_Page {
 
 		$integrations = WC()->integrations->get_integrations();
 
-<<<<<<< HEAD
 		if ( isset( $integrations[ $current_section ] ) ) {
 			$integrations[ $current_section ]->admin_options();
 		}
-=======
-		if ( isset( $integrations[ $current_section ] ) )
-			$integrations[ $current_section ]->admin_options();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 }
 

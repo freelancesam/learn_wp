@@ -101,11 +101,7 @@ jQuery( function ( $ ) {
 
 		var thisHref = encodeURIComponent( $( this ).attr( 'href' ) );
 
-<<<<<<< HEAD
 		var mShot = $( '<div class="akismet-mshot mshot-container"><div class="mshot-arrow"></div><img src="//s0.wordpress.com/mshots/v1/' + thisHref + '?w=900" width="450" height="338" class="mshot-image" /></div>' );
-=======
-		var mShot = $( '<div class="akismet-mshot mshot-container"><div class="mshot-arrow"></div><img src="//s0.wordpress.com/mshots/v1/' + thisHref + '?w=450" width="450" height="338" class="mshot-image" /></div>' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		mShot.data( 'link', this );
 
 		var offset = $( this ).offset();
@@ -115,7 +111,6 @@ jQuery( function ( $ ) {
 			top: offset.top + ( $( this ).height() / 2 ) - 101 // 101 = top offset of the arrow plus the top border thickness
 		} );
 
-<<<<<<< HEAD
 		// These retries appear to be superfluous if .mshot-image has already loaded, but it's because mShots
 		// can return a "Generating thumbnail..." image if it doesn't have a thumbnail ready, so we need
 		// to retry to see if we can get the newly generated thumbnail.
@@ -125,14 +120,6 @@ jQuery( function ( $ ) {
 
 		mshotThirdTryTimer = setTimeout( function () {
 			mShot.find( '.mshot-image' ).attr( 'src', '//s0.wordpress.com/mshots/v1/'+thisHref+'?w=900&r=3' );
-=======
-		mshotSecondTryTimer = setTimeout( function () {
-			mShot.find( '.mshot-image' ).attr( 'src', '//s0.wordpress.com/mshots/v1/'+thisHref+'?w=450&r=2' );
-		}, 6000 );
-
-		mshotThirdTryTimer = setTimeout( function () {
-			mShot.find( '.mshot-image' ).attr( 'src', '//s0.wordpress.com/mshots/v1/'+thisHref+'?w=450&r=3' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}, 12000 );
 
 		$( 'body' ).append( mShot );

@@ -119,12 +119,8 @@ class WC_Checkout {
 	 * Gets the legacy public variables for backwards compatibility.
 	 *
 	 * @param string $key
-<<<<<<< HEAD
 	 *
 	 * @return array|string
-=======
-	 * @return string
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function __get( $key ) {
 		if ( in_array( $key, array( 'posted', 'shipping_method', 'payment_method' ) ) && empty( $this->legacy_posted_data ) ) {
@@ -350,7 +346,6 @@ class WC_Checkout {
 	 * Add line items to the order.
 	 *
 	 * @param  WC_Order $order
-<<<<<<< HEAD
 	 * @param WC_Cart $cart
 	 */
 	public function create_order_line_items( &$order, $cart ) {
@@ -361,13 +356,6 @@ class WC_Checkout {
 			 */
 			$item                       = apply_filters( 'woocommerce_checkout_create_order_line_item_object', new WC_Order_Item_Product(), $cart_item_key, $values, $order );
 			$product                    = $values['data'];
-=======
-	 */
-	public function create_order_line_items( &$order, $cart ) {
-		foreach ( $cart->get_cart() as $cart_item_key => $values ) {
-			$product                    = $values['data'];
-			$item                       = new WC_Order_Item_Product();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$item->legacy_values        = $values; // @deprecated For legacy actions.
 			$item->legacy_cart_item_key = $cart_item_key; // @deprecated For legacy actions.
 			$item->set_props( array(
@@ -404,10 +392,7 @@ class WC_Checkout {
 	 * Add fees to the order.
 	 *
 	 * @param  WC_Order $order
-<<<<<<< HEAD
 	 * @param WC_Cart $cart
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_order_fee_lines( &$order, $cart ) {
 		foreach ( $cart->get_fees() as $fee_key => $fee ) {
@@ -439,11 +424,8 @@ class WC_Checkout {
 	 * Add shipping lines to the order.
 	 *
 	 * @param  WC_Order $order
-<<<<<<< HEAD
 	 * @param array $chosen_shipping_methods
 	 * @param array $packages
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_order_shipping_lines( &$order, $chosen_shipping_methods, $packages ) {
 		foreach ( $packages as $package_key => $package ) {
@@ -481,10 +463,7 @@ class WC_Checkout {
 	 * Add tax lines to the order.
 	 *
 	 * @param  WC_Order $order
-<<<<<<< HEAD
 	 * @param WC_Cart $cart
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_order_tax_lines( &$order, $cart ) {
 		foreach ( array_keys( $cart->taxes + $cart->shipping_taxes ) as $tax_rate_id ) {
@@ -515,10 +494,7 @@ class WC_Checkout {
 	 * Add coupon lines to the order.
 	 *
 	 * @param  WC_Order $order
-<<<<<<< HEAD
 	 * @param WC_Cart $cart
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_order_coupon_lines( &$order, $cart ) {
 		foreach ( $cart->get_coupons() as $code => $coupon ) {
@@ -544,16 +520,11 @@ class WC_Checkout {
 	 * See if a fieldset should be skipped.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param string $fieldset_key
 	 * @param array $data
 	 *
 	 * @return bool
-=======
-	 * @param string $fieldset_key
-	 * @param array $data
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function maybe_skip_fieldset( $fieldset_key, $data ) {
 		if ( 'shipping' === $fieldset_key && ( ! $data['ship_to_different_address'] || ! WC()->cart->needs_shipping_address() ) ) {
@@ -568,17 +539,10 @@ class WC_Checkout {
 	/**
 	 * Get posted data from the checkout form.
 	 *
-<<<<<<< HEAD
 	 * @since  3.1.0
 	 * @return array of data.
 	 */
 	public function get_posted_data() {
-=======
-	 * @since  3.0.0
-	 * @return array of data.
-	 */
-	protected function get_posted_data() {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$skipped = array();
 		$data    = array(
 			'terms'                              => (int) isset( $_POST['terms'] ),
@@ -691,7 +655,6 @@ class WC_Checkout {
 					$valid_states = WC()->countries->get_states( $country );
 
 					if ( ! empty( $valid_states ) && is_array( $valid_states ) && sizeof( $valid_states ) > 0 ) {
-<<<<<<< HEAD
 						$valid_state_values = array_map( 'wc_strtoupper', array_flip( array_map( 'wc_strtoupper', $valid_states ) ) );
 						$data[ $key ]       = wc_strtoupper( $data[ $key ] );
 
@@ -701,16 +664,6 @@ class WC_Checkout {
 						}
 
 						if ( ! in_array( $data[ $key ], $valid_state_values ) ) {
-=======
-						$valid_state_values = array_flip( array_map( 'strtolower', $valid_states ) );
-
-						// Convert value to key if set
-						if ( isset( $valid_state_values[ strtolower( $data[ $key ] ) ] ) ) {
-							$data[ $key ] = $valid_state_values[ strtolower( $data[ $key ] ) ];
-						}
-
-						if ( ! in_array( $data[ $key ], array_keys( $valid_states ) ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							/* translators: 1: state field 2: valid states */
 							$errors->add( 'validation', sprintf( __( '%1$s is not valid. Please enter one of the following: %2$s', 'woocommerce' ), '<strong>' . $field_label . '</strong>', implode( ', ', $valid_states ) ) );
 						}
@@ -927,14 +880,11 @@ class WC_Checkout {
 				$customer->set_last_name( $data['billing_last_name'] );
 			}
 
-<<<<<<< HEAD
 			// If the display name is an email, update to the user's full name.
 			if ( is_email( $customer->get_display_name() ) ) {
 				$customer->set_display_name( $data['billing_first_name'] . ' ' . $data['billing_last_name'] );
 			}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			foreach ( $data as $key => $value ) {
 				// Use setters where available.
 				if ( is_callable( array( $customer, "set_{$key}" ) ) ) {

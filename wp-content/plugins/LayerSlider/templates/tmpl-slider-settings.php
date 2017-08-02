@@ -2,11 +2,7 @@
 
 <!-- Slider title -->
 <div class="ls-slider-titlewrap">
-<<<<<<< HEAD
-	<?php $sliderName = !empty($slider['properties']['title']) ? htmlspecialchars(stripslashes($slider['properties']['title'])) : ''; ?>
-=======
 	<?php $sliderName = !empty($slider['properties']['title']) ? $slider['properties']['title'] : ''; ?>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	<input type="text" name="title" value="<?php echo $sliderName ?>" id="title" autocomplete="off" placeholder="<?php _e('Type your slider name here', 'LayerSlider') ?>">
 	<div class="ls-slider-slug">
 		Slider slug:<input type="text" name="slug" value="<?php echo !empty($slider['properties']['slug']) ? $slider['properties']['slug'] : '' ?>" autocomplete="off" placeholder="<?php _e('e.g. homepageslider', 'LayerSlider') ?>" data-help="Set a custom slider identifier to use in shortcodes instead of the database ID. Needs to be unique, and can contain only alphanumeric characters. This setting is optional.">

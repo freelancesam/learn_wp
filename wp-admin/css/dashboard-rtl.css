@@ -301,7 +301,6 @@
 	content: "\f153";
 }
 
-<<<<<<< HEAD
 /* Dashboard WordPress events */
 
 .community-events-errors {
@@ -454,8 +453,6 @@
 	white-space: nowrap;
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /* Dashboard WordPress news */
 
 #dashboard_primary .inside {
@@ -463,7 +460,6 @@
 	padding: 0;
 }
 
-<<<<<<< HEAD
 #dashboard_primary .widget-loading {
 	padding: 12px 12px 0;
 	margin-bottom: 1em !important; /* Needs to override `.postbox .inside > p:last-child` in common.css */
@@ -479,21 +475,6 @@ body #dashboard-widgets .postbox form .submit {
 }
 
 /* Used only for configurable widgets. */
-=======
-#dashboard_primary .widget-loading,
-#dashboard_primary .dashboard-widget-control-form {
-	padding: 12px 12px 0;
-}
-
-body #dashboard-widgets .postbox form .submit {
-	margin: 0;
-}
-
-.dashboard-widget-control-form {
-	overflow: hidden;
-}
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .dashboard-widget-control-form p {
 	margin-top: 0;
 }
@@ -504,14 +485,8 @@ body #dashboard-widgets .postbox form .submit {
 }
 
 #dashboard_primary .rss-widget {
-<<<<<<< HEAD
 	font-size: 13px;
 	padding: 0 12px 0;
-=======
-	border-bottom: 1px solid #eee;
-	font-size: 13px;
-	padding: 8px 12px 10px;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 #dashboard_primary .rss-widget:last-child {
@@ -533,12 +508,8 @@ body #dashboard-widgets .postbox form .submit {
 }
 
 #dashboard_primary .rss-widget ul li {
-<<<<<<< HEAD
 	padding: 4px 0;
 	margin: 0;
-=======
-	margin-bottom: 8px;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /* Dashboard right now */
@@ -954,12 +925,8 @@ form.initial-form.quickpress-open input#title {
 	min-width: 0;
 }
 
-<<<<<<< HEAD
 #dashboard-widgets a,
 #dashboard-widgets .button-link {
-=======
-#dashboard-widgets a {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	text-decoration: none;
 }
 
@@ -1059,15 +1026,9 @@ form.initial-form.quickpress-open input#title {
 }
 
 a.rsswidget {
-<<<<<<< HEAD
 	font-size: 13px;
 	font-weight: 600;
 	line-height: 1.4em;
-=======
-	font-size: 14px;
-	font-weight: 600;
-	line-height: 1.7em;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .rss-widget ul li {
@@ -1278,7 +1239,6 @@ a.rsswidget {
 		width: 30px;
 		margin: 4px 0 5px 10px;
 	}
-<<<<<<< HEAD
 
 	.community-events-toggle-location {
 		height: 38px;
@@ -1308,8 +1268,6 @@ a.rsswidget {
 	.community-events .spinner {
 		margin-top: 7px;
 	}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /* Smartphone */
@@ -1333,7 +1291,6 @@ a.rsswidget {
 		right: -35px;
 	}
 }
-<<<<<<< HEAD
 
 @media screen and (min-width: 355px) {
 	.community-events .event-info {
@@ -1361,5 +1318,3 @@ a.rsswidget {
 		text-align: left;
 	}
 }
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

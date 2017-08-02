@@ -467,11 +467,7 @@ var lsTrBuilder = {
 		lsTrBuilder.serializeTransitions();
 
 		// Post
-<<<<<<< HEAD
-		jQuery.post( window.location.href, jQuery(el).serialize(), function() {
-=======
 		jQuery.post( jQuery(el).attr('action'), jQuery(el).serialize(), function() {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// Give feedback
 			jQuery('.ls-publish').removeClass('saving').addClass('saved').find('button').text('Saved')

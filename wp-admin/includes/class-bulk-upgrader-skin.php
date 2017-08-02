@@ -43,11 +43,7 @@ class Bulk_Upgrader_Skin extends WP_Upgrader_Skin {
 		/* translators: 1: Title of an update */
 		$this->upgrader->strings['skin_update_failed'] = __('The update of %1$s failed.');
 		/* translators: 1: Title of an update */
-<<<<<<< HEAD
 		$this->upgrader->strings['skin_update_successful'] = __( '%1$s updated successfully.' );
-=======
-		$this->upgrader->strings['skin_update_successful'] = __( '%1$s updated successfully.' ) . ' <a onclick="%2$s" href="#" class="hide-if-no-js"><span>' . __( 'Show Details' ) . '</span><span class="hidden">' . __( 'Hide Details' ) . '</span></a>';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$this->upgrader->strings['skin_upgrade_end'] = __('All updates have been completed.');
 	}
 
@@ -132,10 +128,7 @@ class Bulk_Upgrader_Skin extends WP_Upgrader_Skin {
 		$this->in_loop = true;
 		printf( '<h2>' . $this->upgrader->strings['skin_before_update_header'] . ' <span class="spinner waiting-' . $this->upgrader->update_current . '"></span></h2>', $title, $this->upgrader->update_current, $this->upgrader->update_count );
 		echo '<script type="text/javascript">jQuery(\'.waiting-' . esc_js($this->upgrader->update_current) . '\').css("display", "inline-block");</script>';
-<<<<<<< HEAD
 		// This progress messages div gets moved via JavaScript when clicking on "Show details.".
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		echo '<div class="update-messages hide-if-js" id="progress-' . esc_attr($this->upgrader->update_current) . '"><p>';
 		$this->flush_output();
 	}
@@ -156,7 +149,6 @@ class Bulk_Upgrader_Skin extends WP_Upgrader_Skin {
 			echo '<script type="text/javascript">jQuery(\'#progress-' . esc_js($this->upgrader->update_current) . '\').show();</script>';
 		}
 		if ( $this->result && ! is_wp_error( $this->result ) ) {
-<<<<<<< HEAD
 			if ( ! $this->error ) {
 				echo '<div class="updated js-update-details" data-update-details="progress-' . esc_attr( $this->upgrader->update_current ) . '">' .
 					'<p>' . sprintf( $this->upgrader->strings['skin_update_successful'], $title ) .
@@ -164,10 +156,6 @@ class Bulk_Upgrader_Skin extends WP_Upgrader_Skin {
 					'</p></div>';
 			}
 
-=======
-			if ( ! $this->error )
-				echo '<div class="updated"><p>' . sprintf($this->upgrader->strings['skin_update_successful'], $title, 'jQuery(\'#progress-' . esc_js($this->upgrader->update_current) . '\').toggle();jQuery(\'span\', this).toggle(); return false;') . '</p></div>';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			echo '<script type="text/javascript">jQuery(\'.waiting-' . esc_js($this->upgrader->update_current) . '\').hide();</script>';
 		}
 

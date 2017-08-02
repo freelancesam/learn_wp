@@ -75,11 +75,7 @@ class WC_Order_Item_Data_Store implements WC_Order_Item_Data_Store_Interface {
 	 * @return bool
 	 */
 	public function update_metadata( $item_id, $meta_key, $meta_value, $prev_value = '' ) {
-<<<<<<< HEAD
 		return update_metadata( 'order_item', $item_id, $meta_key, is_string( $meta_value ) ? wp_slash( $meta_value ) : $meta_value, $prev_value );
-=======
-		return update_metadata( 'order_item', $item_id, $meta_key, $meta_value, $prev_value );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -93,11 +89,7 @@ class WC_Order_Item_Data_Store implements WC_Order_Item_Data_Store_Interface {
 	 * @return int    New row ID or 0
 	 */
 	public function add_metadata( $item_id, $meta_key, $meta_value, $unique = false ) {
-<<<<<<< HEAD
 		return add_metadata( 'order_item', $item_id, $meta_key, is_string( $meta_value ) ? wp_slash( $meta_value ) : $meta_value, $unique );
-=======
-		return add_metadata( 'order_item', $item_id, $meta_key, $meta_value, $unique );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -111,11 +103,7 @@ class WC_Order_Item_Data_Store implements WC_Order_Item_Data_Store_Interface {
 	 * @return bool
 	 */
 	public function delete_metadata( $item_id, $meta_key, $meta_value = '', $delete_all = false ) {
-<<<<<<< HEAD
 		return delete_metadata( 'order_item', $item_id, $meta_key, is_string( $meta_value ) ? wp_slash( $meta_value ) : $meta_value, $delete_all );
-=======
-		return delete_metadata( 'order_item', $item_id, $meta_key, $meta_value, $delete_all );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

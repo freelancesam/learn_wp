@@ -13,11 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
-<<<<<<< HEAD
  * @version 3.0.9
-=======
- * @version 3.0.0
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -41,7 +37,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php do_action( 'woocommerce_before_checkout_billing_form', $checkout ); ?>
 
 	<div class="woocommerce-billing-fields__field-wrapper">
-<<<<<<< HEAD
 		<?php
 			$fields = $checkout->get_checkout_fields( 'billing' );
 
@@ -52,11 +47,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 				woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 			}
 		?>
-=======
-		<?php foreach ( $checkout->get_checkout_fields( 'billing' ) as $key => $field ) : ?>
-			<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
-		<?php endforeach; ?>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	</div>
 
 	<?php do_action( 'woocommerce_after_checkout_billing_form', $checkout ); ?>
@@ -79,11 +69,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php if ( $checkout->get_checkout_fields( 'account' ) ) : ?>
 
 			<div class="create-account">
-<<<<<<< HEAD
 				<?php foreach ( $checkout->get_checkout_fields( 'account' ) as $key => $field ) : ?>
-=======
-				<?php foreach ( $checkout->get_checkout_fields( 'account' )  as $key => $field ) : ?>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					<?php woocommerce_form_field( $key, $field, $checkout->get_value( $key ) ); ?>
 				<?php endforeach; ?>
 				<div class="clear"></div>

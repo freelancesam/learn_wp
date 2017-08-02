@@ -100,11 +100,6 @@ input#link_url {
 	margin-left: 10px;
 	padding: 0;
 	font-size: 11px;
-<<<<<<< HEAD
-=======
-	text-decoration: underline;
-	color: #0073aa;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 #comment-link-box {
@@ -123,11 +118,7 @@ input#link_url {
 #editable-post-name input {
 	font-size: 13px;
 	font-weight: 400;
-<<<<<<< HEAD
 	height: 24px;
-=======
-	height: 22px;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	margin: 0;
 	width: 16em;
 }
@@ -1042,28 +1033,6 @@ span.description,
 	width: 260px;
 }
 
-<<<<<<< HEAD
-=======
-.tagcloud-link.button-link {
-	color: #0073aa;
-	text-decoration: underline;
-}
-
-.tagcloud-link.button-link:hover {
-	color: #00a0d2;
-}
-
-.tagcloud-link.button-link:focus {
-	color: #124964;
-	-webkit-box-shadow:
-		0 0 0 1px #5b9dd9,
-		0 0 2px 1px rgba(30, 140, 190, .8);
-	box-shadow:
-		0 0 0 1px #5b9dd9,
-		0 0 2px 1px rgba(30, 140, 190, .8);
-}
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 #post-body-content .tagsdiv .the-tags {
 	margin: 0 5px;
 }
@@ -1123,7 +1092,6 @@ p.popular-tags a {
 	text-decoration: underline;
 }
 
-<<<<<<< HEAD
 #edittag {
 	max-width: 800px;
 }
@@ -1135,8 +1103,6 @@ p.popular-tags a {
 	margin-left: 10px;
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /* Comments */
 
 .comment-php .wp-editor-area {
@@ -1393,13 +1359,10 @@ table.links-table {
 }
 
 @media screen and ( max-width: 782px ) {
-<<<<<<< HEAD
 	.wp-core-ui .edit-tag-actions .button-primary {
 		margin-bottom: 0;
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	#post-body-content {
 		min-width: 0;
 	}

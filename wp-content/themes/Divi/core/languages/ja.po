@@ -2,13 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Divi 1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/init\n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2017-05-18 15:37:54+00:00\n"
-"PO-Revision-Date: 2017-05-18 19:36+0300\n"
-=======
 "POT-Creation-Date: 2016-03-30 15:21:59+00:00\n"
 "PO-Revision-Date: 2016-03-30 00:17+0300\n"
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 "Last-Translator: \n"
 "Language-Team: Elegant Themes\n"
 "Language: ja\n"
@@ -27,25 +22,17 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: ../includes/builder\n"
 "X-Poedit-SearchPathExcluded-1: ../node_modules\n"
 
-<<<<<<< HEAD
-#: components/Portability.php:197
-=======
 #: admin/includes/assets.php:21
 msgid "Got it, thanks!"
 msgstr "了解しました、ありがとうございます!"
 
 #: admin/includes/class-portability.php:184
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid "The export process failed. Please refresh the page and try again."
 msgstr ""
 "エクスポートプロセスが失敗しました。ページを更新してもう一度やり直してくださ"
 "い。"
 
-<<<<<<< HEAD
-#: components/Portability.php:1008
-=======
 #: admin/includes/class-portability.php:854
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid ""
 "The browser version you are currently using is outdated. Please update to "
 "the newest version."
@@ -53,22 +40,14 @@ msgstr ""
 "現在ご使用のブラウザーバージョンはサポートされていません。最新のバージョンへ"
 "アップデートしてください。"
 
-<<<<<<< HEAD
-#: components/Portability.php:1009
-=======
 #: admin/includes/class-portability.php:855
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid ""
 "You reached your server memory limit. Please try increasing your PHP memory "
 "limit."
 msgstr ""
 "サーバーメモリーの制限に達しました。PHPメモリー制限を増加してください。"
 
-<<<<<<< HEAD
-#: components/Portability.php:1010
-=======
 #: admin/includes/class-portability.php:856
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid ""
 "This file cannot be imported. It may be caused by file_uploads being "
 "disabled in your php.ini. It may also be caused by post_max_size or/and "
@@ -80,46 +59,11 @@ msgstr ""
 "選択されたファイルよりも小さいことが原因かもしれません。それを拡大させるか、"
 "より大きなデータを転送してください。"
 
-<<<<<<< HEAD
-#: components/Portability.php:1011
-=======
 #: admin/includes/class-portability.php:857
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid "Invalid File format. You should be uploading a JSON file."
 msgstr ""
 "無効なファイル形式です。アップロードはJSONファイルである必要があります。"
 
-<<<<<<< HEAD
-#: components/Portability.php:1012
-msgid "This file should not be imported in this context."
-msgstr "ここではこのファイルをインポートすることはできません。"
-
-#: components/Portability.php:1013
-msgid "Import estimated time remaining: %smin"
-msgstr "インポートの推定残り時間:  %s分"
-
-#: components/Portability.php:1014
-msgid "Export estimated time remaining: %smin"
-msgstr "エクスポートの推定残り推定:  %s分"
-
-#: components/Portability.php:1015
-msgid "Backup estimated time remaining: %smin"
-msgstr "バックアップの推定残り時間:  %s分"
-
-#: components/Portability.php:1037
-msgid "Portability"
-msgstr "移植性"
-
-#: components/Portability.php:1041
-msgid "Export"
-msgstr "エクスポート"
-
-#: components/Portability.php:1042
-msgid "Import"
-msgstr "インポート"
-
-#: components/Portability.php:1046
-=======
 #: admin/includes/class-portability.php:858
 msgid "This file should not be imported in this context."
 msgstr "ここではこのファイルをインポートすることはできません。"
@@ -149,7 +93,6 @@ msgid "Import"
 msgstr "インポート"
 
 #: admin/includes/class-portability.php:892
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid ""
 "Exporting your %s will create a JSON file that can be imported into a "
 "different website."
@@ -157,25 +100,6 @@ msgstr ""
 "%sをエクスポートすることで別のウェブサイトにインポート可能なJSONファイルが作"
 "成されます。"
 
-<<<<<<< HEAD
-#: components/Portability.php:1047
-msgid "Export File Name"
-msgstr "エクスポートファイルの名前"
-
-#: components/Portability.php:1052
-msgid "Only export selected items"
-msgstr "選択した項目のみをエクスポート"
-
-#: components/Portability.php:1056
-msgid "Export %s"
-msgstr "%sをエクスポート"
-
-#: components/Portability.php:1057
-msgid "Cancel Export"
-msgstr "エクスポートをキャンセル"
-
-#: components/Portability.php:1062
-=======
 #: admin/includes/class-portability.php:893
 msgid "Export File Name"
 msgstr "エクスポートファイルの名前"
@@ -193,7 +117,6 @@ msgid "Cancel Export"
 msgstr ""
 
 #: admin/includes/class-portability.php:908
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid ""
 "Importing a previously-exported %s file will overwrite all content currently "
 "on this page."
@@ -201,11 +124,7 @@ msgstr ""
 "以前エクスポートした%sファイルをインポートすると、このページの現在のコンテン"
 "ツすべてが上書きされます。"
 
-<<<<<<< HEAD
-#: components/Portability.php:1064
-=======
 #: admin/includes/class-portability.php:910
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid ""
 "Select a previously-exported Divi Builder Layouts file to begin importing "
 "items. Large collections of image-heavy exports may take several minutes to "
@@ -215,11 +134,7 @@ msgstr ""
 "テムとする。画像で重く大きなコレクションのエクスポートはアップロードに数分か"
 "かることがあります。"
 
-<<<<<<< HEAD
-#: components/Portability.php:1066
-=======
 #: admin/includes/class-portability.php:912
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 msgid ""
 "Importing a previously-exported %s file will overwrite all current data. "
 "Please proceed with caution!"
@@ -227,259 +142,6 @@ msgstr ""
 "以前エクスポートした%sファイルをインポートすることにより現在のデータがすべて"
 "上書きされます。注意して進んでください!"
 
-<<<<<<< HEAD
-#: components/Portability.php:1068
-msgid "Select File To Import"
-msgstr "インポートするファイルを選択"
-
-#: components/Portability.php:1070
-msgid "No File Selected"
-msgstr "ファイルが選択されていません。"
-
-#: components/Portability.php:1071
-msgid "Choose File"
-msgstr "ファイルを選択"
-
-#: components/Portability.php:1075
-msgid "Download backup before importing"
-msgstr "インポートの前にバックアップをダウンロード"
-
-#: components/Portability.php:1079
-msgid "Import %s"
-msgstr "%sをインポート"
-
-#: components/Portability.php:1080
-msgid "Cancel Import"
-msgstr "インポートをキャンセル"
-
-#: components/Portability.php:1176
-msgid "Import & Export"
-msgstr "インポートとエクスポート"
-
-#: components/Updates.php:25
-msgid "%s: You cannot create a second instance of this class."
-msgstr "%s: このクラスのセカンドインスタンスを作ることはできません。"
-
-#: components/Updates.php:417
-msgid ""
-"<em>Before you can receive product updates, you must first authenticate your "
-"Elegant Themes subscription. To do this, you need to enter both your Elegant "
-"Themes Username and your Elegant Themes API Key into the Updates Tab in your "
-"theme and plugin settings. To locate your API Key, <a href=\"https://www."
-"elegantthemes.com/members-area/api/\" target=\"_blank\">log in</a> to your "
-"Elegant Themes account and navigate to the <strong>Account > API Key</"
-"strong> page. <a href=\"http://www.elegantthemes.com/gallery/divi/"
-"documentation/update/\" target=\"_blank\">Learn more here</a></em>. If you "
-"still get this message, please make sure that your Username and API Key have "
-"been entered correctly"
-msgstr ""
-"<em>製品アップデートを受ける前に、Elegant Themesサブスクリプションを認証しな"
-"くてはなりません。これを行うには、Elegant Themesのユーザー名とElegant "
-"ThemesAPIキーをテーマとプラグインの設定の中にあるアップデートタブに入力する必"
-"要があります。APIキーを見つけるには、Elegant Themesアカウントに <a href="
-"\"https://www.elegantthemes.com/members-area/api/\" target=\"_blank\">ログイ"
-"ン</a> して<strong>アカウント > APIキー</strong> ページをご覧ください。<a "
-"href=\"http://www.elegantthemes.com/gallery/divi/documentation/update/\" "
-"target=\"_blank\">詳しくはこちら</a></em>。もしこのメッセージが再度表示された"
-"場合、ユーザー名とAPIキーが正確に入力されているかご確認ください。"
-
-#: components/Updates.php:419
-msgid ""
-"Automatic updates currently unavailable. For all Elegant Themes products, "
-"please <a href=\"http://www.elegantthemes.com/gallery/divi/documentation/"
-"update/\" target=\"_blank\">authenticate your subscription</a> via the "
-"Updates tab in your theme & plugin settings to enable product updates. Make "
-"sure that your Username and API Key have been entered correctly."
-msgstr ""
-"自動アップデートは現在利用できません。製品アップデートを有効にするために全て"
-"のElegant Themes製品をテーマ＆プラグイン設定のアップデートタブから<a href="
-"\"http://www.elegantthemes.com/gallery/divi/documentation/update/\" target="
-"\"_blank\">サブスクリプションを認証</a> してください。ユーザー名とAPIキーを正"
-"確に入力したことを確認してください。"
-
-#: components/Updates.php:443
-msgid ""
-"Your Elegant Themes subscription has expired. You must <a href=\"https://www."
-"elegantthemes.com/members-area/\" target=\"_blank\">renew your account</a> "
-"to regain access to product updates and support. To ensure compatibility and "
-"security, it is important to always keep your themes and plugins updated."
-msgstr ""
-"あなたのElegant Themesサブスクリプションの期限が切れています。<a href="
-"\"https://www.elegantthemes.com/members-area/\" target=\"_blank\">アカウント"
-"を更新</a> して製品アップデートとサポートを再び利用できるようにする必要があり"
-"ます。互換性とセキュリティを保証するために、テーマとプラグインを常にアップ"
-"デートすることが重要です。"
-
-#: components/api/Service.php:231
-msgid "API request failed, please try again."
-msgstr "APIリクエストが失敗しました、もう一度試してください。"
-
-#: components/api/Service.php:232
-msgid "API request failed. API Key is required."
-msgstr "APIリクエストが失敗しました、APIキーが必要です。"
-
-#: components/api/email/ActiveCampaign.php:42
-#: components/api/email/CampaignMonitor.php:94
-#: components/api/email/ConvertKit.php:101
-#: components/api/email/Feedblitz.php:43
-#: components/api/email/GetResponse.php:67
-#: components/api/email/Infusionsoft.php:189
-#: components/api/email/MailChimp.php:130
-#: components/api/email/MailerLite.php:56 components/api/email/Ontraport.php:59
-#: components/api/email/SendinBlue.php:59
-msgid "API Key"
-msgstr "APIキー"
-
-#: components/api/email/ActiveCampaign.php:45
-msgid "API URL"
-msgstr "API URL"
-
-#: components/api/email/ActiveCampaign.php:48
-msgid "Form ID"
-msgstr "Form ID"
-
-#: components/api/email/Aweber.php:119
-msgid "Authorization Code"
-msgstr "認証コード"
-
-#: components/api/email/ConvertKit.php:104
-msgid "API Secret"
-msgstr "APIシークレット"
-
-#: components/api/email/Emma.php:49
-msgid "Public API Key"
-msgstr "パブリックAPIキー"
-
-#: components/api/email/Emma.php:52
-msgid "Private API Key"
-msgstr "プライベートAPIキー"
-
-#: components/api/email/Emma.php:55
-msgid "Account ID"
-msgstr "アカウントID"
-
-#: components/api/email/Infusionsoft.php:192
-msgid "App Name"
-msgstr "App名"
-
-#: components/api/email/Infusionsoft.php:283
-msgid ""
-"Successfully authorized. Subscribers count will be updated in background, "
-"please check back in %1$s %2$s"
-msgstr ""
-"認証成功。サブスクライバー数はバックグラウンドでアップデートされます。%1$s "
-"%2$sをご確認ください。"
-
-#: components/api/email/Infusionsoft.php:285
-msgid "minute"
-msgstr "分"
-
-#: components/api/email/Infusionsoft.php:285
-msgid "minutes"
-msgstr "分"
-
-#: components/api/email/Infusionsoft.php:313
-msgid "Already subscribed"
-msgstr "すでにサブスクライブ済"
-
-#: components/api/email/MailChimp.php:198
-msgid ""
-"You have signed up to a lot of lists very recently, please try again later"
-msgstr ""
-"多くのリストにとても短期間でサインアップしています。後で再度お試しください。"
-
-#: components/api/email/Mailster.php:48
-msgid "Opt-in"
-msgstr "同意"
-
-#: components/api/email/Mailster.php:84
-msgid "Mailster Newsletter Plugin is not enabled!"
-msgstr "Mailsterニュースレタープラグインが有効になっていません!"
-
-#: components/api/email/Mailster.php:88
-msgid "No lists were found. Please create a Mailster list first!"
-msgstr ""
-"リストが見つかりませんでした。まず最初にMailsterリストを作ってください!"
-
-#: components/api/email/Mailster.php:104
-msgid "An error occurred. Please try again later."
-msgstr "エラーが発生しました。後で再度お試しください。"
-
-#: components/api/email/Ontraport.php:62
-msgid "APP ID"
-msgstr "APP ID"
-
-#: components/api/email/Provider.php:36
-msgid "Subscribed via"
-msgstr "次によってサブスクライブ"
-
-#: components/api/email/SalesForce.php:93
-#: components/api/email/SalesForce.php:110
-msgid "Organization ID"
-msgstr "組織ID"
-
-#: components/api/email/SalesForce.php:97
-msgid "Instance URL"
-msgstr "インスタンスURL"
-
-#: components/api/email/SalesForce.php:100
-msgid "Consumer Key"
-msgstr "消費者キー"
-
-#: components/api/email/SalesForce.php:103
-msgid "Consumer Secret"
-msgstr "消費者シークレット"
-
-#: components/api/email/SalesForce.php:134
-msgid "Organization ID cannot be empty"
-msgstr "組織IDは空欄にできません"
-
-#: components/api/email/SalesForce.php:187
-#: components/api/email/SalesForce.php:264
-msgid "An error occurred. Please try again."
-msgstr "エラーが発生しました。後で再度お試しください。"
-
-#: components/api/email/SalesForce.php:234
-msgid "Unknown Organization ID"
-msgstr "不明な組織ID"
-
-#: components/api/email/init.php:25
-msgid "ERROR: Invalid arguments."
-msgstr "エラー: 無効な因数。"
-
-#: components/lib/WPHttp.php:192
-msgid "A valid URL was not provided."
-msgstr "有効なURLが提示されませんでした。"
-
-#: components/lib/WPHttp.php:196
-msgid "User has blocked requests through HTTP."
-msgstr "HTTPを通したリクエストでユーザーがブロックされました"
-
-#: components/lib/WPHttp.php:209
-msgid ""
-"Destination directory for file streaming does not exist or is not writable."
-msgstr "ファイル転送先ディレクトリが存在しないか書き込みができません。"
-
-#: functions.php:145
-msgid "Got it, thanks!"
-msgstr "了解しました、ありがとうございます!"
-
-#: functions.php:290
-msgid "Configuration Error"
-msgstr "構成エラー"
-
-#. Translators: If there are characters in your language that are not supported
-#. by Open Sans, translate this to 'off'. Do not translate into your own
-#. language.
-#: functions.php:74
-msgctxt "Open Sans font: on or off"
-msgid "on"
-msgstr ""
-
-#, fuzzy
-#~ msgid "An error occured. Please try again."
-#~ msgstr "エラーが発生しました。後で再度お試しください。"
-=======
 #: admin/includes/class-portability.php:914
 msgid "Select File To Import"
 msgstr "インポートするファイルを選択"
@@ -507,4 +169,3 @@ msgstr ""
 #: admin/includes/portability.php:90
 msgid "Import & Export"
 msgstr "インポートとエクスポート"
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

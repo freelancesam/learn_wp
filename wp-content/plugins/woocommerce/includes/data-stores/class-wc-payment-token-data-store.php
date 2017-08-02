@@ -27,14 +27,10 @@ class WC_Payment_Token_Data_Store extends WC_Data_Store_WP implements WC_Payment
 	 * Create a new payment token in the database.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param WC_Payment_Token $token
 	 *
 	 * @throws Exception
-=======
-	 * @param WC_Payment_Token $token
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create( &$token ) {
 		if ( false === $token->validate() ) {
@@ -75,14 +71,10 @@ class WC_Payment_Token_Data_Store extends WC_Data_Store_WP implements WC_Payment
 	 * Update a payment token.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param WC_Payment_Token $token
 	 *
 	 * @throws Exception
-=======
-	 * @param WC_Payment_Token $token
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function update( &$token ) {
 		if ( false === $token->validate() ) {
@@ -143,14 +135,10 @@ class WC_Payment_Token_Data_Store extends WC_Data_Store_WP implements WC_Payment
 	 * Read a token from the database.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param WC_Payment_Token $token
 	 *
 	 * @throws Exception
-=======
-	 * @param WC_Payment_Token $token
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( &$token ) {
 		global $wpdb;
@@ -331,14 +319,10 @@ class WC_Payment_Token_Data_Store extends WC_Data_Store_WP implements WC_Payment
 	 * of objects.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param id $token_id
 	 * @param bool $status
 	 *
-=======
-	 * @param id $token_id
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	public function set_default_status( $token_id, $status = true ) {

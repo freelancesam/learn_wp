@@ -4,11 +4,7 @@ Donate link: https://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
 Requires at least: 4.7
 Tested up to: 4.8
-<<<<<<< HEAD
 Stable tag: 4.8.1
-=======
-Stable tag: 4.8
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,7 +62,6 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 
 For more information, see [Releases](https://contactform7.com/category/releases/).
 
-<<<<<<< HEAD
 = 4.8.1 =
 
 * wpcf7.initForm JavaScript function added to isolate form initialization process.
@@ -77,8 +72,6 @@ For more information, see [Releases](https://contactform7.com/category/releases/
 * REST API: More reliable approach to build route URLs.
 * Include free_text inputs into event.detail.inputs.
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 = 4.8 =
 
 * Stopped using jquery.form.js.
@@ -88,15 +81,3 @@ For more information, see [Releases](https://contactform7.com/category/releases/
 * New form-tag features: do-not-store, display-block, and display-hidden
 * Removed inappropriate content from h1 headings.
 * Added the support of size:invisible option to the reCAPTCHA form-tag.
-<<<<<<< HEAD
-=======
-
-= 4.7 =
-
-* Added REST API custom endpoints to manipulate contact form data.
-* Config Validator: Added test items for field names and attachment file paths.
-* Added custom DOM events: `wpcf7invalid`, `wpcf7spam`, `wpcf7mailsent`, `wpcf7mailfailed` and `wpcf7submit`.
-* New action hook: `wpcf7_after_flamingo`.
-* Added `size` option to `select` and `select*` form-tag types.
-* Made it possible to use the 3rd parameter of `wpcf7_add_form_tag()` to specify "features" of the form-tag type.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

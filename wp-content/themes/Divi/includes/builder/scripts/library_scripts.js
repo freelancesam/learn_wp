@@ -39,27 +39,11 @@
 
 		$( 'body' ).on( 'change', '#new_template_type', function() {
 			var selected_type = $( this ).val();
-<<<<<<< HEAD
-			var $module_tabs_option = $( '.et_module_tabs_options' );
-			var $global_option = $( '#et_pb_template_global' ).closest( 'label' );
-
-			if ( 'module' === selected_type || 'fullwidth_module' === selected_type ) {
-				$module_tabs_option.css( 'display', 'block' );
-			} else {
-				$module_tabs_option.css( 'display', 'none' );
-			}
-
-			if ( 'layout' === selected_type ) {
-				$global_option.css( 'display', 'none' );
-			} else {
-				$global_option.css( 'display', 'block' );
-=======
 
 			if ( 'module' === selected_type || 'fullwidth_module' === selected_type ) {
 				$( '.et_module_tabs_options' ).css( 'display', 'block' );
 			} else {
 				$( '.et_module_tabs_options' ).css( 'display', 'none' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		} );
 
@@ -73,10 +57,7 @@
 			} else {
 				var	template_shortcode = '',
 					layout_type = $this_form.find( '#new_template_type' ).val(),
-<<<<<<< HEAD
-=======
 					selected_tabs = '',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					selected_cats = '',
 					fields_data = [];
 
@@ -96,8 +77,6 @@
 					}
 				});
 
-<<<<<<< HEAD
-=======
 				if ( 'module' === layout_type || 'fullwidth_module' === layout_type ) {
 					if ( ! $( '.et_module_tabs_options input' ).is( ':checked' ) ) {
 						$( '.et_pb_error_message_save_template' ).css( "display", "block" );
@@ -118,7 +97,6 @@
 					}
 				}
 
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				if ( $( '.layout_cats_container input' ).is( ':checked' ) ) {
 
 					$( '.layout_cats_container input' ).each( function() {
@@ -134,13 +112,10 @@
 				// add processed data into array of values
 				fields_data.push(
 					{
-<<<<<<< HEAD
-=======
 						'field_id': 'selected_tabs',
 						'field_val': selected_tabs
 					},
 					{
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						'field_id': 'selected_cats',
 						'field_val': selected_cats
 					}

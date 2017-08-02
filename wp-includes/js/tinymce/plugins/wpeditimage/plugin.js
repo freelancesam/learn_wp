@@ -382,22 +382,15 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 			src: imageData.url,
 			width: width || null,
 			height: height || null,
-<<<<<<< HEAD
-=======
-			alt: imageData.alt,
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			title: imageData.title || null,
 			'class': classes.join( ' ' ) || null
 		};
 
 		dom.setAttribs( imageNode, attrs );
 
-<<<<<<< HEAD
 		// Preserve empty alt attributes.
 		editor.$( imageNode ).attr( 'alt', imageData.alt || '' );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		linkAttrs = {
 			href: imageData.linkUrl,
 			rel: imageData.linkRel || null,
@@ -919,7 +912,6 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 					p = dom.create( 'p' );
 					dom.insertAfter( p, captionParent );
 					editor.selection.setCursorLocation( p, 0 );
-<<<<<<< HEAD
 
 					// If the image is selected and the user pastes "over" it,
 					// replace both the image and the caption elements with the pasted content.
@@ -928,8 +920,6 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
                         editor.$( captionParent ).remove();
                     }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					editor.nodeChanged();
 				} else {
 					// Clicking Indent or Outdent while an image with a caption is selected breaks the caption.
@@ -1046,11 +1036,7 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 	editor.on( 'beforeGetContent', function( event ) {
 		if ( event.format !== 'raw' ) {
 			editor.$( 'img[id="__wp-temp-img-id"]' ).attr( 'id', null );
-<<<<<<< HEAD
 		}
-=======
-		}	
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	});
 
 	editor.on( 'BeforeSetContent', function( event ) {

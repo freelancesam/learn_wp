@@ -327,11 +327,7 @@ class WC_Gateway_Paypal_Request {
 	 * @param  string  $item_number
 	 * @return bool successfully added or not
 	 */
-<<<<<<< HEAD
 	protected function add_line_item( $item_name, $quantity = 1, $amount = 0.0, $item_number = '' ) {
-=======
-	protected function add_line_item( $item_name, $quantity = 1, $amount = 0, $item_number = '' ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$index = ( sizeof( $this->line_items ) / 4 ) + 1;
 
 		if ( $amount < 0 || $index > 9 ) {

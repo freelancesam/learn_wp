@@ -30,19 +30,10 @@ class WC_Admin_Webhooks {
 	 * @return bool
 	 */
 	private function is_webhook_settings_page() {
-<<<<<<< HEAD
 		return isset( $_GET['page'], $_GET['tab'], $_GET['section'] )
 			&& 'wc-settings' === $_GET['page']
 			&& 'api' === $_GET['tab']
 			&& 'webhooks' === $_GET['section'];
-=======
-		return isset( $_GET['page'] )
-			&& 'wc-settings' == $_GET['page']
-			&& isset( $_GET['tab'] )
-			&& 'api' == $_GET['tab']
-			&& isset( $_GET['section'] )
-			&& 'webhooks' == isset( $_GET['section'] );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -210,11 +201,7 @@ class WC_Admin_Webhooks {
 		}
 
 		if ( ! current_user_can( 'publish_shop_webhooks' ) ) {
-<<<<<<< HEAD
 			wp_die( __( 'You do not have permissions to create Webhooks!', 'woocommerce' ) );
-=======
-			wp_die( __( 'You don\'t have permissions to create Webhooks!', 'woocommerce' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		$webhook_id = wp_insert_post( array(
@@ -299,11 +286,7 @@ class WC_Admin_Webhooks {
 		}
 
 		if ( ! current_user_can( 'edit_shop_webhooks' ) ) {
-<<<<<<< HEAD
 			wp_die( __( 'You do not have permissions to edit Webhooks!', 'woocommerce' ) );
-=======
-			wp_die( __( 'You don\'t have permissions to edit Webhooks!', 'woocommerce' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		$webhooks = array_map( 'absint', (array) $_GET['webhook'] );
@@ -332,11 +315,7 @@ class WC_Admin_Webhooks {
 		}
 
 		if ( ! current_user_can( 'delete_shop_webhooks' ) ) {
-<<<<<<< HEAD
 			wp_die( __( 'You do not have permissions to delete Webhooks!', 'woocommerce' ) );
-=======
-			wp_die( __( 'You don\'t have permissions to delete Webhooks!', 'woocommerce' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		$webhooks = get_posts( array(
@@ -449,7 +428,6 @@ class WC_Admin_Webhooks {
 	private static function table_list_output() {
 		echo '<h2>' . __( 'Webhooks', 'woocommerce' ) . ' <a href="' . esc_url( wp_nonce_url( admin_url( 'admin.php?page=wc-settings&tab=api&section=webhooks&create-webhook=1' ), 'create-webhook' ) ) . '" class="add-new-h2">' . __( 'Add webhook', 'woocommerce' ) . '</a></h2>';
 
-<<<<<<< HEAD
 		// Get the webhooks count
 		$count = array_sum( (array) wp_count_posts( 'shop_webhook', 'readable' ) );
 
@@ -472,18 +450,6 @@ class WC_Admin_Webhooks {
 
 			<?php echo '<style type="text/css">#posts-filter .wp-list-table, #posts-filter .tablenav.top, .tablenav.bottom .actions  { display: none; } </style></div>';
 		}
-=======
-		$webhooks_table_list = new WC_Admin_Webhooks_Table_List();
-		$webhooks_table_list->prepare_items();
-
-		echo '<input type="hidden" name="page" value="wc-settings" />';
-		echo '<input type="hidden" name="tab" value="api" />';
-		echo '<input type="hidden" name="section" value="webhooks" />';
-
-		$webhooks_table_list->views();
-		$webhooks_table_list->search_box( __( 'Search webhooks', 'woocommerce' ), 'webhook' );
-		$webhooks_table_list->display();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -520,11 +486,8 @@ class WC_Admin_Webhooks {
 	/**
 	 * Get the webhook topic data.
 	 *
-<<<<<<< HEAD
 	 * @param WC_Webhook $webhook
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array
 	 */
 	public static function get_topic_data( $webhook ) {
@@ -553,10 +516,7 @@ class WC_Admin_Webhooks {
 	 * Get the logs navigation.
 	 *
 	 * @param  int $total
-<<<<<<< HEAD
 	 * @param  WC_Webhook $webhook
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @return string
 	 */

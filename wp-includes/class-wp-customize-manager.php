@@ -462,11 +462,8 @@ final class WP_Customize_Manager {
 	 * Check if customize query variable exist. Init filters to filter the current theme.
 	 *
 	 * @since 3.4.0
-<<<<<<< HEAD
 	 *
 	 * @global string $pagenow
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function setup_theme() {
 		global $pagenow;
@@ -490,7 +487,6 @@ final class WP_Customize_Manager {
 		}
 
 		/*
-<<<<<<< HEAD
 		 * Clear incoming post data if the user lacks a CSRF token (nonce). Note that the customizer
 		 * application will inject the customize_preview_nonce query parameter into all Ajax requests.
 		 * For similar behavior elsewhere in WordPress, see rest_cookie_check_errors() which logs out
@@ -509,8 +505,6 @@ final class WP_Customize_Manager {
 		}
 
 		/*
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		 * If unauthenticated then require a valid changeset UUID to load the preview.
 		 * In this way, the UUID serves as a secret key. If the messenger channel is present,
 		 * then send unauthenticated code to prompt re-auth.
@@ -1023,26 +1017,19 @@ final class WP_Customize_Manager {
 			wp_list_pluck( $posts, 'post_name' )
 		);
 
-<<<<<<< HEAD
 		/*
 		 * Obtain all post types referenced in starter content to use in query.
 		 * This is needed because 'any' will not account for post types not yet registered.
 		 */
 		$post_types = array_filter( array_merge( array( 'attachment' ), wp_list_pluck( $posts, 'post_type' ) ) );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Re-use auto-draft starter content posts referenced in the current customized state.
 		$existing_starter_content_posts = array();
 		if ( ! empty( $starter_content_auto_draft_post_ids ) ) {
 			$existing_posts_query = new WP_Query( array(
 				'post__in' => $starter_content_auto_draft_post_ids,
 				'post_status' => 'auto-draft',
-<<<<<<< HEAD
 				'post_type' => $post_types,
-=======
-				'post_type' => 'any',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'posts_per_page' => -1,
 			) );
 			foreach ( $existing_posts_query->posts as $existing_post ) {
@@ -1610,10 +1597,7 @@ final class WP_Customize_Manager {
 		add_filter( 'wp_redirect', array( $this, 'add_state_query_params' ) );
 
 		wp_enqueue_script( 'customize-preview' );
-<<<<<<< HEAD
 		wp_enqueue_style( 'customize-preview' );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		add_action( 'wp_head', array( $this, 'customize_preview_loading_style' ) );
 		add_action( 'wp_head', array( $this, 'remove_frameless_preview_messenger_channel' ) );
 		add_action( 'wp_footer', array( $this, 'customize_preview_settings' ), 20 );
@@ -2530,7 +2514,6 @@ final class WP_Customize_Manager {
 		} elseif ( $args['date_gmt'] ) {
 			$post_array['post_date_gmt'] = $args['date_gmt'];
 			$post_array['post_date'] = get_date_from_gmt( $args['date_gmt'] );
-<<<<<<< HEAD
 		} elseif ( $changeset_post_id && 'auto-draft' === get_post_status( $changeset_post_id ) ) {
 			/*
 			 * Keep bumping the date for the auto-draft whenever it is modified;
@@ -2539,8 +2522,6 @@ final class WP_Customize_Manager {
 			 */
 			$post_array['post_date'] = current_time( 'mysql' );
 			$post_array['post_date_gmt'] = '';
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		$this->store_changeset_revision = $allow_revision;
@@ -2829,7 +2810,6 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 3.4.0
 	 * @since 4.5.0 Return added WP_Customize_Setting instance.
-<<<<<<< HEAD
 	 *
 	 * @param WP_Customize_Setting|string $id   Customize Setting object, or ID.
 	 * @param array                       $args {
@@ -2851,13 +2831,6 @@ final class WP_Customize_Manager {
 	 *                                            JSON serializable.
 	 *  @type bool         $dirty                 Whether or not the setting is initially dirty when created.
 	 * }
-=======
-	 * @access public
-	 *
-	 * @param WP_Customize_Setting|string $id   Customize Setting object, or ID.
-	 * @param array                       $args Setting arguments; passed to WP_Customize_Setting
-	 *                                          constructor.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return WP_Customize_Setting             The instance of the setting that was added.
 	 */
 	public function add_setting( $id, $args = array() ) {
@@ -2971,7 +2944,6 @@ final class WP_Customize_Manager {
 	 *
 	 * @since 4.0.0
 	 * @since 4.5.0 Return added WP_Customize_Panel instance.
-<<<<<<< HEAD
 	 *
 	 * @param WP_Customize_Panel|string $id   Customize Panel object, or Panel ID.
 	 * @param array                     $args {
@@ -2985,13 +2957,6 @@ final class WP_Customize_Manager {
 	 *  @type string       $type                  Type of the panel.
 	 *  @type callable     $active_callback       Active callback.
 	 * }
-=======
-	 * @access public
-	 *
-	 * @param WP_Customize_Panel|string $id   Customize Panel object, or Panel ID.
-	 * @param array                     $args Optional. Panel arguments. Default empty array.
-	 *
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return WP_Customize_Panel             The instance of the panel that was added.
 	 */
 	public function add_panel( $id, $args = array() ) {
@@ -3079,7 +3044,6 @@ final class WP_Customize_Manager {
 	 * @access public
 	 *
 	 * @param WP_Customize_Section|string $id   Customize Section object, or Section ID.
-<<<<<<< HEAD
 	 * @param array                     $args {
 	 *  Optional. Array of properties for the new Panel object. Default empty array.
 	 *  @type int          $priority              Priority of the panel, defining the display order of panels and sections.
@@ -3093,10 +3057,6 @@ final class WP_Customize_Manager {
 	 *  @type callable     $active_callback       Active callback.
 	 *  @type bool         $description_hidden    Hide the description behind a help icon, instead of . Default false.
 	 * }
-=======
-	 * @param array                       $args Section arguments.
-	 *
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return WP_Customize_Section             The instance of the section that was added.
 	 */
 	public function add_section( $id, $args = array() ) {
@@ -3171,7 +3131,6 @@ final class WP_Customize_Manager {
 	 * @access public
 	 *
 	 * @param WP_Customize_Control|string $id   Customize Control object, or ID.
-<<<<<<< HEAD
 	 * @param array                       $args {
 	 *  Optional. Array of properties for the new Control object. Default empty array.
 	 *
@@ -3192,10 +3151,6 @@ final class WP_Customize_Manager {
 	 *  @type string       $type                  The type of the control. Default 'text'.
 	 *  @type callback     $active_callback       Active callback.
 	 * }
-=======
-	 * @param array                       $args Control arguments; passed to WP_Customize_Control
-	 *                                          constructor.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return WP_Customize_Control             The instance of the control that was added.
 	 */
 	public function add_control( $id, $args = array() ) {
@@ -3594,10 +3549,7 @@ final class WP_Customize_Manager {
 	 * Get nonces for the Customizer.
 	 *
 	 * @since 4.5.0
-<<<<<<< HEAD
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array Nonces.
 	 */
 	public function get_nonces() {
@@ -3738,10 +3690,6 @@ final class WP_Customize_Manager {
 	/**
 	 * Returns a list of devices to allow previewing.
 	 *
-<<<<<<< HEAD
-=======
-	 * @access public
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @since 4.5.0
 	 *
 	 * @return array List of devices with labels and default setting.
@@ -4082,11 +4030,7 @@ final class WP_Customize_Manager {
 			'type'           => 'url',
 			'description'    => __( 'Or, enter a YouTube URL:' ),
 			'section'        => 'header_image',
-<<<<<<< HEAD
 			'active_callback' => 'is_header_video_active',
-=======
-			'active_callback'=> 'is_front_page',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		) );
 
 		$this->add_control( new WP_Customize_Header_Image_Control( $this ) );
@@ -4271,12 +4215,8 @@ final class WP_Customize_Manager {
 				__( 'CSS allows you to customize the appearance and layout of your site with code. Separate CSS is saved for each of your themes. In the editing area the Tab key enters a tab character. To move below this area by pressing Tab, press the Esc key followed by the Tab key.' ),
 				esc_url( __( 'https://codex.wordpress.org/CSS' ) ),
 				__( 'Learn more about CSS' ),
-<<<<<<< HEAD
 				/* translators: accessibility text */
 				__( '(opens in a new window)' )
-=======
-				__( '(link opens in a new window)' )
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			),
 		) );
 
@@ -4301,10 +4241,6 @@ final class WP_Customize_Manager {
 	 *
 	 * Used as active callback for static front page section and controls.
 	 *
-<<<<<<< HEAD
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @since 4.7.0
 	 *
 	 * @returns bool Whether there are published (or to be published) pages.
@@ -4361,10 +4297,6 @@ final class WP_Customize_Manager {
 	 * Callback for validating a background setting value.
 	 *
 	 * @since 4.7.0
-<<<<<<< HEAD
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param string $value Repeat value.
 	 * @param WP_Customize_Setting $setting Setting.
@@ -4498,10 +4430,6 @@ final class WP_Customize_Manager {
 	 * @see WP_Customize_Manager::register_controls()
 	 *
 	 * @since 4.5.0
-<<<<<<< HEAD
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @return string Custom logo.
 	 */

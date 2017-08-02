@@ -15,11 +15,8 @@ jQuery( function ( $ ) {
 			$( '.js_field-country' ).select2().change( this.change_country );
 			$( '.js_field-country' ).trigger( 'change', [ true ] );
 			$( document.body ).on( 'change', 'select.js_field-state', this.change_state );
-<<<<<<< HEAD
 
 			$( document.body ).on( 'click', 'button.js_copy-billing', this.copy_billing );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		},
 
 		change_country: function( e, stickValue ) {
@@ -80,7 +77,6 @@ jQuery( function ( $ ) {
 				country  = $country.val();
 
 			$country.data( 'woocommerce.stickState-' + country, state );
-<<<<<<< HEAD
 		},
 
 		copy_billing: function( event ) {
@@ -98,8 +94,6 @@ jQuery( function ( $ ) {
 				// Found a matching shipping element, update the value
 				shipEl.val( el.value ).trigger( 'change' );
 			} );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	};
 

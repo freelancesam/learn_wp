@@ -22,11 +22,8 @@ interface WC_Logger_Interface {
 	 *
 	 * @param string $handle
 	 * @param string $message
-<<<<<<< HEAD
 	 * @param string $level
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return bool True if log was added, otherwise false.
 	 */
 	public function add( $handle, $message, $level = WC_Log_Levels::NOTICE );
@@ -41,11 +38,7 @@ interface WC_Logger_Interface {
 	 *     'error': Error conditions.
 	 *     'warning': Warning conditions.
 	 *     'notice': Normal but significant condition.
-<<<<<<< HEAD
 	 *     'info': Informational messages.
-=======
-	 *     'informational': Informational messages.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *     'debug': Debug-level messages.
 	 * @param string $message Log message.
 	 * @param array $context Optional. Additional information for log handlers.

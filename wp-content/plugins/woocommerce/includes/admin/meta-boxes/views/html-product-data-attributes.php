@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <div id="product_attributes" class="panel wc-metaboxes-wrapper hidden">
 	<div class="toolbar toolbar-top">
 		<span class="expand-close">

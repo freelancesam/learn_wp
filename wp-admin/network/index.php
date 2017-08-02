@@ -73,10 +73,6 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 </div><!-- wrap -->
 
-<<<<<<< HEAD
 <?php
 wp_print_community_events_templates();
 include( ABSPATH . 'wp-admin/admin-footer.php' );
-=======
-<?php include( ABSPATH . 'wp-admin/admin-footer.php' ); ?>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .CodeMirror-completions {
   position: absolute;
   z-index: 10;
@@ -15,21 +14,3 @@
   margin: 0;
   font-family: monospace;
 }
-=======
-.CodeMirror-completions {
-  position: absolute;
-  z-index: 10;
-  overflow: hidden;
-  -webkit-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
-  -moz-box-shadow: 2px 3px 5px rgba(0,0,0,.2);
-  box-shadow: 2px 3px 5px rgba(0,0,0,.2);
-}
-.CodeMirror-completions select {
-  background: #fafafa;
-  outline: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-family: monospace;
-}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

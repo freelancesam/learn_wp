@@ -122,16 +122,11 @@ class WC_Payment_Tokens {
 	 * Get a token object by ID.
 	 *
 	 * @since 2.6.0
-<<<<<<< HEAD
 	 *
 	 * @param int    $token_id Token ID
 	 * @param object $token_result
 	 *
 	 * @return null|WC_Payment_Token Returns a valid payment token or null if no token can be found
-=======
-	 * @param  int $token_id Token ID
-	 * @return WC_Payment_Token|null Returns a valid payment token or null if no token can be found
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function get( $token_id, $token_result = null ) {
 		$data_store = WC_Data_Store::load( 'payment-token' );

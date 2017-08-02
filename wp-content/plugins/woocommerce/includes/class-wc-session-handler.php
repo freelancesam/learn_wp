@@ -38,11 +38,7 @@ class WC_Session_Handler extends WC_Session {
 	public function __construct() {
 		global $wpdb;
 
-<<<<<<< HEAD
 		$this->_cookie = apply_filters( 'woocommerce_cookie', 'wp_woocommerce_session_' . COOKIEHASH );
-=======
-		$this->_cookie = 'wp_woocommerce_session_' . COOKIEHASH;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$this->_table  = $wpdb->prefix . 'woocommerce_sessions';
 
 		if ( $cookie = $this->get_session_cookie() ) {
@@ -79,11 +75,8 @@ class WC_Session_Handler extends WC_Session {
 	 * Since the cookie name (as of 2.1) is prepended with wp, cache systems like batcache will not cache pages when set.
 	 *
 	 * Warning: Cookies will only be set if this is called before the headers are sent.
-<<<<<<< HEAD
 	 *
 	 * @param bool $set
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function set_customer_session_cookie( $set ) {
 		if ( $set ) {
@@ -224,11 +217,8 @@ class WC_Session_Handler extends WC_Session {
 	/**
 	 * When a user is logged out, ensure they have a unique nonce by using the customer/session ID.
 	 *
-<<<<<<< HEAD
 	 * @param int $uid
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	public function nonce_user_logged_out( $uid ) {

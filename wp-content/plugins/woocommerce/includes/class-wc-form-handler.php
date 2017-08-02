@@ -506,14 +506,9 @@ class WC_Form_Handler {
 					// Sanitize
 					$quantity = apply_filters( 'woocommerce_stock_amount_cart_item', wc_stock_amount( preg_replace( "/[^0-9\.]/", '', $cart_totals[ $cart_item_key ]['qty'] ) ), $cart_item_key );
 
-<<<<<<< HEAD
 					if ( '' === $quantity || $quantity == $values['quantity'] ) {
 						continue;
 					}
-=======
-					if ( '' === $quantity || $quantity == $values['quantity'] )
-						continue;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					// Update cart validation
 					$passed_validation 	= apply_filters( 'woocommerce_update_cart_validation', true, $cart_item_key, $values, $quantity );
@@ -831,14 +826,10 @@ class WC_Form_Handler {
 					$valid_value = isset( $variation_data[ $taxonomy ] ) ? $variation_data[ $taxonomy ] : '';
 
 					// Allow if valid or show error.
-<<<<<<< HEAD
 					if ( $valid_value === $value ) {
 						$variations[ $taxonomy ] = $value;
 					// If valid values are empty, this is an 'any' variation so get all possible values.
 					} elseif ( '' === $valid_value && in_array( $value, $attribute->get_slugs() ) ) {
-=======
-					if ( '' === $valid_value || $valid_value === $value ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						$variations[ $taxonomy ] = $value;
 					} else {
 						throw new Exception( sprintf( __( 'Invalid value posted for %s', 'woocommerce' ), wc_attribute_label( $attribute['name'] ) ) );
@@ -896,13 +887,10 @@ class WC_Form_Handler {
 				if ( is_email( $username ) && apply_filters( 'woocommerce_get_username_from_email', true ) ) {
 					$user = get_user_by( 'email', $username );
 
-<<<<<<< HEAD
 					if ( ! $user ) {
 						$user = get_user_by( 'login', $username );
 					}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					if ( isset( $user->user_login ) ) {
 						$creds['user_login'] = $user->user_login;
 					} else {
@@ -932,22 +920,13 @@ class WC_Form_Handler {
 
 					if ( ! empty( $_POST['redirect'] ) ) {
 						$redirect = $_POST['redirect'];
-<<<<<<< HEAD
 					} elseif ( wc_get_raw_referer() ) {
 						$redirect = wc_get_raw_referer();
-=======
-					} elseif ( wp_get_referer() ) {
-						$redirect = wp_get_referer();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					} else {
 						$redirect = wc_get_page_permalink( 'myaccount' );
 					}
 
-<<<<<<< HEAD
 					wp_redirect( wp_validate_redirect( apply_filters( 'woocommerce_login_redirect', $redirect, $user ), wc_get_page_permalink( 'myaccount' ) ) );
-=======
-					wp_redirect( apply_filters( 'woocommerce_login_redirect', $redirect, $user ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					exit;
 				}
 			} catch ( Exception $e ) {
@@ -964,15 +943,9 @@ class WC_Form_Handler {
 		if ( isset( $_POST['wc_reset_password'] ) && isset( $_POST['user_login'] ) && isset( $_POST['_wpnonce'] ) && wp_verify_nonce( $_POST['_wpnonce'], 'lost_password' ) ) {
 			$success = WC_Shortcode_My_Account::retrieve_password();
 
-<<<<<<< HEAD
 			// If successful, redirect to my account with query arg set.
 			if ( $success ) {
 				wp_redirect( add_query_arg( 'reset-link-sent', 'true', wc_get_account_endpoint_url( 'lost-password' ) ) );
-=======
-			// If successful, redirect to my account with query arg set
-			if ( $success ) {
-				wp_redirect( add_query_arg( 'reset-link-sent', 'true', remove_query_arg( array( 'key', 'login', 'reset' ) ) ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				exit;
 			}
 		}

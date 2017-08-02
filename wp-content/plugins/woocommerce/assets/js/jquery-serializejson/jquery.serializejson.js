@@ -1,7 +1,6 @@
 /*!
   SerializeJSON jQuery plugin.
   https://github.com/marioizquierdo/jquery.serializeJSON
-<<<<<<< HEAD
   version 2.8.1 (Dec, 2016)
 
   Copyright (c) 2012, 2017 Mario Izquierdo
@@ -19,20 +18,10 @@
   }
 
 }(function ($) {
-=======
-  version 2.6.1 (May, 2015)
-
-  Copyright (c) 2012, 2015 Mario Izquierdo
-  Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
-  and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
-*/
-(function ($) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   "use strict";
 
   // jQuery('form').serializeJSON()
   $.fn.serializeJSON = function (options) {
-<<<<<<< HEAD
     var f, $form, opts, formAsArray, serializedObject, name, value, parsedValue, _obj, nameWithNoType, type, keys, skipFalsy;
     f = $.serializeJSON;
     $form = this; // NOTE: the set of matched elements is most likely a form, but it could also be a group of inputs
@@ -61,24 +50,6 @@
         if (!skipFalsy) {
           f.deepSet(serializedObject, keys, parsedValue, opts);
         }
-=======
-    var serializedObject, formAsArray, keys, type, value, _ref, f, opts;
-    f = $.serializeJSON;
-    opts = f.setupOpts(options); // calculate values for options {parseNumbers, parseBoolens, parseNulls}
-    formAsArray = this.serializeArray(); // array of objects {name, value}
-    f.readCheckboxUncheckedValues(formAsArray, this, opts); // add {name, value} of unchecked checkboxes if needed
-
-    serializedObject = {};
-    $.each(formAsArray, function (i, input) {
-      keys = f.splitInputNameIntoKeysArray(input.name, opts);
-      type = keys.pop(); // the last element is always the type ("string" by default)
-      if (type !== 'skip') { // easy way to skip a value
-        value = f.parseValue(input.value, type, opts); // string, number, boolean or null
-        if (opts.parseWithFunction && type === '_') { // allow for custom parsing
-          value = opts.parseWithFunction(value, input.name);
-        }
-        f.deepSet(serializedObject, keys, value, opts);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
       }
     });
     return serializedObject;
@@ -97,12 +68,9 @@
       parseAll: false, // all of the above
       parseWithFunction: null, // to use custom parser, a function like: function(val){ return parsed_val; }
 
-<<<<<<< HEAD
       skipFalsyValuesForTypes: [], // skip serialization of falsy values for listed value types
       skipFalsyValuesForFields: [], // skip serialization of falsy values for listed field names
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
       customTypes: {}, // override defaultTypes
       defaultTypes: {
         "string":  function(str) { return String(str); },
@@ -111,12 +79,8 @@
         "null":    function(str) { var falses = ["false", "null", "undefined", "", "0"]; return falses.indexOf(str) === -1 ? str : null; },
         "array":   function(str) { return JSON.parse(str); },
         "object":  function(str) { return JSON.parse(str); },
-<<<<<<< HEAD
         "auto":    function(str) { return $.serializeJSON.parseValue(str, null, null, {parseNumbers: true, parseBooleans: true, parseNulls: true}); }, // try again with something like "parseAll"
         "skip":    null // skip is a special type that makes it easy to ignore elements
-=======
-        "auto":    function(str) { return $.serializeJSON.parseValue(str, null, {parseNumbers: true, parseBooleans: true, parseNulls: true}); } // try again with something like "parseAll"
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
       },
 
       useIntKeysAsArrayIndex: false // name="foo[2]" value="v" => {foo: [null, null, "v"]}, instead of {foo: ["2": "v"]}
@@ -131,11 +95,7 @@
       defaultOptions = f.defaultOptions || {}; // defaultOptions
 
       // Make sure that the user didn't misspell an option
-<<<<<<< HEAD
       validOpts = ['checkboxUncheckedValue', 'parseNumbers', 'parseBooleans', 'parseNulls', 'parseAll', 'parseWithFunction', 'skipFalsyValuesForTypes', 'skipFalsyValuesForFields', 'customTypes', 'defaultTypes', 'useIntKeysAsArrayIndex']; // re-define because the user may override the defaultOptions
-=======
-      validOpts = ['checkboxUncheckedValue', 'parseNumbers', 'parseBooleans', 'parseNulls', 'parseAll', 'parseWithFunction', 'customTypes', 'defaultTypes', 'useIntKeysAsArrayIndex']; // re-define because the user may override the defaultOptions
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
       for (opt in options) {
         if (validOpts.indexOf(opt) === -1) {
           throw new  Error("serializeJSON ERROR: invalid option '" + opt + "'. Please use one of " + validOpts.join(', '));
@@ -155,11 +115,8 @@
         parseNulls:    parseAll || optWithDefault('parseNulls'),
         parseWithFunction:         optWithDefault('parseWithFunction'),
 
-<<<<<<< HEAD
         skipFalsyValuesForTypes:   optWithDefault('skipFalsyValuesForTypes'),
         skipFalsyValuesForFields:  optWithDefault('skipFalsyValuesForFields'),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
         typeFunctions: $.extend({}, optWithDefault('defaultTypes'), optWithDefault('customTypes')),
 
         useIntKeysAsArrayIndex: optWithDefault('useIntKeysAsArrayIndex')
@@ -167,7 +124,6 @@
     },
 
     // Given a string, apply the type or the relevant "parse" options, to return the parsed value
-<<<<<<< HEAD
     parseValue: function(valStr, inputName, type, opts) {
       var f, parsedVal;
       f = $.serializeJSON;
@@ -187,23 +143,6 @@
       }
 
       return parsedVal;
-=======
-    parseValue: function(str, type, opts) {
-      var typeFunction, f;
-      f = $.serializeJSON;
-
-      // Parse with a type if available
-      typeFunction = opts.typeFunctions && opts.typeFunctions[type];
-      if (typeFunction) { return typeFunction(str); } // use specific type
-
-      // Otherwise, check if there is any auto-parse option enabled and use it.
-      if (opts.parseNumbers  && f.isNumeric(str)) { return Number(str); } // auto: number
-      if (opts.parseBooleans && (str === "true" || str === "false")) { return str === "true"; } // auto: boolean
-      if (opts.parseNulls    && str == "null") { return null; } // auto: null
-
-      // If none applies, just return the str
-      return str;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
     },
 
     isObject:          function(obj) { return obj === Object(obj); }, // is it an Object?
@@ -213,7 +152,6 @@
 
     optionKeys: function(obj) { if (Object.keys) { return Object.keys(obj); } else { var key, keys = []; for(key in obj){ keys.push(key); } return keys;} }, // polyfill Object.keys to get option keys in IE<9
 
-<<<<<<< HEAD
 
     // Fill the formAsArray object with values for the unchecked checkbox inputs,
     // using the same format as the jquery.serializeArray function.
@@ -323,52 +261,6 @@
       return keys;
     },
 
-=======
-    // Split the input name in programatically readable keys.
-    // The last element is always the type (default "_").
-    // Examples:
-    // "foo"              => ['foo', '_']
-    // "foo:string"       => ['foo', 'string']
-    // "foo:boolean"      => ['foo', 'boolean']
-    // "[foo]"            => ['foo', '_']
-    // "foo[inn][bar]"    => ['foo', 'inn', 'bar', '_']
-    // "foo[inn[bar]]"    => ['foo', 'inn', 'bar', '_']
-    // "foo[inn][arr][0]" => ['foo', 'inn', 'arr', '0', '_']
-    // "arr[][val]"       => ['arr', '', 'val', '_']
-    // "arr[][val]:null"  => ['arr', '', 'val', 'null']
-    splitInputNameIntoKeysArray: function(name, opts) {
-      var keys, nameWithoutType, type, _ref, f;
-      f = $.serializeJSON;
-      _ref = f.extractTypeFromInputName(name, opts); nameWithoutType = _ref[0]; type = _ref[1];
-      keys = nameWithoutType.split('['); // split string into array
-      keys = $.map(keys, function (key) { return key.replace(/\]/g, ''); }); // remove closing brackets
-      if (keys[0] === '') { keys.shift(); } // ensure no opening bracket ("[foo][inn]" should be same as "foo[inn]")
-      keys.push(type); // add type at the end
-      return keys;
-    },
-
-    // Returns [name-without-type, type] from name.
-    // "foo"              =>  ["foo",      '_']
-    // "foo:boolean"      =>  ["foo",      'boolean']
-    // "foo[bar]:null"    =>  ["foo[bar]", 'null']
-    extractTypeFromInputName: function(name, opts) {
-      var match, validTypes, f;
-      if (match = name.match(/(.*):([^:]+)$/)){
-        f = $.serializeJSON;
-
-        validTypes = f.optionKeys(opts ? opts.typeFunctions : f.defaultOptions.defaultTypes);
-        validTypes.push('skip'); // skip is a special type that makes it easy to remove
-        if (validTypes.indexOf(match[2]) !== -1) {
-          return [match[1], match[2]];
-        } else {
-          throw new Error("serializeJSON ERROR: Invalid type " + match[2] + " found in input name '" + name + "', please use one of " + validTypes.join(', '));
-        }
-      } else {
-        return [name, '_']; // no defined type, then use parse options
-      }
-    },
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
     // Set a value in an object or array, using multiple keys to set in a nested object or array:
     //
     // deepSet(obj, ['foo'], v)               // obj['foo'] = v
@@ -441,39 +333,8 @@
         tail = keys.slice(1);
         f.deepSet(o[key], tail, value, opts);
       }
-<<<<<<< HEAD
-=======
-    },
-
-    // Fill the formAsArray object with values for the unchecked checkbox inputs,
-    // using the same format as the jquery.serializeArray function.
-    // The value of the unchecked values is determined from the opts.checkboxUncheckedValue
-    // and/or the data-unchecked-value attribute of the inputs.
-    readCheckboxUncheckedValues: function (formAsArray, $form, opts) {
-      var selector, $uncheckedCheckboxes, $el, dataUncheckedValue, f;
-      if (opts == null) { opts = {}; }
-      f = $.serializeJSON;
-
-      selector = 'input[type=checkbox][name]:not(:checked):not([disabled])';
-      $uncheckedCheckboxes = $form.find(selector).add($form.filter(selector));
-      $uncheckedCheckboxes.each(function (i, el) {
-        $el = $(el);
-        dataUncheckedValue = $el.attr('data-unchecked-value');
-        if(dataUncheckedValue) { // data-unchecked-value has precedence over option opts.checkboxUncheckedValue
-          formAsArray.push({name: el.name, value: dataUncheckedValue});
-        } else {
-          if (!f.isUndefined(opts.checkboxUncheckedValue)) {
-            formAsArray.push({name: el.name, value: opts.checkboxUncheckedValue});
-          }
-        }
-      });
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
     }
 
   };
 
-<<<<<<< HEAD
 }));
-=======
-}(window.jQuery || window.Zepto || window.$));
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

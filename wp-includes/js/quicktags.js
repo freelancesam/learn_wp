@@ -223,11 +223,7 @@ function edButton(id, display, tagStart, tagEnd, access) {
 
 		if ( tb.addEventListener ) {
 			tb.addEventListener( 'click', onclick, false );
-<<<<<<< HEAD
 
-=======
-			
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( wrap ) {
 				wrap.addEventListener( 'click', setActiveEditor, false );
 			}
@@ -247,7 +243,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 			return document.getElementById(name + '_' + id);
 		};
 
-<<<<<<< HEAD
 		t.init = function() {
 			_domReady( function(){ qt._buttonsInit( id ); } );
 		};
@@ -262,14 +257,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 
 		qt.instances[id] = t;
 		t.init();
-=======
-		qt.instances[id] = t;
-
-		if ( ! qt.instances['0'] ) {
-			qt.instances['0'] = qt.instances[id];
-			_domReady( function(){ qt._buttonsInit(); } );
-		}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	};
 
 	function _escape( text ) {
@@ -284,7 +271,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 		return qt.instances[id];
 	};
 
-<<<<<<< HEAD
 	qt._buttonsInit = function( id ) {
 		var t = this;
 
@@ -293,18 +279,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 				defaults = ',strong,em,link,block,del,ins,img,ul,ol,li,code,more,close,';
 
 			ed = t.instances[instanceId];
-=======
-	qt._buttonsInit = function() {
-		var t = this, canvas, name, settings, theButtons, html, inst, ed, id, i, use,
-			defaults = ',strong,em,link,block,del,ins,img,ul,ol,li,code,more,close,';
-
-		for ( inst in t.instances ) {
-			if ( '0' === inst ) {
-				continue;
-			}
-
-			ed = t.instances[inst];
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			canvas = ed.canvas;
 			name = ed.name;
 			settings = ed.settings;
@@ -318,11 +292,7 @@ function edButton(id, display, tagStart, tagEnd, access) {
 			}
 
 			for ( i in edButtons ) {
-<<<<<<< HEAD
 				if ( ! edButtons[i] ) {
-=======
-				if ( !edButtons[i] ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					continue;
 				}
 
@@ -331,19 +301,11 @@ function edButton(id, display, tagStart, tagEnd, access) {
 					continue;
 				}
 
-<<<<<<< HEAD
 				if ( ! edButtons[i].instance || edButtons[i].instance === instanceId ) {
 					theButtons[id] = edButtons[i];
 
 					if ( edButtons[i].html ) {
 						html += edButtons[i].html( name + '_' );
-=======
-				if ( !edButtons[i].instance || edButtons[i].instance === inst ) {
-					theButtons[id] = edButtons[i];
-
-					if ( edButtons[i].html ) {
-						html += edButtons[i].html(name + '_');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					}
 				}
 			}
@@ -353,15 +315,9 @@ function edButton(id, display, tagStart, tagEnd, access) {
 				html += theButtons.dfw.html( name + '_' );
 			}
 
-<<<<<<< HEAD
 			if ( 'rtl' === document.getElementsByTagName( 'html' )[0].dir ) {
 				theButtons.textdirection = new qt.TextDirectionButton();
 				html += theButtons.textdirection.html( name + '_' );
-=======
-			if ( 'rtl' === document.getElementsByTagName('html')[0].dir ) {
-				theButtons.textdirection = new qt.TextDirectionButton();
-				html += theButtons.textdirection.html(name + '_');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 
 			ed.toolbar.innerHTML = html;
@@ -371,7 +327,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 				jQuery( document ).triggerHandler( 'quicktags-init', [ ed ] );
 			}
 		}
-<<<<<<< HEAD
 
 		if ( id ) {
 			_init( id );
@@ -381,8 +336,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 			}
 		}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		t.buttonsInitDone = true;
 	};
 
@@ -453,11 +406,7 @@ function edButton(id, display, tagStart, tagEnd, access) {
 	};
 
 	qt.insertContent = function(content) {
-<<<<<<< HEAD
 		var sel, startPos, endPos, scrollTop, text, canvas = document.getElementById(wpActiveEditor), event;
-=======
-		var sel, startPos, endPos, scrollTop, text, canvas = document.getElementById(wpActiveEditor);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		if ( !canvas ) {
 			return false;
@@ -484,7 +433,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 			canvas.value += content;
 			canvas.focus();
 		}
-<<<<<<< HEAD
 
 		if ( document.createEvent ) {
 			event = document.createEvent( 'HTMLEvents' );
@@ -494,8 +442,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 			canvas.fireEvent( 'onchange' );
 		}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return true;
 	};
 
@@ -578,11 +524,7 @@ function edButton(id, display, tagStart, tagEnd, access) {
 		return ret;
 	};
 	qt.TagButton.prototype.callback = function(element, canvas, ed) {
-<<<<<<< HEAD
 		var t = this, startPos, endPos, cursorPos, scrollTop, v = canvas.value, l, r, i, sel, endTag = v ? t.tagEnd : '', event;
-=======
-		var t = this, startPos, endPos, cursorPos, scrollTop, v = canvas.value, l, r, i, sel, endTag = v ? t.tagEnd : '';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		if ( document.selection ) { // IE
 			canvas.focus();
@@ -657,7 +599,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 			}
 			canvas.focus();
 		}
-<<<<<<< HEAD
 
 		if ( document.createEvent ) {
 			event = document.createEvent( 'HTMLEvents' );
@@ -666,8 +607,6 @@ function edButton(id, display, tagStart, tagEnd, access) {
 		} else if ( canvas.fireEvent ) {
 			canvas.fireEvent( 'onchange' );
 		}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	};
 
 	// removed
@@ -699,18 +638,12 @@ function edButton(id, display, tagStart, tagEnd, access) {
 
 	qt.CloseButton.prototype.callback = qt._close;
 
-<<<<<<< HEAD
 	qt.closeAllTags = function( editor_id ) {
 		var ed = this.getInstance( editor_id );
 
 		if ( ed ) {
 			qt._close( '', ed.canvas, ed );
 		}
-=======
-	qt.closeAllTags = function(editor_id) {
-		var ed = this.getInstance(editor_id);
-		qt._close('', ed.canvas, ed);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	};
 
 	// the link button

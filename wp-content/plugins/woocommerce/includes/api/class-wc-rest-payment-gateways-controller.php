@@ -147,11 +147,7 @@ class WC_REST_Payment_Gateways_Controller extends WC_REST_Controller {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Update A Single Payment Method.
-=======
-	 * Update A Single Shipping Zone Method.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param WP_REST_Request $request
 	 * @return WP_REST_Response|WP_Error
@@ -279,13 +275,10 @@ class WC_REST_Payment_Gateways_Controller extends WC_REST_Controller {
 
 	/**
 	 * Return settings associated with this payment gateway.
-<<<<<<< HEAD
 	 *
 	 * @param WC_Payment_Gateway $gateway
 	 *
 	 * @return array
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_settings( $gateway ) {
 		$settings = array();

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 window.wp = window.wp || {};
 
 ( function( $, wp ) {
@@ -9,10 +8,6 @@ window.wp = window.wp || {};
 	 *
 	 * @since 2.5.0
 	 */
-=======
-
-( function( $ ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	function SwitchEditors() {
 		var tinymce, $$,
 			exports = {};
@@ -22,7 +17,6 @@ window.wp = window.wp || {};
 				tinymce = window.tinymce;
 				$$ = tinymce.$;
 
-<<<<<<< HEAD
 				/**
 				 * @summary Handles onclick events for the Visual/Text tabs.
 				 *
@@ -30,8 +24,6 @@ window.wp = window.wp || {};
 				 *
 				 * @returns {void}
 				 */
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$$( document ).on( 'click', function( event ) {
 					var id, mode,
 						target = $$( event.target );
@@ -45,7 +37,6 @@ window.wp = window.wp || {};
 			}
 		}
 
-<<<<<<< HEAD
 		/**
 		 * @summary Returns the height of the editor toolbar(s) in px.
 		 *
@@ -55,8 +46,6 @@ window.wp = window.wp || {};
 		 * @returns {number} If the height is between 10 and 200 return the height,
 		 * else return 30.
 		 */
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		function getToolbarHeight( editor ) {
 			var node = $$( '.mce-toolbar-grp', editor.getContainer() )[0],
 				height = node && node.clientHeight;
@@ -68,7 +57,6 @@ window.wp = window.wp || {};
 			return 30;
 		}
 
-<<<<<<< HEAD
 		/**
 		 * @summary Switches the editor between Visual and Text mode.
 		 *
@@ -80,8 +68,6 @@ window.wp = window.wp || {};
 		 * @param {string} mode The mode you want to switch to. Default: `toggle`.
 		 * @returns {void}
 		 */
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		function switchEditor( id, mode ) {
 			id = id || 'content';
 			mode = mode || 'toggle';
@@ -101,18 +87,12 @@ window.wp = window.wp || {};
 			}
 
 			if ( 'tmce' === mode || 'tinymce' === mode ) {
-<<<<<<< HEAD
 				// If the editor is visible we are already in `tinymce` mode.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				if ( editor && ! editor.isHidden() ) {
 					return false;
 				}
 
-<<<<<<< HEAD
 				// Insert closing tags for any open tags in QuickTags.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				if ( typeof( window.QTags ) !== 'undefined' ) {
 					window.QTags.closeAllTags( id );
 				}
@@ -122,20 +102,12 @@ window.wp = window.wp || {};
 				if ( editor ) {
 					editor.show();
 
-<<<<<<< HEAD
 					// No point to resize the iframe in iOS.
-=======
-					// No point resizing the iframe in iOS
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					if ( ! tinymce.Env.iOS && editorHeight ) {
 						toolbarHeight = getToolbarHeight( editor );
 						editorHeight = editorHeight - toolbarHeight + 14;
 
-<<<<<<< HEAD
 						// Sane limit for the editor height.
-=======
-						// height cannot be under 50 or over 5000
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						if ( editorHeight > 50 && editorHeight < 5000 ) {
 							editor.theme.resizeTo( null, editorHeight );
 						}
@@ -149,19 +121,13 @@ window.wp = window.wp || {};
 				window.setUserSetting( 'editor', 'tinymce' );
 
 			} else if ( 'html' === mode ) {
-<<<<<<< HEAD
 				// If the editor is hidden (Quicktags is shown) we don't need to switch.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				if ( editor && editor.isHidden() ) {
 					return false;
 				}
 
 				if ( editor ) {
-<<<<<<< HEAD
 					// Don't resize the textarea in iOS. The iframe is forced to 100% height there, we shouldn't match it.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					if ( ! tinymce.Env.iOS ) {
 						iframe = editor.iframeElement;
 						editorHeight = iframe ? parseInt( iframe.style.height, 10 ) : 0;
@@ -170,11 +136,7 @@ window.wp = window.wp || {};
 							toolbarHeight = getToolbarHeight( editor );
 							editorHeight = editorHeight + toolbarHeight - 14;
 
-<<<<<<< HEAD
 							// Sane limit for the textarea height.
-=======
-							// height cannot be under 50 or over 5000
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							if ( editorHeight > 50 && editorHeight < 5000 ) {
 								textarea.style.height = editorHeight + 'px';
 							}
@@ -183,11 +145,7 @@ window.wp = window.wp || {};
 
 					editor.hide();
 				} else {
-<<<<<<< HEAD
 					// There is probably a JS error on the page. The TinyMCE editor instance doesn't exist. Show the textarea.
-=======
-					// The TinyMCE instance doesn't exist, show the textarea
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					$textarea.css({ 'display': '', 'visibility': '' });
 				}
 
@@ -197,7 +155,6 @@ window.wp = window.wp || {};
 			}
 		}
 
-<<<<<<< HEAD
 		/**
 		 * @summary Replaces <p> tags with two line breaks. "Opposite" of wpautop().
 		 *
@@ -214,11 +171,6 @@ window.wp = window.wp || {};
 		 */
 		function removep( html ) {
 			var blocklist = 'blockquote|ul|ol|li|dl|dt|dd|table|thead|tbody|tfoot|tr|th|td|h[1-6]|fieldset|figure',
-=======
-		// Replace paragraphs with double line breaks
-		function removep( html ) {
-			var blocklist = 'blockquote|ul|ol|li|dl|dt|dd|table|thead|tbody|tfoot|tr|th|td|h[1-6]|fieldset',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				blocklist1 = blocklist + '|div|p',
 				blocklist2 = blocklist + '|pre',
 				preserve_linebreaks = false,
@@ -229,11 +181,7 @@ window.wp = window.wp || {};
 				return '';
 			}
 
-<<<<<<< HEAD
 			// Protect script and style tags.
-=======
-			// Preserve script and style tags.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( html.indexOf( '<script' ) !== -1 || html.indexOf( '<style' ) !== -1 ) {
 				html = html.replace( /<(script|style)[^>]*>[\s\S]*?<\/\1>/g, function( match ) {
 					preserve.push( match );
@@ -251,11 +199,7 @@ window.wp = window.wp || {};
 				});
 			}
 
-<<<<<<< HEAD
 			// Remove line breaks but keep <br> tags inside image captions.
-=======
-			// keep <br> tags inside captions and remove line breaks
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( html.indexOf( '[caption' ) !== -1 ) {
 				preserve_br = true;
 				html = html.replace( /\[caption[\s\S]+?\[\/caption\]/g, function( a ) {
@@ -263,18 +207,13 @@ window.wp = window.wp || {};
 				});
 			}
 
-<<<<<<< HEAD
 			// Normalize white space characters before and after block tags.
-=======
-			// Pretty it up for the source editor
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			html = html.replace( new RegExp( '\\s*</(' + blocklist1 + ')>\\s*', 'g' ), '</$1>\n' );
 			html = html.replace( new RegExp( '\\s*<((?:' + blocklist1 + ')(?: [^>]*)?)>', 'g' ), '\n<$1>' );
 
 			// Mark </p> if it has any attributes.
 			html = html.replace( /(<p [^>]+>.*?)<\/p>/g, '$1</p#>' );
 
-<<<<<<< HEAD
 			// Preserve the first <p> inside a <div>.
 			html = html.replace( /<div( [^>]*)?>\s*<p>/gi, '<div$1>\n\n' );
 
@@ -310,51 +249,23 @@ window.wp = window.wp || {};
 			html = html.replace( /<((li|dt|dd)[^>]*)>/g, ' \t<$1>' );
 
 			// Fix line breaks around <select> and <option>.
-=======
-			// Separate <div> containing <p>
-			html = html.replace( /<div( [^>]*)?>\s*<p>/gi, '<div$1>\n\n' );
-
-			// Remove <p> and <br />
-			html = html.replace( /\s*<p>/gi, '' );
-			html = html.replace( /\s*<\/p>\s*/gi, '\n\n' );
-			html = html.replace( /\n[\s\u00a0]+\n/g, '\n\n' );
-			html = html.replace( /\s*<br ?\/?>\s*/gi, '\n' );
-
-			// Fix some block element newline issues
-			html = html.replace( /\s*<div/g, '\n<div' );
-			html = html.replace( /<\/div>\s*/g, '</div>\n' );
-			html = html.replace( /\s*\[caption([^\[]+)\[\/caption\]\s*/gi, '\n\n[caption$1[/caption]\n\n' );
-			html = html.replace( /caption\]\n\n+\[caption/g, 'caption]\n\n[caption' );
-
-			html = html.replace( new RegExp('\\s*<((?:' + blocklist2 + ')(?: [^>]*)?)\\s*>', 'g' ), '\n<$1>' );
-			html = html.replace( new RegExp('\\s*</(' + blocklist2 + ')>\\s*', 'g' ), '</$1>\n' );
-			html = html.replace( /<((li|dt|dd)[^>]*)>/g, ' \t<$1>' );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( html.indexOf( '<option' ) !== -1 ) {
 				html = html.replace( /\s*<option/g, '\n<option' );
 				html = html.replace( /\s*<\/select>/g, '\n</select>' );
 			}
 
-<<<<<<< HEAD
 			// Pad <hr> with two line breaks.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( html.indexOf( '<hr' ) !== -1 ) {
 				html = html.replace( /\s*<hr( [^>]*)?>\s*/g, '\n\n<hr$1>\n\n' );
 			}
 
-<<<<<<< HEAD
 			// Remove line breaks in <object> tags.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( html.indexOf( '<object' ) !== -1 ) {
 				html = html.replace( /<object[\s\S]+?<\/object>/g, function( a ) {
 					return a.replace( /[\r\n]+/g, '' );
 				});
 			}
 
-<<<<<<< HEAD
 			// Unmark special paragraph closing tags.
 			html = html.replace( /<\/p#>/g, '</p>\n' );
 
@@ -365,34 +276,15 @@ window.wp = window.wp || {};
 			html = html.replace( /^\s+/, '' );
 			html = html.replace( /[\s\u00a0]+$/, '' );
 
-=======
-			// Unmark special paragraph closing tags
-			html = html.replace( /<\/p#>/g, '</p>\n' );
-			html = html.replace( /\s*(<p [^>]+>[\s\S]*?<\/p>)/g, '\n$1' );
-
-			// Trim whitespace
-			html = html.replace( /^\s+/, '' );
-			html = html.replace( /[\s\u00a0]+$/, '' );
-
-			// put back the line breaks in pre|script
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( preserve_linebreaks ) {
 				html = html.replace( /<wp-line-break>/g, '\n' );
 			}
 
-<<<<<<< HEAD
-=======
-			// and the <br> tags in captions
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( preserve_br ) {
 				html = html.replace( /<wp-temp-br([^>]*)>/g, '<br$1>' );
 			}
 
-<<<<<<< HEAD
 			// Restore preserved tags.
-=======
-			// Put back preserved tags.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( preserve.length ) {
 				html = html.replace( /<wp-preserve>/g, function() {
 					return preserve.shift();
@@ -402,7 +294,6 @@ window.wp = window.wp || {};
 			return html;
 		}
 
-<<<<<<< HEAD
 		/**
 		 * @summary Replaces two line breaks with a paragraph tag and one line break with a <br>.
 		 *
@@ -415,9 +306,6 @@ window.wp = window.wp || {};
 		 * @param {string} text The text input.
 		 * @returns {string} The formatted text.
 		 */
-=======
-		// Similar to `wpautop()` in formatting.php
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		function autop( text ) {
 			var preserve_linebreaks = false,
 				preserve_br = false,
@@ -425,40 +313,26 @@ window.wp = window.wp || {};
 					'|form|map|area|blockquote|address|math|style|p|h[1-6]|hr|fieldset|legend|section' +
 					'|article|aside|hgroup|header|footer|nav|figure|figcaption|details|menu|summary';
 
-<<<<<<< HEAD
 			// Normalize line breaks.
-=======
-			// Normalize line breaks
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			text = text.replace( /\r\n|\r/g, '\n' );
 
 			if ( text.indexOf( '\n' ) === -1 ) {
 				return text;
 			}
 
-<<<<<<< HEAD
 			// Remove line breaks from <object>.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( text.indexOf( '<object' ) !== -1 ) {
 				text = text.replace( /<object[\s\S]+?<\/object>/g, function( a ) {
 					return a.replace( /\n+/g, '' );
 				});
 			}
 
-<<<<<<< HEAD
 			// Remove line breaks from tags.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			text = text.replace( /<[^<>]+>/g, function( a ) {
 				return a.replace( /[\n\t ]+/g, ' ' );
 			});
 
-<<<<<<< HEAD
 			// Preserve line breaks in <pre> and <script> tags.
-=======
-			// Protect pre|script tags
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( text.indexOf( '<pre' ) !== -1 || text.indexOf( '<script' ) !== -1 ) {
 				preserve_linebreaks = true;
 				text = text.replace( /<(pre|script)[^>]*>[\s\S]*?<\/\1>/g, function( a ) {
@@ -466,7 +340,6 @@ window.wp = window.wp || {};
 				});
 			}
 
-<<<<<<< HEAD
 			if ( text.indexOf( '<figcaption' ) !== -1 ) {
 				text = text.replace( /\s*(<figcaption[^>]*>)/g, '$1' );
 				text = text.replace( /<\/figcaption>\s*/g, '</figcaption>' );
@@ -483,26 +356,12 @@ window.wp = window.wp || {};
 						return b.replace( /[\n\t ]+/, ' ' );
 					});
 
-=======
-			// keep <br> tags inside captions and convert line breaks
-			if ( text.indexOf( '[caption' ) !== -1 ) {
-				preserve_br = true;
-				text = text.replace( /\[caption[\s\S]+?\[\/caption\]/g, function( a ) {
-					// keep existing <br>
-					a = a.replace( /<br([^>]*)>/g, '<wp-temp-br$1>' );
-					// no line breaks inside HTML tags
-					a = a.replace( /<[^<>]+>/g, function( b ) {
-						return b.replace( /[\n\t ]+/, ' ' );
-					});
-					// convert remaining line breaks to <br>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					return a.replace( /\s*\n\s*/g, '<wp-temp-br />' );
 				});
 			}
 
 			text = text + '\n\n';
 			text = text.replace( /<br \/>\s*<br \/>/gi, '\n\n' );
-<<<<<<< HEAD
 
 			// Pad block tags with two line breaks.
 			text = text.replace( new RegExp( '(<(?:' + blocklist + ')(?: [^>]*)?>)', 'gi' ), '\n\n$1' );
@@ -547,33 +406,6 @@ window.wp = window.wp || {};
 			text = text.replace( /(?:<p>|<br ?\/?>)*\s*\[caption([^\[]+)\[\/caption\]\s*(?:<\/p>|<br ?\/?>)*/gi, '[caption$1[/caption]' );
 
 			// Make sure there is <p> when there is </p> inside block tags that can contain other blocks.
-=======
-			text = text.replace( new RegExp( '(<(?:' + blocklist + ')(?: [^>]*)?>)', 'gi' ), '\n\n$1' );
-			text = text.replace( new RegExp( '(</(?:' + blocklist + ')>)', 'gi' ), '$1\n\n' );
-			text = text.replace( /<hr( [^>]*)?>/gi, '<hr$1>\n\n' ); // hr is self closing block element
-			text = text.replace( /\s*<option/gi, '<option' ); // No <p> or <br> around <option>
-			text = text.replace( /<\/option>\s*/gi, '</option>' );
-			text = text.replace( /\n\s*\n+/g, '\n\n' );
-			text = text.replace( /([\s\S]+?)\n\n/g, '<p>$1</p>\n' );
-			text = text.replace( /<p>\s*?<\/p>/gi, '');
-			text = text.replace( new RegExp( '<p>\\s*(</?(?:' + blocklist + ')(?: [^>]*)?>)\\s*</p>', 'gi' ), '$1' );
-			text = text.replace( /<p>(<li.+?)<\/p>/gi, '$1');
-			text = text.replace( /<p>\s*<blockquote([^>]*)>/gi, '<blockquote$1><p>');
-			text = text.replace( /<\/blockquote>\s*<\/p>/gi, '</p></blockquote>');
-			text = text.replace( new RegExp( '<p>\\s*(</?(?:' + blocklist + ')(?: [^>]*)?>)', 'gi' ), '$1' );
-			text = text.replace( new RegExp( '(</?(?:' + blocklist + ')(?: [^>]*)?>)\\s*</p>', 'gi' ), '$1' );
-
-			// Remove redundant spaces and line breaks after existing <br /> tags
-			text = text.replace( /(<br[^>]*>)\s*\n/gi, '$1' );
-
-			// Create <br /> from the remaining line breaks
-			text = text.replace( /\s*\n/g, '<br />\n');
-
-			text = text.replace( new RegExp( '(</?(?:' + blocklist + ')[^>]*>)\\s*<br />', 'gi' ), '$1' );
-			text = text.replace( /<br \/>(\s*<\/?(?:p|li|div|dl|dd|dt|th|pre|td|ul|ol)>)/gi, '$1' );
-			text = text.replace( /(?:<p>|<br ?\/?>)*\s*\[caption([^\[]+)\[\/caption\]\s*(?:<\/p>|<br ?\/?>)*/gi, '[caption$1[/caption]' );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			text = text.replace( /(<(?:div|th|td|form|fieldset|dd)[^>]*>)(.*?)<\/p>/g, function( a, b, c ) {
 				if ( c.match( /<p( [^>]*)?>/ ) ) {
 					return a;
@@ -582,19 +414,12 @@ window.wp = window.wp || {};
 				return b + '<p>' + c + '</p>';
 			});
 
-<<<<<<< HEAD
 			// Restore the line breaks in <pre> and <script> tags.
-=======
-			// put back the line breaks in pre|script
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( preserve_linebreaks ) {
 				text = text.replace( /<wp-line-break>/g, '\n' );
 			}
 
-<<<<<<< HEAD
 			// Restore the <br> tags in captions.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( preserve_br ) {
 				text = text.replace( /<wp-temp-br([^>]*)>/g, '<br$1>' );
 			}
@@ -602,7 +427,6 @@ window.wp = window.wp || {};
 			return text;
 		}
 
-<<<<<<< HEAD
 		/**
 		 * @summary Fires custom jQuery events `beforePreWpautop` and `afterPreWpautop` when jQuery is available.
 		 *
@@ -613,9 +437,6 @@ window.wp = window.wp || {};
 		 * @param {String} html The content from the visual editor.
 		 * @returns {String} the filtered content.
 		 */
-=======
-		// Add old events
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		function pre_wpautop( html ) {
 			var obj = { o: exports, data: html, unfiltered: html };
 
@@ -632,7 +453,6 @@ window.wp = window.wp || {};
 			return obj.data;
 		}
 
-<<<<<<< HEAD
 		/**
 		 * @summary Fires custom jQuery events `beforeWpautop` and `afterWpautop` when jQuery is available.
 		 *
@@ -643,8 +463,6 @@ window.wp = window.wp || {};
 		 * @param {String} text The content from the text editor.
 		 * @returns {String} filtered content.
 		 */
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		function wpautop( text ) {
 			var obj = { o: exports, data: text, unfiltered: text };
 
@@ -675,15 +493,8 @@ window.wp = window.wp || {};
 			} );
 		}
 
-<<<<<<< HEAD
 		wp.editor.autop = wpautop;
 		wp.editor.removep = pre_wpautop;
-=======
-		window.wp = window.wp || {};
-		window.wp.editor = window.wp.editor || {};
-		window.wp.editor.autop = wpautop;
-		window.wp.editor.removep = pre_wpautop;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		exports = {
 			go: switchEditor,
@@ -696,7 +507,6 @@ window.wp = window.wp || {};
 		return exports;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * @namespace {SwitchEditors} switchEditors
 	 * Expose the switch editors to be used globally.
@@ -881,7 +691,3 @@ window.wp = window.wp || {};
 	};
 
 }( window.jQuery, window.wp ));
-=======
-	window.switchEditors = new SwitchEditors();
-}( window.jQuery ));
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

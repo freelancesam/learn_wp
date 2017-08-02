@@ -79,14 +79,11 @@ class WC_Install {
 			'wc_update_300_product_visibility',
 			'wc_update_300_db_version',
 		),
-<<<<<<< HEAD
 		'3.1.0' => array(
 			'wc_update_310_downloadable_products',
 			'wc_update_310_old_comments',
 			'wc_update_310_db_version',
 		),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	);
 
 	/** @var object Background update class */
@@ -105,10 +102,7 @@ class WC_Install {
 		add_filter( 'wpmu_drop_tables', array( __CLASS__, 'wpmu_drop_tables' ) );
 		add_filter( 'cron_schedules', array( __CLASS__, 'cron_schedules' ) );
 		add_action( 'woocommerce_plugin_background_installer', array( __CLASS__, 'background_installer' ), 10, 2 );
-<<<<<<< HEAD
 		add_action( 'woocommerce_theme_background_installer', array( __CLASS__, 'theme_background_installer' ), 10, 1 );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -122,11 +116,7 @@ class WC_Install {
 	/**
 	 * Check WooCommerce version and run the updater is required.
 	 *
-<<<<<<< HEAD
 	 * This check is done on all requests and runs if the versions do not match.
-=======
-	 * This check is done on all requests and runs if he versions do not match.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function check_version() {
 		if ( ! defined( 'IFRAME_REQUEST' ) && get_option( 'woocommerce_version' ) !== WC()->version ) {
@@ -532,12 +522,8 @@ CREATE TABLE {$wpdb->prefix}woocommerce_downloadable_product_permissions (
   download_count BIGINT UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY  (permission_id),
   KEY download_order_key_product (product_id,order_id,order_key(16),download_id),
-<<<<<<< HEAD
   KEY download_order_product (download_id,order_id,product_id),
   KEY order_id (order_id)
-=======
-  KEY download_order_product (download_id,order_id,product_id)
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 ) $collate;
 CREATE TABLE {$wpdb->prefix}woocommerce_order_items (
   order_item_id BIGINT UNSIGNED NOT NULL auto_increment,
@@ -846,11 +832,8 @@ CREATE TABLE {$wpdb->prefix}woocommerce_termmeta (
 
 	/**
 	 * Show plugin changes. Code adapted from W3 Total Cache.
-<<<<<<< HEAD
 	 *
 	 * @param array $args
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function in_plugin_update_message( $args ) {
 		$transient_name = 'wc_upgrade_notice_' . $args['Version'];
@@ -864,11 +847,7 @@ CREATE TABLE {$wpdb->prefix}woocommerce_termmeta (
 			}
 		}
 
-<<<<<<< HEAD
 		echo apply_filters( 'woocommerce_in_plugin_update_message', wp_kses_post( $upgrade_notice ) );
-=======
-		echo wp_kses_post( $upgrade_notice );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -1115,7 +1094,6 @@ CREATE TABLE {$wpdb->prefix}woocommerce_termmeta (
 			}
 		}
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Install a theme from .org in the background via a cron job (used by installer - opt in).
@@ -1175,8 +1153,6 @@ CREATE TABLE {$wpdb->prefix}woocommerce_termmeta (
 			ob_end_clean();
 		}
 	}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 WC_Install::init();

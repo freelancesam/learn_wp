@@ -167,7 +167,6 @@ class PO extends Gettext_Translations {
 	 * @param string $with prepend lines with this string
 	 */
 	public static function prepend_each_line($string, $with) {
-<<<<<<< HEAD
 		$lines = explode("\n", $string);
 		$append = '';
 		if ("\n" === substr($string, -1) && '' === end($lines)) {
@@ -182,16 +181,6 @@ class PO extends Gettext_Translations {
 		}
 		unset($line);
 		return implode("\n", $lines) . $append;
-=======
-		$php_with = var_export($with, true);
-		$lines = explode("\n", $string);
-		// do not prepend the string on the last empty line, artefact by explode
-		if ("\n" == substr($string, -1)) unset($lines[count($lines) - 1]);
-		$res = implode("\n", array_map(create_function('$x', "return $php_with.\$x;"), $lines));
-		// give back the empty line, we ignored above
-		if ("\n" == substr($string, -1)) $res .= "\n";
-		return $res;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -297,7 +286,6 @@ class PO extends Gettext_Translations {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Helper function for read_entry
 	 * @param string $context
 	 * @return bool
@@ -307,8 +295,6 @@ class PO extends Gettext_Translations {
 	}
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param resource $f
 	 * @param int      $lineno
 	 * @return null|false|array
@@ -319,20 +305,12 @@ class PO extends Gettext_Translations {
 		// can be: comment, msgctxt, msgid, msgid_plural, msgstr, msgstr_plural
 		$context = '';
 		$msgstr_index = 0;
-<<<<<<< HEAD
-=======
-		$is_final = create_function('$context', 'return $context == "msgstr" || $context == "msgstr_plural";');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		while (true) {
 			$lineno++;
 			$line = PO::read_line($f);
 			if (!$line)  {
 				if (feof($f)) {
-<<<<<<< HEAD
 					if (self::is_final($context))
-=======
-					if ($is_final($context))
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						break;
 					elseif (!$context) // we haven't read a line and eof came
 						return null;
@@ -346,11 +324,7 @@ class PO extends Gettext_Translations {
 			$line = trim($line);
 			if (preg_match('/^#/', $line, $m)) {
 				// the comment is the start of a new entry
-<<<<<<< HEAD
 				if (self::is_final($context)) {
-=======
-				if ($is_final($context)) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					PO::read_line($f, 'put-back');
 					$lineno--;
 					break;
@@ -362,11 +336,7 @@ class PO extends Gettext_Translations {
 				// add comment
 				$this->add_comment_to_entry($entry, $line);
 			} elseif (preg_match('/^msgctxt\s+(".*")/', $line, $m)) {
-<<<<<<< HEAD
 				if (self::is_final($context)) {
-=======
-				if ($is_final($context)) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					PO::read_line($f, 'put-back');
 					$lineno--;
 					break;
@@ -377,11 +347,7 @@ class PO extends Gettext_Translations {
 				$context = 'msgctxt';
 				$entry->context .= PO::unpoify($m[1]);
 			} elseif (preg_match('/^msgid\s+(".*")/', $line, $m)) {
-<<<<<<< HEAD
 				if (self::is_final($context)) {
-=======
-				if ($is_final($context)) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					PO::read_line($f, 'put-back');
 					$lineno--;
 					break;
@@ -431,7 +397,6 @@ class PO extends Gettext_Translations {
 				return false;
 			}
 		}
-<<<<<<< HEAD
 
 		$have_translations = false;
 		foreach ( $entry->translations as $t ) {
@@ -444,11 +409,6 @@ class PO extends Gettext_Translations {
 			$entry->translations = array();
 		}
 
-=======
-		if (array() == array_filter($entry->translations, create_function('$t', 'return $t || "0" === $t;'))) {
-			$entry->translations = array();
-		}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return array('entry' => $entry, 'lineno' => $lineno);
 	}
 

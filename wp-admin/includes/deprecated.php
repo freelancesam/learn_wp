@@ -1295,7 +1295,6 @@ function wp_dashboard_secondary() {}
 function wp_dashboard_secondary_control() {}
 
 /**
-<<<<<<< HEAD
  * Display plugins text for the WordPress news widget.
  *
  * @since 2.5.0
@@ -1378,8 +1377,6 @@ function wp_dashboard_plugins_output( $rss, $args = array() ) {
 }
 
 /**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * This was once used to move child posts to a new parent.
  *
  * @since 2.3.0

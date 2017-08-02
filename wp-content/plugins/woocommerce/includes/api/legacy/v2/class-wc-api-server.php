@@ -380,13 +380,8 @@ class WC_API_Server {
 	 * urldecode deep.
 	 *
 	 * @since  2.2
-<<<<<<< HEAD
 	 * @param  string|array $value Data to decode with urldecode.
 	 * @return string|array        Decoded data.
-=======
-	 * @param  string/array $value Data to decode with urldecode.
-	 * @return string/array        Decoded data.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function urldecode_deep( $value ) {
 		if ( is_array( $value ) ) {
@@ -403,17 +398,11 @@ class WC_API_Server {
 	 * by the parameters the method actually needs, using the Reflection API
 	 *
 	 * @since 2.2
-<<<<<<< HEAD
 	 *
 	 * @param callable|array $callback the endpoint callback
 	 * @param array $provided the provided request parameters
 	 *
 	 * @return array|WP_Error
-=======
-	 * @param callable|array $callback the endpoint callback
-	 * @param array $provided the provided request parameters
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function sort_callback_params( $callback, $provided ) {
 		if ( is_array( $callback ) ) {

@@ -515,11 +515,7 @@ function wp_start_object_cache() {
 	}
 
 	if ( function_exists( 'wp_cache_add_global_groups' ) ) {
-<<<<<<< HEAD
 		wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'blog-lookup', 'blog-details', 'site-details', 'rss', 'global-posts', 'blog-id-cache', 'networks', 'sites' ) );
-=======
-		wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'site-lookup', 'blog-lookup', 'blog-details', 'site-details', 'rss', 'global-posts', 'blog-id-cache', 'networks', 'sites' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		wp_cache_add_non_persistent_groups( array( 'counts', 'plugins' ) );
 	}
 }
@@ -1064,7 +1060,6 @@ function wp_doing_ajax() {
 }
 
 /**
-<<<<<<< HEAD
  * Determines whether the current request is a WordPress cron request.
  *
  * @since 4.8.0
@@ -1083,8 +1078,6 @@ function wp_doing_cron() {
 }
 
 /**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * Check whether variable is a WordPress Error.
  *
  * Returns true if $thing is an object of the WP_Error class.
@@ -1097,7 +1090,6 @@ function wp_doing_cron() {
 function is_wp_error( $thing ) {
 	return ( $thing instanceof WP_Error );
 }
-<<<<<<< HEAD
 
 /**
  * Determines whether file modifications are allowed.
@@ -1118,5 +1110,3 @@ function wp_is_file_mod_allowed( $context ) {
 	 */
 	return apply_filters( 'file_mod_allowed', ! defined( 'DISALLOW_FILE_MODS' ) || ! DISALLOW_FILE_MODS, $context );
 }
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

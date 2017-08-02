@@ -5,7 +5,6 @@
  * @package WordPress
  * @subpackage Twenty_Seventeen
  * @since 1.0
-<<<<<<< HEAD
  * @version 1.2
  */
 
@@ -19,14 +18,6 @@
 		?>
 	</button>
 
-=======
- * @version 1.0
- */
-
-?>
-<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php _e( 'Top Menu', 'twentyseventeen' ); ?>">
-	<button class="menu-toggle" aria-controls="top-menu" aria-expanded="false"><?php echo twentyseventeen_get_svg( array( 'icon' => 'bars' ) ); echo twentyseventeen_get_svg( array( 'icon' => 'close' ) ); _e( 'Menu', 'twentyseventeen' ); ?></button>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	<?php wp_nav_menu( array(
 		'theme_location' => 'top',
 		'menu_id'        => 'top-menu',

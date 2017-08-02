@@ -129,7 +129,6 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 					'/>';
 				} );
 			}
-<<<<<<< HEAD
 		}
 	});
 
@@ -144,19 +143,6 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 				}
 			}
 		} );
-=======
-
-			// Remove spaces from empty paragraphs.
-			// Try to avoid a lot of backtracking, can freeze the editor. See #35890 and #38294.
-			event.content = event.content.replace( /<p>([^<>]+)<\/p>/gi, function( tag, text ) {
-				if ( text === '&nbsp;' || ! /\S/.test( text ) ) {
-					return '<p><br /></p>';
-				}
-
-				return tag;
-			});
-		}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	});
 
 	editor.on( 'PostProcess', function( event ) {
@@ -557,24 +543,17 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 
 			editor.on( 'PastePostProcess', function( event ) {
 				// Remove empty paragraphs
-<<<<<<< HEAD
 				editor.$( 'p', event.node ).each( function( i, node ) {
-=======
-				each( dom.select( 'p', event.node ), function( node ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					if ( dom.isEmpty( node ) ) {
 						dom.remove( node );
 					}
 				});
-<<<<<<< HEAD
 
 				if ( tinymce.isIE ) {
 					editor.$( 'a', event.node ).find( 'font, u' ).each( function( i, node ) {
 						dom.remove( node, true );
 					});
 				}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			});
 		}
 
@@ -993,20 +972,12 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 			}
 
 			if ( args.toolbar ) {
-<<<<<<< HEAD
 				activeToolbar = args.toolbar;
 
 				if ( activeToolbar.visible() ) {
 					activeToolbar.reposition();
 				} else {
 					activeToolbar.show();
-=======
-				if ( activeToolbar !== args.toolbar ) {
-					activeToolbar = args.toolbar;
-					activeToolbar.show();
-				} else {
-					activeToolbar.reposition();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			} else {
 				activeToolbar = false;
@@ -1021,11 +992,7 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 
 		function hide( event ) {
 			if ( activeToolbar ) {
-<<<<<<< HEAD
 				if ( activeToolbar.tempHide || event.type === 'hide' || event.type === 'blur' ) {
-=======
-				if ( activeToolbar.tempHide || event.type === 'hide' ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					activeToolbar.hide();
 					activeToolbar = false;
 				} else if ( (

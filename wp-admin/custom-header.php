@@ -42,11 +42,7 @@ class Custom_Image_Header {
 
 	/**
 	 * Used to trigger a success message when settings updated and set to true.
-<<<<<<< HEAD
 	 *
-=======
- 	 *
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @since 3.0.0
 	 * @access private
 	 * @var bool
@@ -1101,11 +1097,8 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	/**
 	 * Calculate width and height based on what the currently selected theme supports.
 	 *
-<<<<<<< HEAD
 	 * @since 3.9.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array $dimensions
 	 * @return array dst_height and dst_width of header image.
 	 */
@@ -1156,16 +1149,10 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	/**
 	 * Create an attachment 'object'.
 	 *
-<<<<<<< HEAD
 	 * @since 3.9.0
 	 *
 	 * @param string $cropped              Cropped image URL.
 	 * @param int    $parent_attachment_id Attachment ID of parent image.
-=======
-	 * @param string $cropped              Cropped image URL.
-	 * @param int    $parent_attachment_id Attachment ID of parent image.
-	 *
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array Attachment object.
 	 */
 	final public function create_attachment_object( $cropped, $parent_attachment_id ) {
@@ -1190,16 +1177,10 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	/**
 	 * Insert an attachment and its metadata.
 	 *
-<<<<<<< HEAD
 	 * @since 3.9.0
 	 *
 	 * @param array  $object  Attachment object.
 	 * @param string $cropped Cropped image URL.
-=======
-	 * @param array  $object  Attachment object.
-	 * @param string $cropped Cropped image URL.
-	 *
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return int Attachment ID.
 	 */
 	final public function insert_attachment( $object, $cropped ) {
@@ -1222,11 +1203,8 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	/**
 	 * Gets attachment uploaded by Media Manager, crops it, then saves it as a
 	 * new object. Returns JSON-encoded object details.
-<<<<<<< HEAD
 	 *
 	 * @since 3.9.0
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function ajax_header_crop() {
 		check_ajax_referer( 'image_editor-' . $_POST['id'], 'nonce' );
@@ -1285,11 +1263,8 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	 *
 	 * Triggered when the user tries adds a new header image from the
 	 * Media Manager, even if s/he doesn't save that change.
-<<<<<<< HEAD
 	 *
 	 * @since 3.9.0
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function ajax_header_add() {
 		check_ajax_referer( 'header-add', 'nonce' );
@@ -1316,11 +1291,8 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	 *
 	 * Triggered when the user clicks the overlay "X" button next to each image
 	 * choice in the Customizer's Header tool.
-<<<<<<< HEAD
 	 *
 	 * @since 3.9.0
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function ajax_header_remove() {
 		check_ajax_referer( 'header-remove', 'nonce' );
@@ -1342,16 +1314,11 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Updates the last-used postmeta on a header image attachment after saving a new header image via the Customizer.
 	 *
 	 * @since 3.9.0
 	 *
 	 * @param WP_Customize_Manager $wp_customize Customize manager.
-=======
-	 *
-	 * @param WP_Customize_Manager $wp_customize
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function customize_set_last_used( $wp_customize ) {
 		$data = $wp_customize->get_setting( 'header_image_data' )->post_value();
@@ -1366,16 +1333,11 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Gets the details of default header images if defined.
 	 *
 	 * @since 3.9.0
 	 *
 	 * @return array Default header images.
-=======
-	 *
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_default_header_images() {
 		$this->process_default_headers();
@@ -1414,16 +1376,11 @@ wp_nonce_field( 'custom-header-options', '_wpnonce-custom-header-options' ); ?>
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Gets the previously uploaded header images.
 	 *
 	 * @since 3.9.0
 	 *
 	 * @return array Uploaded header images.
-=======
-	 *
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_uploaded_header_images() {
 		$header_images = get_uploaded_header_images();

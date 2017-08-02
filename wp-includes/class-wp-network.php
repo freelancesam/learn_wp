@@ -267,11 +267,6 @@ class WP_Network {
 	 * @return WP_Network|bool Network object if successful. False when no network is found.
 	 */
 	public static function get_by_path( $domain = '', $path = '', $segments = null ) {
-<<<<<<< HEAD
-=======
-		global $wpdb;
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$domains = array( $domain );
 		$pieces  = explode( '.', $domain );
 
@@ -298,15 +293,11 @@ class WP_Network {
 		if ( wp_using_ext_object_cache() ) {
 			$using_paths = wp_cache_get( 'networks_have_paths', 'site-options' );
 			if ( false === $using_paths ) {
-<<<<<<< HEAD
 				$using_paths = get_networks( array(
 					'number'       => 1,
 					'count'        => true,
 					'path__not_in' => '/',
 				) );
-=======
-				$using_paths = (int) $wpdb->get_var( "SELECT id FROM {$wpdb->site} WHERE path <> '/' LIMIT 1" );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				wp_cache_add( 'networks_have_paths', $using_paths, 'site-options'  );
 			}
 		}
@@ -364,7 +355,6 @@ class WP_Network {
 			return $pre;
 		}
 
-<<<<<<< HEAD
 		if ( ! $using_paths ) {
 			$networks = get_networks( array(
 				'number'     => 1,
@@ -389,36 +379,6 @@ class WP_Network {
 			'domain__in' => $domains,
 			'path__in'   => $paths,
 		) );
-=======
-		// @todo Consider additional optimization routes, perhaps as an opt-in for plugins.
-		// We already have paths covered. What about how far domains should be drilled down (including www)?
-
-		$search_domains = "'" . implode( "', '", $wpdb->_escape( $domains ) ) . "'";
-
-		if ( ! $using_paths ) {
-			$network = $wpdb->get_row( "
-				SELECT * FROM {$wpdb->site}
-				WHERE domain IN ({$search_domains})
-				ORDER BY CHAR_LENGTH(domain)
-				DESC LIMIT 1
-			" );
-
-			if ( ! empty( $network ) && ! is_wp_error( $network ) ) {
-				return new WP_Network( $network );
-			}
-
-			return false;
-
-		} else {
-			$search_paths = "'" . implode( "', '", $wpdb->_escape( $paths ) ) . "'";
-			$networks = $wpdb->get_results( "
-				SELECT * FROM {$wpdb->site}
-				WHERE domain IN ({$search_domains})
-				AND path IN ({$search_paths})
-				ORDER BY CHAR_LENGTH(domain) DESC, CHAR_LENGTH(path) DESC
-			" );
-		}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		/*
 		 * Domains are sorted by length of domain, then by length of path.
@@ -440,11 +400,7 @@ class WP_Network {
 		}
 
 		if ( true === $found ) {
-<<<<<<< HEAD
 			return $network;
-=======
-			return new WP_Network( $network );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		return false;

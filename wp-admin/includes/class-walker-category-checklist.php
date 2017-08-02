@@ -84,30 +84,18 @@ class Walker_Category_Checklist extends Walker {
 		$args['selected_cats'] = empty( $args['selected_cats'] ) ? array() : $args['selected_cats'];
 
 		if ( ! empty( $args['list_only'] ) ) {
-<<<<<<< HEAD
 			$aria_checked = 'false';
-=======
-			$aria_cheched = 'false';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$inner_class = 'category';
 
 			if ( in_array( $category->term_id, $args['selected_cats'] ) ) {
 				$inner_class .= ' selected';
-<<<<<<< HEAD
 				$aria_checked = 'true';
-=======
-				$aria_cheched = 'true';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 
 			/** This filter is documented in wp-includes/category-template.php */
 			$output .= "\n" . '<li' . $class . '>' .
 				'<div class="' . $inner_class . '" data-term-id=' . $category->term_id .
-<<<<<<< HEAD
 				' tabindex="0" role="checkbox" aria-checked="' . $aria_checked . '">' .
-=======
-				' tabindex="0" role="checkbox" aria-checked="' . $aria_cheched . '">' .
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				esc_html( apply_filters( 'the_category', $category->name ) ) . '</div>';
 		} else {
 			/** This filter is documented in wp-includes/category-template.php */

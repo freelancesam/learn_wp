@@ -665,26 +665,20 @@
 
 		// Opens the panel.
 		open: function( menuControl ) {
-<<<<<<< HEAD
 			var panel = this, close;
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			this.currentMenuControl = menuControl;
 
 			this.itemSectionHeight();
 
 			$( 'body' ).addClass( 'adding-menu-items' );
 
-<<<<<<< HEAD
 			close = function() {
 				panel.close();
 				$( this ).off( 'click', close );
 			};
 			$( '#customize-preview' ).on( 'click', close );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			// Collapse all controls.
 			_( this.currentMenuControl.getMenuItemControls() ).each( function( control ) {
 				control.collapseForm();
@@ -1337,7 +1331,6 @@
 			this.container.find( '.menu-item-handle' ).on( 'click', function( e ) {
 				e.preventDefault();
 				e.stopPropagation();
-<<<<<<< HEAD
 				var menuControl = control.getMenuControl(),
 					isDeleteBtn = $( e.target ).is( '.item-delete, .item-delete *' ),
 					isAddNewBtn = $( e.target ).is( '.add-new-menu-item, .add-new-menu-item *' );
@@ -1346,9 +1339,6 @@
 					api.Menus.availableMenuItemsPanel.close();
 				}
 
-=======
-				var menuControl = control.getMenuControl();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				if ( menuControl.isReordering || menuControl.isSorting ) {
 					return;
 				}
@@ -1534,7 +1524,6 @@
 		 * Update item handle title when changed.
 		 */
 		_setupTitleUI: function() {
-<<<<<<< HEAD
 			var control = this, titleEl;
 
 			// Ensure that whitespace is trimmed on blur so placeholder can be shown.
@@ -1551,28 +1540,13 @@
 				trimmedTitle = $.trim( item.title );
 
 				titleText = trimmedTitle || item.original_title || api.Menus.data.l10n.untitled;
-=======
-			var control = this;
-
-			control.setting.bind( function( item ) {
-				if ( ! item ) {
-					return;
-				}
-
-				var titleEl = control.container.find( '.menu-item-title' ),
-				    titleText = item.title || item.original_title || api.Menus.data.l10n.untitled;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				if ( item._invalid ) {
 					titleText = api.Menus.data.l10n.invalidTitleTpl.replace( '%s', titleText );
 				}
 
 				// Don't update to an empty title.
-<<<<<<< HEAD
 				if ( trimmedTitle || item.original_title ) {
-=======
-				if ( item.title || item.original_title ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					titleEl
 						.text( titleText )
 						.removeClass( 'no-title' );
@@ -2255,11 +2229,7 @@
 				}
 			} );
 
-<<<<<<< HEAD
 			control.container.find( '.menu-delete-item' ).on( 'click', function( event ) {
-=======
-			control.container.find( '.menu-delete' ).on( 'click', function( event ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				event.stopPropagation();
 				event.preventDefault();
 				control.setting.set( false );

@@ -240,7 +240,6 @@ final class WP_Site {
 			case 'siteurl':
 			case 'post_count':
 			case 'home':
-<<<<<<< HEAD
 			default: // Custom properties added by 'site_details' filter.
 				if ( ! did_action( 'ms_loaded' ) ) {
 					return null;
@@ -250,13 +249,6 @@ final class WP_Site {
 				if ( isset( $details->$key ) ) {
 					return $details->$key;
 				}
-=======
-				if ( ! did_action( 'ms_loaded' ) ) {
-					return null;
-				}
-				$details = $this->get_details();
-				return $details->$key;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		return null;
@@ -287,7 +279,6 @@ final class WP_Site {
 					return false;
 				}
 				return true;
-<<<<<<< HEAD
 			default: // Custom properties added by 'site_details' filter.
 				if ( ! did_action( 'ms_loaded' ) ) {
 					return false;
@@ -297,8 +288,6 @@ final class WP_Site {
 				if ( isset( $details->$key ) ) {
 					return true;
 				}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		return false;
@@ -357,21 +346,7 @@ final class WP_Site {
 			$details->home       = get_option( 'home' );
 			restore_current_blog();
 
-<<<<<<< HEAD
 			wp_cache_set( $this->blog_id, $details, 'site-details' );
-=======
-			$cache_details = true;
-			foreach ( array( 'blogname', 'siteurl', 'post_count', 'home' ) as $field ) {
-				if ( false === $details->$field ) {
-					$cache_details = false;
-					break;
-				}
-			}
-
-			if ( $cache_details ) {
-				wp_cache_set( $this->blog_id, $details, 'site-details' );
-			}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		/** This filter is documented in wp-includes/ms-blogs.php */

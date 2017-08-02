@@ -398,7 +398,6 @@ function get_the_excerpt( $post = null ) {
 }
 
 /**
-<<<<<<< HEAD
  * Whether the post has a custom excerpt.
  *
  * @since 2.3.0
@@ -408,17 +407,6 @@ function get_the_excerpt( $post = null ) {
  */
 function has_excerpt( $post = 0 ) {
 	$post = get_post( $post );
-=======
- * Whether post has excerpt.
- *
- * @since 2.3.0
- *
- * @param int|WP_Post $id Optional. Post ID or post object.
- * @return bool
- */
-function has_excerpt( $id = 0 ) {
-	$post = get_post( $id );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	return ( !empty( $post->post_excerpt ) );
 }
 
@@ -805,10 +793,7 @@ function post_password_required( $post = null ) {
 		return apply_filters( 'post_password_required', true, $post );
 	}
 
-<<<<<<< HEAD
 	require_once ABSPATH . WPINC . '/class-phpass.php';
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$hasher = new PasswordHash( 8, true );
 
 	$hash = wp_unslash( $_COOKIE[ 'wp-postpass_' . COOKIEHASH ] );
@@ -1142,11 +1127,7 @@ function wp_dropdown_pages( $args = '' ) {
 }
 
 /**
-<<<<<<< HEAD
  * Retrieve or display list of pages (or hierarchical post type items) in list (li) format.
-=======
- * Retrieve or display list of pages in list (li) format.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * @since 1.5.0
  * @since 4.7.0 Added the `item_spacing` argument.

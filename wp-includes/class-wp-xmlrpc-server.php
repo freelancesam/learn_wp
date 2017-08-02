@@ -382,14 +382,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( isset($meta['id']) ) {
 				$meta['id'] = (int) $meta['id'];
 				$pmeta = get_metadata_by_mid( 'post', $meta['id'] );
-<<<<<<< HEAD
 
 				if ( ! $pmeta || $pmeta->post_id != $post_id ) {
 					continue;
 				}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				if ( isset($meta['key']) ) {
 					$meta['key'] = wp_unslash( $meta['key'] );
 					if ( $meta['key'] !== $pmeta->meta_key )
@@ -1303,7 +1300,6 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return IXR_Error|string
 	 */
 	protected function _insert_post( $user, $content_struct ) {
-<<<<<<< HEAD
 		$defaults = array(
 			'post_status'    => 'draft',
 			'post_type'      => 'post',
@@ -1329,12 +1325,6 @@ class wp_xmlrpc_server extends IXR_Server {
 		);
 
 		$post_data = wp_parse_args( array_intersect_key( $content_struct, $defaults ), $defaults );
-=======
-		$defaults = array( 'post_status' => 'draft', 'post_type' => 'post', 'post_author' => 0,
-			'post_password' => '', 'post_excerpt' => '', 'post_content' => '', 'post_title' => '' );
-
-		$post_data = wp_parse_args( $content_struct, $defaults );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$post_type = get_post_type_object( $post_data['post_type'] );
 		if ( ! $post_type )
@@ -1524,12 +1514,6 @@ class wp_xmlrpc_server extends IXR_Server {
 
 			$post_data['tax_input'] = $terms;
 			unset( $post_data['terms'], $post_data['terms_names'] );
-<<<<<<< HEAD
-=======
-		} else {
-			// Do not allow direct submission of 'tax_input', clients must use 'terms' and/or 'terms_names'.
-			unset( $post_data['tax_input'], $post_data['post_category'], $post_data['tags_input'] );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		if ( isset( $post_data['post_format'] ) ) {

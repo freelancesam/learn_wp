@@ -1,9 +1,5 @@
 ( function( tinymce ) {
-<<<<<<< HEAD
 	tinymce.ui.Factory.add( 'WPLinkPreview', tinymce.ui.Control.extend( {
-=======
-	tinymce.ui.WPLinkPreview = tinymce.ui.Control.extend( {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		url: '#',
 		renderHtml: function() {
 			return (
@@ -54,15 +50,9 @@
 				tinymce.$( this.getEl().firstChild ).attr( 'href', this.url ).text( url );
 			}
 		}
-<<<<<<< HEAD
 	} ) );
 
 	tinymce.ui.Factory.add( 'WPLinkInput', tinymce.ui.Control.extend( {
-=======
-	} );
-
-	tinymce.ui.WPLinkInput = tinymce.ui.Control.extend( {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		renderHtml: function() {
 			return (
 				'<div id="' + this._id + '" class="wp-link-input">' +
@@ -92,11 +82,7 @@
 			urlInput.value = '';
 			urlInput.nextSibling.value = '';
 		}
-<<<<<<< HEAD
 	} ) );
-=======
-	} );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	tinymce.PluginManager.add( 'wplink', function( editor ) {
 		var toolbar;
@@ -115,11 +101,7 @@
 
 		function getSelectedLink() {
 			var href, html,
-<<<<<<< HEAD
 				node = editor.selection.getStart(),
-=======
-				node = editor.selection.getNode(),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				link = editor.dom.getParent( node, 'a[href]' );
 
 			if ( ! link ) {
@@ -605,15 +587,9 @@
 						editor.focus(); // Needed for IE
 					}
 
-<<<<<<< HEAD
 					editToolbar.tempHide = true;
 					window.wpLink.open( editor.id, url, text, linkNode );
 
-=======
-					window.wpLink.open( editor.id, url, text, linkNode );
-
-					editToolbar.tempHide = true;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					inputInstance.reset();
 				}
 			}

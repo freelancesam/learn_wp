@@ -102,11 +102,7 @@ function get_option( $option, $default = false ) {
 					wp_cache_set( 'notoptions', $notoptions, 'options' );
 
 					/** This filter is documented in wp-includes/option.php */
-<<<<<<< HEAD
 					return apply_filters( "default_option_{$option}", $default, $option, $passed_default );
-=======
-					return apply_filters( 'default_option_' . $option, $default, $option, $passed_default );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			}
 		}
@@ -118,11 +114,7 @@ function get_option( $option, $default = false ) {
 			$value = $row->option_value;
 		} else {
 			/** This filter is documented in wp-includes/option.php */
-<<<<<<< HEAD
 			return apply_filters( "default_option_{$option}", $default, $option, $passed_default );
-=======
-			return apply_filters( 'default_option_' . $option, $default, $option, $passed_default );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	}
 
@@ -303,7 +295,6 @@ function update_option( $option, $value, $autoload = null ) {
 	 */
 	$value = apply_filters( 'pre_update_option', $value, $option, $old_value );
 
-<<<<<<< HEAD
 	/*
 	 * If the new and old values are the same, no need to update.
 	 *
@@ -319,14 +310,6 @@ function update_option( $option, $value, $autoload = null ) {
 
 	/** This filter is documented in wp-includes/option.php */
 	if ( apply_filters( "default_option_{$option}", false, $option, false ) === $old_value ) {
-=======
-	// If the new and old values are the same, no need to update.
-	if ( $value === $old_value )
-		return false;
-
-	/** This filter is documented in wp-includes/option.php */
-	if ( apply_filters( 'default_option_' . $option, false, $option, false ) === $old_value ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Default setting for new options is 'yes'.
 		if ( null === $autoload ) {
 			$autoload = 'yes';
@@ -447,11 +430,7 @@ function add_option( $option, $value = '', $deprecated = '', $autoload = 'yes' )
 	$notoptions = wp_cache_get( 'notoptions', 'options' );
 	if ( !is_array( $notoptions ) || !isset( $notoptions[$option] ) )
 		/** This filter is documented in wp-includes/option.php */
-<<<<<<< HEAD
 		if ( apply_filters( "default_option_{$option}", false, $option, false ) !== get_option( $option ) )
-=======
-		if ( apply_filters( 'default_option_' . $option, false, $option, false ) !== get_option( $option ) )
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			return false;
 
 	$serialized_value = maybe_serialize( $value );
@@ -829,11 +808,7 @@ function wp_user_settings() {
 		return;
 	}
 
-<<<<<<< HEAD
 	if ( ! is_user_member_of_blog() ) {
-=======
-	if ( is_super_admin() && ! is_user_member_of_blog() ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return;
 	}
 
@@ -997,11 +972,7 @@ function wp_set_all_user_settings( $user_settings ) {
 		return false;
 	}
 
-<<<<<<< HEAD
 	if ( ! is_user_member_of_blog() ) {
-=======
-	if ( is_super_admin() && ! is_user_member_of_blog() ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return;
 	}
 
@@ -1670,11 +1641,7 @@ function get_site_transient( $transient ) {
  * @see set_transient()
  *
  * @param string $transient  Transient name. Expected to not be SQL-escaped. Must be
-<<<<<<< HEAD
  *                           167 characters or fewer in length.
-=======
- *                           40 characters or fewer in length.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @param mixed  $value      Transient value. Expected to not be SQL-escaped.
  * @param int    $expiration Optional. Time until expiration in seconds. Default 0 (no expiration).
  * @return bool False if value was not set and true if value was set.
@@ -1904,10 +1871,7 @@ function register_initial_settings() {
  *     Data used to describe the setting when registered.
  *
  *     @type string   $type              The type of data associated with this setting.
-<<<<<<< HEAD
  *                                       Valid values are 'string', 'boolean', 'integer', and 'number'.
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *     @type string   $description       A description of the data attached to this setting.
  *     @type callable $sanitize_callback A callback function that sanitizes the option's value.
  *     @type bool     $show_in_rest      Whether data associated with this setting should be included in the REST API.
@@ -1950,30 +1914,22 @@ function register_setting( $option_group, $option_name, $args = array() ) {
 	}
 
 	if ( 'misc' == $option_group ) {
-<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '3.0.0',
 			/* translators: %s: misc */
 			sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ),
 				'misc'
 			)
 		);
-=======
-		_deprecated_argument( __FUNCTION__, '3.0.0', sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ), 'misc' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$option_group = 'general';
 	}
 
 	if ( 'privacy' == $option_group ) {
-<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '3.5.0',
 			/* translators: %s: privacy */
 			sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ),
 				'privacy'
 			)
 		);
-=======
-		_deprecated_argument( __FUNCTION__, '3.5.0', sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ), 'privacy' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$option_group = 'reading';
 	}
 
@@ -2004,30 +1960,22 @@ function unregister_setting( $option_group, $option_name, $deprecated = '' ) {
 	global $new_whitelist_options, $wp_registered_settings;
 
 	if ( 'misc' == $option_group ) {
-<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '3.0.0',
 			/* translators: %s: misc */
 			sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ),
 				'misc'
 			)
 		);
-=======
-		_deprecated_argument( __FUNCTION__, '3.0.0', sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ), 'misc' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$option_group = 'general';
 	}
 
 	if ( 'privacy' == $option_group ) {
-<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '3.5.0',
 			/* translators: %s: privacy */
 			sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ),
 				'privacy'
 			)
 		);
-=======
-		_deprecated_argument( __FUNCTION__, '3.5.0', sprintf( __( 'The "%s" options group has been removed. Use another settings group.' ), 'privacy' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$option_group = 'reading';
 	}
 
@@ -2036,7 +1984,6 @@ function unregister_setting( $option_group, $option_name, $deprecated = '' ) {
 		unset( $new_whitelist_options[ $option_group ][ $pos ] );
 	}
 	if ( '' !== $deprecated ) {
-<<<<<<< HEAD
 		_deprecated_argument( __FUNCTION__, '4.7.0',
 			/* translators: 1: $sanitize_callback, 2: register_setting() */
 			sprintf( __( '%1$s is deprecated. The callback from %2$s is used instead.' ),
@@ -2044,9 +1991,6 @@ function unregister_setting( $option_group, $option_name, $deprecated = '' ) {
 				'<code>register_setting()</code>'
 			)
 		);
-=======
-		_deprecated_argument( __FUNCTION__, '4.7.0', __( '$sanitize_callback is deprecated. The callback from register_setting() is used instead.' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		remove_filter( "sanitize_option_{$option_name}", $deprecated );
 	}
 

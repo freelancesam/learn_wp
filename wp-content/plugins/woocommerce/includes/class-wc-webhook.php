@@ -137,13 +137,8 @@ class WC_Webhook {
 		// only active webhooks can be delivered
 		if ( 'active' != $this->get_status() ) {
 			$should_deliver = false;
-<<<<<<< HEAD
 		} elseif ( in_array( $current_action, array( 'delete_post', 'wp_trash_post', 'untrashed_post' ), true ) ) {
 			// Only deliver deleted/restored event for coupons, orders, and products.
-=======
-		} elseif ( in_array( $current_action, array( 'delete_post', 'wp_trash_post' ), true ) ) {
-			// Only deliver deleted event for coupons, orders, and products.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( isset( $GLOBALS['post_type'] ) && ! in_array( $GLOBALS['post_type'], array( 'shop_coupon', 'shop_order', 'product' ) ) ) {
 				$should_deliver = false;
 			}
@@ -340,11 +335,7 @@ class WC_Webhook {
 	 * @param mixed $resource_id first hook argument, typically the resource ID
 	 * @return mixed payload data
 	 */
-<<<<<<< HEAD
 	public function build_payload( $resource_id ) {
-=======
-	private function build_payload( $resource_id ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// build the payload with the same user context as the user who created
 		// the webhook -- this avoids permission errors as background processing
 		// runs with no user context
@@ -628,12 +619,9 @@ class WC_Webhook {
 			'coupon.deleted' => array(
 				'wp_trash_post',
 			),
-<<<<<<< HEAD
 			'coupon.restored' => array(
 				'untrashed_post',
 			),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'customer.created' => array(
 				'user_register',
 				'woocommerce_created_customer',
@@ -661,12 +649,9 @@ class WC_Webhook {
 			'order.deleted' => array(
 				'wp_trash_post',
 			),
-<<<<<<< HEAD
 			'order.restored' => array(
 				'untrashed_post',
 			),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'product.created' => array(
 				'woocommerce_process_product_meta',
 				'woocommerce_api_create_product',
@@ -680,12 +665,9 @@ class WC_Webhook {
 			'product.deleted' => array(
 				'wp_trash_post',
 			),
-<<<<<<< HEAD
 			'product.restored' => array(
 				'untrashed_post',
 			),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		);
 
 		$topic_hooks = apply_filters( 'woocommerce_webhook_topic_hooks', $topic_hooks, $this );
@@ -716,11 +698,8 @@ class WC_Webhook {
 			return new WP_Error( 'error', sprintf( __( 'Error: Delivery URL returned response code: %s', 'woocommerce' ), absint( $response_code ) ) );
 		}
 
-<<<<<<< HEAD
 		delete_post_meta( $this->id, '_webhook_pending_delivery' );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return true;
 	}
 

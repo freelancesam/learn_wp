@@ -41,7 +41,6 @@
 	</header><!-- #masthead -->
 
 	<?php
-<<<<<<< HEAD
 
 	/*
 	 * If a regular post or page, and not the front page, show the featured image.
@@ -50,12 +49,6 @@
 	if ( ( is_single() || ( is_page() && ! twentyseventeen_is_frontpage() ) ) && has_post_thumbnail( get_queried_object_id() ) ) :
 		echo '<div class="single-featured-image-header">';
 		echo get_the_post_thumbnail( get_queried_object_id(), 'twentyseventeen-featured-image' );
-=======
-	// If a regular post or page, and not the front page, show the featured image.
-	if ( has_post_thumbnail() && ( is_single() || ( is_page() && ! twentyseventeen_is_frontpage() ) ) ) :
-		echo '<div class="single-featured-image-header">';
-		the_post_thumbnail( 'twentyseventeen-featured-image' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		echo '</div><!-- .single-featured-image-header -->';
 	endif;
 	?>

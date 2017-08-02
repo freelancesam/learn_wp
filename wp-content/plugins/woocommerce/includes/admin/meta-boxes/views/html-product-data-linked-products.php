@@ -1,20 +1,13 @@
-<<<<<<< HEAD
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <div id="linked_product_data" class="panel woocommerce_options_panel hidden">
 
 	<div class="options_group">
 		<p class="form-field">
-<<<<<<< HEAD
 			<label for="upsell_ids"><?php _e( 'Upsells', 'woocommerce' ); ?></label>
-=======
-			<label for="upsell_ids"><?php _e( 'Up-sells', 'woocommerce' ); ?></label>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<select class="wc-product-search" multiple="multiple" style="width: 50%;" id="upsell_ids" name="upsell_ids[]" data-placeholder="<?php esc_attr_e( 'Search for a product&hellip;', 'woocommerce' ); ?>" data-action="woocommerce_json_search_products_and_variations" data-exclude="<?php echo intval( $post->ID ); ?>">
 				<?php
 					$product_ids = $product_object->get_upsell_ids( 'edit' );
@@ -26,11 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						}
 					}
 				?>
-<<<<<<< HEAD
 			</select> <?php echo wc_help_tip( __( 'Upsells are products which you recommend instead of the currently viewed product, for example, products that are more profitable or better quality or more expensive.', 'woocommerce' ) ); ?>
-=======
-			</select> <?php echo wc_help_tip( __( 'Up-sells are products which you recommend instead of the currently viewed product, for example, products that are more profitable or better quality or more expensive.', 'woocommerce' ) ); ?>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		</p>
 
 		<p class="form-field">

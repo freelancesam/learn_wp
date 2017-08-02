@@ -96,10 +96,7 @@ function register_nav_menus( $locations = array() ) {
 /**
  * Unregisters a navigation menu location for a theme.
  *
-<<<<<<< HEAD
  * @since 3.1.0
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @global array $_wp_registered_nav_menus
  *
  * @param string $location The menu location identifier.
@@ -981,7 +978,6 @@ function _wp_auto_add_pages_to_menu( $new_status, $old_status, $post ) {
 		wp_update_nav_menu_item( $menu_id, 0, $args );
 	}
 }
-<<<<<<< HEAD
 
 /**
  * Delete auto-draft posts associated with the supplied changeset.
@@ -1010,5 +1006,3 @@ function _wp_delete_customize_changeset_dependent_auto_drafts( $post_id ) {
 	}
 	add_action( 'delete_post', '_wp_delete_customize_changeset_dependent_auto_drafts' );
 }
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

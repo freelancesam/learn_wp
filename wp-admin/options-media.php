@@ -118,27 +118,17 @@ if ( get_option('upload_url_path') || ( get_option('upload_path') != 'wp-content
 <p class="description"><?php _e('Configuring this is optional. By default, it should be blank.'); ?></p>
 </td>
 </tr>
-<<<<<<< HEAD
 <tr>
 <td colspan="2" class="td-full">
 <?php else : ?>
 <tr>
 <td class="td-full">
 <?php endif; ?>
-=======
-<?php endif; ?>
-<tr>
-<th scope="row" colspan="2" class="th-full">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <label for="uploads_use_yearmonth_folders">
 <input name="uploads_use_yearmonth_folders" type="checkbox" id="uploads_use_yearmonth_folders" value="1"<?php checked('1', get_option('uploads_use_yearmonth_folders')); ?> />
 <?php _e('Organize my uploads into month- and year-based folders'); ?>
 </label>
-<<<<<<< HEAD
 </td>
-=======
-</th>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 </tr>
 
 <?php do_settings_fields('media', 'uploads'); ?>

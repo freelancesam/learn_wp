@@ -140,11 +140,7 @@ class WC_Admin_Duplicate_Product {
 		$duplicate->save();
 
 		// Duplicate children of a variable product.
-<<<<<<< HEAD
 		if ( ! apply_filters( 'woocommerce_duplicate_product_exclude_children', false, $product ) && $product->is_type( 'variable' ) ) {
-=======
-		if ( ! apply_filters( 'woocommerce_duplicate_product_exclude_children', false ) && $product->is_type( 'variable' ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			foreach ( $product->get_children() as $child_id ) {
 				$child           = wc_get_product( $child_id );
 				$child_duplicate = clone $child;
@@ -164,12 +160,9 @@ class WC_Admin_Duplicate_Product {
 
 				$child_duplicate->save();
 			}
-<<<<<<< HEAD
 
 			// Get new object to reflect new children.
 			$duplicate = wc_get_product( $duplicate->get_id() );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		return $duplicate;
@@ -180,11 +173,7 @@ class WC_Admin_Duplicate_Product {
 	 *
 	 * @deprecated 3.0.0
 	 * @param mixed $id
-<<<<<<< HEAD
 	 * @return object|bool
-=======
-	 * @return WP_Post|bool
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @see duplicate_product
 	 */
 	private function get_product_to_duplicate( $id ) {

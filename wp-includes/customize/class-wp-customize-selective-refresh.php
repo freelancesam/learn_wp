@@ -43,11 +43,7 @@ final class WP_Customize_Selective_Refresh {
 	 * Log of errors triggered when partials are rendered.
 	 *
 	 * @since 4.5.0
-<<<<<<< HEAD
 	 * @access protected
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @var array
 	 */
 	protected $triggered_errors = array();
@@ -56,11 +52,7 @@ final class WP_Customize_Selective_Refresh {
 	 * Keep track of the current partial being rendered.
 	 *
 	 * @since 4.5.0
-<<<<<<< HEAD
 	 * @access protected
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @var string
 	 */
 	protected $current_partial_id;
@@ -96,7 +88,6 @@ final class WP_Customize_Selective_Refresh {
 	 * Adds a partial.
 	 *
 	 * @since 4.5.0
-<<<<<<< HEAD
 	 *
 	 * @param WP_Customize_Partial|string $id   Customize Partial object, or Panel ID.
 	 * @param array                       $args {
@@ -120,12 +111,6 @@ final class WP_Customize_Selective_Refresh {
 	 *                                        A partial render is considered a failure if the render_callback returns
 	 *                                        false.
 	 * }
-=======
-	 * @access public
-	 *
-	 * @param WP_Customize_Partial|string $id   Customize Partial object, or Panel ID.
-	 * @param array                       $args Optional. Partial arguments. Default empty array.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return WP_Customize_Partial             The instance of the panel that was added.
 	 */
 	public function add_partial( $id, $args = array() ) {
@@ -134,17 +119,10 @@ final class WP_Customize_Selective_Refresh {
 		} else {
 			$class = 'WP_Customize_Partial';
 
-<<<<<<< HEAD
 			/** This filter is documented in wp-includes/customize/class-wp-customize-selective-refresh.php */
 			$args = apply_filters( 'customize_dynamic_partial_args', $args, $id );
 
 			/** This filter is documented in wp-includes/customize/class-wp-customize-selective-refresh.php */
-=======
-			/** This filter (will be) documented in wp-includes/class-wp-customize-manager.php */
-			$args = apply_filters( 'customize_dynamic_partial_args', $args, $id );
-
-			/** This filter (will be) documented in wp-includes/class-wp-customize-manager.php */
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$class = apply_filters( 'customize_dynamic_partial_class', $class, $id, $args );
 
 			$partial = new $class( $this, $id, $args );
@@ -328,11 +306,7 @@ final class WP_Customize_Selective_Refresh {
 	 * These errors will be relayed back to the client in the Ajax response.
 	 *
 	 * @since 4.5.0
-<<<<<<< HEAD
 	 * @access public
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param int    $errno   Error number.
 	 * @param string $errstr  Error string.
@@ -369,7 +343,6 @@ final class WP_Customize_Selective_Refresh {
 		 */
 		if ( ! is_customize_preview() ) {
 			wp_send_json_error( 'expected_customize_preview', 403 );
-<<<<<<< HEAD
 		} elseif ( ! isset( $_POST['partials'] ) ) {
 			wp_send_json_error( 'missing_partials', 400 );
 		}
@@ -377,12 +350,6 @@ final class WP_Customize_Selective_Refresh {
 		// Ensure that doing selective refresh on 404 template doesn't result in fallback rendering behavior (full refreshes).
 		status_header( 200 );
 
-=======
-		} else if ( ! isset( $_POST['partials'] ) ) {
-			wp_send_json_error( 'missing_partials', 400 );
-		}
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$partials = json_decode( wp_unslash( $_POST['partials'] ), true );
 
 		if ( ! is_array( $partials ) ) {

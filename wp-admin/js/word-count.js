@@ -4,11 +4,7 @@
  * @summary   Count words or characters in a text.
  *
  * @namespace wp.utils
-<<<<<<< HEAD
  * @since     2.6.0
-=======
- * @since     2.6
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 ( function() {
@@ -149,11 +145,7 @@
 	 *
 	 * @summary  Count the number of elements in a text.
 	 *
-<<<<<<< HEAD
 	 * @since    2.6.0
-=======
-	 * @since    2.6
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @memberof wp.utils.wordcounter
 	 *
 	 * @param {String}  text Text to count elements in.

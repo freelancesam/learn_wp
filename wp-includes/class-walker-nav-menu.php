@@ -58,7 +58,6 @@ class Walker_Nav_Menu extends Walker {
 			$n = "\n";
 		}
 		$indent = str_repeat( $t, $depth );
-<<<<<<< HEAD
 
 		// Default class.
 		$classes = array( 'sub-menu' );
@@ -76,9 +75,6 @@ class Walker_Nav_Menu extends Walker {
 		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
 		$output .= "{$n}{$indent}<ul $class_names>{$n}";
-=======
-		$output .= "{$n}{$indent}<ul class=\"sub-menu\">{$n}";
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

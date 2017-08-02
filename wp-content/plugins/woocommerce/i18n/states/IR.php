@@ -9,13 +9,10 @@
  */
 global $states;
 
-<<<<<<< HEAD
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 $states['IR'] = array(
 	'KHZ' => __( 'Khuzestan  (خوزستان)', 'woocommerce' ),
 	'THR' => __( 'Tehran  (تهران)', 'woocommerce' ),

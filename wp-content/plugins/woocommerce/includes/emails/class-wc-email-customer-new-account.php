@@ -54,28 +54,18 @@ class WC_Email_Customer_New_Account extends WC_Email {
 
 		$this->id             = 'customer_new_account';
 		$this->customer_email = true;
-<<<<<<< HEAD
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$this->title          = __( 'New account', 'woocommerce' );
 		$this->description    = __( 'Customer "new account" emails are sent to the customer when a customer signs up via checkout or account pages.', 'woocommerce' );
 
 		$this->template_html  = 'emails/customer-new-account.php';
 		$this->template_plain = 'emails/plain/customer-new-account.php';
 
-<<<<<<< HEAD
-=======
-		$this->subject        = __( 'Your account on {site_title}', 'woocommerce' );
-		$this->heading        = __( 'Welcome to {site_title}', 'woocommerce' );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Call parent constructor
 		parent::__construct();
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Get email subject.
 	 *
 	 * @since  3.1.0
@@ -96,8 +86,6 @@ class WC_Email_Customer_New_Account extends WC_Email {
 	}
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Trigger.
 	 *
 	 * @param int $user_id
@@ -120,13 +108,9 @@ class WC_Email_Customer_New_Account extends WC_Email {
 			return;
 		}
 
-<<<<<<< HEAD
 		$this->setup_locale();
 		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 		$this->restore_locale();
-=======
-		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

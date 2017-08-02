@@ -51,10 +51,7 @@ class WC_Deprecated_Filter_Hooks extends WC_Deprecated_Hooks {
 		'default_checkout_billing_state'             => 'default_checkout_state',
 		'default_checkout_billing_postcode'          => 'default_checkout_postcode',
 		'woocommerce_system_status_environment_rows' => 'woocommerce_debug_posting',
-<<<<<<< HEAD
 		'woocommerce_credit_card_type_labels'        => 'wocommerce_credit_card_type_labels',
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	);
 
 	/**

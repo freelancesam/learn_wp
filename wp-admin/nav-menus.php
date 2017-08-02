@@ -576,7 +576,6 @@ get_current_screen()->set_help_sidebar(
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 <div class="wrap">
-<<<<<<< HEAD
 	<h1 class="wp-heading-inline"><?php echo esc_html( __( 'Menus' ) ); ?></h1>
 	<?php
 	if ( current_user_can( 'customize' ) ) :
@@ -594,23 +593,6 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 
 	<hr class="wp-header-end">
 
-=======
-	<h1><?php echo esc_html( __( 'Menus' ) ); ?>
-		<?php
-		if ( current_user_can( 'customize' ) ) :
-			$focus = $locations_screen ? array( 'section' => 'menu_locations' ) : array( 'panel' => 'nav_menus' );
-			printf(
-				' <a class="page-title-action hide-if-no-customize" href="%1$s">%2$s</a>',
-				esc_url( add_query_arg( array(
-					array( 'autofocus' => $focus ),
-					'return' => urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ),
-				), admin_url( 'customize.php' ) ) ),
-				__( 'Manage with Live Preview' )
-			);
-		endif;
-		?>
-	</h1>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	<h2 class="nav-tab-wrapper wp-clearfix">
 		<a href="<?php echo admin_url( 'nav-menus.php' ); ?>" class="nav-tab<?php if ( ! isset( $_GET['action'] ) || isset( $_GET['action'] ) && 'locations' != $_GET['action'] ) echo ' nav-tab-active'; ?>"><?php esc_html_e( 'Edit Menus' ); ?></a>
 		<?php if ( $num_locations && $menu_count ) : ?>

@@ -306,14 +306,11 @@ class WP_Http {
 		// Ensure redirects follow browser behaviour.
 		$options['hooks']->register( 'requests.before_redirect', array( get_class(), 'browser_redirect_compatibility' ) );
 
-<<<<<<< HEAD
 		// Validate redirected URLs.
 		if ( function_exists( 'wp_kses_bad_protocol' ) && $r['reject_unsafe_urls'] ) {
 			$options['hooks']->register( 'requests.before_redirect', array( get_class(), 'validate_redirects' ) );
 		}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( $r['stream'] ) {
 			$options['filename'] = $r['filename'];
 		}
@@ -475,7 +472,6 @@ class WP_Http {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Validate redirected URLs.
 	 *
 	 * @since 4.7.5
@@ -490,8 +486,6 @@ class WP_Http {
 	}
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Tests which transports are capable of supporting the request.
 	 *
 	 * @since 3.2.0

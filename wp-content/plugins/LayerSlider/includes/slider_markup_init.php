@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php
-=======
  <?php
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 if(!defined('LS_ROOT_FILE')) {
 	header('HTTP/1.0 403 Forbidden');

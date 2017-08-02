@@ -19,18 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Uses queries rather than update_post_meta so we can do this in one query (to avoid stock issues).
  *
  * @since  3.0.0 this supports set, increase and decrease.
-<<<<<<< HEAD
  *
  * @param  int|WC_Product $product
  * @param  int|null $stock_quantity
  * @param  string $operation set, increase and decrease.
  *
  * @return bool|int|null
-=======
- * @param  int|WC_Product $product
- * @param  int|null $stock_quantity
- * @param  string $operation set, increase and decrease.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function wc_update_product_stock( $product, $stock_quantity = null, $operation = 'set' ) {
 	if ( ! $product = wc_get_product( $product ) ) {

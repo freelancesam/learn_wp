@@ -162,11 +162,7 @@ if ( ! empty( $messages ) ) {
 		if ( $is_main_site ) : ?>
 		<tr class="form-field">
 			<th scope="row"><?php _e( 'Site Address (URL)' ); ?></th>
-<<<<<<< HEAD
 			<td><?php echo esc_url( $parsed_scheme . '://' . $details->domain . $details->path ); ?></td>
-=======
-			<td><?php echo esc_url( $details->domain . $details->path ); ?></td>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		</tr>
 		<?php
 		// For any other site, the scheme, domain, and path can all be changed.

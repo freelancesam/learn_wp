@@ -1045,11 +1045,8 @@ function wp_calculate_image_srcset( $size_array, $image_src, $image_meta, $attac
 	/**
 	 * Let plugins pre-filter the image meta to be able to fix inconsistencies in the stored data.
 	 *
-<<<<<<< HEAD
 	 * @since 4.5.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
 	 * @param array  $size_array    Array of width and height values in pixels (in that order).
 	 * @param string $image_src     The 'src' of the image.
@@ -2162,15 +2159,9 @@ function wp_get_audio_extensions() {
 	 * @since 3.6.0
 	 *
 	 * @param array $extensions An array of support audio formats. Defaults are
-<<<<<<< HEAD
 	 *                          'mp3', 'ogg', 'm4a', 'wav'.
 	 */
 	return apply_filters( 'wp_audio_extensions', array( 'mp3', 'ogg', 'm4a', 'wav' ) );
-=======
-	 *                          'mp3', 'ogg', 'wma', 'm4a', 'wav'.
-	 */
-	return apply_filters( 'wp_audio_extensions', array( 'mp3', 'ogg', 'wma', 'm4a', 'wav' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
@@ -2401,15 +2392,9 @@ function wp_get_video_extensions() {
 	 * @since 3.6.0
 	 *
 	 * @param array $extensions An array of support video formats. Defaults are
-<<<<<<< HEAD
 	 *                          'mp4', 'm4v', 'webm', 'ogv', 'flv'.
 	 */
 	return apply_filters( 'wp_video_extensions', array( 'mp4', 'm4v', 'webm', 'ogv', 'flv' ) );
-=======
-	 *                          'mp4', 'm4v', 'webm', 'ogv', 'wmv', 'flv'.
-	 */
-	return apply_filters( 'wp_video_extensions', array( 'mp4', 'm4v', 'webm', 'ogv', 'wmv', 'flv' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
@@ -2561,7 +2546,6 @@ function wp_video_shortcode( $attr, $content = '' ) {
 		wp_enqueue_script( 'wp-mediaelement' );
 	}
 
-<<<<<<< HEAD
 	// Mediaelement has issues with some URL formats for Vimeo and YouTube, so
 	// update the URL to prevent the ME.js player from breaking.
 	if ( 'mediaelement' === $library ) {
@@ -2576,8 +2560,6 @@ function wp_video_shortcode( $attr, $content = '' ) {
 		}
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	/**
 	 * Filters the class attribute for the video shortcode output container.
 	 *
@@ -3130,15 +3112,11 @@ function wp_prepare_attachment_for_js( $attachment ) {
 	);
 
 	$author = new WP_User( $attachment->post_author );
-<<<<<<< HEAD
 	if ( $author->exists() ) {
 		$response['authorName'] = html_entity_decode( $author->display_name, ENT_QUOTES, get_bloginfo( 'charset' ) );
 	} else {
 		$response['authorName'] = __( '(no author)' );
 	}
-=======
-	$response['authorName'] = $author->display_name;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( $attachment->post_parent ) {
 		$post_parent = get_post( $attachment->post_parent );
@@ -3361,7 +3339,6 @@ function wp_enqueue_media( $args = array() ) {
 		}
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Allows showing or hiding the "Create Audio Playlist" button in the media library.
 	 *
@@ -3443,28 +3420,6 @@ function wp_enqueue_media( $args = array() ) {
 			ORDER BY post_date DESC
 		", 'attachment' ) );
 	}
-=======
-	$has_audio = $wpdb->get_var( "
-		SELECT ID
-		FROM $wpdb->posts
-		WHERE post_type = 'attachment'
-		AND post_mime_type LIKE 'audio%'
-		LIMIT 1
-	" );
-	$has_video = $wpdb->get_var( "
-		SELECT ID
-		FROM $wpdb->posts
-		WHERE post_type = 'attachment'
-		AND post_mime_type LIKE 'video%'
-		LIMIT 1
-	" );
-	$months = $wpdb->get_results( $wpdb->prepare( "
-		SELECT DISTINCT YEAR( post_date ) AS year, MONTH( post_date ) AS month
-		FROM $wpdb->posts
-		WHERE post_type = %s
-		ORDER BY post_date DESC
-	", 'attachment' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	foreach ( $months as $month_year ) {
 		$month_year->text = sprintf( __( '%1$s %2$d' ), $wp_locale->get_month( $month_year->month ), $month_year->year );
 	}
@@ -3477,35 +3432,22 @@ function wp_enqueue_media( $args = array() ) {
 		'captions'  => ! apply_filters( 'disable_captions', '' ),
 		'nonce'     => array(
 			'sendToEditor' => wp_create_nonce( 'media-send-to-editor' ),
-<<<<<<< HEAD
 			'wpRestApi'    => wp_create_nonce( 'wp_rest' ),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		),
 		'post'    => array(
 			'id' => 0,
 		),
 		'defaultProps' => $props,
 		'attachmentCounts' => array(
-<<<<<<< HEAD
 			'audio' => ( $show_audio_playlist ) ? 1 : 0,
 			'video' => ( $show_video_playlist ) ? 1 : 0,
 		),
 		'oEmbedProxyUrl' => rest_url( 'oembed/1.0/proxy' ),
-=======
-			'audio' => ( $has_audio ) ? 1 : 0,
-			'video' => ( $has_video ) ? 1 : 0
-		),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'embedExts'    => $exts,
 		'embedMimes'   => $ext_mimes,
 		'contentWidth' => $content_width,
 		'months'       => $months,
-<<<<<<< HEAD
 		'mediaTrash'   => MEDIA_TRASH ? 1 : 0,
-=======
-		'mediaTrash'   => MEDIA_TRASH ? 1 : 0
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	);
 
 	$post = null;
@@ -3573,13 +3515,8 @@ function wp_enqueue_media( $args = array() ) {
 		'unattached'             => __( 'Unattached' ),
 		'trash'                  => _x( 'Trash', 'noun' ),
 		'uploadedToThisPost'     => $post_type_object->labels->uploaded_to_this_item,
-<<<<<<< HEAD
 		'warnDelete'             => __( "You are about to permanently delete this item from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete." ),
 		'warnBulkDelete'         => __( "You are about to permanently delete these items from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete." ),
-=======
-		'warnDelete'             => __( "You are about to permanently delete this item.\n  'Cancel' to stop, 'OK' to delete." ),
-		'warnBulkDelete'         => __( "You are about to permanently delete these items.\n  'Cancel' to stop, 'OK' to delete." ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'warnBulkTrash'          => __( "You are about to trash these items.\n  'Cancel' to stop, 'OK' to delete." ),
 		'bulkSelect'             => __( 'Bulk Select' ),
 		'cancelSelection'        => __( 'Cancel Selection' ),
@@ -3627,12 +3564,8 @@ function wp_enqueue_media( $args = array() ) {
 		'cropImage' => __( 'Crop Image' ),
 		'cropYourImage' => __( 'Crop your image' ),
 		'cropping' => __( 'Cropping&hellip;' ),
-<<<<<<< HEAD
 		/* translators: 1: suggested width number, 2: suggested height number. */
 		'suggestedDimensions' => __( 'Suggested image dimensions: %1$s by %2$s pixels.' ),
-=======
-		'suggestedDimensions' => __( 'Suggested image dimensions:' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'cropError' => __( 'There has been an error cropping your image.' ),
 
 		// Edit Audio
@@ -3830,7 +3763,6 @@ function get_post_galleries( $post, $html = true ) {
 			if ( 'gallery' === $shortcode[2] ) {
 				$srcs = array();
 
-<<<<<<< HEAD
 				$shortcode_attrs = shortcode_parse_atts( $shortcode[3] );
 				if ( ! is_array( $shortcode_attrs ) ) {
 					$shortcode_attrs = array();
@@ -3841,15 +3773,12 @@ function get_post_galleries( $post, $html = true ) {
 					$shortcode[3] .= ' id="' . intval( $post->ID ) . '"';
 				}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$gallery = do_shortcode_tag( $shortcode );
 				if ( $html ) {
 					$galleries[] = $gallery;
 				} else {
 					preg_match_all( '#src=([\'"])(.+?)\1#is', $gallery, $src, PREG_SET_ORDER );
 					if ( ! empty( $src ) ) {
-<<<<<<< HEAD
 						foreach ( $src as $s ) {
 							$srcs[] = $s[2];
 						}
@@ -3861,15 +3790,6 @@ function get_post_galleries( $post, $html = true ) {
 							'src' => array_values( array_unique( $srcs ) )
 						)
 					);
-=======
-						foreach ( $src as $s )
-							$srcs[] = $s[2];
-					}
-
-					$data = shortcode_parse_atts( $shortcode[3] );
-					$data['src'] = array_values( array_unique( $srcs ) );
-					$galleries[] = $data;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			}
 		}

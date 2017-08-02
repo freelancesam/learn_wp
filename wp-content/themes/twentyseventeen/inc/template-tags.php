@@ -110,12 +110,7 @@ if ( ! function_exists( 'twentyseventeen_edit_link' ) ) :
  * layout with multiple posts/pages shown gets confusing.
  */
 function twentyseventeen_edit_link() {
-<<<<<<< HEAD
 	edit_post_link(
-=======
-
-	$link = edit_post_link(
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		sprintf(
 			/* translators: %s: Name of current post */
 			__( 'Edit<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ),
@@ -124,24 +119,14 @@ function twentyseventeen_edit_link() {
 		'<span class="edit-link">',
 		'</span>'
 	);
-<<<<<<< HEAD
-=======
-
-	return $link;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 endif;
 
 /**
  * Display a front page section.
  *
-<<<<<<< HEAD
  * @param WP_Customize_Partial $partial Partial associated with a selective refresh request.
  * @param integer              $id Front page section to display.
-=======
- * @param $partial WP_Customize_Partial Partial associated with a selective refresh request.
- * @param $id integer Front page section to display.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function twentyseventeen_front_page_section( $partial = null, $id = 0 ) {
 	if ( is_a( $partial, 'WP_Customize_Partial' ) ) {
@@ -153,10 +138,6 @@ function twentyseventeen_front_page_section( $partial = null, $id = 0 ) {
 
 	global $post; // Modify the global post object before setting up post data.
 	if ( get_theme_mod( 'panel_' . $id ) ) {
-<<<<<<< HEAD
-=======
-		global $post;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$post = get_post( get_theme_mod( 'panel_' . $id ) );
 		setup_postdata( $post );
 		set_query_var( 'panel', $id );
@@ -193,14 +174,11 @@ function twentyseventeen_categorized_blog() {
 		set_transient( 'twentyseventeen_categories', $category_count );
 	}
 
-<<<<<<< HEAD
 	// Allow viewing case of 0 or 1 categories in post preview.
 	if ( is_preview() ) {
 		return true;
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	return $category_count > 1;
 }
 

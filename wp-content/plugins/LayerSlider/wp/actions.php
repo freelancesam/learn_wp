@@ -118,19 +118,6 @@ function ls_register_form_actions() {
 			}
 		}
 
-<<<<<<< HEAD
-
-		if(isset($_GET['page']) && $_GET['page'] == 'layerslider' && isset($_GET['action']) && $_GET['action'] == 'hide-beta-program-notice') {
-			if(check_admin_referer('hide-beta-program-notice')) {
-				update_user_meta( get_current_user_id(), 'layerslider_beta_program', true);
-				header('Location: admin.php?page=layerslider');
-				die();
-			}
-		}
-
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if(isset($_GET['page']) && $_GET['page'] == 'layerslider' && isset($_GET['action']) && $_GET['action'] == 'hide-update-notice') {
 			if(check_admin_referer('hide-update-notice')) {
 				$latest = get_option('ls-latest-version', LS_PLUGIN_VERSION);
@@ -240,21 +227,12 @@ function ls_save_google_fonts() {
 
 	// Build object to save
 	$fonts = array();
-<<<<<<< HEAD
-	if(!empty($_POST['fontsData']) && is_array($_POST['fontsData'])) {
-		foreach($_POST['fontsData'] as $key => $val) {
-			if(!empty($val['urlParams'])) {
-				$fonts[] = array(
-					'param' => $val['urlParams'],
-					'admin' => isset($val['onlyOnAdmin']) ? true : false
-=======
 	if(isset($_POST['urlParams'])) {
 		foreach($_POST['urlParams'] as $key => $val) {
 			if(!empty($val)) {
 				$fonts[] = array(
 					'param' => $val,
 					'admin' => isset($_POST['onlyOnAdmin'][$key]) ? true : false
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				);
 			}
 		}
@@ -275,11 +253,7 @@ function ls_save_advanced_settings() {
 
 	$options = array('use_cache', 'include_at_footer', 'conditional_script_loading', 'concatenate_output', 'use_custom_jquery',  'put_js_to_body');
 	foreach($options as $item) {
-<<<<<<< HEAD
-		update_option('ls_'.$item, (int) array_key_exists($item, $_POST));
-=======
 		update_option('ls_'.$item, array_key_exists($item, $_POST));
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	header('Location: admin.php?page=layerslider&message=generalUpdated');
@@ -298,10 +272,6 @@ function ls_get_mce_sliders() {
 	$sliders = LS_Sliders::find(array('limit' => 50));
 	foreach($sliders as $key => $item) {
 		$sliders[$key]['preview'] = apply_filters('ls_get_preview_for_slider', $item );
-<<<<<<< HEAD
-		$sliders[$key]['name'] = htmlspecialchars($item['name']);
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	die(json_encode($sliders));
@@ -310,19 +280,8 @@ function ls_get_mce_sliders() {
 function ls_save_slider() {
 
 	// Vars
-<<<<<<< HEAD
-	$id 	= (int) $_POST['id'];
-	$data 	= $_POST['sliderData'];
-
-	// Security check
-	if(!check_admin_referer('ls-save-slider-' . $id)) {
-		return false;
-	}
-
-=======
 	$id = (int) $_POST['id'];
 	$data = $_POST['sliderData'];
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Parse slider settings
 	$data['properties'] = json_decode(stripslashes(html_entity_decode($data['properties'])), true);
@@ -470,11 +429,7 @@ function ls_import_sliders() {
 
 	// Check export file if any
 	if(!is_uploaded_file($_FILES['import_file']['tmp_name'])) {
-<<<<<<< HEAD
-		header('Location: '.admin_url('admin.php?page=layerslider&error=1&message=importSelectError'));
-=======
 		header('Location: '.$_SERVER['REQUEST_URI'].'&error=1&message=importSelectError');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		die('No data received.');
 	}
 

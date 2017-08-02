@@ -364,11 +364,6 @@ class WC_REST_Webhooks_V1_Controller extends WC_REST_Posts_Controller {
 	 * @return WP_Error|stdClass $data Post object.
 	 */
 	protected function prepare_item_for_database( $request ) {
-<<<<<<< HEAD
-=======
-		global $wpdb;
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$data = new stdClass;
 
 		// Post ID.
@@ -421,13 +416,9 @@ class WC_REST_Webhooks_V1_Controller extends WC_REST_Posts_Controller {
 	/**
 	 * Prepare a single webhook output for response.
 	 *
-<<<<<<< HEAD
 	 * @param object $post
 	 * @param WP_REST_Request $request Request object.
 	 *
-=======
-	 * @param WP_REST_Request $request Request object.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return WP_REST_Response $response Response data.
 	 */
 	public function prepare_item_for_response( $post, $request ) {

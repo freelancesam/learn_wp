@@ -259,11 +259,7 @@
 		margin-left: -0.5em;
 		margin-top: -0.5em;
 		content: '';
-<<<<<<< HEAD
 		animation: spin 1s ease-in-out infinite;
-=======
-		@include animation( spin 1s ease-in-out infinite );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		background: url('../images/icons/loader.svg') center center;
 		background-size: cover;
 		line-height: 1;

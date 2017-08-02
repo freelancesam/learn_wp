@@ -199,12 +199,8 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 	 * Get all reviews from a product.
 	 *
 	 * @param WP_REST_Request $request
-<<<<<<< HEAD
 	 *
 	 * @return array|WP_Error
-=======
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_items( $request ) {
 		$product_id = (int) $request['product_id'];
@@ -358,12 +354,8 @@ class WC_REST_Product_Reviews_V1_Controller extends WC_REST_Controller {
 	 * Delete a product review.
 	 *
 	 * @param WP_REST_Request $request Full details about the request
-<<<<<<< HEAD
 	 *
 	 * @return bool|WP_Error|WP_REST_Response
-=======
-	 * @return WP_Error|boolean
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_item( $request ) {
 		$product_review_id = absint( is_array( $request['id'] ) ? $request['id']['id'] : $request['id'] );

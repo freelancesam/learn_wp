@@ -142,11 +142,7 @@ class WC_Auth {
 	/**
 	 * Decode and format a URL.
 	 * @param  string $url
-<<<<<<< HEAD
 	 * @return string
-=======
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function get_formatted_url( $url ) {
 		$url = urldecode( $url );

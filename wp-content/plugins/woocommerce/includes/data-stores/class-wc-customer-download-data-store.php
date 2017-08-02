@@ -68,13 +68,9 @@ class WC_Customer_Download_Data_Store implements WC_Customer_Download_Data_Store
 	/**
 	 * Method to read a download permission from the database.
 	 *
-<<<<<<< HEAD
 	 * @param $download
 	 *
 	 * @throws Exception
-=======
-	 * @param WC_Customer_Download
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( &$download ) {
 		global $wpdb;

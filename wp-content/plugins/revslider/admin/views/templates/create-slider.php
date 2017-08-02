@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 /**
  * @author    ThemePunch <info@themepunch.com>
@@ -22,28 +21,3 @@ require self::getPathTemplate('slider-main-options');
 	});
 </script>
 
-=======
-<?php
-/**
- * @author    ThemePunch <info@themepunch.com>
- * @link      http://www.themepunch.com/
- * @copyright 2015 ThemePunch
- */
-
- 
-if( !defined( 'ABSPATH') ) exit();
-
-$is_edit = false;
-
-require self::getPathTemplate('slider-main-options');
-?>
-
-<script type="text/javascript">
-	var g_jsonTaxWithCats = <?php echo $jsonTaxWithCats?>;
-
-	jQuery(document).ready(function(){
-		RevSliderAdmin.initAddSliderView();
-	});
-</script>
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

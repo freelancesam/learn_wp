@@ -18,12 +18,9 @@
  */
 class WP_Customize_Setting {
 	/**
-<<<<<<< HEAD
 	 * Customizer bootstrap instance.
 	 *
 	 * @since 3.4.0
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @access public
 	 * @var WP_Customize_Manager
 	 */
@@ -32,22 +29,16 @@ class WP_Customize_Setting {
 	/**
 	 * Unique string identifier for the setting.
 	 *
-<<<<<<< HEAD
 	 * @since 3.4.0
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @access public
 	 * @var string
 	 */
 	public $id;
 
 	/**
-<<<<<<< HEAD
 	 * Type of customize settings.
 	 *
 	 * @since 3.4.0
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @access public
 	 * @var string
 	 */
@@ -56,20 +47,15 @@ class WP_Customize_Setting {
 	/**
 	 * Capability required to edit this setting.
 	 *
-<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access public
 	 * @var string|array
-=======
-	 * @var string
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public $capability = 'edit_theme_options';
 
 	/**
 	 * Feature a theme is required to support to enable this setting.
 	 *
-<<<<<<< HEAD
 	 * @since 3.4.0
 	 * @access public
 	 * @var string
@@ -124,22 +110,6 @@ class WP_Customize_Setting {
 	 * @access public
 	 * @var string
 	 */
-=======
-	 * @access public
-	 * @var string
-	 */
-	public $theme_supports  = '';
-	public $default         = '';
-	public $transport       = 'refresh';
-
-	/**
-	 * Server-side sanitization callback for the setting's value.
-	 *
-	 * @var callback
-	 */
-	public $validate_callback    = '';
-	public $sanitize_callback    = '';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	public $sanitize_js_callback = '';
 
 	/**
@@ -157,13 +127,10 @@ class WP_Customize_Setting {
 	public $dirty = false;
 
 	/**
-<<<<<<< HEAD
 	 * ID Data.
 	 *
 	 * @since 3.4.0
 	 * @access protected
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @var array
 	 */
 	protected $id_data = array();
@@ -181,15 +148,9 @@ class WP_Customize_Setting {
 	 * Cache of multidimensional values to improve performance.
 	 *
 	 * @since 4.4.0
-<<<<<<< HEAD
 	 * @static
 	 * @access protected
 	 * @var array
-=======
-	 * @access protected
-	 * @var array
-	 * @static
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected static $aggregated_multidimensionals = array();
 
@@ -260,10 +221,6 @@ class WP_Customize_Setting {
 	 * Get parsed ID data for multidimensional setting.
 	 *
 	 * @since 4.4.0
-<<<<<<< HEAD
-=======
-	 * @access public
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @return array {
 	 *     ID data for multidimensional setting.
@@ -283,10 +240,6 @@ class WP_Customize_Setting {
 	 * calls get combined into one call, greatly improving performance.
 	 *
 	 * @since 4.4.0
-<<<<<<< HEAD
-=======
-	 * @access protected
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function aggregate_multidimensional() {
 		$id_base = $this->id_data['base'];
@@ -314,10 +267,6 @@ class WP_Customize_Setting {
 	 * This is intended only for use by unit tests.
 	 *
 	 * @since 4.5.0
-<<<<<<< HEAD
-=======
-	 * @access public
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @ignore
 	 */
 	static public function reset_aggregated_multidimensionals() {
@@ -337,10 +286,6 @@ class WP_Customize_Setting {
 	 * Return true if the current site is not the same as the previewed site.
 	 *
 	 * @since 4.2.0
-<<<<<<< HEAD
-=======
-	 * @access public
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @return bool If preview() has been called.
 	 */
@@ -356,10 +301,7 @@ class WP_Customize_Setting {
 	 *
 	 * @see WP_Customize_Setting::preview()
 	 * @since 4.1.1
-<<<<<<< HEAD
 	 * @access protected
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @var mixed
 	 */
 	protected $_original_value;
@@ -373,10 +315,6 @@ class WP_Customize_Setting {
 	 *
 	 * @since 3.4.0
 	 * @since 4.4.0 Added boolean return value.
-<<<<<<< HEAD
-=======
-	 * @access public
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @return bool False when preview short-circuits due no change needing to be previewed.
 	 */
@@ -490,11 +428,7 @@ class WP_Customize_Setting {
 	 * is called for this setting.
 	 *
 	 * @since 4.4.0
-<<<<<<< HEAD
 	 *
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @see WP_Customize_Manager::set_post_value()
 	 * @see WP_Customize_Setting::_multidimensional_preview_filter()
 	 */
@@ -541,10 +475,6 @@ class WP_Customize_Setting {
 	 * the first setting previewed will be used to apply the values for the others.
 	 *
 	 * @since 4.4.0
-<<<<<<< HEAD
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @see WP_Customize_Setting::$aggregated_multidimensionals
 	 * @param mixed $original Original root value.
@@ -587,11 +517,6 @@ class WP_Customize_Setting {
 	 *
 	 * @since 3.4.0
 	 *
-<<<<<<< HEAD
-=======
-	 * @access public
-	 *
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return false|void False if cap check fails or value isn't set or is invalid.
 	 */
 	final public function save() {
@@ -601,30 +526,19 @@ class WP_Customize_Setting {
 			return false;
 		}
 
-<<<<<<< HEAD
 		$id_base = $this->id_data['base'];
 
 		/**
 		 * Fires when the WP_Customize_Setting::save() method is called.
 		 *
 		 * The dynamic portion of the hook name, `$id_base` refers to
-=======
-		/**
-		 * Fires when the WP_Customize_Setting::save() method is called.
-		 *
-		 * The dynamic portion of the hook name, `$this->id_data['base']` refers to
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		 * the base slug of the setting name.
 		 *
 		 * @since 3.4.0
 		 *
 		 * @param WP_Customize_Setting $this WP_Customize_Setting instance.
 		 */
-<<<<<<< HEAD
 		do_action( "customize_save_{$id_base}", $this );
-=======
-		do_action( 'customize_save_' . $this->id_data['base'], $this );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$this->update( $value );
 	}
@@ -668,10 +582,6 @@ class WP_Customize_Setting {
 	 * Validates an input.
 	 *
 	 * @since 4.6.0
-<<<<<<< HEAD
-=======
-	 * @access public
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @see WP_REST_Request::has_valid_params()
 	 *
@@ -713,10 +623,6 @@ class WP_Customize_Setting {
 	 * Get the root value for a setting, especially for multidimensional ones.
 	 *
 	 * @since 4.4.0
-<<<<<<< HEAD
-=======
-	 * @access protected
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param mixed $default Value to return if root does not exist.
 	 * @return mixed
@@ -725,11 +631,7 @@ class WP_Customize_Setting {
 		$id_base = $this->id_data['base'];
 		if ( 'option' === $this->type ) {
 			return get_option( $id_base, $default );
-<<<<<<< HEAD
 		} elseif ( 'theme_mod' === $this->type ) {
-=======
-		} else if ( 'theme_mod' ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			return get_theme_mod( $id_base, $default );
 		} else {
 			/*
@@ -745,10 +647,6 @@ class WP_Customize_Setting {
 	 * Set the root value for a setting, especially for multidimensional ones.
 	 *
 	 * @since 4.4.0
-<<<<<<< HEAD
-=======
-	 * @access protected
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param mixed $value Value to set as root of multidimensional setting.
 	 * @return bool Whether the multidimensional root was updated successfully.
@@ -761,11 +659,7 @@ class WP_Customize_Setting {
 				$autoload = self::$aggregated_multidimensionals[ $this->type ][ $this->id_data['base'] ]['autoload'];
 			}
 			return update_option( $id_base, $value, $autoload );
-<<<<<<< HEAD
 		} elseif ( 'theme_mod' === $this->type ) {
-=======
-		} else if ( 'theme_mod' ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			set_theme_mod( $id_base, $value );
 			return true;
 		} else {
@@ -919,10 +813,6 @@ class WP_Customize_Setting {
 	 * Retrieves the data to export to the client via JSON.
 	 *
 	 * @since 4.6.0
-<<<<<<< HEAD
-=======
-	 * @access public
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @return array Array of parameters passed to JavaScript.
 	 */
@@ -1059,7 +949,6 @@ class WP_Customize_Setting {
 	}
 }
 
-<<<<<<< HEAD
 /**
  * WP_Customize_Filter_Setting class.
  */
@@ -1083,19 +972,4 @@ require_once( ABSPATH . WPINC . '/customize/class-wp-customize-nav-menu-item-set
 /**
  * WP_Customize_Nav_Menu_Setting class.
  */
-=======
-/** WP_Customize_Filter_Setting class */
-require_once( ABSPATH . WPINC . '/customize/class-wp-customize-filter-setting.php' );
-
-/** WP_Customize_Header_Image_Setting class */
-require_once( ABSPATH . WPINC . '/customize/class-wp-customize-header-image-setting.php' );
-
-/** WP_Customize_Background_Image_Setting class */
-require_once( ABSPATH . WPINC . '/customize/class-wp-customize-background-image-setting.php' );
-
-/** WP_Customize_Nav_Menu_Item_Setting class */
-require_once( ABSPATH . WPINC . '/customize/class-wp-customize-nav-menu-item-setting.php' );
-
-/** WP_Customize_Nav_Menu_Setting class */
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 require_once( ABSPATH . WPINC . '/customize/class-wp-customize-nav-menu-setting.php' );

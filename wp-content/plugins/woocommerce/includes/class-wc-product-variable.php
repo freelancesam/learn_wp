@@ -143,7 +143,6 @@ class WC_Product_Variable extends WC_Product {
 			$max_reg_price = end( $prices['regular_price'] );
 
 			if ( $min_price !== $max_price ) {
-<<<<<<< HEAD
 				$price = wc_format_price_range( $min_price, $max_price );
 			} elseif ( $this->is_on_sale() && $min_reg_price === $max_reg_price ) {
 				$price = wc_format_sale_price( wc_price( $max_reg_price ), wc_price( $min_price ) );
@@ -152,14 +151,6 @@ class WC_Product_Variable extends WC_Product {
 			}
 
 			$price = apply_filters( 'woocommerce_variable_price_html', $price . $this->get_price_suffix(), $this );
-=======
-				$price = apply_filters( 'woocommerce_variable_price_html', wc_format_price_range( $min_price, $max_price ) . $this->get_price_suffix(), $this );
-			} elseif ( $this->is_on_sale() && $min_reg_price === $max_reg_price ) {
-				$price = apply_filters( 'woocommerce_variable_price_html', wc_format_sale_price( wc_price( $max_reg_price ), wc_price( $min_price ) ) . $this->get_price_suffix(), $this );
-			} else {
-				$price = apply_filters( 'woocommerce_variable_price_html', wc_price( $min_price ) . $this->get_price_suffix(), $this );
-			}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		return apply_filters( 'woocommerce_get_price_html', $price, $this );
@@ -189,11 +180,8 @@ class WC_Product_Variable extends WC_Product {
 	/**
 	 * Return a products child ids.
 	 *
-<<<<<<< HEAD
 	 * @param bool|string $visible_only
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array Children ids
 	 */
 	public function get_children( $visible_only = '' ) {
@@ -237,13 +225,10 @@ class WC_Product_Variable extends WC_Product {
 
 	/**
 	 * Variable products themselves cannot be downloadable.
-<<<<<<< HEAD
 	 *
 	 * @param string $context
 	 *
 	 * @return bool
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_downloadable( $context = 'view' ) {
 		return false;
@@ -251,13 +236,10 @@ class WC_Product_Variable extends WC_Product {
 
 	/**
 	 * Variable products themselves cannot be virtual.
-<<<<<<< HEAD
 	 *
 	 * @param string $context
 	 *
 	 * @return bool
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_virtual( $context = 'view' ) {
 		return false;
@@ -304,7 +286,6 @@ class WC_Product_Variable extends WC_Product {
 		// See if prices should be shown for each variation after selection.
 		$show_variation_price = apply_filters( 'woocommerce_show_variation_price', $variation->get_price() === "" || $this->get_variation_sale_price( 'min' ) !== $this->get_variation_sale_price( 'max' ) || $this->get_variation_regular_price( 'min' ) !== $this->get_variation_regular_price( 'max' ), $this, $variation );
 
-<<<<<<< HEAD
 		return apply_filters( 'woocommerce_available_variation', array(
 			'attributes'            => $variation->get_variation_attributes(),
 			'availability_html'     => wc_get_stock_html( $variation ),
@@ -331,31 +312,6 @@ class WC_Product_Variable extends WC_Product {
 			'weight'                => wc_format_weight( $variation->get_weight() ),
 			'weight_html'           => wc_format_weight( $variation->get_weight() ),
 		), $this, $variation );
-=======
-		return apply_filters( 'woocommerce_available_variation', array_merge( $variation->get_data(), array(
-			'attributes'            => $variation->get_variation_attributes(),
-			'image'                 => wc_get_product_attachment_props( $variation->get_image_id() ),
-			'weight_html'           => wc_format_weight( $variation->get_weight() ),
-			'dimensions_html'       => wc_format_dimensions( $variation->get_dimensions( false ) ),
-			'price_html'            => $show_variation_price ? '<span class="price">' . $variation->get_price_html() . '</span>' : '',
-			'availability_html'     => wc_get_stock_html( $variation ),
-			'variation_id'          => $variation->get_id(),
-			'variation_is_visible'  => $variation->variation_is_visible(),
-			'variation_is_active'   => $variation->variation_is_active(),
-			'is_purchasable'        => $variation->is_purchasable(),
-			'display_price'         => wc_get_price_to_display( $variation ),
-			'display_regular_price' => wc_get_price_to_display( $variation, array( 'price' => $variation->get_regular_price() ) ),
-			'dimensions'            => wc_format_dimensions( $variation->get_dimensions( false ) ),
-			'min_qty'               => $variation->get_min_purchase_quantity(),
-			'max_qty'               => 0 < $variation->get_max_purchase_quantity() ? $variation->get_max_purchase_quantity() : '',
-			'backorders_allowed'    => $variation->backorders_allowed(),
-			'is_in_stock'           => $variation->is_in_stock(),
-			'is_downloadable'       => $variation->is_downloadable(),
-			'is_virtual'            => $variation->is_virtual(),
-			'is_sold_individually'  => $variation->is_sold_individually() ? 'yes' : 'no',
-			'variation_description' => wc_format_content( $variation->get_description() ),
-		) ), $this, $variation );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/*

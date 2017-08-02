@@ -718,15 +718,11 @@ class WP_Press_This {
 			 * making PT fully backward compatible with the older bookmarklet.
 			 */
 			if ( empty( $_POST ) && ! empty( $data['u'] ) ) {
-<<<<<<< HEAD
 				if ( isset( $_GET['_wpnonce'] ) && wp_verify_nonce( $_GET['_wpnonce'], 'scan-site' ) ) {
 					$data = $this->source_data_fetch_fallback( $data['u'], $data );
 				} else {
 					$data['errors'] = 'missing nonce';
 				}
-=======
-				$data = $this->source_data_fetch_fallback( $data['u'], $data );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			} else {
 				foreach ( array( '_images', '_embeds' ) as $type ) {
 					if ( empty( $_POST[ $type ] ) ) {
@@ -1243,11 +1239,7 @@ class WP_Press_This {
 		$site_data = array(
 			'v' => ! empty( $data['v'] ) ? $data['v'] : '',
 			'u' => ! empty( $data['u'] ) ? $data['u'] : '',
-<<<<<<< HEAD
 			'hasData' => ! empty( $data ) && ! isset( $data['errors'] ),
-=======
-			'hasData' => ! empty( $data ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		);
 
 		if ( ! empty( $images ) ) {
@@ -1379,14 +1371,9 @@ class WP_Press_This {
 	<div id="scanbar" class="scan">
 		<form method="GET">
 			<label for="url-scan" class="screen-reader-text"><?php _e( 'Scan site for content' ); ?></label>
-<<<<<<< HEAD
 			<input type="url" name="u" id="url-scan" class="scan-url" value="<?php echo esc_attr( $site_data['u'] ) ?>" placeholder="<?php esc_attr_e( 'Enter a URL to scan' ) ?>" />
 			<input type="submit" name="url-scan-submit" id="url-scan-submit" class="scan-submit" value="<?php esc_attr_e( 'Scan' ) ?>" />
 			<?php wp_nonce_field( 'scan-site' ); ?>
-=======
-			<input type="url" name="u" id="url-scan" class="scan-url" value="" placeholder="<?php esc_attr_e( 'Enter a URL to scan' ) ?>" />
-			<input type="submit" name="url-scan-submit" id="url-scan-submit" class="scan-submit" value="<?php esc_attr_e( 'Scan' ) ?>" />
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		</form>
 	</div>
 
@@ -1463,11 +1450,7 @@ class WP_Press_This {
 			<div class="post-options">
 
 				<?php if ( $supports_formats ) : ?>
-<<<<<<< HEAD
 					<button type="button" class="post-option">
-=======
-					<button type="button" class="button-link post-option">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<span class="dashicons dashicons-admin-post"></span>
 						<span class="post-option-title"><?php _ex( 'Format', 'post format' ); ?></span>
 						<span class="post-option-contents" id="post-option-post-format"><?php echo esc_html( get_post_format_string( $post_format ) ); ?></span>
@@ -1476,11 +1459,7 @@ class WP_Press_This {
 				<?php endif; ?>
 
 				<?php if ( $show_categories ) : ?>
-<<<<<<< HEAD
 					<button type="button" class="post-option">
-=======
-					<button type="button" class="button-link post-option">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<span class="dashicons dashicons-category"></span>
 						<span class="post-option-title"><?php _e( 'Categories' ); ?></span>
 						<span class="dashicons post-option-forward"></span>
@@ -1488,11 +1467,7 @@ class WP_Press_This {
 				<?php endif; ?>
 
 				<?php if ( $show_tags ) : ?>
-<<<<<<< HEAD
 					<button type="button" class="post-option">
-=======
-					<button type="button" class="button-link post-option">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<span class="dashicons dashicons-tag"></span>
 						<span class="post-option-title"><?php _e( 'Tags' ); ?></span>
 						<span class="dashicons post-option-forward"></span>
@@ -1502,11 +1477,7 @@ class WP_Press_This {
 
 			<?php if ( $supports_formats ) : ?>
 				<div class="setting-modal is-off-screen is-hidden">
-<<<<<<< HEAD
 					<button type="button" class="modal-close">
-=======
-					<button type="button" class="button-link modal-close">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<span class="dashicons post-option-back"></span>
 						<span class="setting-title" aria-hidden="true"><?php _ex( 'Format', 'post format' ); ?></span>
 						<span class="screen-reader-text"><?php _e( 'Back to post options' ) ?></span>
@@ -1517,11 +1488,7 @@ class WP_Press_This {
 
 			<?php if ( $show_categories ) : ?>
 				<div class="setting-modal is-off-screen is-hidden">
-<<<<<<< HEAD
 					<button type="button" class="modal-close">
-=======
-					<button type="button" class="button-link modal-close">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<span class="dashicons post-option-back"></span>
 						<span class="setting-title" aria-hidden="true"><?php _e( 'Categories' ); ?></span>
 						<span class="screen-reader-text"><?php _e( 'Back to post options' ) ?></span>
@@ -1532,11 +1499,7 @@ class WP_Press_This {
 
 			<?php if ( $show_tags ) : ?>
 				<div class="setting-modal tags is-off-screen is-hidden">
-<<<<<<< HEAD
 					<button type="button" class="modal-close">
-=======
-					<button type="button" class="button-link modal-close">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<span class="dashicons post-option-back"></span>
 						<span class="setting-title" aria-hidden="true"><?php _e( 'Tags' ); ?></span>
 						<span class="screen-reader-text"><?php _e( 'Back to post options' ) ?></span>
@@ -1549,11 +1512,7 @@ class WP_Press_This {
 
 	<div class="press-this-actions">
 		<div class="pressthis-media-buttons">
-<<<<<<< HEAD
 			<button type="button" class="insert-media" data-editor="pressthis">
-=======
-			<button type="button" class="insert-media button-link" data-editor="pressthis">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<span class="dashicons dashicons-admin-media"></span>
 				<span class="screen-reader-text"><?php _e( 'Add Media' ); ?></span>
 			</button>

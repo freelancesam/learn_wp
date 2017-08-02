@@ -202,12 +202,8 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	 * Check if a given request has access batch create, update and delete items.
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
-<<<<<<< HEAD
 	 *
 	 * @return bool|WP_Error
-=======
-	 * @return boolean
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function batch_items_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'attributes', 'batch' ) ) {
@@ -312,11 +308,6 @@ class WC_REST_Product_Attributes_V1_Controller extends WC_REST_Controller {
 	 * @return WP_REST_Request|WP_Error
 	 */
 	public function get_item( $request ) {
-<<<<<<< HEAD
-=======
-		global $wpdb;
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$attribute = $this->get_attribute( (int) $request['id'] );
 
 		if ( is_wp_error( $attribute ) ) {

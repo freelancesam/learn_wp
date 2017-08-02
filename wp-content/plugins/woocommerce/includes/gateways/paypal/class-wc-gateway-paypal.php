@@ -278,11 +278,7 @@ class WC_Gateway_Paypal extends WC_Payment_Gateway {
 	 * @param  int    $order_id
 	 * @param  float  $amount
 	 * @param  string $reason
-<<<<<<< HEAD
 	 * @return bool|WP_Error
-=======
-	 * @return bool True or false based on success, or a WP_Error object
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function process_refund( $order_id, $amount = null, $reason = '' ) {
 		$order = wc_get_order( $order_id );

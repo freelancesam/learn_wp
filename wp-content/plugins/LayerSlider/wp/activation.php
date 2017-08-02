@@ -55,11 +55,7 @@ function layerslider_activation_scripts() {
 }
 
 function layerslider_install_scripts() {
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// Check new install
 	if(!get_option('ls-installed')) {
 		update_option('ls-installed', 1);
@@ -149,24 +145,17 @@ function layerslider_create_db_table() {
 
 function layerslider_deactivation_scripts() {
 
-<<<<<<< HEAD
-=======
 	// Stuff we need
 	global $current_user;
 	get_currentuserinfo();
 
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// Remove capability option, so a user can restore
 	// his access to the plugin if set the wrong capability
 	// delete_option('layerslider_custom_capability');
 
 	// Remove the help pointer entry to remind a user for the
 	// help menu when start to use the plugin again
-<<<<<<< HEAD
-	delete_user_meta(get_current_user_id(), 'layerslider_help_wp_pointer');
-=======
 	delete_user_meta($current_user->ID, 'layerslider_help_wp_pointer');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Call user hooks
 	if(has_action('layerslider_deactivated')) {

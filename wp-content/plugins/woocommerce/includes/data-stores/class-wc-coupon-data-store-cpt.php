@@ -52,11 +52,7 @@ class WC_Coupon_Data_Store_CPT extends WC_Data_Store_WP implements WC_Coupon_Dat
 	 * Method to create a new coupon in the database.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 * @param WC_Coupon $coupon
-=======
-	 * @param WC_Coupon
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create( &$coupon ) {
 		$coupon->set_date_created( current_time( 'timestamp', true ) );
@@ -85,14 +81,10 @@ class WC_Coupon_Data_Store_CPT extends WC_Data_Store_WP implements WC_Coupon_Dat
 	 * Method to read a coupon.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param WC_Data $coupon
 	 *
 	 * @throws Exception
-=======
-	 * @param WC_Coupon
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( &$coupon ) {
 		$coupon->set_defaults();
@@ -135,11 +127,7 @@ class WC_Coupon_Data_Store_CPT extends WC_Data_Store_WP implements WC_Coupon_Dat
 	 * Updates a coupon in the database.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 * @param WC_Coupon $coupon
-=======
-	 * @param WC_Coupon
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function update( &$coupon ) {
 		$coupon->save_meta_data();
@@ -180,14 +168,9 @@ class WC_Coupon_Data_Store_CPT extends WC_Data_Store_WP implements WC_Coupon_Dat
 	 * Deletes a coupon from the database.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param WC_Coupon $coupon
 	 * @param array     $args Array of args to pass to the delete method.
-=======
-	 * @param WC_Coupon
-	 * @param array $args Array of args to pass to the delete method.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete( &$coupon, $args = array() ) {
 		$args = wp_parse_args( $args, array(

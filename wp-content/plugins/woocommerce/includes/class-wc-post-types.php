@@ -208,10 +208,6 @@ class WC_Post_types {
 						'show_ui'            => true,
 						'show_in_quick_edit' => false,
 						'show_in_menu'       => false,
-<<<<<<< HEAD
-=======
-						'show_in_nav_menus'  => false,
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						'meta_box_cb'        => false,
 						'query_var'          => 1 === $tax->attribute_public,
 						'rewrite'            => false,
@@ -253,14 +249,11 @@ class WC_Post_types {
 		do_action( 'woocommerce_register_post_type' );
 
 		$permalinks = wc_get_permalink_structure();
-<<<<<<< HEAD
 		$supports = array( 'title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'publicize', 'wpcom-markdown' );
 
 		if ( 'yes' === get_option( 'woocommerce_enable_reviews', 'yes' ) ) {
 			$supports[] = 'comments';
 		}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		register_post_type( 'product',
 			apply_filters( 'woocommerce_register_post_type_product',
@@ -268,14 +261,9 @@ class WC_Post_types {
 					'labels'              => array(
 							'name'                  => __( 'Products', 'woocommerce' ),
 							'singular_name'         => __( 'Product', 'woocommerce' ),
-<<<<<<< HEAD
 							'all_items'             => __( 'All Products', 'woocommerce' ),
 							'menu_name'             => _x( 'Products', 'Admin menu name', 'woocommerce' ),
 							'add_new'               => __( 'Add New', 'woocommerce' ),
-=======
-							'menu_name'             => _x( 'Products', 'Admin menu name', 'woocommerce' ),
-							'add_new'               => __( 'Add product', 'woocommerce' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							'add_new_item'          => __( 'Add new product', 'woocommerce' ),
 							'edit'                  => __( 'Edit', 'woocommerce' ),
 							'edit_item'             => __( 'Edit product', 'woocommerce' ),
@@ -306,13 +294,8 @@ class WC_Post_types {
 					'hierarchical'        => false, // Hierarchical causes memory issues - WP loads all records!
 					'rewrite'             => $permalinks['product_rewrite_slug'] ? array( 'slug' => $permalinks['product_rewrite_slug'], 'with_front' => false, 'feeds' => true ) : false,
 					'query_var'           => true,
-<<<<<<< HEAD
 					'supports'            => $supports,
 					'has_archive'         => ( $shop_page_id = wc_get_page_id( 'shop' ) ) && get_post( $shop_page_id ) ? urldecode( get_page_uri( $shop_page_id ) ) : 'shop',
-=======
-					'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'comments', 'custom-fields', 'publicize', 'wpcom-markdown' ),
-					'has_archive'         => ( $shop_page_id = wc_get_page_id( 'shop' ) ) && get_post( $shop_page_id ) ? get_page_uri( $shop_page_id ) : 'shop',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					'show_in_nav_menus'   => true,
 					'show_in_rest'        => true,
 				)

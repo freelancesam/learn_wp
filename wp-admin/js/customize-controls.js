@@ -528,18 +528,11 @@
 		 *
 		 * @since 4.1.0
 		 *
-<<<<<<< HEAD
 		 * @param {boolean}  active - The active state to transiution to.
 		 * @param {Object}   [args] - Args.
 		 * @param {Object}   [args.duration] - The duration for the slideUp/slideDown animation.
 		 * @param {boolean}  [args.unchanged] - Whether the state is already known to not be changed, and so short-circuit with calling completeCallback early.
 		 * @param {Function} [args.completeCallback] - Function to call when the slideUp/slideDown has completed.
-=======
-		 * @param {Boolean} active
-		 * @param {Object}  args
-		 * @param {Object}  args.duration
-		 * @param {Object}  args.completeCallback
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		 */
 		onChangeActive: function( active, args ) {
 			var construct = this,
@@ -572,41 +565,24 @@
 				}
 			}
 
-<<<<<<< HEAD
 			if ( ! $.contains( document, headContainer.get( 0 ) ) ) {
 				// If the element is not in the DOM, then jQuery.fn.slideUp() does nothing. In this case, a hard toggle is required instead.
-=======
-			if ( ! $.contains( document, headContainer ) ) {
-				// jQuery.fn.slideUp is not hiding an element if it is not in the DOM
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				headContainer.toggle( active );
 				if ( args.completeCallback ) {
 					args.completeCallback();
 				}
 			} else if ( active ) {
-<<<<<<< HEAD
 				headContainer.slideDown( duration, args.completeCallback );
-=======
-				headContainer.stop( true, true ).slideDown( duration, args.completeCallback );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			} else {
 				if ( construct.expanded() ) {
 					construct.collapse({
 						duration: duration,
 						completeCallback: function() {
-<<<<<<< HEAD
 							headContainer.slideUp( duration, args.completeCallback );
 						}
 					});
 				} else {
 					headContainer.slideUp( duration, args.completeCallback );
-=======
-							headContainer.stop( true, true ).slideUp( duration, args.completeCallback );
-						}
-					});
-				} else {
-					headContainer.stop( true, true ).slideUp( duration, args.completeCallback );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			}
 		},
@@ -735,7 +711,6 @@
 			var construct = this,
 				content = construct.contentContainer,
 				overlay = content.closest( '.wp-full-overlay' ),
-<<<<<<< HEAD
 				elements, transitionEndCallback, transitionParentPane;
 
 			// Determine set of elements that are affected by the animation.
@@ -749,13 +724,6 @@
 				transitionParentPane = false;
 			}
 			if ( transitionParentPane ) {
-=======
-				elements, transitionEndCallback;
-
-			// Determine set of elements that are affected by the animation.
-			elements = overlay.add( content );
-			if ( _.isUndefined( construct.panel ) || '' === construct.panel() ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				elements = elements.add( '#customize-info, .customize-pane-parent' );
 			}
 
@@ -1036,11 +1004,7 @@
 				overlay = section.headContainer.closest( '.wp-full-overlay' ),
 				backBtn = content.find( '.customize-section-back' ),
 				sectionTitle = section.headContainer.find( '.accordion-section-title' ).first(),
-<<<<<<< HEAD
 				expand, panel;
-=======
-				expand;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			if ( expanded && ! content.hasClass( 'open' ) ) {
 
@@ -1088,15 +1052,12 @@
 				}
 
 			} else if ( ! expanded && content.hasClass( 'open' ) ) {
-<<<<<<< HEAD
 				if ( section.panel() ) {
 					panel = api.panel( section.panel() );
 					if ( panel.contentContainer.hasClass( 'skip-transition' ) ) {
 						panel.collapse();
 					}
 				}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				section._animateChangeExpanded( function() {
 					backBtn.attr( 'tabindex', '-1' );
 					sectionTitle.attr( 'tabindex', '0' );
@@ -1775,13 +1736,9 @@
 				overlay = accordionSection.closest( '.wp-full-overlay' ),
 				container = accordionSection.closest( '.wp-full-overlay-sidebar-content' ),
 				topPanel = panel.headContainer.find( '.accordion-section-title' ),
-<<<<<<< HEAD
 				backBtn = accordionSection.find( '.customize-panel-back' ),
 				childSections = panel.sections(),
 				skipTransition;
-=======
-				backBtn = accordionSection.find( '.customize-panel-back' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			if ( expanded && ! accordionSection.hasClass( 'current-panel' ) ) {
 				// Collapse any sibling sections/panels
@@ -1796,7 +1753,6 @@
 					}
 				});
 
-<<<<<<< HEAD
 				if ( panel.params.autoExpandSoleSection && 1 === childSections.length && childSections[0].active.get() ) {
 					accordionSection.addClass( 'current-panel skip-transition' );
 					overlay.addClass( 'in-sub-panel' );
@@ -1841,37 +1797,6 @@
 				} else {
 					accordionSection.removeClass( 'skip-transition' );
 				}
-=======
-				panel._animateChangeExpanded( function() {
-					topPanel.attr( 'tabindex', '-1' );
-					backBtn.attr( 'tabindex', '0' );
-
-					backBtn.focus();
-					accordionSection.css( 'top', '' );
-					container.scrollTop( 0 );
-
-					if ( args.completeCallback ) {
-						args.completeCallback();
-					}
-				} );
-
-				overlay.addClass( 'in-sub-panel' );
-				accordionSection.addClass( 'current-panel' );
-				api.state( 'expandedPanel' ).set( panel );
-
-			} else if ( ! expanded && accordionSection.hasClass( 'current-panel' ) ) {
-				panel._animateChangeExpanded( function() {
-					topPanel.attr( 'tabindex', '0' );
-					backBtn.attr( 'tabindex', '-1' );
-
-					topPanel.focus();
-					accordionSection.css( 'top', '' );
-
-					if ( args.completeCallback ) {
-						args.completeCallback();
-					}
-				} );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				overlay.removeClass( 'in-sub-panel' );
 				accordionSection.removeClass( 'current-panel' );
@@ -2373,15 +2298,9 @@
 				availableItem = new api.Menus.AvailableItemModel( {
 					'id': 'post-' + data.post_id, // Used for available menu item Backbone models.
 					'title': title,
-<<<<<<< HEAD
 					'type': 'post_type',
 					'type_label': api.Menus.data.l10n.page_label,
 					'object': 'page',
-=======
-					'type': 'page',
-					'type_label': api.Menus.data.l10n.page_label,
-					'object': 'post_type',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					'object_id': data.post_id,
 					'url': data.url
 				} );
@@ -4235,11 +4154,7 @@
 
 				// Remove notification errors that are no longer valid.
 				setting.notifications.each( function( notification ) {
-<<<<<<< HEAD
 					if ( notification.fromServer && 'error' === notification.type && ( true === validity || ! validity[ notification.code ] ) ) {
-=======
-					if ( 'error' === notification.type && ( true === validity || ! validity[ notification.code ] ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						setting.notifications.remove( notification.code );
 					}
 				} );
@@ -4505,19 +4420,12 @@
 				function captureSettingModifiedDuringSave( setting ) {
 					modifiedWhileSaving[ setting.id ] = true;
 				}
-<<<<<<< HEAD
-=======
-				api.bind( 'change', captureSettingModifiedDuringSave );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				submit = function () {
 					var request, query, settingInvalidities = {}, latestRevision = api._latestRevision;
 
-<<<<<<< HEAD
 					api.bind( 'change', captureSettingModifiedDuringSave );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					/*
 					 * Block saving if there are any settings that are marked as
 					 * invalid from the client (not from the server). Focus on
@@ -4672,7 +4580,6 @@
 			}
 		});
 
-<<<<<<< HEAD
 		// Ensure preview nonce is included with every customized request, to allow post data to be read.
 		$.ajaxPrefilter( function injectPreviewNonce( options ) {
 			if ( ! /wp_customize=on/.test( options.data ) ) {
@@ -4683,8 +4590,6 @@
 			});
 		});
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Refresh the nonces if the preview sends updated nonces over.
 		api.previewer.bind( 'nonce', function( nonce ) {
 			$.extend( this.nonce, nonce );
@@ -4834,14 +4739,10 @@
 			editShortcutVisibility( 'visible' );
 
 			api.bind( 'change', function() {
-<<<<<<< HEAD
 				if ( state( 'saved' ).get() ) {
 					state( 'saved' ).set( false );
 					populateChangesetUuidParam( true );
 				}
-=======
-				state('saved').set( false );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			});
 
 			saving.bind( function( isSaving ) {
@@ -4872,15 +4773,12 @@
 			 */
 			populateChangesetUuidParam = function( isIncluded ) {
 				var urlParser, queryParams;
-<<<<<<< HEAD
 
 				// Abort on IE9 which doesn't support history management.
 				if ( ! history.replaceState ) {
 					return;
 				}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				urlParser = document.createElement( 'a' );
 				urlParser.href = location.href;
 				queryParams = api.utils.parseQueryString( urlParser.search.substr( 1 ) );
@@ -4899,17 +4797,9 @@
 				history.replaceState( {}, document.title, urlParser.href );
 			};
 
-<<<<<<< HEAD
 			changesetStatus.bind( function( newStatus ) {
 				populateChangesetUuidParam( '' !== newStatus && 'publish' !== newStatus );
 			} );
-=======
-			if ( history.replaceState ) {
-				changesetStatus.bind( function( newStatus ) {
-					populateChangesetUuidParam( '' !== newStatus && 'publish' !== newStatus );
-				} );
-			}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// Expose states to the API.
 			api.state = state;

@@ -20,11 +20,7 @@ class WC_Cache_Helper {
 	 */
 	public static function init() {
 		add_action( 'template_redirect', array( __CLASS__, 'geolocation_ajax_redirect' ) );
-<<<<<<< HEAD
 		add_action( 'wp', array( __CLASS__, 'prevent_caching' ) );
-=======
-		add_action( 'before_woocommerce_init', array( __CLASS__, 'prevent_caching' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		add_action( 'admin_notices', array( __CLASS__, 'notices' ) );
 		add_action( 'delete_version_transients', array( __CLASS__, 'delete_version_transients' ) );
 	}
@@ -135,11 +131,8 @@ class WC_Cache_Helper {
 	 * Note; this only works on transients appended with the transient version, and when object caching is not being used.
 	 *
 	 * @since  2.3.10
-<<<<<<< HEAD
 	 *
 	 * @param string $version
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function delete_version_transients( $version = '' ) {
 		if ( ! wp_using_ext_object_cache() && ! empty( $version ) ) {
@@ -156,7 +149,6 @@ class WC_Cache_Helper {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Prevent caching on dynamic pages.
 	 */
 	public static function prevent_caching() {
@@ -168,46 +160,6 @@ class WC_Cache_Helper {
 
 		if ( isset( $_GET['download_file'] ) || in_array( $current_page_id, $page_ids ) ) {
 			self::nocache();
-=======
-	 * Get the page name/id for a WC page.
-	 * @param  string $wc_page
-	 * @return array
-	 */
-	private static function get_page_uris( $wc_page ) {
-		$wc_page_uris = array();
-
-		if ( ( $page_id = wc_get_page_id( $wc_page ) ) && $page_id > 0 && ( $page = get_post( $page_id ) ) ) {
-			$wc_page_uris[] = 'p=' . $page_id;
-			$wc_page_uris[] = '/' . $page->post_name . '/';
-		}
-
-		return $wc_page_uris;
-	}
-
-	/**
-	 * Prevent caching on dynamic pages.
-	 */
-	public static function prevent_caching() {
-
-		if ( ! is_blog_installed() ) {
-			return;
-		}
-
-		if ( false === ( $wc_page_uris = get_transient( 'woocommerce_cache_excluded_uris' ) ) ) {
-			$wc_page_uris   = array_filter( array_merge( self::get_page_uris( 'cart' ), self::get_page_uris( 'checkout' ), self::get_page_uris( 'myaccount' ) ) );
-	    	set_transient( 'woocommerce_cache_excluded_uris', $wc_page_uris );
-		}
-
-		if ( isset( $_GET['download_file'] ) ) {
-			self::nocache();
-		} elseif ( is_array( $wc_page_uris ) ) {
-			foreach ( $wc_page_uris as $uri ) {
-				if ( stristr( trailingslashit( $_SERVER['REQUEST_URI'] ), $uri ) ) {
-					self::nocache();
-					break;
-				}
-			}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	}
 

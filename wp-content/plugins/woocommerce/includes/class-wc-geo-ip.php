@@ -1616,12 +1616,8 @@ class WC_Geo_IP {
 	 * Record by addr.
 	 *
 	 * @param  string $addr
-<<<<<<< HEAD
 	 *
 	 * @return WC_Geo_IP_Record
-=======
-	 * @return int
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function geoip_record_by_addr( $addr ) {
 		if ( null == $addr ) {

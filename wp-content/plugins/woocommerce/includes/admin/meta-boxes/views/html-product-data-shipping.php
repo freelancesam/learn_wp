@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 <?php
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <div id="shipping_product_data" class="panel woocommerce_options_panel hidden">
 	<div class="options_group">
 		<?php

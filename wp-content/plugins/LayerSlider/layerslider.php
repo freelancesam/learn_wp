@@ -4,15 +4,9 @@
 Plugin Name: LayerSlider WP
 Plugin URI: http://codecanyon.net/user/kreatura/
 Description: LayerSlider is the most advanced responsive WordPress slider plugin with the famous Parallax Effect and over 200 2D & 3D transitions.
-<<<<<<< HEAD
-Version: 5.6.10
-Author: Kreatura Media
-Author URI: https://kreaturamedia.com/
-=======
 Version: 5.6.2
 Author: Kreatura Media
 Author URI: http://kreaturamedia.com/
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 Text Domain: LayerSlider
 */
 
@@ -37,11 +31,7 @@ if(!defined('ABSPATH')) {
 
 	// Basic configuration
 	define('LS_DB_TABLE', 'layerslider');
-<<<<<<< HEAD
-	define('LS_PLUGIN_VERSION', '5.6.10');
-=======
 	define('LS_PLUGIN_VERSION', '5.6.2');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Path info
 	define('LS_ROOT_FILE', __FILE__);
@@ -53,11 +43,7 @@ if(!defined('ABSPATH')) {
 	define('LS_PLUGIN_BASE', plugin_basename(__FILE__));
 	define('LS_MARKETPLACE_ID', '1362246');
 	define('LS_TEXTDOMAIN', 'LayerSlider');
-<<<<<<< HEAD
-	define('LS_REPO_BASE_URL', 'https://repository.kreaturamedia.com/v3/');
-=======
 	define('LS_REPO_BASE_URL', 'http://repository.kreaturamedia.com/v3/');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if(!defined('NL')) { define("NL", "\r\n"); }
 	if(!defined('TAB')) { define("TAB", "\t"); }
@@ -138,19 +124,6 @@ function layerslider_load_lang() {
 /********************************************************/
 /*          WPML Layer's String Translation             */
 /********************************************************/
-<<<<<<< HEAD
-function layerslider_register_wpml_strings($sliderID, $data) {
-
-	if(!empty($data['layers']) && is_array($data['layers'])) {
-		foreach($data['layers'] as $slideIndex => $slide) {
-
-			if(!empty($slide['sublayers']) && is_array($slide['sublayers'])) {
-				foreach($slide['sublayers'] as $layerIndex => $layer) {
-					if($layer['type'] != 'img') {
-						icl_register_string('LayerSlider WP', '<'.$layer['type'].':'.substr(sha1($layer['html']), 0, 10).'> layer on slide #'.($slideIndex+1).' in slider #'.$sliderID.'', $layer['html']);
-					}
-				}
-=======
 function layerslider_register_wpml_strings($slider_id, $data) {
 
 
@@ -164,7 +137,6 @@ function layerslider_register_wpml_strings($slider_id, $data) {
 		foreach($layer['sublayers'] as $sublayerkey => $sublayer) {
 			if($sublayer['type'] != 'img') {
 				icl_register_string('LayerSlider WP', '<'.$sublayer['type'].':'.substr(sha1($sublayer['html']), 0, 10).'> layer on slide #'.($layerkey+1).' in slider #'.$slider_id.'', $sublayer['html']);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		}
 	}

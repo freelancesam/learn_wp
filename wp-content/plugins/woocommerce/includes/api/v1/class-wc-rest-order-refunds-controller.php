@@ -117,12 +117,8 @@ class WC_REST_Order_Refunds_V1_Controller extends WC_REST_Orders_V1_Controller {
 	 *
 	 * @param WP_Post $post Post object.
 	 * @param WP_REST_Request $request Request object.
-<<<<<<< HEAD
 	 *
 	 * @return WP_Error|WP_REST_Response
-=======
-	 * @return WP_REST_Response $data
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function prepare_item_for_response( $post, $request ) {
 		$order = wc_get_order( (int) $request['order_id'] );
@@ -161,28 +157,15 @@ class WC_REST_Order_Refunds_V1_Controller extends WC_REST_Orders_V1_Controller {
 				$product_sku  = $product->get_sku();
 			}
 
-<<<<<<< HEAD
-=======
-			$meta = new WC_Order_Item_Meta( $item, $product );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$item_meta = array();
 
 			$hideprefix = 'true' === $request['all_item_meta'] ? null : '_';
 
-<<<<<<< HEAD
 			foreach ( $item->get_formatted_meta_data( $hideprefix, true ) as $meta_key => $formatted_meta ) {
 				$item_meta[] = array(
 					'key'   => $formatted_meta->key,
 					'label' => $formatted_meta->display_key,
 					'value' => wc_clean( $formatted_meta->display_value ),
-=======
-			foreach ( $meta->get_formatted( $hideprefix ) as $meta_key => $formatted_meta ) {
-				$item_meta[] = array(
-					'key'   => $formatted_meta['key'],
-					'label' => $formatted_meta['label'],
-					'value' => $formatted_meta['value'],
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				);
 			}
 

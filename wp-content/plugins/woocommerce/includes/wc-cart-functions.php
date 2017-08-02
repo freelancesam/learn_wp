@@ -48,11 +48,7 @@ function wc_empty_cart() {
  * @deprecated 2.3
  */
 function wc_load_persistent_cart( $user_login, $user ) {
-<<<<<<< HEAD
 	if ( ! $user || ! ( $saved_cart = get_user_meta( $user->ID, '_woocommerce_persistent_cart_' . get_current_blog_id(), true ) ) ) {
-=======
-	if ( ! $user || ! ( $saved_cart = get_user_meta( $user->ID, '_woocommerce_persistent_cart', true ) ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return;
 	}
 
@@ -89,11 +85,8 @@ function wc_get_raw_referer() {
  * @param int|array $products
  * @param bool $show_qty Should qty's be shown? Added in 2.6.0
  * @param bool $return Return message rather than add it.
-<<<<<<< HEAD
  *
  * @return mixed|void
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function wc_add_to_cart_message( $products, $show_qty = false, $return = false ) {
 	$titles = array();
@@ -211,10 +204,7 @@ function wc_cart_totals_subtotal_html() {
  */
 function wc_cart_totals_shipping_html() {
 	$packages = WC()->shipping->get_packages();
-<<<<<<< HEAD
 	$first    = true;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	foreach ( $packages as $i => $package ) {
 		$chosen_method = isset( WC()->session->chosen_shipping_methods[ $i ] ) ? WC()->session->chosen_shipping_methods[ $i ] : '';
@@ -228,7 +218,6 @@ function wc_cart_totals_shipping_html() {
 		}
 
 		wc_get_template( 'cart/cart-shipping.php', array(
-<<<<<<< HEAD
 			'package'                  => $package,
 			'available_methods'        => $package['rates'],
 			'show_package_details'     => sizeof( $packages ) > 1,
@@ -242,18 +231,6 @@ function wc_cart_totals_shipping_html() {
 		) );
 
 		$first = false;
-=======
-			'package'              => $package,
-			'available_methods'    => $package['rates'],
-			'show_package_details' => sizeof( $packages ) > 1,
-			'package_details'      => implode( ', ', $product_names ),
-			// @codingStandardsIgnoreStart
-			'package_name'         => apply_filters( 'woocommerce_shipping_package_name', sprintf( _nx( 'Shipping', 'Shipping %d', ( $i + 1 ), 'shipping packages', 'woocommerce' ), ( $i + 1 ) ), $i, $package ),
-			// @codingStandardsIgnoreEnd
-			'index'                => $i,
-			'chosen_method'        => $chosen_method,
-		) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 }
 
@@ -270,16 +247,11 @@ function wc_cart_totals_taxes_total_html() {
  * Get a coupon label.
  *
  * @access public
-<<<<<<< HEAD
  *
  * @param string $coupon
  * @param bool $echo or return
  *
  * @return string
-=======
- * @param string $coupon
- * @param bool $echo or return
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function wc_cart_totals_coupon_label( $coupon, $echo = true ) {
 	if ( is_string( $coupon ) ) {
@@ -332,14 +304,9 @@ function wc_cart_totals_order_total_html() {
 		$tax_string_array = array();
 
 		if ( get_option( 'woocommerce_tax_total_display' ) == 'itemized' ) {
-<<<<<<< HEAD
 			foreach ( WC()->cart->get_tax_totals() as $code => $tax ) {
 				$tax_string_array[] = sprintf( '%s %s', $tax->formatted_amount, $tax->label );
 			}
-=======
-			foreach ( WC()->cart->get_tax_totals() as $code => $tax )
-				$tax_string_array[] = sprintf( '%s %s', $tax->formatted_amount, $tax->label );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		} else {
 			$tax_string_array[] = sprintf( '%s %s', wc_price( WC()->cart->get_taxes_total( true, true ) ), WC()->countries->tax_or_vat() );
 		}

@@ -187,13 +187,10 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 		$to = $atts['to'];
 	}
 
-<<<<<<< HEAD
 	if ( !is_array( $to ) ) {
 		$to = explode( ',', $to );
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( isset( $atts['subject'] ) ) {
 		$subject = $atts['subject'];
 	}
@@ -311,17 +308,10 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 	}
 
 	// Empty out the values that may be set
-<<<<<<< HEAD
 	$phpmailer->clearAllRecipients();
 	$phpmailer->clearAttachments();
 	$phpmailer->clearCustomHeaders();
 	$phpmailer->clearReplyTos();
-=======
-	$phpmailer->ClearAllRecipients();
-	$phpmailer->ClearAttachments();
-	$phpmailer->ClearCustomHeaders();
-	$phpmailer->ClearReplyTos();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// From email and name
 	// If we don't have a name from the input headers
@@ -363,7 +353,6 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 	 */
 	$from_name = apply_filters( 'wp_mail_from_name', $from_name );
 
-<<<<<<< HEAD
 	try {
 		$phpmailer->setFrom( $from_email, $from_name, false );
 	} catch ( phpmailerException $e ) {
@@ -375,23 +364,12 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 
 		return false;
 	}
-=======
-	$phpmailer->setFrom( $from_email, $from_name, false );
-
-	// Set destination addresses
-	if ( !is_array( $to ) )
-		$to = explode( ',', $to );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Set mail's subject and body
 	$phpmailer->Subject = $subject;
 	$phpmailer->Body    = $message;
 
-<<<<<<< HEAD
 	// Set destination addresses, using appropriate methods for handling addresses
-=======
-	// Use appropriate methods for handling addresses, rather than treating them as generic headers
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$address_headers = compact( 'to', 'cc', 'bcc', 'reply_to' );
 
 	foreach ( $address_headers as $address_header => $addresses ) {
@@ -432,11 +410,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 	}
 
 	// Set to use PHP's mail()
-<<<<<<< HEAD
 	$phpmailer->isMail();
-=======
-	$phpmailer->IsMail();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Set Content-Type and charset
 	// If we don't have a content-type from the input headers
@@ -456,11 +430,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 
 	// Set whether it's plaintext, depending on $content_type
 	if ( 'text/html' == $content_type )
-<<<<<<< HEAD
 		$phpmailer->isHTML( true );
-=======
-		$phpmailer->IsHTML( true );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// If we don't have a charset from the input headers
 	if ( !isset( $charset ) )
@@ -480,29 +450,17 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 	// Set custom headers
 	if ( !empty( $headers ) ) {
 		foreach ( (array) $headers as $name => $content ) {
-<<<<<<< HEAD
 			$phpmailer->addCustomHeader( sprintf( '%1$s: %2$s', $name, $content ) );
 		}
 
 		if ( false !== stripos( $content_type, 'multipart' ) && ! empty($boundary) )
 			$phpmailer->addCustomHeader( sprintf( "Content-Type: %s;\n\t boundary=\"%s\"", $content_type, $boundary ) );
-=======
-			$phpmailer->AddCustomHeader( sprintf( '%1$s: %2$s', $name, $content ) );
-		}
-
-		if ( false !== stripos( $content_type, 'multipart' ) && ! empty($boundary) )
-			$phpmailer->AddCustomHeader( sprintf( "Content-Type: %s;\n\t boundary=\"%s\"", $content_type, $boundary ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	if ( !empty( $attachments ) ) {
 		foreach ( $attachments as $attachment ) {
 			try {
-<<<<<<< HEAD
 				$phpmailer->addAttachment($attachment);
-=======
-				$phpmailer->AddAttachment($attachment);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			} catch ( phpmailerException $e ) {
 				continue;
 			}
@@ -520,11 +478,7 @@ function wp_mail( $to, $subject, $message, $headers = '', $attachments = array()
 
 	// Send!
 	try {
-<<<<<<< HEAD
 		return $phpmailer->send();
-=======
-		return $phpmailer->Send();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	} catch ( phpmailerException $e ) {
 
 		$mail_error_data = compact( 'to', 'subject', 'message', 'headers', 'attachments' );
@@ -946,7 +900,6 @@ function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token =
 	 */
 	do_action( 'set_logged_in_cookie', $logged_in_cookie, $expire, $expiration, $user_id, 'logged_in' );
 
-<<<<<<< HEAD
 	/**
 	 * Allows preventing auth cookies from actually being sent to the client.
 	 *
@@ -958,8 +911,6 @@ function wp_set_auth_cookie( $user_id, $remember = false, $secure = '', $token =
 		return;
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	setcookie($auth_cookie_name, $auth_cookie, $expire, PLUGINS_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
 	setcookie($auth_cookie_name, $auth_cookie, $expire, ADMIN_COOKIE_PATH, COOKIE_DOMAIN, $secure, true);
 	setcookie(LOGGED_IN_COOKIE, $logged_in_cookie, $expire, COOKIEPATH, COOKIE_DOMAIN, $secure_logged_in_cookie, true);
@@ -982,15 +933,12 @@ function wp_clear_auth_cookie() {
 	 */
 	do_action( 'clear_auth_cookie' );
 
-<<<<<<< HEAD
 	/** This filter is documented in wp-includes/pluggable.php */
 	if ( ! apply_filters( 'send_auth_cookies', true ) ) {
 		return;
 	}
 
 	// Auth cookies
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	setcookie( AUTH_COOKIE,        ' ', time() - YEAR_IN_SECONDS, ADMIN_COOKIE_PATH,   COOKIE_DOMAIN );
 	setcookie( SECURE_AUTH_COOKIE, ' ', time() - YEAR_IN_SECONDS, ADMIN_COOKIE_PATH,   COOKIE_DOMAIN );
 	setcookie( AUTH_COOKIE,        ' ', time() - YEAR_IN_SECONDS, PLUGINS_COOKIE_PATH, COOKIE_DOMAIN );
@@ -998,13 +946,10 @@ function wp_clear_auth_cookie() {
 	setcookie( LOGGED_IN_COOKIE,   ' ', time() - YEAR_IN_SECONDS, COOKIEPATH,          COOKIE_DOMAIN );
 	setcookie( LOGGED_IN_COOKIE,   ' ', time() - YEAR_IN_SECONDS, SITECOOKIEPATH,      COOKIE_DOMAIN );
 
-<<<<<<< HEAD
 	// Settings cookies
 	setcookie( 'wp-settings-' . get_current_user_id(),      ' ', time() - YEAR_IN_SECONDS, SITECOOKIEPATH );
 	setcookie( 'wp-settings-time-' . get_current_user_id(), ' ', time() - YEAR_IN_SECONDS, SITECOOKIEPATH );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// Old cookies
 	setcookie( AUTH_COOKIE,        ' ', time() - YEAR_IN_SECONDS, COOKIEPATH,     COOKIE_DOMAIN );
 	setcookie( AUTH_COOKIE,        ' ', time() - YEAR_IN_SECONDS, SITECOOKIEPATH, COOKIE_DOMAIN );
@@ -1369,11 +1314,7 @@ if ( !function_exists('wp_validate_redirect') ) :
  * @return string redirect-sanitized URL
  **/
 function wp_validate_redirect($location, $default = '') {
-<<<<<<< HEAD
 	$location = trim( $location, " \t\n\r\0\x08\x0B" );
-=======
-	$location = trim( $location );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// browsers will assume 'http' is your protocol, and will obey a redirect to a URL starting with '//'
 	if ( substr($location, 0, 2) == '//' )
 		$location = 'http:' . $location;
@@ -1869,10 +1810,7 @@ function wp_new_user_notification( $user_id, $deprecated = null, $notify = '' ) 
 
 	// Now insert the key, hashed, into the DB.
 	if ( empty( $wp_hasher ) ) {
-<<<<<<< HEAD
 		require_once ABSPATH . WPINC . '/class-phpass.php';
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$wp_hasher = new PasswordHash( 8, true );
 	}
 	$hashed = time() . ':' . $wp_hasher->HashPassword( $key );
@@ -2153,10 +2091,7 @@ function wp_hash_password($password) {
 	global $wp_hasher;
 
 	if ( empty($wp_hasher) ) {
-<<<<<<< HEAD
 		require_once( ABSPATH . WPINC . '/class-phpass.php');
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// By default, use the portable hash from phpass
 		$wp_hasher = new PasswordHash(8, true);
 	}
@@ -2216,10 +2151,7 @@ function wp_check_password($password, $hash, $user_id = '') {
 	// If the stored hash is longer than an MD5, presume the
 	// new style phpass portable hash.
 	if ( empty($wp_hasher) ) {
-<<<<<<< HEAD
 		require_once( ABSPATH . WPINC . '/class-phpass.php');
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// By default, use the portable hash from phpass
 		$wp_hasher = new PasswordHash(8, true);
 	}
@@ -2514,15 +2446,10 @@ function get_avatar( $id_or_email, $size = 96, $default = '', $alt = '', $args =
 	 * @param mixed  $id_or_email The Gravatar to retrieve. Accepts a user_id, gravatar md5 hash,
 	 *                            user email, WP_User object, WP_Post object, or WP_Comment object.
 	 * @param int    $size        Square avatar width and height in pixels to retrieve.
-<<<<<<< HEAD
 	 * @param string $default     URL for the default image or a default type. Accepts '404', 'retro', 'monsterid',
 	 *                            'wavatar', 'indenticon','mystery' (or 'mm', or 'mysteryman'), 'blank', or 'gravatar_default'.
 	 *                            Default is the value of the 'avatar_default' option, with a fallback of 'mystery'.
 	 * @param string $alt         Alternative text to use in the avatar image tag. Default empty.
-=======
-	 * @param string $alt         Alternative text to use in the avatar image tag.
-	 *                                       Default empty.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array  $args        Arguments passed to get_avatar_data(), after processing.
 	 */
 	return apply_filters( 'get_avatar', $avatar, $id_or_email, $args['size'], $args['default'], $args['alt'], $args );

@@ -307,7 +307,6 @@ class WC_Admin_Addons {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Handles the outputting of the WooCommerce Services banner block.
 	 *
 	 * @param object $block
@@ -407,8 +406,6 @@ class WC_Admin_Addons {
 	}
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Handles the outputting of featured sections
 	 *
 	 * @param array $sections
@@ -434,12 +431,9 @@ class WC_Admin_Addons {
 				case 'small_dark_block':
 					self::output_small_dark_block( $section );
 					break;
-<<<<<<< HEAD
 				case 'wcs_banner_block':
 					self::output_wcs_banner_block( (array) $section );
 					break;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		}
 	}
@@ -470,7 +464,6 @@ class WC_Admin_Addons {
 	 * Handles output of the addons page in admin.
 	 */
 	public static function output() {
-<<<<<<< HEAD
 		if ( isset( $_GET['section'] ) && 'helper' === $_GET['section'] ) {
 			do_action( 'woocommerce_helper_output' );
 			return;
@@ -480,15 +473,12 @@ class WC_Admin_Addons {
 			self::install_woocommerce_services_addon();
 		}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$sections        = self::get_sections();
 		$theme           = wp_get_theme();
 		$section_keys    = array_keys( $sections );
 		$current_section = isset( $_GET['section'] ) ? sanitize_text_field( $_GET['section'] ) : current( $section_keys );
 		include_once( dirname( __FILE__ ) . '/views/html-admin-page-addons.php' );
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Install WooCommerce Services from Extensions screens.
@@ -507,6 +497,4 @@ class WC_Admin_Addons {
 		wp_safe_redirect( remove_query_arg( array( 'install-addon', '_wpnonce' ) ) );
 		exit;
 	}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }

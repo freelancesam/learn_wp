@@ -283,11 +283,6 @@ class WC_Admin_Notices {
 	 */
 	public static function no_shipping_methods_notice() {
 		if ( wc_shipping_enabled() && ( empty( $_GET['page'] ) || empty( $_GET['tab'] ) || 'wc-settings' !== $_GET['page'] || 'shipping' !== $_GET['tab'] ) ) {
-<<<<<<< HEAD
-=======
-			global $wpdb;
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$product_count = wp_count_posts( 'product' );
 			$method_count  = wc_get_shipping_method_count();
 

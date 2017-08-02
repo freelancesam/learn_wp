@@ -251,7 +251,6 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 			$editor = wp_get_image_editor( $file );
 
 			if ( ! is_wp_error( $editor ) ) { // No support for this type of file
-<<<<<<< HEAD
 				/*
 				 * PDFs may have the same file filename as JPEGs.
 				 * Ensure the PDF preview image does not overwrite any JPEG images that already exist.
@@ -261,9 +260,6 @@ function wp_generate_attachment_metadata( $attachment_id, $file ) {
 				$preview_file = $dirname . wp_unique_filename( $dirname, wp_basename( $file, $ext ) . '-pdf.jpg' );
 
 				$uploaded = $editor->save( $preview_file, 'image/jpeg' );
-=======
-				$uploaded = $editor->save( $file, 'image/jpeg' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				unset( $editor );
 
 				// Resize based on the full size image, rather than the source.

@@ -53,11 +53,7 @@ function options_general_add_js() {
 			if ( "date_format_custom_radio" != $(this).attr("id") )
 				$( "input[name='date_format_custom']" ).val( $( this ).val() ).siblings( '.example' ).text( $( this ).parent( 'label' ).children( '.format-i18n' ).text() );
 		});
-<<<<<<< HEAD
 		$( 'input[name="date_format_custom"]' ).on( 'click input', function() {
-=======
-		$("input[name='date_format_custom']").focus(function(){
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$( '#date_format_custom_radio' ).prop( 'checked', true );
 		});
 
@@ -65,11 +61,7 @@ function options_general_add_js() {
 			if ( "time_format_custom_radio" != $(this).attr("id") )
 				$( "input[name='time_format_custom']" ).val( $( this ).val() ).siblings( '.example' ).text( $( this ).parent( 'label' ).children( '.format-i18n' ).text() );
 		});
-<<<<<<< HEAD
 		$( 'input[name="time_format_custom"]' ).on( 'click input', function() {
-=======
-		$("input[name='time_format_custom']").focus(function(){
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$( '#time_format_custom_radio' ).prop( 'checked', true );
 		});
 		$("input[name='date_format_custom'], input[name='time_format_custom']").change( function() {
@@ -86,11 +78,7 @@ function options_general_add_js() {
 			// Don't show a spinner for English and installed languages,
 			// as there is nothing to download.
 			if ( ! languageSelect.find( 'option:selected' ).data( 'installed' ) ) {
-<<<<<<< HEAD
 				$( '#submit', this ).after( '<span class="spinner language-install-spinner is-active" />' );
-=======
-				$( '#submit', this ).after( '<span class="spinner language-install-spinner" />' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		});
 	});

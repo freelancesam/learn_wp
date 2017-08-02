@@ -28,7 +28,6 @@ jQuery(document).ready(function($) {
 		return false;
 	});
 
-<<<<<<< HEAD
 	$( '#edittag' ).on( 'click', '.delete', function( e ) {
 		if ( 'undefined' === typeof showNotice ) {
 			return true;
@@ -40,8 +39,6 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$('#submit').click(function(){
 		var form = $(this).parents('form');
 

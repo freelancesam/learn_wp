@@ -544,13 +544,9 @@ class WC_REST_Orders_Controller extends WC_REST_Legacy_Orders_Controller {
 	 * Gets the product ID from the SKU or posted ID.
 	 *
 	 * @param array $posted Request data
-<<<<<<< HEAD
 	 *
 	 * @return int
 	 * @throws WC_REST_Exception
-=======
-	 * @return int
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function get_product_id( $posted ) {
 		if ( ! empty( $posted['sku'] ) ) {
@@ -612,11 +608,8 @@ class WC_REST_Orders_Controller extends WC_REST_Legacy_Orders_Controller {
 	 *
 	 * @param array $posted Line item data.
 	 * @param string $action 'create' to add line item or 'update' to update it.
-<<<<<<< HEAD
 	 *
 	 * @return WC_Order_Item_Product
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @throws WC_REST_Exception Invalid data, server error.
 	 */
 	protected function prepare_line_items( $posted, $action = 'create' ) {
@@ -645,11 +638,8 @@ class WC_REST_Orders_Controller extends WC_REST_Legacy_Orders_Controller {
 	 *
 	 * @param $posted $shipping Item data.
 	 * @param string $action 'create' to add shipping or 'update' to update it.
-<<<<<<< HEAD
 	 *
 	 * @return WC_Order_Item_Shipping
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @throws WC_REST_Exception Invalid data, server error.
 	 */
 	protected function prepare_shipping_lines( $posted, $action ) {
@@ -672,11 +662,8 @@ class WC_REST_Orders_Controller extends WC_REST_Legacy_Orders_Controller {
 	 *
 	 * @param array $posted Item data.
 	 * @param string $action 'create' to add fee or 'update' to update it.
-<<<<<<< HEAD
 	 *
 	 * @return WC_Order_Item_Fee
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @throws WC_REST_Exception Invalid data, server error.
 	 */
 	protected function prepare_fee_lines( $posted, $action ) {
@@ -699,11 +686,8 @@ class WC_REST_Orders_Controller extends WC_REST_Legacy_Orders_Controller {
 	 *
 	 * @param array $posted Item data.
 	 * @param string $action 'create' to add coupon or 'update' to update it.
-<<<<<<< HEAD
 	 *
 	 * @return WC_Order_Item_Coupon
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @throws WC_REST_Exception Invalid data, server error.
 	 */
 	protected function prepare_coupon_lines( $posted, $action ) {

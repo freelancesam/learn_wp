@@ -72,11 +72,7 @@ class WC_Emails {
 			'woocommerce_product_on_backorder',
 			'woocommerce_order_status_pending_to_processing',
 			'woocommerce_order_status_pending_to_completed',
-<<<<<<< HEAD
 			'woocommerce_order_status_processing_to_cancelled',
-=======
-			'woocommerce_order_status_pending_to_cancelled',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'woocommerce_order_status_pending_to_failed',
 			'woocommerce_order_status_pending_to_on-hold',
 			'woocommerce_order_status_failed_to_processing',
@@ -259,11 +255,8 @@ class WC_Emails {
 	 *
 	 * @param mixed $email_heading
 	 * @param string $message
-<<<<<<< HEAD
 	 * @param bool $plain_text
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	public function wrap_message( $email_heading, $message, $plain_text = false ) {
@@ -300,11 +293,8 @@ class WC_Emails {
 
 	/**
 	 * Prepare and send the customer invoice email on demand.
-<<<<<<< HEAD
 	 *
 	 * @param int|WC_Order $order
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function customer_invoice( $order ) {
 		$email = $this->emails['WC_Email_Customer_Invoice'];
@@ -321,10 +311,7 @@ class WC_Emails {
 	 *
 	 * @param int $customer_id
 	 * @param array $new_customer_data
-<<<<<<< HEAD
 	 * @param bool $password_generated
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function customer_new_account( $customer_id, $new_customer_data = array(), $password_generated = false ) {
 		if ( ! $customer_id ) {
@@ -339,14 +326,11 @@ class WC_Emails {
 
 	/**
 	 * Show the order details table
-<<<<<<< HEAD
 	 *
 	 * @param WC_Order $order
 	 * @param bool $sent_to_admin
 	 * @param bool $plain_text
 	 * @param string $email
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function order_details( $order, $sent_to_admin = false, $plain_text = false, $email = '' ) {
 		if ( $plain_text ) {
@@ -462,13 +446,10 @@ class WC_Emails {
 
 	/**
 	 * Get the email addresses.
-<<<<<<< HEAD
 	 *
 	 * @param WC_Order $order
 	 * @param bool $sent_to_admin
 	 * @param bool $plain_text
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function email_addresses( $order, $sent_to_admin = false, $plain_text = false ) {
 		if ( ! is_a( $order, 'WC_Order' ) ) {

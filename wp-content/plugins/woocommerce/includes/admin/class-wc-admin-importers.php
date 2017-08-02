@@ -1,38 +1,23 @@
 <?php
 /**
-<<<<<<< HEAD
  * Init WooCommerce data importers.
  *
  * @author      Automattic
  * @category    Admin
  * @package     WooCommerce/Admin
  * @version     3.1.0
-=======
- * Setup importers for WC data
- *
- * @author      WooThemes
- * @category    Admin
- * @package     WooCommerce/Admin
- * @version     2.5.0
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-<<<<<<< HEAD
-=======
-if ( ! class_exists( 'WC_Admin_Importers', false ) ) :
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * WC_Admin_Importers Class.
  */
 class WC_Admin_Importers {
 
 	/**
-<<<<<<< HEAD
 	 * Array of importer IDs.
 	 *
 	 * @var string[]
@@ -124,24 +109,6 @@ class WC_Admin_Importers {
 
 	/**
 	 * The tax rate importer which extends WP_Importer.
-=======
-	 * Hook in tabs.
-	 */
-	public function __construct() {
-		add_action( 'admin_init', array( $this, 'register_importers' ) );
-		add_action( 'import_start', array( $this, 'post_importer_compatibility' ) );
-	}
-
-	/**
-	 * Add menu items.
-	 */
-	public function register_importers() {
-		register_importer( 'woocommerce_tax_rate_csv', __( 'WooCommerce tax rates (CSV)', 'woocommerce' ), __( 'Import <strong>tax rates</strong> to your store via a csv file.', 'woocommerce' ), array( $this, 'tax_rates_importer' ) );
-	}
-
-	/**
-	 * Add menu item.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function tax_rates_importer() {
 		// Load Importer API
@@ -164,11 +131,7 @@ class WC_Admin_Importers {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * When running the WP XML importer, ensure attributes exist.
-=======
-	 * When running the WP importer, ensure attributes exist.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * WordPress import should work - however, it fails to import custom product attribute taxonomies.
 	 * This code grabs the file before it is imported and ensures the taxonomies are created.
@@ -185,7 +148,6 @@ class WC_Admin_Importers {
 		$parser      = new WXR_Parser();
 		$import_data = $parser->parse( $file );
 
-<<<<<<< HEAD
 		if ( isset( $import_data['posts'] ) && ! empty( $import_data['posts'] ) ) {
 			foreach ( $import_data['posts'] as $post ) {
 				if ( 'product' === $post['post_type'] && ! empty( $post['terms'] ) ) {
@@ -218,46 +180,6 @@ class WC_Admin_Importers {
 										'rewrite'      => false,
 									) )
 								);
-=======
-		if ( isset( $import_data['posts'] ) ) {
-			$posts = $import_data['posts'];
-
-			if ( $posts && sizeof( $posts ) > 0 ) {
-				foreach ( $posts as $post ) {
-					if ( 'product' === $post['post_type'] ) {
-						if ( ! empty( $post['terms'] ) ) {
-							foreach ( $post['terms'] as $term ) {
-								if ( strstr( $term['domain'], 'pa_' ) ) {
-									if ( ! taxonomy_exists( $term['domain'] ) ) {
-										$attribute_name = wc_sanitize_taxonomy_name( str_replace( 'pa_', '', $term['domain'] ) );
-
-										// Create the taxonomy
-										if ( ! in_array( $attribute_name, wc_get_attribute_taxonomies() ) ) {
-											$attribute = array(
-												'attribute_label'   => $attribute_name,
-												'attribute_name'    => $attribute_name,
-												'attribute_type'    => 'select',
-												'attribute_orderby' => 'menu_order',
-												'attribute_public'  => 0,
-											);
-											$wpdb->insert( $wpdb->prefix . 'woocommerce_attribute_taxonomies', $attribute );
-											delete_transient( 'wc_attribute_taxonomies' );
-										}
-
-										// Register the taxonomy now so that the import works!
-										register_taxonomy(
-											$term['domain'],
-											apply_filters( 'woocommerce_taxonomy_objects_' . $term['domain'], array( 'product' ) ),
-											apply_filters( 'woocommerce_taxonomy_args_' . $term['domain'], array(
-												'hierarchical' => true,
-												'show_ui'      => false,
-												'query_var'    => true,
-												'rewrite'      => false,
-											) )
-										);
-									}
-								}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							}
 						}
 					}
@@ -265,7 +187,6 @@ class WC_Admin_Importers {
 			}
 		}
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Ajax callback for importing one batch of products from a CSV.
@@ -336,10 +257,3 @@ class WC_Admin_Importers {
 }
 
 new WC_Admin_Importers();
-=======
-}
-
-endif;
-
-return new WC_Admin_Importers();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

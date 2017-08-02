@@ -31,11 +31,7 @@ class WP_Automatic_Updater {
 	 */
 	public function is_disabled() {
 		// Background updates are disabled if you don't want file changes.
-<<<<<<< HEAD
 		if ( ! wp_is_file_mod_allowed( 'automatic_updater' ) )
-=======
-		if ( defined( 'DISALLOW_FILE_MODS' ) && DISALLOW_FILE_MODS )
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			return true;
 
 		if ( wp_installing() )

@@ -107,11 +107,7 @@ case 'edit':
 		wp_die( __( 'You attempted to edit an item that doesn&#8217;t exist. Perhaps it was deleted?' ) );
 
 	if ( ! $post_type_object )
-<<<<<<< HEAD
 		wp_die( __( 'Invalid post type.' ) );
-=======
-		wp_die( __( 'Unknown post type.' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( ! in_array( $typenow, get_post_types( array( 'show_ui' => true ) ) ) ) {
 		wp_die( __( 'Sorry, you are not allowed to edit posts in this post type.' ) );
@@ -212,11 +208,7 @@ case 'trash':
 		wp_die( __( 'The item you are trying to move to the Trash no longer exists.' ) );
 
 	if ( ! $post_type_object )
-<<<<<<< HEAD
 		wp_die( __( 'Invalid post type.' ) );
-=======
-		wp_die( __( 'Unknown post type.' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to move this item to the Trash.' ) );
@@ -239,11 +231,7 @@ case 'untrash':
 		wp_die( __( 'The item you are trying to restore from the Trash no longer exists.' ) );
 
 	if ( ! $post_type_object )
-<<<<<<< HEAD
 		wp_die( __( 'Invalid post type.' ) );
-=======
-		wp_die( __( 'Unknown post type.' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to restore this item from the Trash.' ) );
@@ -261,11 +249,7 @@ case 'delete':
 		wp_die( __( 'This item has already been deleted.' ) );
 
 	if ( ! $post_type_object )
-<<<<<<< HEAD
 		wp_die( __( 'Invalid post type.' ) );
-=======
-		wp_die( __( 'Unknown post type.' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( ! current_user_can( 'delete_post', $post_id ) )
 		wp_die( __( 'Sorry, you are not allowed to delete this item.' ) );

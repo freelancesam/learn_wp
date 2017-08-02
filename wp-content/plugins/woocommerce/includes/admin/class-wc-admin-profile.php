@@ -93,7 +93,6 @@ class WC_Admin_Profile {
 			'shipping' => array(
 				'title' => __( 'Customer shipping address', 'woocommerce' ),
 				'fields' => array(
-<<<<<<< HEAD
 					'copy_billing' => array(
 						'label'       => __( 'Copy from billing address', 'woocommerce' ),
 						'description' => '',
@@ -101,8 +100,6 @@ class WC_Admin_Profile {
 						'type'        => 'button',
 						'text'        => __( 'Copy', 'woocommerce' ),
 					),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					'shipping_first_name' => array(
 						'label'       => __( 'First name', 'woocommerce' ),
 						'description' => '',
@@ -161,17 +158,10 @@ class WC_Admin_Profile {
 
 		$show_fields = $this->get_customer_meta_fields();
 
-<<<<<<< HEAD
 		foreach ( $show_fields as $fieldset_key => $fieldset ) :
 			?>
 			<h2><?php echo $fieldset['title']; ?></h2>
 			<table class="form-table" id="<?php echo esc_attr( 'fieldset-' . $fieldset_key ); ?>">
-=======
-		foreach ( $show_fields as $fieldset ) :
-			?>
-			<h2><?php echo $fieldset['title']; ?></h2>
-			<table class="form-table">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<?php
 				foreach ( $fieldset['fields'] as $key => $field ) :
 					?>
@@ -179,11 +169,7 @@ class WC_Admin_Profile {
 						<th><label for="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $field['label'] ); ?></label></th>
 						<td>
 							<?php if ( ! empty( $field['type'] ) && 'select' === $field['type'] ) : ?>
-<<<<<<< HEAD
 								<select name="<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>" class="<?php echo esc_attr( $field['class'] ); ?>" style="width: 25em;">
-=======
-								<select name="<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>" class="<?php echo ( ! empty( $field['class'] ) ? $field['class'] : '' ); ?>" style="width: 25em;">
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 									<?php
 										$selected = esc_attr( get_user_meta( $user->ID, $key, true ) );
 										foreach ( $field['options'] as $option_key => $option_value ) : ?>
@@ -191,17 +177,11 @@ class WC_Admin_Profile {
 									<?php endforeach; ?>
 								</select>
 							<?php elseif ( ! empty( $field['type'] ) && 'checkbox' === $field['type'] ) : ?>
-<<<<<<< HEAD
 								<input type="checkbox" name="<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>" value="1" class="<?php echo esc_attr( $field['class'] ); ?>" <?php checked( (int) get_user_meta( $user->ID, $key, true ), 1, true ); ?> />
 							<?php elseif ( ! empty( $field['type'] ) && 'button' === $field['type'] ) : ?>
 								<button id="<?php echo esc_attr( $key ); ?>" class="button <?php echo esc_attr( $field['class'] ); ?>"><?php echo esc_html( $field['text'] ); ?></button>
 							<?php else : ?>
 								<input type="text" name="<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $this->get_user_meta( $user->ID, $key ) ); ?>" class="<?php echo ( ! empty( $field['class'] ) ? esc_attr( $field['class'] ) : 'regular-text' ); ?>" />
-=======
-								<input type="checkbox" name="<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>" value="1" class="<?php echo ( ! empty( $field['class'] ) ? $field['class'] : '' ); ?>" <?php checked( (int) get_user_meta( $user->ID, $key, true ), 1, true ); ?> />
-							<?php else : ?>
-								<input type="text" name="<?php echo esc_attr( $key ); ?>" id="<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( get_user_meta( $user->ID, $key, true ) ); ?>" class="<?php echo ( ! empty( $field['class'] ) ? $field['class'] : 'regular-text' ); ?>" />
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							<?php endif; ?>
 							<br/>
 							<span class="description"><?php echo wp_kses_post( $field['description'] ); ?></span>
@@ -235,7 +215,6 @@ class WC_Admin_Profile {
 			}
 		}
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Get user meta for a given key, with fallbacks to core user info for pre-existing fields.
@@ -257,8 +236,6 @@ class WC_Admin_Profile {
 
 		return $value;
 	}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 endif;

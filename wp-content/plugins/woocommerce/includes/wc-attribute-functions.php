@@ -16,12 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Gets text attributes from a string.
  *
  * @since  2.4
-<<<<<<< HEAD
  *
  * @param string $raw_attributes
  *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @return array
  */
 function wc_get_text_attributes( $raw_attributes ) {
@@ -57,11 +54,7 @@ function wc_get_attribute_taxonomies() {
 	if ( false === ( $attribute_taxonomies = get_transient( 'wc_attribute_taxonomies' ) ) ) {
 		global $wpdb;
 
-<<<<<<< HEAD
 		$attribute_taxonomies = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "woocommerce_attribute_taxonomies WHERE attribute_name != '' ORDER BY attribute_name ASC;" );
-=======
-		$attribute_taxonomies = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "woocommerce_attribute_taxonomies order by attribute_name ASC;" );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		set_transient( 'wc_attribute_taxonomies', $attribute_taxonomies );
 	}
@@ -76,11 +69,7 @@ function wc_get_attribute_taxonomies() {
  * @return string
  */
 function wc_attribute_taxonomy_name( $attribute_name ) {
-<<<<<<< HEAD
 	return $attribute_name ? 'pa_' . wc_sanitize_taxonomy_name( $attribute_name ) : '';
-=======
-	return 'pa_' . wc_sanitize_taxonomy_name( $attribute_name );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
@@ -139,11 +128,6 @@ function wc_attribute_taxonomy_id_by_name( $name ) {
  * @return string
  */
 function wc_attribute_label( $name, $product = '' ) {
-<<<<<<< HEAD
-=======
-	global $wpdb;
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( taxonomy_is_product_attribute( $name ) ) {
 		$name       = wc_sanitize_taxonomy_name( str_replace( 'pa_', '', $name ) );
 		$all_labels = wp_list_pluck( wc_get_attribute_taxonomies(), 'attribute_label', 'attribute_name' );
@@ -153,11 +137,7 @@ function wc_attribute_label( $name, $product = '' ) {
 			$product = wc_get_product( $product->get_parent_id() );
 		}
 		// Attempt to get label from product, as entered by the user.
-<<<<<<< HEAD
 		if ( false !== $product && ( $attributes = $product->get_attributes() ) && isset( $attributes[ sanitize_title( $name ) ] ) ) {
-=======
-		if ( ( $attributes = $product->get_attributes() ) && isset( $attributes[ sanitize_title( $name ) ] ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$label = $attributes[ sanitize_title( $name ) ]->get_name();
 		} else {
 			$label = $name;
@@ -355,7 +335,6 @@ function wc_is_attribute_in_product_name( $attribute, $name ) {
 	$is_in_name = stristr( $name, ' ' . $attribute . ',' ) || 0 === stripos( strrev( $name ), strrev( ' ' . $attribute ) );
 	return apply_filters( 'woocommerce_is_attribute_in_product_name', $is_in_name, $attribute, $name );
 }
-<<<<<<< HEAD
 
 /**
  * Callback for array filter to get default attributes.  Will allow for '0' string values, but regard all other
@@ -368,5 +347,3 @@ function wc_is_attribute_in_product_name( $attribute, $name ) {
 function wc_array_filter_default_attributes( $attribute ) {
 	return ( ! empty( $attribute ) || $attribute === '0' );
 }
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

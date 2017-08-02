@@ -42,17 +42,10 @@ function et_sanitize_font_style( $styles ) {
  * @param array
  * @return string|bool
  */
-<<<<<<< HEAD
-function et_sanitize_key_based_option( $choosen, $options, $default = false ) {
-	// Validate choosen option based on available options
-	if ( ! isset( $options[ $choosen ] ) ) {
-		return $default;
-=======
 function et_sanitize_key_based_option( $choosen, $options ) {
 	// Validate choosen option based on available options
 	if ( ! isset( $options[ $choosen ] ) ) {
 		return false;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	return $choosen;
@@ -191,28 +184,6 @@ function et_sanitize_alpha_color( $color ) {
 }
 
 /**
-<<<<<<< HEAD
- * Sanitize font icon
- * @param string
- * @param string
- * @return string
- */
-function et_sanitize_font_icon( $font_icon, $symbols_function = 'default' ) {
-	// Convert symbols into strings
-	$font_icon = trim( $font_icon );
-	$icon_symbols = is_callable( $symbols_function ) ? call_user_func( $symbols_function ) : et_pb_get_font_icon_symbols();
-	$icon_symbols = array_map( 'et_sanitize_font_icon_convert_icon_to_string', $icon_symbols );
-
-	// the exact font icon value is saved
-	if ( 1 !== preg_match( "/^%%/", $font_icon ) ) {
-		return in_array( $font_icon, $icon_symbols ) ? $font_icon : '';
-	}
-
-	// the font icon value is saved in the following format: %%index_number%%
-	// strip the %'s to get to end result: index_number
-	$icon_index = (int) str_replace( '%', '', $font_icon );
-	return isset( $icon_symbols[ $icon_index ] ) ? $icon_symbols[ $icon_index ] : '';
-=======
  * Sanitize font icon picker
  * @param string
  * @return string|bool
@@ -227,7 +198,6 @@ function et_sanitize_font_icon( $choosen ) {
 	}
 
 	return $choosen;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
@@ -277,10 +247,6 @@ function et_allowed_html_tags_short_block() {
 			'href'  => array(),
 			'class' => array(),
 			'id'    => array(),
-<<<<<<< HEAD
-			'rel'   => array(),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'title'    => array(),
 			'target'   => array(),
 		),
@@ -298,32 +264,4 @@ function et_allowed_html_tags_short_block() {
  */
 function et_sanitize_html_input_text( $string ) {
 	return wp_kses( $string, et_allowed_html_tags_short_block() );
-<<<<<<< HEAD
 }
-
-/**
- * Sanitize background repeat value
- * @return string
- */
-function et_sanitize_background_repeat( $choosen ) {
-	return et_sanitize_key_based_option(
-		$choosen,
-		et_divi_background_repeat_choices(),
-		apply_filters( 'et_divi_background_repeat_default', 'repeat' )
-	);
-}
-
-/**
- * Sanitize background attachment value
- * @return string
- */
-function et_sanitize_background_attachment( $choosen ) {
-	return et_sanitize_key_based_option(
-		$choosen,
-		et_divi_background_attachment_choices(),
-		apply_filters( 'et_sanitize_background_attachment_default', 'scroll' )
-	);
-}
-=======
-}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

@@ -9,11 +9,6 @@ $et_theme_image_sizes = array(
 	'400x284'   => 'et-pb-portfolio-image',
 	'510x382'   => 'et-pb-portfolio-module-image',
 	'1080x9999' => 'et-pb-portfolio-image-single',
-<<<<<<< HEAD
-	'400x516'   => 'et-pb-gallery-module-image-portrait',
-	'2880x1800' => 'et-pb-post-main-image-fullwidth-large',
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 );
 
 $et_theme_image_sizes = apply_filters( 'et_theme_image_sizes', $et_theme_image_sizes );

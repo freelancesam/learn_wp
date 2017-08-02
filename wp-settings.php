@@ -100,10 +100,6 @@ require( ABSPATH . WPINC . '/class-wp-matchesmapregex.php' );
 require( ABSPATH . WPINC . '/class-wp.php' );
 require( ABSPATH . WPINC . '/class-wp-error.php' );
 require( ABSPATH . WPINC . '/pomo/mo.php' );
-<<<<<<< HEAD
-=======
-require( ABSPATH . WPINC . '/class-phpass.php' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 // Include the wpdb class and, if present, a db.php database drop-in.
 global $wpdb;

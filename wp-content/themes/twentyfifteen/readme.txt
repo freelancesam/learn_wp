@@ -1,13 +1,8 @@
 === Twenty Fifteen ===
 Contributors: the WordPress team
 Requires at least: WordPress 4.1
-<<<<<<< HEAD
 Tested up to: WordPress 4.9-trunk
 Version: 1.8
-=======
-Tested up to: WordPress 4.8-trunk
-Version: 1.7
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, two-columns, left-sidebar, accessibility-ready, custom-background, custom-colors, custom-header, custom-logo, custom-menu, editor-style, featured-images, microformats, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
@@ -60,14 +55,11 @@ Source: http://www.genericons.com
 
 == Changelog ==
 
-<<<<<<< HEAD
 = 1.8 =
 * Released: June 8, 2017
 
 https://codex.wordpress.org/Twenty_Fifteen_Theme_Changelog#Version_1.8
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 = 1.7 =
 * Released: December 6, 2016
 

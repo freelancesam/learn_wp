@@ -120,13 +120,9 @@
 			},
 			minLength: 2,
 			position: {
-<<<<<<< HEAD
 				my: 'left top+2',
 				at: 'left bottom',
 				collision: 'none'
-=======
-				my: 'left top+2'
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			},
 			messages: {
 				noResults: window.uiAutocompleteL10n.noResults,

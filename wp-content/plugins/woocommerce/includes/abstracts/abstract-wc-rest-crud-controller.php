@@ -94,11 +94,7 @@ abstract class WC_REST_CRUD_Controller extends WC_REST_Posts_Controller {
 	/**
 	 * Get object permalink.
 	 *
-<<<<<<< HEAD
 	 * @param  object $object
-=======
-	 * @param  int $id Object ID.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	protected function get_permalink( $object ) {

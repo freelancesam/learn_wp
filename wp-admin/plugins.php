@@ -246,7 +246,6 @@ if ( $action ) {
 				exit;
 			}
 
-<<<<<<< HEAD
 			// Bail on all if any paths are invalid.
 			// validate_file() returns truthy for invalid files
 			$invalid_plugin_files = array_filter( $plugins, 'validate_file' );
@@ -255,8 +254,6 @@ if ( $action ) {
 				exit;
 			}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			include(ABSPATH . 'wp-admin/update.php');
 
 			$parent_file = 'plugins.php';
@@ -502,7 +499,6 @@ if ( ! empty( $invalid ) ) {
 <?php endif; ?>
 
 <div class="wrap">
-<<<<<<< HEAD
 <h1 class="wp-heading-inline"><?php
 echo esc_html( $title );
 ?></h1>
@@ -510,11 +506,6 @@ echo esc_html( $title );
 <?php
 if ( ( ! is_multisite() || is_network_admin() ) && current_user_can('install_plugins') ) { ?>
 	<a href="<?php echo self_admin_url( 'plugin-install.php' ); ?>" class="page-title-action"><?php echo esc_html_x( 'Add New', 'plugin' ); ?></a>
-=======
-<h1><?php echo esc_html( $title );
-if ( ( ! is_multisite() || is_network_admin() ) && current_user_can('install_plugins') ) { ?>
- <a href="<?php echo self_admin_url( 'plugin-install.php' ); ?>" class="page-title-action"><?php echo esc_html_x('Add New', 'plugin'); ?></a>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <?php
 }
 
@@ -523,12 +514,8 @@ if ( strlen( $s ) ) {
 	printf( '<span class="subtitle">' . __( 'Search results for &#8220;%s&#8221;' ) . '</span>', esc_html( urldecode( $s ) ) );
 }
 ?>
-<<<<<<< HEAD
 
 <hr class="wp-header-end">
-=======
-</h1>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 <?php
 /**

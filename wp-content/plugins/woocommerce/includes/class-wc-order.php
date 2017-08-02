@@ -218,19 +218,13 @@ class WC_Order extends WC_Abstract_Order {
 	/**
 	 * Set order status.
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param string $new_status Status to change the order to. No internal wc- prefix is required.
 	 * @param string $note (default: '') Optional note to add.
 	 * @param bool $manual_update is this a manual order status change?
 	 * @param array details of change
-<<<<<<< HEAD
 	 *
 	 * @return array
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function set_status( $new_status, $note = '', $manual_update = false ) {
 		$result = parent::set_status( $new_status );
@@ -285,14 +279,11 @@ class WC_Order extends WC_Abstract_Order {
 	/**
 	 * Updates status of order immediately. Order must exist.
 	 * @uses WC_Order::set_status()
-<<<<<<< HEAD
 	 *
 	 * @param string $new_status
 	 * @param string $note
 	 * @param bool $manual
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return bool success
 	 */
 	public function update_status( $new_status, $note = '', $manual = false ) {
@@ -1241,12 +1232,9 @@ class WC_Order extends WC_Abstract_Order {
 
 	/**
 	 * See if order matches cart_hash.
-<<<<<<< HEAD
 	 *
 	 * @param string $cart_hash
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return bool
 	 */
 	public function has_cart_hash( $cart_hash = '' ) {

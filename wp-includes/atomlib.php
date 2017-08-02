@@ -94,13 +94,8 @@ class AtomParser {
 
         $this->feed = new AtomFeed();
         $this->current = null;
-<<<<<<< HEAD
         $this->map_attrs_func = array( __CLASS__, 'map_attrs' );
         $this->map_xmlns_func = array( __CLASS__, 'map_xmlns' );
-=======
-        $this->map_attrs_func = create_function('$k,$v', 'return "$k=\"$v\"";');
-        $this->map_xmlns_func = create_function('$p,$n', '$xd = "xmlns"; if(strlen($n[0])>0) $xd .= ":{$n[0]}"; return "{$xd}=\"{$n[1]}\"";');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
     }
 
 	/**
@@ -110,7 +105,6 @@ class AtomParser {
 		self::__construct();
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Map attributes to key="val"
 	 *
@@ -137,8 +131,6 @@ class AtomParser {
 		return "{$xd}=\"{$n[1]}\"";
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
     function _p($msg) {
         if($this->debug) {
             print str_repeat(" ", $this->depth * $this->indent) . $msg ."\n";

@@ -154,11 +154,7 @@
 								// Remove confirmation popup before relocation.
 								$( window ).unbind( 'beforeunload' );
 
-<<<<<<< HEAD
-								window.location = window.location.href.replace(/reset\=true\&|\&reset\=true/,'');
-=======
 								window.location = window.location.href;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							} )
 						}
 					} );
@@ -170,11 +166,8 @@
 			var $this = this,
 				progressBarMessages = backup ? $this.text.backuping : $this.text.exporting;
 
-<<<<<<< HEAD
-=======
 			$this.addProgressBar( progressBarMessages );
 
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$this.save( function() {
 				var posts = {},
 					content = false;
@@ -184,24 +177,8 @@
 					$( '#posts-filter [name="post[]"]:checked:enabled' ).each( function() {
 						posts[this.id] = this.value;
 					} );
-<<<<<<< HEAD
-
-					// do not proceed and display error message if no Items selected
-					if ( $.isEmptyObject( posts ) ) {
-						etCore.modalContent( '<div class="et-core-loader et-core-loader-fail"></div><h3>' + $this.text.noItemsSelected + '</h3>', false, true, '#' + $this.instance( '.ui-tabs-panel:visible' ).attr( 'id' ) );
-
-						$this.enableActions();
-
-						return;
-					}
 				}
 
-				$this.addProgressBar( progressBarMessages );
-
-=======
-				}
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				// Get post layout.
 				if ( 'undefined' !== typeof window.tinyMCE && window.tinyMCE.get( 'content' ) && ! window.tinyMCE.get( 'content' ).isHidden() ) {
 					content = window.tinyMCE.get( 'content' ).getContent();

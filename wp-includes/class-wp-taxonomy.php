@@ -187,7 +187,6 @@ final class WP_Taxonomy {
 	public $update_count_callback;
 
 	/**
-<<<<<<< HEAD
 	 * Whether this taxonomy should appear in the REST API.
 	 *
 	 * Default false. If true, standard endpoints will be registered with
@@ -220,8 +219,6 @@ final class WP_Taxonomy {
 	public $rest_controller_class;
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Whether it is a built-in taxonomy.
 	 *
 	 * @since 4.7.0
@@ -289,12 +286,9 @@ final class WP_Taxonomy {
 			'rewrite'               => true,
 			'query_var'             => $this->name,
 			'update_count_callback' => '',
-<<<<<<< HEAD
 			'show_in_rest'          => false,
 			'rest_base'             => false,
 			'rest_controller_class' => false,
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'_builtin'              => false,
 		);
 
@@ -374,11 +368,8 @@ final class WP_Taxonomy {
 			}
 		}
 
-<<<<<<< HEAD
 		$args['name'] = $this->name;
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		foreach ( $args as $property_name => $property_value ) {
 			$this->$property_name = $property_value;
 		}

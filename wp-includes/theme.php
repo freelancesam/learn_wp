@@ -950,30 +950,18 @@ function remove_theme_mods() {
 }
 
 /**
-<<<<<<< HEAD
  * Retrieves the custom header text color in 3- or 6-digit hexadecimal form.
  *
  * @since 2.1.0
  *
  * @return string Header text color in 3- or 6-digit hexadecimal form (minus the hash symbol).
-=======
- * Retrieves the custom header text color in HEX format.
- *
- * @since 2.1.0
- *
- * @return string Header text color in HEX format (minus the hash symbol).
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function get_header_textcolor() {
 	return get_theme_mod('header_textcolor', get_theme_support( 'custom-header', 'default-text-color' ) );
 }
 
 /**
-<<<<<<< HEAD
  * Displays the custom header text color in 3- or 6-digit hexadecimal form (minus the hash symbol).
-=======
- * Displays the custom header text color in HEX format (minus the hash symbol).
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * @since 2.1.0
  */
@@ -1337,7 +1325,6 @@ function has_header_video() {
 	return (bool) get_header_video_url();
 }
 
-<<<<<<< HEAD
 /**
  * Retrieve header video URL for custom header.
  *
@@ -1346,33 +1333,16 @@ function has_header_video() {
  * @since 4.7.0
  *
  * @return string|false Header video URL or false if there is no video.
-=======
-/* Retrieve header video URL for custom header.
- *
- * Uses a local video if present, or falls back to an external video. Returns false if there is no video.
- *
- * @since 4.7.0
- *
- * @return string|false
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function get_header_video_url() {
 	$id = absint( get_theme_mod( 'header_video' ) );
 	$url = esc_url( get_theme_mod( 'external_header_video' ) );
 
-<<<<<<< HEAD
-=======
-	if ( ! $id && ! $url ) {
-		return false;
-	}
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( $id ) {
 		// Get the file URL from the attachment ID.
 		$url = wp_get_attachment_url( $id );
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Filters the header video URL.
 	 *
@@ -1386,8 +1356,6 @@ function get_header_video_url() {
 		return false;
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	return esc_url_raw( set_url_scheme( $url ) );
 }
 
@@ -1737,11 +1705,7 @@ function wp_get_custom_css( $stylesheet = '' ) {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Filters the Custom CSS Output into the <head>.
-=======
-	 * Modify the Custom CSS Output into the <head>.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @since 4.7.0
 	 *
@@ -2020,15 +1984,9 @@ function get_theme_starter_content() {
 			'link_home' => array(
 				'type' => 'custom',
 				'title' => _x( 'Home', 'Theme starter content' ),
-<<<<<<< HEAD
 				'url' => home_url( '/' ),
 			),
 			'page_home' => array( // Deprecated in favor of link_home.
-=======
-				'url' => home_url(),
-			),
-			'page_home' => array( // Deprecated in favor of home_link.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'type' => 'post_type',
 				'object' => 'page',
 				'object_id' => '{{home}}',
@@ -3101,7 +3059,6 @@ function is_customize_preview() {
 
 	return ( $wp_customize instanceof WP_Customize_Manager ) && $wp_customize->is_preview();
 }
-<<<<<<< HEAD
 
 /**
  * Make sure that auto-draft posts get their post_date bumped to prevent premature garbage-collection.
@@ -3164,5 +3121,3 @@ function _wp_keep_alive_customize_changeset_dependent_auto_drafts( $new_status, 
 		clean_post_cache( $post_id );
 	}
 }
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

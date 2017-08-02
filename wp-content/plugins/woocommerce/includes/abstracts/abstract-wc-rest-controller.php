@@ -35,11 +35,8 @@ abstract class WC_REST_Controller extends WP_REST_Controller {
 	 * The type of object is inferred from the passed schema.
 	 *
 	 * @param array $schema Schema array.
-<<<<<<< HEAD
 	 *
 	 * @return array
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function add_additional_fields_schema( $schema ) {
 		if ( empty( $schema['title'] ) ) {
@@ -233,11 +230,7 @@ abstract class WC_REST_Controller extends WP_REST_Controller {
 	 * @since 3.0.0
 	 * @param array $values
 	 * @param array  $setting
-<<<<<<< HEAD
 	 * @return array|WP_Error
-=======
-	 * @return string|WP_Error
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function validate_setting_multiselect_field( $values, $setting ) {
 		if ( empty( $values ) ) {
@@ -262,11 +255,7 @@ abstract class WC_REST_Controller extends WP_REST_Controller {
 	 * Validate image_width based settings.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 * @param array $values
-=======
-	 * @param array $value
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array $setting
 	 * @return string|WP_Error
 	 */

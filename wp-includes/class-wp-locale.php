@@ -122,11 +122,7 @@ class WP_Locale {
 	 * specific calendar names and text direction.
 	 *
 	 * @since 2.1.0
-<<<<<<< HEAD
 	 * @access public
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @global string $text_direction
 	 */
@@ -360,11 +356,7 @@ class WP_Locale {
 	 * For backward compatibility only.
 	 *
 	 * @deprecated For backward compatibility only.
-<<<<<<< HEAD
 	 * @access public
-=======
-	 * @access private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @global array $weekday
 	 * @global array $weekday_initial

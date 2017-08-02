@@ -22,13 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-<<<<<<< HEAD
 if ( get_option( 'woocommerce_enable_review_rating' ) === 'no' ) {
 	return;
 }
-=======
-if ( get_option( 'woocommerce_enable_review_rating' ) === 'no' )
-	return;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 echo wc_get_rating_html( $product->get_average_rating() );

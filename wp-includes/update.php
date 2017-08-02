@@ -108,15 +108,10 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	if ( $ssl = wp_http_supports( array( 'ssl' ) ) )
 		$url = set_url_scheme( $url, 'https' );
 
-<<<<<<< HEAD
 	$doing_cron = wp_doing_cron();
 
 	$options = array(
 		'timeout' => $doing_cron ? 30 : 3,
-=======
-	$options = array(
-		'timeout' => ( ( defined('DOING_CRON') && DOING_CRON ) ? 30 : 3 ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' ),
 		'headers' => array(
 			'wp_install' => $wp_install,
@@ -184,11 +179,7 @@ function wp_version_check( $extra_stats = array(), $force_check = false ) {
 	}
 
 	// Trigger background updates if running non-interactively, and we weren't called from the update handler.
-<<<<<<< HEAD
 	if ( $doing_cron && ! doing_action( 'wp_maybe_auto_update' ) ) {
-=======
-	if ( defined( 'DOING_CRON' ) && DOING_CRON && ! doing_action( 'wp_maybe_auto_update' ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		do_action( 'wp_maybe_auto_update' );
 	}
 }
@@ -228,11 +219,8 @@ function wp_update_plugins( $extra_stats = array() ) {
 	$new_option = new stdClass;
 	$new_option->last_checked = time();
 
-<<<<<<< HEAD
 	$doing_cron = wp_doing_cron();
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// Check for update on a different schedule, depending on the page.
 	switch ( current_filter() ) {
 		case 'upgrader_process_complete' :
@@ -246,11 +234,7 @@ function wp_update_plugins( $extra_stats = array() ) {
 			$timeout = HOUR_IN_SECONDS;
 			break;
 		default :
-<<<<<<< HEAD
 			if ( $doing_cron ) {
-=======
-			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$timeout = 0;
 			} else {
 				$timeout = 12 * HOUR_IN_SECONDS;
@@ -302,11 +286,7 @@ function wp_update_plugins( $extra_stats = array() ) {
 	$locales = apply_filters( 'plugins_update_check_locales', $locales );
 	$locales = array_unique( $locales );
 
-<<<<<<< HEAD
 	if ( $doing_cron ) {
-=======
-	if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$timeout = 30;
 	} else {
 		// Three seconds, plus one extra second for every 10 plugins
@@ -424,11 +404,8 @@ function wp_update_themes( $extra_stats = array() ) {
 		);
 	}
 
-<<<<<<< HEAD
 	$doing_cron = wp_doing_cron();
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// Check for update on a different schedule, depending on the page.
 	switch ( current_filter() ) {
 		case 'upgrader_process_complete' :
@@ -442,15 +419,7 @@ function wp_update_themes( $extra_stats = array() ) {
 			$timeout = HOUR_IN_SECONDS;
 			break;
 		default :
-<<<<<<< HEAD
 			$timeout = $doing_cron ? 0 : 12 * HOUR_IN_SECONDS;
-=======
-			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
-				$timeout = 0;
-			} else {
-				$timeout = 12 * HOUR_IN_SECONDS;
-			}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	$time_not_changed = isset( $last_update->last_checked ) && $timeout > ( time() - $last_update->last_checked );
@@ -496,11 +465,7 @@ function wp_update_themes( $extra_stats = array() ) {
 	$locales = apply_filters( 'themes_update_check_locales', $locales );
 	$locales = array_unique( $locales );
 
-<<<<<<< HEAD
 	if ( $doing_cron ) {
-=======
-	if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$timeout = 30;
 	} else {
 		// Three seconds, plus one extra second for every 10 themes

@@ -28,18 +28,10 @@ if ( ! function_exists( 'et_epanel_admin_js' ) ) {
 
 		wp_enqueue_script( 'epanel_functions_init', $epanel_jsfolder . '/functions-init.js', array( 'jquery', 'jquery-ui-tabs', 'jquery-form', 'epanel_colorpicker', 'epanel_eye', 'epanel_checkbox', 'wp-color-picker-alpha' ), et_get_theme_version() );
 		wp_localize_script( 'epanel_functions_init', 'ePanelSettings', array(
-<<<<<<< HEAD
-			'clearpath'      => get_template_directory_uri() . '/epanel/images/empty.png',
-			'epanel_nonce'   => wp_create_nonce( 'epanel_nonce' ),
-			'help_label'     => esc_html__( 'Help', $themename ),
-			'et_core_nonces' => et_core_get_nonces(),
-		) );
-=======
 			'clearpath'    => get_template_directory_uri() . '/epanel/images/empty.png',
 			'epanel_nonce' => wp_create_nonce( 'epanel_nonce' ),
 			'help_label'   => esc_html__( 'Help', $themename ),
 		));
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 }
@@ -119,12 +111,6 @@ function et_add_epanel() {
 			||
 			( 'reset' === $_POST['action'] && isset( $_POST['_wpnonce_reset'] ) && wp_verify_nonce( $_POST['_wpnonce_reset'], 'et-nojs-reset_epanel' ) )
 		) {
-<<<<<<< HEAD
-			if ( ! isset( $GLOBALS['et_core_updates'] ) ) {
-				et_register_updates_component();
-			}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			epanel_save_data( 'js_disabled' ); //saves data when javascript is disabled
 		}
 	}
@@ -142,73 +128,11 @@ function et_add_epanel() {
 if ( ! function_exists( 'et_build_epanel' ) ) {
 
 	function et_build_epanel() {
-<<<<<<< HEAD
-		global $themename, $shortname, $options, $et_disabled_jquery, $epanelMainTabs;
-=======
 		global $themename, $shortname, $options, $et_disabled_jquery;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		// load theme settings array
 		et_load_core_options();
 
-<<<<<<< HEAD
-		$tabs              = array();
-		$default_tab_names = array(
-			'ad'           => _x( 'Ads', 'site ads placement areas', $themename ),
-			'colorization' => _x( 'Colorization', 'site color scheme', $themename ),
-			'general'      => _x( 'General', 'general options', $themename ),
-			'integration'  => _x( 'Integration', 'integrate third-party code', $themename ),
-			'layout'       => _x( 'Layout', 'page/post', $themename ),
-			'navigation'   => _x( 'Navigation', 'navigation menu', $themename ),
-			'seo'          => _x( 'SEO', 'search engine optimization', $themename ),
-			'support'      => _x( 'Support', 'documentation links', $themename ),
-			'updates'      => _x( 'Updates', 'theme updates', $themename ),
-		);
-
-		/**
-		 * Filters the data used to construct ePanel's layout.
-		 *
-		 * @since 3.2.1
-		 *
-		 * @param array $options
-		 */
-		$options = apply_filters( 'et_epanel_layout_data', $options );
-
-		/**
-		 * Filters the slugs/ids for ePanel's tabs.
-		 *
-		 * @deprecated
-		 *
-		 * @since 1.0
-		 * @since 3.2.1 Deprecated
-		 *
-		 * @param string[] $tab_slugs
-		 */
-		$epanelMainTabs = apply_filters( 'epanel_page_maintabs', $epanelMainTabs );
-
-
-		foreach( $epanelMainTabs as $tab_slug ) {
-			if ( isset( $default_tab_names[ $tab_slug ] ) ) {
-				$tabs[ $tab_slug ] = $default_tab_names[ $tab_slug ];
-			}
-		}
-
-		/**
-		 * Filters ePanel's localized tab names.
-		 *
-		 * @since 3.2.1
-		 *
-		 * @param string[] $tabs {
-		 *
-		 *     @type string $tab_slug Localized tab name.
-		 *     ...
-		 * }
-		 */
-		$tabs = apply_filters( 'et_epanel_tab_names', $tabs );
-
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( isset($_GET['saved']) ) {
 			if ( $_GET['saved'] ) echo '<div id="message" class="updated fade"><p><strong>' . esc_html( $themename ) . ' ' . esc_html__( 'settings saved.', $themename ) . '</strong></p></div>';
 		}
@@ -232,32 +156,16 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 							<div id="epanel-content">
 								<div id="epanel-header">
 									<h1 id="epanel-title"><?php printf( esc_html__( '%s Theme Options', $themename ), $themename ); ?></h1>
-<<<<<<< HEAD
-=======
 
 									<?php
 										global $epanelMainTabs;
 										$epanelMainTabs = apply_filters( 'epanel_page_maintabs', $epanelMainTabs );
 									?>
 
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 									<a href="#" class="defaults-button epanel-reset" title="<?php esc_attr_e( 'Reset to Defaults', $themename ); ?>"><span class="label"><?php esc_html_e( 'Reset to Defaults', $themename ); ?></span></a>
 									<?php echo et_core_portability_link( 'epanel', array( 'class' => 'defaults-button epanel-portability' ) ); ?>
 								</div>
 								<ul id="epanel-mainmenu">
-<<<<<<< HEAD
-									<?php
-										foreach ( $tabs as $tab_slug => $tab_name ) {
-											if ( 'ad' === $tab_slug ) {
-												$tab_slug = 'advertisements';
-											}
-
-											printf( '<li><a href="#wrap-%1$s">%2$s</a></li>', esc_attr( $tab_slug ), esc_html( $tab_name ) );
-										}
-
-										do_action( 'epanel_render_maintabs', $epanelMainTabs );
-									?>
-=======
 									<?php if ( in_array( 'general', $epanelMainTabs ) ) { ?>
 										<li><a href="#wrap-general"><?php esc_html_e( 'General', $themename ); ?></a></li>
 									<?php } ?>
@@ -286,18 +194,10 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 										<li><a href="#wrap-updates"><?php esc_html_e( 'Updates', $themename ); ?></a></li>
 									<?php } ?>
 									<?php do_action( 'epanel_render_maintabs', $epanelMainTabs ); ?>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 								</ul><!-- end epanel mainmenu -->
 
 								<?php
 								foreach ($options as $value) {
-<<<<<<< HEAD
-									if ( ! isset( $value['type'] ) ) {
-										continue;
-									}
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 									if ( ! empty( $value[ 'depends_on' ] ) ) {
 										// function defined in 'depends on' key returns false, if a setting shouldn't be displayed
 										if ( ! call_user_func( $value[ 'depends_on' ] ) ) {
@@ -373,21 +273,9 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 													<?php } elseif ( 'textarea' == $value['type'] ) { ?>
 
 														<?php
-<<<<<<< HEAD
-															// get the custom css value from WP custom CSS option if supported
-															if ( ( $shortname . '_custom_css' ) === $value['id'] && function_exists( 'wp_get_custom_css') ) {
-																$et_textarea_value = wp_get_custom_css();
-																$et_textarea_value = strip_tags( $et_textarea_value );
-															} else {
-																$et_textarea_value = '';
-																$et_textarea_value = ( '' != et_get_option( $value['id'], '', '', false, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name ) ) ? et_get_option( $value['id'], '', '', false, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name ) : $value['std'];
-																$et_textarea_value = stripslashes( $et_textarea_value );
-															}
-=======
 															$et_textarea_value = '';
 															$et_textarea_value = ( '' != et_get_option( $value['id'], '', '', false, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name ) ) ? et_get_option( $value['id'], '', '', false, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name ) : $value['std'];
 															$et_textarea_value = stripslashes( $et_textarea_value );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 														?>
 
 														<textarea name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] ); ?>"><?php echo esc_textarea( $et_textarea_value ); ?></textarea>
@@ -556,12 +444,6 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 												<input type="checkbox" class="checkbox yes_no_button" name="<?php echo esc_attr( $value['id'] ); ?>" id="<?php echo esc_attr( $value['id'] );?>" <?php echo $checked; ?> />
 
 											</div> <!-- end box-content div -->
-<<<<<<< HEAD
-											<?php if ( 'et_pb_static_css_file' === $value['id'] ) { ?>
-												<span class="button"><?php echo esc_html_x( 'Clear', 'clear static resources', $themename ); ?></span>
-											<?php } ?>
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 											<span class="box-description"></span>
 										</div> <!-- end epanel-box-small div -->
 
@@ -639,15 +521,9 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 		<script type="text/template" id="epanel-yes-no-button-template">
 		<div class="et_pb_yes_no_button_wrapper">
 			<div class="et_pb_yes_no_button"><!-- .et_pb_on_state || .et_pb_off_state -->
-<<<<<<< HEAD
-				<span class="et_pb_value_text et_pb_on_value"><?php esc_html_e( 'Enabled', $themename ); ?></span>
-				<span class="et_pb_button_slider"></span>
-				<span class="et_pb_value_text et_pb_off_value"><?php esc_html_e( 'Disabled', $themename ); ?></span>
-=======
 				<span class="et_pb_value_text et_pb_on_value"><?php esc_html_e( 'Enable', $themename ); ?></span>
 				<span class="et_pb_button_slider"></span>
 				<span class="et_pb_value_text et_pb_off_value"><?php esc_html_e( 'Disable', $themename ); ?></span>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			</div>
 		</div>
 		</script>
@@ -668,13 +544,6 @@ if ( ! function_exists( 'et_build_epanel' ) ) {
 			#epanel p.postinfo-comments .mark:after {
 				content: '<?php esc_html_e( "Comments", $themename ); ?>';
 			}
-<<<<<<< HEAD
-
-			#epanel p.postinfo-rating_stars .mark:after {
-				content: '<?php esc_html_e( "Ratings", $themename ); ?>';
-			}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		</style>
 
 	<?php
@@ -701,43 +570,20 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 			die('-1');
 		}
 
-<<<<<<< HEAD
-		if ( defined( 'ET_BUILDER_DIR' ) && file_exists( ET_BUILDER_DIR . 'class-et-builder-settings.php' ) ) {
-			require_once ET_BUILDER_DIR . 'class-et-builder-settings.php';
-			et_builder_settings_init();
-		}
-
 		// load theme settings array
 		et_load_core_options();
 
-		/** This filter is documented in {@see et_build_epanel()} */
-		$options = apply_filters( 'et_epanel_layout_data', $options );
-
-=======
-		// load theme settings array
-		et_load_core_options();
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( isset($_POST['action']) ) {
 			do_action( 'et_epanel_changing_options' );
 
 			$epanel = isset( $_GET['page'] ) ? $_GET['page'] : basename( __FILE__ );
-<<<<<<< HEAD
-			$redirect_url = esc_url_raw( add_query_arg( 'page', $epanel, admin_url( 'admin.php' ) ) );
-=======
 			$redirect_url = esc_url_raw( add_query_arg( 'page', $epanel, admin_url( 'themes.php' ) ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			if ( 'save_epanel' == $_POST['action'] ) {
 				if ( 'ajax' != $source ) check_admin_referer( 'epanel_nonce' );
 
 				foreach ( $options as $value ) {
-<<<<<<< HEAD
-					$et_option_name   = $et_option_new_value = false;
-					$is_builder_field = isset( $value['is_builder_field'] ) && $value['is_builder_field'];
-=======
 					$et_option_name = $et_option_new_value = false;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					if ( isset( $value['id'] ) ) {
 						$et_option_name = $value['id'];
@@ -803,31 +649,14 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 									// html is not allowed
 									if ( 'nohtml' == $value['validation_type'] ) {
 										if ( $value['id'] === ( $shortname . '_custom_css' ) ) {
-<<<<<<< HEAD
-											// save custom css into wp custom css option if supported
-											// fallback to legacy system otherwise
-											if ( function_exists( 'wp_update_custom_css_post' ) ) {
-												// Data sent via AJAX is automatically escaped by browser, thus it needs
-												// to be unslashed befor being saved into custom CSS post
-												wp_update_custom_css_post( wp_unslash( wp_strip_all_tags( $_POST[ $value['id'] ] ) ) );
-											} else {
-												// don't strip slashes from custom css, it should be possible to use \ for icon fonts
-												$et_option_new_value = wp_strip_all_tags( $_POST[ $value['id'] ] );
-											}
-=======
 											// don't strip slashes from custom css, it should be possible to use \ for icon fonts
 											$et_option_new_value = wp_strip_all_tags( $_POST[ $value['id'] ] );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 										} else {
 											$et_option_new_value = wp_strip_all_tags( stripslashes( $_POST[ $value['id'] ] ) );
 										}
 									}
 								} else {
-<<<<<<< HEAD
-									if ( current_user_can( 'switch_themes' ) ) {
-=======
 									if ( current_user_can( 'unfiltered_html' ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 										$et_option_new_value = stripslashes( $_POST[ $value['id'] ] );
 									} else {
 										$et_option_new_value = stripslashes( wp_filter_post_kses( addslashes( $_POST[ $value['id'] ] ) ) ); // wp_filter_post_kses() expects slashed value
@@ -852,11 +681,7 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 							}
 						} else {
 							if ( in_array( $value['type'], array( 'checkbox', 'checkbox2' ) ) ) {
-<<<<<<< HEAD
-								$et_option_new_value = $is_builder_field ? 'off' : 'false';
-=======
 								$et_option_new_value = 'false';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							} else if ( 'different_checkboxes' == $value['type'] ) {
 								$et_option_new_value = array();
 							} else {
@@ -874,17 +699,6 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 								$global_setting_sub_name  = isset( $value['sub_setting_name'] ) ? sanitize_text_field( $value['sub_setting_name'] ) : '';
 							}
 
-<<<<<<< HEAD
-							/**
-							 * Fires before updating an ePanel option in the database.
-							 *
-							 * @param string $et_option_name      The option name/id.
-							 * @param string $et_new_option_value The new option value.
-							 */
-							do_action( 'et_epanel_update_option', $et_option_name, $et_option_new_value );
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							et_update_option( $et_option_name, $et_option_new_value, $is_new_global_setting, $global_setting_main_name, $global_setting_sub_name );
 						}
 					}
@@ -909,18 +723,6 @@ if ( ! function_exists( 'epanel_save_data' ) ) {
 					}
 				}
 
-<<<<<<< HEAD
-				// Reset Google Maps API Key
-				update_option( 'et_google_api_settings', '' );
-
-				// Resets WordPress custom CSS which is synced with Options Custom CSS as of WP 4.7
-				if ( function_exists( 'wp_get_custom_css' ) ) {
-					wp_update_custom_css_post('');
-					set_theme_mod( 'et_pb_css_synced', 'no' );
-				}
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$redirect_url = add_query_arg( 'reset', 'true', $redirect_url );
 				header( "Location: " . $redirect_url );
 
@@ -988,8 +790,4 @@ function et_epanel_register_portability() {
 		'view'    => ( isset( $_GET['page'] ) && $_GET['page'] == "et_{$shortname}_options" ),
 	) );
 }
-<<<<<<< HEAD
 add_action( 'admin_init', 'et_epanel_register_portability' );
-=======
-add_action( 'admin_init', 'et_epanel_register_portability' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

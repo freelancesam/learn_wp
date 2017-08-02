@@ -393,7 +393,6 @@ strong {
 	padding: 5px 15px;
 	margin: 0;
 	width: 100%;
-<<<<<<< HEAD
 	border: 0;
 	text-align: left;
 	line-height: 2;
@@ -408,10 +407,6 @@ strong {
 .split-button-body .split-button-option:hover,
 .split-button-body .split-button-option:active {
 	color: inherit;
-=======
-	text-align: left;
-	line-height: 2;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .is-open .split-button-body {
@@ -706,7 +701,6 @@ dd {
 	content: "\f123";
 }
 
-<<<<<<< HEAD
 .post-format-chat:before {
 	content: "\f125";
 }
@@ -721,25 +715,12 @@ dd {
 
 .post-format-image:before {
 	content: "\f128";
-=======
-.post-format-image:before {
-	content: "\f128";
-}
-
-.post-format-video:before {
-	content: "\f126";
-}
-
-.post-format-audio:before {
-	content: "\f127";
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .post-format-quote:before {
 	content: "\f122";
 }
 
-<<<<<<< HEAD
 .post-format-status:before {
 	content: "\f130";
 }
@@ -750,14 +731,6 @@ dd {
 
 .post-format-audio:before {
 	content: "\f127";
-=======
-.post-format-link:before {
-	content: "\f103";
-}
-
-.post-format-gallery:before {
-	content: "\f161";
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 
@@ -907,15 +880,12 @@ dd {
 	padding: 0;
 	text-decoration: none;
 	outline: 0;
-<<<<<<< HEAD
 	color: inherit;
 }
 
 .press-this .tagcloud-link:hover,
 .press-this .tagcloud-link:active {
 	color: inherit;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .tagcloud-link:focus {
@@ -986,19 +956,12 @@ input[type="search"].categories-search,
 	line-height: 20px;
 	padding: 12px 10px 8px;
 	color: #0073aa;
-<<<<<<< HEAD
 	text-decoration: none;
 	-webkit-transition: none;
 	transition: none;
 }
 
 .press-this .add-cat-toggle:focus {
-=======
-}
-
-.press-this .add-cat-toggle:focus {
-	text-decoration: none;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	color: #00a0d2;
 }
 
@@ -1267,12 +1230,9 @@ html {
 	margin-top: -13px;
 	padding: 0 10px 1px;
 	font-size: 13px;
-<<<<<<< HEAD
 	text-decoration: none;
 	-webkit-transition: none;
 	transition: none;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 @media (max-width: 320px) {
@@ -1835,10 +1795,6 @@ html {
 	margin: 0;
 	padding: 0;
 	border: 0;
-<<<<<<< HEAD
-=======
-	border-right: 1px solid #e5e5e5;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	-webkit-border-radius: 0;
 	border-radius: 0;
 	background: none;
@@ -1850,12 +1806,6 @@ html {
 .insert-media:hover,
 .insert-media:focus,
 .insert-media:active {
-<<<<<<< HEAD
-=======
-	margin: 0;
-	background: none;
-	border-color: #e5e5e5;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	color: #23282d;
 }
 
@@ -1863,16 +1813,12 @@ html {
 .insert-media:active {
 	outline: 0;
 	color: #00a0d2;
-<<<<<<< HEAD
 	-webkit-box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
-=======
-	text-decoration: none;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .insert-media .dashicons {
@@ -2098,7 +2044,6 @@ html {
 .post-options .post-option {
 	display: block;
 	width: 100%;
-<<<<<<< HEAD
 	margin: 0;
 	padding: 13px 37px 13px 14px;
 	border: 0;
@@ -2106,12 +2051,6 @@ html {
 	text-decoration: none;
 	text-align: left;
 	background: none;
-=======
-	padding: 13px 37px 13px 14px;
-	border-bottom: 1px solid #e5e5e5;
-	text-decoration: none;
-	text-align: left;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	color: #9ea7af;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -2187,13 +2126,9 @@ html {
 	display: block;
 	width: 100%;
 	padding: 13px 14px;
-<<<<<<< HEAD
 	border: 0;
 	border-bottom: 1px solid #e5e5e5;
 	background: none;
-=======
-	border-bottom: 1px solid #e5e5e5;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	color: #00a0d2;
 	text-decoration: none;
 	text-align: left;

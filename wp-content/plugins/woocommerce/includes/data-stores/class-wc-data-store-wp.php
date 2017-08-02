@@ -100,11 +100,7 @@ class WC_Data_Store_WP {
 	 * @return int meta ID
 	 */
 	public function add_meta( &$object, $meta ) {
-<<<<<<< HEAD
 		return add_metadata( $this->meta_type, $object->get_id(), $meta->key, is_string( $meta->value ) ? wp_slash( $meta->value ) : $meta->value, false );
-=======
-		return add_metadata( $this->meta_type, $object->get_id(), $meta->key, $meta->value, false );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -159,14 +155,10 @@ class WC_Data_Store_WP {
 	 * Internal meta keys we don't want exposed as part of meta_data. This is in
 	 * addition to all data props with _ prefix.
 	 * @since 2.6.0
-<<<<<<< HEAD
 	 *
 	 * @param string $key
 	 *
 	 * @return string
-=======
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function prefix_key( $key ) {
 		return '_' === substr( $key, 0, 1 ) ? $key : '_' . $key;
@@ -205,7 +197,6 @@ class WC_Data_Store_WP {
 		return $props_to_update;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Get valid WP_Query args from a WC_Object_Query's query variables.
 	 *
@@ -427,6 +418,4 @@ class WC_Data_Store_WP {
 
 		return $wp_query_args;
 	}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }

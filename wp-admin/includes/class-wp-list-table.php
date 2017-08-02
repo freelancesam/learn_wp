@@ -732,11 +732,7 @@ class WP_List_Table {
 		 *
 		 * @param int $per_page Number of items to be displayed. Default 20.
 		 */
-<<<<<<< HEAD
 		return (int) apply_filters( "{$option}", $per_page );
-=======
-		return (int) apply_filters( $option, $per_page );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

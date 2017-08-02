@@ -451,10 +451,6 @@ body #ls-layers table.noborder td {
 .ls-sublayer-wrapper {
 	width: 100%;
 	position: relative;
-<<<<<<< HEAD
-	direction: ltr;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .ls-sublayer-wrapper h4 {

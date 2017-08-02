@@ -6,10 +6,6 @@
 /**
  * Imports
  */
-<<<<<<< HEAD
-=======
-@import 'bourbon';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 @import 'mixins';
 @import 'variables';
 
@@ -350,7 +346,6 @@
 	.woocommerce-shipping-fields {
 		@include clearfix();
 	}
-<<<<<<< HEAD
 
 	.woocommerce-terms-and-conditions {
 		margin-bottom: 1.618em;
@@ -363,8 +358,6 @@
 	.woocommerce-oembed {
 		position: relative;
 	}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .woocommerce-account {

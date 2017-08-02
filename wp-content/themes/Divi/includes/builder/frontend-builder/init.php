@@ -99,11 +99,6 @@ require_once ET_BUILDER_DIR . 'frontend-builder/assets.php';
 require_once ET_BUILDER_DIR . 'frontend-builder/helpers.php';
 require_once ET_BUILDER_DIR . 'frontend-builder/rtl.php';
 
-<<<<<<< HEAD
-do_action( 'et_fb_framework_loaded' );
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 if ( 'on' === et_get_option( 'divi_disable_translations', 'off' ) ) {
 	add_filter( 'locale_stylesheet_uri', 'et_fb_remove_rtl_stylesheet' );
 	add_filter( 'language_attributes',   'et_fb_remove_html_rtl_dir' );

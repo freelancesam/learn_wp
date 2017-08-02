@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 /*global inlineEditPost, woocommerce_admin, woocommerce_quick_edit */
-=======
-/*global inlineEditPost, woocommerce_admin */
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 jQuery(function( $ ) {
 	$( '#the-list' ).on( 'click', '.editinline', function() {
 
@@ -92,12 +88,9 @@ jQuery(function( $ ) {
 		} else {
 			$( '.stock_fields', '.inline-edit-row' ).show().removeAttr( 'style' );
 		}
-<<<<<<< HEAD
 
 		// Rename core strings
 		$( 'input[name="comment_status"]' ).parent().find( '.checkbox-title' ).text( woocommerce_quick_edit.strings.allow_reviews );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	});
 
 	$( '#the-list' ).on( 'change', '.inline-edit-row input[name="_manage_stock"]', function() {

@@ -229,13 +229,9 @@ class WC_Shipping_Zone extends WC_Legacy_Shipping_Zone {
 	 * @param array
 	 */
 	public function set_zone_locations( $locations ) {
-<<<<<<< HEAD
 		if ( 0 !== $this->get_id() ) {
 			$this->set_prop( 'zone_locations', $locations );
 		}
-=======
-		$this->set_prop( 'zone_locations', $locations );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/*
@@ -338,11 +334,7 @@ class WC_Shipping_Zone extends WC_Legacy_Shipping_Zone {
 	 * @param string $type state or postcode
 	 */
 	public function add_location( $code, $type ) {
-<<<<<<< HEAD
 		if ( 0 !== $this->get_id() && $this->is_valid_location_type( $type ) ) {
-=======
-		if ( $this->is_valid_location_type( $type ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( 'postcode' === $type ) {
 				$code = trim( strtoupper( str_replace( chr( 226 ) . chr( 128 ) . chr( 166 ), '...', $code ) ) ); // No normalization - postcodes are matched against both normal and formatted versions to support wildcards.
 			}

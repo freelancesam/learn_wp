@@ -63,13 +63,10 @@ abstract class WC_Settings_Page {
 
 	/**
 	 * Add this page to settings.
-<<<<<<< HEAD
 	 *
 	 * @param array $pages
 	 *
 	 * @return mixed
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function add_settings_page( $pages ) {
 		$pages[ $this->id ] = $this->label;

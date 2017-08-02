@@ -160,11 +160,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 
 		// Ensure an include parameter is set in case the orderby is set to 'include'.
 		if ( ! empty( $request['orderby'] ) && 'include' === $request['orderby'] && empty( $request['include'] ) ) {
-<<<<<<< HEAD
 			return new WP_Error( 'rest_orderby_include_missing_include', __( 'You need to define an include parameter to order by include.' ), array( 'status' => 400 ) );
-=======
-			return new WP_Error( 'rest_orderby_include_missing_include', sprintf( __( 'Missing parameter(s): %s' ), 'include' ), array( 'status' => 400 ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		// Retrieve the list of registered collection query parameters.
@@ -224,14 +220,10 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 
 		if ( isset( $registered['sticky'], $request['sticky'] ) ) {
 			$sticky_posts = get_option( 'sticky_posts', array() );
-<<<<<<< HEAD
 			if ( ! is_array( $sticky_posts ) ) {
 				$sticky_posts = array();
 			}
 			if ( $request['sticky'] ) {
-=======
-			if ( $sticky_posts && $request['sticky'] ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				/*
 				 * As post__in will be used to only get sticky posts,
 				 * we have to support the case where post__in was already
@@ -245,11 +237,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				 * so we have to fake it a bit.
 				 */
 				if ( ! $args['post__in'] ) {
-<<<<<<< HEAD
 					$args['post__in'] = array( 0 );
-=======
-					$args['post__in'] = array( -1 );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			} elseif ( $sticky_posts ) {
 				/*
@@ -342,14 +330,11 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 		}
 
 		$max_pages = ceil( $total_posts / (int) $posts_query->query_vars['posts_per_page'] );
-<<<<<<< HEAD
 
 		if ( $page > $max_pages && $total_posts > 0 ) {
 			return new WP_Error( 'rest_post_invalid_page_number', __( 'The page number requested is larger than the number of pages available.' ), array( 'status' => 400 ) );
 		}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$response  = rest_ensure_response( $posts );
 
 		$response->header( 'X-WP-Total', (int) $total_posts );
@@ -706,11 +691,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 
 		$post = get_post( $post_id );
 
-<<<<<<< HEAD
 		/** This action is documented in wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php */
-=======
-		/* This action is documented in lib/endpoints/class-wp-rest-controller.php */
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		do_action( "rest_insert_{$this->post_type}", $post, $request, false );
 
 		$schema = $this->get_item_schema();
@@ -1026,20 +1007,14 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 
 			if ( ! empty( $date_data ) ) {
 				list( $prepared_post->post_date, $prepared_post->post_date_gmt ) = $date_data;
-<<<<<<< HEAD
 				$prepared_post->edit_date = true;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		} elseif ( ! empty( $schema['properties']['date_gmt'] ) && ! empty( $request['date_gmt'] ) ) {
 			$date_data = rest_get_date_with_gmt( $request['date_gmt'], true );
 
 			if ( ! empty( $date_data ) ) {
 				list( $prepared_post->post_date, $prepared_post->post_date_gmt ) = $date_data;
-<<<<<<< HEAD
 				$prepared_post->edit_date = true;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		}
 
@@ -1239,10 +1214,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 	 * Checks whether current user can assign all terms sent with the current request.
 	 *
 	 * @since 4.7.0
-<<<<<<< HEAD
 	 * @access protected
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param WP_REST_Request $request The request object with post and terms data.
 	 * @return bool Whether the current user can assign the provided terms.
@@ -1322,13 +1294,9 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 		// Can we read the parent if we're inheriting?
 		if ( 'inherit' === $post->post_status && $post->post_parent > 0 ) {
 			$parent = get_post( $post->post_parent );
-<<<<<<< HEAD
 			if ( $parent ) {
 				return $this->check_read_permission( $parent );
 			}
-=======
-			return $this->check_read_permission( $parent );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		/*
@@ -1428,7 +1396,6 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 		}
 
 		if ( ! empty( $schema['properties']['date_gmt'] ) ) {
-<<<<<<< HEAD
 			// For drafts, `post_date_gmt` may not be set, indicating that the
 			// date of the draft should be updated each time it is saved (see
 			// #38883).  In this case, shim the value based on the `post_date`
@@ -1439,9 +1406,6 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				$post_date_gmt = $post->post_date_gmt;
 			}
 			$data['date_gmt'] = $this->prepare_date_response( $post_date_gmt );
-=======
-			$data['date_gmt'] = $this->prepare_date_response( $post->post_date_gmt );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		if ( ! empty( $schema['properties']['guid'] ) ) {
@@ -1457,7 +1421,6 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 		}
 
 		if ( ! empty( $schema['properties']['modified_gmt'] ) ) {
-<<<<<<< HEAD
 			// For drafts, `post_modified_gmt` may not be set (see
 			// `post_date_gmt` comments above).  In this case, shim the value
 			// based on the `post_modified` field with the site's timezone
@@ -1468,9 +1431,6 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				$post_modified_gmt = $post->post_modified_gmt;
 			}
 			$data['modified_gmt'] = $this->prepare_date_response( $post_modified_gmt );
-=======
-			$data['modified_gmt'] = $this->prepare_date_response( $post->post_modified_gmt );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		if ( ! empty( $schema['properties']['password'] ) ) {
@@ -1627,12 +1587,9 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 	 * "Protected: %s", as the REST API communicates the protected status of a post
 	 * in a machine readable format, we remove the "Protected: " prefix.
 	 *
-<<<<<<< HEAD
 	 * @since 4.7.0
 	 * @access public
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string Protected title format.
 	 */
 	public function protected_title_format() {
@@ -1835,11 +1792,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 					'description' => __( 'A named status for the object.' ),
 					'type'        => 'string',
 					'enum'        => array_keys( get_post_stati( array( 'internal' => false ) ) ),
-<<<<<<< HEAD
 					'context'     => array( 'view', 'edit' ),
-=======
-					'context'     => array( 'edit' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				),
 				'type'            => array(
 					'description' => __( 'Type of Post for the object.' ),
@@ -2013,11 +1966,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 					$schema['properties']['featured_media'] = array(
 						'description' => __( 'The ID of the featured media for the object.' ),
 						'type'        => 'integer',
-<<<<<<< HEAD
 						'context'     => array( 'view', 'edit', 'embed' ),
-=======
-						'context'     => array( 'view', 'edit' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					);
 					break;
 
@@ -2045,26 +1994,13 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 					break;
 
 				case 'post-formats':
-<<<<<<< HEAD
 					// Get the native post formats and remove the array keys.
 					$formats = array_values( get_post_format_slugs() );
-=======
-					$supports_formats = get_theme_support( 'post-formats' );
-
-					// Force to an array. Supports formats can return true even if empty in some cases.
-					$supports_formats = is_array( $supports_formats ) ? array_values( $supports_formats[0] ) : array();
-
-					$supported_formats = array_merge( array( 'standard' ), $supports_formats );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					$schema['properties']['format'] = array(
 						'description' => __( 'The format for the object.' ),
 						'type'        => 'string',
-<<<<<<< HEAD
 						'enum'        => $formats,
-=======
-						'enum'        => $supported_formats,
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						'context'     => array( 'view', 'edit' ),
 					);
 					break;
@@ -2194,7 +2130,6 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 			'type'               => 'string',
 			'default'            => 'date',
 			'enum'               => array(
-<<<<<<< HEAD
 				'author',
 				'date',
 				'id',
@@ -2204,14 +2139,6 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 				'relevance',
 				'slug',
 				'title',
-=======
-				'date',
-				'relevance',
-				'id',
-				'include',
-				'title',
-				'slug',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			),
 		);
 
@@ -2223,11 +2150,7 @@ class WP_REST_Posts_Controller extends WP_REST_Controller {
 
 		if ( $post_type->hierarchical || 'attachment' === $this->post_type ) {
 			$query_params['parent'] = array(
-<<<<<<< HEAD
 				'description'       => __( 'Limit result set to items with particular parent IDs.' ),
-=======
-				'description'       => __( 'Limit result set to those of particular parent IDs.' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'type'              => 'array',
 				'items'             => array(
 					'type'          => 'integer',

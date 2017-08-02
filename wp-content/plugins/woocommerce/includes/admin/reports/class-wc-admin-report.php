@@ -300,14 +300,9 @@ class WC_Admin_Report {
 					$where_value = "{$value['operator']} '{$value['value']}'";
 				}
 
-<<<<<<< HEAD
 				if ( ! empty( $where_value ) ) {
 					$query['where'] .= " AND {$value['key']} {$where_value}";
 				}
-=======
-				if ( ! empty( $where_value ) )
-					$query['where'] .= " AND {$value['key']} {$where_value}";
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		}
 
@@ -563,11 +558,7 @@ class WC_Admin_Report {
 			break;
 
 			case '7day' :
-<<<<<<< HEAD
 				$this->start_date    = strtotime( '-6 days', strtotime( 'midnight', current_time( 'timestamp' ) ) );
-=======
-				$this->start_date    = strtotime( '-6 days', current_time( 'timestamp' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$this->end_date      = strtotime( 'midnight', current_time( 'timestamp' ) );
 				$this->chart_groupby = 'day';
 			break;

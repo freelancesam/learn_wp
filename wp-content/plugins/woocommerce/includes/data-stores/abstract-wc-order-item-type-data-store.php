@@ -98,14 +98,10 @@ abstract class Abstract_WC_Order_Item_Type_Data_Store extends WC_Data_Store_WP i
 	 * Read a order item from the database.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param WC_Order_Item $item
 	 *
 	 * @throws Exception
-=======
-	 * @param WC_Order_Item $item
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( &$item ) {
 		global $wpdb;
@@ -142,11 +138,8 @@ abstract class Abstract_WC_Order_Item_Type_Data_Store extends WC_Data_Store_WP i
 
 	/**
 	 * Clear meta cachce.
-<<<<<<< HEAD
 	 *
 	 * @param WC_Order_Item $item
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function clear_cache( &$item ) {
 		wp_cache_delete( 'item-' . $item->get_id(), 'order-items' );

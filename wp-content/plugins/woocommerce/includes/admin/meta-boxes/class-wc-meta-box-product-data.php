@@ -57,11 +57,7 @@ class WC_Meta_Box_Product_Data {
 				'id'            => '_virtual',
 				'wrapper_class' => 'show_if_simple',
 				'label'         => __( 'Virtual', 'woocommerce' ),
-<<<<<<< HEAD
 				'description'   => __( 'Virtual products are intangible and are not shipped.', 'woocommerce' ),
-=======
-				'description'   => __( 'Virtual products are intangible and aren\'t shipped.', 'woocommerce' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'default'       => 'no',
 			),
 			'downloadable' => array(
@@ -79,7 +75,6 @@ class WC_Meta_Box_Product_Data {
 	 * @return array
 	 */
 	private static function get_product_data_tabs() {
-<<<<<<< HEAD
 		$tabs = apply_filters( 'woocommerce_product_data_tabs', array(
 			'general' => array(
 				'label'    => __( 'General', 'woocommerce' ),
@@ -150,45 +145,6 @@ class WC_Meta_Box_Product_Data {
 		}
 
 		return $a['priority'] < $b['priority'] ? -1 : 1;
-=======
-		return apply_filters( 'woocommerce_product_data_tabs', array(
-			'general' => array(
-				'label'  => __( 'General', 'woocommerce' ),
-				'target' => 'general_product_data',
-				'class'  => array( 'hide_if_grouped' ),
-			),
-			'inventory' => array(
-				'label'  => __( 'Inventory', 'woocommerce' ),
-				'target' => 'inventory_product_data',
-				'class'  => array( 'show_if_simple', 'show_if_variable', 'show_if_grouped', 'show_if_external' ),
-			),
-			'shipping' => array(
-				'label'  => __( 'Shipping', 'woocommerce' ),
-				'target' => 'shipping_product_data',
-				'class'  => array( 'hide_if_virtual', 'hide_if_grouped', 'hide_if_external' ),
-			),
-			'linked_product' => array(
-				'label'  => __( 'Linked Products', 'woocommerce' ),
-				'target' => 'linked_product_data',
-				'class'  => array(),
-			),
-			'attribute' => array(
-				'label'  => __( 'Attributes', 'woocommerce' ),
-				'target' => 'product_attributes',
-				'class'  => array(),
-			),
-			'variations' => array(
-				'label'  => __( 'Variations', 'woocommerce' ),
-				'target' => 'variable_product_options',
-				'class'  => array( 'variations_tab', 'show_if_variable' ),
-			),
-			'advanced' => array(
-				'label'  => __( 'Advanced', 'woocommerce' ),
-				'target' => 'advanced_product_data',
-				'class'  => array(),
-			),
-		) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -217,14 +173,11 @@ class WC_Meta_Box_Product_Data {
 
 	/**
 	 * Prepare downloads for save.
-<<<<<<< HEAD
 	 *
 	 * @param array $file_names
 	 * @param array $file_urls
 	 * @param array $file_hashes
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array
 	 */
 	private static function prepare_downloads( $file_names, $file_urls, $file_hashes ) {
@@ -256,12 +209,9 @@ class WC_Meta_Box_Product_Data {
 
 	/**
 	 * Prepare attributes for save.
-<<<<<<< HEAD
 	 *
 	 * @param array $data
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array
 	 */
 	public static function prepare_attributes( $data = false ) {
@@ -350,12 +300,9 @@ class WC_Meta_Box_Product_Data {
 
 	/**
 	 * Save meta box data.
-<<<<<<< HEAD
 	 *
 	 * @param int $post_id
 	 * @param $post
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function save( $post_id, $post ) {
 		// Process product type first so we have the correct class to run setters.

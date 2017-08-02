@@ -151,7 +151,6 @@ function wc_get_product_terms( $product_id, $taxonomy, $args = array() ) {
  * @return int
  */
 function _wc_get_product_terms_name_num_usort_callback( $a, $b ) {
-<<<<<<< HEAD
 	$a_name = (float) $a->name;
 	$b_name = (float) $b->name;
 
@@ -159,14 +158,6 @@ function _wc_get_product_terms_name_num_usort_callback( $a, $b ) {
 		return 0;
 	}
 
-=======
-    $a_name = (int) $a->name;
-    $b_name = (int) $b->name;
-
-	if ( $a_name === $b_name ) {
-		return 0;
-	}
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	return ( $a_name < $b_name ) ? -1 : 1;
 }
 
@@ -189,15 +180,11 @@ function _wc_get_product_terms_parent_usort_callback( $a, $b ) {
  * Stuck with this until a fix for https://core.trac.wordpress.org/ticket/13258.
  * We use a custom walker, just like WordPress does.
  *
-<<<<<<< HEAD
  * @param array $args
  * @param int $deprecated_hierarchical
  * @param int $deprecated_show_uncategorized (default: 1)
  * @param string $deprecated_orderby
  *
-=======
- * @param int $deprecated_show_uncategorized (default: 1)
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @return string
  */
 function wc_product_dropdown_categories( $args = array(), $deprecated_hierarchical = 1, $deprecated_show_uncategorized = 1, $deprecated_orderby = '' ) {
@@ -222,10 +209,7 @@ function wc_product_dropdown_categories( $args = array(), $deprecated_hierarchic
 		'orderby'            => 'name',
 		'selected'           => $current_product_cat,
 		'menu_order'         => false,
-<<<<<<< HEAD
 		'option_select_text' => __( 'Select a category', 'woocommerce' ),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -242,11 +226,7 @@ function wc_product_dropdown_categories( $args = array(), $deprecated_hierarchic
 	}
 
 	$output  = "<select name='product_cat' class='dropdown_product_cat'>";
-<<<<<<< HEAD
 	$output .= '<option value="" ' . selected( $current_product_cat, '', false ) . '>' . esc_html( $args['option_select_text'] ) . '</option>';
-=======
-	$output .= '<option value="" ' . selected( $current_product_cat, '', false ) . '>' . esc_html__( 'Select a category', 'woocommerce' ) . '</option>';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$output .= wc_walk_category_dropdown_tree( $terms, 0, $args );
 	if ( $args['show_uncategorized'] ) {
 		$output .= '<option value="0" ' . selected( $current_product_cat, '0', false ) . '>' . esc_html__( 'Uncategorized', 'woocommerce' ) . '</option>';
@@ -403,17 +383,12 @@ function get_woocommerce_term_meta( $term_id, $key, $single = true ) {
  * @return int
  */
 function wc_reorder_terms( $the_term, $next_id, $taxonomy, $index = 0, $terms = null ) {
-<<<<<<< HEAD
 	if ( ! $terms ) {
 		$terms = get_terms( $taxonomy, 'menu_order=ASC&hide_empty=0&parent=0' );
 	}
 	if ( empty( $terms ) ) {
 		return $index;
 	}
-=======
-	if ( ! $terms ) $terms = get_terms( $taxonomy, 'menu_order=ASC&hide_empty=0&parent=0' );
-	if ( empty( $terms ) ) return $index;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	$id	= $the_term->term_id;
 
@@ -435,14 +410,11 @@ function wc_reorder_terms( $the_term, $next_id, $taxonomy, $index = 0, $terms = 
 		$index++;
 		$index = wc_set_term_order( $term->term_id, $index, $taxonomy );
 
-<<<<<<< HEAD
 		/**
 		 * After a term has had it's order set.
 		*/
 		do_action( 'woocommerce_after_set_term_order', $term, $index, $taxonomy );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// if that term has children we walk through them
 		$children = get_terms( $taxonomy, "parent={$term->term_id}&menu_order=ASC&hide_empty=0" );
 		if ( ! empty( $children ) ) {
@@ -473,7 +445,6 @@ function wc_set_term_order( $term_id, $index, $taxonomy, $recursive = false ) {
 	$index 		= (int) $index;
 
 	// Meta name
-<<<<<<< HEAD
 	if ( taxonomy_is_product_attribute( $taxonomy ) ) {
 		$meta_name = 'order_' . esc_attr( $taxonomy );
 	} else {
@@ -485,16 +456,6 @@ function wc_set_term_order( $term_id, $index, $taxonomy, $recursive = false ) {
 	if ( ! $recursive ) {
 		return $index;
 	}
-=======
-	if ( taxonomy_is_product_attribute( $taxonomy ) )
-		$meta_name = 'order_' . esc_attr( $taxonomy );
-	else
-		$meta_name = 'order';
-
-	update_woocommerce_term_meta( $term_id, $meta_name, $index );
-
-	if ( ! $recursive ) return $index;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	$children = get_terms( $taxonomy, "parent=$term_id&menu_order=ASC&hide_empty=0" );
 
@@ -546,20 +507,14 @@ function wc_terms_clauses( $clauses, $taxonomies, $args ) {
 
 	// WordPress should give us the taxonomies asked when calling the get_terms function. Only apply to categories and pa_ attributes.
 	$found = false;
-<<<<<<< HEAD
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	foreach ( (array) $taxonomies as $taxonomy ) {
 		if ( taxonomy_is_product_attribute( $taxonomy ) || in_array( $taxonomy, apply_filters( 'woocommerce_sortable_taxonomies', array( 'product_cat' ) ) ) ) {
 			$found = true;
 			break;
 		}
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( ! $found ) {
 		return $clauses;
 	}
@@ -572,11 +527,7 @@ function wc_terms_clauses( $clauses, $taxonomies, $args ) {
 	}
 
 	// Query fields.
-<<<<<<< HEAD
 	$clauses['fields'] = $clauses['fields'] . ', tm.meta_value';
-=======
-	$clauses['fields'] = 'DISTINCT ' . $clauses['fields'] . ', tm.meta_value';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Query join.
 	if ( get_option( 'db_version' ) < 34370 ) {
@@ -598,7 +549,6 @@ function wc_terms_clauses( $clauses, $taxonomies, $args ) {
 		$clauses['orderby'] = $order;
 	}
 
-<<<<<<< HEAD
 	// Grouping.
 	if ( strstr( $clauses['fields'], 'tr.object_id' ) ) {
 		$clauses['orderby'] = ' GROUP BY t.term_id, tr.object_id ' . $clauses['orderby'];
@@ -610,12 +560,6 @@ function wc_terms_clauses( $clauses, $taxonomies, $args ) {
 }
 
 add_filter( 'terms_clauses', 'wc_terms_clauses', 99, 3 );
-=======
-	return $clauses;
-}
-
-add_filter( 'terms_clauses', 'wc_terms_clauses', 10, 3 );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 /**
  * Function for recounting product terms, ignoring hidden products.
@@ -837,13 +781,10 @@ add_action( 'set_object_terms', 'wc_clear_term_product_ids', 10, 6 );
  * @return int[]
  */
 function wc_get_product_visibility_term_ids() {
-<<<<<<< HEAD
 	if ( ! taxonomy_exists( 'product_visibility' ) ) {
 		wc_doing_it_wrong( __FUNCTION__, 'wc_get_product_visibility_term_ids should not be called before taxonomies are registered (woocommerce_after_register_post_type action).', '3.1' );
 		return array();
 	}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	return array_map( 'absint', wp_parse_args(
 		wp_list_pluck(
 			get_terms( array(

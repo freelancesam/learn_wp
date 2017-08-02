@@ -149,12 +149,7 @@ TABLE OF CONTENTS:
 
 .wp-core-ui .button.focus,
 .wp-core-ui .button:focus,
-<<<<<<< HEAD
 .wp-core-ui .button-secondary:focus {
-=======
-.wp-core-ui .button-secondary:focus,
-.wp-core-ui .button-link:focus {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	border-color: #5b9dd9;
 	-webkit-box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
@@ -214,7 +209,6 @@ TABLE OF CONTENTS:
 	background: none;
 	outline: none;
 	cursor: pointer;
-<<<<<<< HEAD
 	text-align: left;
 	/* Mimics the default link style in common.css */
 	color: #0073aa;
@@ -252,11 +246,6 @@ TABLE OF CONTENTS:
 }
 
 .ie8 .wp-core-ui .button-link:focus {
-=======
-}
-
-.wp-core-ui .button-link:focus {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	outline: #5b9dd9 solid 1px;
 }
 
@@ -422,14 +411,11 @@ TABLE OF CONTENTS:
 		vertical-align: inherit;
 	}
 
-<<<<<<< HEAD
 	.media-modal-content .media-toolbar-primary .media-button {
 		margin-top: 10px;
 		margin-left: 5px;
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	/* Reset responsive styles on Log in button on iframed login form */
 
 	.interim-login .button.button-large {

@@ -212,11 +212,7 @@ function twentyseventeen_social_links_icons() {
 	 *
 	 * @since Twenty Seventeen 1.0
 	 *
-<<<<<<< HEAD
 	 * @param array $social_links_icons Array of social links icons.
-=======
-	 * @param array $social_links_icons
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	return apply_filters( 'twentyseventeen_social_links_icons', $social_links_icons );
 }

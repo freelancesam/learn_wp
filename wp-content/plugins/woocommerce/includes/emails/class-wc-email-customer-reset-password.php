@@ -46,26 +46,14 @@ class WC_Email_Customer_Reset_Password extends WC_Email {
 	public function __construct() {
 
 		$this->id               = 'customer_reset_password';
-<<<<<<< HEAD
 		$this->customer_email   = true;
 
 		$this->title            = __( 'Reset password', 'woocommerce' );
 		$this->description      = __( 'Customer "reset password" emails are sent when customers reset their passwords.', 'woocommerce' );
-=======
-		$this->title            = __( 'Reset password', 'woocommerce' );
-		$this->description      = __( 'Customer "reset password" emails are sent when customers reset their passwords.', 'woocommerce' );
-		$this->customer_email   = true;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$this->template_html    = 'emails/customer-reset-password.php';
 		$this->template_plain   = 'emails/plain/customer-reset-password.php';
 
-<<<<<<< HEAD
-=======
-		$this->subject          = __( 'Password reset for {site_title}', 'woocommerce' );
-		$this->heading          = __( 'Password reset instructions', 'woocommerce' );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Trigger
 		add_action( 'woocommerce_reset_password_notification', array( $this, 'trigger' ), 10, 2 );
 
@@ -74,7 +62,6 @@ class WC_Email_Customer_Reset_Password extends WC_Email {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Get email subject.
 	 *
 	 * @since  3.1.0
@@ -95,8 +82,6 @@ class WC_Email_Customer_Reset_Password extends WC_Email {
 	}
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Trigger.
 	 *
 	 * @param string $user_login
@@ -116,14 +101,9 @@ class WC_Email_Customer_Reset_Password extends WC_Email {
 			return;
 		}
 
-<<<<<<< HEAD
 		$this->setup_locale();
 		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
 		$this->restore_locale();
-=======
-		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

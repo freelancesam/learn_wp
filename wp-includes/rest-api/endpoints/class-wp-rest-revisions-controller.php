@@ -11,11 +11,7 @@
  * Core class used to access revisions via the REST API.
  *
  * @since 4.7.0
-<<<<<<< HEAD
  *
-=======
- *0
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @see WP_REST_Controller
  */
 class WP_REST_Revisions_Controller extends WP_REST_Controller {
@@ -342,23 +338,16 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * @return WP_REST_Response Response object.
 	 */
 	public function prepare_item_for_response( $post, $request ) {
-<<<<<<< HEAD
 		$GLOBALS['post'] = $post;
 
 		setup_postdata( $post );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$schema = $this->get_item_schema();
 
 		$data = array();
 
 		if ( ! empty( $schema['properties']['author'] ) ) {
-<<<<<<< HEAD
 			$data['author'] = (int) $post->post_author;
-=======
-			$data['author'] = $post->post_author;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		if ( ! empty( $schema['properties']['date'] ) ) {

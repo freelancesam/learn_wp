@@ -161,11 +161,7 @@ class LS_Sliders {
 
 		// Slider data
 		$data = !empty($data) ? $data : array(
-<<<<<<< HEAD
-			'properties' => array('title' => $title, 'new' => true),
-=======
 			'properties' => array('title' => $title),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'layers' => array(array()),
 		);
 

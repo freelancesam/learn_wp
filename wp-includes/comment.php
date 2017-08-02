@@ -44,11 +44,7 @@ function check_comment($author, $email, $url, $comment, $user_ip, $user_agent, $
 		return false;
 
 	/** This filter is documented in wp-includes/comment-template.php */
-<<<<<<< HEAD
 	$comment = apply_filters( 'comment_text', $comment, null, array() );
-=======
-	$comment = apply_filters( 'comment_text', $comment );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Check for the number of external links if a max allowed number is set.
 	if ( $max_links = get_option( 'comment_max_links' ) ) {
@@ -3009,17 +3005,12 @@ function wp_handle_comment_submission( $comment_data ) {
 		 * @param int $comment_post_ID Post ID.
 		 */
 		do_action( 'comment_on_draft', $comment_post_ID );
-<<<<<<< HEAD
 		
 		if ( current_user_can( 'read_post', $comment_post_ID ) ) {
 			return new WP_Error( 'comment_on_draft', __( 'Sorry, comments are not allowed for this item.' ), 403 );
 		} else {
 			return new WP_Error( 'comment_on_draft' );
 		}
-=======
-
-		return new WP_Error( 'comment_on_draft' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	} elseif ( post_password_required( $comment_post_ID ) ) {
 
@@ -3074,11 +3065,7 @@ function wp_handle_comment_submission( $comment_data ) {
 	$comment_type = '';
 
 	if ( get_option( 'require_name_email' ) && ! $user->exists() ) {
-<<<<<<< HEAD
 		if ( '' == $comment_author_email || '' == $comment_author ) {
-=======
-		if ( 6 > strlen( $comment_author_email ) || '' == $comment_author ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			return new WP_Error( 'require_name_email', __( '<strong>ERROR</strong>: please fill the required fields (name, email).' ), 200 );
 		} elseif ( ! is_email( $comment_author_email ) ) {
 			return new WP_Error( 'require_valid_email', __( '<strong>ERROR</strong>: please enter a valid email address.' ), 200 );

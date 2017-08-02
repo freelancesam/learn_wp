@@ -138,7 +138,6 @@ if ( $action ) {
 		case 'promote':
 			check_admin_referer( 'bulk-users' );
 			$editable_roles = get_editable_roles();
-<<<<<<< HEAD
 			$role = false;
 			if ( ! empty( $_REQUEST['new_role2'] ) ) {
 				$role = $_REQUEST['new_role2'];
@@ -147,9 +146,6 @@ if ( $action ) {
 			}
 
 			if ( empty( $editable_roles[ $role ] ) ) {
-=======
-			if ( empty( $editable_roles[ $_REQUEST['new_role'] ] ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				wp_die( __( 'Sorry, you are not allowed to give users that role.' ) );
 			}
 
@@ -169,11 +165,7 @@ if ( $action ) {
 					}
 
 					$user = get_userdata( $user_id );
-<<<<<<< HEAD
 					$user->set_role( $role );
-=======
-					$user->set_role( $_REQUEST['new_role'] );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			} else {
 				$update = 'err_promote';

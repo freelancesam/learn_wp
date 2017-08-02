@@ -457,10 +457,7 @@ wp.customize.selectiveRefresh = ( function( $, api ) {
 				if ( 'undefined' !== typeof console && console.error ) {
 					console.error( partial.id, error );
 				}
-<<<<<<< HEAD
 				partial.fallback( error, [ placement ] );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 			/* jshint ignore:start */
 			document.write = self.orginalDocumentWrite;
@@ -473,7 +470,6 @@ wp.customize.selectiveRefresh = ( function( $, api ) {
 			// Prevent placement container from being being re-triggered as being rendered among nested partials.
 			placement.container.data( 'customize-partial-content-rendered', true );
 
-<<<<<<< HEAD
 			/*
 			 * Note that the 'wp_audio_shortcode_library' and 'wp_video_shortcode_library' filters
 			 * will determine whether or not wp.mediaelement is loaded and whether it will
@@ -483,8 +479,6 @@ wp.customize.selectiveRefresh = ( function( $, api ) {
 				wp.mediaelement.initialize();
 			}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			/**
 			 * Announce when a partial's placement has been rendered so that dynamic elements can be re-built.
 			 */
@@ -865,11 +859,7 @@ wp.customize.selectiveRefresh = ( function( $, api ) {
 			containerElements = containerElements.add( rootElement );
 		}
 		containerElements.each( function() {
-<<<<<<< HEAD
 			var containerElement = $( this ), partial, placement, id, Constructor, partialOptions, containerContext;
-=======
-			var containerElement = $( this ), partial, id, Constructor, partialOptions, containerContext;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			id = containerElement.data( 'customize-partial-id' );
 			if ( ! id ) {
 				return;
@@ -894,7 +884,6 @@ wp.customize.selectiveRefresh = ( function( $, api ) {
 			 */
 			if ( options.triggerRendered && ! containerElement.data( 'customize-partial-content-rendered' ) ) {
 
-<<<<<<< HEAD
 				placement = new Placement( {
 					partial: partial,
 					context: containerContext,
@@ -908,16 +897,6 @@ wp.customize.selectiveRefresh = ( function( $, api ) {
 				 * Announce when a partial's nested placement has been re-rendered.
 				 */
 				self.trigger( 'partial-content-rendered', placement );
-=======
-				/**
-				 * Announce when a partial's nested placement has been re-rendered.
-				 */
-				self.trigger( 'partial-content-rendered', new Placement( {
-					partial: partial,
-					context: containerContext,
-					container: containerElement
-				} ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 			containerElement.data( 'customize-partial-content-rendered', true );
 		} );

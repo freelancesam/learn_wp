@@ -25,7 +25,6 @@ elseif ( ! get_userdata( $user_id ) )
 
 wp_enqueue_script('user-profile');
 
-<<<<<<< HEAD
 if ( IS_PROFILE_PAGE ) {
 	$title = __( 'Profile' );
 } else {
@@ -33,9 +32,6 @@ if ( IS_PROFILE_PAGE ) {
 	$title = __( 'Edit User %s' );
 }
 
-=======
-$title = IS_PROFILE_PAGE ? __('Profile') : __('Edit User');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 if ( current_user_can('edit_users') && !IS_PROFILE_PAGE )
 	$submenu_file = 'users.php';
 else
@@ -176,21 +172,14 @@ $profileuser = get_user_to_edit($user_id);
 if ( !current_user_can('edit_user', $user_id) )
 	wp_die(__('Sorry, you are not allowed to edit this user.'));
 
-<<<<<<< HEAD
 $title = sprintf( $title, $profileuser->display_name );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 $sessions = WP_Session_Tokens::get_instance( $profileuser->ID );
 
 include(ABSPATH . 'wp-admin/admin-header.php');
 ?>
 
 <?php if ( !IS_PROFILE_PAGE && is_super_admin( $profileuser->ID ) && current_user_can( 'manage_network_options' ) ) { ?>
-<<<<<<< HEAD
 	<div class="notice notice-info"><p><strong><?php _e('Important:'); ?></strong> <?php _e('This user has super admin privileges.'); ?></p></div>
-=======
-	<div class="updated"><p><strong><?php _e('Important:'); ?></strong> <?php _e('This user has super admin privileges.'); ?></p></div>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <?php } ?>
 <?php if ( isset($_GET['updated']) ) : ?>
 <div id="message" class="updated notice is-dismissible">
@@ -216,33 +205,22 @@ include(ABSPATH . 'wp-admin/admin-header.php');
 <?php endif; ?>
 
 <div class="wrap" id="profile-page">
-<<<<<<< HEAD
 <h1 class="wp-heading-inline"><?php
 echo esc_html( $title );
 ?></h1>
 
 <?php
-=======
-<h1>
-<?php
-echo esc_html( $title );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 if ( ! IS_PROFILE_PAGE ) {
 	if ( current_user_can( 'create_users' ) ) { ?>
 		<a href="user-new.php" class="page-title-action"><?php echo esc_html_x( 'Add New', 'user' ); ?></a>
 	<?php } elseif ( is_multisite() && current_user_can( 'promote_users' ) ) { ?>
 		<a href="user-new.php" class="page-title-action"><?php echo esc_html_x( 'Add Existing', 'user' ); ?></a>
 	<?php }
-<<<<<<< HEAD
 }
 ?>
 
 <hr class="wp-header-end">
 
-=======
-} ?>
-</h1>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <form id="your-profile" action="<?php echo esc_url( self_admin_url( IS_PROFILE_PAGE ? 'profile.php' : 'user-edit.php' ) ); ?>" method="post" novalidate="novalidate"<?php
 	/**
 	 * Fires inside the your-profile form tag on the user editing screen.

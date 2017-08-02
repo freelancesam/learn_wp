@@ -37,10 +37,7 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 
 		add_action( 'woocommerce_update_options_payment_gateways_' . $this->id, array( $this, 'process_admin_options' ) );
 		add_action( 'woocommerce_thankyou_' . $this->id, array( $this, 'thankyou_page' ) );
-<<<<<<< HEAD
 		add_filter( 'woocommerce_payment_complete_order_status', array( $this, 'change_payment_complete_order_status' ), 10, 3 );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		// Customer Emails
 		add_action( 'woocommerce_email_before_order_table', array( $this, 'email_instructions' ), 10, 3 );
@@ -181,7 +178,6 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 				return false;
 			}
 
-<<<<<<< HEAD
 			if ( strstr( $check_method, ':' ) ) {
 				$check_method = current( explode( ':', $check_method ) );
 			}
@@ -190,12 +186,6 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 
 			foreach ( $this->enable_for_methods as $method_id ) {
 				if ( $check_method === $method_id ) {
-=======
-			$found = false;
-
-			foreach ( $this->enable_for_methods as $method_id ) {
-				if ( strpos( $check_method, $method_id ) === 0 ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					$found = true;
 					break;
 				}
@@ -245,7 +235,6 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Change payment complete order status to completed for COD orders.
 	 *
 	 * @since  3.1.0
@@ -262,8 +251,6 @@ class WC_Gateway_COD extends WC_Payment_Gateway {
 	}
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Add content to the WC emails.
 	 *
 	 * @access public

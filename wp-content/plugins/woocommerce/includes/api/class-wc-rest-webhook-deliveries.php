@@ -102,16 +102,6 @@ class WC_REST_Webhook_Deliveries_Controller extends WC_REST_Webhook_Deliveries_V
 					'readonly'    => true,
 				),
 				'request_headers' => array(
-<<<<<<< HEAD
-=======
-					'description' => __( 'The URL where the webhook was delivered.', 'woocommerce' ),
-					'type'        => 'string',
-					'format'      => 'uri',
-					'context'     => array( 'view' ),
-					'readonly'    => true,
-				),
-				'request_headers' => array(
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					'description' => __( 'Request headers.', 'woocommerce' ),
 					'type'        => 'array',
 					'context'     => array( 'view' ),

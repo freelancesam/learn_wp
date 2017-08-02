@@ -10,11 +10,7 @@ add_filter('ls_get_image', 'ls_get_image', 10, 2);
 add_filter('ls_parse_defaults', 'ls_parse_defaults', 10, 2);
 
 function ls_filter_slider_title($sliderName = '', $maxLength = 50) {
-<<<<<<< HEAD
-	$name = empty($sliderName) ? 'Unnamed' : htmlspecialchars(stripslashes($sliderName));
-=======
 	$name = empty($sliderName) ? 'Unnamed' : stripslashes($sliderName);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	return isset($name[$maxLength]) ? substr($name, 0, $maxLength) . ' ...' : $name;
 }
 
@@ -23,11 +19,7 @@ function ls_filter_get_perview_for_slider( $sliderObj = array() ) {
 	// Find an image
 	if(isset($sliderObj['data']['layers'])) {
 		foreach($sliderObj['data']['layers'] as $layer) {
-<<<<<<< HEAD
-			if(!empty($layer['properties']['background']) &&
-=======
 			if(!empty($layer['properties']['background']) && 
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$layer['properties']['background'] != '[image-url]'
 			) {
 				$image = $layer['properties']['background'];
@@ -51,11 +43,7 @@ function ls_get_thumbnail($id = null, $url = null) {
 		if($image = wp_get_attachment_thumb_url($id, 'thumbnail')) {
 			return $image;
 		}
-<<<<<<< HEAD
-	}
-=======
 	} 
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if(!empty($url)) {
 

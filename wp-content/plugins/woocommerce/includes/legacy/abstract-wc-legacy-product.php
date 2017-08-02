@@ -180,14 +180,11 @@ abstract class WC_Abstract_Legacy_Product extends WC_Data {
 	 * Set stock level of the product.
 	 *
 	 * @deprecated 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param int $amount
 	 * @param string $mode
 	 *
 	 * @return int
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function set_stock( $amount = null, $mode = 'set' ) {
 		wc_deprecated_function( 'WC_Product::set_stock', '3.0', 'wc_update_product_stock' );
@@ -230,13 +227,10 @@ abstract class WC_Abstract_Legacy_Product extends WC_Data {
 	/**
 	 * Get and return related products.
 	 * @deprecated 3.0.0 Use wc_get_related_products instead.
-<<<<<<< HEAD
 	 *
 	 * @param int $limit
 	 *
 	 * @return array
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_related( $limit = 5 ) {
 		wc_deprecated_function( 'WC_Product::get_related', '3.0', 'wc_get_related_products' );
@@ -246,13 +240,10 @@ abstract class WC_Abstract_Legacy_Product extends WC_Data {
 	/**
 	 * Retrieves related product terms.
 	 * @deprecated 3.0.0 Use wc_get_product_term_ids instead.
-<<<<<<< HEAD
 	 *
 	 * @param $term
 	 *
 	 * @return array
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function get_related_terms( $term ) {
 		wc_deprecated_function( 'WC_Product::get_related_terms', '3.0', 'wc_get_product_term_ids' );
@@ -262,14 +253,11 @@ abstract class WC_Abstract_Legacy_Product extends WC_Data {
 	/**
 	 * Builds the related posts query.
 	 * @deprecated 3.0.0 Use Product Data Store get_related_products_query instead.
-<<<<<<< HEAD
 	 *
 	 * @param $cats_array
 	 * @param $tags_array
 	 * @param $exclude_ids
 	 * @param $limit
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function build_related_query( $cats_array, $tags_array, $exclude_ids, $limit ) {
 		wc_deprecated_function( 'WC_Product::build_related_query', '3.0', 'Product Data Store get_related_products_query' );
@@ -546,12 +534,9 @@ abstract class WC_Abstract_Legacy_Product extends WC_Data {
 	 * Get formatted variation data with WC < 2.4 back compat and proper formatting of text-based attribute names.
 	 *
 	 * @deprecated 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param bool $flat
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	public function get_formatted_variation_attributes( $flat = false ) {
@@ -563,15 +548,10 @@ abstract class WC_Abstract_Legacy_Product extends WC_Data {
 	 * Sync variable product prices with the children lowest/highest prices.
 	 *
 	 * @deprecated 3.0.0 not used in core.
-<<<<<<< HEAD
 	 *
 	 * @param int $product_id
 	 */
 	public function variable_product_sync( $product_id = 0 ) {
-=======
-	 */
-	public function variable_product_sync( $product_id = '' ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		wc_deprecated_function( 'WC_Product::variable_product_sync', '3.0' );
 		if ( empty( $product_id ) ) {
 			$product_id = $this->get_id();
@@ -585,12 +565,9 @@ abstract class WC_Abstract_Legacy_Product extends WC_Data {
 
 	/**
 	 * Sync the variable product's attributes with the variations.
-<<<<<<< HEAD
 	 *
 	 * @param $product
 	 * @param bool $children
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function sync_attributes( $product, $children = false ) {
 		if ( ! is_a( $product, 'WC_Product' ) ) {
@@ -637,11 +614,8 @@ abstract class WC_Abstract_Legacy_Product extends WC_Data {
 	/**
 	 * Match a variation to a given set of attributes using a WP_Query.
 	 * @deprecated 3.0.0 in favour of Product data store's find_matching_product_variation.
-<<<<<<< HEAD
 	 *
 	 * @param array $match_attributes
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_matching_variation( $match_attributes = array() ) {
 		wc_deprecated_function( 'WC_Product::get_matching_variation', '3.0', 'Product data store find_matching_product_variation' );

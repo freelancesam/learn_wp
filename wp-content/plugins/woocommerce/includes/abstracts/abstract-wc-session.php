@@ -1,12 +1,9 @@
 <?php
-<<<<<<< HEAD
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * Handle data for the current customers session
  *

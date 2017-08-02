@@ -334,7 +334,6 @@ final class WP_Post_Type {
 	public $supports;
 
 	/**
-<<<<<<< HEAD
 	 * Whether this post type should appear in the REST API.
 	 *
 	 * Default false. If true, standard endpoints will be registered with
@@ -367,8 +366,6 @@ final class WP_Post_Type {
 	public $rest_controller_class;
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Constructor.
 	 *
 	 * Will populate object properties from the provided arguments and assign other
@@ -414,7 +411,6 @@ final class WP_Post_Type {
 
 		// Args prefixed with an underscore are reserved for internal use.
 		$defaults = array(
-<<<<<<< HEAD
 			'labels'                => array(),
 			'description'           => '',
 			'public'                => false,
@@ -443,33 +439,6 @@ final class WP_Post_Type {
 			'rest_controller_class' => false,
 			'_builtin'              => false,
 			'_edit_link'            => 'post.php?post=%d',
-=======
-			'labels'               => array(),
-			'description'          => '',
-			'public'               => false,
-			'hierarchical'         => false,
-			'exclude_from_search'  => null,
-			'publicly_queryable'   => null,
-			'show_ui'              => null,
-			'show_in_menu'         => null,
-			'show_in_nav_menus'    => null,
-			'show_in_admin_bar'    => null,
-			'menu_position'        => null,
-			'menu_icon'            => null,
-			'capability_type'      => 'post',
-			'capabilities'         => array(),
-			'map_meta_cap'         => null,
-			'supports'             => array(),
-			'register_meta_box_cb' => null,
-			'taxonomies'           => array(),
-			'has_archive'          => false,
-			'rewrite'              => true,
-			'query_var'            => true,
-			'can_export'           => true,
-			'delete_with_user'     => null,
-			'_builtin'             => false,
-			'_edit_link'           => 'post.php?post=%d',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		);
 
 		$args = array_merge( $defaults, $args );

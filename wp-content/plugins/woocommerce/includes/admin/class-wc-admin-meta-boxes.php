@@ -168,14 +168,8 @@ class WC_Admin_Meta_Boxes {
 		global $post;
 
 		// Comments/Reviews
-<<<<<<< HEAD
 		if ( isset( $post ) && ( 'publish' == $post->post_status || 'private' == $post->post_status ) && post_type_supports( 'product', 'comments' ) ) {
 			remove_meta_box( 'commentsdiv', 'product', 'normal' );
-=======
-		if ( isset( $post ) && ( 'publish' == $post->post_status || 'private' == $post->post_status ) ) {
-			remove_meta_box( 'commentsdiv', 'product', 'normal' );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			add_meta_box( 'commentsdiv', __( 'Reviews', 'woocommerce' ), 'post_comment_meta_box', 'product', 'normal' );
 		}
 	}
@@ -193,11 +187,7 @@ class WC_Admin_Meta_Boxes {
 		}
 
 		// Dont' save meta boxes for revisions or autosaves
-<<<<<<< HEAD
 		if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || is_int( wp_is_post_revision( $post ) ) || is_int( wp_is_post_autosave( $post ) ) ) {
-=======
-		if ( defined( 'DOING_AUTOSAVE' ) || is_int( wp_is_post_revision( $post ) ) || is_int( wp_is_post_autosave( $post ) ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			return;
 		}
 

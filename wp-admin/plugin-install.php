@@ -111,7 +111,6 @@ get_current_screen()->set_screen_reader_content( array(
 include(ABSPATH . 'wp-admin/admin-header.php');
 ?>
 <div class="wrap <?php echo esc_attr( "plugin-install-tab-$tab" ); ?>">
-<<<<<<< HEAD
 <h1 class="wp-heading-inline"><?php
 echo esc_html( $title );
 ?></h1>
@@ -127,20 +126,6 @@ if ( ! empty( $tabs['upload'] ) && current_user_can( 'upload_plugins' ) ) {
 ?>
 
 <hr class="wp-header-end">
-=======
-<h1>
-	<?php
-	echo esc_html( $title );
-	if ( ! empty( $tabs['upload'] ) && current_user_can( 'upload_plugins' ) ) {
-		printf( ' <a href="%s" class="upload-view-toggle page-title-action"><span class="upload">%s</span><span class="browse">%s</span></a>',
-			( 'upload' === $tab ) ? self_admin_url( 'plugin-install.php' ) : self_admin_url( 'plugin-install.php?tab=upload' ),
-			__( 'Upload Plugin' ),
-			__( 'Browse Plugins' )
-		);
-	}
-	?>
-</h1>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 <?php
 /*

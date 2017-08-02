@@ -1003,7 +1003,6 @@ var wpNavMenu;
 		},
 
 		/**
-<<<<<<< HEAD
 		 * Process the add menu item request response into menu list item. Appends to menu.
 		 *
 		 * @param {string} menuMarkup The text server response of menu item markup.
@@ -1031,23 +1030,6 @@ var wpNavMenu;
 			api.refreshKeyboardAccessibility();
 			api.refreshAdvancedAccessibility();
 			$( document ).trigger( 'menu-item-added', [ $menuMarkup ] );
-=======
-		 * Process the add menu item request response into menu list item.
-		 *
-		 * @param string menuMarkup The text server response of menu item markup.
-		 * @param object req The request arguments.
-		 */
-		addMenuItemToBottom : function( menuMarkup ) {
-			$(menuMarkup).hideAdvancedMenuItemFields().appendTo( api.targetList );
-			api.refreshKeyboardAccessibility();
-			api.refreshAdvancedAccessibility();
-		},
-
-		addMenuItemToTop : function( menuMarkup ) {
-			$(menuMarkup).hideAdvancedMenuItemFields().prependTo( api.targetList );
-			api.refreshKeyboardAccessibility();
-			api.refreshAdvancedAccessibility();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		},
 
 		attachUnsavedChangesListener : function() {
@@ -1273,7 +1255,6 @@ var wpNavMenu;
 			wrapper.removeClass( 'has-no-menu-item' );
 		},
 
-<<<<<<< HEAD
 		/**
 		 * Remove a menu item.
 		 * @param  {object} el The element to be removed as a jQuery object.
@@ -1284,11 +1265,6 @@ var wpNavMenu;
 			var children = el.childMenuItems();
 
 			$( document ).trigger( 'menu-removing-item', [ el ] );
-=======
-		removeMenuItem : function(el) {
-			var children = el.childMenuItems();
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			el.addClass('deleting').animate({
 					opacity : 0,
 					height: 0

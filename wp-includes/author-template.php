@@ -148,11 +148,7 @@ function get_the_author_meta( $field = '', $user_id = false ) {
 	 * @param int      $user_id          The user ID for the value.
 	 * @param int|bool $original_user_id The original user ID, as passed to the function.
 	 */
-<<<<<<< HEAD
 	return apply_filters( "get_the_author_{$field}", $value, $user_id, $original_user_id );
-=======
-	return apply_filters( 'get_the_author_' . $field, $value, $user_id, $original_user_id );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
@@ -178,11 +174,7 @@ function the_author_meta( $field = '', $user_id = false ) {
 	 * @param string $author_meta The value of the metadata.
 	 * @param int    $user_id     The user ID.
 	 */
-<<<<<<< HEAD
 	echo apply_filters( "the_author_{$field}", $author_meta, $user_id );
-=======
-	echo apply_filters( 'the_author_' . $field, $author_meta, $user_id );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
@@ -191,11 +183,8 @@ function the_author_meta( $field = '', $user_id = false ) {
  * If the author has a home page set, return an HTML link, otherwise just return the
  * author's name.
  *
-<<<<<<< HEAD
  * @since 3.0.0
  *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @return string|null An HTML link if the author's url exist in user meta,
  *                     else the result of get_the_author().
  */
@@ -515,12 +504,8 @@ function is_multi_author() {
 /**
  * Helper function to clear the cache for number of authors.
  *
-<<<<<<< HEAD
  * @since 3.2.0
  * @access private
-=======
- * @private
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function __clear_multi_author_cache() {
 	delete_transient( 'is_multi_author' );

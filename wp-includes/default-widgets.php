@@ -19,7 +19,6 @@ require_once( ABSPATH . WPINC . '/widgets/class-wp-widget-search.php' );
 /** WP_Widget_Archives class */
 require_once( ABSPATH . WPINC . '/widgets/class-wp-widget-archives.php' );
 
-<<<<<<< HEAD
 /** WP_Widget_Media class */
 require_once( ABSPATH . WPINC . '/widgets/class-wp-widget-media.php' );
 
@@ -35,8 +34,6 @@ require_once( ABSPATH . WPINC . '/widgets/class-wp-widget-media-video.php' );
 /** WP_Widget_Meta class */
 require_once( ABSPATH . WPINC . '/widgets/class-wp-widget-meta.php' );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /** WP_Widget_Meta class */
 require_once( ABSPATH . WPINC . '/widgets/class-wp-widget-meta.php' );
 

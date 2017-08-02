@@ -80,11 +80,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 	/**
 	 * Method to create a new product in the database.
 	 *
-<<<<<<< HEAD
 	 * @param WC_Product $product
-=======
-	 * @param WC_Product
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create( &$product ) {
 		if ( ! $product->get_date_created() ) {
@@ -128,12 +124,8 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 
 	/**
 	 * Method to read a product from the database.
-<<<<<<< HEAD
 	 * @param WC_Product $product
 	 * @throws Exception
-=======
-	 * @param WC_Product
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( &$product ) {
 		$product->set_defaults();
@@ -168,11 +160,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 	/**
 	 * Method to update a product in the database.
 	 *
-<<<<<<< HEAD
 	 * @param WC_Product $product
-=======
-	 * @param WC_Product
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function update( &$product ) {
 		$product->save_meta_data();
@@ -189,10 +177,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 				'post_status'    => $product->get_status( 'edit' ) ? $product->get_status( 'edit' ) : 'publish',
 				'menu_order'     => $product->get_menu_order( 'edit' ),
 				'post_name'      => $product->get_slug( 'edit' ),
-<<<<<<< HEAD
 				'post_type'      => 'product',
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			);
 			if ( $product->get_date_created( 'edit' ) ) {
 				$post_data['post_date']     = gmdate( 'Y-m-d H:i:s', $product->get_date_created( 'edit' )->getOffsetTimestamp() );
@@ -239,11 +224,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 
 	/**
 	 * Method to delete a product from the database.
-<<<<<<< HEAD
 	 * @param WC_Product $product
-=======
-	 * @param WC_Product
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array $args Array of args to pass to the delete method.
 	 */
 	public function delete( &$product, $args = array() ) {
@@ -614,14 +595,9 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 	 * Update visibility terms based on props.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param WC_Product $product
 	 * @param bool $force Force update. Used during create.
-=======
-	 * @param bool Force update. Used during create.
-	 * @param WC_Product
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function update_visibility( &$product, $force = false ) {
 		$changes = $product->get_changes();
@@ -990,7 +966,6 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 	/**
 	 * Make sure all variations have a sort order set so they can be reordered correctly.
 	 *
-<<<<<<< HEAD
 	 * @param int $parent_id
 	 */
 	public function sort_all_product_variations( $parent_id ) {
@@ -1000,17 +975,6 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 
 		foreach ( $ids as $id ) {
 			$wpdb->update( $wpdb->posts, array( 'menu_order' => ( $index++ ) ), array( 'ID' => absint( $id ) ) );
-=======
-	 * 	@param int $parent_id
-	 */
-	public function sort_all_product_variations( $parent_id ) {
-		global $wpdb;
-		$ids   = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_type='product_variation' AND post_parent=%d AND post_status='publish' ORDER BY menu_order ASC, ID ASC", $parent_id ) );
-		$index = 0;
-
-		foreach ( $ids as $id ) {
-			$wpdb->update( $wpdb->posts, array( 'menu_order' => ( $index ++ ) ), array( 'ID' => absint( $id ) ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	}
 
@@ -1034,20 +998,13 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 	 * Builds the related posts query.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array $cats_array  List of categories IDs.
 	 * @param array $tags_array  List of tags IDs.
 	 * @param array $exclude_ids Excluded IDs.
 	 * @param int   $limit       Limit of results.
-<<<<<<< HEAD
 	 *
 	 * @return array
-=======
-	 * @return string
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_related_products_query( $cats_array, $tags_array, $exclude_ids, $limit ) {
 		global $wpdb;
@@ -1164,10 +1121,7 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 	 */
 	public function update_average_rating( $product ) {
 		update_post_meta( $product->get_id(), '_wc_average_rating', $product->get_average_rating( 'edit' ) );
-<<<<<<< HEAD
 		self::update_visibility( $product, true );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -1210,22 +1164,14 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 	 * Returns an array of products.
 	 *
 	 * @param  array $args @see wc_get_products
-<<<<<<< HEAD
 	 *
 	 * @return array|object
-=======
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_products( $args = array() ) {
 		/**
 		 * Generate WP_Query args.
 		 */
 		$wp_query_args = array(
-<<<<<<< HEAD
-=======
-			'post_type'      => 'variation' === $args['type'] ? 'product_variation' : 'product',
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'post_status'    => $args['status'],
 			'posts_per_page' => $args['limit'],
 			'meta_query'     => array(),
@@ -1233,7 +1179,6 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			'order'          => $args['order'],
 			'tax_query'      => array(),
 		);
-<<<<<<< HEAD
 
 		if ( 'variation' === $args['type'] ) {
 			$wp_query_args['post_type'] = 'product_variation';
@@ -1254,14 +1199,6 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			);
 		} else {
 			$wp_query_args['post_type']   = 'product';
-=======
-		// Do not load unnecessary post data if the user only wants IDs.
-		if ( 'ids' === $args['return'] ) {
-			$wp_query_args['fields'] = 'ids';
-		}
-
-		if ( 'variation' !== $args['type'] ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$wp_query_args['tax_query'][] = array(
 				'taxonomy' => 'product_type',
 				'field'    => 'slug',
@@ -1269,14 +1206,11 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 			);
 		}
 
-<<<<<<< HEAD
 		// Do not load unnecessary post data if the user only wants IDs.
 		if ( 'ids' === $args['return'] ) {
 			$wp_query_args['fields'] = 'ids';
 		}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( ! empty( $args['sku'] ) ) {
 			$wp_query_args['meta_query'][] = array(
 				'key'     => '_sku',
@@ -1335,12 +1269,9 @@ class WC_Product_Data_Store_CPT extends WC_Data_Store_WP implements WC_Object_Da
 		$products = new WP_Query( $wp_query_args );
 
 		if ( 'objects' === $args['return'] ) {
-<<<<<<< HEAD
 			// Prime caches before grabbing objects.
 			update_post_caches( $products->posts, array( 'product', 'product_variation' ) );
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$return = array_filter( array_map( 'wc_get_product', $products->posts ) );
 		} else {
 			$return = $products->posts;

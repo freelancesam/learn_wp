@@ -1,5 +1,4 @@
 /* global woocommerce_admin */
-<<<<<<< HEAD
 jQuery( function ( $ ) {
 
 	if ( 'undefined' === typeof woocommerce_admin ) {
@@ -29,13 +28,6 @@ jQuery( function ( $ ) {
 		});
 		return true;
 	} );
-=======
-
-/**
- * WooCommerce Admin JS
- */
-jQuery( function ( $ ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Field validation error tips
 	$( document.body )
@@ -285,7 +277,6 @@ jQuery( function ( $ ) {
 		}
 	}).change();
 
-<<<<<<< HEAD
 	// Reviews.
 	$( 'input#woocommerce_enable_reviews' ).change(function() {
 		if ( $( this ).is( ':checked' ) ) {
@@ -295,8 +286,6 @@ jQuery( function ( $ ) {
 		}
 	}).change();
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// Attribute term table
 	$( 'table.attributes-table tbody tr:nth-child(odd)' ).addClass( 'alternate' );
 

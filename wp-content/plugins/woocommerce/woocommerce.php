@@ -3,19 +3,11 @@
  * Plugin Name: WooCommerce
  * Plugin URI: https://woocommerce.com/
  * Description: An e-commerce toolkit that helps you sell anything. Beautifully.
-<<<<<<< HEAD
  * Version: 3.1.1
  * Author: Automattic
  * Author URI: https://woocommerce.com
  * Requires at least: 4.4
  * Tested up to: 4.8
-=======
- * Version: 3.0.8
- * Author: Automattic
- * Author URI: https://woocommerce.com
- * Requires at least: 4.4
- * Tested up to: 4.7
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * Text Domain: woocommerce
  * Domain Path: /i18n/languages/
@@ -34,11 +26,7 @@ if ( ! class_exists( 'WooCommerce' ) ) :
  * Main WooCommerce Class.
  *
  * @class WooCommerce
-<<<<<<< HEAD
  * @version	3.1.0
-=======
- * @version	3.0.0
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 final class WooCommerce {
 
@@ -47,11 +35,7 @@ final class WooCommerce {
 	 *
 	 * @var string
 	 */
-<<<<<<< HEAD
 	public $version = '3.1.1';
-=======
-	public $version = '3.0.8';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	/**
 	 * The single instance of the class.
@@ -296,10 +280,7 @@ final class WooCommerce {
 		 * Abstract classes.
 		 */
 		include_once( WC_ABSPATH . 'includes/abstracts/abstract-wc-data.php' ); // WC_Data for CRUD
-<<<<<<< HEAD
 		include_once( WC_ABSPATH . 'includes/abstracts/abstract-wc-object-query.php' ); // WC_Object_Query for CRUD
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		include_once( WC_ABSPATH . 'includes/abstracts/abstract-wc-payment-token.php' ); // Payment Tokens
 		include_once( WC_ABSPATH . 'includes/abstracts/abstract-wc-product.php' ); // Products
 		include_once( WC_ABSPATH . 'includes/abstracts/abstract-wc-order.php' ); // Orders
@@ -327,10 +308,7 @@ final class WooCommerce {
 		include_once( WC_ABSPATH . 'includes/class-wc-data-exception.php' );
 		include_once( WC_ABSPATH . 'includes/class-wc-query.php' );
 		include_once( WC_ABSPATH . 'includes/class-wc-order-factory.php' ); // Order factory
-<<<<<<< HEAD
 		include_once( WC_ABSPATH . 'includes/class-wc-order-query.php' ); // Order query
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		include_once( WC_ABSPATH . 'includes/class-wc-product-factory.php' ); // Product factory
 		include_once( WC_ABSPATH . 'includes/class-wc-payment-tokens.php' ); // Payment tokens controller
 		include_once( WC_ABSPATH . 'includes/class-wc-shipping-zone.php' );
@@ -483,10 +461,7 @@ final class WooCommerce {
 		$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
 		$locale = apply_filters( 'plugin_locale', $locale, 'woocommerce' );
 
-<<<<<<< HEAD
 		unload_textdomain( 'woocommerce' );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		load_textdomain( 'woocommerce', WP_LANG_DIR . '/woocommerce/woocommerce-' . $locale . '.mo' );
 		load_plugin_textdomain( 'woocommerce', false, plugin_basename( dirname( __FILE__ ) ) . '/i18n/languages' );
 	}

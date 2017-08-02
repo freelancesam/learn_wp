@@ -24,11 +24,7 @@
 					et_widget_area_name : $widget_name_input.val()
 				},
 				success: function( data ){
-<<<<<<< HEAD
-					$this_el.closest( '#et_pb_widget_area_create' ).find( '.et_pb_widget_area_result' ).hide().html( data ).slideToggle();
-=======
 					$this_el.siblings( '.et_pb_widget_area_result' ).hide().html( data ).slideToggle();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			} );
 		} );

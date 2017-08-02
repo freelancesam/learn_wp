@@ -55,124 +55,6 @@ if ( ! function_exists( 'et_options_stored_in_one_row' ) ) {
 
 }
 
-<<<<<<< HEAD
-/* sync custom CSS from ePanel with WP custom CSS option introduced in WP 4.7 */
-if ( ! function_exists( 'et_sync_custom_css_options' ) ) {
-	function et_sync_custom_css_options() {
-		$css_synced = get_theme_mod( 'et_pb_css_synced', 'no' );
-
-		if ( 'yes' === $css_synced || ! function_exists( 'wp_get_custom_css' ) ) {
-			return;
-		}
-
-		global $shortname;
-
-		$legacy_custom_css = wp_unslash( et_get_option( "{$shortname}_custom_css" ) );
-
-		// nothing to sync if no custom css saved in ePanel
-		if ( '' === $legacy_custom_css || ! $legacy_custom_css || empty( $legacy_custom_css ) ) {
-			set_theme_mod( 'et_pb_css_synced', 'yes' );
-			return;
-		}
-
-		// get custom css string from WP customizer
-		$wp_custom_css = wp_get_custom_css();
-
-		// ePanel is completely synced with Customizer
-		if ( $wp_custom_css === $legacy_custom_css || false !== strpos( $wp_custom_css, $legacy_custom_css ) ) {
-			set_theme_mod( 'et_pb_css_synced', 'yes' );
-			return;
-		}
-
-		// merge custom css from WP customizer with ePanel custom css
-		$updated_custom_css = $legacy_custom_css . ' ' . $wp_custom_css;
-
-		$updated_status = wp_update_custom_css_post( $updated_custom_css );
-
-		// set theme mod in case of success
-		if ( is_object( $updated_status ) && ! empty( $updated_status ) ) {
-			set_theme_mod( 'et_pb_css_synced', 'yes' );
-		}
-	}
-}
-add_action( 'init', 'et_sync_custom_css_options' );
-
-/**
- * sync custom CSS from WP custom CSS option introduced in WP 4.7 with theme options for backward compatibility
- * it should be removed after a few WP major updates when we fully migrate to WP custom CSS system
- */
-if ( ! function_exists( 'et_back_sync_custom_css_options' ) ) {
-	function et_back_sync_custom_css_options( $data ) {
-		global $shortname;
-
-		if ( ! empty( $data ) && isset( $data['css'] ) ) {
-			et_update_option( "{$shortname}_custom_css", $data['css'] );
-		}
-
-		return $data;
-	}
-}
-
-add_filter( 'update_custom_css_data', 'et_back_sync_custom_css_options' );
-
-if ( ! function_exists( 'et_update_custom_css_data_cb' ) ):
-function et_update_custom_css_data_cb( $data ) {
-
-	ET_Core_PageResource::remove_static_resources( 'all', 'all' );
-
-	return $data;
-}
-add_filter( 'update_custom_css_data', 'et_update_custom_css_data_cb' );
-endif;
-
-if ( ! function_exists( 'et_epanel_handle_custom_css_output' ) ):
-function et_epanel_handle_custom_css_output( $css, $stylesheet ) {
-	global $wp_current_filter, $shortname;
-
-	if ( ! $css || ! in_array( 'wp_head', $wp_current_filter ) || is_admin() && ! is_customize_preview() ) {
-		return $css;
-	}
-
-	$post_id        = et_core_page_resource_get_the_ID();
-	$is_preview     = is_preview() || isset( $_GET['et_pb_preview_nonce'] );
-	$is_singular    = et_core_page_resource_is_singular();
-
-	$disabled_global = 'off' === et_get_option( 'et_pb_static_css_file', 'on' );
-	$disabled_post   = $disabled_global || ( $is_singular && 'off' === get_post_meta( $post_id, '_et_pb_static_css_file', true ) );
-
-	$forced_inline     = $is_preview || $disabled_global || $disabled_post;
-	$builder_in_footer = 'on' === et_get_option( 'et_pb_css_in_footer', 'off' );
-
-	$unified_styles = $is_singular && ! $forced_inline && ! $builder_in_footer && et_core_is_builder_used_on_current_request();
-	$resource_owner = $unified_styles ? 'core' : $shortname;
-	$resource_slug  = $unified_styles ? 'unified' : 'customizer';
-
-	if ( $is_preview ) {
-		// Don't let previews cause existing saved static css files to be modified.
-		$resource_slug .= '-preview';
-	}
-
-	if ( function_exists( 'et_fb_is_enabled' ) && et_fb_is_enabled() ) {
-		$resource_slug .= '-vb';
-	}
-
-	if ( ! $unified_styles ) {
-		$post_id = 'global';
-	}
-
-	$styles_manager = et_core_page_resource_get( $resource_owner, $resource_slug, $post_id, 30 );
-
-	if ( $styles_manager->forced_inline || ! $styles_manager->has_file() ) {
-		$styles_manager->set_data( $css, 30 );
-	}
-
-	return ''; // We're handling the custom CSS output ourselves.
-}
-add_filter( 'wp_get_custom_css', 'et_epanel_handle_custom_css_output', 999, 2 );
-endif;
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * Gets option value from the single theme option, stored as an array in the database
  * if all options stored in one row.
@@ -272,8 +154,6 @@ if ( ! function_exists( 'et_delete_option' ) ) {
 
 }
 
-<<<<<<< HEAD
-=======
 add_filter( 'body_class', 'et_browser_body_class' );
 
 function et_browser_body_class($classes) {
@@ -292,7 +172,6 @@ function et_browser_body_class($classes) {
 	return $classes;
 }
 
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /*this function allows for the auto-creation of post excerpts*/
 if ( ! function_exists( 'truncate_post' ) ) {
 
@@ -321,12 +200,6 @@ if ( ! function_exists( 'truncate_post' ) ) {
 			// due to unparsed audio shortcode
 			$truncate = preg_replace( '@\[audio[^\]]*?\].*?\[\/audio]@si', '', $truncate );
 
-<<<<<<< HEAD
-			// Remove embed shortcode from post content
-			$truncate = preg_replace( '@\[embed[^\]]*?\].*?\[\/embed]@si', '', $truncate );
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( $strip_shortcodes ) {
 				$truncate = et_strip_shortcodes( $truncate );
 			} else {
@@ -418,25 +291,8 @@ if ( ! function_exists( 'et_first_image' ) ) {
 	function et_first_image() {
 		global $post;
 		$img = '';
-<<<<<<< HEAD
-
-		if ( empty( $post->ID ) ) {
-			return $img;
-		}
-
-		$unprocessed_content = $post->post_content;
-
-		// truncate Post based shortcodes if Divi Builder enabled to avoid infinite loops
-		if ( function_exists( 'et_strip_shortcodes' ) ) {
-			$unprocessed_content = et_strip_shortcodes( $post->post_content, true );
-		}
-
-		// apply the_content filter to execute all shortcodes and get the correct image from the processed content
-		$processed_content = apply_filters( 'the_content', $unprocessed_content );
-=======
 		// apply the_content filter to execute all shortcodes and get the correct image from the processed content
 		$processed_content = apply_filters( 'the_content', $post->post_content );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$output = preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $processed_content, $matches );
 		if ( isset( $matches[1][0] ) ) $img = $matches[1][0];
@@ -475,11 +331,7 @@ if ( ! function_exists( 'get_thumbnail' ) ) {
 				if ($thumb_array['thumb'] == '') $thumb_array['thumb'] = esc_attr( get_post_meta( $post->ID, 'Thumbnail', $single = true ) );
 			}
 
-<<<<<<< HEAD
-			if ( '' === $thumb_array['thumb'] && et_grab_image_setting() ) {
-=======
 			if (($thumb_array['thumb'] == '') && ((et_get_option( $shortname.'_grab_image' )) == 'on')) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$thumb_array['thumb'] = esc_attr( et_first_image() );
 				if ( $fullpath ) $thumb_array['fullpath'] = $thumb_array['thumb'];
 			}
@@ -497,29 +349,6 @@ if ( ! function_exists( 'get_thumbnail' ) ) {
 
 }
 
-<<<<<<< HEAD
-if ( ! function_exists( 'et_grab_image_setting' ) ) :
-/**
- * Filterable "Grab the first post image" setting.
- * "Grab the first post image" needs to be filterable so it can be disabled forcefully.
- * It uses et_first_image() which uses apply_filters( 'the_content' ) which could cause
- * a conflict with third party plugin which extensively uses 'the_content' filter (ie. BuddyPress)
- * @return bool
- */
-function et_grab_image_setting() {
-	global $shortname;
-
-	// Force disable "Grab the first post image" in BuddyPress component page
-	$is_buddypress_component = function_exists( 'bp_current_component' ) && bp_current_component();
-
-	$setting = 'on' === et_get_option( "{$shortname}_grab_image" ) && ! $is_buddypress_component;
-
-	return apply_filters( 'et_grab_image_setting', $setting );
-}
-endif;
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /* this function prints thumbnail from Post Thumbnail or Custom field or First post image */
 if ( ! function_exists( 'print_thumbnail' ) ) {
 
@@ -1560,15 +1389,6 @@ if ( ! function_exists( 'et_load_core_options' ) ) {
  *
  */
 function et_add_custom_css() {
-<<<<<<< HEAD
-	// use default wp custom css system starting from WP 4.7
-	// fallback to our legacy custom css system otherwise
-	if ( function_exists( 'wp_get_custom_css_post' ) ) {
-		return;
-	}
-
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	global $shortname;
 
 	$custom_css = et_get_option( "{$shortname}_custom_css" );
@@ -2121,16 +1941,3 @@ function et_uc_theme_name( $key, $raw_key ) {
 add_filter( 'sanitize_key', 'et_uc_theme_name', 10, 2 );
 
 endif;
-<<<<<<< HEAD
-
-if ( ! function_exists( 'et_core_exists_in_active_plugins' ) ) :
-function et_core_exists_in_active_plugins() {
-	$result = defined( 'ET_BUILDER_PLUGIN_DIR' )
-			  || defined( 'ET_BLOOM_PLUGIN_DIR' )
-			  || defined( 'ET_MONARCH_PLUGIN_DIR' );
-
-	return $result;
-}
-endif;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

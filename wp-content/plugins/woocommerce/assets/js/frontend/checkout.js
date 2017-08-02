@@ -168,7 +168,6 @@ jQuery( function( $ ) {
 		reset_update_checkout_timer: function() {
 			clearTimeout( wc_checkout_form.updateTimer );
 		},
-<<<<<<< HEAD
 		is_valid_json: function( raw_json ) {
 			try {
 				var json = $.parseJSON( raw_json );
@@ -178,8 +177,6 @@ jQuery( function( $ ) {
 				return false;
 			}
 		},
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		validate_field: function( e ) {
 			var $this             = $( this ),
 				$parent           = $this.closest( '.form-row' ),
@@ -425,7 +422,6 @@ jQuery( function( $ ) {
 							return raw_response;
 						}
 
-<<<<<<< HEAD
 						if ( wc_checkout_form.is_valid_json( raw_response ) ) {
 							return raw_response;
 						} else {
@@ -440,29 +436,6 @@ jQuery( function( $ ) {
 								raw_response = maybe_valid_json[0];
 							} else {
 								console.log( 'Unable to fix malformed JSON' );
-=======
-						try {
-							// Check for valid JSON
-							var data = $.parseJSON( raw_response );
-
-							if ( data && 'object' === typeof data ) {
-
-								// Valid - return it so it can be parsed by Ajax handler
-								return raw_response;
-							}
-
-						} catch ( e ) {
-
-							// Attempt to fix the malformed JSON
-							var valid_json = raw_response.match( /{"result.*"}/ );
-
-							if ( null === valid_json ) {
-								console.log( 'Unable to fix malformed JSON' );
-							} else {
-								console.log( 'Fixed malformed JSON. Original:' );
-								console.log( raw_response );
-								raw_response = valid_json[0];
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							}
 						}
 
@@ -637,7 +610,6 @@ jQuery( function( $ ) {
 		}
 	};
 
-<<<<<<< HEAD
 	var wc_terms_toggle = {
 		init: function() {
 			$( document.body ).on( 'click', 'a.woocommerce-terms-and-conditions-link', this.toggle_terms );
@@ -655,9 +627,4 @@ jQuery( function( $ ) {
 	wc_checkout_coupons.init();
 	wc_checkout_login_form.init();
 	wc_terms_toggle.init();
-=======
-	wc_checkout_form.init();
-	wc_checkout_coupons.init();
-	wc_checkout_login_form.init();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 });

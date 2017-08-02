@@ -58,7 +58,6 @@ class WC_Admin_API_Keys {
 	 * Table list output.
 	 */
 	private static function table_list_output() {
-<<<<<<< HEAD
 
 		global $wpdb;
 
@@ -86,20 +85,6 @@ class WC_Admin_API_Keys {
 
 			<?php echo '<style type="text/css">#posts-filter .wp-list-table, #posts-filter .tablenav.top, .tablenav.bottom .actions  { display: none; } </style></div>';
 		}
-=======
-		echo '<h2>' . __( 'Keys/Apps', 'woocommerce' ) . ' <a href="' . esc_url( admin_url( 'admin.php?page=wc-settings&tab=api&section=keys&create-key=1' ) ) . '" class="add-new-h2">' . __( 'Add key', 'woocommerce' ) . '</a></h2>';
-
-		$keys_table_list = new WC_Admin_API_Keys_Table_List();
-		$keys_table_list->prepare_items();
-
-		echo '<input type="hidden" name="page" value="wc-settings" />';
-		echo '<input type="hidden" name="tab" value="api" />';
-		echo '<input type="hidden" name="section" value="keys" />';
-
-		$keys_table_list->views();
-		$keys_table_list->search_box( __( 'Search key', 'woocommerce' ), 'key' );
-		$keys_table_list->display();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

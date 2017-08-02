@@ -258,10 +258,7 @@ class WP_Users_List_Table extends WP_List_Table {
 	 */
 	protected function extra_tablenav( $which ) {
 		$id = 'bottom' === $which ? 'new_role2' : 'new_role';
-<<<<<<< HEAD
 		$button_id = 'bottom' === $which ? 'changeit2' : 'changeit';
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	?>
 	<div class="alignleft actions">
 		<?php if ( current_user_can( 'promote_users' ) && $this->has_items() ) : ?>
@@ -271,11 +268,7 @@ class WP_Users_List_Table extends WP_List_Table {
 			<?php wp_dropdown_roles(); ?>
 		</select>
 	<?php
-<<<<<<< HEAD
 			submit_button( __( 'Change' ), '', $button_id, false );
-=======
-			submit_button( __( 'Change' ), '', 'changeit', false );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		endif;
 
 		/**
@@ -303,11 +296,7 @@ class WP_Users_List_Table extends WP_List_Table {
 	 * @return string The bulk action required.
 	 */
 	public function current_action() {
-<<<<<<< HEAD
 		if ( ( isset( $_REQUEST['changeit'] ) || isset( $_REQUEST['changeit2'] ) ) &&
-=======
-		if ( isset( $_REQUEST['changeit'] ) &&
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			( ! empty( $_REQUEST['new_role'] ) || ! empty( $_REQUEST['new_role2'] ) ) ) {
 			return 'promote';
 		}
@@ -384,19 +373,11 @@ class WP_Users_List_Table extends WP_List_Table {
 	 * @since 4.4.0 The `$role` parameter was deprecated.
 	 * @access public
 	 *
-<<<<<<< HEAD
 	 * @param WP_User $user_object The current user object.
 	 * @param string  $style       Deprecated. Not used.
 	 * @param string  $role        Deprecated. Not used.
 	 * @param int     $numposts    Optional. Post count to display for this user. Defaults
 	 *                             to zero, as in, a new user has made zero posts.
-=======
-	 * @param object $user_object The current user object.
-	 * @param string $style       Deprecated. Not used.
-	 * @param string $role        Deprecated. Not used.
-	 * @param int    $numposts    Optional. Post count to display for this user. Defaults
-	 *                            to zero, as in, a new user has made zero posts.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string Output for a single row.
 	 */
 	public function single_row( $user_object, $style = '', $role = '', $numposts = 0 ) {

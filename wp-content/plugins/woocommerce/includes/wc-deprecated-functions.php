@@ -936,7 +936,6 @@ function _wc_save_product_price( $product_id, $regular_price, $sale_price = '', 
 		update_post_meta( $product_id, '_sale_price_dates_to', '' );
 	}
 }
-<<<<<<< HEAD
 
 /**
  * Return customer avatar URL.
@@ -952,5 +951,3 @@ function wc_get_customer_avatar_url( $email ) {
 
 	return get_avatar_url( $email );
 }
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

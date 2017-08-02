@@ -63,18 +63,12 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 * Get all webhooks
 	 *
 	 * @since 2.2
-<<<<<<< HEAD
 	 *
 	 * @param array $fields
 	 * @param array $filter
 	 * @param string $status
 	 * @param int $page
 	 *
-=======
-	 * @param array $fields
-	 * @param array $filter
-	 * @param int $page
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array
 	 */
 	public function get_webhooks( $fields = null, $filter = array(), $status = null, $page = 1 ) {
@@ -109,11 +103,7 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 * @since 2.2
 	 * @param int $id webhook ID
 	 * @param array $fields
-<<<<<<< HEAD
 	 * @return array|WP_Error
-=======
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_webhook( $id, $fields = null ) {
 
@@ -146,17 +136,11 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 * Get the total number of webhooks
 	 *
 	 * @since 2.2
-<<<<<<< HEAD
 	 *
 	 * @param string $status
 	 * @param array $filter
 	 *
 	 * @return array|WP_Error
-=======
-	 * @param string $status
-	 * @param array $filter
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_webhooks_count( $status = null, $filter = array() ) {
 		try {
@@ -180,15 +164,10 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 * Create an webhook
 	 *
 	 * @since 2.2
-<<<<<<< HEAD
 	 *
 	 * @param array $data parsed webhook data
 	 *
 	 * @return array|WP_Error
-=======
-	 * @param array $data parsed webhook data
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_webhook( $data ) {
 
@@ -267,17 +246,11 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 * Edit a webhook
 	 *
 	 * @since 2.2
-<<<<<<< HEAD
 	 *
 	 * @param int $id webhook ID
 	 * @param array $data parsed webhook data
 	 *
 	 * @return array|WP_Error
-=======
-	 * @param int $id webhook ID
-	 * @param array $data parsed webhook data
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function edit_webhook( $id, $data ) {
 
@@ -362,11 +335,7 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 *
 	 * @since 2.2
 	 * @param int $id webhook ID
-<<<<<<< HEAD
 	 * @return array|WP_Error
-=======
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_webhook( $id ) {
 
@@ -429,11 +398,7 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 * @since 2.2
 	 * @param string $webhook_id webhook ID
 	 * @param string|null $fields fields to include in response
-<<<<<<< HEAD
 	 * @return array|WP_Error
-=======
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_webhook_deliveries( $webhook_id, $fields = null ) {
 
@@ -466,19 +431,12 @@ class WC_API_Webhooks extends WC_API_Resource {
 	 * Get the delivery log for the given webhook ID and delivery ID
 	 *
 	 * @since 2.2
-<<<<<<< HEAD
 	 *
 	 * @param string $webhook_id webhook ID
 	 * @param string $id delivery log ID
 	 * @param string|null $fields fields to limit response to
 	 *
 	 * @return array|WP_Error
-=======
-	 * @param string $webhook_id webhook ID
-	 * @param string $id delivery log ID
-	 * @param string|null $fields fields to limit response to
-	 * @return array
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_webhook_delivery( $webhook_id, $id, $fields = null ) {
 		try {

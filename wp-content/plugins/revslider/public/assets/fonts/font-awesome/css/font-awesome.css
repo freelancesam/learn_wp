@@ -1,22 +1,13 @@
 /*!
-<<<<<<< HEAD
- *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
-=======
  *  Font Awesome 4.5.0 by @davegandy - http://fontawesome.io - @fontawesome
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-<<<<<<< HEAD
-  src: url('../fonts/fontawesome-webfont.eot?v=4.6.3');
-  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.6.3') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.6.3') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.6.3') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular') format('svg');
-=======
   src: url('../fonts/fontawesome-webfont.eot?v=4.5.0');
   src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.5.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.5.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.5.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.5.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular') format('svg');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   font-weight: normal;
   font-style: normal;
 }
@@ -79,17 +70,10 @@
 .fa-icon-pull-right {
   float: right;
 }
-<<<<<<< HEAD
-.fa.fa-icon-pull-left {
-  margin-right: .3em;
-}
-.fa.fa-icon-pull-right {
-=======
 .fa-icon.fa-icon-pull-left {
   margin-right: .3em;
 }
 .fa-icon.fa-icon-pull-right {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   margin-left: .3em;
 }
 /* Deprecated as of 4.4.0 */
@@ -99,17 +83,10 @@
 .pull-left {
   float: left;
 }
-<<<<<<< HEAD
-.fa.pull-left {
-  margin-right: .3em;
-}
-.fa.pull-right {
-=======
 .fa-icon.pull-left {
   margin-right: .3em;
 }
 .fa-icon.pull-right {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   margin-left: .3em;
 }
 .fa-icon-spin {
@@ -141,51 +118,31 @@
   }
 }
 .fa-icon-rotate-90 {
-<<<<<<< HEAD
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
-=======
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 .fa-icon-rotate-180 {
-<<<<<<< HEAD
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
-=======
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
 .fa-icon-rotate-270 {
-<<<<<<< HEAD
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
-=======
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg);
 }
 .fa-icon-flip-horizontal {
-<<<<<<< HEAD
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
-=======
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1);
 }
 .fa-icon-flip-vertical {
-<<<<<<< HEAD
-  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
-=======
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1);
@@ -1426,11 +1383,7 @@
 .fa-icon-digg:before {
   content: "\f1a6";
 }
-<<<<<<< HEAD
-.fa-icon-pied-piper-pp:before {
-=======
 .fa-icon-pied-piper:before {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
   content: "\f1a7";
 }
 .fa-icon-pied-piper-alt:before {
@@ -1556,10 +1509,6 @@
   content: "\f1ce";
 }
 .fa-icon-ra:before,
-<<<<<<< HEAD
-.fa-icon-resistance:before,
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .fa-icon-rebel:before {
   content: "\f1d0";
 }
@@ -2135,118 +2084,3 @@
 .fa-icon-percent:before {
   content: "\f295";
 }
-<<<<<<< HEAD
-.fa-icon-gitlab:before {
-  content: "\f296";
-}
-.fa-icon-wpbeginner:before {
-  content: "\f297";
-}
-.fa-icon-wpforms:before {
-  content: "\f298";
-}
-.fa-icon-envira:before {
-  content: "\f299";
-}
-.fa-icon-universal-access:before {
-  content: "\f29a";
-}
-.fa-icon-wheelchair-alt:before {
-  content: "\f29b";
-}
-.fa-icon-question-circle-o:before {
-  content: "\f29c";
-}
-.fa-icon-blind:before {
-  content: "\f29d";
-}
-.fa-icon-audio-description:before {
-  content: "\f29e";
-}
-.fa-icon-volume-control-phone:before {
-  content: "\f2a0";
-}
-.fa-icon-braille:before {
-  content: "\f2a1";
-}
-.fa-icon-assistive-listening-systems:before {
-  content: "\f2a2";
-}
-.fa-icon-asl-interpreting:before,
-.fa-icon-american-sign-language-interpreting:before {
-  content: "\f2a3";
-}
-.fa-icon-deafness:before,
-.fa-icon-hard-of-hearing:before,
-.fa-icon-deaf:before {
-  content: "\f2a4";
-}
-.fa-icon-glide:before {
-  content: "\f2a5";
-}
-.fa-icon-glide-g:before {
-  content: "\f2a6";
-}
-.fa-icon-signing:before,
-.fa-icon-sign-language:before {
-  content: "\f2a7";
-}
-.fa-icon-low-vision:before {
-  content: "\f2a8";
-}
-.fa-icon-viadeo:before {
-  content: "\f2a9";
-}
-.fa-icon-viadeo-square:before {
-  content: "\f2aa";
-}
-.fa-icon-snapchat:before {
-  content: "\f2ab";
-}
-.fa-icon-snapchat-ghost:before {
-  content: "\f2ac";
-}
-.fa-icon-snapchat-square:before {
-  content: "\f2ad";
-}
-.fa-icon-pied-piper:before {
-  content: "\f2ae";
-}
-.fa-icon-first-order:before {
-  content: "\f2b0";
-}
-.fa-icon-yoast:before {
-  content: "\f2b1";
-}
-.fa-icon-themeisle:before {
-  content: "\f2b2";
-}
-.fa-icon-google-plus-circle:before,
-.fa-icon-google-plus-official:before {
-  content: "\f2b3";
-}
-.fa-icon-fa:before,
-.fa-icon-font-awesome:before {
-  content: "\f2b4";
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-.sr-only-focusable:active,
-.sr-only-focusable:focus {
-  position: static;
-  width: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  clip: auto;
-}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

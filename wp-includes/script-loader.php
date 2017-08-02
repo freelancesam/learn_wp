@@ -77,11 +77,7 @@ function wp_default_scripts( &$scripts ) {
 
 	$scripts->add( 'common', "/wp-admin/js/common$suffix.js", array('jquery', 'hoverIntent', 'utils'), false, 1 );
 	did_action( 'init' ) && $scripts->localize( 'common', 'commonL10n', array(
-<<<<<<< HEAD
 		'warnDelete'   => __( "You are about to permanently delete these items from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete." ),
-=======
-		'warnDelete'   => __( "You are about to permanently delete these items.\n  'Cancel' to stop, 'OK' to delete." ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'dismiss'      => __( 'Dismiss this notice.' ),
 		'collapseMenu' => __( 'Collapse Main menu' ),
 		'expandMenu'   => __( 'Expand Main menu' ),
@@ -284,11 +280,7 @@ function wp_default_scripts( &$scripts ) {
 		'queue_limit_exceeded' => __('You have attempted to queue too many files.'),
 		'file_exceeds_size_limit' => __('%s exceeds the maximum upload size for this site.'),
 		'zero_byte_file' => __('This file is empty. Please try another.'),
-<<<<<<< HEAD
 		'invalid_filetype' => __('Sorry, this file type is not permitted for security reasons.'),
-=======
-		'invalid_filetype' => __('This file type is not allowed. Please try another.'),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'not_an_image' => __('This file is not an image. Please try another.'),
 		'image_memory_exceeded' => __('Memory exceeded. Please try another smaller file.'),
 		'image_dimensions_exceeded' => __('This is larger than the maximum size. Please try another.'),
@@ -365,11 +357,7 @@ function wp_default_scripts( &$scripts ) {
 			'Play'                    => __( 'Play' ),
 			'Pause'                   => __( 'Pause' ),
 			'Captions/Subtitles'      => __( 'Captions/Subtitles' ),
-<<<<<<< HEAD
 			'None'                    => _x( 'None', 'no captions/subtitles' ),
-=======
-			'None'                    => __( 'None', 'no captions/subtitles' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'Time Slider'             => __( 'Time Slider' ),
 			/* translators: %1: number of seconds (30 by default) */
 			'Skip back %1 seconds'    => __( 'Skip back %1 seconds' ),
@@ -614,7 +602,6 @@ function wp_default_scripts( &$scripts ) {
 		$scripts->add( 'admin-gallery', "/wp-admin/js/gallery$suffix.js", array( 'jquery-ui-sortable' ) );
 
 		$scripts->add( 'admin-widgets', "/wp-admin/js/widgets$suffix.js", array( 'jquery-ui-sortable', 'jquery-ui-draggable', 'jquery-ui-droppable' ), false, 1 );
-<<<<<<< HEAD
 		$scripts->add( 'media-widgets', "/wp-admin/js/widgets/media-widgets$suffix.js", array( 'jquery', 'media-models', 'media-views' ) );
 		$scripts->add_inline_script( 'media-widgets', 'wp.mediaWidgets.init();', 'after' );
 
@@ -623,8 +610,6 @@ function wp_default_scripts( &$scripts ) {
 		$scripts->add( 'media-video-widget', "/wp-admin/js/widgets/media-video-widget$suffix.js", array( 'media-widgets', 'media-audiovideo' ) );
 		$scripts->add( 'text-widgets', "/wp-admin/js/widgets/text-widgets$suffix.js", array( 'jquery', 'backbone', 'editor', 'wp-util' ) );
 		$scripts->add_inline_script( 'text-widgets', 'wp.textWidgets.init();', 'after' );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$scripts->add( 'theme', "/wp-admin/js/theme$suffix.js", array( 'wp-backbone', 'wp-a11y' ), false, 1 );
 
@@ -660,25 +645,16 @@ function wp_default_scripts( &$scripts ) {
 				'noPlugins'                  => __( 'You do not appear to have any plugins available at this time.' ),
 				'noItemsSelected'            => __( 'Please select at least one item to perform this action on.' ),
 				'updating'                   => __( 'Updating...' ), // No ellipsis.
-<<<<<<< HEAD
 				'pluginUpdated'              => _x( 'Updated!', 'plugin' ),
 				'themeUpdated'               => _x( 'Updated!', 'theme' ),
 				'update'                     => __( 'Update' ),
 				'updateNow'                  => __( 'Update Now' ),
 				/* translators: %s: Plugin name and version */
 				'pluginUpdateNowLabel'       => _x( 'Update %s now', 'plugin' ),
-=======
-				'updated'                    => __( 'Updated!' ),
-				'update'                     => __( 'Update' ),
-				'updateNow'                  => __( 'Update Now' ),
-				/* translators: %s: Plugin name and version */
-				'updateNowLabel'             => __( 'Update %s now' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'updateFailedShort'          => __( 'Update Failed!' ),
 				/* translators: %s: Error string for a failed update */
 				'updateFailed'               => __( 'Update Failed: %s' ),
 				/* translators: %s: Plugin name and version */
-<<<<<<< HEAD
 				'pluginUpdatingLabel'        => _x( 'Updating %s...', 'plugin' ), // No ellipsis.
 				/* translators: %s: Plugin name and version */
 				'pluginUpdatedLabel'         => _x( '%s updated!', 'plugin' ),
@@ -689,32 +665,14 @@ function wp_default_scripts( &$scripts ) {
 				/* translators: Accessibility text */
 				'updatedMsg'                 => __( 'Update completed successfully.' ),
 				/* translators: Accessibility text */
-=======
-				'updatingLabel'              => __( 'Updating %s...' ), // No ellipsis.
-				/* translators: %s: Plugin name and version */
-				'updatedLabel'               => __( '%s updated!' ),
-				/* translators: %s: Plugin name and version */
-				'updateFailedLabel'          => __( '%s update failed' ),
-				/* translators: JavaScript accessible string */
-				'updatingMsg'                => __( 'Updating... please wait.' ), // No ellipsis.
-				/* translators: JavaScript accessible string */
-				'updatedMsg'                 => __( 'Update completed successfully.' ),
-				/* translators: JavaScript accessible string */
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'updateCancel'               => __( 'Update canceled.' ),
 				'beforeunload'               => __( 'Updates may not complete if you navigate away from this page.' ),
 				'installNow'                 => __( 'Install Now' ),
 				/* translators: %s: Plugin name */
-<<<<<<< HEAD
 				'pluginInstallNowLabel'      => _x( 'Install %s now', 'plugin' ),
 				'installing'                 => __( 'Installing...' ),
 				'pluginInstalled'            => _x( 'Installed!', 'plugin' ),
 				'themeInstalled'             => _x( 'Installed!', 'theme' ),
-=======
-				'installNowLabel'            => __( 'Install %s now' ),
-				'installing'                 => __( 'Installing...' ),
-				'installed'                  => __( 'Installed!' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'installFailedShort'         => __( 'Install Failed!' ),
 				/* translators: %s: Error string for a failed installation */
 				'installFailed'              => __( 'Installation failed: %s' ),
@@ -743,12 +701,8 @@ function wp_default_scripts( &$scripts ) {
 				'deleting'                   => __( 'Deleting...' ),
 				/* translators: %s: Error string for a failed deletion */
 				'deleteFailed'               => __( 'Deletion failed: %s' ),
-<<<<<<< HEAD
 				'pluginDeleted'              => _x( 'Deleted!', 'plugin' ),
 				'themeDeleted'               => _x( 'Deleted!', 'theme' ),
-=======
-				'deleted'                    => __( 'Deleted!' ),
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'livePreview'                => __( 'Live Preview' ),
 				'activatePlugin'             => is_network_admin() ? __( 'Network Activate' ) : __( 'Activate' ),
 				'activateTheme'              => is_network_admin() ? __( 'Network Enable' ) : __( 'Activate' ),
@@ -778,11 +732,7 @@ function wp_default_scripts( &$scripts ) {
 			'current' => __( 'Current Color' ),
 		) );
 
-<<<<<<< HEAD
 		$scripts->add( 'dashboard', "/wp-admin/js/dashboard$suffix.js", array( 'jquery', 'admin-comments', 'postbox', 'wp-util', 'wp-a11y' ), false, 1 );
-=======
-		$scripts->add( 'dashboard', "/wp-admin/js/dashboard$suffix.js", array( 'jquery', 'admin-comments', 'postbox' ), false, 1 );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$scripts->add( 'list-revisions', "/wp-includes/js/wp-list-revisions$suffix.js" );
 
@@ -1051,7 +1001,6 @@ function wp_localize_jquery_ui_datepicker() {
 }
 
 /**
-<<<<<<< HEAD
  * Localizes community events data that needs to be passed to dashboard.js.
  *
  * @since 4.8.0
@@ -1116,8 +1065,6 @@ function wp_localize_community_events() {
 }
 
 /**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * Administration Screen CSS for changing the styles.
  *
  * If installing the 'wp-admin/' directory will be replaced with './'.

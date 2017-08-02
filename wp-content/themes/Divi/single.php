@@ -9,34 +9,11 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 ?>
 
 <div id="main-content">
-<<<<<<< HEAD
-	<?php
-		if ( et_builder_is_product_tour_enabled() ):
-			// load fullwidth page in Product Tour mode
-			while ( have_posts() ): the_post(); ?>
-
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<div class="entry-content">
-					<?php
-						the_content();
-					?>
-					</div> <!-- .entry-content -->
-
-				</article> <!-- .et_pb_post -->
-
-		<?php endwhile;
-		else:
-	?>
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	<div class="container">
 		<div id="content-area" class="clearfix">
 			<div id="left-area">
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
-<<<<<<< HEAD
-				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
-=======
 
 				<?php
 					$et_pb_has_comments_module = has_shortcode( get_the_content(), 'et_pb_comments' );
@@ -44,7 +21,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' . $additional_class ); ?>>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					<?php if ( ( 'off' !== $show_default_title && $is_page_builder_used ) || ! $is_page_builder_used ) { ?>
 						<div class="et_post_meta_wrapper">
 							<h1 class="entry-title"><?php the_title(); ?></h1>
@@ -87,20 +63,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 								switch ( $post_format ) {
 									case 'audio' :
-<<<<<<< HEAD
-										$audio_player = et_pb_get_audio_player();
-
-										if ( $audio_player ) {
-											printf(
-												'<div class="et_audio_content%1$s"%2$s>
-													%3$s
-												</div>',
-												esc_attr( $text_color_class ),
-												$inline_style,
-												$audio_player
-											);
-										}
-=======
 										printf(
 											'<div class="et_audio_content%1$s"%2$s>
 												%3$s
@@ -109,7 +71,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 											$inline_style,
 											et_pb_get_audio_player()
 										);
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 										break;
 									case 'quote' :
@@ -166,11 +127,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					<?php if (et_get_option('divi_integration_single_bottom') <> '' && et_get_option('divi_integrate_singlebottom_enable') == 'on') echo(et_get_option('divi_integration_single_bottom')); ?>
 
 					<?php
-<<<<<<< HEAD
-						if ( ( comments_open() || get_comments_number() ) && 'on' == et_get_option( 'divi_show_postcomments', 'on' ) ) {
-=======
 						if ( ( comments_open() || get_comments_number() ) && 'on' == et_get_option( 'divi_show_postcomments', 'on' ) && ! $et_pb_has_comments_module ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							comments_template( '', true );
 						}
 					?>
@@ -183,13 +140,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			<?php get_sidebar(); ?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
-<<<<<<< HEAD
-	<?php endif; ?>
 </div> <!-- #main-content -->
 
 <?php get_footer(); ?>
-=======
-</div> <!-- #main-content -->
-
-<?php get_footer(); ?>
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

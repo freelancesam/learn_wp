@@ -53,7 +53,6 @@ function get_query_template( $type, $templates = array() ) {
 	 * 'embed', home', 'frontpage', 'page', 'paged', 'search', 'single', 'singular', and 'attachment'.
 	 *
 	 * @since 1.5.0
-<<<<<<< HEAD
 	 * @since 4.8.0 The `$type` and `$templates` parameters were added.
 	 *
 	 * @param string $template  Path to the template. See locate_template().
@@ -61,12 +60,6 @@ function get_query_template( $type, $templates = array() ) {
 	 * @param array  $templates A list of template candidates, in descending order of priority.
 	 */
 	return apply_filters( "{$type}_template", $template, $type, $templates );
-=======
-	 *
-	 * @param string $template Path to the template. See locate_template().
-	 */
-	return apply_filters( "{$type}_template", $template );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
@@ -145,14 +138,9 @@ function get_post_type_archive_template() {
 		$post_type = reset( $post_type );
 
 	$obj = get_post_type_object( $post_type );
-<<<<<<< HEAD
 	if ( ! ( $obj instanceof WP_Post_Type ) || ! $obj->has_archive ) {
 		return '';
 	}
-=======
-	if ( ! $obj->has_archive )
-		return '';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	return get_archive_template();
 }
@@ -434,17 +422,10 @@ function get_page_template() {
 		if ( $pagename_decoded !== $pagename ) {
 			$templates[] = "page-{$pagename_decoded}.php";
 		}
-<<<<<<< HEAD
 		$templates[] = "page-{$pagename}.php";
 	}
 	if ( $id )
 		$templates[] = "page-{$id}.php";
-=======
-		$templates[] = "page-$pagename.php";
-	}
-	if ( $id )
-		$templates[] = "page-$id.php";
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$templates[] = 'page.php';
 
 	return get_query_template( 'page', $templates );

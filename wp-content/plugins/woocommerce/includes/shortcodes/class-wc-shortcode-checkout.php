@@ -1,12 +1,9 @@
 <?php
-<<<<<<< HEAD
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * Checkout Shortcode
  *
@@ -42,11 +39,6 @@ class WC_Shortcode_Checkout {
 			return;
 		}
 
-<<<<<<< HEAD
-=======
-		$atts = shortcode_atts( array(), $atts, 'woocommerce_checkout' );
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Backwards compat with old pay and thanks link arguments
 		if ( isset( $_GET['order'] ) && isset( $_GET['key'] ) ) {
 			wc_deprecated_argument( __CLASS__ . '->' . __FUNCTION__, '2.1', '"order" is no longer used to pass an order ID. Use the order-pay or order-received endpoint instead.' );
@@ -92,7 +84,6 @@ class WC_Shortcode_Checkout {
 		$order_id = absint( $order_id );
 
 		// Handle payment
-<<<<<<< HEAD
 		if ( isset( $_GET['pay_for_order'], $_GET['key'] ) && $order_id ) {
 
 			// Pay for existing order
@@ -140,46 +131,6 @@ class WC_Shortcode_Checkout {
 					'available_gateways' => $available_gateways,
 					'order_button_text'  => apply_filters( 'woocommerce_pay_order_button_text', __( 'Pay for order', 'woocommerce' ) ),
 				) );
-=======
-		if ( isset( $_GET['pay_for_order'] ) && isset( $_GET['key'] ) && $order_id ) {
-
-			// Pay for existing order
-			$order_key            = $_GET['key'];
-			$order                = wc_get_order( $order_id );
-
-			if ( ! current_user_can( 'pay_for_order', $order_id ) ) {
-				echo '<div class="woocommerce-error">' . __( 'Invalid order. If you have an account please log in and try again.', 'woocommerce' ) . ' <a href="' . wc_get_page_permalink( 'myaccount' ) . '" class="wc-forward">' . __( 'My account', 'woocommerce' ) . '</a>' . '</div>';
-				return;
-			}
-
-			if ( $order->get_id() == $order_id && $order->get_order_key() == $order_key ) {
-
-				if ( $order->needs_payment() ) {
-					WC()->customer->set_props( array(
-						'billing_country'  => $order->get_billing_country() ? $order->get_billing_country()   : null,
-						'billing_state'    => $order->get_billing_state() ? $order->get_billing_state()       : null,
-						'billing_postcode' => $order->get_billing_postcode() ? $order->get_billing_postcode() : null,
-					) );
-					WC()->customer->save();
-
-					$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
-
-					if ( sizeof( $available_gateways ) ) {
-						current( $available_gateways )->set_current();
-					}
-
-					wc_get_template( 'checkout/form-pay.php', array(
-						'order'              => $order,
-						'available_gateways' => $available_gateways,
-						'order_button_text'  => apply_filters( 'woocommerce_pay_order_button_text', __( 'Pay for order', 'woocommerce' ) ),
-					) );
-
-				} else {
-					wc_add_notice( sprintf( __( 'This order&rsquo;s status is &ldquo;%s&rdquo;&mdash;it cannot be paid for. Please contact us if you need assistance.', 'woocommerce' ), wc_get_order_status_name( $order->get_status() ) ), 'error' );
-				}
-			} else {
-				wc_add_notice( __( 'Sorry, this order is invalid and cannot be paid for.', 'woocommerce' ), 'error' );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		} elseif ( $order_id ) {
 
@@ -187,11 +138,7 @@ class WC_Shortcode_Checkout {
 			$order_key            = isset( $_GET['key'] ) ? wc_clean( $_GET['key'] ) : '';
 			$order                = wc_get_order( $order_id );
 
-<<<<<<< HEAD
 			if ( $order && $order->get_id() === $order_id && $order->get_order_key() === $order_key ) {
-=======
-			if ( $order->get_id() == $order_id && $order->get_order_key() == $order_key ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				if ( $order->needs_payment() ) {
 
@@ -300,14 +247,9 @@ class WC_Shortcode_Checkout {
 
 			$non_js_checkout = ! empty( $_POST['woocommerce_checkout_update_totals'] ) ? true : false;
 
-<<<<<<< HEAD
 			if ( wc_notice_count( 'error' ) == 0 && $non_js_checkout ) {
 				wc_add_notice( __( 'The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'woocommerce' ) );
 			}
-=======
-			if ( wc_notice_count( 'error' ) == 0 && $non_js_checkout )
-				wc_add_notice( __( 'The order totals have been updated. Please confirm your order by pressing the "Place order" button at the bottom of the page.', 'woocommerce' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			wc_get_template( 'checkout/form-checkout.php', array( 'checkout' => $checkout ) );
 

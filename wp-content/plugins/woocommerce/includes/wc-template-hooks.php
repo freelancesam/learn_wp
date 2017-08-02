@@ -228,10 +228,7 @@ add_action( 'woocommerce_widget_shopping_cart_buttons', 'woocommerce_widget_shop
 add_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
 add_action( 'woocommerce_cart_collaterals', 'woocommerce_cart_totals', 10 );
 add_action( 'woocommerce_proceed_to_checkout', 'woocommerce_button_proceed_to_checkout', 20 );
-<<<<<<< HEAD
 add_action( 'woocommerce_cart_is_empty', 'wc_empty_cart_message', 10 );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 /**
  * Footer.

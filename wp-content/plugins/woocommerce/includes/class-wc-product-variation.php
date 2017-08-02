@@ -79,7 +79,6 @@ class WC_Product_Variation extends WC_Product_Simple {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Get product name with SKU or ID. Used within admin.
 	 *
 	 * @return string Formatted product name
@@ -97,8 +96,6 @@ class WC_Product_Variation extends WC_Product_Simple {
 	}
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Get variation attribute values. Keys are prefixed with attribute_, as stored.
 	 *
 	 * @return array of attributes and their values for this variation
@@ -374,7 +371,6 @@ class WC_Product_Variation extends WC_Product_Simple {
 		return $shipping_class_id;
 	}
 
-<<<<<<< HEAD
 	/**
 	 * Get catalog visibility.
 	 *
@@ -385,8 +381,6 @@ class WC_Product_Variation extends WC_Product_Simple {
 		return apply_filters( $this->get_hook_prefix() . 'catalog_visibility', $this->parent_data['catalog_visibility'], $this );
 	}
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	/*
 	|--------------------------------------------------------------------------
 	| CRUD methods

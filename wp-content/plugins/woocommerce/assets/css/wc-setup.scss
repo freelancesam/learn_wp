@@ -16,10 +16,7 @@ body {
 .wc-setup-content {
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
 	padding: 24px 24px 0;
-<<<<<<< HEAD
 	margin: 0 0 20px;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	background: #fff;
 	overflow: hidden;
 	zoom: 1;
@@ -219,10 +216,7 @@ body {
 	.wc-setup-next-steps {
 		overflow: hidden;
 		margin: 0 0 24px;
-<<<<<<< HEAD
 		padding-bottom: 2px;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		h2 {
 			margin-bottom: 12px;
 		}
@@ -245,21 +239,12 @@ body {
 				padding: 0 0 0.75em;
 			}
 			.setup-product {
-<<<<<<< HEAD
 				a.button {
 					background-color: #f7f7f7;
 					border-color: #ccc;
 					color: #23282d;
 					box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #ccc;
 					text-shadow: 1px 0 1px #eee, 0 1px 1px #eee;
-=======
-				a {
-					background-color: #bb77ae;
-					border-color: #a36597;
-					-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
-					box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
-					text-shadow: 0 -1px 1px #a36597, 1px 0 1px #a36597, 0 1px 1px #a36597, -1px 0 1px #a36597;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					font-size: 1em;
 					height: auto;
 					line-height: 1.75em;
@@ -269,7 +254,6 @@ body {
 					text-align: center;
 
 					&:hover, &:focus, &:active {
-<<<<<<< HEAD
 						background: #f5f5f5;
 						border-color: #aaa;
 					}
@@ -285,11 +269,6 @@ body {
 						color: #fff;
 						background: #a36597;
 						border-color: #a36597;
-=======
-						background: #a36597;
-						border-color: #a36597;
-						-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
 					}
 				}
@@ -339,11 +318,6 @@ body {
 	overflow: hidden;
 	color: #ccc;
 	width:100%;
-<<<<<<< HEAD
-=======
-	display: -webkit-inline-flex;
-	display: -ms-inline-flexbox;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	display: inline-flex;
 	li {
 		width: 20%;
@@ -399,10 +373,6 @@ body {
 	.button-primary {
 		background-color: #bb77ae;
 		border-color: #a36597;
-<<<<<<< HEAD
-=======
-		-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
 		text-shadow: 0 -1px 1px #a36597, 1px 0 1px #a36597, 0 1px 1px #a36597, -1px 0 1px #a36597;
 		float: right;
@@ -412,10 +382,6 @@ body {
 		&:hover, &:focus, &:active {
 			background: #a36597;
 			border-color: #a36597;
-<<<<<<< HEAD
-=======
-			-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #a36597;
 		}
 	}
@@ -428,7 +394,6 @@ body {
 	text-align: center;
 }
 
-<<<<<<< HEAD
 .wc-wizard-storefront {
 	.wc-wizard-storefront-intro {
 		padding: 40px 40px 0;
@@ -486,8 +451,6 @@ body {
 }
 
 ul.wc-wizard-shipping-methods,
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 ul.wc-wizard-payment-gateways {
 	border: 1px solid #eee;
 	border-bottom-width: 2px;
@@ -496,10 +459,7 @@ ul.wc-wizard-payment-gateways {
 	list-style: none outside;
 	border-radius: 4px;
 
-<<<<<<< HEAD
 	li.wc-wizard-shipping,
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	li.wc-wizard-gateway {
 		padding: 1.5em 1em 1em 4em;
 		border-top: 1px solid #eee;
@@ -525,10 +485,7 @@ ul.wc-wizard-payment-gateways {
 			border-right: 0;
 		}
 
-<<<<<<< HEAD
 		.wc-wizard-shipping-settings,
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		.wc-wizard-gateway-settings {
 			display: none;
 			margin-bottom: 0;
@@ -538,26 +495,19 @@ ul.wc-wizard-payment-gateways {
 		&.checked {
 			background: #f7f1f6;
 
-<<<<<<< HEAD
 			.wc-wizard-shipping-settings,
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			.wc-wizard-gateway-settings {
 				display: table;
 			}
 		}
 
-<<<<<<< HEAD
 		.wc-wizard-shipping-description,
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		.wc-wizard-gateway-description {
 			font-style: italic;
 
 			p {
 				margin: 0 0 0.5em;
 			}
-<<<<<<< HEAD
 
 			p:last-child {
 				margin-bottom: 0;
@@ -565,10 +515,6 @@ ul.wc-wizard-payment-gateways {
 		}
 
 		.wc-wizard-shipping-enable,
-=======
-		}
-
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		.wc-wizard-gateway-enable {
 			margin: 0 0 0.5em;
 

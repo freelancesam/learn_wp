@@ -221,14 +221,10 @@ class WC_Query {
 
 	/**
 	 * Are we currently on the front page?
-<<<<<<< HEAD
 	 *
 	 * @param object $q
 	 *
 	 * @return bool
-=======
-	 * @return boolean
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	private function is_showing_page_on_front( $q ) {
 		return $q->is_home() && 'page' === get_option( 'show_on_front' );
@@ -236,14 +232,10 @@ class WC_Query {
 
 	/**
 	 * Is the front page a page we define?
-<<<<<<< HEAD
 	 *
 	 * @param int $page_id
 	 *
 	 * @return bool
-=======
-	 * @return boolean
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	private function page_on_front_is( $page_id ) {
 		return absint( get_option( 'page_on_front' ) ) === absint( $page_id );
@@ -252,11 +244,7 @@ class WC_Query {
 	/**
 	 * Hook into pre_get_posts to do the main product query.
 	 *
-<<<<<<< HEAD
 	 * @param object $q query object
-=======
-	 * @param mixed $q query object
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function pre_get_posts( $q ) {
 		// We only want to affect the main query
@@ -361,14 +349,9 @@ class WC_Query {
 		global $wp_the_query;
 
 		// If this is not a WC Query, do not modify the query
-<<<<<<< HEAD
 		if ( empty( $wp_the_query->query_vars['wc_query'] ) || empty( $wp_the_query->query_vars['s'] ) ) {
 			return $where;
 		}
-=======
-		if ( empty( $wp_the_query->query_vars['wc_query'] ) || empty( $wp_the_query->query_vars['s'] ) )
-			return $where;
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$where = preg_replace(
 			"/post_title\s+LIKE\s*(\'\%[^\%]+\%\')/",
@@ -408,7 +391,6 @@ class WC_Query {
 	 */
 	public function product_query( $q ) {
 		// Ordering query vars
-<<<<<<< HEAD
 		if ( ! $q->is_search() ) {
 			$ordering  = $this->get_catalog_ordering_args();
 			$q->set( 'orderby', $ordering['orderby'] );
@@ -418,13 +400,6 @@ class WC_Query {
 			}
 		} else {
 			$q->set( 'orderby', 'relevance' );
-=======
-		$ordering  = $this->get_catalog_ordering_args();
-		$q->set( 'orderby', $ordering['orderby'] );
-		$q->set( 'order', $ordering['order'] );
-		if ( isset( $ordering['meta_key'] ) ) {
-			$q->set( 'meta_key', $ordering['meta_key'] );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		// Query vars that affect posts shown
@@ -449,11 +424,8 @@ class WC_Query {
 	 * Remove ordering queries.
 	 */
 	public function remove_ordering_args() {
-<<<<<<< HEAD
 		remove_filter( 'posts_clauses', array( $this, 'order_by_price_asc_post_clauses' ) );
 		remove_filter( 'posts_clauses', array( $this, 'order_by_price_desc_post_clauses' ) );
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		remove_filter( 'posts_clauses', array( $this, 'order_by_popularity_post_clauses' ) );
 		remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
 	}
@@ -469,23 +441,16 @@ class WC_Query {
 	 * Returns an array of arguments for ordering products based on the selected values.
 	 *
 	 * @access public
-<<<<<<< HEAD
 	 *
 	 * @param string $orderby
 	 * @param string $order
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array
 	 */
 	public function get_catalog_ordering_args( $orderby = '', $order = '' ) {
 		// Get ordering from query string unless defined
 		if ( ! $orderby ) {
-<<<<<<< HEAD
 			$orderby_value = isset( $_GET['orderby'] ) ? wc_clean( (string) $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
-=======
-			$orderby_value = isset( $_GET['orderby'] ) ? wc_clean( $_GET['orderby'] ) : apply_filters( 'woocommerce_default_catalog_orderby', get_option( 'woocommerce_default_catalog_orderby' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// Get order + orderby args from string
 			$orderby_value = explode( '-', $orderby_value );
@@ -511,17 +476,11 @@ class WC_Query {
 				$args['order']    = ( 'ASC' === $order ) ? 'ASC' : 'DESC';
 				break;
 			case 'price' :
-<<<<<<< HEAD
 				if ( 'DESC' === $order ) {
 					add_filter( 'posts_clauses', array( $this, 'order_by_price_desc_post_clauses' ) );
 				} else {
 					add_filter( 'posts_clauses', array( $this, 'order_by_price_asc_post_clauses' ) );
 				}
-=======
-				$args['orderby']  = "meta_value_num ID";
-				$args['order']    = ( 'DESC' === $order ) ? 'DESC' : 'ASC';
-				$args['meta_key'] = '_price';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				break;
 			case 'popularity' :
 				$args['meta_key'] = 'total_sales';
@@ -546,7 +505,6 @@ class WC_Query {
 	}
 
 	/**
-<<<<<<< HEAD
 	 * Handle numeric price sorting.
 	 *
 	 * @access public
@@ -575,8 +533,6 @@ class WC_Query {
 	}
 
 	/**
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * WP Core doens't let us change the sort direction for invidual orderby params - https://core.trac.wordpress.org/ticket/17065.
 	 *
 	 * This lets us sort by meta value desc, and have a second orderby param.
@@ -844,11 +800,8 @@ class WC_Query {
 	/**
 	 * Layered Nav post filter.
 	 * @deprecated 2.6.0 due to performance concerns
-<<<<<<< HEAD
 	 *
 	 * @param $filtered_posts
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function layered_nav_query( $filtered_posts ) {
 		wc_deprecated_function( 'layered_nav_query', '2.6' );

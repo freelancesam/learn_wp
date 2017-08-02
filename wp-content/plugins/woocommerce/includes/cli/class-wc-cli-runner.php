@@ -1,12 +1,9 @@
 <?php
-<<<<<<< HEAD
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * WC API to WC CLI Bridge.
  *
@@ -116,22 +113,10 @@ class WC_CLI_Runner {
 
 		// Get a list of supported commands for each route.
 		foreach ( $route_data['endpoints'] as $endpoint ) {
-<<<<<<< HEAD
 			preg_match_all( '#\([^\)]+\)#', $route, $matches );
 			$resource_id   = ! empty( $matches[0] ) ? array_pop( $matches[0] ) : null;
 			$trimmed_route = rtrim( $route );
 			$is_singular   = substr( $trimmed_route, - strlen( $resource_id ) ) === $resource_id;
-=======
-			$parsed_args   = preg_match_all( '#\([^\)]+\)#', $route, $matches );
-			$first_match   = $matches[0];
-			$resource_id   = ! empty( $matches[0] ) ? array_pop( $matches[0] ) : null;
-			$trimmed_route = rtrim( $route );
-			$is_singular   = substr( $trimmed_route, - strlen( $resource_id ) ) === $resource_id;
-			if ( ! $is_singular ) {
-				$resource_id = $first_match;
-			}
-			$command = '';
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// List a collection
 			if ( array( 'GET' ) == $endpoint['methods'] && ! $is_singular ) {
@@ -158,10 +143,7 @@ class WC_CLI_Runner {
 		foreach ( $supported_commands as $command => $endpoint_args ) {
 			$synopsis = array();
 			$arg_regs = array();
-<<<<<<< HEAD
 			$ids      = array();
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			foreach ( $supported_ids as $id_name => $id_desc ) {
 				if ( strpos( $route, '<' . $id_name . '>' ) !== false ) {
@@ -171,17 +153,10 @@ class WC_CLI_Runner {
 						'description' => $id_desc,
 						'optional'    => false,
 					);
-<<<<<<< HEAD
 					$ids[] = $id_name;
 				}
 			}
 			if ( in_array( $command, array( 'delete', 'get', 'update' ) ) && ! in_array( 'id', $ids )  ) {
-=======
-				}
-			}
-
-			if ( in_array( $command, array( 'delete', 'get', 'update' ) ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$synopsis[] = array(
 					'name'		  => 'id',
 					'type'		  => 'positional',
@@ -191,11 +166,7 @@ class WC_CLI_Runner {
 			}
 
 			foreach ( $endpoint_args as $name => $args ) {
-<<<<<<< HEAD
 				if ( ! in_array( $name, $positional_args ) || strpos( $route, '<' . $id_name . '>' ) === false ) {
-=======
-				if ( ! in_array( $name, $positional_args ) ) {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					$arg_regs[] = array(
 						'name'		  => $name,
 						'type'		  => 'assoc',

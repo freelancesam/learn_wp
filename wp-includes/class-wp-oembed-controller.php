@@ -52,7 +52,6 @@ final class WP_oEmbed_Controller {
 				),
 			),
 		) );
-<<<<<<< HEAD
 
 		register_rest_route( 'oembed/1.0', '/proxy', array(
 			array(
@@ -98,12 +97,6 @@ final class WP_oEmbed_Controller {
 
 	/**
 	 * Callback for the embed API endpoint.
-=======
-	}
-
-	/**
-	 * Callback for the API endpoint.
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * Returns the JSON object for the post.
 	 *
@@ -134,7 +127,6 @@ final class WP_oEmbed_Controller {
 
 		return $data;
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Checks if current user can make a proxy oEmbed request.
@@ -200,6 +192,4 @@ final class WP_oEmbed_Controller {
 
 		return $data;
 	}
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }

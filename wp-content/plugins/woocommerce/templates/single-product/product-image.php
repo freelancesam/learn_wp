@@ -13,11 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
-<<<<<<< HEAD
  * @version 3.1.0
-=======
- * @version 3.0.2
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -26,15 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $post, $product;
 $columns           = apply_filters( 'woocommerce_product_thumbnails_columns', 4 );
-<<<<<<< HEAD
 $thumbnail_size    = apply_filters( 'woocommerce_product_thumbnails_large_size', 'full' );
 $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
 $full_size_image   = wp_get_attachment_image_src( $post_thumbnail_id, $thumbnail_size );
-=======
-$post_thumbnail_id = get_post_thumbnail_id( $post->ID );
-$full_size_image   = wp_get_attachment_image_src( $post_thumbnail_id, 'full' );
-$image_title       = get_post_field( 'post_excerpt', $post_thumbnail_id );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 $placeholder       = has_post_thumbnail() ? 'with-images' : 'without-images';
 $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_classes', array(
 	'woocommerce-product-gallery',
@@ -47,12 +37,8 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 	<figure class="woocommerce-product-gallery__wrapper">
 		<?php
 		$attributes = array(
-<<<<<<< HEAD
 			'title'                   => get_post_field( 'post_title', $post_thumbnail_id ),
 			'data-caption'            => get_post_field( 'post_excerpt', $post_thumbnail_id ),
-=======
-			'title'                   => $image_title,
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'data-src'                => $full_size_image[0],
 			'data-large_image'        => $full_size_image[0],
 			'data-large_image_width'  => $full_size_image[1],

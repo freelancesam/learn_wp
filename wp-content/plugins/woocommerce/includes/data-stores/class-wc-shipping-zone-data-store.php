@@ -16,11 +16,7 @@ class WC_Shipping_Zone_Data_Store extends WC_Data_Store_WP implements WC_Shippin
 	 * Method to create a new shipping zone.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 * @param WC_Shipping_Zone $zone
-=======
-	 * @param WC_Shipping_Zone
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create( &$zone ) {
 		global $wpdb;
@@ -40,11 +36,7 @@ class WC_Shipping_Zone_Data_Store extends WC_Data_Store_WP implements WC_Shippin
 	 * Update zone in the database.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 * @param WC_Shipping_Zone $zone
-=======
-	 * @param WC_Shipping_Zone
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function update( &$zone ) {
 		global $wpdb;
@@ -65,22 +57,14 @@ class WC_Shipping_Zone_Data_Store extends WC_Data_Store_WP implements WC_Shippin
 	 * Method to read a shipping zone from the database.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 * @param WC_Shipping_Zone $zone
 	 * @throws Exception
-=======
-	 * @param WC_Shipping_Zone
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( &$zone ) {
 		global $wpdb;
 		if ( 0 === $zone->get_id() || "0" === $zone->get_id() ) {
 			$this->read_zone_locations( $zone );
-<<<<<<< HEAD
 			$zone->set_zone_name( __( 'Locations not covered by your other zones', 'woocommerce' ) );
-=======
-			$zone->set_zone_name( __( 'Rest of the World', 'woocommerce' ) );
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$zone->read_meta_data();
 			$zone->set_object_read( true );
 			do_action( 'woocommerce_shipping_zone_loaded', $zone );
@@ -100,11 +84,7 @@ class WC_Shipping_Zone_Data_Store extends WC_Data_Store_WP implements WC_Shippin
 	 * Deletes a shipping zone from the database.
 	 *
 	 * @since  3.0.0
-<<<<<<< HEAD
 	 * @param  WC_Shipping_Zone $zone
-=======
-	 * @param  WC_Shipping_Zone
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param  array $args Array of args to pass to the delete method.
 	 * @return bool result
 	 */
@@ -287,19 +267,12 @@ class WC_Shipping_Zone_Data_Store extends WC_Data_Store_WP implements WC_Shippin
 	 * This function clears old locations, then re-inserts new if any changes are found.
 	 *
 	 * @since 3.0.0
-<<<<<<< HEAD
 	 *
 	 * @param WC_Shipping_Zone
 	 *
 	 * @return bool|void
 	 */
 	private function save_locations( &$zone ) {
-=======
-	 * @param WC_Shipping_Zone
-	 */
-	private function save_locations( &$zone ) {
-		$updated_props = array();
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$changed_props = array_keys( $zone->get_changes() );
 		if ( ! in_array( 'zone_locations', $changed_props ) ) {
 			return false;

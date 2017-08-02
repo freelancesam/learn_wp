@@ -404,11 +404,8 @@ class Walker {
 	/**
 	 * Unset all the children for a given top level element.
 	 *
-<<<<<<< HEAD
 	 * @since 2.7.0
 	 *
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param object $e
 	 * @param array $children_elements
 	 */

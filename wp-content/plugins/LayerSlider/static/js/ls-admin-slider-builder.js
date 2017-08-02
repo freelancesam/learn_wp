@@ -740,11 +740,7 @@ var LayerSlider = {
 
 		if( item.is('img') ){
 
-<<<<<<< HEAD
-			item.on( 'load', function(){
-=======
 			item.load(function(){
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				setPositions();
 			}).attr('src',item.attr('src') );
 		}else{
@@ -913,21 +909,6 @@ var LayerSlider = {
 				// Multimedia HTML
 				} else if( jQuery(uploadInput).hasClass('ls-insert-media')) {
 
-<<<<<<< HEAD
-					var hasVideo 	= false,
-						hasAudio 	= false,
-
-						videos 		= [],
-						audios 		= [],
-
-						url 		= '',
-						mediaHTML 	= '';
-
-
-					// Iterate over selected items
-					for(c = 0; c < attachments.length; c++) {
-						url = '/' + attachments[c].url.split('/').slice(3).join('/');
-=======
 					var hasVideo = false;
 					var hasAudio = false;
 
@@ -939,7 +920,6 @@ var LayerSlider = {
 					// Iterate over selected items
 					for(c = 0; c < attachments.length; c++) {
 						var url = '/' + attachments[c].url.split('/').slice(3).join('/');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						if(attachments[c].type === 'video') {
 							hasVideo = true;
 							videos.push({ url: url, mime: attachment.mime });
@@ -970,10 +950,6 @@ var LayerSlider = {
 						mediaHTML += '</audio>';
 					}
 
-<<<<<<< HEAD
-					LS_activeLayerData.html = mediaHTML;
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					jQuery(uploadInput).parent().prev().val(mediaHTML);
 
 				// Image with input field
@@ -1728,11 +1704,6 @@ var LayerSlider = {
 		jQuery.ajax({
 			type: 'post', url: ajaxurl, dataType: 'text',
 			data: {
-<<<<<<< HEAD
-				_wpnonce: jQuery('#_wpnonce').val(),
-				_wp_http_referer: jQuery('#ls-slider-form input[name="_wp_http_referer"]').val(),
-=======
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				action: 'ls_save_slider',
 				id: LS_sliderID,
 				sliderData: sliderData
@@ -2341,11 +2312,7 @@ jQuery(document).ready(function() {
 
 
 		// Add default slide data to data source if it's a new slider
-<<<<<<< HEAD
-		if( window.lsSliderData.properties.new ) {
-=======
 		if(typeof window.lsSliderData.layers[0].sublayers == "undefined") {
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			window.lsSliderData.properties = LS_DataSource.readSliderSettings();
 			window.lsSliderData.layers = [{
 				properties: jQuery.extend(true, {}, LS_DataSource.getDefaultSlideData()),
@@ -2791,25 +2758,6 @@ jQuery(document).ready(function() {
 			jQuery(this).closest('.ls-slide-link').children('input').val('[post-url]');
 		});
 
-<<<<<<< HEAD
-		// Use post image as slide background
-		jQuery('#ls-layers').on('click', '.slide-image .ls-post-image', function(e) {
-			e.preventDefault();
-			var imageHolder = jQuery(this).closest('.slide-image').find('.ls-image');
-
-			// Slide image
-			if( imageHolder.hasClass('ls-slide-image') ) {
-				LS_activeSlideData.properties.background = '[image-url]';
-				LS_activeSlideData.properties.backgroundId = '';
-				LS_activeSlideData.properties.backgroundThumb = '';
-
-			// Layer image
-			} else if( imageHolder.hasClass('ls-layer-image') ) {
-				LS_activeLayerData.image = '[image-url]';
-				LS_activeLayerData.imageId = '';
-				LS_activeLayerData.imageThumb = '';
-			}
-=======
 
 		// Use post image as slide background
 		jQuery('#ls-layers').on('click', '.slide-image .ls-post-image', function(e) {
@@ -2819,7 +2767,6 @@ jQuery(document).ready(function() {
 
 			jQuery(this).closest('.slide-image').children('input[name="imageId"]').val('');
 			jQuery(this).closest('.slide-image').children('input[name="image"]').val('[image-url]');
->>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			LayerSlider.generatePreview();
 		});
