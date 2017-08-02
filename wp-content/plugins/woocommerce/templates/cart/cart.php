@@ -13,7 +13,11 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
+<<<<<<< HEAD
+ * @version 3.1.0
+=======
  * @version 3.0.3
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -107,7 +111,11 @@ do_action( 'woocommerce_before_cart' ); ?>
 									$product_quantity = woocommerce_quantity_input( array(
 										'input_name'  => "cart[{$cart_item_key}][qty]",
 										'input_value' => $cart_item['quantity'],
+<<<<<<< HEAD
+										'max_value'   => $_product->get_max_purchase_quantity(),
+=======
 										'max_value'   => $_product->backorders_allowed() ? '' : $_product->get_stock_quantity(),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 										'min_value'   => '0',
 									), $_product, false );
 								}
@@ -154,7 +162,19 @@ do_action( 'woocommerce_before_cart' ); ?>
 </form>
 
 <div class="cart-collaterals">
+<<<<<<< HEAD
+	<?php
+		/**
+		 * woocommerce_cart_collaterals hook.
+		 *
+		 * @hooked woocommerce_cross_sell_display
+		 * @hooked woocommerce_cart_totals - 10
+		 */
+	 	do_action( 'woocommerce_cart_collaterals' );
+	?>
+=======
 	<?php do_action( 'woocommerce_cart_collaterals' ); ?>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 </div>
 
 <?php do_action( 'woocommerce_after_cart' ); ?>

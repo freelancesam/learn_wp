@@ -18,6 +18,11 @@ class WC_Shipping_Flat_Rate extends WC_Shipping_Method {
 
 	/**
 	 * Constructor.
+<<<<<<< HEAD
+	 *
+	 * @param int $instance_id
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function __construct( $instance_id = 0 ) {
 		$this->id                    = 'flat_rate';

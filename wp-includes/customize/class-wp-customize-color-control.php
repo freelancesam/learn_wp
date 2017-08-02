@@ -92,7 +92,11 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	 */
 	public function content_template() {
 		?>
+<<<<<<< HEAD
+		<# var defaultValue = '#RRGGBB', defaultValueAttr = '',
+=======
 		<# var defaultValue = '',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			isHueSlider = data.mode === 'hue';
 
 		if ( data.defaultValue && ! isHueSlider ) {
@@ -101,7 +105,11 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 			} else {
 				defaultValue = data.defaultValue;
 			}
+<<<<<<< HEAD
+			defaultValueAttr = ' data-default-color=' + defaultValue; // Quotes added automatically.
+=======
 			defaultValue = ' data-default-color=' + defaultValue; // Quotes added automatically.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		} #>
 		<label>
 			<# if ( data.label ) { #>
@@ -114,7 +122,11 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 				<# if ( isHueSlider ) { #>
 					<input class="color-picker-hue" type="text" data-type="hue" />
 				<# } else { #>
+<<<<<<< HEAD
+					<input class="color-picker-hex" type="text" maxlength="7" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} />
+=======
 					<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>" {{ defaultValue }} />
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<# } #>
 			</div>
 		</label>

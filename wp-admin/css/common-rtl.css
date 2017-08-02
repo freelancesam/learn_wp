@@ -244,6 +244,10 @@ td {
 	line-height: inherit;
 }
 
+<<<<<<< HEAD
+/* Any change to the default link style must be applied to button-link too. */
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 a {
 	color: #0073aa;
 	-webkit-transition-property: border, background, color;
@@ -464,7 +468,12 @@ code {
 	word-wrap: break-word;
 }
 
+<<<<<<< HEAD
+.widefat a,
+.widefat button.button-link {
+=======
 .widefat a {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	text-decoration: none;
 }
 
@@ -777,7 +786,11 @@ img.emoji {
 #bulk-titles div a:before,
 .notice-dismiss:before {
 	background: none;
+<<<<<<< HEAD
+	color: #72777c;
+=======
 	color: #b4b9be;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	content: "\f153";
 	display: block;
 	font: normal 16px/20px dashicons;
@@ -863,8 +876,11 @@ hr {
 	border-bottom: 1px solid #fafafa;
 }
 
+<<<<<<< HEAD
+=======
 .widget-control-remove,
 .widget-control-remove:focus,
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .row-actions span.delete a,
 .row-actions span.trash a,
 .row-actions span.spam a,
@@ -874,7 +890,12 @@ hr {
 .submitbox .submitdelete,
 #media-items a.delete,
 #media-items a.delete-permanently,
+<<<<<<< HEAD
+#nav-menu-footer .menu-delete,
+#delete-link a.delete  {
+=======
 #nav-menu-footer .menu-delete {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	color: #a00;
 }
 
@@ -890,6 +911,14 @@ span.required,
 .submitbox .submitdelete:hover,
 #media-items a.delete:hover,
 #media-items a.delete-permanently:hover,
+<<<<<<< HEAD
+#nav-menu-footer .menu-delete:hover,
+#delete-link a.delete:hover {
+	color: #dc3232;
+	border: none;
+}
+
+=======
 #nav-menu-footer .menu-delete:hover {
 	color: #f00;
 	border: none;
@@ -899,6 +928,7 @@ span.required,
 	color: #f00;
 }
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /*------------------------------------------------------------------------------
   3.0 - Actions
 ------------------------------------------------------------------------------*/
@@ -915,6 +945,20 @@ span.required,
 	line-height: 28px;
 }
 
+<<<<<<< HEAD
+#delete-link {
+	line-height: 28px;
+	vertical-align: middle;
+	text-align: right;
+	margin-right: 8px;
+}
+
+#delete-link a {
+	text-decoration: none;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 #publishing-action {
 	text-align: left;
 	float: left;
@@ -1133,20 +1177,35 @@ th.action-links {
 	color: #fff;
 }
 
+<<<<<<< HEAD
+.filter-drawer,
+.wp-filter .favorites-form {
+	display: none;
+	margin: 0 -20px 0 -10px;
+=======
 .wp-filter .favorites-form {
 	display: none;
 	margin: 0 -20px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	padding: 20px;
 	border-top: 1px solid #eee;
 	background: #fafafa;
 	overflow: hidden;
+<<<<<<< HEAD
+}
+
+.show-filters .filter-drawer,
+=======
 	width: 100%;
 }
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .show-favorites-form .favorites-form {
 	display: block;
 }
 
+<<<<<<< HEAD
+=======
 .filter-drawer {
 	display: none;
 	margin: 0 -20px;
@@ -1161,6 +1220,7 @@ th.action-links {
 	width: 100%;
 }
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .show-filters .filter-links a.current {
 	border-bottom: none;
 }
@@ -1242,12 +1302,17 @@ th.action-links {
 }
 
 .wp-filter .button-link.edit-filters {
+<<<<<<< HEAD
+=======
 	color: #0073aa;
 	text-decoration: underline;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	padding: 0 5px;
 	line-height: 28px;
 }
 
+<<<<<<< HEAD
+=======
 .wp-filter .button-link.edit-filters:hover {
 	color: #00a0d2;
 }
@@ -1256,6 +1321,7 @@ th.action-links {
 	color: #124964;
 }
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .filtered-by {
 	display: none;
 	margin: 0;
@@ -1431,7 +1497,11 @@ div.error p,
 	margin: 0;
 	padding: 9px;
 	background: none;
+<<<<<<< HEAD
+	color: #72777c;
+=======
 	color: #b4b9be;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	cursor: pointer;
 }
 
@@ -1607,8 +1677,12 @@ form.upgrade .hint {
 	color: #66c6e4;
 }
 
+<<<<<<< HEAD
+.button.updated-message {
+=======
 .button.updated-message,
 .notice .button-link {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	-webkit-transition-property: border, background, color;
 	transition-property: border, background, color;
 	-webkit-transition-duration: .05s;
@@ -1617,6 +1691,8 @@ form.upgrade .hint {
 	transition-timing-function: ease-in-out;
 }
 
+<<<<<<< HEAD
+=======
 .notice .button-link {
 	color: #0073aa;
 }
@@ -1626,6 +1702,7 @@ form.upgrade .hint {
 	color: #00a0d2;
 }
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 @media aural {
 	.wrap .notice p:before,
 	.button.installing:before,
@@ -2064,7 +2141,15 @@ html.wp-toolbar {
 	float: left;
 	width: 36px;
 	height: 36px;
+<<<<<<< HEAD
+	margin: 0;
 	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+=======
+	padding: 0;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .js .postbox .handlediv {
@@ -2542,12 +2627,19 @@ div.action-links {
 }
 
 #plugin-information-title {
+<<<<<<< HEAD
+	padding: 0 26px;
+=======
 	padding: 0 20px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	background: #f5f5f5;
 	font-size: 22px;
 	font-weight: 600;
 	line-height: 56px;
 	position: relative;
+<<<<<<< HEAD
+	height: 56px;
+=======
 	top: 0;
 	left: 0;
 	right: 0;
@@ -2555,12 +2647,16 @@ div.action-links {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 #plugin-information-title.with-banner {
 	margin-left: 0;
 	height: 250px;
+<<<<<<< HEAD
+=======
 	bottom: 250px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	-webkit-background-size: cover;
 	background-size: cover;
 }
@@ -2570,19 +2666,35 @@ div.action-links {
 	font-weight: 600;
 	padding: 0;
 	margin: 0;
+<<<<<<< HEAD
+=======
 	max-width: 680px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
 #plugin-information-title.with-banner h2 {
+<<<<<<< HEAD
+	position: relative;
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	font-family: "Helvetica Neue", sans-serif;
 	display: inline-block;
 	font-size: 30px;
 	line-height: 50px;
+<<<<<<< HEAD
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	max-width: 100%;
+	padding: 0 15px;
+	margin-top: 174px;
+=======
 	padding: 0 15px;
 	margin: 174px 10px 0 0;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	color: #fff;
 	background: rgba( 30, 30, 30, 0.9 );
 	text-shadow: 0 1px 3px rgba( 0, 0, 0, 0.4 );
@@ -2597,12 +2709,21 @@ div.action-links {
 }
 
 #plugin-information-title.with-banner div.vignette {
+<<<<<<< HEAD
+	position: absolute;
+	display: block;
+	top: 0;
+	right: 0;
+	height: 250px;
+	width: 100%;
+=======
 	display: block;
 	float: left;
 	top: 0;
 	height: 250px;
 	width: 772px;
 	margin: 0 -20px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	background: transparent;
 	-webkit-box-shadow: inset 0 0 50px 4px rgba( 0, 0, 0, 0.2 ), inset 0 -1px 0 rgba( 0, 0, 0, 0.1 );
 	box-shadow: inset 0 0 50px 4px rgba( 0, 0, 0, 0.2 ), inset 0 -1px 0 rgba( 0, 0, 0, 0.1 );
@@ -2837,6 +2958,17 @@ div.action-links {
 	border: 1px solid #ccc;
 }
 
+<<<<<<< HEAD
+#plugin-information blockquote {
+	border-right: 2px solid #ddd;
+	color: #666;
+	font-style: italic;
+	margin: 1em 0;
+	padding: 0 1em 0 0;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /* rtl:ignore */
 #plugin-information .review {
 	overflow: hidden; /* clearfix */
@@ -2897,7 +3029,10 @@ div.action-links {
 @media screen and ( max-width: 771px ) {
 	#plugin-information-title.with-banner {
 		height: 100px;
+<<<<<<< HEAD
+=======
 		bottom: 100px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	#plugin-information-title.with-banner h2 {
@@ -2909,8 +3044,11 @@ div.action-links {
 
 	#plugin-information-title.with-banner div.vignette {
 		height: 100px;
+<<<<<<< HEAD
+=======
 		bottom: 100px;
 		width: 800%;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	#plugin-information-tabs {
@@ -3178,7 +3316,13 @@ img {
 	font-size: 13px;
 	width: 97%;
 	background: #f9f9f9;
+<<<<<<< HEAD
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+=======
 	outline: none;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /* rtl:ignore */
@@ -3256,6 +3400,15 @@ img {
 
 /* @todo: can we use a common class for these? */
 .nav-menus-php .item-edit:before,
+<<<<<<< HEAD
+.widget-top .widget-action .toggle-indicator:before,
+.control-section .accordion-section-title:after,
+.accordion-section-title:after {
+	content: "\f140";
+	font: normal 20px/1 dashicons;
+	speak: none;
+	display: block;
+=======
 .widget-top a.widget-action:after,
 .control-section .accordion-section-title:after,
 .accordion-section-title:after {
@@ -3270,12 +3423,24 @@ img {
 	text-indent: 0;
 	text-align: center;
 	position: relative;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-decoration: none !important;
 }
 
+<<<<<<< HEAD
+.widget-top .widget-action .toggle-indicator:before {
+	padding: 1px 0px 1px 2px;
+	-webkit-border-radius: 50%;
+	border-radius: 50%;
+}
+
 .handlediv,
+.postbox .handlediv.button-link,
+=======
+.handlediv,
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .item-edit,
 .sidebar-name-arrow,
 .accordion-section-title:after {
@@ -3290,6 +3455,11 @@ img {
 .widget-action:focus,
 .handlediv:hover,
 .handlediv:focus,
+<<<<<<< HEAD
+.postbox .handlediv.button-link:hover,
+.postbox .handlediv.button-link:focus,
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .item-edit:hover,
 .item-edit:focus,
 .sidebar-name:hover .sidebar-name-arrow,
@@ -3297,6 +3467,9 @@ img {
 	color: #23282d;
 }
 
+<<<<<<< HEAD
+.widget-top .widget-action:focus .toggle-indicator:before {
+=======
 .widget-top a.widget-action:after {
 	padding: 1px 0px 1px 2px;
 	margin-top: 10px;
@@ -3306,6 +3479,7 @@ img {
 }
 
 .widget-top a.widget-action:focus:after {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	-webkit-box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30,140,190,.8);
@@ -3324,7 +3498,11 @@ img {
 .control-section.open .accordion-section-title:after,
 #customize-info.open .accordion-section-title:after,
 .nav-menus-php .menu-item-edit-active .item-edit:before,
+<<<<<<< HEAD
+.widget.open .widget-top .widget-action .toggle-indicator:before {
+=======
 .widget.open .widget-top a.widget-action:after {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	content: "\f142";
 }
 
@@ -3603,8 +3781,13 @@ img {
 	/* @todo: evaluate - most of these were likely replaced by dashicons */
 	.curtime #timestamp,
 	#screen-meta-links a.show-settings,
+<<<<<<< HEAD
+	.widget-top .widget-action,
+	.widget-top .widget-action:hover,
+=======
 	.widget-top a.widget-action,
 	.widget-top a.widget-action:hover,
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	.sidebar-name-arrow,
 	.sidebar-name:hover .sidebar-name-arrow,
 	.meta-box-sortables .postbox:hover .handlediv,

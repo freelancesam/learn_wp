@@ -1,8 +1,13 @@
 === Twenty Seventeen ===
 Contributors: the WordPress team
 Requires at least: WordPress 4.7
+<<<<<<< HEAD
+Tested up to: WordPress 4.9-trunk
+Version: 1.3
+=======
 Tested up to: WordPress 4.7
 Version: 1.1
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
@@ -60,6 +65,22 @@ Source: https://unsplash.com/@englr?photo=bIhpiQA009k
 
 == Changelog ==
 
+<<<<<<< HEAD
+= 1.3 =
+* Released: June 8, 2017
+
+https://codex.wordpress.org/Twenty_Seventeen_Theme_Changelog#Version_1.3
+
+= 1.2 =
+* Released: April 18, 2017
+
+https://codex.wordpress.org/Twenty_Seventeen_Theme_Changelog#Version_1.2
+
+= 1.1 =
+* Released: January 6, 2017
+
+https://codex.wordpress.org/Twenty_Seventeen_Theme_Changelog#Version_1.1
+=======
 = 1.1 =
 * Released: January 6, 2017
 
@@ -67,6 +88,7 @@ Source: https://unsplash.com/@englr?photo=bIhpiQA009k
 - Ensure functions in customize-controls.js don't count on Customizer sections always being present
 - Deprecate page_home nav menu item starter content
 - Introduce a theme-specific filter twentyseventeen_starter_content for customizing the starter content array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 = 1.0 =
 * Released: December 6, 2016

@@ -31,7 +31,11 @@
 			update_option('ls-share-displayed', ++$level);
 ?>
 <div class="ls-overlay" data-manualclose="true"></div>
+<<<<<<< HEAD
+<link href='//fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+=======
 <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <div id="ls-share-template" class="ls-modal ls-box">
 	<h3>
 		<?php _e('Enjoy using LayerSlider?', 'LayerSlider') ?>
@@ -41,6 +45,17 @@
 		<?php _e("If so, please consider recommending it to your friends on your favorite social network!", "LayerSlider"); ?>
 	</div>
 	<div class="inner">
+<<<<<<< HEAD
+		<a href="https://www.facebook.com/sharer/sharer.php?u=https://kreaturamedia.com/layerslider-responsive-wordpress-slider-plugin/" target="_blank">
+			<i class="dashicons dashicons-facebook-alt"></i> <?php _e('Share', 'LayerSlider') ?>
+		</a>
+
+		<a href="http://www.twitter.com/share?url=https%3A%2F%2Fkreaturamedia.com%2Flayerslider-responsive-wordpress-slider-plugin%2F&amp;text=Check%20out%20LayerSlider%20WP%2C%20an%20awesome%20%23slider%20%23plugin%20for%20%23WordPress&amp;via=kreaturamedia" target="_blank">
+			<i class="dashicons dashicons-twitter"></i> <?php _e('Tweet', 'LayerSlider') ?>
+		</a>
+
+		<a href="https://plus.google.com/share?url=https://kreaturamedia.com/layerslider-responsive-wordpress-slider-plugin/" target="_blank">
+=======
 		<a href="https://www.facebook.com/sharer/sharer.php?u=http://kreaturamedia.com/layerslider-responsive-wordpress-slider-plugin/" target="_blank">
 			<i class="dashicons dashicons-facebook-alt"></i> <?php _e('Share', 'LayerSlider') ?>
 		</a>
@@ -50,6 +65,7 @@
 		</a>
 
 		<a href="https://plus.google.com/share?url=http://kreaturamedia.com/layerslider-responsive-wordpress-slider-plugin/" target="_blank">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<i class="dashicons dashicons-googleplus"></i> +1
 		</a>
 	</div>

@@ -148,6 +148,10 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * The value can be an integer, 'false', false, or ''.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
+	 * @access public
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param int|bool        $value   The value passed to the reassign parameter.
 	 * @param WP_REST_Request $request Full details about the request.
@@ -220,6 +224,10 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			'per_page' => 'number',
 			'search'   => 'search',
 			'roles'    => 'role__in',
+<<<<<<< HEAD
+			'slug'     => 'nicename__in',
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		);
 
 		$prepared_args = array();
@@ -260,12 +268,15 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 		if ( ! empty( $prepared_args['search'] ) ) {
 			$prepared_args['search'] = '*' . $prepared_args['search'] . '*';
 		}
+<<<<<<< HEAD
+=======
 
 		if ( isset( $registered['slug'] ) && ! empty( $request['slug'] ) ) {
 			$prepared_args['search'] = $request['slug'];
 			$prepared_args['search_columns'] = array( 'user_nicename' );
 		}
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		/**
 		 * Filters WP_User_Query arguments when querying users via the REST API.
 		 *
@@ -350,6 +361,13 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			return $error;
 		}
 
+<<<<<<< HEAD
+		if ( is_multisite() && ! is_user_member_of_blog( $user->ID ) ) {
+			return $error;
+		}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return $user;
 	}
 
@@ -635,6 +653,11 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 
 		$user = get_user_by( 'id', $user_id );
 
+<<<<<<< HEAD
+		/** This action is documented in wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php */
+		do_action( 'rest_insert_user', $user, $request, false );
+
+=======
 		/* This action is documented in lib/endpoints/class-wp-rest-users-controller.php */
 		do_action( 'rest_insert_user', $user, $request, false );
 
@@ -642,6 +665,7 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 			add_user_to_blog( get_current_blog_id(), $id, '' );
 		}
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( ! empty( $request['roles'] ) ) {
 			array_map( array( $user, 'add_role' ), $request['roles'] );
 		}
@@ -1084,6 +1108,10 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * Performs a couple of checks like edit_user() in wp-admin/includes/user.php.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
+	 * @access public
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param  mixed            $value   The username submitted in the request.
 	 * @param  WP_REST_Request  $request Full details about the request.
@@ -1113,6 +1141,10 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 	 * Performs a couple of checks like edit_user() in wp-admin/includes/user.php.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
+	 * @access public
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param  mixed            $value   The password submitted in the request.
 	 * @param  WP_REST_Request  $request Full details about the request.
@@ -1360,8 +1392,16 @@ class WP_REST_Users_Controller extends WP_REST_Controller {
 		);
 
 		$query_params['slug']    = array(
+<<<<<<< HEAD
+			'description'        => __( 'Limit result set to users with one or more specific slugs.' ),
+			'type'               => 'array',
+			'items'              => array(
+				'type'               => 'string',
+			),
+=======
 			'description'        => __( 'Limit result set to users with a specific slug.' ),
 			'type'               => 'string',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		);
 
 		$query_params['roles']   = array(

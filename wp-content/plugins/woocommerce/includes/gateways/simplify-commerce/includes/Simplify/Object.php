@@ -1,4 +1,11 @@
 <?php
+<<<<<<< HEAD
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /*
  * Copyright (c) 2013 - 2015 MasterCard International Incorporated
  * All rights reserved.
@@ -36,6 +43,13 @@ class Simplify_Object {
 
 	/**
 	 * @ignore
+<<<<<<< HEAD
+	 *
+	 * @param string $key
+	 *
+	 * @return mixed
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function __get($key) {
 		if (array_key_exists($key, $this->properties)) {
@@ -47,6 +61,12 @@ class Simplify_Object {
 
 	/**
 	 * @ignore
+<<<<<<< HEAD
+	 *
+	 * @param string $key
+	 * @param mixed $value
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function __set($key, $value) {
 		$this->properties[$key] = $value;

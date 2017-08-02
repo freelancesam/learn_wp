@@ -64,7 +64,11 @@ $core_actions_post = array(
 	'parse-media-shortcode', 'destroy-sessions', 'install-plugin', 'update-plugin', 'press-this-save-post',
 	'press-this-add-category', 'crop-image', 'generate-password', 'save-wporg-username', 'delete-plugin',
 	'search-plugins', 'search-install-plugins', 'activate-plugin', 'update-theme', 'delete-theme',
+<<<<<<< HEAD
+	'install-theme', 'get-post-thumbnail-html', 'get-community-events',
+=======
 	'install-theme', 'get-post-thumbnail-html',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 );
 
 // Deprecated

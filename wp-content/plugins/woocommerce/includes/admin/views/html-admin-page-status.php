@@ -20,7 +20,13 @@ $tabs        = apply_filters( 'woocommerce_admin_status_tabs', $tabs );
 		<?php
 			foreach ( $tabs as $name => $label ) {
 				echo '<a href="' . admin_url( 'admin.php?page=wc-status&tab=' . $name ) . '" class="nav-tab ';
+<<<<<<< HEAD
+				if ( $current_tab == $name ) {
+					echo 'nav-tab-active';
+				}
+=======
 				if ( $current_tab == $name ) echo 'nav-tab-active';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				echo '">' . $label . '</a>';
 			}
 		?>

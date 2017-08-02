@@ -23,6 +23,11 @@ class WC_Product_Variable_Data_Store_CPT extends WC_Product_Data_Store_CPT imple
 	 * Read product data.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
+	 *
+	 * @param WC_Product $product
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function read_product_data( &$product ) {
 		parent::read_product_data( $product );
@@ -390,7 +395,11 @@ class WC_Product_Variable_Data_Store_CPT extends WC_Product_Data_Store_CPT imple
 	 *
 	 * @since 3.0.0
 	 * @param int $product_id
+<<<<<<< HEAD
+	 * @param bool $force_delete False to trash.
+=======
 	 * @param $force_delete False to trash.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_variations( $product_id, $force_delete = false ) {
 		if ( ! is_numeric( $product_id ) || 0 >= $product_id ) {

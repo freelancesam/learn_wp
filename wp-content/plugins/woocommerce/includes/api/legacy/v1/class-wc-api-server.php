@@ -117,10 +117,18 @@ class WC_API_Server {
 	public function __construct( $path ) {
 
 		if ( empty( $path ) ) {
+<<<<<<< HEAD
+			if ( isset( $_SERVER['PATH_INFO'] ) ) {
+				$path = $_SERVER['PATH_INFO'];
+			} else {
+				$path = '/';
+			}
+=======
 			if ( isset( $_SERVER['PATH_INFO'] ) )
 				$path = $_SERVER['PATH_INFO'];
 			else
 				$path = '/';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		$this->path           = $path;
@@ -138,6 +146,15 @@ class WC_API_Server {
 		}
 
 		// determine type of request/response and load handler, JSON by default
+<<<<<<< HEAD
+		if ( $this->is_json_request() ) {
+			$handler_class = 'WC_API_JSON_Handler';
+		} elseif ( $this->is_xml_request() ) {
+			$handler_class = 'WC_API_XML_Handler';
+		} else {
+			$handler_class = apply_filters( 'woocommerce_api_default_response_handler', 'WC_API_JSON_Handler', $this->path, $this );
+		}
+=======
 		if ( $this->is_json_request() )
 			$handler_class = 'WC_API_JSON_Handler';
 
@@ -146,6 +163,7 @@ class WC_API_Server {
 
 		else
 			$handler_class = apply_filters( 'woocommerce_api_default_response_handler', 'WC_API_JSON_Handler', $this->path, $this );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$this->handler = new $handler_class();
 	}
@@ -162,12 +180,21 @@ class WC_API_Server {
 		$user = apply_filters( 'woocommerce_api_check_authentication', null, $this );
 
 		// API requests run under the context of the authenticated user
+<<<<<<< HEAD
+		if ( is_a( $user, 'WP_User' ) ) {
+			wp_set_current_user( $user->ID );
+		} elseif ( ! is_wp_error( $user ) ) {
+			// WP_Errors are handled in serve_request()
+			$user = new WP_Error( 'woocommerce_api_authentication_error', __( 'Invalid authentication method', 'woocommerce' ), array( 'code' => 500 ) );
+		}
+=======
 		if ( is_a( $user, 'WP_User' ) )
 			wp_set_current_user( $user->ID );
 
 		// WP_Errors are handled in serve_request()
 		elseif ( ! is_wp_error( $user ) )
 			$user = new WP_Error( 'woocommerce_api_authentication_error', __( 'Invalid authentication method', 'woocommerce' ), array( 'code' => 500 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return $user;
 	}
@@ -241,8 +268,14 @@ class WC_API_Server {
 
 		if ( ! $served ) {
 
+<<<<<<< HEAD
+			if ( 'HEAD' === $this->method ) {
+				return;
+			}
+=======
 			if ( 'HEAD' === $this->method )
 				return;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			echo $this->handler->generate_response( $result );
 		}
@@ -326,6 +359,21 @@ class WC_API_Server {
 				$callback = $handler[0];
 				$supported = isset( $handler[1] ) ? $handler[1] : self::METHOD_GET;
 
+<<<<<<< HEAD
+				if ( ! ( $supported & $method ) ) {
+					continue;
+				}
+
+				$match = preg_match( '@^' . $route . '$@i', urldecode( $this->path ), $args );
+
+				if ( ! $match ) {
+					continue;
+				}
+
+				if ( ! is_callable( $callback ) ) {
+					return new WP_Error( 'woocommerce_api_invalid_handler', __( 'The handler for the route is invalid', 'woocommerce' ), array( 'status' => 500 ) );
+				}
+=======
 				if ( ! ( $supported & $method ) )
 					continue;
 
@@ -336,6 +384,7 @@ class WC_API_Server {
 
 				if ( ! is_callable( $callback ) )
 					return new WP_Error( 'woocommerce_api_invalid_handler', __( 'The handler for the route is invalid', 'woocommerce' ), array( 'status' => 500 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				$args = array_merge( $args, $this->params['GET'] );
 				if ( $method & self::METHOD_POST ) {
@@ -363,8 +412,14 @@ class WC_API_Server {
 				}
 
 				$params = $this->sort_callback_params( $callback, $args );
+<<<<<<< HEAD
+				if ( is_wp_error( $params ) ) {
+					return $params;
+				}
+=======
 				if ( is_wp_error( $params ) )
 					return $params;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				return call_user_func_array( $callback, $params );
 			}
@@ -380,6 +435,20 @@ class WC_API_Server {
 	 * by the parameters the method actually needs, using the Reflection API
 	 *
 	 * @since 2.1
+<<<<<<< HEAD
+	 *
+	 * @param callable|array $callback the endpoint callback
+	 * @param array $provided the provided request parameters
+	 *
+	 * @return array|WP_Error
+	 */
+	protected function sort_callback_params( $callback, $provided ) {
+		if ( is_array( $callback ) ) {
+			$ref_func = new ReflectionMethod( $callback[0], $callback[1] );
+		} else {
+			$ref_func = new ReflectionFunction( $callback );
+		}
+=======
 	 * @param callable|array $callback the endpoint callback
 	 * @param array $provided the provided request parameters
 	 * @return array
@@ -389,6 +458,7 @@ class WC_API_Server {
 			$ref_func = new ReflectionMethod( $callback[0], $callback[1] );
 		else
 			$ref_func = new ReflectionFunction( $callback );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$wanted = $ref_func->getParameters();
 		$ordered_parameters = array();
@@ -451,6 +521,19 @@ class WC_API_Server {
 			foreach ( self::$method_map as $name => $bitmask ) {
 				foreach ( $callbacks as $callback ) {
 					// Skip to the next route if any callback is hidden
+<<<<<<< HEAD
+					if ( $callback[1] & self::HIDDEN_ENDPOINT ) {
+						continue 3;
+					}
+
+					if ( $callback[1] & $bitmask ) {
+						$data['supports'][] = $name;
+					}
+
+					if ( $callback[1] & self::ACCEPT_DATA ) {
+						$data['accepts_data'] = true;
+					}
+=======
 					if ( $callback[1] & self::HIDDEN_ENDPOINT )
 						continue 3;
 
@@ -459,6 +542,7 @@ class WC_API_Server {
 
 					if ( $callback[1] & self::ACCEPT_DATA )
 						$data['accepts_data'] = true;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					// For non-variable routes, generate links
 					if ( strpos( $route, '<' ) === false ) {
@@ -550,8 +634,14 @@ class WC_API_Server {
 			$total_pages = $query->max_num_pages;
 		}
 
+<<<<<<< HEAD
+		if ( ! $page ) {
+			$page = 1;
+		}
+=======
 		if ( ! $page )
 			$page = 1;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$next_page = absint( $page ) + 1;
 
@@ -569,8 +659,14 @@ class WC_API_Server {
 			}
 
 			// last
+<<<<<<< HEAD
+			if ( $page != $total_pages ) {
+				$this->link_header( 'last', $this->get_paginated_url( $total_pages ) );
+			}
+=======
 			if ( $page != $total_pages )
 				$this->link_header( 'last', $this->get_paginated_url( $total_pages ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		$this->header( 'X-WC-Total', $total );
@@ -732,12 +828,23 @@ class WC_API_Server {
 	private function is_json_request() {
 
 		// check path
+<<<<<<< HEAD
+		if ( false !== stripos( $this->path, '.json' ) ) {
+			return true;
+		}
+
+		// check ACCEPT header, only 'application/json' is acceptable, see RFC 4627
+		if ( isset( $this->headers['ACCEPT'] ) && 'application/json' == $this->headers['ACCEPT'] ) {
+			return true;
+		}
+=======
 		if ( false !== stripos( $this->path, '.json' ) )
 			return true;
 
 		// check ACCEPT header, only 'application/json' is acceptable, see RFC 4627
 		if ( isset( $this->headers['ACCEPT'] ) && 'application/json' == $this->headers['ACCEPT'] )
 			return true;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return false;
 	}
@@ -752,12 +859,23 @@ class WC_API_Server {
 	private function is_xml_request() {
 
 		// check path
+<<<<<<< HEAD
+		if ( false !== stripos( $this->path, '.xml' ) ) {
+			return true;
+		}
+
+		// check headers, 'application/xml' or 'text/xml' are acceptable, see RFC 2376
+		if ( isset( $this->headers['ACCEPT'] ) && ( 'application/xml' == $this->headers['ACCEPT'] || 'text/xml' == $this->headers['ACCEPT'] ) ) {
+			return true;
+		}
+=======
 		if ( false !== stripos( $this->path, '.xml' ) )
 			return true;
 
 		// check headers, 'application/xml' or 'text/xml' are acceptable, see RFC 2376
 		if ( isset( $this->headers['ACCEPT'] ) && ( 'application/xml' == $this->headers['ACCEPT'] || 'text/xml' == $this->headers['ACCEPT'] ) )
 			return true;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return false;
 	}

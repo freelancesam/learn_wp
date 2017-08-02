@@ -92,6 +92,9 @@
 		} );
 
 		// Replace any new markers nodes with views.
+<<<<<<< HEAD
+		editor.on( 'setcontent', function() {
+=======
 		editor.on( 'setcontent', function( event ) {
 			if ( event.load && ! event.initial && editor.quirks.refreshContentEditable ) {
 				// Make sure there is a selection in Gecko browsers.
@@ -99,6 +102,7 @@
 				editor.quirks.refreshContentEditable();
 			}
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			wp.mce.views.render();
 		} );
 
@@ -190,7 +194,11 @@
 				] );
 
 				editor.on( 'wptoolbar', function( event ) {
+<<<<<<< HEAD
+					if ( ! event.collapsed && isView( event.element ) ) {
+=======
 					if ( isView( event.element ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						event.toolbar = toolbar;
 					}
 				} );

@@ -100,8 +100,14 @@ class WC_API_Customers extends WC_API_Resource {
 
 		foreach ( $query->get_results() as $user_id ) {
 
+<<<<<<< HEAD
+			if ( ! $this->is_readable( $user_id ) ) {
+				continue;
+			}
+=======
 			if ( ! $this->is_readable( $user_id ) )
 				continue;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			$customers[] = current( $this->get_customer( $user_id, $fields ) );
 		}
@@ -117,7 +123,11 @@ class WC_API_Customers extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the customer ID
 	 * @param string $fields
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_customer( $id, $fields = null ) {
 		global $wpdb;
@@ -176,14 +186,24 @@ class WC_API_Customers extends WC_API_Resource {
 	 *
 	 * @since 2.1
 	 * @param array $filter
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_customers_count( $filter = array() ) {
 
 		$query = $this->query_customers( $filter );
 
+<<<<<<< HEAD
+		if ( ! current_user_can( 'list_users' ) ) {
+			return new WP_Error( 'woocommerce_api_user_cannot_read_customers_count', __( 'You do not have permission to read the customers count', 'woocommerce' ), array( 'status' => 401 ) );
+		}
+=======
 		if ( ! current_user_can( 'list_users' ) )
 			return new WP_Error( 'woocommerce_api_user_cannot_read_customers_count', __( 'You do not have permission to read the customers count', 'woocommerce' ), array( 'status' => 401 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return array( 'count' => count( $query->get_results() ) );
 	}
@@ -193,12 +213,22 @@ class WC_API_Customers extends WC_API_Resource {
 	 * Create a customer
 	 *
 	 * @param array $data
+<<<<<<< HEAD
+	 * @return array|WP_Error
+	 */
+	public function create_customer( $data ) {
+
+		if ( ! current_user_can( 'create_users' ) ) {
+			return new WP_Error( 'woocommerce_api_user_cannot_create_customer', __( 'You do not have permission to create this customer', 'woocommerce' ), array( 'status' => 401 ) );
+		}
+=======
 	 * @return array
 	 */
 	public function create_customer( $data ) {
 
 		if ( ! current_user_can( 'create_users' ) )
 			return new WP_Error( 'woocommerce_api_user_cannot_create_customer', __( 'You do not have permission to create this customer', 'woocommerce' ), array( 'status' => 401 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return array();
 	}
@@ -208,14 +238,24 @@ class WC_API_Customers extends WC_API_Resource {
 	 *
 	 * @param int $id the customer ID
 	 * @param array $data
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function edit_customer( $id, $data ) {
 
 		$id = $this->validate_request( $id, 'customer', 'edit' );
 
+<<<<<<< HEAD
+		if ( ! is_wp_error( $id ) ) {
+			return $id;
+		}
+=======
 		if ( ! is_wp_error( $id ) )
 			return $id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return $this->get_customer( $id );
 	}
@@ -224,14 +264,24 @@ class WC_API_Customers extends WC_API_Resource {
 	 * Delete a customer
 	 *
 	 * @param int $id the customer ID
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_customer( $id ) {
 
 		$id = $this->validate_request( $id, 'customer', 'delete' );
 
+<<<<<<< HEAD
+		if ( ! is_wp_error( $id ) ) {
+			return $id;
+		}
+=======
 		if ( ! is_wp_error( $id ) )
 			return $id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return $this->delete( $id, 'customer' );
 	}
@@ -242,7 +292,11 @@ class WC_API_Customers extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the customer ID
 	 * @param string $fields fields to include in response
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_customer_orders( $id, $fields = null ) {
 		global $wpdb;
@@ -398,11 +452,21 @@ class WC_API_Customers extends WC_API_Resource {
 	 */
 	public function modify_user_query( $query ) {
 
+<<<<<<< HEAD
+		if ( $this->created_at_min ) {
+			$query->query_where .= sprintf( " AND user_registered >= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%h:%%i:%%s' )", esc_sql( $this->created_at_min ) );
+		}
+
+		if ( $this->created_at_max ) {
+			$query->query_where .= sprintf( " AND user_registered <= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%h:%%i:%%s' )", esc_sql( $this->created_at_max ) );
+		}
+=======
 		if ( $this->created_at_min )
 			$query->query_where .= sprintf( " AND user_registered >= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%h:%%i:%%s' )", esc_sql( $this->created_at_min ) );
 
 		if ( $this->created_at_max )
 			$query->query_where .= sprintf( " AND user_registered <= STR_TO_DATE( '%s', '%%Y-%%m-%%d %%h:%%i:%%s' )", esc_sql( $this->created_at_max ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -424,19 +488,48 @@ class WC_API_Customers extends WC_API_Resource {
 		$id = absint( $id );
 
 		// validate ID
+<<<<<<< HEAD
+		if ( empty( $id ) ) {
+			return new WP_Error( 'woocommerce_api_invalid_customer_id', __( 'Invalid customer ID', 'woocommerce' ), array( 'status' => 404 ) );
+		}
+=======
 		if ( empty( $id ) )
 			return new WP_Error( 'woocommerce_api_invalid_customer_id', __( 'Invalid customer ID', 'woocommerce' ), array( 'status' => 404 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		// non-existent IDs return a valid WP_User object with the user ID = 0
 		$customer = new WP_User( $id );
 
+<<<<<<< HEAD
+		if ( 0 === $customer->ID ) {
+			return new WP_Error( 'woocommerce_api_invalid_customer', __( 'Invalid customer', 'woocommerce' ), array( 'status' => 404 ) );
+		}
+=======
 		if ( 0 === $customer->ID )
 			return new WP_Error( 'woocommerce_api_invalid_customer', __( 'Invalid customer', 'woocommerce' ), array( 'status' => 404 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		// validate permissions
 		switch ( $context ) {
 
 			case 'read':
+<<<<<<< HEAD
+				if ( ! current_user_can( 'list_users' ) ) {
+					return new WP_Error( 'woocommerce_api_user_cannot_read_customer', __( 'You do not have permission to read this customer', 'woocommerce' ), array( 'status' => 401 ) );
+				}
+				break;
+
+			case 'edit':
+				if ( ! current_user_can( 'edit_users' ) ) {
+					return new WP_Error( 'woocommerce_api_user_cannot_edit_customer', __( 'You do not have permission to edit this customer', 'woocommerce' ), array( 'status' => 401 ) );
+				}
+				break;
+
+			case 'delete':
+				if ( ! current_user_can( 'delete_users' ) ) {
+					return new WP_Error( 'woocommerce_api_user_cannot_delete_customer', __( 'You do not have permission to delete this customer', 'woocommerce' ), array( 'status' => 401 ) );
+				}
+=======
 				if ( ! current_user_can( 'list_users' ) )
 					return new WP_Error( 'woocommerce_api_user_cannot_read_customer', __( 'You do not have permission to read this customer', 'woocommerce' ), array( 'status' => 401 ) );
 				break;
@@ -449,6 +542,7 @@ class WC_API_Customers extends WC_API_Resource {
 			case 'delete':
 				if ( ! current_user_can( 'delete_users' ) )
 					return new WP_Error( 'woocommerce_api_user_cannot_delete_customer', __( 'You do not have permission to delete this customer', 'woocommerce' ), array( 'status' => 401 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				break;
 		}
 

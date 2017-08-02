@@ -22,6 +22,10 @@ class WC_Comments {
 	 */
 	public static function init() {
 		// Rating posts
+<<<<<<< HEAD
+		add_filter( 'comments_open', array( __CLASS__, 'comments_open' ), 10, 2 );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		add_filter( 'preprocess_comment', array( __CLASS__, 'check_comment_rating' ), 0 );
 		add_action( 'comment_post', array( __CLASS__, 'add_comment_rating' ), 1 );
 		add_action( 'comment_moderation_recipients', array( __CLASS__, 'comment_moderation_recipients' ), 10, 2 );
@@ -31,12 +35,18 @@ class WC_Comments {
 
 		// Secure order notes
 		add_filter( 'comments_clauses', array( __CLASS__, 'exclude_order_comments' ), 10, 1 );
+<<<<<<< HEAD
+=======
 		add_action( 'comment_feed_join', array( __CLASS__, 'exclude_order_comments_from_feed_join' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		add_action( 'comment_feed_where', array( __CLASS__, 'exclude_order_comments_from_feed_where' ) );
 
 		// Secure webhook comments
 		add_filter( 'comments_clauses', array( __CLASS__, 'exclude_webhook_comments' ), 10, 1 );
+<<<<<<< HEAD
+=======
 		add_action( 'comment_feed_join', array( __CLASS__, 'exclude_webhook_comments_from_feed_join' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		add_action( 'comment_feed_where', array( __CLASS__, 'exclude_webhook_comments_from_feed_where' ) );
 
 		// Count comments
@@ -54,6 +64,24 @@ class WC_Comments {
 	}
 
 	/**
+<<<<<<< HEAD
+	 * See if comments are open.
+	 *
+	 * @since  3.1.0
+	 * @param  bool $open
+	 * @param  int $post_id
+	 * @return bool
+	 */
+	public static function comments_open( $open, $post_id ) {
+		if ( 'product' === get_post_type( $post_id ) && ! post_type_supports( 'product', 'comments' ) ) {
+			$open = false;
+		}
+		return $open;
+	}
+
+	/**
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Exclude order comments from queries and RSS.
 	 *
 	 * This code should exclude shop_order comments from queries. Some queries (like the recent comments widget on the dashboard) are hardcoded.
@@ -65,6 +93,9 @@ class WC_Comments {
 	 * @return array
 	 */
 	public static function exclude_order_comments( $clauses ) {
+<<<<<<< HEAD
+		$clauses['where'] .= ( $clauses['where'] ? ' AND ' : '' ) . " comment_type != 'order_note' ";
+=======
 		global $wpdb, $typenow;
 
 		if ( is_admin() && in_array( $typenow, wc_get_order_types() ) && current_user_can( 'manage_woocommerce' ) ) {
@@ -85,10 +116,17 @@ class WC_Comments {
 
 		$clauses['where'] .= " $wpdb->posts.post_type NOT IN ('" . implode( "','", wc_get_order_types() ) . "') ";
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return $clauses;
 	}
 
 	/**
+<<<<<<< HEAD
+	 * @deprecated 3.1
+	 */
+	public static function exclude_order_comments_from_feed_join( $join ) {
+		wc_deprecated_function( 'WC_Comments::exclude_order_comments_from_feed_join', '3.1' );
+=======
 	 * Exclude order comments from queries and RSS.
 	 * @param  string $join
 	 * @return string
@@ -101,14 +139,22 @@ class WC_Comments {
 		}
 
 		return $join;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
 	 * Exclude order comments from queries and RSS.
+<<<<<<< HEAD
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param  string $where
 	 * @return string
 	 */
 	public static function exclude_order_comments_from_feed_where( $where ) {
+<<<<<<< HEAD
+		return $where . ( $where ? ' AND ' : '' ) . " comment_type != 'order_note' ";
+=======
 		global $wpdb;
 
 		if ( $where ) {
@@ -118,6 +164,7 @@ class WC_Comments {
 		$where .= " $wpdb->posts.post_type NOT IN ('" . implode( "','", wc_get_order_types() ) . "') ";
 
 		return $where;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -127,6 +174,9 @@ class WC_Comments {
 	 * @return array
 	 */
 	public static function exclude_webhook_comments( $clauses ) {
+<<<<<<< HEAD
+		$clauses['where'] .= ( $clauses['where'] ? ' AND ' : '' ) . " comment_type != 'webhook_delivery' ";
+=======
 		global $wpdb;
 
 		if ( ! $clauses['join'] ) {
@@ -143,10 +193,17 @@ class WC_Comments {
 
 		$clauses['where'] .= " $wpdb->posts.post_type <> 'shop_webhook' ";
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return $clauses;
 	}
 
 	/**
+<<<<<<< HEAD
+	 * @deprecated 3.1
+	 */
+	public static function exclude_webhook_comments_from_feed_join( $join ) {
+		wc_deprecated_function( 'WC_Comments::exclude_webhook_comments_from_feed_join', '3.1' );
+=======
 	 * Exclude webhook comments from queries and RSS.
 	 * @since  2.2
 	 * @param  string $join
@@ -160,6 +217,7 @@ class WC_Comments {
 		}
 
 		return $join;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -169,6 +227,9 @@ class WC_Comments {
 	 * @return string
 	 */
 	public static function exclude_webhook_comments_from_feed_where( $where ) {
+<<<<<<< HEAD
+		return $where . ( $where ? ' AND ' : '' ) . " comment_type != 'webhook_delivery' ";
+=======
 		global $wpdb;
 
 		if ( $where ) {
@@ -178,6 +239,7 @@ class WC_Comments {
 		$where .= " $wpdb->posts.post_type <> 'shop_webhook' ";
 
 		return $where;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

@@ -122,7 +122,11 @@ case 'promote':
 			wp_die(__('Sorry, you are not allowed to edit this user.'));
 		// The new role of the current user must also have the promote_users cap or be a multisite super admin
 		if ( $id == $current_user->ID && ! $wp_roles->role_objects[ $role ]->has_cap('promote_users')
+<<<<<<< HEAD
+			&& ! ( is_multisite() && current_user_can( 'manage_network_users' ) ) ) {
+=======
 			&& ! ( is_multisite() && is_super_admin() ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$update = 'err_admin_role';
 				continue;
 		}
@@ -321,10 +325,13 @@ case 'doremove':
 	$update = 'remove';
  	foreach ( $userids as $id ) {
 		$id = (int) $id;
+<<<<<<< HEAD
+=======
 		if ( $id == $current_user->ID && !is_super_admin() ) {
 			$update = 'err_admin_remove';
 			continue;
 		}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( !current_user_can('remove_user', $id) ) {
 			$update = 'err_admin_remove';
 			continue;
@@ -377,10 +384,14 @@ case 'remove':
  	foreach ( $userids as $id ) {
 		$id = (int) $id;
  		$user = get_userdata( $id );
+<<<<<<< HEAD
+		if ( ! current_user_can( 'remove_user', $id ) ) {
+=======
 		if ( $id == $current_user->ID && !is_super_admin() ) {
 			/* translators: 1: user id, 2: user login */
 			echo "<li>" . sprintf(__('ID #%1$s: %2$s <strong>The current user will not be removed.</strong>'), $id, $user->user_login) . "</li>\n";
 		} elseif ( !current_user_can('remove_user', $id) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			/* translators: 1: user id, 2: user login */
 			echo "<li>" . sprintf(__('ID #%1$s: %2$s <strong>Sorry, you are not allowed to remove this user.</strong>'), $id, $user->user_login) . "</li>\n";
 		} else {
@@ -491,9 +502,17 @@ if ( ! empty($messages) ) {
 } ?>
 
 <div class="wrap">
+<<<<<<< HEAD
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<?php
+=======
 <h1>
 <?php
 echo esc_html( $title );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 if ( current_user_can( 'create_users' ) ) { ?>
 	<a href="<?php echo admin_url( 'user-new.php' ); ?>" class="page-title-action"><?php echo esc_html_x( 'Add New', 'user' ); ?></a>
 <?php } elseif ( is_multisite() && current_user_can( 'promote_users' ) ) { ?>
@@ -505,7 +524,12 @@ if ( strlen( $usersearch ) ) {
 	printf( '<span class="subtitle">' . __( 'Search results for &#8220;%s&#8221;' ) . '</span>', esc_html( $usersearch ) );
 }
 ?>
+<<<<<<< HEAD
+
+<hr class="wp-header-end">
+=======
 </h1>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 <?php $wp_list_table->views(); ?>
 
@@ -513,6 +537,13 @@ if ( strlen( $usersearch ) ) {
 
 <?php $wp_list_table->search_box( __( 'Search Users' ), 'user' ); ?>
 
+<<<<<<< HEAD
+<?php if ( ! empty( $_REQUEST['role'] ) ) { ?>
+<input type="hidden" name="role" value="<?php echo esc_attr( $_REQUEST['role'] ); ?>" />
+<?php } ?>
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <?php $wp_list_table->display(); ?>
 </form>
 

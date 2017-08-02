@@ -10,10 +10,17 @@
  * happen. When this occurs the version of the template file will be bumped and
  * the readme will list any important changes.
  *
+<<<<<<< HEAD
+ * @see     https://docs.woocommerce.com/document/template-structure/
+ * @author  WooThemes
+ * @package WooCommerce/Templates
+ * @version 3.1.0
+=======
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author      WooThemes
  * @package     WooCommerce/Templates
  * @version     2.3.2
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,7 +29,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
+<<<<<<< HEAD
+if ( 'no' === get_option( 'woocommerce_enable_review_rating' ) ) {
+=======
 if ( get_option( 'woocommerce_enable_review_rating' ) === 'no' ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	return;
 }
 
@@ -33,6 +44,9 @@ $average      = $product->get_average_rating();
 if ( $rating_count > 0 ) : ?>
 
 	<div class="woocommerce-product-rating">
+<<<<<<< HEAD
+		<?php echo wc_get_rating_html( $average, $rating_count ); ?>
+=======
 		<div class="star-rating">
 			<span style="width:<?php echo ( ( $average / 5 ) * 100 ); ?>%">
 				<?php
@@ -52,6 +66,7 @@ if ( $rating_count > 0 ) : ?>
 				?>
 			</span>
 		</div>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<?php if ( comments_open() ) : ?><a href="#reviews" class="woocommerce-review-link" rel="nofollow">(<?php printf( _n( '%s customer review', '%s customer reviews', $review_count, 'woocommerce' ), '<span class="count">' . esc_html( $review_count ) . '</span>' ); ?>)</a><?php endif ?>
 	</div>
 

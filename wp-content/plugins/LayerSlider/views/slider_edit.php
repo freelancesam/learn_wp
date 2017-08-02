@@ -60,7 +60,11 @@
 ?>
 <div id="ls-screen-options" class="metabox-prefs hidden">
 	<div id="screen-options-wrap" class="hidden">
+<<<<<<< HEAD
+		<form id="ls-screen-options-form" method="post">
+=======
 		<form id="ls-screen-options-form" action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<h5><?php _e('Show on screen', 'LayerSlider') ?></h5>
 			<label>
 				<input type="checkbox" name="showTooltips"<?php echo $lsScreenOptions['showTooltips'] == 'true' ? ' checked="checked"' : ''?>> Tooltips
@@ -93,7 +97,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 		if(!empty($slideVal['properties']['thumbnailId'])) { $slideVal['properties']['thumbnailThumb'] = apply_filters('ls_get_thumbnail', $slideVal['properties']['thumbnailId'], $slideVal['properties']['thumbnail']); }
 		$slider['layers'][$slideKey] = $slideVal;
 
+<<<<<<< HEAD
+		if(!empty($slideVal['sublayers']) && is_array($slideVal['sublayers'])) {
+=======
 		if(!empty($slideVal['sublayers'])) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			foreach($slideVal['sublayers'] as $layerKey => $layerVal) {
 				if(!empty($layerVal['imageId'])) { $layerVal['imageThumb'] = apply_filters('ls_get_thumbnail', $layerVal['imageId'], $layerVal['image']); }
 
@@ -104,12 +112,23 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 				}
 
 				// Parse embedded JSON data
+<<<<<<< HEAD
+				$layerVal['styles'] = !empty($layerVal['styles']) ?  (object) json_decode(stripslashes($layerVal['styles']), true) : new stdClass;
+				$layerVal['transition'] = !empty($layerVal['transition']) ?  (object) json_decode(stripslashes($layerVal['transition']), true) : new stdClass;
+				$layerVal['html'] = !empty($layerVal['html']) ? stripslashes($layerVal['html']) : '';
+
+				$slider['layers'][$slideKey]['sublayers'][$layerKey] = $layerVal;
+			}
+		} else {
+			$slider['layers'][$slideKey]['sublayers'] = array();
+=======
 				$layerVal['styles'] = !empty($layerVal['styles']) ? json_decode(stripslashes($layerVal['styles']), true) : new stdClass;
 				$layerVal['transition'] = !empty($layerVal['transition']) ? json_decode(stripslashes($layerVal['transition']), true) : new stdClass;
 				$layerVal['html'] = stripslashes($layerVal['html']);
 
 				$slider['layers'][$slideKey]['sublayers'][$layerKey] = $layerVal;
 			}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	}
 ?>
@@ -121,10 +140,18 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 
 
 
+<<<<<<< HEAD
+<form method="post" class="wrap" id="ls-slider-form" novalidate="novalidate">
+
+	<input type="hidden" name="slider_id" value="<?php echo $id ?>">
+	<input type="hidden" name="action" value="ls_save_slider">
+	<?php wp_nonce_field('ls-save-slider-' . $id); ?>
+=======
 <form action="<?php echo $_SERVER['REQUEST_URI']?>" method="post" class="wrap" id="ls-slider-form" novalidate="novalidate">
 
 	<input type="hidden" name="slider_id" value="<?php echo $id ?>">
 	<input type="hidden" name="action" value="ls_save_slider">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	<!-- Title -->
 	<h2>
@@ -151,11 +178,19 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 			<i class="dashicons dashicons-redo"></i>
 			<?php _e('Event Callbacks', 'LayerSlider') ?>
 		</a>
+<<<<<<< HEAD
+		<a href="https://support.kreaturamedia.com/faq/4/layerslider-for-wordpress/" target="_blank" class="faq right unselectable">
+			<i class="dashicons dashicons-sos"></i>
+			<?php _e('FAQ', 'LayerSlider') ?>
+		</a>
+		<a href="https://support.kreaturamedia.com/docs/layersliderwp/documentation.html" target="_blank" class="support right unselectable">
+=======
 		<a href="http://support.kreaturamedia.com/faq/4/layerslider-for-wordpress/" target="_blank" class="faq right unselectable">
 			<i class="dashicons dashicons-sos"></i>
 			<?php _e('FAQ', 'LayerSlider') ?>
 		</a>
 		<a href="http://support.kreaturamedia.com/docs/layersliderwp/documentation.html" target="_blank" class="support right unselectable">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<i class="dashicons dashicons-editor-help"></i>
 			<?php _e('Documentation', 'LayerSlider') ?>
 		</a>
@@ -201,7 +236,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 					<figure><span>|</span> <?php _e('Fires when LayerSlider has loaded', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
+<<<<<<< HEAD
+					<textarea name="cbinit" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbinit']) ? htmlspecialchars(stripslashes($slider['properties']['cbinit'])) : $lsDefaults['slider']['cbInit']['value'] ?></textarea>
+=======
 					<textarea name="cbinit" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbinit']) ? stripslashes($slider['properties']['cbinit']) : $lsDefaults['slider']['cbInit']['value'] ?></textarea>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				</div>
 			</div>
 
@@ -211,7 +250,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 					<figure><span>|</span> <?php _e('Calling when the slideshow has started.', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
+<<<<<<< HEAD
+					<textarea name="cbstart" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbstart']) ? htmlspecialchars(stripslashes($slider['properties']['cbstart'])) : $lsDefaults['slider']['cbStart']['value'] ?></textarea>
+=======
 					<textarea name="cbstart" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbstart']) ? stripslashes($slider['properties']['cbstart']) : $lsDefaults['slider']['cbStart']['value'] ?></textarea>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				</div>
 			</div>
 
@@ -221,7 +264,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 					<figure><span>|</span> <?php _e('Calling when the slideshow is stopped by the user.', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
+<<<<<<< HEAD
+					<textarea name="cbstop" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbstop']) ? htmlspecialchars(stripslashes($slider['properties']['cbstop'])) : $lsDefaults['slider']['cbStop']['value'] ?></textarea>
+=======
 					<textarea name="cbstop" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbstop']) ? stripslashes($slider['properties']['cbstop']) : $lsDefaults['slider']['cbStop']['value'] ?></textarea>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				</div>
 			</div>
 
@@ -231,7 +278,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 					<figure><span>|</span> <?php _e('Fireing when the slideshow is temporary on hold (e.g.: "Pause on hover" feature).', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
+<<<<<<< HEAD
+					<textarea name="cbpause" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbpause']) ? htmlspecialchars(stripslashes($slider['properties']['cbpause'])) : $lsDefaults['slider']['cbPause']['value'] ?></textarea>
+=======
 					<textarea name="cbpause" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbpause']) ? stripslashes($slider['properties']['cbpause']) : $lsDefaults['slider']['cbPause']['value'] ?></textarea>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				</div>
 			</div>
 
@@ -241,7 +292,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 					<figure><span>|</span> <?php _e('Calling when the slider commencing slide change (animation start).', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
+<<<<<<< HEAD
+					<textarea name="cbanimstart" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbanimstart']) ? htmlspecialchars(stripslashes($slider['properties']['cbanimstart'])) : $lsDefaults['slider']['cbAnimStart']['value'] ?></textarea>
+=======
 					<textarea name="cbanimstart" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbanimstart']) ? stripslashes($slider['properties']['cbanimstart']) : $lsDefaults['slider']['cbAnimStart']['value'] ?></textarea>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				</div>
 			</div>
 
@@ -251,7 +306,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 					<figure><span>|</span> <?php _e('Fireing when the slider finished a slide change (animation end).', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
+<<<<<<< HEAD
+					<textarea name="cbanimstop" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbanimstop']) ? htmlspecialchars(stripslashes($slider['properties']['cbanimstop'])) : $lsDefaults['slider']['cbAnimStop']['value'] ?></textarea>
+=======
 					<textarea name="cbanimstop" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbanimstop']) ? stripslashes($slider['properties']['cbanimstop']) : $lsDefaults['slider']['cbAnimStop']['value'] ?></textarea>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				</div>
 			</div>
 
@@ -261,7 +320,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 					<figure><span>|</span> <?php _e('Calling when the slider will change to the previous slide by the user.', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
+<<<<<<< HEAD
+					<textarea name="cbprev" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbprev']) ? htmlspecialchars(stripslashes($slider['properties']['cbprev'])) : $lsDefaults['slider']['cbPrev']['value'] ?></textarea>
+=======
 					<textarea name="cbprev" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbprev']) ? stripslashes($slider['properties']['cbprev']) : $lsDefaults['slider']['cbPrev']['value'] ?></textarea>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				</div>
 			</div>
 
@@ -271,7 +334,11 @@ include LS_ROOT_PATH . '/templates/tmpl-transition-window.php';
 					<figure><span>|</span> <?php _e('Calling when the slider will change to the next slide by the user.', 'LayerSlider') ?></figure>
 				</h3>
 				<div>
+<<<<<<< HEAD
+					<textarea name="cbnext" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbnext']) ? htmlspecialchars(stripslashes($slider['properties']['cbnext'])) : $lsDefaults['slider']['cbNext']['value'] ?></textarea>
+=======
 					<textarea name="cbnext" cols="20" rows="5" class="ls-codemirror"><?php echo !empty($slider['properties']['cbnext']) ? stripslashes($slider['properties']['cbnext']) : $lsDefaults['slider']['cbNext']['value'] ?></textarea>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				</div>
 			</div>
 			<div class="clear"></div>

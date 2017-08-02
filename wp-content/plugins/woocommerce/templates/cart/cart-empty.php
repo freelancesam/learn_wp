@@ -13,7 +13,11 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
+<<<<<<< HEAD
+ * @version 3.1.0
+=======
  * @version 2.0.0
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -22,6 +26,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 wc_print_notices();
 
+<<<<<<< HEAD
+/**
+ * @hooked wc_empty_cart_message - 10
+ */
+do_action( 'woocommerce_cart_is_empty' );
+
+if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
+=======
 ?>
 
 <p class="cart-empty">
@@ -31,6 +43,7 @@ wc_print_notices();
 <?php do_action( 'woocommerce_cart_is_empty' ); ?>
 
 <?php if ( wc_get_page_id( 'shop' ) > 0 ) : ?>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	<p class="return-to-shop">
 		<a class="button wc-backward" href="<?php echo esc_url( apply_filters( 'woocommerce_return_to_shop_redirect', wc_get_page_permalink( 'shop' ) ) ); ?>">
 			<?php _e( 'Return to shop', 'woocommerce' ) ?>

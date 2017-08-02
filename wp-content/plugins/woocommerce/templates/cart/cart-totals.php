@@ -21,7 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
+<<<<<<< HEAD
+<div class="cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
+=======
 <div class="cart_totals <?php if ( WC()->customer->has_calculated_shipping() ) echo 'calculated_shipping'; ?>">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 

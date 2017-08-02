@@ -264,7 +264,15 @@ function rest_api_loaded() {
 	$server = rest_get_server();
 
 	// Fire off the request.
+<<<<<<< HEAD
+	$route = untrailingslashit( $GLOBALS['wp']->query_vars['rest_route'] );
+	if ( empty( $route ) ) {
+		$route = '/';
+	}
+	$server->serve_request( $route );
+=======
 	$server->serve_request( untrailingslashit( $GLOBALS['wp']->query_vars['rest_route'] ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// We're done.
 	die();
@@ -333,6 +341,17 @@ function get_rest_url( $blog_id = null, $path = '/', $scheme = 'rest' ) {
 		}
 	}
 
+<<<<<<< HEAD
+	if ( is_admin() && force_ssl_admin() ) {
+		// In this situation the home URL may be http:, and `is_ssl()` may be
+		// false, but the admin is served over https: (one way or another), so
+		// REST API usage will be blocked by browsers unless it is also served
+		// over HTTPS.
+		$url = set_url_scheme( $url, 'https' );
+	}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	/**
 	 * Filters the REST URL.
 	 *
@@ -477,6 +496,12 @@ function rest_ensure_response( $response ) {
  * @param string $version     Version.
  */
 function rest_handle_deprecated_function( $function, $replacement, $version ) {
+<<<<<<< HEAD
+	if ( ! WP_DEBUG || headers_sent() ) {
+		return;
+	}
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( ! empty( $replacement ) ) {
 		/* translators: 1: function name, 2: WordPress version number, 3: new function name */
 		$string = sprintf( __( '%1$s (since %2$s; use %3$s instead)' ), $function, $version, $replacement );
@@ -498,6 +523,12 @@ function rest_handle_deprecated_function( $function, $replacement, $version ) {
  * @param string $version     Version.
  */
 function rest_handle_deprecated_argument( $function, $message, $version ) {
+<<<<<<< HEAD
+	if ( ! WP_DEBUG || headers_sent() ) {
+		return;
+	}
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( ! empty( $message ) ) {
 		/* translators: 1: function name, 2: WordPress version number, 3: error message */
 		$string = sprintf( __( '%1$s (since %2$s; %3$s)' ), $function, $version, $message );
@@ -521,7 +552,15 @@ function rest_send_cors_headers( $value ) {
 	$origin = get_http_origin();
 
 	if ( $origin ) {
+<<<<<<< HEAD
+		// Requests from file:// and data: URLs send "Origin: null"
+		if ( 'null' !== $origin ) {
+			$origin = esc_url_raw( $origin );
+		}
+		header( 'Access-Control-Allow-Origin: ' . $origin );
+=======
 		header( 'Access-Control-Allow-Origin: ' . esc_url_raw( $origin ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		header( 'Access-Control-Allow-Methods: OPTIONS, GET, POST, PUT, PATCH, DELETE' );
 		header( 'Access-Control-Allow-Credentials: true' );
 		header( 'Vary: Origin' );
@@ -776,12 +815,30 @@ function rest_parse_date( $date, $force_utc = false ) {
 }
 
 /**
+<<<<<<< HEAD
+ * Parses a date into both its local and UTC equivalent, in MySQL datetime format.
+=======
  * Retrieves a local date with its GMT equivalent, in MySQL datetime format.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * @since 4.4.0
  *
  * @see rest_parse_date()
  *
+<<<<<<< HEAD
+ * @param string $date   RFC3339 timestamp.
+ * @param bool   $is_utc Whether the provided date should be interpreted as UTC. Default false.
+ * @return array|null Local and UTC datetime strings, in MySQL datetime format (Y-m-d H:i:s),
+ *                    null on failure.
+ */
+function rest_get_date_with_gmt( $date, $is_utc = false ) {
+	// Whether or not the original date actually has a timezone string
+	// changes the way we need to do timezone conversion.  Store this info
+	// before parsing the date, and use it later.
+	$has_timezone = preg_match( '#(Z|[+-]\d{2}(:\d{2})?)$#', $date );
+
+	$date = rest_parse_date( $date );
+=======
  * @param string $date      RFC3339 timestamp.
  * @param bool   $force_utc Whether a UTC timestamp should be forced. Default false.
  * @return array|null Local and UTC datetime strings, in MySQL datetime format (Y-m-d H:i:s),
@@ -789,13 +846,28 @@ function rest_parse_date( $date, $force_utc = false ) {
  */
 function rest_get_date_with_gmt( $date, $force_utc = false ) {
 	$date = rest_parse_date( $date, $force_utc );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( empty( $date ) ) {
 		return null;
 	}
 
+<<<<<<< HEAD
+	// At this point $date could either be a local date (if we were passed a
+	// *local* date without a timezone offset) or a UTC date (otherwise).
+	// Timezone conversion needs to be handled differently between these two
+	// cases.
+	if ( ! $is_utc && ! $has_timezone ) {
+		$local = date( 'Y-m-d H:i:s', $date );
+		$utc = get_gmt_from_date( $local );
+	} else {
+		$utc = date( 'Y-m-d H:i:s', $date );
+		$local = get_date_from_gmt( $utc );
+	}
+=======
 	$utc = date( 'Y-m-d H:i:s', $date );
 	$local = get_date_from_gmt( $utc );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	return array( $local, $utc );
 }
@@ -980,7 +1052,11 @@ function rest_get_avatar_urls( $email ) {
  */
 function rest_get_avatar_sizes() {
 	/**
+<<<<<<< HEAD
+	 * Filters the REST avatar sizes.
+=======
 	 * Filter the REST avatar sizes.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * Use this filter to adjust the array of sizes returned by the
 	 * `rest_get_avatar_sizes` function.
@@ -996,6 +1072,11 @@ function rest_get_avatar_sizes() {
 /**
  * Validate a value based on a schema.
  *
+<<<<<<< HEAD
+ * @since 4.7.0
+ *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @param mixed  $value The value to validate.
  * @param array  $args  Schema array to use for validation.
  * @param string $param The parameter name, used in error messages.
@@ -1053,11 +1134,15 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 				break;
 
 			case 'email' :
+<<<<<<< HEAD
+				if ( ! is_email( $value ) ) {
+=======
 				// is_email() checks for 3 characters (a@b), but
 				// wp_handle_comment_submission() requires 6 characters (a@b.co)
 				//
 				// https://core.trac.wordpress.org/ticket/38506
 				if ( ! is_email( $value ) || strlen( $value ) < 6 ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					return new WP_Error( 'rest_invalid_email', __( 'Invalid email address.' ) );
 				}
 				break;
@@ -1074,18 +1159,32 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 		if ( isset( $args['minimum'] ) && ! isset( $args['maximum'] ) ) {
 			if ( ! empty( $args['exclusiveMinimum'] ) && $value <= $args['minimum'] ) {
 				/* translators: 1: parameter, 2: minimum number */
+<<<<<<< HEAD
+				return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s must be greater than %2$d' ), $param, $args['minimum'] ) );
+			} elseif ( empty( $args['exclusiveMinimum'] ) && $value < $args['minimum'] ) {
+				/* translators: 1: parameter, 2: minimum number */
+				return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s must be greater than or equal to %2$d' ), $param, $args['minimum'] ) );
+=======
 				return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s must be greater than %2$d (exclusive)' ), $param, $args['minimum'] ) );
 			} elseif ( empty( $args['exclusiveMinimum'] ) && $value < $args['minimum'] ) {
 				/* translators: 1: parameter, 2: minimum number */
 				return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s must be greater than %2$d (inclusive)' ), $param, $args['minimum'] ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		} elseif ( isset( $args['maximum'] ) && ! isset( $args['minimum'] ) ) {
 			if ( ! empty( $args['exclusiveMaximum'] ) && $value >= $args['maximum'] ) {
 				/* translators: 1: parameter, 2: maximum number */
+<<<<<<< HEAD
+				return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s must be less than %2$d' ), $param, $args['maximum'] ) );
+			} elseif ( empty( $args['exclusiveMaximum'] ) && $value > $args['maximum'] ) {
+				/* translators: 1: parameter, 2: maximum number */
+				return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s must be less than or equal to %2$d' ), $param, $args['maximum'] ) );
+=======
 				return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s must be less than %2$d (exclusive)' ), $param, $args['maximum'] ) );
 			} elseif ( empty( $args['exclusiveMaximum'] ) && $value > $args['maximum'] ) {
 				/* translators: 1: parameter, 2: maximum number */
 				return new WP_Error( 'rest_invalid_param', sprintf( __( '%1$s must be less than %2$d (inclusive)' ), $param, $args['maximum'] ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		} elseif ( isset( $args['maximum'] ) && isset( $args['minimum'] ) ) {
 			if ( ! empty( $args['exclusiveMinimum'] ) && ! empty( $args['exclusiveMaximum'] ) ) {
@@ -1118,6 +1217,11 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 /**
  * Sanitize a value based on a schema.
  *
+<<<<<<< HEAD
+ * @since 4.7.0
+ *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @param mixed $value The value to sanitize.
  * @param array $args  Schema array to use for sanitization.
  * @return true|WP_Error

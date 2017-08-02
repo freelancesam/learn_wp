@@ -8,4 +8,8 @@
 	font-weight: normal;
 	font-style: normal;
 }
+<<<<<<< HEAD
 li.toplevel_page_et_divi_options div.wp-menu-image:before { font-family: 'ETmodules'; content: '\e625';   width: 30px !important; font-size: 30px !important; margin-top: -5px; }
+=======
+li.toplevel_page_et_divi_options div.wp-menu-image:before { font-family: 'ETmodules'; content: '\e625';   width: 30px !important; font-size: 30px !important; margin-top: -5px; }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

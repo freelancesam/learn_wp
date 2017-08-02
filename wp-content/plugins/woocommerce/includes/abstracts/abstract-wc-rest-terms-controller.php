@@ -200,7 +200,11 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 	 * Check if a given request has access batch create, update and delete items.
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
+<<<<<<< HEAD
+	 * @return boolean|WP_Error
+=======
 	 * @return boolean
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function batch_items_permissions_check( $request ) {
 		$permissions = $this->check_permissions( $request, 'batch' );
@@ -297,7 +301,11 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 		$prepared_args = apply_filters( "woocommerce_rest_{$taxonomy}_query", $prepared_args, $request );
 
 		if ( ! empty( $prepared_args['product'] )  ) {
+<<<<<<< HEAD
+			$query_result = $this->get_terms_for_product( $prepared_args, $request );
+=======
 			$query_result = $this->get_terms_for_product( $prepared_args );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$total_terms = $this->total_terms;
 		} else {
 			$query_result = get_terms( $taxonomy, $prepared_args );
@@ -618,9 +626,16 @@ abstract class WC_REST_Terms_Controller extends WC_REST_Controller {
 	 * are instead treated as a full query.
 	 *
 	 * @param array $prepared_args Arguments for `get_terms()`.
+<<<<<<< HEAD
+	 * @param WP_REST_Request $request Full details about the request.
+	 * @return array List of term objects. (Total count in `$this->total_terms`).
+	 */
+	protected function get_terms_for_product( $prepared_args, $request ) {
+=======
 	 * @return array List of term objects. (Total count in `$this->total_terms`).
 	 */
 	protected function get_terms_for_product( $prepared_args ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$taxonomy = $this->get_taxonomy( $request );
 
 		$query_result = get_the_terms( $prepared_args['product'], $taxonomy );

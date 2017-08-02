@@ -422,6 +422,10 @@ final class WP_Customize_Widgets {
 			'description'     => __( 'Widgets are independent sections of content that can be placed into widgetized areas provided by your theme (commonly called sidebars).' ),
 			'priority'        => 110,
 			'active_callback' => array( $this, 'is_panel_active' ),
+<<<<<<< HEAD
+			'auto_expand_sole_section' => true,
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		) );
 
 		foreach ( $sidebars_widgets as $sidebar_id => $sidebar_widget_ids ) {
@@ -720,6 +724,50 @@ final class WP_Customize_Widgets {
 			</div>'
 		);
 
+<<<<<<< HEAD
+		/*
+		 * Gather all strings in PHP that may be needed by JS on the client.
+		 * Once JS i18n is implemented (in #20491), this can be removed.
+		 */
+		$some_non_rendered_areas_messages = array();
+		$some_non_rendered_areas_messages[1] = html_entity_decode(
+			/* translators: placeholder is the number of other widget areas registered but not rendered */
+			__( 'Your theme has 1 other widget area, but this particular page doesn&#8217;t display it.' ),
+			ENT_QUOTES,
+			get_bloginfo( 'charset' )
+		);
+		$registered_sidebar_count = count( $wp_registered_sidebars );
+		for ( $non_rendered_count = 2; $non_rendered_count < $registered_sidebar_count; $non_rendered_count++ ) {
+			$some_non_rendered_areas_messages[ $non_rendered_count ] = html_entity_decode( sprintf(
+				/* translators: placeholder is the number of other widget areas registered but not rendered */
+				_n(
+					'Your theme has %s other widget area, but this particular page doesn&#8217;t display it.',
+					'Your theme has %s other widget areas, but this particular page doesn&#8217;t display them.',
+					$non_rendered_count
+				),
+				number_format_i18n( $non_rendered_count )
+			), ENT_QUOTES, get_bloginfo( 'charset' ) );
+		}
+
+		if ( 1 === $registered_sidebar_count ) {
+			$no_areas_shown_message = html_entity_decode( sprintf(
+				/* translators: placeholder is the total number of widget areas registered */
+				__( 'Your theme has 1 widget area, but this particular page doesn&#8217;t display it.' )
+			), ENT_QUOTES, get_bloginfo( 'charset' ) );
+		} else {
+			$no_areas_shown_message = html_entity_decode( sprintf(
+				/* translators: placeholder is the total number of widget areas registered */
+				_n(
+					'Your theme has %s widget area, but this particular page doesn&#8217;t display it.',
+					'Your theme has %s widget areas, but this particular page doesn&#8217;t display them.',
+					$registered_sidebar_count
+				),
+				number_format_i18n( $registered_sidebar_count )
+			), ENT_QUOTES, get_bloginfo( 'charset' ) );
+		}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$settings = array(
 			'registeredSidebars'   => array_values( $wp_registered_sidebars ),
 			'registeredWidgets'    => $wp_registered_widgets,
@@ -732,10 +780,20 @@ final class WP_Customize_Widgets {
 				'error'            => __( 'An error has occurred. Please reload the page and try again.' ),
 				'widgetMovedUp'    => __( 'Widget moved up' ),
 				'widgetMovedDown'  => __( 'Widget moved down' ),
+<<<<<<< HEAD
+				'navigatePreview'  => __( 'You can navigate to other pages on your site while using the Customizer to view and edit the widgets displayed on those pages.' ),
+				'someAreasShown'   => $some_non_rendered_areas_messages,
+				'noAreasShown'     => $no_areas_shown_message,
+				'reorderModeOn'    => __( 'Reorder mode enabled' ),
+				'reorderModeOff'   => __( 'Reorder mode closed' ),
+				'reorderLabelOn'   => esc_attr__( 'Reorder widgets' ),
+				/* translators: placeholder is the count for the number of widgets found */
+=======
 				'noAreasRendered'  => __( 'There are no widget areas on the page shown, however other pages in this theme do have them.' ),
 				'reorderModeOn'    => __( 'Reorder mode enabled' ),
 				'reorderModeOff'   => __( 'Reorder mode closed' ),
 				'reorderLabelOn'   => esc_attr__( 'Reorder widgets' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'widgetsFound'     => __( 'Number of widgets found: %d' ),
 				'noWidgetsFound'   => __( 'No widgets found.' ),
 			),
@@ -1086,7 +1144,10 @@ final class WP_Customize_Widgets {
 	 */
 	public function customize_preview_enqueue() {
 		wp_enqueue_script( 'customize-preview-widgets' );
+<<<<<<< HEAD
+=======
 		wp_enqueue_style( 'customize-preview' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

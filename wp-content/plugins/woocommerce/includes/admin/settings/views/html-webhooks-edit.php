@@ -51,6 +51,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 							$topic_data = WC_Admin_Webhooks::get_topic_data( $webhook );
 
 							$topics = apply_filters( 'woocommerce_webhook_topics', array(
+<<<<<<< HEAD
+								''                  => __( 'Select an option&hellip;', 'woocommerce' ),
+								'coupon.created'    => __( 'Coupon created', 'woocommerce' ),
+								'coupon.updated'    => __( 'Coupon updated', 'woocommerce' ),
+								'coupon.deleted'    => __( 'Coupon deleted', 'woocommerce' ),
+								'coupon.restored'   => __( 'Coupon restored', 'woocommerce' ),
+								'customer.created'  => __( 'Customer created', 'woocommerce' ),
+								'customer.updated'  => __( 'Customer updated', 'woocommerce' ),
+								'customer.deleted'  => __( 'Customer deleted', 'woocommerce' ),
+								'order.created'     => __( 'Order created', 'woocommerce' ),
+								'order.updated'     => __( 'Order updated', 'woocommerce' ),
+								'order.deleted'     => __( 'Order deleted', 'woocommerce' ),
+								'order.restored'    => __( 'Order restored', 'woocommerce' ),
+								'product.created'   => __( 'Product created', 'woocommerce' ),
+								'product.updated'   => __( 'Product updated', 'woocommerce' ),
+								'product.deleted'   => __( 'Product deleted', 'woocommerce' ),
+								'product.restored'  => __( 'Product restored', 'woocommerce' ),
+								'action'            => __( 'Action', 'woocommerce' ),
+								'custom'            => __( 'Custom', 'woocommerce' ),
+=======
 								''                 => __( 'Select an option&hellip;', 'woocommerce' ),
 								'coupon.created'   => __( 'Coupon created', 'woocommerce' ),
 								'coupon.updated'   => __( 'Coupon updated', 'woocommerce' ),
@@ -66,6 +86,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 								'product.deleted'  => __( 'Product deleted', 'woocommerce' ),
 								'action'           => __( 'Action', 'woocommerce' ),
 								'custom'           => __( 'Custom', 'woocommerce' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							) );
 
 							foreach ( $topics as $topic_slug => $topic_name ) : ?>

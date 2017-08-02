@@ -133,4 +133,15 @@
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
+<<<<<<< HEAD
 }
+
+@media screen and ( max-width: 782px ) {
+	.wp-picker-container input[type="text"].wp-color-picker {
+		margin-right: 6px;
+		padding: 3px 5px;
+	}
+}
+=======
+}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

@@ -137,7 +137,11 @@ class WC_API_Orders extends WC_API_Resource {
 	 * @param int $id the order ID
 	 * @param array $fields
 	 * @param array $filter
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_order( $id, $fields = null, $filter = array() ) {
 
@@ -286,9 +290,17 @@ class WC_API_Orders extends WC_API_Resource {
 	 * Get the total number of orders
 	 *
 	 * @since 2.4
+<<<<<<< HEAD
+	 *
+	 * @param string $status
+	 * @param array $filter
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param string $status
 	 * @param array $filter
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_orders_count( $status = null, $filter = array() ) {
 
@@ -350,8 +362,15 @@ class WC_API_Orders extends WC_API_Resource {
 	 * Create an order
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param array $data raw order data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param array $data raw order data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_order( $data ) {
 		global $wpdb;
@@ -480,7 +499,14 @@ class WC_API_Orders extends WC_API_Resource {
 	 * Requires a separate function for classes that extend WC_API_Orders.
 	 *
 	 * @since 2.3
+<<<<<<< HEAD
+	 *
 	 * @param $args array
+	 * @param $data
+	 *
+=======
+	 * @param $args array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return WC_Order
 	 */
 	protected function create_base_order( $args, $data ) {
@@ -491,9 +517,17 @@ class WC_API_Orders extends WC_API_Resource {
 	 * Edit an order
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param int $id the order ID
+	 * @param array $data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param int $id the order ID
 	 * @param array $data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function edit_order( $id, $data ) {
 		try {
@@ -638,7 +672,11 @@ class WC_API_Orders extends WC_API_Resource {
 	 *
 	 * @param int $id the order ID
 	 * @param bool $force true to permanently delete order, false to move to trash
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_order( $id, $force = false ) {
 
@@ -955,8 +993,16 @@ class WC_API_Orders extends WC_API_Resource {
 	 * Given a product ID & API provided variations, find the correct variation ID to use for calculation
 	 * We can't just trust input from the API to pass a variation_id manually, otherwise you could pass
 	 * the cheapest variation ID but provide other information so we have to look up the variation ID.
+<<<<<<< HEAD
+	 *
+	 * @param WC_Product $product
+	 * @param array $variations
+	 *
+	 * @return int returns an ID if a valid variation was found for this product
+=======
 	 * @param  int $product_id main product ID
 	 * @return int             returns an ID if a valid variation was found for this product
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	function get_variation_id( $product, $variations = array() ) {
 		$variation_id = null;
@@ -991,6 +1037,14 @@ class WC_API_Orders extends WC_API_Resource {
 
 	/**
 	 * Utility function to see if the meta array contains data from variations
+<<<<<<< HEAD
+	 *
+	 * @param array $needles
+	 * @param array $haystack
+	 *
+	 * @return bool
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function array_contains( $needles, $haystack ) {
 		foreach ( $needles as $key => $value ) {
@@ -1181,7 +1235,11 @@ class WC_API_Orders extends WC_API_Resource {
 	 * @since 2.1
 	 * @param string $order_id order ID
 	 * @param string|null $fields fields to include in response
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_order_notes( $order_id, $fields = null ) {
 
@@ -1218,10 +1276,19 @@ class WC_API_Orders extends WC_API_Resource {
 	 * Get an order note for the given order ID and ID
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param string $order_id order ID
+	 * @param string $id order note ID
+	 * @param string|null $fields fields to limit response to
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param string $order_id order ID
 	 * @param string $id order note ID
 	 * @param string|null $fields fields to limit response to
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_order_note( $order_id, $id, $fields = null ) {
 		try {
@@ -1445,7 +1512,11 @@ class WC_API_Orders extends WC_API_Resource {
 	 * @since 2.2
 	 * @param string $order_id order ID
 	 * @param string|null $fields fields to include in response
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_order_refunds( $order_id, $fields = null ) {
 
@@ -1475,9 +1546,18 @@ class WC_API_Orders extends WC_API_Resource {
 	 * Get an order refund for the given order ID and ID
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param string $order_id order ID
+	 * @param int $id
+	 * @param string $fields fields to limit response to
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param string $order_id order ID
 	 * @param string|null $fields fields to limit response to
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_order_refund( $order_id, $id, $fields = null ) {
 		try {
@@ -1533,7 +1613,11 @@ class WC_API_Orders extends WC_API_Resource {
 			}
 
 			$order_refund = array(
+<<<<<<< HEAD
+				'id'         => $refund->get_id(),
+=======
 				'id'         => $refund->id,
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'created_at' => $this->server->format_datetime( $refund->get_date_created() ? $refund->get_date_created()->getTimestamp() : 0, false, false ),
 				'amount'     => wc_format_decimal( $refund->get_amount(), 2 ),
 				'reason'     => $refund->get_reason(),
@@ -1615,9 +1699,15 @@ class WC_API_Orders extends WC_API_Resource {
 			// HTTP 201 Created
 			$this->server->send_status( 201 );
 
+<<<<<<< HEAD
+			do_action( 'woocommerce_api_create_order_refund', $refund->get_id(), $order_id, $this );
+
+			return $this->get_order_refund( $order_id, $refund->get_id() );
+=======
 			do_action( 'woocommerce_api_create_order_refund', $refund->id, $order_id, $this );
 
 			return $this->get_order_refund( $order_id, $refund->id );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		} catch ( WC_Data_Exception $e ) {
 			return new WP_Error( $e->getErrorCode(), $e->getMessage(), array( 'status' => 400 ) );
 		} catch ( WC_API_Exception $e ) {
@@ -1745,8 +1835,15 @@ class WC_API_Orders extends WC_API_Resource {
 	 * WC_API_Orders->create_order() and WC_API_Orders->edit_order()
 	 *
 	 * @since 2.4.0
+<<<<<<< HEAD
+	 *
+	 * @param array $data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param array $data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function bulk( $data ) {
 

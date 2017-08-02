@@ -339,7 +339,11 @@ function update_blog_details( $blog_id, $details = array() ) {
 	if ( $details['spam'] != $current_details['spam'] ) {
 		if ( $details['spam'] == 1 ) {
 			/**
+<<<<<<< HEAD
+			 * Fires when the 'spam' status is added to a blog.
+=======
 			 * Fires when the blog status is changed to 'spam'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 *
 			 * @since MU
 			 *
@@ -348,7 +352,11 @@ function update_blog_details( $blog_id, $details = array() ) {
 			do_action( 'make_spam_blog', $blog_id );
 		} else {
 			/**
+<<<<<<< HEAD
+			 * Fires when the 'spam' status is removed from a blog.
+=======
 			 * Fires when the blog status is changed to 'ham'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 *
 			 * @since MU
 			 *
@@ -362,7 +370,11 @@ function update_blog_details( $blog_id, $details = array() ) {
 	if ( $details['mature'] != $current_details['mature'] ) {
 		if ( $details['mature'] == 1 ) {
 			/**
+<<<<<<< HEAD
+			 * Fires when the 'mature' status is added to a blog.
+=======
 			 * Fires when the blog status is changed to 'mature'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 *
 			 * @since 3.1.0
 			 *
@@ -371,7 +383,11 @@ function update_blog_details( $blog_id, $details = array() ) {
 			do_action( 'mature_blog', $blog_id );
 		} else {
 			/**
+<<<<<<< HEAD
+			 * Fires when the 'mature' status is removed from a blog.
+=======
 			 * Fires when the blog status is changed to 'unmature'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 *
 			 * @since 3.1.0
 			 *
@@ -385,7 +401,11 @@ function update_blog_details( $blog_id, $details = array() ) {
 	if ( $details['archived'] != $current_details['archived'] ) {
 		if ( $details['archived'] == 1 ) {
 			/**
+<<<<<<< HEAD
+			 * Fires when the 'archived' status is added to a blog.
+=======
 			 * Fires when the blog status is changed to 'archived'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 *
 			 * @since MU
 			 *
@@ -394,7 +414,11 @@ function update_blog_details( $blog_id, $details = array() ) {
 			do_action( 'archive_blog', $blog_id );
 		} else {
 			/**
+<<<<<<< HEAD
+			 * Fires when the 'archived' status is removed from a blog.
+=======
 			 * Fires when the blog status is changed to 'unarchived'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 *
 			 * @since MU
 			 *
@@ -408,7 +432,11 @@ function update_blog_details( $blog_id, $details = array() ) {
 	if ( $details['deleted'] != $current_details['deleted'] ) {
 		if ( $details['deleted'] == 1 ) {
 			/**
+<<<<<<< HEAD
+			 * Fires when the 'deleted' status is added to a blog.
+=======
 			 * Fires when the blog status is changed to 'deleted'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 *
 			 * @since 3.5.0
 			 *
@@ -417,7 +445,11 @@ function update_blog_details( $blog_id, $details = array() ) {
 			do_action( 'make_delete_blog', $blog_id );
 		} else {
 			/**
+<<<<<<< HEAD
+			 * Fires when the 'deleted' status is removed from a blog.
+=======
 			 * Fires when the blog status is changed to 'undeleted'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 *
 			 * @since 3.5.0
 			 *
@@ -443,20 +475,43 @@ function update_blog_details( $blog_id, $details = array() ) {
  *
  * @since 3.5.0
  *
+<<<<<<< HEAD
+ * @global bool $_wp_suspend_cache_invalidation
+ *
  * @param WP_Site $blog The site object to be cleared from cache.
  */
 function clean_blog_cache( $blog ) {
+	global $_wp_suspend_cache_invalidation;
+
+	if ( ! empty( $_wp_suspend_cache_invalidation ) ) {
+		return;
+	}
+
+=======
+ * @param WP_Site $blog The site object to be cleared from cache.
+ */
+function clean_blog_cache( $blog ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$blog_id = $blog->blog_id;
 	$domain_path_key = md5( $blog->domain . $blog->path );
 
 	wp_cache_delete( $blog_id, 'sites' );
 	wp_cache_delete( $blog_id, 'site-details' );
+<<<<<<< HEAD
+	wp_cache_delete( $blog_id, 'blog-details' );
+	wp_cache_delete( $blog_id . 'short' , 'blog-details' );
+	wp_cache_delete( $domain_path_key, 'blog-lookup' );
+	wp_cache_delete( $domain_path_key, 'blog-id-cache' );
+	wp_cache_delete( 'current_blog_' . $blog->domain, 'site-options' );
+	wp_cache_delete( 'current_blog_' . $blog->domain . $blog->path, 'site-options' );
+=======
 	wp_cache_delete( $blog_id , 'blog-details' );
 	wp_cache_delete( $blog_id . 'short' , 'blog-details' );
 	wp_cache_delete(  $domain_path_key, 'blog-lookup' );
 	wp_cache_delete( 'current_blog_' . $blog->domain, 'site-options' );
 	wp_cache_delete( 'current_blog_' . $blog->domain . $blog->path, 'site-options' );
 	wp_cache_delete( $domain_path_key, 'blog-id-cache' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	/**
 	 * Fires immediately after a site has been removed from the object cache.
@@ -473,6 +528,26 @@ function clean_blog_cache( $blog ) {
 }
 
 /**
+<<<<<<< HEAD
+ * Cleans the site details cache for a site.
+ *
+ * @since 4.7.4
+ *
+ * @param int $site_id Optional. Site ID. Default is the current site ID.
+ */
+function clean_site_details_cache( $site_id = 0 ) {
+	$site_id = (int) $site_id;
+	if ( ! $site_id ) {
+		$site_id = get_current_blog_id();
+	}
+
+	wp_cache_delete( $site_id, 'site-details' );
+	wp_cache_delete( $site_id, 'blog-details' );
+}
+
+/**
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * Retrieves site data given a site ID or site object.
  *
  * Site data will be cached and returned after being passed through a filter.
@@ -556,6 +631,10 @@ function update_site_cache( $sites ) {
  * Retrieves a list of sites matching requested arguments.
  *
  * @since 4.6.0
+<<<<<<< HEAD
+ * @since 4.8.0 Introduced the 'lang_id', 'lang__in', and 'lang__not_in' parameters.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * @see WP_Site_Query::parse_query()
  *
@@ -596,6 +675,12 @@ function update_site_cache( $sites ) {
  *     @type int          $mature            Limit results to mature sites. Accepts '1' or '0'. Default empty.
  *     @type int          $spam              Limit results to spam sites. Accepts '1' or '0'. Default empty.
  *     @type int          $deleted           Limit results to deleted sites. Accepts '1' or '0'. Default empty.
+<<<<<<< HEAD
+ *     @type int          $lang_id           Limit results to a language ID. Default empty.
+ *     @type array        $lang__in          Array of language IDs to include affiliated sites for. Default empty.
+ *     @type array        $lang__not_in      Array of language IDs to exclude affiliated sites for. Default empty.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *     @type string       $search            Search term(s) to retrieve matching sites for. Default empty.
  *     @type array        $search_columns    Array of column names to be searched. Accepts 'domain' and 'path'.
  *                                           Default empty array.
@@ -736,8 +821,11 @@ function update_blog_option( $id, $option, $value, $deprecated = null ) {
 	$return = update_option( $option, $value );
 	restore_current_blog();
 
+<<<<<<< HEAD
+=======
 	refresh_blog_details( $id );
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	return $return;
 }
 
@@ -815,7 +903,11 @@ function switch_to_blog( $new_blog, $deprecated = null ) {
 			if ( is_array( $global_groups ) ) {
 				wp_cache_add_global_groups( $global_groups );
 			} else {
+<<<<<<< HEAD
+				wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'blog-lookup', 'blog-details', 'rss', 'global-posts', 'blog-id-cache', 'networks', 'sites', 'site-details' ) );
+=======
 				wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'site-lookup', 'blog-lookup', 'blog-details', 'rss', 'global-posts', 'blog-id-cache', 'networks', 'sites', 'site-details' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 			wp_cache_add_non_persistent_groups( array( 'counts', 'plugins' ) );
 		}
@@ -889,7 +981,11 @@ function restore_current_blog() {
 			if ( is_array( $global_groups ) ) {
 				wp_cache_add_global_groups( $global_groups );
 			} else {
+<<<<<<< HEAD
+				wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'blog-lookup', 'blog-details', 'rss', 'global-posts', 'blog-id-cache', 'networks', 'sites', 'site-details' ) );
+=======
 				wp_cache_add_global_groups( array( 'users', 'userlogins', 'usermeta', 'user_meta', 'useremail', 'userslugs', 'site-transient', 'site-options', 'site-lookup', 'blog-lookup', 'blog-details', 'rss', 'global-posts', 'blog-id-cache', 'networks', 'sites', 'site-details' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 			wp_cache_add_non_persistent_groups( array( 'counts', 'plugins' ) );
 		}
@@ -1130,9 +1226,23 @@ function get_network( $network = null ) {
  *
  * @since 4.6.0
  *
+<<<<<<< HEAD
+ * @global bool $_wp_suspend_cache_invalidation
+ *
  * @param int|array $ids Network ID or an array of network IDs to remove from cache.
  */
 function clean_network_cache( $ids ) {
+	global $_wp_suspend_cache_invalidation;
+
+	if ( ! empty( $_wp_suspend_cache_invalidation ) ) {
+		return;
+	}
+
+=======
+ * @param int|array $ids Network ID or an array of network IDs to remove from cache.
+ */
+function clean_network_cache( $ids ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	foreach ( (array) $ids as $id ) {
 		wp_cache_delete( $id, 'networks' );
 

@@ -187,6 +187,41 @@ final class WP_Taxonomy {
 	public $update_count_callback;
 
 	/**
+<<<<<<< HEAD
+	 * Whether this taxonomy should appear in the REST API.
+	 *
+	 * Default false. If true, standard endpoints will be registered with
+	 * respect to $rest_base and $rest_controller_class.
+	 *
+	 * @since 4.7.4
+	 * @access public
+	 * @var bool $show_in_rest
+	 */
+	public $show_in_rest;
+
+	/**
+	 * The base path for this taxonomy's REST API endpoints.
+	 *
+	 * @since 4.7.4
+	 * @access public
+	 * @var string|bool $rest_base
+	 */
+	public $rest_base;
+
+	/**
+	 * The controller for this taxonomy's REST API endpoints.
+	 *
+	 * Custom controllers must extend WP_REST_Controller.
+	 *
+	 * @since 4.7.4
+	 * @access public
+	 * @var string|bool $rest_controller_class
+	 */
+	public $rest_controller_class;
+
+	/**
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Whether it is a built-in taxonomy.
 	 *
 	 * @since 4.7.0
@@ -254,6 +289,12 @@ final class WP_Taxonomy {
 			'rewrite'               => true,
 			'query_var'             => $this->name,
 			'update_count_callback' => '',
+<<<<<<< HEAD
+			'show_in_rest'          => false,
+			'rest_base'             => false,
+			'rest_controller_class' => false,
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'_builtin'              => false,
 		);
 
@@ -333,6 +374,11 @@ final class WP_Taxonomy {
 			}
 		}
 
+<<<<<<< HEAD
+		$args['name'] = $this->name;
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		foreach ( $args as $property_name => $property_value ) {
 			$this->$property_name = $property_value;
 		}

@@ -12,14 +12,26 @@ function et_setup_theme() {
 
 	$template_directory = get_template_directory();
 
+<<<<<<< HEAD
+=======
 	$theme_version = et_get_theme_version();
 
 	define( 'ET_CORE_VERSION', $theme_version );
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	require_once( $template_directory . '/core/init.php' );
 
 	et_core_setup( get_template_directory_uri() );
 
+<<<<<<< HEAD
+	if ( '3.0.61' === ET_CORE_VERSION ) {
+		require_once $template_directory . '/core/functions.php';
+		require_once $template_directory . '/core/components/init.php';
+		et_core_patch_core_3061();
+	}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	require_once( $template_directory . '/epanel/custom_functions.php' );
 
 	require_once( $template_directory . '/includes/functions/choices.php' );
@@ -57,6 +69,14 @@ function et_setup_theme() {
 	) );
 
 	add_theme_support( 'woocommerce' );
+<<<<<<< HEAD
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
+
+	add_theme_support( 'customize-selective-refresh-widgets' );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
 
@@ -274,10 +294,17 @@ function et_add_post_meta_box() {
 	// Add Page settings meta box only if it's not disabled for current user
 	if ( et_pb_is_allowed( 'page_options' ) ) {
 		add_meta_box( 'et_settings_meta_box', esc_html__( 'Divi Page Settings', 'Divi' ), 'et_single_settings_meta_box', 'page', 'side', 'high' );
+<<<<<<< HEAD
+		add_meta_box( 'et_settings_meta_box', esc_html__( 'Divi Post Settings', 'Divi' ), 'et_single_settings_meta_box', 'post', 'side', 'high' );
+		add_meta_box( 'et_settings_meta_box', esc_html__( 'Divi Product Settings', 'Divi' ), 'et_single_settings_meta_box', 'product', 'side', 'high' );
+		add_meta_box( 'et_settings_meta_box', esc_html__( 'Divi Project Settings', 'Divi' ), 'et_single_settings_meta_box', 'project', 'side', 'high' );
+	}
+=======
 	}
 	add_meta_box( 'et_settings_meta_box', esc_html__( 'Divi Post Settings', 'Divi' ), 'et_single_settings_meta_box', 'post', 'side', 'high' );
 	add_meta_box( 'et_settings_meta_box', esc_html__( 'Divi Product Settings', 'Divi' ), 'et_single_settings_meta_box', 'product', 'side', 'high' );
 	add_meta_box( 'et_settings_meta_box', esc_html__( 'Divi Project Settings', 'Divi' ), 'et_single_settings_meta_box', 'project', 'side', 'high' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 add_action( 'add_meta_boxes', 'et_add_post_meta_box' );
 
@@ -412,6 +439,24 @@ endif;
 function et_divi_post_settings_save_details( $post_id, $post ){
 	global $pagenow;
 
+<<<<<<< HEAD
+	if ( 'post.php' !== $pagenow || ! $post || ! is_object( $post ) ) {
+		return;
+	}
+
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	$post_type = get_post_type_object( $post->post_type );
+	if ( ! current_user_can( $post_type->cap->edit_post, $post_id ) ) {
+		return;
+	}
+
+	if ( ! isset( $_POST['et_settings_nonce'] ) || ! wp_verify_nonce( $_POST['et_settings_nonce'], basename( __FILE__ ) ) ) {
+		return;
+	}
+=======
 	if ( 'post.php' != $pagenow ) return $post_id;
 
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
@@ -423,6 +468,7 @@ function et_divi_post_settings_save_details( $post_id, $post ){
 
 	if ( ! isset( $_POST['et_settings_nonce'] ) || ! wp_verify_nonce( $_POST['et_settings_nonce'], basename( __FILE__ ) ) )
 		return $post_id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( isset( $_POST['et_post_use_bg_color'] ) )
 		update_post_meta( $post_id, '_et_post_use_bg_color', true );
@@ -465,8 +511,11 @@ function et_divi_post_settings_save_details( $post_id, $post ){
 	} else {
 		delete_post_meta( $post_id, '_et_pb_side_nav' );
 	}
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 add_action( 'save_post', 'et_divi_post_settings_save_details', 10, 2 );
 
@@ -590,6 +639,14 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 	);
 
 	foreach ( $google_fonts as $google_font_name => $google_font_properties ) {
+<<<<<<< HEAD
+		if ( isset( $google_font_properties['parent_font'] ) ) {
+			$parent_font = $google_font_properties['parent_font'];
+			$google_font_properties['character_set'] = $google_fonts[ $parent_font ]['character_set'];
+		}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( '' !== $site_domain && isset( $et_domain_fonts[$site_domain] ) && false === strpos( $google_font_properties['character_set'], $et_domain_fonts[$site_domain] ) ) {
 			continue;
 		}
@@ -1119,16 +1176,37 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		) ) );
 	}
 
+<<<<<<< HEAD
+	// Remove default background_repeat setting and control since native
+	// background_repeat field has different different settings
+	$wp_customize->remove_setting( 'background_repeat' );
+	$wp_customize->remove_control( 'background_repeat' );
+
+	// Re-defined Divi specific background repeat option
+	$wp_customize->add_setting( 'background_repeat', array(
+		'default'           => apply_filters( 'et_divi_background_repeat_default', 'repeat' ),
+		'sanitize_callback' => 'et_sanitize_background_repeat',
+		'theme_supports'    => 'custom-background',
+		'capability'        => 'edit_theme_options',
+		'transport'         => 'postMessage',
+	) );
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$wp_customize->add_control( 'background_repeat', array(
 		'label'		=> esc_html__( 'Background Repeat', 'Divi' ),
 		'section'	=> 'et_divi_general_background',
 		'type'      => 'radio',
+<<<<<<< HEAD
+		'choices'   => et_divi_background_repeat_choices(),
+=======
 		'choices'    => array(
 				'no-repeat'  => esc_html__( 'No Repeat', 'Divi' ),
 				'repeat'     => esc_html__( 'Tile', 'Divi' ),
 				'repeat-x'   => esc_html__( 'Tile Horizontally', 'Divi' ),
 				'repeat-y'   => esc_html__( 'Tile Vertically', 'Divi' ),
 			),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	) );
 
 	$wp_customize->add_control( 'background_position_x', array(
@@ -1142,14 +1220,34 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 			),
 	) );
 
+<<<<<<< HEAD
+	// Remove default background_attachment setting and control since native
+	// background_attachment field has different different settings
+	$wp_customize->remove_setting( 'background_attachment' );
+	$wp_customize->remove_control( 'background_attachment' );
+
+	$wp_customize->add_setting( 'background_attachment', array(
+		'default'           => apply_filters( 'et_sanitize_background_attachment_default', 'scroll' ),
+		'sanitize_callback' => 'et_sanitize_background_attachment',
+		'theme_supports'    => 'custom-background',
+		'capability'        => 'edit_theme_options',
+		'transport'         => 'postMessage',
+	) );
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$wp_customize->add_control( 'background_attachment', array(
 		'label'		=> esc_html__( 'Background Position', 'Divi' ),
 		'section'	=> 'et_divi_general_background',
 		'type'      => 'radio',
+<<<<<<< HEAD
+		'choices'    => et_divi_background_attachment_choices(),
+=======
 		'choices'    => array(
 				'scroll'     => esc_html__( 'Scroll', 'Divi' ),
 				'fixed'      => esc_html__( 'Fixed', 'Divi' ),
 			),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	) );
 
 	$wp_customize->add_setting( 'et_divi[body_font_size]', array(
@@ -1377,10 +1475,17 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[link_color]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[link_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Body Link Color', 'Divi' ),
 		'section'	=> 'et_divi_general_typography',
 		'settings'	=> 'et_divi[link_color]',
@@ -1391,10 +1496,17 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[font_color]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[font_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Body Text Color', 'Divi' ),
 		'section'	=> 'et_divi_general_typography',
 		'settings'	=> 'et_divi[font_color]',
@@ -1405,10 +1517,17 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[header_color]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[header_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Header Text Color', 'Divi' ),
 		'section'	=> 'et_divi_general_typography',
 		'settings'	=> 'et_divi[header_color]',
@@ -1419,10 +1538,17 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[accent_color]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[accent_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Theme Accent Color', 'Divi' ),
 		'section'	=> 'et_divi_general_layout',
 		'settings'	=> 'et_divi[accent_color]',
@@ -2427,17 +2553,28 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[footer_bg]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[footer_bg]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Footer Background Color', 'Divi' ),
 		'section'	=> 'et_divi_footer_layout',
 		'settings'	=> 'et_divi[footer_bg]',
 	) ) );
 
 	$wp_customize->add_setting( 'et_divi[widget_header_font_size]', array(
+<<<<<<< HEAD
+		'default'       => absint( et_get_option( 'body_header_size', '30' ) ) * .6,
+=======
 		'default'       => et_get_option( 'body_header_size' * .6, '18' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'type'          => 'option',
 		'capability'    => 'edit_theme_options',
 		'transport'     => 'postMessage',
@@ -2528,10 +2665,17 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[footer_widget_text_color]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[footer_widget_text_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Widget Text Color', 'Divi' ),
 		'section'	=> 'et_divi_footer_widgets',
 		'settings'	=> 'et_divi[footer_widget_text_color]',
@@ -2542,10 +2686,17 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[footer_widget_link_color]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[footer_widget_link_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Widget Link Color', 'Divi' ),
 		'section'	=> 'et_divi_footer_widgets',
 		'settings'	=> 'et_divi[footer_widget_link_color]',
@@ -2556,10 +2707,17 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[footer_widget_header_color]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[footer_widget_header_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Widget Header Color', 'Divi' ),
 		'section'	=> 'et_divi_footer_widgets',
 		'settings'	=> 'et_divi[footer_widget_header_color]',
@@ -2570,10 +2728,17 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
 		'transport'		=> 'postMessage',
+<<<<<<< HEAD
+		'sanitize_callback' => 'et_sanitize_alpha_color',
+	) );
+
+	$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[footer_widget_bullet_color]', array(
+=======
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[footer_widget_bullet_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'label'		=> esc_html__( 'Widget Bullet Color', 'Divi' ),
 		'section'	=> 'et_divi_footer_widgets',
 		'settings'	=> 'et_divi[footer_widget_bullet_color]',
@@ -2954,7 +3119,10 @@ function et_divi_customizer_theme_settings( $wp_customize ) {
 		'default'       => 'yes',
 		'type'			=> 'option',
 		'capability'	=> 'edit_theme_options',
+<<<<<<< HEAD
+=======
 		'transport'		=> 'postMessage',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'sanitize_callback' => 'et_sanitize_yes_no',
 	) );
 
@@ -3143,10 +3311,17 @@ function et_divi_customizer_module_settings( $wp_customize ) {
 				'type'			=> 'option',
 				'capability'	=> 'edit_theme_options',
 				'transport'		=> 'postMessage',
+<<<<<<< HEAD
+				'sanitize_callback' => 'et_sanitize_alpha_color',
+			) );
+
+			$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[et_pb_gallery-zoom_icon_color]', array(
+=======
 				'sanitize_callback' => 'sanitize_hex_color',
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[et_pb_gallery-zoom_icon_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'label'		=> esc_html__( 'Zoom Icon Color', 'Divi' ),
 				'section'	=> 'et_pagebuilder_gallery',
 				'settings'	=> 'et_divi[et_pb_gallery-zoom_icon_color]',
@@ -3926,10 +4101,17 @@ function et_divi_customizer_module_settings( $wp_customize ) {
 				'type'			=> 'option',
 				'capability'	=> 'edit_theme_options',
 				'transport'		=> 'postMessage',
+<<<<<<< HEAD
+				'sanitize_callback' => 'et_sanitize_alpha_color',
+			) );
+
+			$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[et_pb_portfolio-zoom_icon_color]', array(
+=======
 				'sanitize_callback' => 'sanitize_hex_color',
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[et_pb_portfolio-zoom_icon_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'label'		=> esc_html__( 'Zoom Icon Color', 'Divi' ),
 				'section'	=> 'et_pagebuilder_portfolio',
 				'settings'	=> 'et_divi[et_pb_portfolio-zoom_icon_color]',
@@ -4035,10 +4217,17 @@ function et_divi_customizer_module_settings( $wp_customize ) {
 				'type'			=> 'option',
 				'capability'	=> 'edit_theme_options',
 				'transport'		=> 'postMessage',
+<<<<<<< HEAD
+				'sanitize_callback' => 'et_sanitize_alpha_color',
+			) );
+
+			$wp_customize->add_control( new ET_Divi_Customize_Color_Alpha_Control( $wp_customize, 'et_divi[et_pb_filterable_portfolio-zoom_icon_color]', array(
+=======
 				'sanitize_callback' => 'sanitize_hex_color',
 			) );
 
 			$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'et_divi[et_pb_filterable_portfolio-zoom_icon_color]', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'label'		=> esc_html__( 'Zoom Icon Color', 'Divi' ),
 				'section'	=> 'et_pagebuilder_filterable_portfolio',
 				'settings'	=> 'et_divi[et_pb_filterable_portfolio-zoom_icon_color]',
@@ -5561,11 +5750,30 @@ function et_divi_customize_preview_css() {
 	wp_enqueue_script( 'divi-customizer-controls-js', get_template_directory_uri() . '/js/theme-customizer-controls.js', array( 'jquery' ), $theme_version, true );
 	wp_localize_script( 'divi-customizer-controls-js', 'et_divi_customizer_data', array(
 		'is_old_wp' => et_pb_is_wp_old_version() ? 'old' : 'new',
+<<<<<<< HEAD
+		'color_palette' => implode( '|', et_pb_get_default_color_palette() ),
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	) );
 }
 add_action( 'customize_controls_enqueue_scripts', 'et_divi_customize_preview_css' );
 
 /**
+<<<<<<< HEAD
+ * Modifying builder options based on saved Divi values
+ * @param array  current builder options values
+ * @return array modified builder options values
+ */
+function et_divi_builder_options( $options ) {
+	$options['all_buttons_icon'] = et_get_option( 'all_buttons_icon', 'yes' );
+
+	return $options;
+}
+add_filter( 'et_builder_options', 'et_divi_builder_options' );
+
+/**
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * Add custom customizer control
  * Check for WP_Customizer_Control existence before adding custom control because WP_Customize_Control is loaded on customizer page only
  *
@@ -5700,6 +5908,12 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 		public function __construct( $manager, $id, $args = array() ) {
 			$this->statuses = array( '' => esc_html__( 'Default', 'Divi' ) );
 			parent::__construct( $manager, $id, $args );
+<<<<<<< HEAD
+
+			// Printed saved value should always be in lowercase
+			add_filter( "customize_sanitize_js_{$id}", array( $this, 'sanitize_saved_value' ) );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		public function enqueue() {
@@ -5739,16 +5953,75 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 			</label>
 			<?php
 		}
+<<<<<<< HEAD
+
+		/**
+		 * Ensure saved value to be printed in lowercase.
+		 * Mismatched case causes broken 4.7 in Customizer. Color Alpha control only saves string.
+		 * @param string  saved value
+		 * @return string formatted value
+		 */
+		public function sanitize_saved_value( $value ) {
+			return strtolower( $value );
+		}
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 }
 
+<<<<<<< HEAD
+function et_divi_add_customizer_css() {
+		if ( wp_doing_ajax() || wp_doing_cron() || ( is_admin() && ! is_customize_preview() ) ) {
+			return;
+		}
+
+		$post_id     = et_core_page_resource_get_the_ID();
+		$is_preview  = is_preview() || isset( $_GET['et_pb_preview_nonce'] );
+		$is_singular = et_core_page_resource_is_singular();
+
+		$disabled_global = 'off' === et_get_option( 'et_pb_static_css_file', 'on' );
+		$disabled_post   = $disabled_global || ( $is_singular && 'off' === get_post_meta( $post_id, '_et_pb_static_css_file', true ) );
+
+		$forced_inline     = $is_preview || $disabled_global || $disabled_post;
+		$builder_in_footer = 'on' === et_get_option( 'et_pb_css_in_footer', 'off' );
+
+		$unified_styles = $is_singular && ! $forced_inline && ! $builder_in_footer && et_core_is_builder_used_on_current_request();
+		$resource_owner = $unified_styles ? 'core' : 'divi';
+		$resource_slug  = $unified_styles ? 'unified' : 'customizer';
+
+		if ( $is_preview ) {
+			// Don't let previews cause existing saved static css files to be modified.
+			$resource_slug .= '-preview';
+		}
+
+		if ( function_exists( 'et_fb_is_enabled' ) && et_fb_is_enabled() ) {
+			$resource_slug .= '-vb';
+		}
+
+		if ( ! $unified_styles ) {
+			$post_id = 'global';
+		}
+
+		$styles_manager = et_core_page_resource_get( $resource_owner, $resource_slug, $post_id );
+
+		$styles_manager->forced_inline = $forced_inline;
+
+		if ( ! $styles_manager->forced_inline && $styles_manager->has_file() ) {
+			// Static resource has already been created. No need to continue here.
+			return;
+		}
+
+		$css_output = array();
+
+=======
 function et_divi_add_customizer_css(){ ?>
 	<?php
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 			return;
 		}
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Detect legacy settings
 		$detect_legacy_secondary_nav_color = et_get_option( 'secondary_nav_text_color', 'Light' );
 		$detect_legacy_primary_nav_color = et_get_option( 'primary_nav_text_color', 'Dark' );
@@ -5784,8 +6057,13 @@ function et_divi_add_customizer_css(){ ?>
 		$section_padding = absint( et_get_option( 'section_padding', '4' ) );
 		$row_padding = absint( et_get_option( 'row_padding', '2' ) );
 
+<<<<<<< HEAD
+		$tablet_header_font_size = absint( et_get_option( 'tablet_header_font_size', '30' ) );
+		$tablet_body_font_size = absint( et_get_option( 'tablet_body_font_size', '14' ) );
+=======
 		$tablet_header_font_size = absint( et_get_option( 'tablet_header_font_size', $body_header_size ) );
 		$tablet_body_font_size = absint( et_get_option( 'tablet_body_font_size', $body_font_size ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$tablet_section_height = absint( et_get_option( 'tablet_section_height', '50' ) );
 		$tablet_row_height = absint( et_get_option( 'tablet_row_height', '30' ) );
 
@@ -5838,7 +6116,11 @@ function et_divi_add_customizer_css(){ ?>
 		$footer_widget_header_color = et_get_option( 'footer_widget_header_color', $accent_color );
 		$footer_widget_bullet_color = et_get_option( 'footer_widget_bullet_color', $accent_color );
 
+<<<<<<< HEAD
+		$widget_header_font_size = intval( et_get_option( 'widget_header_font_size', $body_header_size * .6 ) );
+=======
 		$widget_header_font_size = intval( et_get_option( 'widget_header_font_size', intval( et_get_option( 'body_header_size' * .6, '18' ) ) ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$widget_body_font_size = absint( et_get_option( 'widget_body_font_size', $body_font_size ) );
 		$widget_body_line_height = floatval( et_get_option( 'widget_body_line_height', '1.7' ) );
 
@@ -5876,9 +6158,19 @@ function et_divi_add_customizer_css(){ ?>
 
 		// use different selector for the styles applied directly to body tag while in Visual Builder. Otherwise unwanted styles applied to the Builder interface.
 		$body_selector = empty( $_GET['et_fb'] ) ? 'body' : 'body .et_fb_preview_container';
+<<<<<<< HEAD
+
+		/* ====================================================
+		 * --------->>> BEGIN THEME CUSTOMIZER CSS <<<---------
+		 * ==================================================== */
+		ob_start();
+
+		if ( 14 !== $body_font_size ) { ?>
+=======
 	?>
 	<style id="theme-customizer-css">
 		<?php if ( 14 !== $body_font_size ) { ?>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			@media only screen and ( min-width: 767px ) {
 				<?php echo esc_html( $body_selector ); ?>, .et_pb_column_1_2 .et_quote_content blockquote cite, .et_pb_column_1_2 .et_link_content a.et_link_main_url, .et_pb_column_1_3 .et_quote_content blockquote cite, .et_pb_column_3_8 .et_quote_content blockquote cite, .et_pb_column_1_4 .et_quote_content blockquote cite, .et_pb_blog_grid .et_quote_content blockquote cite, .et_pb_column_1_3 .et_link_content a.et_link_main_url, .et_pb_column_3_8 .et_link_content a.et_link_main_url, .et_pb_column_1_4 .et_link_content a.et_link_main_url, .et_pb_blog_grid .et_link_content a.et_link_main_url, body .et_pb_bg_layout_light .et_pb_post p,  body .et_pb_bg_layout_dark .et_pb_post p { font-size: <?php echo esc_html( $body_font_size ); ?>px; }
 				.et_pb_slide_content, .et_pb_best_value { font-size: <?php echo esc_html( intval( $body_font_size * 1.14 ) ); ?>px; }
@@ -5896,10 +6188,17 @@ function et_divi_add_customizer_css(){ ?>
 		<?php if ( $accent_color !== '#2ea3f2' ) { ?>
 			.woocommerce #respond input#submit, .woocommerce-page #respond input#submit, .woocommerce #content input.button, .woocommerce-page #content input.button, .woocommerce-message, .woocommerce-error, .woocommerce-info { background: <?php echo esc_html( $accent_color ); ?> !important; }
 			#et_search_icon:hover, .mobile_menu_bar:before, .mobile_menu_bar:after, .et_toggle_slide_menu:after, .et-social-icon a:hover, .et_pb_sum, .et_pb_pricing li a, .et_pb_pricing_table_button, .et_overlay:before, .entry-summary p.price ins, .woocommerce div.product span.price, .woocommerce-page div.product span.price, .woocommerce #content div.product span.price, .woocommerce-page #content div.product span.price, .woocommerce div.product p.price, .woocommerce-page div.product p.price, .woocommerce #content div.product p.price, .woocommerce-page #content div.product p.price, .et_pb_member_social_links a:hover, .woocommerce .star-rating span:before, .woocommerce-page .star-rating span:before, .et_pb_widget li a:hover, .et_pb_filterable_portfolio .et_pb_portfolio_filters li a.active, .et_pb_filterable_portfolio .et_pb_portofolio_pagination ul li a.active, .et_pb_gallery .et_pb_gallery_pagination ul li a.active, .wp-pagenavi span.current, .wp-pagenavi a:hover, .nav-single a, .posted_in a { color: <?php echo esc_html( $accent_color ); ?>; }
+<<<<<<< HEAD
+			.et_pb_contact_submit, .et_password_protected_form .et_submit_button, .et_pb_bg_layout_light .et_pb_newsletter_button, .comment-reply-link, .form-submit .et_pb_button, .et_pb_bg_layout_light .et_pb_promo_button, .et_pb_bg_layout_light .et_pb_more_button, .woocommerce a.button.alt, .woocommerce-page a.button.alt, .woocommerce button.button.alt, .woocommerce-page button.button.alt, .woocommerce input.button.alt, .woocommerce-page input.button.alt, .woocommerce #respond input#submit.alt, .woocommerce-page #respond input#submit.alt, .woocommerce #content input.button.alt, .woocommerce-page #content input.button.alt, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button, .et_pb_contact p input[type="checkbox"]:checked + label i:before { color: <?php echo esc_html( $accent_color ); ?>; }
+			.footer-widget h4 { color: <?php echo esc_html( $accent_color ); ?>; }
+			.et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li:before, .et_pb_pricing li:before, blockquote { border-color: <?php echo esc_html( $accent_color ); ?>; }
+			.et_pb_counter_amount, .et_pb_featured_table .et_pb_pricing_heading, .et_quote_content, .et_link_content, .et_audio_content, .et_pb_post_slider.et_pb_bg_layout_dark, .et_slide_in_menu_container, .et_pb_contact p input[type="radio"]:checked + label i:before { background-color: <?php echo esc_html( $accent_color ); ?>; }
+=======
 			.et_pb_contact_submit, .et_password_protected_form .et_submit_button, .et_pb_bg_layout_light .et_pb_newsletter_button, .comment-reply-link, .form-submit input, .et_pb_bg_layout_light .et_pb_promo_button, .et_pb_bg_layout_light .et_pb_more_button, .woocommerce a.button.alt, .woocommerce-page a.button.alt, .woocommerce button.button.alt, .woocommerce-page button.button.alt, .woocommerce input.button.alt, .woocommerce-page input.button.alt, .woocommerce #respond input#submit.alt, .woocommerce-page #respond input#submit.alt, .woocommerce #content input.button.alt, .woocommerce-page #content input.button.alt, .woocommerce a.button, .woocommerce-page a.button, .woocommerce button.button, .woocommerce-page button.button, .woocommerce input.button, .woocommerce-page input.button { color: <?php echo esc_html( $accent_color ); ?>; }
 			.footer-widget h4 { color: <?php echo esc_html( $accent_color ); ?>; }
 			.et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li:before, .et_pb_pricing li:before, blockquote { border-color: <?php echo esc_html( $accent_color ); ?>; }
 			.et_pb_counter_amount, .et_pb_featured_table .et_pb_pricing_heading, .et_quote_content, .et_link_content, .et_audio_content, .et_pb_post_slider.et_pb_bg_layout_dark, .et_slide_in_menu_container { background-color: <?php echo esc_html( $accent_color ); ?>; }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<?php } ?>
 		<?php if ( 1080 !== $content_width ) { ?>
 			.container, .et_pb_row, .et_pb_slider .et_pb_container, .et_pb_fullwidth_section .et_pb_title_container, .et_pb_fullwidth_section .et_pb_title_featured_container, .et_pb_fullwidth_header:not(.et_pb_fullscreen) .et_pb_fullwidth_header_container { max-width: <?php echo esc_html( $content_width ); ?>px; }
@@ -6003,7 +6302,13 @@ function et_divi_add_customizer_css(){ ?>
 			#main-footer { background-color: <?php echo esc_html( $footer_bg ); ?>; }
 		<?php } ?>
 		<?php if ( $footer_widget_link_color !== '#fff' ) { ?>
+<<<<<<< HEAD
+			#footer-widgets .footer-widget a,
+			#footer-widgets .footer-widget li a,
+			#footer-widgets .footer-widget li a:hover { color: <?php echo esc_html( $footer_widget_link_color ); ?>; }
+=======
 			#footer-widgets .footer-widget li a { color: <?php echo esc_html( $footer_widget_link_color ); ?>; }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<?php } ?>
 		<?php if ( $footer_widget_text_color !== '#fff' ) { ?>
 			.footer-widget { color: <?php echo esc_html( $footer_widget_text_color ); ?>; }
@@ -6168,7 +6473,11 @@ function et_divi_add_customizer_css(){ ?>
 			.woocommerce.et_pb_button_helper_class a.button.alt, .woocommerce-page.et_pb_button_helper_class a.button.alt, .woocommerce.et_pb_button_helper_class button.button.alt, .woocommerce-page.et_pb_button_helper_class button.button.alt, .woocommerce.et_pb_button_helper_class input.button.alt, .woocommerce-page.et_pb_button_helper_class input.button.alt, .woocommerce.et_pb_button_helper_class #respond input#submit.alt, .woocommerce-page.et_pb_button_helper_class #respond input#submit.alt, .woocommerce.et_pb_button_helper_class #content input.button.alt, .woocommerce-page.et_pb_button_helper_class #content input.button.alt,
 			.woocommerce.et_pb_button_helper_class a.button, .woocommerce-page.et_pb_button_helper_class a.button, .woocommerce.et_pb_button_helper_class button.button, .woocommerce-page.et_pb_button_helper_class button.button, .woocommerce.et_pb_button_helper_class input.button, .woocommerce-page.et_pb_button_helper_class input.button, .woocommerce.et_pb_button_helper_class #respond input#submit, .woocommerce-page.et_pb_button_helper_class #respond input#submit, .woocommerce.et_pb_button_helper_class #content input.button, .woocommerce-page.et_pb_button_helper_class #content input.button {
 				<?php if ( '#ffffff' !== $button_text_color ) { ?>
+<<<<<<< HEAD
+					color: <?php echo esc_html( $button_text_color ); ?>;
+=======
 					color: <?php echo esc_html( $button_text_color ); ?> !important;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<?php } ?>
 			}
 		<?php } ?>
@@ -6496,7 +6805,11 @@ function et_divi_add_customizer_css(){ ?>
 				.et_pb_section.et_pb_fullwidth_section { padding: 0; }
 			<?php } ?>
 			<?php if ( 30 !== $tablet_row_height ) { ?>
+<<<<<<< HEAD
+				.et_pb_row, .et_pb_column .et_pb_row_inner { padding: <?php echo esc_html( $tablet_row_height ); ?>px 0; }
+=======
 				.et_pb_row, .et_pb_column .et_pb_row_inner { padding: <?php echo esc_html( $tablet_row_height ); ?>px 0 !important; }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<?php } ?>
 		}
 		@media only screen and ( max-width: 767px ) {
@@ -6518,6 +6831,26 @@ function et_divi_add_customizer_css(){ ?>
 				.et_pb_section.et_pb_fullwidth_section { padding: 0; }
 			<?php } ?>
 			<?php if ( 30 !== $phone_row_height && $tablet_row_height !== $phone_row_height ) { ?>
+<<<<<<< HEAD
+				.et_pb_row, .et_pb_column .et_pb_row_inner { padding: <?php echo esc_html( $phone_row_height ); ?>px 0; }
+			<?php } ?>
+		}
+
+	<?php // <<<--------- END THEME CUSTOMIZER CSS --------->>>
+
+		/**
+		 * Filter Theme Customizer CSS output.
+		 *
+		 * @since 3.0.51
+		 *
+		 * @param string $theme_customizer_css
+		 */
+		$css_output[] = apply_filters( 'et_divi_theme_customizer_css_output', ob_get_clean() );
+
+		// output responsive css styles for responsive preview in Frontend Builder
+		if ( ! empty( $_GET['et_fb'] ) ) {
+			ob_start(); ?>
+=======
 				.et_pb_row, .et_pb_column .et_pb_row_inner { padding: <?php echo esc_html( $phone_row_height ); ?>px 0 !important; }
 			<?php } ?>
 		}
@@ -6527,6 +6860,7 @@ function et_divi_add_customizer_css(){ ?>
 	// output responsive css styles for responsive preview in Frontend Builder
 	if ( ! empty( $_GET['et_fb'] ) ) { ?>
 		<style id="theme-customizer-css-fb-support">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			@media only screen and ( min-width: 981px ) {
 				<?php if ( 4 !== $section_padding ) { ?>
 					.et_fb_desktop_mode .et_pb_section { padding: <?php echo esc_html( $section_padding ); ?>% 0; }
@@ -6574,7 +6908,11 @@ function et_divi_add_customizer_css(){ ?>
 				.et_fb_preview_active.et_fb_preview_active--responsive_preview .et_pb_section.et_pb_fullwidth_section { padding: 0; }
 			<?php } ?>
 			<?php if ( 30 !== $tablet_row_height ) { ?>
+<<<<<<< HEAD
+				.et_fb_preview_active.et_fb_preview_active--responsive_preview .et_pb_row, .et_fb_preview_active.et_fb_preview_active--responsive_preview .et_pb_column .et_pb_row_inner { padding: <?php echo esc_html( $tablet_row_height ); ?>px 0; }
+=======
 				.et_fb_preview_active.et_fb_preview_active--responsive_preview .et_pb_row, .et_fb_preview_active.et_fb_preview_active--responsive_preview .et_pb_column .et_pb_row_inner { padding: <?php echo esc_html( $tablet_row_height ); ?>px 0 !important; }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<?php } ?>
 
 			<?php if ( 14 !== $phone_body_font_size && $phone_body_font_size !== $tablet_body_font_size ) { ?>
@@ -6595,12 +6933,20 @@ function et_divi_add_customizer_css(){ ?>
 				.et_fb_preview_active.et_fb_preview_active--responsive_preview.et_fb_preview_active--responsive_preview--phone_preview .et_pb_section.et_pb_fullwidth_section { padding: 0; }
 			<?php } ?>
 			<?php if ( 30 !== $phone_row_height && $tablet_row_height !== $phone_row_height ) { ?>
+<<<<<<< HEAD
+				.et_fb_preview_active.et_fb_preview_active--responsive_preview.et_fb_preview_active--responsive_preview--phone_preview .et_pb_row, .et_fb_preview_active.et_fb_preview_active--responsive_preview.et_fb_preview_active--responsive_preview--phone_preview .et_pb_column .et_pb_row_inner { padding: <?php echo esc_html( $phone_row_height ); ?>px 0; }
+			<?php }
+			$css_output[] = ob_get_clean();
+		}
+
+=======
 				.et_fb_preview_active.et_fb_preview_active--responsive_preview.et_fb_preview_active--responsive_preview--phone_preview .et_pb_row, .et_fb_preview_active.et_fb_preview_active--responsive_preview.et_fb_preview_active--responsive_preview--phone_preview .et_pb_column .et_pb_row_inner { padding: <?php echo esc_html( $phone_row_height ); ?>px 0 !important; }
 			<?php } ?>
 		</style>
 	<?php } ?>
 
 	<?php
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$et_gf_heading_font = sanitize_text_field( et_get_option( 'heading_font', 'none' ) );
 		$et_gf_body_font = sanitize_text_field( et_get_option( 'body_font', 'none' ) );
 		$et_gf_buttons_font = sanitize_text_field( et_get_option( 'all_buttons_font', 'none' ) );
@@ -6611,13 +6957,43 @@ function et_divi_add_customizer_css(){ ?>
 
 		$et_one_font_languages = et_get_one_font_languages();
 
+<<<<<<< HEAD
+		/* =========================================
+		 * --------->>> BEGIN FONTS CSS <<<---------
+		 * ========================================= */
+		ob_start();
+
+		if ( isset( $et_one_font_languages[$site_domain] ) ) {
+			printf( '%s { font-family: %s; }',
+=======
 		if ( isset( $et_one_font_languages[$site_domain] ) ) {
 			printf( '<style class="et_one_font_languages">%s { font-family: %s; }</style>',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'h1, h2, h3, h4, h5, h6, body, input, textarea, select',
 				sanitize_text_field( $et_one_font_languages[$site_domain]['font_family'] )
 			);
 		} else if ( ! in_array( $et_gf_heading_font, array( '', 'none' ) ) || ! in_array( $et_gf_body_font, array( '', 'none' ) ) || ! in_array( $et_gf_buttons_font, array( '', 'none' ) ) || ! in_array( $et_gf_primary_nav_font, array( '', 'none' ) ) || ! in_array( $et_gf_secondary_nav_font, array( '', 'none' ) ) || ! in_array( $et_gf_slide_nav_font, array( '', 'none' ) ) ) {
 			if ( ! in_array( $et_gf_heading_font, array( '', 'none' ) ) ) { ?>
+<<<<<<< HEAD
+				h1, h2, h3, h4, h5, h6 {
+					<?php echo sanitize_text_field( et_builder_get_font_family( $et_gf_heading_font ) ); ?>
+				}
+			<?php }
+
+			if ( ! in_array( $et_gf_body_font, array( '', 'none' ) ) ) { ?>
+				body, input, textarea, select {
+					<?php echo sanitize_text_field( et_builder_get_font_family( $et_gf_body_font ) ); ?>
+				}
+			<?php }
+
+			if ( ! in_array( $et_gf_buttons_font, array( '', 'none' ) ) ) { ?>
+				.et_pb_button {
+					<?php echo sanitize_text_field( et_builder_get_font_family( $et_gf_buttons_font ) ); ?>
+				}
+			<?php }
+
+			if ( ! in_array( $et_gf_primary_nav_font, array( '', 'none' ) ) ) { ?>
+=======
 				<style class="et_heading_font">
 				h1, h2, h3, h4, h5, h6 {
 					<?php echo sanitize_text_field( et_builder_get_font_family( $et_gf_heading_font ) ); ?>
@@ -6643,10 +7019,47 @@ function et_divi_add_customizer_css(){ ?>
 
 			if ( ! in_array( $et_gf_primary_nav_font, array( '', 'none' ) ) ) { ?>
 				<style class="et_primary_nav_font">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				#main-header,
 				#et-top-navigation {
 					<?php echo sanitize_text_field( et_builder_get_font_family( $et_gf_primary_nav_font ) ); ?>
 				}
+<<<<<<< HEAD
+			<?php }
+
+			if ( ! in_array( $et_gf_secondary_nav_font, array( '', 'none' ) ) ) { ?>
+				#top-header .container{
+					<?php echo sanitize_text_field( et_builder_get_font_family( $et_gf_secondary_nav_font ) ); ?>
+				}
+			<?php }
+
+			if ( ! in_array( $et_gf_slide_nav_font, array( '', 'none' ) ) ) { ?>
+				.et_slide_in_menu_container, .et_slide_in_menu_container .et-search-field{
+					<?php echo sanitize_text_field( et_builder_get_font_family( $et_gf_slide_nav_font ) ); ?>
+				}
+			<?php }
+		} // <<<--------- END FONTS CSS --------->>>
+
+		/**
+		 * Filter fonts CSS output.
+		 *
+		 * @since 3.0.51
+		 *
+		 * @param string $css_output
+		 */
+		$css_output[] = apply_filters( 'et_divi_fonts_css_output', ob_get_clean() );
+
+		/**
+		 * use_sidebar_width might invalidate the use of sidebar_width.
+		 * It is placed outside other customizer style so live preview
+		 * can invalidate and revalidate it for smoother experience
+		 */
+		if ( $use_sidebar_width && 21 !== $sidebar_width && 19 <= $sidebar_width && 33 >= $sidebar_width ) {
+			$content_width = 100 - $sidebar_width;
+			$content_width_percentage = $content_width . '%';
+			$sidebar_width_percentage = $sidebar_width . '%';
+			$sidebar_width_css        = sprintf(
+=======
 				</style>
 			<?php }
 
@@ -6681,6 +7094,7 @@ function et_divi_add_customizer_css(){ ?>
 			$content_width_percentage = $content_width . '%';
 			$sidebar_width_percentage = $sidebar_width . '%';
 			printf(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				'body #page-container #sidebar { width:%2$s; }
 				body #page-container #left-area { width:%1$s; }
 				.et_right_sidebar #main-content .container:before { right:%2$s !important; }
@@ -6688,12 +7102,30 @@ function et_divi_add_customizer_css(){ ?>
 				esc_html( $content_width_percentage  ),
 				esc_html( $sidebar_width_percentage )
 			);
+<<<<<<< HEAD
+
+			/**
+			 * Filter sidebar width CSS output.
+			 *
+			 * @since 3.0.51
+			 *
+			 * @param string $sidebar_width_css
+			 */
+			$css_output[] = apply_filters( 'et_divi_sidebar_width_css_output', $sidebar_width_css );
+		}
+
+		/* ====================================================
+		 * --------->>> BEGIN MODULE CUSTOMIZER CSS <<<--------
+		 * ==================================================== */
+		ob_start();
+=======
 		?>
 	</style>
 	<?php } ?>
 
 	<style id="module-customizer-css">
 		<?php
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			/* Gallery */
 			et_pb_print_module_styles_css( 'et_pb_gallery', array(
@@ -7412,6 +7844,23 @@ function et_divi_add_customizer_css(){ ?>
 					'selector' 	=> '.et_pb_fullwidth_section .et_pb_slide_description',
 					'default' 	=> '16',
 				),
+<<<<<<< HEAD
+			) ); // <<<--------- END MODULE CUSTOMIZER CSS --------->>>
+
+			/**
+			 * Filter Module Customizer CSS output.
+			 *
+			 * @since 3.0.51
+			 *
+			 * @param string $module_customizer_css
+			 */
+			$css_output[] = apply_filters( 'et_divi_module_customizer_css_output', ob_get_clean() );
+
+			// Give the output to the style manager so a static resource can be created and served.
+			$styles_manager->set_data( implode( '\n', $css_output ) );
+}
+add_action( 'wp', 'et_divi_add_customizer_css' );
+=======
 			) );
 		?>
 	</style>
@@ -7419,6 +7868,7 @@ function et_divi_add_customizer_css(){ ?>
 	<?php
 }
 add_action( 'wp_head', 'et_divi_add_customizer_css' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 /**
  * Outputting saved customizer style settings
@@ -8004,7 +8454,11 @@ function et_password_form() {
 			<form action="%3$s" method="post">
 				<p><label for="%4$s">%5$s: </label><input name="post_password" id="%4$s" type="password" size="20" maxlength="20" /></p>
 				<p><button type="submit" class="et_submit_button et_pb_button">%6$s</button></p>
+<<<<<<< HEAD
+			</form>
+=======
 			</form
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		</div>',
 		esc_html__( 'Password Protected', 'Divi' ),
 		esc_html__( 'To view this protected post, enter the password below', 'Divi' ),
@@ -8054,8 +8508,22 @@ function et_add_wp_version( $classes ) {
 add_filter( 'body_class', 'et_add_wp_version' );
 add_filter( 'admin_body_class', 'et_add_wp_version' );
 
+<<<<<<< HEAD
+/**
+ * Determine whether current primary nav uses transparent nav or not based on primary nav background
+ * @return bool
+ */
+function et_divi_is_transparent_primary_nav() {
+	return 'rgba' == substr( et_get_option( 'primary_nav_bg', '#ffffff' ), 0, 4 );
+}
+
+function et_layout_body_class( $classes ) {
+	$vertical_nav = et_get_option( 'vertical_nav', false );
+	if ( et_divi_is_transparent_primary_nav() && ( false === $vertical_nav || '' === $vertical_nav ) ) {
+=======
 function et_layout_body_class( $classes ) {
 	if ( 'rgba' == substr( et_get_option( 'primary_nav_bg', '#ffffff' ), 0, 4 ) && false === et_get_option( 'vertical_nav', false ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$classes[] = 'et_transparent_nav';
 	}
 
@@ -8148,12 +8616,23 @@ function et_layout_body_class( $classes ) {
 		$classes[] = 'et_pb_gutter';
 	}
 
+<<<<<<< HEAD
+	if ( isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
+		if ( stristr( $_SERVER['HTTP_USER_AGENT'], "mac" ) ) {
+			$classes[] = 'osx';
+		} elseif ( stristr( $_SERVER['HTTP_USER_AGENT'], "linux" ) ) {
+			$classes[] = 'linux';
+		} elseif ( stristr( $_SERVER['HTTP_USER_AGENT'], "windows" ) ) {
+			$classes[] = 'windows';
+		}
+=======
 	if ( stristr( $_SERVER['HTTP_USER_AGENT'],"mac") ) {
 		$classes[] = 'osx';
 	} elseif ( stristr( $_SERVER['HTTP_USER_AGENT'],"linux") ) {
 		$classes[] = 'linux';
 	} elseif ( stristr( $_SERVER['HTTP_USER_AGENT'],"windows") ) {
 		$classes[] = 'windows';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	$gutter_width = '' !== ( $page_custom_gutter = get_post_meta( get_the_ID(), '_et_pb_gutter_width', true ) ) && is_singular() ? $page_custom_gutter :  et_get_option( 'gutter_width', '3' );
@@ -8214,7 +8693,11 @@ if ( ! function_exists( 'et_show_cart_total' ) ) {
 			esc_url( WC()->cart->get_cart_url() ),
 			( ! $args['no_text']
 				? esc_html( sprintf(
+<<<<<<< HEAD
+					_nx( '%1$s Item', '%1$s Items', $items_number, 'WooCommerce items number', 'Divi' ),
+=======
 					_nx( '1 Item', '%1$s Items', $items_number, 'WooCommerce items number', 'Divi' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					number_format_i18n( $items_number )
 				) )
 				: ''
@@ -8358,11 +8841,19 @@ function et_divi_woocommerce_image_dimensions() {
 	update_option( 'shop_thumbnail_image_size', $thumbnail );
 }
 
+<<<<<<< HEAD
+if ( ! function_exists( 'woocommerce_template_loop_product_thumbnail' ) ):
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 function woocommerce_template_loop_product_thumbnail() {
 	printf( '<span class="et_shop_image">%1$s<span class="et_overlay"></span></span>',
 		woocommerce_get_product_thumbnail()
 	);
 }
+<<<<<<< HEAD
+endif;
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 function et_review_gravatar_size( $size ) {
 	return '80';
@@ -8511,7 +9002,11 @@ function et_modify_canonical_redirect( $redirect_url, $requested_url ) {
 
 	// Look for $allowed_shortcodes in content. Once detected, set $is_overwrite_canonical_redirect to true
 	foreach ( $allowed_shortcodes as $shortcode ) {
+<<<<<<< HEAD
+		if ( !empty( $post ) && has_shortcode( $post->post_content, $shortcode ) ) {
+=======
 		if ( has_shortcode( $post->post_content, $shortcode ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$is_overwrite_canonical_redirect = true;
 			break;
 		}
@@ -8528,6 +9023,32 @@ function et_modify_canonical_redirect( $redirect_url, $requested_url ) {
 }
 add_filter( 'redirect_canonical', 'et_modify_canonical_redirect', 10, 2 );
 
+<<<<<<< HEAD
+/**
+ * Determines how many related products should be displayed on single product page
+ * @param array  related products arguments
+ * @return array modified related products arguments
+ */
+function et_divi_woocommerce_output_related_products_args( $args ) {
+	$related_posts = 4; // default number
+
+	if ( is_singular( 'product' ) ) {
+		$page_layout = get_post_meta( get_the_ID(), '_et_pb_page_layout', true );
+
+		if ( 'et_full_width_page' !== $page_layout ) {
+			$related_posts = 3; // set to 3 if page has sidebar
+		}
+	}
+
+	// Modify related and up-sell products args
+	$args['posts_per_page'] = $related_posts;
+	$args['columns']        = $related_posts;
+
+	return $args;
+}
+add_filter( 'woocommerce_upsell_display_args', 'et_divi_woocommerce_output_related_products_args' );
+add_filter( 'woocommerce_output_related_products_args', 'et_divi_woocommerce_output_related_products_args' );
+=======
 // Determines how many related products should be displayed on single product page
 if ( class_exists( 'WooCommerce' ) ) {
 	function woocommerce_output_related_products() {
@@ -8549,6 +9070,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 		woocommerce_related_products( $woocommerce_args );
 	}
 }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 function et_divi_maybe_change_frontend_locale( $locale ) {
 	$option_name   = 'divi_disable_translations';
@@ -8689,14 +9211,37 @@ function et_get_footer_credits() {
 		return '';
 	}
 
+<<<<<<< HEAD
+	$credits_format = '<%2$s id="footer-info">%1$s</%2$s>';
+=======
 	$credits_format = '<p id="footer-info">%1$s</p>';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	$footer_credits = et_get_option( 'custom_footer_credits', '' );
 
 	if ( '' === trim( $footer_credits ) ) {
+<<<<<<< HEAD
+		return et_get_safe_localization( sprintf( $credits_format, $original_footer_credits, 'p' ) );
+	}
+
+	return et_get_safe_localization( sprintf( $credits_format, $footer_credits, 'div' ) );
+}
+endif;
+
+if ( ! function_exists( 'et_divi_filter_et_core_is_builder_used_on_current_request' ) ):
+function et_divi_filter_et_core_is_builder_used_on_current_request( $is_builder_used ) {
+	if ( $is_builder_used && ! is_singular() ) {
+		$is_builder_used = 'on' === et_get_option( 'divi_blog_style', 'false' );
+	}
+
+	return $is_builder_used;
+}
+add_filter( 'et_core_is_builder_used_on_current_request', 'et_divi_filter_et_core_is_builder_used_on_current_request' );
+=======
 		return et_get_safe_localization( sprintf( $credits_format, $original_footer_credits ) );
 	}
 
 	return et_get_safe_localization( sprintf( $credits_format, $footer_credits ) );
 }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 endif;

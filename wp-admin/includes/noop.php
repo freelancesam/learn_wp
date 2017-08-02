@@ -1,4 +1,14 @@
 <?php
+<<<<<<< HEAD
+/**
+ * Noop functions for load-scripts.php and load-styles.php.
+ *
+ * @package WordPress
+ * @subpackage Administration
+ * @since 4.4.0
+ */
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 /**
  * @ignore

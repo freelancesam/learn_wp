@@ -43,7 +43,11 @@ class WP_Customize_Partial {
 	 * Parsed ID.
 	 *
 	 * @since 4.5.0
+<<<<<<< HEAD
+	 * @access protected
+=======
 	 * @access private
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @var array {
 	 *     @type string $base ID base.
 	 *     @type array  $keys Keys for multidimensional.

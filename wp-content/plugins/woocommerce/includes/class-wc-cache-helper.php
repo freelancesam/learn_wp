@@ -20,7 +20,11 @@ class WC_Cache_Helper {
 	 */
 	public static function init() {
 		add_action( 'template_redirect', array( __CLASS__, 'geolocation_ajax_redirect' ) );
+<<<<<<< HEAD
+		add_action( 'wp', array( __CLASS__, 'prevent_caching' ) );
+=======
 		add_action( 'before_woocommerce_init', array( __CLASS__, 'prevent_caching' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		add_action( 'admin_notices', array( __CLASS__, 'notices' ) );
 		add_action( 'delete_version_transients', array( __CLASS__, 'delete_version_transients' ) );
 	}
@@ -131,6 +135,11 @@ class WC_Cache_Helper {
 	 * Note; this only works on transients appended with the transient version, and when object caching is not being used.
 	 *
 	 * @since  2.3.10
+<<<<<<< HEAD
+	 *
+	 * @param string $version
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function delete_version_transients( $version = '' ) {
 		if ( ! wp_using_ext_object_cache() && ! empty( $version ) ) {
@@ -147,6 +156,19 @@ class WC_Cache_Helper {
 	}
 
 	/**
+<<<<<<< HEAD
+	 * Prevent caching on dynamic pages.
+	 */
+	public static function prevent_caching() {
+		if ( ! is_blog_installed() ) {
+			return;
+		}
+		$page_ids        = array_filter( array( wc_get_page_id( 'cart' ), wc_get_page_id( 'checkout' ), wc_get_page_id( 'myaccount' ) ) );
+		$current_page_id = get_queried_object_id();
+
+		if ( isset( $_GET['download_file'] ) || in_array( $current_page_id, $page_ids ) ) {
+			self::nocache();
+=======
 	 * Get the page name/id for a WC page.
 	 * @param  string $wc_page
 	 * @return array
@@ -185,6 +207,7 @@ class WC_Cache_Helper {
 					break;
 				}
 			}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	}
 

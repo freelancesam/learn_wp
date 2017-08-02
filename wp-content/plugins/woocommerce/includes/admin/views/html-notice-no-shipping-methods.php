@@ -11,7 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<a class="woocommerce-message-close notice-dismiss" href="<?php echo esc_url( wp_nonce_url( add_query_arg( 'wc-hide-notice', 'no_shipping_methods' ), 'woocommerce_hide_notices_nonce', '_wc_notice_nonce' ) ); ?>"><?php _e( 'Dismiss', 'woocommerce' ); ?></a>
 
 	<p class="main"><strong><?php _e( 'Add shipping methods &amp; zones', 'woocommerce' ); ?></strong></p>
+<<<<<<< HEAD
+	<p><?php _e( 'Shipping is currently enabled, but you have not added any shipping methods to your shipping zones.', 'woocommerce' ); ?></p>
+=======
 	<p><?php _e( 'Shipping is currently enabled, but you haven\'t added any shipping methods to your shipping zones.', 'woocommerce' ); ?></p>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	<p><?php _e( 'Customers will not be able to purchase physical goods from your store until a shipping method is available.', 'woocommerce' ); ?></p>
 
 	<p class="submit">

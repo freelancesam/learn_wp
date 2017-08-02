@@ -37,7 +37,11 @@ if ( isset($_REQUEST['action']) && 'adduser' == $_REQUEST['action'] ) {
 	if ( false !== strpos( $user_email, '@' ) ) {
 		$user_details = get_user_by( 'email', $user_email );
 	} else {
+<<<<<<< HEAD
+		if ( current_user_can( 'manage_network_users' ) ) {
+=======
 		if ( is_super_admin() ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$user_details = get_user_by( 'login', $user_email );
 		} else {
 			wp_redirect( add_query_arg( array('update' => 'enter_email'), 'user-new.php' ) );
@@ -63,7 +67,11 @@ if ( isset($_REQUEST['action']) && 'adduser' == $_REQUEST['action'] ) {
 	$redirect = 'user-new.php';
 	$username = $user_details->user_login;
 	$user_id = $user_details->ID;
+<<<<<<< HEAD
+	if ( $username != null && array_key_exists( $blog_id, get_blogs_of_user( $user_id ) ) ) {
+=======
 	if ( ( $username != null && !is_super_admin( $user_id ) ) && ( array_key_exists($blog_id, get_blogs_of_user($user_id)) ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$redirect = add_query_arg( array('update' => 'addexisting'), 'user-new.php' );
 	} else {
 		if ( isset( $_POST[ 'noconfirmation' ] ) && current_user_can( 'manage_network_users' ) ) {
@@ -225,7 +233,11 @@ wp_enqueue_script( 'user-profile' );
  * @param bool $enable Whether to enable auto-complete for non-super admins. Default false.
  */
 if ( is_multisite() && current_user_can( 'promote_users' ) && ! wp_is_large_network( 'users' )
+<<<<<<< HEAD
+	&& ( current_user_can( 'manage_network_users' ) || apply_filters( 'autocomplete_users_for_site_admins', false ) )
+=======
 	&& ( is_super_admin() || apply_filters( 'autocomplete_users_for_site_admins', false ) )
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 ) {
 	wp_enqueue_script( 'user-suggest' );
 }
@@ -313,7 +325,11 @@ if ( ! empty( $messages ) ) {
 if ( is_multisite() ) {
 	if ( $do_both )
 		echo '<h2 id="add-existing-user">' . __( 'Add Existing User' ) . '</h2>';
+<<<<<<< HEAD
+	if ( ! current_user_can( 'manage_network_users' ) ) {
+=======
 	if ( !is_super_admin() ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		echo '<p>' . __( 'Enter the email address of an existing user on this network to invite them to this site. That person will be sent an email asking them to confirm the invite.' ) . '</p>';
 		$label = __('Email');
 		$type  = 'email';

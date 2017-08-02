@@ -362,7 +362,11 @@ abstract class WP_Background_Process extends WP_Async_Request {
 			$memory_limit = '128M';
 		}
 
+<<<<<<< HEAD
+		if ( ! $memory_limit || -1 === intval( $memory_limit ) ) {
+=======
 		if ( ! $memory_limit || -1 === $memory_limit ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			// Unlimited, set to 32GB.
 			$memory_limit = '32000M';
 		}

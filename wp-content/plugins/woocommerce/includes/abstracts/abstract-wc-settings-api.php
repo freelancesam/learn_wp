@@ -1,4 +1,12 @@
 <?php
+<<<<<<< HEAD
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * Abstract Settings API Class
  *
@@ -58,7 +66,14 @@ abstract class WC_Settings_API {
 
 	/**
 	 * Set default required properties for each field.
+<<<<<<< HEAD
+	 *
+	 * @param array $field
+	 *
+	 * @return array
+=======
 	 * @param array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function set_defaults( $field ) {
 		if ( ! isset( $field['default'] ) ) {
@@ -273,9 +288,17 @@ abstract class WC_Settings_API {
 	 * Generate the HTML for the fields on the "settings" screen.
 	 *
 	 * @param  array $form_fields (default: array())
+<<<<<<< HEAD
+	 * @param bool $echo
+	 *
+	 * @return string the html for the settings
+	 * @since  1.0.0
+	 * @uses   method_exists()
+=======
 	 * @since  1.0.0
 	 * @uses   method_exists()
 	 * @return string the html for the settings
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function generate_settings_html( $form_fields = array(), $echo = true ) {
 		if ( empty( $form_fields ) ) {
@@ -875,7 +898,11 @@ abstract class WC_Settings_API {
 	 *
 	 * @param  string $key
 	 * @param  string $value Posted Value
+<<<<<<< HEAD
+	 * @return string|array
+=======
 	 * @return string
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function validate_multiselect_field( $key, $value ) {
 		return is_array( $value ) ? array_map( 'wc_clean', array_map( 'stripslashes', $value ) ) : '';
@@ -884,6 +911,11 @@ abstract class WC_Settings_API {
 	/**
 	 * Validate the data on the "Settings" form.
 	 * @deprecated 2.6.0 No longer used
+<<<<<<< HEAD
+	 *
+	 * @param array $form_fields
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function validate_settings_fields( $form_fields = array() ) {
 		wc_deprecated_function( 'validate_settings_fields', '2.6' );

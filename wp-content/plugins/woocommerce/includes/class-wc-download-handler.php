@@ -138,6 +138,11 @@ class WC_Download_Handler {
 
 	/**
 	 * @deprecated
+<<<<<<< HEAD
+	 *
+	 * @param $download_data
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function count_download( $download_data ) {}
 

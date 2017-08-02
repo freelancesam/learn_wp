@@ -52,8 +52,13 @@ function wp_dashboard_setup() {
 		wp_add_dashboard_widget( 'dashboard_quick_press', $quick_draft_title, 'wp_dashboard_quick_press' );
 	}
 
+<<<<<<< HEAD
+	// WordPress Events and News
+	wp_add_dashboard_widget( 'dashboard_primary', __( 'WordPress Events and News' ), 'wp_dashboard_events_news' );
+=======
 	// WordPress News
 	wp_add_dashboard_widget( 'dashboard_primary', __( 'WordPress News' ), 'wp_dashboard_primary' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( is_network_admin() ) {
 
@@ -191,7 +196,11 @@ function wp_add_dashboard_widget( $widget_id, $widget_name, $callback, $control_
  * @param array $meta_box
  */
 function _wp_dashboard_control_callback( $dashboard, $meta_box ) {
+<<<<<<< HEAD
+	echo '<form method="post" class="dashboard-widget-control-form wp-clearfix">';
+=======
 	echo '<form method="post" class="dashboard-widget-control-form">';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	wp_dashboard_trigger_widget_control( $meta_box['id'] );
 	wp_nonce_field( 'edit-dashboard-widget_' . $meta_box['id'], 'dashboard-widget-nonce' );
 	echo '<input type="hidden" name="widget_id" value="' . esc_attr($meta_box['id']) . '" />';
@@ -487,7 +496,11 @@ function wp_dashboard_quick_press( $error_msg = false ) {
 		$post = get_default_post_to_edit( 'post' , true);
 		$user_id = get_current_user_id();
 		// Don't create an option if this is a super admin who does not belong to this site.
+<<<<<<< HEAD
+		if ( in_array( get_current_blog_id(), array_keys( get_blogs_of_user( $user_id ) ) ) )
+=======
 		if ( ! ( is_super_admin( $user_id ) && ! in_array( get_current_blog_id(), array_keys( get_blogs_of_user( $user_id ) ) ) ) )
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			update_user_option( $user_id, 'dashboard_quick_press_last_post_id', (int) $post->ID ); // Save post_ID
 	}
 
@@ -968,7 +981,11 @@ function wp_dashboard_rss_output( $widget_id ) {
  * @return bool False on failure. True on success.
  */
 function wp_dashboard_cached_rss_widget( $widget_id, $callback, $check_urls = array() ) {
+<<<<<<< HEAD
+	$loading = '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><div class="hide-if-js notice notice-error inline"><p>' . __( 'This widget requires JavaScript.' ) . '</p></div>';
+=======
 	$loading = '<p class="widget-loading hide-if-no-js">' . __( 'Loading&#8230;' ) . '</p><p class="hide-if-js">' . __( 'This widget requires JavaScript.' ) . '</p>';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$doing_ajax = wp_doing_ajax();
 
 	if ( empty($check_urls) ) {
@@ -980,8 +997,13 @@ function wp_dashboard_cached_rss_widget( $widget_id, $callback, $check_urls = ar
 		$check_urls = array( $widgets[$widget_id]['url'] );
 	}
 
+<<<<<<< HEAD
+	$locale = get_user_locale();
+	$cache_key = 'dash_v2_' . md5( $widget_id . '_' . $locale );
+=======
 	$locale = get_locale();
 	$cache_key = 'dash_' . md5( $widget_id . '_' . $locale );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( false !== ( $output = get_transient( $cache_key ) ) ) {
 		echo $output;
 		return true;
@@ -1062,17 +1084,227 @@ function wp_dashboard_rss_control( $widget_id, $form_inputs = array() ) {
 			}
 		}
 		update_option( 'dashboard_widget_options', $widget_options );
+<<<<<<< HEAD
+		$locale = get_user_locale();
+		$cache_key = 'dash_v2_' . md5( $widget_id . '_' . $locale );
+=======
 		$cache_key = 'dash_' . md5( $widget_id );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		delete_transient( $cache_key );
 	}
 
 	wp_widget_rss_form( $widget_options[$widget_id], $form_inputs );
 }
 
+<<<<<<< HEAD
+
+/**
+ * Renders the Events and News dashboard widget.
+ *
+ * @since 4.8.0
+ */
+function wp_dashboard_events_news() {
+	wp_print_community_events_markup();
+
+	?>
+
+	<div class="wordpress-news hide-if-no-js">
+		<?php wp_dashboard_primary(); ?>
+	</div>
+
+	<p class="community-events-footer">
+		<?php
+			printf(
+				'<a href="%1$s" target="_blank">%2$s <span class="screen-reader-text">%3$s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a>',
+				'https://make.wordpress.org/community/meetups-landing-page',
+				__( 'Meetups' ),
+				/* translators: accessibility text */
+				__( '(opens in a new window)' )
+			);
+		?>
+
+		|
+
+		<?php
+			printf(
+				'<a href="%1$s" target="_blank">%2$s <span class="screen-reader-text">%3$s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a>',
+				'https://central.wordcamp.org/schedule/',
+				__( 'WordCamps' ),
+				/* translators: accessibility text */
+				__( '(opens in a new window)' )
+			);
+		?>
+
+		|
+
+		<?php
+			printf(
+				'<a href="%1$s" target="_blank">%2$s <span class="screen-reader-text">%3$s</span><span aria-hidden="true" class="dashicons dashicons-external"></span></a>',
+				/* translators: If a Rosetta site exists (e.g. https://es.wordpress.org/news/), then use that. Otherwise, leave untranslated. */
+				esc_url( __( 'https://wordpress.org/news/' ) ),
+				__( 'News' ),
+				/* translators: accessibility text */
+				__( '(opens in a new window)' )
+			);
+		?>
+	</p>
+
+	<?php
+}
+
+/**
+ * Prints the markup for the Community Events section of the Events and News Dashboard widget.
+ *
+ * @since 4.8.0
+ */
+function wp_print_community_events_markup() {
+	?>
+
+	<div class="community-events-errors notice notice-error inline hide-if-js">
+		<p class="hide-if-js">
+			<?php _e( 'This widget requires JavaScript.' ); ?>
+		</p>
+
+		<p class="community-events-error-occurred" aria-hidden="true">
+			<?php _e( 'An error occurred. Please try again.' ); ?>
+		</p>
+
+		<p class="community-events-could-not-locate" aria-hidden="true"></p>
+	</div>
+
+	<div class="community-events-loading hide-if-no-js">
+		<?php _e( 'Loading&hellip;' ); ?>
+	</div>
+
+	<?php
+	/*
+	 * Hide the main element when the page first loads, because the content
+	 * won't be ready until wp.communityEvents.renderEventsTemplate() has run.
+	 */
+	?>
+	<div id="community-events" class="community-events" aria-hidden="true">
+		<div class="activity-block">
+			<p>
+				<span id="community-events-location-message"></span>
+
+				<button class="button-link community-events-toggle-location" aria-label="<?php esc_attr_e( 'Edit city' ); ?>" aria-expanded="false">
+					<span class="dashicons dashicons-edit"></span>
+				</button>
+			</p>
+
+			<form class="community-events-form" aria-hidden="true" action="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>" method="post">
+				<label for="community-events-location">
+					<?php _e( 'City:' ); ?>
+				</label>
+				<?php
+				/* translators: Replace with a city related to your locale.
+				 * Test that it matches the expected location and has upcoming
+				 * events before including it. If no cities related to your
+				 * locale have events, then use a city related to your locale
+				 * that would be recognizable to most users. Use only the city
+				 * name itself, without any region or country. Use the endonym
+				 * (native locale name) instead of the English name if possible.
+				 */
+				?>
+				<input id="community-events-location" class="regular-text" type="text" name="community-events-location" placeholder="<?php esc_attr_e( 'Cincinnati' ); ?>" />
+
+				<?php submit_button( __( 'Submit' ), 'secondary', 'community-events-submit', false ); ?>
+
+				<button class="community-events-cancel button-link" type="button" aria-expanded="false">
+					<?php _e( 'Cancel' ); ?>
+				</button>
+
+				<span class="spinner"></span>
+			</form>
+		</div>
+
+		<ul class="community-events-results activity-block last"></ul>
+	</div>
+
+	<?php
+}
+
+/**
+ * Renders the events templates for the Event and News widget.
+ *
+ * @since 4.8.0
+ */
+function wp_print_community_events_templates() {
+	?>
+
+	<script id="tmpl-community-events-attend-event-near" type="text/template">
+		<?php printf(
+			/* translators: %s is a placeholder for the name of a city. */
+			__( 'Attend an upcoming event near %s.' ),
+			'<strong>{{ data.location.description }}</strong>'
+		); ?>
+	</script>
+
+	<script id="tmpl-community-events-could-not-locate" type="text/template">
+		<?php printf(
+			/* translators: %s is the name of the city we couldn't locate.
+			 * Replace the examples with cities in your locale, but test
+			 * that they match the expected location before including them.
+			 * Use endonyms (native locale names) whenever possible.
+			 */
+			__( 'We couldn&#8217;t locate %s. Please try another nearby city. For example: Kansas City; Springfield; Portland.' ),
+			'<em>{{data.unknownCity}}</em>'
+		); ?>
+	</script>
+
+	<script id="tmpl-community-events-event-list" type="text/template">
+		<# _.each( data.events, function( event ) { #>
+			<li class="event event-{{ event.type }} wp-clearfix">
+				<div class="event-info">
+					<div class="dashicons event-icon" aria-hidden="true"></div>
+					<div class="event-info-inner">
+						<a class="event-title" href="{{ event.url }}">{{ event.title }}</a>
+						<span class="event-city">{{ event.location.location }}</span>
+					</div>
+				</div>
+
+				<div class="event-date-time">
+					<span class="event-date">{{ event.formatted_date }}</span>
+					<# if ( 'meetup' === event.type ) { #>
+						<span class="event-time">{{ event.formatted_time }}</span>
+					<# } #>
+				</div>
+			</li>
+		<# } ) #>
+	</script>
+
+	<script id="tmpl-community-events-no-upcoming-events" type="text/template">
+		<li class="event-none">
+			<# if ( data.location.description ) { #>
+				<?php printf(
+					/* translators: 1: the city the user searched for, 2: meetup organization documentation URL */
+					__( 'There aren&#8217;t any events scheduled near %1$s at the moment. Would you like to <a href="%2$s">organize one</a>?' ),
+					'{{ data.location.description }}',
+					__( 'https://make.wordpress.org/community/handbook/meetup-organizer/welcome/' )
+				); ?>
+
+			<# } else { #>
+				<?php printf(
+					/* translators: meetup organization documentation URL. */
+					__( 'There aren&#8217;t any events scheduled near you at the moment. Would you like to <a href="%s">organize one</a>?' ),
+					__( 'https://make.wordpress.org/community/handbook/meetup-organizer/welcome/' )
+				); ?>
+			<# } #>
+		</li>
+	</script>
+	<?php
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * WordPress News dashboard widget.
  *
  * @since 2.7.0
+<<<<<<< HEAD
+ * @since 4.8.0 Removed popular plugins feed.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function wp_dashboard_primary() {
 	$feeds = array(
@@ -1105,9 +1337,15 @@ function wp_dashboard_primary() {
 			 */
 			'title'        => apply_filters( 'dashboard_primary_title', __( 'WordPress Blog' ) ),
 			'items'        => 1,
+<<<<<<< HEAD
+			'show_summary' => 0,
+			'show_author'  => 0,
+			'show_date'    => 0,
+=======
 			'show_summary' => 1,
 			'show_author'  => 0,
 			'show_date'    => 1,
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		),
 		'planet' => array(
 
@@ -1152,6 +1390,8 @@ function wp_dashboard_primary() {
 		)
 	);
 
+<<<<<<< HEAD
+=======
 	if ( ( ! defined( 'DISALLOW_FILE_MODS' ) || ! DISALLOW_FILE_MODS ) && ( ! is_multisite() && is_blog_admin() && current_user_can( 'install_plugins' ) ) || ( is_network_admin() && current_user_can( 'manage_network_plugins' ) && current_user_can( 'install_plugins' ) ) ) {
 		$feeds['plugins'] = array(
 			'link'         => '',
@@ -1166,6 +1406,7 @@ function wp_dashboard_primary() {
 		);
 	}
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	wp_dashboard_cached_rss_widget( 'dashboard_primary', 'wp_dashboard_primary_output', $feeds );
 }
 
@@ -1173,6 +1414,10 @@ function wp_dashboard_primary() {
  * Display the WordPress news feeds.
  *
  * @since 3.8.0
+<<<<<<< HEAD
+ * @since 4.8.0 Removed popular plugins feed.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * @param string $widget_id Widget ID.
  * @param array  $feeds     Array of RSS feeds.
@@ -1181,16 +1426,22 @@ function wp_dashboard_primary_output( $widget_id, $feeds ) {
 	foreach ( $feeds as $type => $args ) {
 		$args['type'] = $type;
 		echo '<div class="rss-widget">';
+<<<<<<< HEAD
+			wp_widget_rss_output( $args['url'], $args );
+=======
 		if ( $type === 'plugins' ) {
 			wp_dashboard_plugins_output( $args['url'], $args );
 		} else {
 			wp_widget_rss_output( $args['url'], $args );
 		}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		echo "</div>";
 	}
 }
 
 /**
+<<<<<<< HEAD
+=======
  * Display plugins text for the WordPress news widget.
  *
  * @since 2.5.0
@@ -1270,6 +1521,7 @@ function wp_dashboard_plugins_output( $rss, $args = array() ) {
 }
 
 /**
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * Display file upload quota on dashboard.
  *
  * Runs on the {@see 'activity_box_end'} hook in wp_dashboard_right_now().
@@ -1417,12 +1669,21 @@ function wp_check_browser_version() {
 
 		/**
 		 * Response should be an array with:
+<<<<<<< HEAD
+		 *  'platform' - string - A user-friendly platform name, if it can be determined
+		 *  'name' - string - A user-friendly browser name
+=======
 		 *  'name' - string - A user friendly browser name
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		 *  'version' - string - The version of the browser the user is using
 		 *  'current_version' - string - The most recent version of the browser
 		 *  'upgrade' - boolean - Whether the browser needs an upgrade
 		 *  'insecure' - boolean - Whether the browser is deemed insecure
+<<<<<<< HEAD
+		 *  'update_url' - string - The url to visit to upgrade
+=======
 		 *  'upgrade_url' - string - The url to visit to upgrade
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		 *  'img_src' - string - An image representing the browser
 		 *  'img_src_ssl' - string - An image (over SSL) representing the browser
 		 */

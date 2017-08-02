@@ -145,10 +145,16 @@
 				return;
 			}
 
+<<<<<<< HEAD
+			// Allow internal jump links and JS links to behave normally without preventing default.
+			isInternalJumpLink = ( '#' === link.attr( 'href' ).substr( 0, 1 ) );
+			if ( isInternalJumpLink || ! /^https?:$/.test( link.prop( 'protocol' ) ) ) {
+=======
 			isInternalJumpLink = ( '#' === link.attr( 'href' ).substr( 0, 1 ) );
 
 			// Allow internal jump links to behave normally without preventing default.
 			if ( isInternalJumpLink ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				return;
 			}
 
@@ -274,7 +280,11 @@
 	 * @returns {boolean} Is appropriate for changeset link.
 	 */
 	api.isLinkPreviewable = function isLinkPreviewable( element, options ) {
+<<<<<<< HEAD
+		var matchesAllowedUrl, parsedAllowedUrl, args, elementHost;
+=======
 		var matchesAllowedUrl, parsedAllowedUrl, args;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		args = _.extend( {}, { allowAdminAjax: false }, options || {} );
 
@@ -287,10 +297,18 @@
 			return false;
 		}
 
+<<<<<<< HEAD
+		elementHost = element.host.replace( /:(80|443)$/, '' );
+		parsedAllowedUrl = document.createElement( 'a' );
+		matchesAllowedUrl = ! _.isUndefined( _.find( api.settings.url.allowed, function( allowedUrl ) {
+			parsedAllowedUrl.href = allowedUrl;
+			return parsedAllowedUrl.protocol === element.protocol && parsedAllowedUrl.host.replace( /:(80|443)$/, '' ) === elementHost && 0 === element.pathname.indexOf( parsedAllowedUrl.pathname.replace( /\/$/, '' ) );
+=======
 		parsedAllowedUrl = document.createElement( 'a' );
 		matchesAllowedUrl = ! _.isUndefined( _.find( api.settings.url.allowed, function( allowedUrl ) {
 			parsedAllowedUrl.href = allowedUrl;
 			return parsedAllowedUrl.protocol === element.protocol && parsedAllowedUrl.host === element.host && 0 === element.pathname.indexOf( parsedAllowedUrl.pathname.replace( /\/$/, '' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		} ) );
 		if ( ! matchesAllowedUrl ) {
 			return false;
@@ -334,8 +352,13 @@
 			return;
 		}
 
+<<<<<<< HEAD
+		// Ignore links with href="#", href="#id", or non-HTTP protocols (e.g. javascript: and mailto:).
+		if ( '#' === $( element ).attr( 'href' ).substr( 0, 1 ) || ! /^https?:$/.test( element.protocol ) ) {
+=======
 		// Ignore links with href="#" or href="#id".
 		if ( '#' === $( element ).attr( 'href' ).substr( 0, 1 ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			return;
 		}
 

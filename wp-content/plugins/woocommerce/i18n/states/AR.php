@@ -9,6 +9,13 @@
  */
 global $states;
 
+<<<<<<< HEAD
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 $states['AR'] = array(
 	'C' => __( 'Ciudad Aut&oacute;noma de Buenos Aires', 'woocommerce' ),
 	'B' => __( 'Buenos Aires', 'woocommerce' ),

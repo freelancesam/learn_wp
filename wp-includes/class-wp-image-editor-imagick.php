@@ -549,6 +549,14 @@ class WP_Image_Editor_Imagick extends WP_Image_Editor {
 		try {
 			$this->image->rotateImage( new ImagickPixel('none'), 360-$angle );
 
+<<<<<<< HEAD
+			// Normalise Exif orientation data so that display is consistent across devices.
+			if ( is_callable( array( $this->image, 'setImageOrientation' ) ) && defined( 'Imagick::ORIENTATION_TOPLEFT' ) ) {
+				$this->image->setImageOrientation( Imagick::ORIENTATION_TOPLEFT );
+			}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			// Since this changes the dimensions of the image, update the size.
 			$result = $this->update_size();
 			if ( is_wp_error( $result ) )

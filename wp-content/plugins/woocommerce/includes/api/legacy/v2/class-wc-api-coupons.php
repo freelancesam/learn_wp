@@ -152,8 +152,15 @@ class WC_API_Coupons extends WC_API_Resource {
 	 * Get the total number of coupons
 	 *
 	 * @since 2.1
+<<<<<<< HEAD
+	 *
+	 * @param array $filter
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param array $filter
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_coupons_count( $filter = array() ) {
 		try {
@@ -197,8 +204,15 @@ class WC_API_Coupons extends WC_API_Resource {
 	 * Create a coupon
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param array $data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param array $data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_coupon( $data ) {
 		global $wpdb;
@@ -306,9 +320,17 @@ class WC_API_Coupons extends WC_API_Resource {
 	 * Edit a coupon
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param int $id the coupon ID
+	 * @param array $data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param int $id the coupon ID
 	 * @param array $data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function edit_coupon( $id, $data ) {
 
@@ -439,7 +461,11 @@ class WC_API_Coupons extends WC_API_Resource {
 	 * @since  2.2
 	 * @param int $id the coupon ID
 	 * @param bool $force true to permanently delete coupon, false to move to trash
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_coupon( $id, $force = false ) {
 
@@ -501,8 +527,15 @@ class WC_API_Coupons extends WC_API_Resource {
 	 * WC_API_Coupons->create_coupon() and WC_API_Coupons->edit_coupon()
 	 *
 	 * @since 2.4.0
+<<<<<<< HEAD
+	 *
+	 * @param array $data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param array $data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function bulk( $data ) {
 

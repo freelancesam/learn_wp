@@ -77,7 +77,11 @@ function twentyseventeen_customize_register( $wp_customize ) {
 		'label'       => __( 'Page Layout', 'twentyseventeen' ),
 		'section'     => 'theme_options',
 		'type'        => 'radio',
+<<<<<<< HEAD
+		'description' => __( 'When the two-column layout is assigned, the page title is in one column and content is in the other.', 'twentyseventeen' ),
+=======
 		'description' => __( 'When the two column layout is assigned, the page title is in one column and content is in the other.', 'twentyseventeen' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'choices'     => array(
 			'one-column' => __( 'One Column', 'twentyseventeen' ),
 			'two-column' => __( 'Two Column', 'twentyseventeen' ),
@@ -90,7 +94,11 @@ function twentyseventeen_customize_register( $wp_customize ) {
 	 *
 	 * @since Twenty Seventeen 1.0
 	 *
+<<<<<<< HEAD
+	 * @param int $num_sections Number of front page sections.
+=======
 	 * @param $num_sections integer
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	$num_sections = apply_filters( 'twentyseventeen_front_page_sections', 4 );
 
@@ -123,6 +131,11 @@ add_action( 'customize_register', 'twentyseventeen_customize_register' );
 
 /**
  * Sanitize the page layout options.
+<<<<<<< HEAD
+ *
+ * @param string $input Page layout.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function twentyseventeen_sanitize_page_layout( $input ) {
 	$valid = array(
@@ -139,11 +152,20 @@ function twentyseventeen_sanitize_page_layout( $input ) {
 
 /**
  * Sanitize the colorscheme.
+<<<<<<< HEAD
+ *
+ * @param string $input Color scheme.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function twentyseventeen_sanitize_colorscheme( $input ) {
 	$valid = array( 'light', 'dark', 'custom' );
 
+<<<<<<< HEAD
+	if ( in_array( $input, $valid, true ) ) {
+=======
 	if ( in_array( $input, $valid ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return $input;
 	}
 

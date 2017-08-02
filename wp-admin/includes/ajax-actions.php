@@ -246,7 +246,11 @@ function wp_ajax_autocomplete_user() {
 		wp_die( -1 );
 
 	/** This filter is documented in wp-admin/user-new.php */
+<<<<<<< HEAD
+	if ( ! current_user_can( 'manage_network_users' ) && ! apply_filters( 'autocomplete_users_for_site_admins', false ) )
+=======
 	if ( ! is_super_admin() && ! apply_filters( 'autocomplete_users_for_site_admins', false ) )
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		wp_die( -1 );
 
 	$return = array();
@@ -297,6 +301,59 @@ function wp_ajax_autocomplete_user() {
 }
 
 /**
+<<<<<<< HEAD
+ * Handles AJAX requests for community events
+ *
+ * @since 4.8.0
+ */
+function wp_ajax_get_community_events() {
+	require_once( ABSPATH . 'wp-admin/includes/class-wp-community-events.php' );
+
+	check_ajax_referer( 'community_events' );
+
+	$search         = isset( $_POST['location'] ) ? wp_unslash( $_POST['location'] ) : '';
+	$timezone       = isset( $_POST['timezone'] ) ? wp_unslash( $_POST['timezone'] ) : '';
+	$user_id        = get_current_user_id();
+	$saved_location = get_user_option( 'community-events-location', $user_id );
+	$events_client  = new WP_Community_Events( $user_id, $saved_location );
+	$events         = $events_client->get_events( $search, $timezone );
+	$ip_changed     = false;
+
+	if ( is_wp_error( $events ) ) {
+		wp_send_json_error( array(
+			'error' => $events->get_error_message(),
+		) );
+	} else {
+		if ( empty( $saved_location['ip'] ) && ! empty( $events['location']['ip'] ) ) {
+			$ip_changed = true;
+		} elseif ( isset( $saved_location['ip'] ) && ! empty( $events['location']['ip'] ) && $saved_location['ip'] !== $events['location']['ip'] ) {
+			$ip_changed = true;
+		}
+
+		/*
+		 * The location should only be updated when it changes. The API doesn't always return
+		 * a full location; sometimes it's missing the description or country. The location
+		 * that was saved during the initial request is known to be good and complete, though.
+		 * It should be left in tact until the user explicitly changes it (either by manually
+		 * searching for a new location, or by changing their IP address).
+		 *
+		 * If the location were updated with an incomplete response from the API, then it could
+		 * break assumptions that the UI makes (e.g., that there will always be a description
+		 * that corresponds to a latitude/longitude location).
+		 *
+		 * The location is stored network-wide, so that the user doesn't have to set it on each site.
+		 */
+		if ( $ip_changed || $search ) {
+			update_user_option( $user_id, 'community-events-location', $events['location'], true );
+		}
+
+		wp_send_json_success( $events );
+	}
+}
+
+/**
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * Ajax handler for dashboard widgets.
  *
  * @since 3.4.0
@@ -472,11 +529,19 @@ function _wp_ajax_add_hierarchical_term() {
 		$category_nicename = sanitize_title($cat_name);
 		if ( '' === $category_nicename )
 			continue;
+<<<<<<< HEAD
+
+		$cat_id = wp_insert_term( $cat_name, $taxonomy->name, array( 'parent' => $parent ) );
+		if ( ! $cat_id || is_wp_error( $cat_id ) ) {
+			continue;
+		} else {
+=======
 		if ( !$cat_id = term_exists( $cat_name, $taxonomy->name, $parent ) )
 			$cat_id = wp_insert_term( $cat_name, $taxonomy->name, array( 'parent' => $parent ) );
 		if ( is_wp_error( $cat_id ) ) {
 			continue;
 		} elseif ( is_array( $cat_id ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$cat_id = $cat_id['term_id'];
 		}
 		$checked_categories[] = $cat_id;
@@ -806,11 +871,19 @@ function wp_ajax_add_link_category( $action ) {
 		$slug = sanitize_title($cat_name);
 		if ( '' === $slug )
 			continue;
+<<<<<<< HEAD
+
+		$cat_id = wp_insert_term( $cat_name, 'link_category' );
+		if ( ! $cat_id || is_wp_error( $cat_id ) ) {
+			continue;
+		} else {
+=======
 		if ( !$cat_id = term_exists( $cat_name, 'link_category' ) )
 			$cat_id = wp_insert_term( $cat_name, 'link_category' );
 		if ( is_wp_error( $cat_id ) ) {
 			continue;
 		} elseif ( is_array( $cat_id ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$cat_id = $cat_id['term_id'];
 		}
 		$cat_name = esc_html( $cat_name );
@@ -1497,7 +1570,14 @@ function wp_ajax_wp_link_ajax() {
 
 	$args['pagenum'] = ! empty( $_POST['page'] ) ? absint( $_POST['page'] ) : 1;
 
+<<<<<<< HEAD
+	if ( ! class_exists( '_WP_Editors', false ) ) {
+		require( ABSPATH . WPINC . '/class-wp-editor.php' );
+	}
+
+=======
 	require(ABSPATH . WPINC . '/class-wp-editor.php');
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$results = _WP_Editors::wp_link_query( $args );
 
 	if ( ! isset( $results ) )
@@ -1598,6 +1678,11 @@ function wp_ajax_sample_permalink() {
  * Ajax handler for Quick Edit saving a post from a list table.
  *
  * @since 3.1.0
+<<<<<<< HEAD
+ *
+ * @global string $mode List table view mode.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function wp_ajax_inline_save() {
 	global $mode;
@@ -1966,9 +2051,17 @@ function wp_ajax_delete_inactive_widgets() {
 	}
 
 	unset( $_POST['removeinactivewidgets'], $_POST['action'] );
+<<<<<<< HEAD
+	/** This action is documented in wp-admin/includes/ajax-actions.php */
+	do_action( 'load-widgets.php' );
+	/** This action is documented in wp-admin/includes/ajax-actions.php */
+	do_action( 'widgets.php' );
+	/** This action is documented in wp-admin/widgets.php */
+=======
 
 	do_action( 'load-widgets.php' );
 	do_action( 'widgets.php' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	do_action( 'sidebar_admin_setup' );
 
 	$sidebars_widgets = wp_get_sidebars_widgets();
@@ -2702,7 +2795,11 @@ function wp_ajax_send_link_to_editor() {
 			$type = $ext_type;
 
 	/** This filter is documented in wp-admin/includes/media.php */
+<<<<<<< HEAD
+	$html = apply_filters( "{$type}_send_to_editor_url", $html, $src, $link_text );
+=======
 	$html = apply_filters( $type . '_send_to_editor_url', $html, $src, $link_text );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	wp_send_json_success( $html );
 }
@@ -3002,7 +3099,10 @@ function wp_ajax_parse_embed() {
 		$parsed = $styles . $html . $scripts;
 	}
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	if ( ! empty( $no_ssl_support ) || ( is_ssl() && ( preg_match( '%<(iframe|script|embed) [^>]*src="http://%', $parsed ) ||
 		preg_match( '%<link [^>]*href="http://%', $parsed ) ) ) ) {
 		// Admin is ssl and the embed is not. Iframes, scripts, and other "active content" will be blocked.
@@ -3012,10 +3112,30 @@ function wp_ajax_parse_embed() {
 		) );
 	}
 
+<<<<<<< HEAD
+	$return = array(
+		'body' => $parsed,
+		'attr' => $wp_embed->last_attr
+	);
+
+	if ( strpos( $parsed, 'class="wp-embedded-content' ) ) {
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			$script_src = includes_url( 'js/wp-embed.js' );
+		} else {
+			$script_src = includes_url( 'js/wp-embed.min.js' );
+		}
+
+		$return['head'] = '<script src="' . $script_src . '"></script>';
+		$return['sandbox'] = true;
+	}
+
+	wp_send_json_success( $return );
+=======
 	wp_send_json_success( array(
 		'body' => $parsed,
 		'attr' => $wp_embed->last_attr
 	) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
@@ -3112,7 +3232,11 @@ function wp_ajax_destroy_sessions() {
 		$message = __( 'You are now logged out everywhere else.' );
 	} else {
 		$sessions->destroy_all();
+<<<<<<< HEAD
+		/* translators: %s: User's display name. */
+=======
 		/* translators: 1: User's display name. */
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$message = sprintf( __( '%s has been logged out.' ), $user->display_name );
 	}
 

@@ -476,7 +476,12 @@ class WP_Posts_List_Table extends WP_List_Table {
 			 *
 			 * @param string $post_type The post type slug.
 			 * @param string $which     The location of the extra table nav markup:
+<<<<<<< HEAD
+			 *                          'top' or 'bottom' for WP_Posts_List_Table,
+			 *                          'bar' for WP_Media_List_Table.
+=======
 			 *                          'top' or 'bottom'.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			 */
 			do_action( 'restrict_manage_posts', $this->screen->post_type, $which );
 
@@ -488,7 +493,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 			}
 		}
 
+<<<<<<< HEAD
+		if ( $this->is_trash && current_user_can( get_post_type_object( $this->screen->post_type )->cap->edit_others_posts ) && $this->has_items() ) {
+=======
 		if ( $this->is_trash && current_user_can( get_post_type_object( $this->screen->post_type )->cap->edit_others_posts ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			submit_button( __( 'Empty Trash' ), 'apply', 'delete_all', false );
 		}
 ?>
@@ -870,7 +879,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 * @since 4.3.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @global string $mode List table view mode.
+=======
 	 * @global string $mode
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param WP_Post $post The current WP_Post object.
 	 */
@@ -967,7 +980,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 * @since 4.3.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @global string $mode List table view mode.
+=======
 	 * @global string $mode
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param WP_Post $post The current WP_Post object.
 	 */
@@ -992,6 +1009,35 @@ class WP_Posts_List_Table extends WP_List_Table {
 		}
 
 		if ( 'publish' === $post->post_status ) {
+<<<<<<< HEAD
+			$status = __( 'Published' );
+		} elseif ( 'future' === $post->post_status ) {
+			if ( $time_diff > 0 ) {
+				$status = '<strong class="error-message">' . __( 'Missed schedule' ) . '</strong>';
+			} else {
+				$status = __( 'Scheduled' );
+			}
+		} else {
+			$status = __( 'Last Modified' );
+		}
+
+		/**
+		 * Filters the status text of the post.
+		 *
+		 * @since 4.8.0
+		 *
+		 * @param string  $status      The status text.
+		 * @param WP_Post $post        Post object.
+		 * @param string  $column_name The column name.
+		 * @param string  $mode        The list display mode ('excerpt' or 'list').
+		 */
+		$status = apply_filters( 'post_date_column_status', $status, $post, 'date', $mode );
+
+		if ( $status ) {
+			echo $status . '<br />';
+		}
+
+=======
 			_e( 'Published' );
 		} elseif ( 'future' === $post->post_status ) {
 			if ( $time_diff > 0 ) {
@@ -1003,6 +1049,7 @@ class WP_Posts_List_Table extends WP_List_Table {
 			_e( 'Last Modified' );
 		}
 		echo '<br />';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( 'excerpt' === $mode ) {
 			/**
 			 * Filters the published time of the post.
@@ -1271,7 +1318,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 				if ( $can_edit_post ) {
 					$preview_link = get_preview_post_link( $post );
 					$actions['view'] = sprintf(
+<<<<<<< HEAD
+						'<a href="%s" rel="bookmark" aria-label="%s">%s</a>',
+=======
 						'<a href="%s" rel="permalink" aria-label="%s">%s</a>',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						esc_url( $preview_link ),
 						/* translators: %s: post title */
 						esc_attr( sprintf( __( 'Preview &#8220;%s&#8221;' ), $title ) ),
@@ -1280,7 +1331,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 				}
 			} elseif ( 'trash' != $post->post_status ) {
 				$actions['view'] = sprintf(
+<<<<<<< HEAD
+					'<a href="%s" rel="bookmark" aria-label="%s">%s</a>',
+=======
 					'<a href="%s" rel="permalink" aria-label="%s">%s</a>',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					get_permalink( $post->ID ),
 					/* translators: %s: post title */
 					esc_attr( sprintf( __( 'View &#8220;%s&#8221;' ), $title ) ),
@@ -1329,7 +1384,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 	 *
 	 * @since 3.1.0
 	 *
+<<<<<<< HEAD
+	 * @global string $mode List table view mode.
+=======
 	 * @global string $mode
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function inline_edit() {
 		global $mode;
@@ -1420,7 +1479,11 @@ class WP_Posts_List_Table extends WP_List_Table {
 		if ( post_type_supports( $screen->post_type, 'author' ) ) :
 			$authors_dropdown = '';
 
+<<<<<<< HEAD
+			if ( current_user_can( $post_type_object->cap->edit_others_posts ) ) :
+=======
 			if ( is_super_admin() || current_user_can( $post_type_object->cap->edit_others_posts ) ) :
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$users_opt = array(
 					'hide_if_only_one_author' => false,
 					'who' => 'authors',

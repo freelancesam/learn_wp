@@ -50,7 +50,11 @@ if ( ! function_exists( 'wc_create_new_customer' ) ) {
 		}
 
 		if ( email_exists( $email ) ) {
+<<<<<<< HEAD
+			return new WP_Error( 'registration-error-email-exists', __( 'An account is already registered with your email address. Please log in.', 'woocommerce' ) );
+=======
 			return new WP_Error( 'registration-error-email-exists', __( 'An account is already registered with your email address. Please login.', 'woocommerce' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		// Handle username creation.
@@ -502,12 +506,20 @@ function wc_review_is_from_verified_owner( $comment_id ) {
  * @since 2.5.0
  */
 function wc_disable_author_archives_for_customers() {
+<<<<<<< HEAD
+	global $author;
+=======
 	global $wp_query, $author;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	if ( is_author() ) {
 		$user = get_user_by( 'id', $author );
 
+<<<<<<< HEAD
+		if ( user_can( $user, 'customer' ) && ! user_can( $user, 'edit_posts' ) ) {
+=======
 		if ( isset( $user->roles[0] ) && 'customer' === $user->roles[0] ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			wp_redirect( wc_get_page_permalink( 'shop' ) );
 		}
 	}
@@ -602,6 +614,8 @@ function wc_get_customer_last_order( $customer_id ) {
 
 	return wc_get_order( $id );
 }
+<<<<<<< HEAD
+=======
 
 /**
  * Wrapper for @see get_avatar() which doesn't simply return
@@ -625,3 +639,4 @@ function wc_get_customer_avatar_url( $email ) {
 
 	return null;
 }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

@@ -178,6 +178,14 @@ class WC_Widget_Rating_Filter extends WC_Widget {
 				$link_ratings = implode( ',', array_merge( $rating_filter, array( $rating ) ) );
 			}
 
+<<<<<<< HEAD
+			$class       = in_array( $rating, $rating_filter ) ? 'wc-layered-nav-rating chosen' : 'wc-layered-nav-rating';
+			$link        = apply_filters( 'woocommerce_rating_filter_link', $link_ratings ? add_query_arg( 'rating_filter', $link_ratings ) : remove_query_arg( 'rating_filter' ) );
+			$rating_html = wc_get_star_rating_html( $rating );
+			$count_html  = esc_html( apply_filters( 'woocommerce_rating_filter_count', "({$count})", $count, $rating ) );
+
+			printf( '<li class="%s"><a href="%s"><span class="star-rating">%s</span> %s</a></li>', esc_attr( $class ), esc_url( $link ), $rating_html, $count_html );
+=======
 			$link  = $link_ratings ? add_query_arg( 'rating_filter', $link_ratings ) : remove_query_arg( 'rating_filter' );
 
 			echo '<li class="wc-layered-nav-rating ' . ( in_array( $rating, $rating_filter ) ? 'chosen' : '' ) . '">';
@@ -191,6 +199,7 @@ class WC_Widget_Rating_Filter extends WC_Widget {
 			echo '</a>';
 
 			echo '</li>';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		echo '</ul>';

@@ -205,7 +205,11 @@ function wp_cookie_constants() {
 		if ( $siteurl )
 			define( 'COOKIEHASH', md5( $siteurl ) );
 		else
+<<<<<<< HEAD
+			define( 'COOKIEHASH', '' );
+=======
 			define( 'COOKIEHASH', md5( wp_guess_url() ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

@@ -172,12 +172,20 @@ class WP_Media_List_Table extends WP_List_Table {
 			}
 
 			/** This action is documented in wp-admin/includes/class-wp-posts-list-table.php */
+<<<<<<< HEAD
+			do_action( 'restrict_manage_posts', $this->screen->post_type, $which );
+=======
 			do_action( 'restrict_manage_posts', $this->screen->post_type );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			submit_button( __( 'Filter' ), '', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
 		}
 
+<<<<<<< HEAD
+		if ( $this->is_trash && current_user_can( 'edit_others_posts' ) && $this->has_items() ) {
+=======
 		if ( $this->is_trash && current_user_can( 'edit_others_posts' ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			submit_button( __( 'Empty Trash' ), 'apply', 'delete_all', false );
 		} ?>
 		</div>
@@ -219,7 +227,11 @@ class WP_Media_List_Table extends WP_List_Table {
 	/**
 	 * Override parent views so we can use the filter bar display.
 	 *
+<<<<<<< HEAD
+	 * @global string $mode List table view mode.
+=======
 	 * @global string $mode
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function views() {
 		global $mode;
@@ -678,7 +690,11 @@ class WP_Media_List_Table extends WP_List_Table {
 				}
 			}
 			$actions['view'] = sprintf(
+<<<<<<< HEAD
+				'<a href="%s" aria-label="%s" rel="bookmark">%s</a>',
+=======
 				'<a href="%s" aria-label="%s" rel="permalink">%s</a>',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				get_permalink( $post->ID ),
 				/* translators: %s: attachment title */
 				esc_attr( sprintf( __( 'View &#8220;%s&#8221;' ), $att_title ) ),
@@ -737,7 +753,11 @@ class WP_Media_List_Table extends WP_List_Table {
 			}
 			if ( ! $this->is_trash ) {
 				$actions['view'] = sprintf(
+<<<<<<< HEAD
+					'<a href="%s" aria-label="%s" rel="bookmark">%s</a>',
+=======
 					'<a href="%s" aria-label="%s" rel="permalink">%s</a>',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					get_permalink( $post->ID ),
 					/* translators: %s: attachment title */
 					esc_attr( sprintf( __( 'View &#8220;%s&#8221;' ), $att_title ) ),

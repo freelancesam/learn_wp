@@ -828,8 +828,14 @@ function wp_kses_attr($element, $attr, $allowed_html, $allowed_protocols) {
 		$xhtml_slash = ' /';
 
 	// Are any attributes allowed at all for this element?
+<<<<<<< HEAD
+	if ( ! isset( $allowed_html[ strtolower( $element ) ] ) || true === $allowed_html[ strtolower( $element ) ] || count( $allowed_html[ strtolower( $element ) ] ) == 0 ) {
+		return "<$element$xhtml_slash>";
+	}
+=======
 	if ( ! isset($allowed_html[strtolower($element)]) || count($allowed_html[strtolower($element)]) == 0 )
 		return "<$element$xhtml_slash>";
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Split it
 	$attrarr = wp_kses_hair($attr, $allowed_protocols);
@@ -1449,6 +1455,10 @@ function wp_kses_normalize_entities2($matches) {
  * This function helps wp_kses_normalize_entities() to only accept valid Unicode
  * numeric entities in hex form.
  *
+<<<<<<< HEAD
+ * @since 2.7.0
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @access private
  *
  * @param array $matches preg_replace_callback() matches array
@@ -1465,6 +1475,11 @@ function wp_kses_normalize_entities3($matches) {
 /**
  * Helper function to determine if a Unicode value is valid.
  *
+<<<<<<< HEAD
+ * @since 2.7.0
+ *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @param int $i Unicode value
  * @return bool True if the value was a valid Unicode number
  */
@@ -1497,6 +1512,11 @@ function wp_kses_decode_entities($string) {
 /**
  * Regex callback for wp_kses_decode_entities()
  *
+<<<<<<< HEAD
+ * @since 2.9.0
+ *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @param array $match preg match
  * @return string
  */
@@ -1507,6 +1527,11 @@ function _wp_kses_decode_entities_chr( $match ) {
 /**
  * Regex callback for wp_kses_decode_entities()
  *
+<<<<<<< HEAD
+ * @since 2.9.0
+ *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * @param array $match preg match
  * @return string
  */

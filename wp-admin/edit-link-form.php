@@ -70,7 +70,17 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<a href="link-add.php" class="page-title-action"><?php echo esc_html_x( 'Add New', 'link' ); ?></a>
+
+<hr class="wp-header-end">
+=======
 <h1><?php echo esc_html( $title ); ?>  <a href="link-add.php" class="page-title-action"><?php echo esc_html_x('Add New', 'link'); ?></a></h1>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 <?php if ( isset( $_GET['added'] ) ) : ?>
 <div id="message" class="updated notice is-dismissible"><p><?php _e('Link added.'); ?></p></div>

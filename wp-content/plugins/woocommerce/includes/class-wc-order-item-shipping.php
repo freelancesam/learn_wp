@@ -110,8 +110,12 @@ class WC_Order_Item_Shipping extends WC_Order_Item {
 	/**
 	 * Set properties based on passed in shipping rate object.
 	 *
+<<<<<<< HEAD
+	 * @param WC_Shipping_Rate $shipping_rate
+=======
 	 * @param WC_Shipping_Rate $tax_rate_id
 	 * @throws WC_Data_Exception
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function set_shipping_rate( $shipping_rate ) {
 		$this->set_method_title( $shipping_rate->label );

@@ -215,7 +215,11 @@ class WC_Cart {
 		 */
 		$cart = WC()->session->get( 'cart', null );
 
+<<<<<<< HEAD
+		if ( is_null( $cart ) && ( $saved_cart = get_user_meta( get_current_user_id(), '_woocommerce_persistent_cart_' . get_current_blog_id(), true ) ) ) {
+=======
 		if ( is_null( $cart ) && ( $saved_cart = get_user_meta( get_current_user_id(), '_woocommerce_persistent_cart', true ) ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$cart                = $saved_cart['cart'];
 			$update_cart_session = true;
 		} elseif ( is_null( $cart ) ) {
@@ -314,7 +318,11 @@ class WC_Cart {
 	 * Save the persistent cart when the cart is updated.
 	 */
 	public function persistent_cart_update() {
+<<<<<<< HEAD
+		update_user_meta( get_current_user_id(), '_woocommerce_persistent_cart_' . get_current_blog_id(), array(
+=======
 		update_user_meta( get_current_user_id(), '_woocommerce_persistent_cart', array(
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'cart' => WC()->session->get( 'cart' ),
 		) );
 	}
@@ -323,7 +331,11 @@ class WC_Cart {
 	 * Delete the persistent cart permanently.
 	 */
 	public function persistent_cart_destroy() {
+<<<<<<< HEAD
+		delete_user_meta( get_current_user_id(), '_woocommerce_persistent_cart_' . get_current_blog_id() );
+=======
 		delete_user_meta( get_current_user_id(), '_woocommerce_persistent_cart' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/*
@@ -888,6 +900,12 @@ class WC_Cart {
 			// Get the product
 			$product_data = wc_get_product( $variation_id ? $variation_id : $product_id );
 
+<<<<<<< HEAD
+			// Filter quantity being added to the cart before stock checks
+			$quantity     = apply_filters( 'woocommerce_add_to_cart_quantity', $quantity, $product_id );
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			// Sanity check
 			if ( $quantity <= 0 || ! $product_data || 'trash' === $product_data->get_status() ) {
 				return false;
@@ -904,10 +922,17 @@ class WC_Cart {
 
 			// Force quantity to 1 if sold individually and check for existing item in cart
 			if ( $product_data->is_sold_individually() ) {
+<<<<<<< HEAD
+				$quantity      = apply_filters( 'woocommerce_add_to_cart_sold_individually_quantity', 1, $quantity, $product_id, $variation_id, $cart_item_data );
+				$found_in_cart = apply_filters( 'woocommerce_add_to_cart_sold_individually_found_in_cart', $cart_item_key && $this->cart_contents[ $cart_item_key ]['quantity'] > 0, $product_id, $variation_id, $cart_item_data, $cart_id );
+
+				if ( $found_in_cart ) {
+=======
 				$quantity         = apply_filters( 'woocommerce_add_to_cart_sold_individually_quantity', 1, $quantity, $product_id, $variation_id, $cart_item_data );
 				$in_cart_quantity = $cart_item_key ? $this->cart_contents[ $cart_item_key ]['quantity'] : 0;
 
 				if ( $in_cart_quantity > 0 ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					/* translators: %s: product name */
 					throw new Exception( sprintf( '<a href="%s" class="button wc-forward">%s</a> %s', wc_get_cart_url(), __( 'View cart', 'woocommerce' ), sprintf( __( 'You cannot add another "%s" to your cart.', 'woocommerce' ), $product_data->get_name() ) ) );
 				}
@@ -1359,8 +1384,21 @@ class WC_Cart {
 		// Only calculate the grand total + shipping if on the cart/checkout
 		if ( is_checkout() || is_cart() || defined( 'WOOCOMMERCE_CHECKOUT' ) || defined( 'WOOCOMMERCE_CART' ) ) {
 
+<<<<<<< HEAD
+			// Calculate the Shipping.
+			$local_pickup_methods = apply_filters( 'woocommerce_local_pickup_methods', array( 'legacy_local_pickup', 'local_pickup' ) );
+			$had_local_pickup     = 0 < count( array_intersect( wc_get_chosen_shipping_method_ids(), $local_pickup_methods ) );
+			$this->calculate_shipping();
+			$has_local_pickup     = 0 < count( array_intersect( wc_get_chosen_shipping_method_ids(), $local_pickup_methods ) );
+
+			// If methods changed and local pickup is selected, we need to do a recalculation of taxes.
+			if ( true === apply_filters( 'woocommerce_apply_base_tax_for_local_pickup', true ) && $had_local_pickup !== $has_local_pickup ) {
+				return $this->calculate_totals();
+			}
+=======
 			// Calculate the Shipping
 			$this->calculate_shipping();
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// Trigger the fees API where developers can add fees to the cart
 			$this->calculate_fees();
@@ -1447,8 +1485,13 @@ class WC_Cart {
 		}
 
 		// Get totals for the chosen shipping method
+<<<<<<< HEAD
+		$this->shipping_total = WC()->shipping->shipping_total; // Shipping Total
+		$this->shipping_taxes = WC()->shipping->shipping_taxes; // Shipping Taxes
+=======
 		$this->shipping_total 		= WC()->shipping->shipping_total;	// Shipping Total
 		$this->shipping_taxes		= WC()->shipping->shipping_taxes;	// Shipping Taxes
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**
@@ -1504,6 +1547,10 @@ class WC_Cart {
 						'address'   => WC()->customer->get_shipping_address(),
 						'address_2' => WC()->customer->get_shipping_address_2(),
 					),
+<<<<<<< HEAD
+					'cart_subtotal'       => $this->get_displayed_subtotal(),
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				),
 			)
 		);
@@ -1554,8 +1601,14 @@ class WC_Cart {
 	 * @return bool
 	 */
 	public function show_shipping() {
+<<<<<<< HEAD
+		if ( ! wc_shipping_enabled() || ! is_array( $this->cart_contents ) ) {
+			return false;
+		}
+=======
 		if ( ! wc_shipping_enabled() || ! is_array( $this->cart_contents ) )
 			return false;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		if ( 'yes' === get_option( 'woocommerce_shipping_cost_requires_address' ) ) {
 			if ( ! WC()->customer->has_calculated_shipping() ) {
@@ -1792,6 +1845,12 @@ class WC_Cart {
 
 	/**
 	 * Get array of applied coupon objects and codes.
+<<<<<<< HEAD
+	 *
+	 * @param null $deprecated
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array of applied coupons
 	 */
 	public function get_coupons( $deprecated = null ) {
@@ -1846,6 +1905,11 @@ class WC_Cart {
 
 	/**
 	 * Remove coupons from the cart of a defined type. Type 1 is before tax, type 2 is after tax.
+<<<<<<< HEAD
+	 *
+	 * @param null $deprecated
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function remove_coupons( $deprecated = null ) {
 		$this->applied_coupons = $this->coupon_discount_amounts = $this->coupon_discount_tax_amounts = $this->coupon_applied_count = array();
@@ -2225,11 +2289,23 @@ class WC_Cart {
 	public function get_taxes_total( $compound = true, $display = true ) {
 		$total = 0;
 		foreach ( $this->taxes as $key => $tax ) {
+<<<<<<< HEAD
+			if ( ! $compound && WC_Tax::is_compound( $key ) ) {
+				continue;
+			}
+			$total += $tax;
+		}
+		foreach ( $this->shipping_taxes as $key => $tax ) {
+			if ( ! $compound && WC_Tax::is_compound( $key ) ) {
+				continue;
+			}
+=======
 			if ( ! $compound && WC_Tax::is_compound( $key ) ) continue;
 			$total += $tax;
 		}
 		foreach ( $this->shipping_taxes as $key => $tax ) {
 			if ( ! $compound && WC_Tax::is_compound( $key ) ) continue;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$total += $tax;
 		}
 		if ( $display ) {
@@ -2300,6 +2376,12 @@ class WC_Cart {
 	/**
 	 * Function to apply cart discounts after tax.
 	 * @deprecated Coupons can not be applied after tax
+<<<<<<< HEAD
+	 *
+	 * @param $values
+	 * @param $price
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function apply_cart_discounts_after_tax( $values, $price ) {
 		wc_deprecated_function( 'apply_cart_discounts_after_tax', '2.3' );
@@ -2308,6 +2390,12 @@ class WC_Cart {
 	/**
 	 * Function to apply product discounts after tax.
 	 * @deprecated Coupons can not be applied after tax
+<<<<<<< HEAD
+	 *
+	 * @param $values
+	 * @param $price
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function apply_product_discounts_after_tax( $values, $price ) {
 		wc_deprecated_function( 'apply_product_discounts_after_tax', '2.3' );

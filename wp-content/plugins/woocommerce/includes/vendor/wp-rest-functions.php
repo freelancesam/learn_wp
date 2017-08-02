@@ -140,6 +140,13 @@ if ( ! function_exists( 'register_rest_field' ) ) {
 if ( ! function_exists( 'register_api_field' ) ) {
 	/**
 	 * Backwards compat shim
+<<<<<<< HEAD
+	 *
+	 * @param array|string $object_type
+	 * @param string $attributes
+	 * @param array $args
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	function register_api_field( $object_type, $attributes, $args = array() ) {
 		wc_deprecated_function( 'register_api_field', 'WPAPI-2.0', 'register_rest_field' );

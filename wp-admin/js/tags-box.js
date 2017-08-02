@@ -92,7 +92,11 @@ var tagBox, array_unique_noempty;
 					 */
 					xbutton = $( '<button type="button" id="' + id + '-check-num-' + key + '" class="ntdelbutton">' +
 						'<span class="remove-tag-icon" aria-hidden="true"></span>' +
+<<<<<<< HEAD
+						'<span class="screen-reader-text">' + window.tagsSuggestL10n.removeTerm + ' ' + span.html() + '</span>' +
+=======
 						'<span class="screen-reader-text">' + window.tagsSuggestL10n.removeTerm + ' ' + val + '</span>' +
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						'</button>' );
 
 					xbutton.on( 'click keypress', function( e ) {

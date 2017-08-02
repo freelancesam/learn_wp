@@ -207,7 +207,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
+	 * @global string $mode List table view mode.
+=======
 	 * @global string $mode
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param string $which
 	 */
@@ -295,7 +299,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * @since 4.3.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @global string $mode List table view mode.
+=======
 	 * @global string $mode
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @param array $blog Current site.
 	 */
@@ -315,7 +323,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 		if ( ! empty( $blog_states ) ) {
 			$state_count = count( $blog_states );
 			$i = 0;
+<<<<<<< HEAD
+			$blog_state .= ' &mdash; ';
+=======
 			$blog_state .= ' - ';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			foreach ( $blog_states as $state ) {
 				++$i;
 				$sep = ( $i == $state_count ) ? '' : ', ';
@@ -324,7 +336,14 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 		}
 
 		?>
+<<<<<<< HEAD
+		<strong>
+			<a href="<?php echo esc_url( network_admin_url( 'site-info.php?id=' . $blog['blog_id'] ) ); ?>" class="edit"><?php echo $blogname; ?></a>
+			<?php echo $blog_state; ?>
+		</strong>
+=======
 		<a href="<?php echo esc_url( network_admin_url( 'site-info.php?id=' . $blog['blog_id'] ) ); ?>" class="edit"><?php echo $blogname . $blog_state; ?></a>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<?php
 		if ( 'list' !== $mode ) {
 			switch_to_blog( $blog['blog_id'] );
@@ -346,6 +365,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * @since 4.3.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @global string $mode List table view mode.
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array $blog Current site.
 	 */
 	public function column_lastupdated( $blog ) {
@@ -366,6 +390,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 	 * @since 4.3.0
 	 * @access public
 	 *
+<<<<<<< HEAD
+	 * @global string $mode List table view mode.
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array $blog Current site.
 	 */
 	public function column_registered( $blog ) {
@@ -542,7 +571,11 @@ class WP_MS_Sites_List_Table extends WP_List_Table {
 			}
 		}
 
+<<<<<<< HEAD
+		$actions['visit']	= "<a href='" . esc_url( get_home_url( $blog['blog_id'], '/' ) ) . "' rel='bookmark'>" . __( 'Visit' ) . '</a>';
+=======
 		$actions['visit']	= "<a href='" . esc_url( get_home_url( $blog['blog_id'], '/' ) ) . "' rel='permalink'>" . __( 'Visit' ) . '</a>';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		/**
 		 * Filters the action links displayed for each site in the Sites list table.

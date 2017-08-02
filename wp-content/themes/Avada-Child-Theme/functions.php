@@ -84,6 +84,12 @@ function custom_add_style_files() {
 
     remove_action('woocommerce_cart_totals_after_shipping', 'wcso_review_order_shipping_options', 10);
     add_action('woocommerce_cart_totals_after_shipping', 'wcso_review_order_shipping_options_custom', 10);
+<<<<<<< HEAD
+    
+    remove_action('woocommerce_review_order_after_shipping', 'wcso_review_order_shipping_options', 10);
+    add_action('woocommerce_review_order_after_shipping', 'wcso_review_order_shipping_options_custom', 10);
+}
+=======
 
     remove_action('woocommerce_review_order_after_shipping', 'wcso_review_order_shipping_options', 10);
     add_action('woocommerce_review_order_after_shipping', 'wcso_review_order_shipping_options_custom', 10);
@@ -112,3 +118,4 @@ function wc_ninja_remove_password_strength() {
 	}
 }
 add_action( 'wp_print_scripts', 'wc_ninja_remove_password_strength', 100 );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

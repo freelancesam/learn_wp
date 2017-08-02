@@ -22,7 +22,11 @@ class WC_Data_Store {
 	 * Contains an array of default WC supported data stores.
 	 * Format of object name => class name.
 	 * Example: 'product' => 'WC_Product_Data_Store_CPT'
+<<<<<<< HEAD
+	 * You can also pass something like product_<type> for product stores and
+=======
 	 * You can aso pass something like product_<type> for product stores and
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * that type will be used first when avaiable, if a store is requested like
 	 * this and doesn't exist, then the store would fall back to 'product'.
 	 * Ran through `woocommerce_data_stores`.
@@ -65,6 +69,11 @@ class WC_Data_Store {
 	 * store we want to work with.
 	 *
 	 * @param string $object_type Name of object.
+<<<<<<< HEAD
+	 *
+	 * @throws Exception
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function __construct( $object_type ) {
 		$this->object_type = $object_type;
@@ -117,7 +126,13 @@ class WC_Data_Store {
 	 * Loads a data store.
 	 *
 	 * @param string $object_type Name of object.
+<<<<<<< HEAD
+	 *
 	 * @since 3.0.0
+	 * @return WC_Data_Store
+=======
+	 * @since 3.0.0
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function load( $object_type ) {
 		return new WC_Data_Store( $object_type );
@@ -180,8 +195,16 @@ class WC_Data_Store {
 	 * through to the instance if that function exists.
 	 *
 	 * @since 3.0.0
+<<<<<<< HEAD
+	 *
 	 * @param $method
 	 * @param $parameters
+	 *
+	 * @return mixed
+=======
+	 * @param $method
+	 * @param $parameters
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function __call( $method, $parameters ) {
 		if ( is_callable( array( $this->instance, $method ) ) ) {

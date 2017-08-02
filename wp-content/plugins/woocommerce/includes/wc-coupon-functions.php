@@ -64,7 +64,11 @@ function wc_get_cart_coupon_types() {
  *
  * @since  2.5.0
  *
+<<<<<<< HEAD
+ * @return bool
+=======
  * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function wc_coupons_enabled() {
 	return apply_filters( 'woocommerce_coupons_enabled', 'yes' === get_option( 'woocommerce_enable_coupons' ) );

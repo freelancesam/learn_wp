@@ -608,16 +608,23 @@ div.mce-path {
 }
 
 /* Menubar */
+<<<<<<< HEAD
+div.mce-menubar {
+=======
 .mce-menubar {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	border-color: #e5e5e5;
 	background: #fff;
 	border-width: 0px 0px 1px;
 }
 
+<<<<<<< HEAD
+=======
 .mce-menubar .mce-menubtn {
 	margin: 2px;
 }
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .mce-menubar .mce-menubtn:hover,
 .mce-menubar .mce-menubtn.mce-active,
 .mce-menubar .mce-menubtn:focus {
@@ -1091,6 +1098,10 @@ i.mce-i-wp_code:before {
 
 .wp-editor-container {
 	clear: both;
+<<<<<<< HEAD
+	border: 1px solid #e5e5e5;
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .wp-editor-area {

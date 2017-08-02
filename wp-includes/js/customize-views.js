@@ -24,11 +24,16 @@
 
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
+<<<<<<< HEAD
+=======
 			this.setPlaceholder();
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			this.setButtons();
 			return this;
 		},
 
+<<<<<<< HEAD
+=======
 		getHeight: function() {
 			var image = this.$el.find('img'),
 				saved, height, headerImageData;
@@ -66,6 +71,7 @@
 			this.$el.height(height);
 		},
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		setButtons: function() {
 			var elements = $('#customize-control-header_image .actions .remove');
 			if (this.model.get('choice')) {
@@ -132,10 +138,13 @@
 			});
 		},
 
+<<<<<<< HEAD
+=======
 		getHeight: api.HeaderTool.CurrentView.prototype.getHeight,
 
 		setPlaceholder: api.HeaderTool.CurrentView.prototype.setPlaceholder,
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		select: function() {
 			this.preventJump();
 			this.model.save();

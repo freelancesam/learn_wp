@@ -33,6 +33,11 @@ class WC_DateTime extends DateTime {
 
 	/**
 	 * Set UTC offset.
+<<<<<<< HEAD
+	 *
+	 * @param int $offset
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function set_utc_offset( $offset ) {
 		$this->utc_offset = intval( $offset );
@@ -51,7 +56,14 @@ class WC_DateTime extends DateTime {
 
 	/**
 	 * Set timezone.
+<<<<<<< HEAD
+	 *
 	 * @param DateTimeZone $timezone
+	 *
+	 * @return DateTime
+=======
+	 * @param DateTimeZone $timezone
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function setTimezone( $timezone ) {
 		$this->utc_offset = 0;

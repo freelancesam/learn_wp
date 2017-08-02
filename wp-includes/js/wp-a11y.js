@@ -4,7 +4,12 @@ window.wp = window.wp || {};
 	'use strict';
 
 	var $containerPolite,
+<<<<<<< HEAD
+		$containerAssertive,
+		previousMessage = '';
+=======
 		$containerAssertive;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	/**
 	 * Update the ARIA live notification area text node.
@@ -23,6 +28,20 @@ window.wp = window.wp || {};
 		// Ensure only text is sent to screen readers.
 		message = $( '<p>' ).html( message ).text();
 
+<<<<<<< HEAD
+		/*
+		 * Safari 10+VoiceOver don't announce repeated, identical strings. We use
+		 * a `no-break space` to force them to think identical strings are different.
+		 * See ticket #36853.
+		 */
+		if ( previousMessage === message ) {
+			message = message + '\u00A0';
+		}
+
+		previousMessage = message;
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( $containerAssertive && 'assertive' === ariaLive ) {
 			$containerAssertive.text( message );
 		} else if ( $containerPolite ) {

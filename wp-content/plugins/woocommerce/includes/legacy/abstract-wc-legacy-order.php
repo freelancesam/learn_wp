@@ -18,7 +18,11 @@ abstract class WC_Abstract_Legacy_Order extends WC_Data {
 
 	/**
 	 * Add coupon code to the order.
+<<<<<<< HEAD
+	 * @param string|array $code
+=======
 	 * @param string $code
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param int $discount tax amount.
 	 * @param int $discount_tax amount.
 	 * @return int order item ID
@@ -42,7 +46,11 @@ abstract class WC_Abstract_Legacy_Order extends WC_Data {
 
 	/**
 	 * Add a tax row to the order.
+<<<<<<< HEAD
+	 * @param int $tax_rate_id
+=======
 	 * @param array $args
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param int $tax_amount amount of tax.
 	 * @param int $shipping_tax_amount shipping amount.
 	 * @return int order item ID
@@ -462,6 +470,12 @@ abstract class WC_Abstract_Legacy_Order extends WC_Data {
 	 * version and should be removed in future versions.
 	 *
 	 * @deprecated
+<<<<<<< HEAD
+	 *
+	 * @param int $order_item_id
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array of meta data.
 	 */
 	public function has_meta( $order_item_id ) {
@@ -710,6 +724,13 @@ abstract class WC_Abstract_Legacy_Order extends WC_Data {
 	/**
 	 * Send the stock notifications.
 	 * @deprecated 3.0.0 No longer needs to be called directly.
+<<<<<<< HEAD
+	 *
+	 * @param $product
+	 * @param $new_stock
+	 * @param $qty_ordered
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function send_stock_notifications( $product, $new_stock, $qty_ordered ) {
 		wc_deprecated_function( 'WC_Order::send_stock_notifications', '3.0' );

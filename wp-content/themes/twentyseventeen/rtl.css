@@ -242,6 +242,17 @@ input[type="checkbox"] {
 	padding-right: 1.5rem;
 }
 
+<<<<<<< HEAD
+.widget_text ul {
+	margin: 0 1.5em 1.5em 0;
+}
+
+.widget_text ul li ul {
+	margin: 0 1.5em 0 0;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /* Footer */
 
 .social-navigation a {

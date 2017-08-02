@@ -219,7 +219,14 @@ function wp_widget_control( $sidebar_args ) {
 	echo $sidebar_args['before_widget']; ?>
 	<div class="widget-top">
 	<div class="widget-title-action">
+<<<<<<< HEAD
+		<button type="button" class="widget-action hide-if-no-js" aria-expanded="false">
+			<span class="screen-reader-text"><?php printf( __( 'Edit widget: %s' ), $widget_title ); ?></span>
+			<span class="toggle-indicator" aria-hidden="true"></span>
+		</button>
+=======
 		<a class="widget-action hide-if-no-js" href="#available-widgets"></a>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<a class="widget-control-edit hide-if-js" href="<?php echo esc_url( add_query_arg( $query_arg ) ); ?>">
 			<span class="edit"><?php _ex( 'Edit', 'widget' ); ?></span>
 			<span class="add"><?php _ex( 'Add', 'widget' ); ?></span>
@@ -250,8 +257,13 @@ function wp_widget_control( $sidebar_args ) {
 
 	<div class="widget-control-actions">
 		<div class="alignleft">
+<<<<<<< HEAD
+			<button type="button" class="button-link button-link-delete widget-control-remove"><?php _e( 'Delete' ); ?></button> |
+			<button type="button" class="button-link widget-control-close"><?php _e( 'Close' ); ?></button>
+=======
 		<a class="widget-control-remove" href="#remove"><?php _e('Delete'); ?></a> |
 		<a class="widget-control-close" href="#close"><?php _e('Close'); ?></a>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		</div>
 		<div class="alignright<?php if ( 'noform' === $has_form ) echo ' widget-control-noform'; ?>">
 			<?php submit_button( __( 'Save' ), 'primary widget-control-save right', 'savewidget', false, array( 'id' => 'widget-' . esc_attr( $id_format ) . '-savewidget' ) ); ?>

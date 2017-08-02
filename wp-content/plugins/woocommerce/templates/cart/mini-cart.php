@@ -15,6 +15,22 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
+<<<<<<< HEAD
+ * @version 3.1.0
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+do_action( 'woocommerce_before_mini_cart' ); ?>
+
+<?php if ( ! WC()->cart->is_empty() ) : ?>
+
+	<ul class="woocommerce-mini-cart cart_list product_list_widget <?php echo esc_attr( $args['list_class'] ); ?>">
+		<?php
+			do_action( 'woocommerce_before_mini_cart_contents' );
+
+=======
  * @version 2.5.0
  */
 
@@ -33,6 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php do_action( 'woocommerce_before_mini_cart_contents' ); ?>
 
 		<?php
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
 				$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 				$product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
@@ -43,7 +60,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 					$product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
 					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 					?>
+<<<<<<< HEAD
+					<li class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
+=======
 					<li class="<?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?>">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<?php
 						echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
 							'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
@@ -67,6 +88,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php
 				}
 			}
+<<<<<<< HEAD
+
+			do_action( 'woocommerce_mini_cart_contents' );
+		?>
+	</ul>
+
+	<p class="woocommerce-mini-cart__total total"><strong><?php _e( 'Subtotal', 'woocommerce' ); ?>:</strong> <?php echo WC()->cart->get_cart_subtotal(); ?></p>
+
+	<?php do_action( 'woocommerce_widget_shopping_cart_before_buttons' ); ?>
+
+	<p class="woocommerce-mini-cart__buttons buttons"><?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?></p>
+
+<?php else : ?>
+
+	<p class="woocommerce-mini-cart__empty-message"><?php _e( 'No products in the cart.', 'woocommerce' ); ?></p>
+=======
 		?>
 
 		<?php do_action( 'woocommerce_mini_cart_contents' ); ?>
@@ -88,6 +125,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<p class="buttons">
 		<?php do_action( 'woocommerce_widget_shopping_cart_buttons' ); ?>
 	</p>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 <?php endif; ?>
 

@@ -111,6 +111,11 @@ endif; // End of twentyseventeen_header_style.
 
 /**
  * Customize video play/pause button in the custom header.
+<<<<<<< HEAD
+ *
+ * @param array $settings Video settings.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function twentyseventeen_video_controls( $settings ) {
 	$settings['l10n']['play'] = '<span class="screen-reader-text">' . __( 'Play background video', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'play' ) );

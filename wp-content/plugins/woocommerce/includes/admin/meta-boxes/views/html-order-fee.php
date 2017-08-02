@@ -22,6 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<input type="hidden" class="order_item_id" name="order_item_id[]" value="<?php echo esc_attr( $item_id ); ?>" />
 			<input type="hidden" name="order_item_tax_class[<?php echo absint( $item_id ); ?>]" value="<?php echo esc_attr( $item->get_tax_class() ); ?>" />
 		</div>
+<<<<<<< HEAD
+		<?php do_action( 'woocommerce_after_order_fee_item_name', $item_id, $item, null ) ?>
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	</td>
 
 	<?php do_action( 'woocommerce_admin_order_item_values', null, $item, absint( $item_id ) ); ?>

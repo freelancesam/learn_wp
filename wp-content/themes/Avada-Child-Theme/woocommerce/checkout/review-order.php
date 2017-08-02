@@ -53,7 +53,11 @@ if (!defined('ABSPATH')) {
     </tbody>
     <tfoot>
         <tr class="cart-subtotal hide">
+<<<<<<< HEAD
+            <th colspan="2" style="text-align: left;">Orders received before Midday ACST Monday to Friday will be dispatched same day</th>
+=======
             <th colspan="2" style="text-align: left;">Orders received after Thursday 22nd December will be dispatched on 9th of January. Apologies for any inconvenience. Merry Christmas and a Happy New Year!</th>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
         </tr>
         <tr class="cart-subtotal">
             <th><?php _e('Subtotal', 'woocommerce'); ?></th>

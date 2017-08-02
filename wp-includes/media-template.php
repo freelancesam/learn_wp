@@ -163,7 +163,11 @@ function wp_print_media_templates() {
 
 	<script type="text/html" id="tmpl-media-modal">
 		<div class="<?php echo $class; ?>">
+<<<<<<< HEAD
+			<button type="button" class="media-modal-close"><span class="media-modal-icon"><span class="screen-reader-text"><?php _e( 'Close media panel' ); ?></span></span></button>
+=======
 			<button type="button" class="button-link media-modal-close"><span class="media-modal-icon"><span class="screen-reader-text"><?php _e( 'Close media panel' ); ?></span></span></button>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<div class="media-modal-content"></div>
 		</div>
 		<div class="media-modal-backdrop"></div>
@@ -235,7 +239,14 @@ function wp_print_media_templates() {
 
 				<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
 					<p class="suggested-dimensions">
+<<<<<<< HEAD
+						<?php
+							/* translators: 1: suggested width number, 2: suggested height number. */
+							printf( __( 'Suggested image dimensions: %1$s by %2$s pixels.' ), '{{data.suggestedWidth}}', '{{data.suggestedHeight}}' );
+						?>
+=======
 						<?php _e( 'Suggested image dimensions:' ); ?> {{data.suggestedWidth}} &times; {{data.suggestedHeight}}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					</p>
 				<# } #>
 
@@ -472,7 +483,11 @@ function wp_print_media_templates() {
 			<# } #>
 		</div>
 		<# if ( data.buttons.check ) { #>
+<<<<<<< HEAD
+			<button type="button" class="check" tabindex="-1"><span class="media-modal-icon"></span><span class="screen-reader-text"><?php _e( 'Deselect' ); ?></span></button>
+=======
 			<button type="button" class="button-link check" tabindex="-1"><span class="media-modal-icon"></span><span class="screen-reader-text"><?php _e( 'Deselect' ); ?></span></button>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<# } #>
 		<#
 		var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly';
@@ -605,7 +620,11 @@ function wp_print_media_templates() {
 		<h2><?php _e( 'Attachment Display Settings' ); ?></h2>
 
 		<# if ( 'image' === data.type ) { #>
+<<<<<<< HEAD
+			<label class="setting align">
+=======
 			<label class="setting">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<span><?php _e('Alignment'); ?></span>
 				<select class="alignment"
 					data-setting="align"
@@ -761,7 +780,11 @@ function wp_print_media_templates() {
 				<# } #>
 				>
 				<?php
+<<<<<<< HEAD
+				/** This filter is documented in wp-admin/includes/media.php */
+=======
 				// This filter is documented in wp-admin/includes/media.php
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$size_names = apply_filters( 'image_size_names_choose', array(
 					'thumbnail' => __( 'Thumbnail' ),
 					'medium'    => __( 'Medium' ),
@@ -1084,7 +1107,11 @@ function wp_print_media_templates() {
 					</div>
 				</div>
 
+<<<<<<< HEAD
+				<label class="setting checkbox-setting autoplay">
+=======
 				<label class="setting checkbox-setting">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					<input type="checkbox" data-setting="autoplay" />
 					<span><?php _e( 'Autoplay' ); ?></span>
 				</label>
@@ -1173,7 +1200,11 @@ function wp_print_media_templates() {
 					</div>
 				</div>
 
+<<<<<<< HEAD
+				<label class="setting checkbox-setting autoplay">
+=======
 				<label class="setting checkbox-setting">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					<input type="checkbox" data-setting="autoplay" />
 					<span><?php _e( 'Autoplay' ); ?></span>
 				</label>

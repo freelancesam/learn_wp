@@ -113,7 +113,11 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 
 	/**
 	 * Get parent order object.
+<<<<<<< HEAD
+	 * @return WC_Order
+=======
 	 * @return int
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_order() {
 		return wc_get_order( $this->get_order_id() );
@@ -153,7 +157,11 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 
 	/**
 	 * Type checking
+<<<<<<< HEAD
+	 * @param  string|array  $type
+=======
 	 * @param  string|array  $Type
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return boolean
 	 */
 	public function is_type( $type ) {
@@ -169,10 +177,18 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 	/**
 	 * Expands things like term slugs before return.
 	 *
+<<<<<<< HEAD
+	 * @param string $hideprefix  Meta data prefix, (default: _).
+	 * @param bool   $include_all Include all meta data, this stop skip items with values already in the product name.
+	 * @return array
+	 */
+	public function get_formatted_meta_data( $hideprefix = '_', $include_all = false ) {
+=======
 	 * @param string $hideprefix (default: _)
 	 * @return array
 	 */
 	public function get_formatted_meta_data( $hideprefix = '_' ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$formatted_meta    = array();
 		$meta_data         = $this->get_meta_data();
 		$hideprefix_length = ! empty( $hideprefix ) ? strlen( $hideprefix ) : 0;
@@ -197,16 +213,26 @@ class WC_Order_Item extends WC_Data implements ArrayAccess {
 				}
 			}
 
+<<<<<<< HEAD
+			// Skip items with values already in the product details area of the product name.
+			if ( ! $include_all && $product && wc_is_attribute_in_product_name( $display_value, $order_item_name ) ) {
+=======
 			// Skip items with values already in the product details area of the product name
 			if ( $product && wc_is_attribute_in_product_name( $display_value, $order_item_name ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				continue;
 			}
 
 			$formatted_meta[ $meta->id ] = (object) array(
 				'key'           => $meta->key,
 				'value'         => $meta->value,
+<<<<<<< HEAD
+				'display_key'   => apply_filters( 'woocommerce_order_item_display_meta_key', $display_key, $meta, $this ),
+				'display_value' => wpautop( make_clickable( apply_filters( 'woocommerce_order_item_display_meta_value', $display_value, $meta, $this ) ) ),
+=======
 				'display_key'   => apply_filters( 'woocommerce_order_item_display_meta_key', $display_key ),
 				'display_value' => wpautop( make_clickable( apply_filters( 'woocommerce_order_item_display_meta_value', $display_value ) ) ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			);
 		}
 

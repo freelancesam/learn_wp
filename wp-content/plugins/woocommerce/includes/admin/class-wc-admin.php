@@ -48,11 +48,20 @@ class WC_Admin {
 		include_once( dirname( __FILE__ ) . '/class-wc-admin-post-types.php' );
 		include_once( dirname( __FILE__ ) . '/class-wc-admin-taxonomies.php' );
 		include_once( dirname( __FILE__ ) . '/class-wc-admin-menus.php' );
+<<<<<<< HEAD
+		include_once( dirname( __FILE__ ) . '/class-wc-admin-customize.php' );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		include_once( dirname( __FILE__ ) . '/class-wc-admin-notices.php' );
 		include_once( dirname( __FILE__ ) . '/class-wc-admin-assets.php' );
 		include_once( dirname( __FILE__ ) . '/class-wc-admin-api-keys.php' );
 		include_once( dirname( __FILE__ ) . '/class-wc-admin-webhooks.php' );
 		include_once( dirname( __FILE__ ) . '/class-wc-admin-pointers.php' );
+<<<<<<< HEAD
+		include_once( dirname( __FILE__ ) . '/class-wc-admin-importers.php' );
+		include_once( dirname( __FILE__ ) . '/class-wc-admin-exporters.php' );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		// Help Tabs
 		if ( apply_filters( 'woocommerce_enable_admin_help_tab', true ) ) {
@@ -72,6 +81,17 @@ class WC_Admin {
 		if ( defined( 'WP_LOAD_IMPORTERS' ) ) {
 			include_once( dirname( __FILE__ ) . '/class-wc-admin-importers.php' );
 		}
+<<<<<<< HEAD
+
+		// Helper
+		include_once( dirname( __FILE__ ) . '/helper/class-wc-helper-options.php' );
+		include_once( dirname( __FILE__ ) . '/helper/class-wc-helper-api.php' );
+		include_once( dirname( __FILE__ ) . '/helper/class-wc-helper-updater.php' );
+		include_once( dirname( __FILE__ ) . '/helper/class-wc-helper-plugin-info.php' );
+		include_once( dirname( __FILE__ ) . '/helper/class-wc-helper-compat.php' );
+		include_once( dirname( __FILE__ ) . '/helper/class-wc-helper.php' );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

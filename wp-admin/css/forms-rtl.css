@@ -650,8 +650,15 @@ ul#add-to-blog-users {
 	font-weight: 600;
 }
 
+<<<<<<< HEAD
+.form-table th.th-full, /* Not used by core. Back-compat for pre-4.8 */
+.form-table .td-full {
+	width: auto;
+	padding: 20px 0 20px 10px;
+=======
 .form-table th.th-full {
 	width: auto;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	font-weight: 400;
 }
 

@@ -68,6 +68,12 @@ class WC_HTTPS {
 	/**
 	 * Force a post link to be SSL if needed.
 	 *
+<<<<<<< HEAD
+	 * @param string $link
+	 * @param int $page_id
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	public static function force_https_page_link( $link, $page_id ) {
@@ -117,9 +123,19 @@ class WC_HTTPS {
 
 	/**
 	 * Force posts to PayPal to use TLS v1.2. See:
+<<<<<<< HEAD
+	 *        https://core.trac.wordpress.org/ticket/36320
+	 *        https://core.trac.wordpress.org/ticket/34924#comment:13
+	 *        https://www.paypal-knowledge.com/infocenter/index?page=content&widgetview=true&id=FAQ1914&viewlocale=en_US
+	 *
+	 * @param string $handle
+	 * @param mixed $r
+	 * @param string $url
+=======
 	 * 		https://core.trac.wordpress.org/ticket/36320
 	 * 		https://core.trac.wordpress.org/ticket/34924#comment:13
 	 * 		https://www.paypal-knowledge.com/infocenter/index?page=content&widgetview=true&id=FAQ1914&viewlocale=en_US
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function http_api_curl( $handle, $r, $url ) {
 		if ( strstr( $url, 'https://' ) && ( strstr( $url, '.paypal.com/nvp' ) || strstr( $url, '.paypal.com/cgi-bin/webscr' ) ) ) {

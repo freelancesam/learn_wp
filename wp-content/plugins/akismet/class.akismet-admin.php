@@ -208,7 +208,11 @@ class Akismet_Admin {
 						'content'	=>
 							'<p><strong>' . esc_html__( 'Akismet Configuration' , 'akismet') . '</strong></p>' .
 							'<p>' . esc_html__( 'Akismet filters out spam, so you can focus on more important things.' , 'akismet') . '</p>' .
+<<<<<<< HEAD
+							'<p>' . esc_html__( 'On this page, you are able to update your Akismet settings and view spam stats.' , 'akismet') . '</p>',
+=======
 							'<p>' . esc_html__( 'On this page, you are able to enter/remove an API key, view account information and view spam stats.' , 'akismet') . '</p>',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					)
 				);
 
@@ -218,12 +222,30 @@ class Akismet_Admin {
 						'title'		=> __( 'Settings' , 'akismet'),
 						'content'	=>
 							'<p><strong>' . esc_html__( 'Akismet Configuration' , 'akismet') . '</strong></p>' .
+<<<<<<< HEAD
+							( Akismet::predefined_api_key() ? '' : '<p><strong>' . esc_html__( 'API Key' , 'akismet') . '</strong> - ' . esc_html__( 'Enter/remove an API key.' , 'akismet') . '</p>' ) .
+=======
 							'<p><strong>' . esc_html__( 'API Key' , 'akismet') . '</strong> - ' . esc_html__( 'Enter/remove an API key.' , 'akismet') . '</p>' .
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							'<p><strong>' . esc_html__( 'Comments' , 'akismet') . '</strong> - ' . esc_html__( 'Show the number of approved comments beside each comment author in the comments list page.' , 'akismet') . '</p>' .
 							'<p><strong>' . esc_html__( 'Strictness' , 'akismet') . '</strong> - ' . esc_html__( 'Choose to either discard the worst spam automatically or to always put all spam in spam folder.' , 'akismet') . '</p>',
 					)
 				);
 
+<<<<<<< HEAD
+				if ( ! Akismet::predefined_api_key() ) {
+					$current_screen->add_help_tab(
+						array(
+							'id'		=> 'account',
+							'title'		=> __( 'Account' , 'akismet'),
+							'content'	=>
+								'<p><strong>' . esc_html__( 'Akismet Configuration' , 'akismet') . '</strong></p>' .
+								'<p><strong>' . esc_html__( 'Subscription Type' , 'akismet') . '</strong> - ' . esc_html__( 'The Akismet subscription plan' , 'akismet') . '</p>' .
+								'<p><strong>' . esc_html__( 'Status' , 'akismet') . '</strong> - ' . esc_html__( 'The subscription status - active, cancelled or suspended' , 'akismet') . '</p>',
+						)
+					);
+				}
+=======
 				$current_screen->add_help_tab(
 					array(
 						'id'		=> 'account',
@@ -234,6 +256,7 @@ class Akismet_Admin {
 							'<p><strong>' . esc_html__( 'Status' , 'akismet') . '</strong> - ' . esc_html__( 'The subscription status - active, cancelled or suspended' , 'akismet') . '</p>',
 					)
 				);
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		}
 
@@ -255,10 +278,18 @@ class Akismet_Admin {
 		foreach( array( 'akismet_strictness', 'akismet_show_user_comments_approved' ) as $option ) {
 			update_option( $option, isset( $_POST[$option] ) && (int) $_POST[$option] == 1 ? '1' : '0' );
 		}
+<<<<<<< HEAD
+		
+		if ( Akismet::predefined_api_key() ) {
+			return false; //shouldn't have option to save key if already defined
+		}
+		
+=======
 
 		if ( defined( 'WPCOM_API_KEY' ) )
 			return false; //shouldn't have option to save key if already defined
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$new_key = preg_replace( '/[^a-f0-9]/i', '', $_POST['key'] );
 		$old_key = Akismet::get_api_key();
 
@@ -907,6 +938,14 @@ class Akismet_Admin {
 		if ( get_option( 'akismet_strictness' ) === false ) {
 			add_option( 'akismet_strictness', ( get_option( 'akismet_discard_month' ) === 'false' ? '0' : '1' ) );
 		}
+<<<<<<< HEAD
+		
+		// Sync the local "Total spam blocked" count with the authoritative count from the server.
+		if ( isset( $stat_totals['all'], $stat_totals['all']->spam ) ) {
+			update_option( 'akismet_spam_count', $stat_totals['all']->spam );
+		}
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$notices = array();
 

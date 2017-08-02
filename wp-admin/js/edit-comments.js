@@ -461,6 +461,16 @@ setCommentsList = function() {
 			updateCountText( 'span.trash-count', trashDiff );
 		}
 
+<<<<<<< HEAD
+		if (
+			( ( 'trash' === settings.data.comment_status ) && !getCount( $( 'span.trash-count' ) ) ) ||
+			( ( 'spam' === settings.data.comment_status ) && !getCount( $( 'span.spam-count' ) ) )
+		) {
+			$( '#delete_all' ).hide();
+		}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( ! isDashboard ) {
 			total = totalInput.val() ? parseInt( totalInput.val(), 10 ) : 0;
 			if ( $(settings.target).parent().is('span.undo') )

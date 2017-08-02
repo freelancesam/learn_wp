@@ -70,8 +70,14 @@ class WC_API_Orders extends WC_API_Resource {
 	 */
 	public function get_orders( $fields = null, $filter = array(), $status = null, $page = 1 ) {
 
+<<<<<<< HEAD
+		if ( ! empty( $status ) ) {
+			$filter['status'] = $status;
+		}
+=======
 		if ( ! empty( $status ) )
 			$filter['status'] = $status;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$filter['page'] = $page;
 
@@ -81,8 +87,14 @@ class WC_API_Orders extends WC_API_Resource {
 
 		foreach ( $query->posts as $order_id ) {
 
+<<<<<<< HEAD
+			if ( ! $this->is_readable( $order_id ) ) {
+				continue;
+			}
+=======
 			if ( ! $this->is_readable( $order_id ) )
 				continue;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			$orders[] = current( $this->get_order( $order_id, $fields ) );
 		}
@@ -99,7 +111,11 @@ class WC_API_Orders extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the order ID
 	 * @param array $fields
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_order( $id, $fields = null ) {
 
@@ -235,6 +251,25 @@ class WC_API_Orders extends WC_API_Resource {
 	 * Get the total number of orders
 	 *
 	 * @since 2.1
+<<<<<<< HEAD
+	 *
+	 * @param string $status
+	 * @param array $filter
+	 *
+	 * @return array|WP_Error
+	 */
+	public function get_orders_count( $status = null, $filter = array() ) {
+
+		if ( ! empty( $status ) ) {
+			$filter['status'] = $status;
+		}
+
+		$query = $this->query_orders( $filter );
+
+		if ( ! current_user_can( 'read_private_shop_orders' ) ) {
+			return new WP_Error( 'woocommerce_api_user_cannot_read_orders_count', __( 'You do not have permission to read the orders count', 'woocommerce' ), array( 'status' => 401 ) );
+		}
+=======
 	 * @param string $status
 	 * @param array $filter
 	 * @return array
@@ -248,6 +283,7 @@ class WC_API_Orders extends WC_API_Resource {
 
 		if ( ! current_user_can( 'read_private_shop_orders' ) )
 			return new WP_Error( 'woocommerce_api_user_cannot_read_orders_count', __( 'You do not have permission to read the orders count', 'woocommerce' ), array( 'status' => 401 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return array( 'count' => (int) $query->found_posts );
 	}
@@ -260,14 +296,24 @@ class WC_API_Orders extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the order ID
 	 * @param array $data
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function edit_order( $id, $data ) {
 
 		$id = $this->validate_request( $id, 'shop_order', 'edit' );
 
+<<<<<<< HEAD
+		if ( is_wp_error( $id ) ) {
+			return $id;
+		}
+=======
 		if ( is_wp_error( $id ) )
 			return $id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$order = wc_get_order( $id );
 
@@ -299,15 +345,25 @@ class WC_API_Orders extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the order ID
 	 * @param string $fields fields to include in response
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_order_notes( $id, $fields = null ) {
 
 		// ensure ID is valid order ID
 		$id = $this->validate_request( $id, 'shop_order', 'read' );
 
+<<<<<<< HEAD
+		if ( is_wp_error( $id ) ) {
+			return $id;
+		}
+=======
 		if ( is_wp_error( $id ) )
 			return $id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$args = array(
 			'post_id' => $id,

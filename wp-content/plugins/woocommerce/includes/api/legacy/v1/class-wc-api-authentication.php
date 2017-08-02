@@ -192,7 +192,12 @@ class WC_API_Authentication {
 	 *
 	 * @since  2.4.0
 	 * @param  int $user_id
+<<<<<<< HEAD
+	 * @return WP_User
+	 *
+=======
 	 * @return WC_User
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @throws Exception
 	 */
 	private function get_user_by_id( $user_id ) {

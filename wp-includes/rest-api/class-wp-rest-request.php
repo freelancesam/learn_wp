@@ -286,6 +286,10 @@ class WP_REST_Request implements ArrayAccess {
 	 * @param string $key Header name.
 	 */
 	public function remove_header( $key ) {
+<<<<<<< HEAD
+		$key = $this->canonicalize_header_name( $key );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		unset( $this->headers[ $key ] );
 	}
 
@@ -353,7 +357,15 @@ class WP_REST_Request implements ArrayAccess {
 	 */
 	protected function get_parameter_order() {
 		$order = array();
+<<<<<<< HEAD
+
+		$content_type = $this->get_content_type();
+		if ( $content_type['value'] === 'application/json' ) {
+			$order[] = 'JSON';
+		}
+=======
 		$order[] = 'JSON';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$this->parse_json_params();
 
@@ -364,7 +376,11 @@ class WP_REST_Request implements ArrayAccess {
 			$this->parse_body_params();
 		}
 
+<<<<<<< HEAD
+		$accepts_body_data = array( 'POST', 'PUT', 'PATCH', 'DELETE' );
+=======
 		$accepts_body_data = array( 'POST', 'PUT', 'PATCH' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( in_array( $this->method, $accepts_body_data ) ) {
 			$order[] = 'POST';
 		}
@@ -423,6 +439,10 @@ class WP_REST_Request implements ArrayAccess {
 	 * @param mixed  $value Parameter value.
 	 */
 	public function set_param( $key, $value ) {
+<<<<<<< HEAD
+		$order = $this->get_parameter_order();
+		$this->params[ $order[0] ][ $key ] = $value;
+=======
 		switch ( $this->method ) {
 			case 'POST':
 				$this->params['POST'][ $key ] = $value;
@@ -432,6 +452,7 @@ class WP_REST_Request implements ArrayAccess {
 				$this->params['GET'][ $key ] = $value;
 				break;
 		}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

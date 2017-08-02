@@ -96,6 +96,11 @@ class WC_Logger implements WC_Logger_Interface {
 	 *
 	 * @param string $handle
 	 * @param string $message
+<<<<<<< HEAD
+	 * @param string $level
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return bool
 	 */
 	public function add( $handle, $message, $level = WC_Log_Levels::NOTICE ) {
@@ -115,7 +120,11 @@ class WC_Logger implements WC_Logger_Interface {
 	 *     'error': Error conditions.
 	 *     'warning': Warning conditions.
 	 *     'notice': Normal but significant condition.
+<<<<<<< HEAD
+	 *     'info': Informational messages.
+=======
 	 *     'informational': Informational messages.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *     'debug': Debug-level messages.
 	 * @param string $message Log message.
 	 * @param array $context Optional. Additional information for log handlers.
@@ -127,6 +136,10 @@ class WC_Logger implements WC_Logger_Interface {
 
 		if ( $this->should_handle( $level ) ) {
 			$timestamp = current_time( 'timestamp' );
+<<<<<<< HEAD
+			$message = apply_filters( 'woocommerce_logger_log_message', $message, $level, $context );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			foreach ( $this->handlers as $handler ) {
 				$handler->handle( $timestamp, $level, $message, $context );
@@ -140,6 +153,12 @@ class WC_Logger implements WC_Logger_Interface {
 	 * System is unusable.
 	 *
 	 * @see WC_Logger::log
+<<<<<<< HEAD
+	 *
+	 * @param string $message
+	 * @param array $context
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function emergency( $message, $context = array() ) {
 		$this->log( WC_Log_Levels::EMERGENCY, $message, $context );
@@ -152,6 +171,12 @@ class WC_Logger implements WC_Logger_Interface {
 	 * Example: Entire website down, database unavailable, etc.
 	 *
 	 * @see WC_Logger::log
+<<<<<<< HEAD
+	 *
+	 * @param string $message
+	 * @param array $context
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function alert( $message, $context = array() ) {
 		$this->log( WC_Log_Levels::ALERT, $message, $context );
@@ -164,6 +189,12 @@ class WC_Logger implements WC_Logger_Interface {
 	 * Example: Application component unavailable, unexpected exception.
 	 *
 	 * @see WC_Logger::log
+<<<<<<< HEAD
+	 *
+	 * @param string $message
+	 * @param array $context
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function critical( $message, $context = array() ) {
 		$this->log( WC_Log_Levels::CRITICAL, $message, $context );
@@ -176,6 +207,12 @@ class WC_Logger implements WC_Logger_Interface {
 	 * and monitored.
 	 *
 	 * @see WC_Logger::log
+<<<<<<< HEAD
+	 *
+	 * @param string $message
+	 * @param array $context
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function error( $message, $context = array() ) {
 		$this->log( WC_Log_Levels::ERROR, $message, $context );
@@ -190,6 +227,12 @@ class WC_Logger implements WC_Logger_Interface {
 	 * necessarily wrong.
 	 *
 	 * @see WC_Logger::log
+<<<<<<< HEAD
+	 *
+	 * @param string $message
+	 * @param array $context
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function warning( $message, $context = array() ) {
 		$this->log( WC_Log_Levels::WARNING, $message, $context );
@@ -201,6 +244,12 @@ class WC_Logger implements WC_Logger_Interface {
 	 * Normal but significant events.
 	 *
 	 * @see WC_Logger::log
+<<<<<<< HEAD
+	 *
+	 * @param string $message
+	 * @param array $context
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function notice( $message, $context = array() ) {
 		$this->log( WC_Log_Levels::NOTICE, $message, $context );
@@ -213,6 +262,12 @@ class WC_Logger implements WC_Logger_Interface {
 	 * Example: User logs in, SQL logs.
 	 *
 	 * @see WC_Logger::log
+<<<<<<< HEAD
+	 *
+	 * @param string $message
+	 * @param array $context
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function info( $message, $context = array() ) {
 		$this->log( WC_Log_Levels::INFO, $message, $context );
@@ -224,6 +279,12 @@ class WC_Logger implements WC_Logger_Interface {
 	 * Detailed debug information.
 	 *
 	 * @see WC_Logger::log
+<<<<<<< HEAD
+	 *
+	 * @param string $message
+	 * @param array $context
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function debug( $message, $context = array() ) {
 		$this->log( WC_Log_Levels::DEBUG, $message, $context );

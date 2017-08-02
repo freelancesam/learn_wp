@@ -497,6 +497,12 @@ function wp_get_sites( $args = array() ) {
 	if( is_numeric( $args['limit'] ) ){
 		$args['number'] = $args['limit'];
 		$args['limit'] = null;
+<<<<<<< HEAD
+	} elseif ( ! $args['limit'] ) {
+		$args['number'] = 0;
+		$args['limit'] = null;
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	// Make sure count is disabled.

@@ -3,11 +3,21 @@
 /* Modifided script from the simple-page-ordering plugin */
 jQuery( function( $ ) {
 
+<<<<<<< HEAD
+	$( 'table.widefat.wp-list-table tr' ).append(
+		'<td class="column-handle"></td>'
+	);
+=======
 	$( 'table.widefat.wp-list-table tbody th, table.widefat tbody td' ).css( 'cursor', 'move' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	$( 'table.widefat.wp-list-table' ).sortable({
 		items: 'tbody tr:not(.inline-edit-row)',
 		cursor: 'move',
+<<<<<<< HEAD
+		handle: '.column-handle',
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		axis: 'y',
 		forcePlaceholderSize: true,
 		helper: 'clone',

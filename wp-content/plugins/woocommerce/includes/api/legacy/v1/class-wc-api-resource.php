@@ -62,16 +62,30 @@ class WC_API_Resource {
 	 */
 	protected function validate_request( $id, $type, $context ) {
 
+<<<<<<< HEAD
+		if ( 'shop_order' === $type || 'shop_coupon' === $type ) {
+			$resource_name = str_replace( 'shop_', '', $type );
+		} else {
+			$resource_name = $type;
+		}
+=======
 		if ( 'shop_order' === $type || 'shop_coupon' === $type )
 			$resource_name = str_replace( 'shop_', '', $type );
 		else
 			$resource_name = $type;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$id = absint( $id );
 
 		// validate ID
+<<<<<<< HEAD
+		if ( empty( $id ) ) {
+			return new WP_Error( "woocommerce_api_invalid_{$resource_name}_id", sprintf( __( 'Invalid %s ID', 'woocommerce' ), $type ), array( 'status' => 404 ) );
+		}
+=======
 		if ( empty( $id ) )
 			return new WP_Error( "woocommerce_api_invalid_{$resource_name}_id", sprintf( __( 'Invalid %s ID', 'woocommerce' ), $type ), array( 'status' => 404 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		// only custom post types have per-post type/permission checks
 		if ( 'customer' !== $type ) {
@@ -82,13 +96,36 @@ class WC_API_Resource {
 			$post_type = ( 'product_variation' === $post->post_type ) ? 'product' : $post->post_type;
 
 			// validate post type
+<<<<<<< HEAD
+			if ( $type !== $post_type ) {
+				return new WP_Error( "woocommerce_api_invalid_{$resource_name}", sprintf( __( 'Invalid %s', 'woocommerce' ), $resource_name ), array( 'status' => 404 ) );
+			}
+=======
 			if ( $type !== $post_type )
 				return new WP_Error( "woocommerce_api_invalid_{$resource_name}", sprintf( __( 'Invalid %s', 'woocommerce' ), $resource_name ), array( 'status' => 404 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// validate permissions
 			switch ( $context ) {
 
 				case 'read':
+<<<<<<< HEAD
+					if ( ! $this->is_readable( $post ) ) {
+						return new WP_Error( "woocommerce_api_user_cannot_read_{$resource_name}", sprintf( __( 'You do not have permission to read this %s', 'woocommerce' ), $resource_name ), array( 'status' => 401 ) );
+					}
+					break;
+
+				case 'edit':
+					if ( ! $this->is_editable( $post ) ) {
+						return new WP_Error( "woocommerce_api_user_cannot_edit_{$resource_name}", sprintf( __( 'You do not have permission to edit this %s', 'woocommerce' ), $resource_name ), array( 'status' => 401 ) );
+					}
+					break;
+
+				case 'delete':
+					if ( ! $this->is_deletable( $post ) ) {
+						return new WP_Error( "woocommerce_api_user_cannot_delete_{$resource_name}", sprintf( __( 'You do not have permission to delete this %s', 'woocommerce' ), $resource_name ), array( 'status' => 401 ) );
+					}
+=======
 					if ( ! $this->is_readable( $post ) )
 						return new WP_Error( "woocommerce_api_user_cannot_read_{$resource_name}", sprintf( __( 'You do not have permission to read this %s', 'woocommerce' ), $resource_name ), array( 'status' => 401 ) );
 					break;
@@ -101,6 +138,7 @@ class WC_API_Resource {
 				case 'delete':
 					if ( ! $this->is_deletable( $post ) )
 						return new WP_Error( "woocommerce_api_user_cannot_delete_{$resource_name}", sprintf( __( 'You do not have permission to delete this %s', 'woocommerce' ), $resource_name ), array( 'status' => 401 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					break;
 			}
 		}
@@ -126,6 +164,42 @@ class WC_API_Resource {
 			$args['date_query'] = array();
 
 			// resources created after specified date
+<<<<<<< HEAD
+			if ( ! empty( $request_args['created_at_min'] ) ) {
+				$args['date_query'][] = array( 'column' => 'post_date_gmt', 'after' => $this->server->parse_datetime( $request_args['created_at_min'] ), 'inclusive' => true );
+			}
+
+			// resources created before specified date
+			if ( ! empty( $request_args['created_at_max'] ) ) {
+				$args['date_query'][] = array( 'column' => 'post_date_gmt', 'before' => $this->server->parse_datetime( $request_args['created_at_max'] ), 'inclusive' => true );
+			}
+
+			// resources updated after specified date
+			if ( ! empty( $request_args['updated_at_min'] ) ) {
+				$args['date_query'][] = array( 'column' => 'post_modified_gmt', 'after' => $this->server->parse_datetime( $request_args['updated_at_min'] ), 'inclusive' => true );
+			}
+
+			// resources updated before specified date
+			if ( ! empty( $request_args['updated_at_max'] ) ) {
+				$args['date_query'][] = array( 'column' => 'post_modified_gmt', 'before' => $this->server->parse_datetime( $request_args['updated_at_max'] ), 'inclusive' => true );
+			}
+		}
+
+		// search
+		if ( ! empty( $request_args['q'] ) ) {
+			$args['s'] = $request_args['q'];
+		}
+
+		// resources per response
+		if ( ! empty( $request_args['limit'] ) ) {
+			$args['posts_per_page'] = $request_args['limit'];
+		}
+
+		// resource offset
+		if ( ! empty( $request_args['offset'] ) ) {
+			$args['offset'] = $request_args['offset'];
+		}
+=======
 			if ( ! empty( $request_args['created_at_min'] ) )
 				$args['date_query'][] = array( 'column' => 'post_date_gmt', 'after' => $this->server->parse_datetime( $request_args['created_at_min'] ), 'inclusive' => true );
 
@@ -153,6 +227,7 @@ class WC_API_Resource {
 		// resource offset
 		if ( ! empty( $request_args['offset'] ) )
 			$args['offset'] = $request_args['offset'];
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		// resource page
 		$args['paged'] = ( isset( $request_args['page'] ) ) ? absint( $request_args['page'] ) : 1;
@@ -174,8 +249,14 @@ class WC_API_Resource {
 		if ( isset( $this->server->params['GET']['filter']['meta'] ) && 'true' === $this->server->params['GET']['filter']['meta'] && is_object( $resource ) ) {
 
 			// don't attempt to add meta more than once
+<<<<<<< HEAD
+			if ( preg_grep( '/[a-z]+_meta/', array_keys( $data ) ) ) {
+				return $data;
+			}
+=======
 			if ( preg_grep( '/[a-z]+_meta/', array_keys( $data ) ) )
 				return $data;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// define the top-level property name for the meta
 			switch ( get_class( $resource ) ) {
@@ -231,8 +312,14 @@ class WC_API_Resource {
 	 */
 	public function filter_response_fields( $data, $resource, $fields ) {
 
+<<<<<<< HEAD
+		if ( ! is_array( $data ) || empty( $fields ) ) {
+			return $data;
+		}
+=======
 		if ( ! is_array( $data ) || empty( $fields ) )
 			return $data;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$fields = explode( ',', $fields );
 		$sub_fields = array();
@@ -285,27 +372,49 @@ class WC_API_Resource {
 	 */
 	protected function delete( $id, $type, $force = false ) {
 
+<<<<<<< HEAD
+		if ( 'shop_order' === $type || 'shop_coupon' === $type ) {
+			$resource_name = str_replace( 'shop_', '', $type );
+		} else {
+			$resource_name = $type;
+		}
+=======
 		if ( 'shop_order' === $type || 'shop_coupon' === $type )
 			$resource_name = str_replace( 'shop_', '', $type );
 		else
 			$resource_name = $type;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		if ( 'customer' === $type ) {
 
 			$result = wp_delete_user( $id );
 
+<<<<<<< HEAD
+			if ( $result ) {
+				return array( 'message' => __( 'Permanently deleted customer', 'woocommerce' ) );
+			} else {
+				return new WP_Error( 'woocommerce_api_cannot_delete_customer', __( 'The customer cannot be deleted', 'woocommerce' ), array( 'status' => 500 ) );
+			}
+=======
 			if ( $result )
 				return array( 'message' => __( 'Permanently deleted customer', 'woocommerce' ) );
 			else
 				return new WP_Error( 'woocommerce_api_cannot_delete_customer', __( 'The customer cannot be deleted', 'woocommerce' ), array( 'status' => 500 ) );
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		} else {
 
 			// delete order/coupon/product
 			$result = ( $force ) ? wp_delete_post( $id, true ) : wp_trash_post( $id );
 
+<<<<<<< HEAD
+			if ( ! $result ) {
+				return new WP_Error( "woocommerce_api_cannot_delete_{$resource_name}", sprintf( __( 'This %s cannot be deleted', 'woocommerce' ), $resource_name ), array( 'status' => 500 ) );
+			}
+=======
 			if ( ! $result )
 				return new WP_Error( "woocommerce_api_cannot_delete_{$resource_name}", sprintf( __( 'This %s cannot be deleted', 'woocommerce' ), $resource_name ), array( 'status' => 500 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			if ( $force ) {
 				return array( 'message' => sprintf( __( 'Permanently deleted %s', 'woocommerce' ), $resource_name ) );
@@ -370,6 +479,27 @@ class WC_API_Resource {
 	 */
 	private function check_permission( $post, $context ) {
 
+<<<<<<< HEAD
+		if ( ! is_a( $post, 'WP_Post' ) ) {
+			$post = get_post( $post );
+		}
+
+		if ( is_null( $post ) ) {
+			return false;
+		}
+
+		$post_type = get_post_type_object( $post->post_type );
+
+		if ( 'read' === $context ) {
+			return current_user_can( $post_type->cap->read_private_posts, $post->ID );
+		} elseif ( 'edit' === $context ) {
+			return current_user_can( $post_type->cap->edit_post, $post->ID );
+		} elseif ( 'delete' === $context ) {
+			return current_user_can( $post_type->cap->delete_post, $post->ID );
+		} else {
+			return false;
+		}
+=======
 		if ( ! is_a( $post, 'WP_Post' ) )
 			$post = get_post( $post );
 
@@ -389,5 +519,6 @@ class WC_API_Resource {
 
 		else
 			return false;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 }

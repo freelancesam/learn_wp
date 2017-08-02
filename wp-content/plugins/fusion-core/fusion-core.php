@@ -3,7 +3,11 @@
 Plugin Name: Fusion Core
 Plugin URI: http://theme-fusion.com
 Description: ThemeFusion Core Plugin for ThemeFusion Themes
+<<<<<<< HEAD
+Version: 3.0.4
+=======
 Version: 1.8.3
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 Author: ThemeFusion
 Author URI: http://theme-fusion.com
 */
@@ -12,6 +16,12 @@ Author URI: http://theme-fusion.com
  * Dashboard and Administrative Functionality
  *----------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
+// plugin path
+define( 'FUSION_CORE_PATH', plugin_dir_path( __FILE__ ) );
+
+if ( ! class_exists( 'FusionCore_Plugin' ) ) {
+=======
 // path to font awesome
 define ('FUSION_BUILDER_FA_PATH' , plugin_dir_path( __FILE__ ) . 'tinymce/css/font-awesome.css' );
 
@@ -28,12 +38,28 @@ if( ! get_option( 'avada_disable_builder' ) ) {
 }
 
 if( ! class_exists( 'FusionCore_Plugin' ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	class FusionCore_Plugin {
 		/**
 		 * Plugin version, used for cache-busting of style and script file references.
 		 *
 		 * @since   1.0.0
 		 *
+<<<<<<< HEAD
+		 * @var  string
+		 */
+		const VERSION = '3.0.3';
+
+		/**
+		 * Instance of the class.
+		 *
+		 * @since   1.0.0
+		 *
+		 * @var   object
+		 */
+		protected static $instance = null;
+
+=======
 		 * @var	 string
 		 */
 		const VERSION = '1.8.1';
@@ -47,10 +73,38 @@ if( ! class_exists( 'FusionCore_Plugin' ) ) {
 		 */
 		protected static $instance = null;
 		
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		/**
 		 * Initialize the plugin by setting localization and loading public scripts
 		 * and styles.
 		 *
+<<<<<<< HEAD
+		 * @since    1.0.0
+		 */
+		private function __construct() {
+			add_action( 'after_setup_theme', array( &$this, 'load_fusion_core_text_domain' ) );
+		}
+
+		/**
+		 * Register the plugin text domain.
+		 *
+		 * @return void
+		 */
+		function load_fusion_core_text_domain() {
+			load_plugin_textdomain( 'fusion-core', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		}
+
+		/**
+		 * Return an instance of this class.
+		 *
+		 * @since    1.0.0
+		 *
+		 * @return  object  A single instance of the class.
+		 */
+		public static function get_instance() {
+
+			// If the single instance hasn't been set yet, set it now.
+=======
 		 * @since	 1.0.0
 		 */
 		private function __construct() {
@@ -150,6 +204,7 @@ if( ! class_exists( 'FusionCore_Plugin' ) ) {
 		public static function get_instance() {
 
 			// If the single instance hasn't been set, set it now.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			if ( null == self::$instance ) {
 				self::$instance = new self;
 			}
@@ -157,6 +212,30 @@ if( ! class_exists( 'FusionCore_Plugin' ) ) {
 			return self::$instance;
 
 		}
+<<<<<<< HEAD
+
+		/**
+		 * Gets the value of a theme option.
+		 *
+		 * @since 3.0
+		 *
+		 * @access public
+		 * @param string|null  $option The option.
+		 * @param string|false $subset The sub-option in case of an array.
+		 */
+		public static function get_theme_option( $option = null, $subset = false ) {
+
+			$value = '';
+
+			// If Avada is installed, use it to get the theme-option.
+			if ( class_exists( 'Avada' ) ) {
+				$value = Avada()->settings->get( $option, $subset );
+			}
+
+			return apply_filters( 'fusion_core_get_theme_option', $value, $option, $subset );
+
+		}
+=======
 		
 		// --------------------------------------------------------------------------		
 		
@@ -767,11 +846,14 @@ if( ! class_exists( 'FusionCore_Plugin' ) ) {
 			require_once plugin_dir_path( __FILE__ ) . 'libs/class-updater.php';
 			$theme_update = new FusionCoreUpdater( 'http://updates.theme-fusion.com/fusion-core.php', $plugin_id, $plugin_slug );
 		}*/
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 }
 // Load the instance of the plugin
 add_action( 'plugins_loaded', array( 'FusionCore_Plugin', 'get_instance' ) );
 
+<<<<<<< HEAD
+=======
 // Blocking Script
 if( ! function_exists( 'fusion_block_direct_access' ) ) {
 	/**
@@ -785,12 +867,91 @@ if( ! function_exists( 'fusion_block_direct_access' ) ) {
 		}
 	}
 }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 /**
  * Fusion Slider
  */
 include_once 'fusion-slider.php';
 
+<<<<<<< HEAD
+/**
+ * Elastic Slider admin menu
+ */
+add_action( 'admin_menu', 'fusion_admin_menu' );
+function fusion_admin_menu() {
+	global $submenu;
+
+	unset( $submenu['edit.php?post_type=themefusion_elastic'][10] );
+}
+
+/**
+ * Register custom post types
+ */
+add_action( 'init', 'fusion_register_post_types' );
+function fusion_register_post_types() {
+	$permalinks = get_option( 'avada_permalinks' );
+
+	// Portfolio
+	register_post_type(
+		'avada_portfolio',
+		array(
+			'labels'      => array(
+				'name'          => _x( 'Portfolio', 'Post Type General Name', 'fusion-core' ),
+				'singular_name' => _x( 'Portfolio', 'Post Type Singular Name', 'fusion-core' ),
+				'add_new_item'  => _x( 'Add New Portfolio Post', 'fusion-core' ),
+				'edit_item'  => _x( 'Edit Portfolio Post', 'fusion-core' ),
+
+			),
+			'public'      => true,
+			'has_archive' => true,
+			'rewrite'     => array(
+				'slug' => FusionCore_Plugin::get_theme_option( 'portfolio_slug' ),
+			),
+			'supports'    => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes', 'post-formats' ),
+			'can_export'  => true,
+		)
+	);
+
+	register_taxonomy(
+		'portfolio_category',
+		'avada_portfolio',
+		array(
+			'hierarchical' => true,
+			'label'        => __( 'Portfolio Categories', 'fusion-core' ),
+			'query_var'    => true,
+			'rewrite'      => array(
+				'slug'       => empty( $permalinks['portfolio_category_base'] ) ? _x( 'portfolio_category', 'slug', 'fusion-core' ) : $permalinks['portfolio_category_base'],
+				'with_front' => false,
+			),
+		)
+	);
+
+	register_taxonomy(
+		'portfolio_skills',
+		'avada_portfolio',
+		array(
+			'hierarchical' => true,
+			'label'        => __( 'Skills', 'fusion-core' ),
+			'query_var'    => true,
+			'rewrite'      => array(
+				'slug'       => empty( $permalinks['portfolio_skills_base'] ) ? _x( 'portfolio_skills', 'slug', 'fusion-core' ) : $permalinks['portfolio_skills_base'],
+				'with_front' => false,
+			),
+		)
+	);
+
+	register_taxonomy(
+		'portfolio_tags',
+		'avada_portfolio',
+		array(
+			'hierarchical' => false,
+			'label'        => __( 'Tags', 'fusion-core' ),
+			'query_var'    => true,
+			'rewrite'      => array(
+				'slug'       => empty( $permalinks['portfolio_tags_base'] ) ? _x( 'portfolio_tags', 'slug', 'fusion-core' ) : $permalinks['portfolio_tags_base'],
+				'with_front' => false,
+=======
 /*----------------------------------------------------------------------------*
  * Register custom post types
  *----------------------------------------------------------------------------*/
@@ -847,14 +1008,30 @@ function fusion_register_post_types() {
 			'rewrite'		=> array(
 				'slug'       => empty( $permalinks['portfolio_tags_base'] ) ? _x( 'portfolio_tags', 'slug', 'fusion-core' ) : $permalinks['portfolio_tags_base'],
 				'with_front' => false
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			),
 		)
 	);
 
+<<<<<<< HEAD
+	// FAQ
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	register_post_type(
 		'avada_faq',
 		array(
 			'labels' => array(
+<<<<<<< HEAD
+				'name'          => _x( 'FAQs', 'Post Type General Name', 'fusion-core' ),
+				'singular_name' => _x( 'FAQ', 'Post Type Singular Name', 'fusion-core' ),
+				'add_new_item'  => _x( 'Add New FAQ Post', 'fusion-core' ),
+				'edit_item'  => _x( 'Edit FAQ Post', 'fusion-core' ),
+			),
+			'public' => true,
+			'has_archive' => true,
+			'rewrite' => array( 'slug' => 'faq-items' ),
+			'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes', 'post-formats' ),
+=======
 				'name' 			=> _x( 'FAQs', 'Post Type General Name', 'fusion-core' ),
 				'singular_name' => _x( 'FAQ', 'Post Type Singular Name', 'fusion-core' ),
 			),
@@ -862,19 +1039,57 @@ function fusion_register_post_types() {
 			'has_archive' => true,
 			'rewrite' => array('slug' => 'faq-items'),
 			'supports' => array('title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes', 'post-formats'),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			'can_export' => true,
 		)
 	);
 
+<<<<<<< HEAD
+	register_taxonomy(
+		'faq_category',
+		'avada_faq',
+		array(
+			'hierarchical' => true,
+			'label'        => 'FAQ Categories',
+			'query_var'    => true,
+			'rewrite'      => true,
+		)
+	);
+
+	// Elastic Slider
+	if ( FusionCore_Plugin::get_theme_option( 'status_eslider' ) ) {
+=======
 	register_taxonomy('faq_category', 'avada_faq', array('hierarchical' => true, 'label' => 'FAQ Categories', 'query_var' => true, 'rewrite' => true));
 
 
 	if( ! $smof_data['status_eslider'] ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		register_post_type(
 			'themefusion_elastic',
 			array(
 				'public' => true,
 				'has_archive' => false,
+<<<<<<< HEAD
+				'rewrite' => array( 'slug' => 'elastic-slide' ),
+				'supports' => array( 'title', 'thumbnail' ),
+				'can_export' => true,
+				'menu_position' => 100,
+				'labels' => array(
+					'name'               => _x( 'Elastic Sliders', 'Post Type General Name', 'fusion-core' ),
+					'singular_name'      => _x( 'Elastic Slider', 'Post Type Singular Name', 'fusion-core' ),
+					'menu_name'          => esc_attr__( 'Elastic Slider', 'fusion-core' ),
+					'parent_item_colon'  => esc_attr__( 'Parent Slide:', 'fusion-core' ),
+					'all_items'          => esc_attr__( 'Add or Edit Slides', 'fusion-core' ),
+					'view_item'          => esc_attr__( 'View Slides', 'fusion-core' ),
+					'add_new_item'       => esc_attr__( 'Add New Slide', 'fusion-core' ),
+					'add_new'            => esc_attr__( 'Add New Slide', 'fusion-core' ),
+					'edit_item'          => esc_attr__( 'Edit Slide', 'fusion-core' ),
+					'update_item'        => esc_attr__( 'Update Slide', 'fusion-core' ),
+					'search_items'       => esc_attr__( 'Search Slide', 'fusion-core' ),
+					'not_found'          => esc_attr__( 'Not found', 'fusion-core' ),
+					'not_found_in_trash' => esc_attr__( 'Not found in Trash', 'fusion-core' ),
+				),
+=======
 				'rewrite' => array('slug' => 'elastic-slide'),
 				'supports' => array('title', 'thumbnail'),
 				'can_export' => true,
@@ -894,6 +1109,7 @@ function fusion_register_post_types() {
 					'not_found'		   => __( 'Not found', 'fusion-core' ),
 					'not_found_in_trash'  => __( 'Not found in Trash', 'fusion-core' ),
 				)
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			)
 		);
 
@@ -905,6 +1121,22 @@ function fusion_register_post_types() {
 				'query_var' => true,
 				'rewrite' => true,
 				'labels' => array(
+<<<<<<< HEAD
+					'name'                       => _x( 'Groups', 'Taxonomy General Name', 'fusion-core' ),
+					'singular_name'              => _x( 'Group', 'Taxonomy Singular Name', 'fusion-core' ),
+					'menu_name'                  => __( 'Add or Edit Groups', 'fusion-core' ),
+					'all_items'                  => __( 'All Groups', 'fusion-core' ),
+					'parent_item_colon'          => __( 'Parent Group:', 'fusion-core' ),
+					'new_item_name'              => __( 'New Group Name', 'fusion-core' ),
+					'add_new_item'               => __( 'Add Groups', 'fusion-core' ),
+					'edit_item'                  => __( 'Edit Group', 'fusion-core' ),
+					'update_item'                => __( 'Update Group', 'fusion-core' ),
+					'separate_items_with_commas' => __( 'Separate groups with commas', 'fusion-core' ),
+					'search_items'               => __( 'Search Groups', 'fusion-core' ),
+					'add_or_remove_items'        => __( 'Add or remove groups', 'fusion-core' ),
+					'choose_from_most_used'      => __( 'Choose from the most used groups', 'fusion-core' ),
+					'not_found'                  => __( 'Not Found', 'fusion-core' ),
+=======
 					'name'					   => _x( 'Groups', 'Taxonomy General Name', 'fusion-core' ),
 					'singular_name'			  => _x( 'Group', 'Taxonomy Singular Name', 'fusion-core' ),
 					'menu_name'				  => __( 'Add or Edit Groups', 'fusion-core' ),
@@ -919,10 +1151,25 @@ function fusion_register_post_types() {
 					'add_or_remove_items'		=> __( 'Add or remove groups', 'fusion-core' ),
 					'choose_from_most_used'	  => __( 'Choose from the most used groups', 'fusion-core' ),
 					'not_found'				  => __( 'Not Found', 'fusion-core' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				),
 			)
 		);
 	}
+<<<<<<< HEAD
+
+	// qTranslate and mqTranslate custom post type support
+	if ( function_exists( 'qtrans_getLanguage' ) ) {
+		add_action( 'portfolio_category_add_form', 'qtrans_modifyTermFormFor' );
+		add_action( 'portfolio_category_edit_form', 'qtrans_modifyTermFormFor' );
+		add_action( 'portfolio_skills_add_form', 'qtrans_modifyTermFormFor' );
+		add_action( 'portfolio_skills_edit_form', 'qtrans_modifyTermFormFor' );
+		add_action( 'portfolio_tags_add_form', 'qtrans_modifyTermFormFor' );
+		add_action( 'portfolio_tags_edit_form', 'qtrans_modifyTermFormFor' );
+		add_action( 'faq_category_edit_form', 'qtrans_modifyTermFormFor' );
+	}
+}
+=======
 	
 	// qTrabslate and mqTranslate custom post type support
 	if( function_exists('qtrans_getLanguage') ) {
@@ -986,3 +1233,4 @@ function avada_shortcodes_formatter($content) {
 
 add_filter('the_content', 'avada_shortcodes_formatter');
 add_filter('widget_text', 'avada_shortcodes_formatter');
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

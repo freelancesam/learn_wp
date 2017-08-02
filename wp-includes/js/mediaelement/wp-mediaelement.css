@@ -37,6 +37,8 @@
 	border-radius: 0;
 }
 
+<<<<<<< HEAD
+=======
 .mejs-controls .mejs-offscreen {
 	clip: rect(1px, 1px, 1px, 1px);
 	position: absolute;
@@ -62,6 +64,7 @@
 	width: auto;
 }
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .mejs-overlay-loading {
 	background: transparent;
 }
@@ -110,6 +113,10 @@
 	color: #a00;
 	font-size: 10px;
 	text-transform: uppercase;
+<<<<<<< HEAD
+	text-decoration: none;
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .media-embed-details .setting .remove-setting {

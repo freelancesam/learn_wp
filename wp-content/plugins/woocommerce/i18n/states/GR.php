@@ -9,6 +9,13 @@
  */
 global $states;
 
+<<<<<<< HEAD
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 $states['GR'] = array(
 	'I' => __( 'Αττική', 'woocommerce' ),
 	'A' => __( 'Ανατολική Μακεδονία και Θράκη', 'woocommerce' ),

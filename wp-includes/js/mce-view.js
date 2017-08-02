@@ -428,6 +428,10 @@
 		 */
 		replaceMarkers: function() {
 			this.getMarkers( function( editor, node ) {
+<<<<<<< HEAD
+				var selected = node === editor.selection.getNode();
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				var $viewNode;
 
 				if ( ! this.loader && $( node ).text() !== this.text ) {
@@ -440,6 +444,16 @@
 				);
 
 				editor.$( node ).replaceWith( $viewNode );
+<<<<<<< HEAD
+
+				if ( selected ) {
+					setTimeout( function() {
+						editor.selection.select( $viewNode[0] );
+						editor.selection.collapse();
+					} );
+				}
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			} );
 		},
 
@@ -460,7 +474,11 @@
 		 * @param {Boolean}  rendered Only set for (un)rendered nodes. Optional.
 		 */
 		setContent: function( content, callback, rendered ) {
+<<<<<<< HEAD
+			if ( _.isObject( content ) && ( content.sandbox || content.head || content.body.indexOf( '<script' ) !== -1 ) ) {
+=======
 			if ( _.isObject( content ) && content.body.indexOf( '<script' ) !== -1 ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				this.setIframes( content.head || '', content.body, callback, rendered );
 			} else if ( _.isString( content ) && content.indexOf( '<script' ) !== -1 ) {
 				this.setIframes( '', content, callback, rendered );
@@ -576,6 +594,12 @@
 									'display: none;' +
 									'content: "";' +
 								'}' +
+<<<<<<< HEAD
+								'iframe {' +
+									'max-width: 100%;' +
+								'}' +
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							'</style>' +
 						'</head>' +
 						'<body id="wpview-iframe-sandbox" class="' + bodyClasses + '">' +
@@ -615,6 +639,18 @@
 				}
 
 				function reload() {
+<<<<<<< HEAD
+					if ( ! editor.isHidden() ) {
+						$( node ).data( 'rendered', null );
+
+						setTimeout( function() {
+							wp.mce.views.render();
+						} );
+					}
+				}
+
+				function addObserver() {
+=======
 					$( node ).data( 'rendered', null );
 
 					setTimeout( function() {
@@ -627,6 +663,7 @@
 				MutationObserver = iframeWin.MutationObserver || iframeWin.WebKitMutationObserver || iframeWin.MozMutationObserver;
 
 				if ( MutationObserver ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					observer = new MutationObserver( _.debounce( resize, 100 ) );
 
 					observer.observe( iframeDoc.body, {
@@ -634,6 +671,21 @@
 						childList: true,
 						subtree: true
 					} );
+<<<<<<< HEAD
+				}
+
+				$( iframeWin ).on( 'load', resize ).on( 'unload', reload );
+
+				MutationObserver = iframeWin.MutationObserver || iframeWin.WebKitMutationObserver || iframeWin.MozMutationObserver;
+
+				if ( MutationObserver ) {
+					if ( ! iframeDoc.body ) {
+						iframeDoc.addEventListener( 'DOMContentLoaded', addObserver, false );
+					} else {
+						addObserver();
+					}
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				} else {
 					for ( i = 1; i < 6; i++ ) {
 						setTimeout( resize, i * 700 );
@@ -708,6 +760,12 @@
 					$( node ).data( 'rendered', false );
 					editor.dom.setAttrib( node, 'data-wpview-text', encodeURIComponent( text ) );
 					wp.mce.views.createInstance( type, text, match.options, force ).render();
+<<<<<<< HEAD
+
+					editor.selection.select( node );
+					editor.nodeChanged();
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					editor.focus();
 
 					return true;

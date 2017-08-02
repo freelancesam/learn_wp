@@ -91,6 +91,16 @@ class WP_User {
 	 * The filter context applied to user data fields.
 	 *
 	 * @since 2.9.0
+<<<<<<< HEAD
+	 * @access public
+	 * @var string
+	 */
+	public $filter = null;
+
+	/**
+	 * @static
+	 * @since 3.3.0
+=======
 	 * @access private
 	 * @var string
 	 */
@@ -98,6 +108,7 @@ class WP_User {
 
 	/**
 	 * @static
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @access private
 	 * @var array
 	 */
@@ -159,6 +170,11 @@ class WP_User {
 	/**
 	 * Sets up object properties, including capabilities.
 	 *
+<<<<<<< HEAD
+	 * @since  3.3.0
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param object $data    User DB row object.
 	 * @param int    $blog_id Optional. The site ID to initialize for.
 	 */

@@ -78,10 +78,13 @@ do_action( 'admin_footer', '' );
  * refers to the global hook suffix of the current page.
  *
  * @since 4.6.0
+<<<<<<< HEAD
+=======
  *
  * @global string $hook_suffix
  *
  * @param string $hook_suffix The current admin page.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 do_action( "admin_print_footer_scripts-{$hook_suffix}" );
 
@@ -99,9 +102,12 @@ do_action( 'admin_print_footer_scripts' );
  * refers to the global hook suffix of the current page.
  *
  * @since 2.8.0
+<<<<<<< HEAD
+=======
  *
  * @global string $hook_suffix
  * @param string $hook_suffix The current admin page.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 do_action( "admin_footer-{$hook_suffix}" );
 

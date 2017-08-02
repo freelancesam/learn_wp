@@ -13,8 +13,14 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 /** WordPress Translation Install API */
 require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
 
+<<<<<<< HEAD
+if ( ! current_user_can( 'create_sites' ) ) {
+	wp_die( __( 'Sorry, you are not allowed to add sites to this network.' ) );
+}
+=======
 if ( ! current_user_can( 'manage_sites' ) )
 	wp_die( __( 'Sorry, you are not allowed to add sites to this network.' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 get_current_screen()->add_help_tab( array(
 	'id'      => 'overview',

@@ -128,7 +128,12 @@ class WC_REST_Order_Notes_V1_Controller extends WC_REST_Controller {
 	 * Check if a given request has access create order notes.
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
+<<<<<<< HEAD
+	 *
+	 * @return bool|WP_Error
+=======
 	 * @return boolean
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_post_permissions( $this->post_type, 'create' ) ) {
@@ -158,7 +163,12 @@ class WC_REST_Order_Notes_V1_Controller extends WC_REST_Controller {
 	 * Check if a given request has access delete a order note.
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
+<<<<<<< HEAD
+	 *
+	 * @return bool|WP_Error
+=======
 	 * @return boolean
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_item_permissions_check( $request ) {
 		$order = wc_get_order( (int) $request['order_id'] );
@@ -174,7 +184,12 @@ class WC_REST_Order_Notes_V1_Controller extends WC_REST_Controller {
 	 * Get order notes from an order.
 	 *
 	 * @param WP_REST_Request $request
+<<<<<<< HEAD
+	 *
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_items( $request ) {
 		$order = wc_get_order( (int) $request['order_id'] );

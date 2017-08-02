@@ -140,7 +140,11 @@ class WC_API_Products extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the product ID
 	 * @param string $fields
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product( $id, $fields = null ) {
 
@@ -173,9 +177,17 @@ class WC_API_Products extends WC_API_Resource {
 	 * Get the total number of products
 	 *
 	 * @since 2.1
+<<<<<<< HEAD
+	 *
+	 * @param string $type
+	 * @param array $filter
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param string $type
 	 * @param array $filter
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_products_count( $type = null, $filter = array() ) {
 		try {
@@ -199,8 +211,15 @@ class WC_API_Products extends WC_API_Resource {
 	 * Create a new product
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param array $data posted data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param array $data posted data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_product( $data ) {
 		$id = 0;
@@ -307,9 +326,17 @@ class WC_API_Products extends WC_API_Resource {
 	 * Edit a product
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param int $id the product ID
+	 * @param array $data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param int $id the product ID
 	 * @param array $data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function edit_product( $id, $data ) {
 		try {
@@ -400,9 +427,17 @@ class WC_API_Products extends WC_API_Resource {
 	 * Delete a product.
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param int $id the product ID.
+	 * @param bool $force true to permanently delete order, false to move to trash.
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param int $id the product ID.
 	 * @param bool $force true to permanently delete order, false to move to trash.
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_product( $id, $force = false ) {
 
@@ -462,7 +497,11 @@ class WC_API_Products extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the product ID to get reviews for
 	 * @param string $fields fields to include in response
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product_reviews( $id, $fields = null ) {
 
@@ -497,10 +536,17 @@ class WC_API_Products extends WC_API_Resource {
 	 * @since 2.4.0
 	 * @param int $id the product ID to get orders for
 	 * @param string fields  fields to retrieve
+<<<<<<< HEAD
+	 * @param array $filter filters to include in response
+	 * @param string $status the order status to retrieve
+	 * @param $page  $page   page to retrieve
+	 * @return array|WP_Error
+=======
 	 * @param string $filter filters to include in response
 	 * @param string $status the order status to retrieve
 	 * @param $page  $page   page to retrieve
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product_orders( $id, $fields = null, $filter = array(), $status = null, $page = 1 ) {
 		global $wpdb;
@@ -535,8 +581,15 @@ class WC_API_Products extends WC_API_Resource {
 	 * Get a listing of product categories
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param string|null $fields fields to limit response to
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param string|null $fields fields to limit response to
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product_categories( $fields = null ) {
 		try {
@@ -563,9 +616,17 @@ class WC_API_Products extends WC_API_Resource {
 	 * Get the product category for the given ID
 	 *
 	 * @since 2.2
+<<<<<<< HEAD
+	 *
+	 * @param string $id product category term ID
+	 * @param string|null $fields fields to limit response to
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param string $id product category term ID
 	 * @param string|null $fields fields to limit response to
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product_category( $id, $fields = null ) {
 		try {
@@ -677,13 +738,24 @@ class WC_API_Products extends WC_API_Resource {
 	 *
 	 * @since 2.1
 	 * @param WC_Product|int $product
+<<<<<<< HEAD
+	 * @return array
+=======
 	 * @return WC_Product
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	private function get_product_data( $product ) {
 		if ( is_numeric( $product ) ) {
 			$product = wc_get_product( $product );
 		}
 
+<<<<<<< HEAD
+		if ( ! is_a( $product, 'WC_Product' ) ) {
+			return array();
+		}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$prices_precision = wc_get_price_decimals();
 		return array(
 			'title'              => $product->get_name(),
@@ -1255,7 +1327,13 @@ class WC_API_Products extends WC_API_Resource {
 	 * @since  2.2
 	 * @param  WC_Product $product
 	 * @param  array $request
+<<<<<<< HEAD
+	 *
+	 * @return true
+	 *
+=======
 	 * @return WC_Product
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @throws WC_API_Exception
 	 */
 	protected function save_variations( $product, $request ) {
@@ -1480,11 +1558,17 @@ class WC_API_Products extends WC_API_Resource {
 
 		// Shipping class
 		if ( isset( $data['shipping_class'] ) ) {
+<<<<<<< HEAD
+			$data_store        = $product->get_data_store();
+			$shipping_class_id = $data_store->get_shipping_class_id_by_slug( wc_clean( $data['shipping_class'] ) );
+			$product->set_shipping_class_id( $shipping_class_id );
+=======
 			$data_store         = $product->get_data_store();
 			$shipping_class_id  = $data_store->get_shipping_class_id_by_slug( wc_clean( $data['shipping_class'] ) );
 			if ( $shipping_class_id ) {
 				$product->set_shipping_class_id( $shipping_class_id );
 			}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		return $product;
@@ -1613,8 +1697,16 @@ class WC_API_Products extends WC_API_Resource {
 	 * Save product images
 	 *
 	 * @since  2.2
+<<<<<<< HEAD
+	 *
+	 * @param WC_Product $product
+	 * @param array      $images
+	 *
+	 * @return WC_Product
+=======
 	 * @param WC_Product $product
 	 * @param  array $images
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @throws WC_API_Exception
 	 */
 	protected function save_product_images( $product, $images ) {
@@ -1668,8 +1760,16 @@ class WC_API_Products extends WC_API_Resource {
 	 * Upload image from URL
 	 *
 	 * @since  2.2
+<<<<<<< HEAD
+	 *
+	 * @param  string $image_url
+	 *
+	 * @return array|WP_Error
+	 *
+=======
 	 * @param  string $image_url
 	 * @return int|WP_Error attachment id
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @throws WC_API_Exception
 	 */
 	public function upload_product_image( $image_url ) {
@@ -1863,8 +1963,15 @@ class WC_API_Products extends WC_API_Resource {
 	 * Get a listing of product attributes
 	 *
 	 * @since 2.4.0
+<<<<<<< HEAD
+	 *
+	 * @param string|null $fields fields to limit response to
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param string|null $fields fields to limit response to
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product_attributes( $fields = null ) {
 		try {
@@ -1897,9 +2004,17 @@ class WC_API_Products extends WC_API_Resource {
 	 * Get the product attribute for the given ID
 	 *
 	 * @since 2.4.0
+<<<<<<< HEAD
+	 *
+	 * @param string $id product attribute term ID
+	 * @param string|null $fields fields to limit response to
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param string $id product attribute term ID
 	 * @param string|null $fields fields to limit response to
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product_attribute( $id, $fields = null ) {
 		global $wpdb;
@@ -1984,8 +2099,15 @@ class WC_API_Products extends WC_API_Resource {
 	 * Create a new product attribute
 	 *
 	 * @since 2.4.0
+<<<<<<< HEAD
+	 *
+	 * @param array $data posted data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param array $data posted data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_product_attribute( $data ) {
 		global $wpdb;
@@ -2064,9 +2186,17 @@ class WC_API_Products extends WC_API_Resource {
 	 * Edit a product attribute
 	 *
 	 * @since 2.4.0
+<<<<<<< HEAD
+	 *
+	 * @param int $id the attribute ID
+	 * @param array $data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param int $id the attribute ID
 	 * @param array $data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function edit_product_attribute( $id, $data ) {
 		global $wpdb;
@@ -2145,8 +2275,15 @@ class WC_API_Products extends WC_API_Resource {
 	 * Delete a product attribute
 	 *
 	 * @since  2.4.0
+<<<<<<< HEAD
+	 *
+	 * @param  int $id the product attribute ID
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param  int $id the product attribute ID
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_product_attribute( $id ) {
 		global $wpdb;
@@ -2206,9 +2343,17 @@ class WC_API_Products extends WC_API_Resource {
 	 * @deprecated 2.4.0
 	 *
 	 * @since  2.3.0
+<<<<<<< HEAD
+	 *
+	 * @param  int    $sku the product SKU
+	 * @param  string $fields
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param  int    $sku the product SKU
 	 * @param  string $fields
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product_by_sku( $sku, $fields = null ) {
 		try {
@@ -2226,6 +2371,11 @@ class WC_API_Products extends WC_API_Resource {
 
 	/**
 	 * Clear product
+<<<<<<< HEAD
+	 *
+	 * @param int $product_id
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function clear_product( $product_id ) {
 		if ( ! is_numeric( $product_id ) || 0 >= $product_id ) {
@@ -2254,8 +2404,15 @@ class WC_API_Products extends WC_API_Resource {
 	 * WC_API_Products->create_product() and WC_API_Products->edit_product()
 	 *
 	 * @since 2.4.0
+<<<<<<< HEAD
+	 *
+	 * @param array $data
+	 *
+	 * @return array|WP_Error
+=======
 	 * @param array $data
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function bulk( $data ) {
 

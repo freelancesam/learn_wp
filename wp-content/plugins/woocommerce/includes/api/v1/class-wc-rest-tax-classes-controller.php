@@ -97,7 +97,12 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 	 * Check if a given request has access create tax classes.
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
+<<<<<<< HEAD
+	 *
+	 * @return bool|WP_Error
+=======
 	 * @return boolean
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'settings', 'create' ) ) {
@@ -111,7 +116,12 @@ class WC_REST_Tax_Classes_V1_Controller extends WC_REST_Controller {
 	 * Check if a given request has access delete a tax.
 	 *
 	 * @param  WP_REST_Request $request Full details about the request.
+<<<<<<< HEAD
+	 *
+	 * @return bool|WP_Error
+=======
 	 * @return boolean
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_item_permissions_check( $request ) {
 		if ( ! wc_rest_check_manager_permissions( 'settings', 'delete' ) ) {

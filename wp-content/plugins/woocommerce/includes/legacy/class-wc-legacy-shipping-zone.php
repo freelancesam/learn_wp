@@ -26,6 +26,11 @@ abstract class WC_Legacy_Shipping_Zone extends WC_Data {
 	/**
 	 * Read a shipping zone by ID.
 	 * @deprecated 3.0.0 - Init a shipping zone with an ID.
+<<<<<<< HEAD
+	 *
+	 * @param int $zone_id
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( $zone_id ) {
 		wc_deprecated_function( 'WC_Shipping_Zone::read', '3.0', 'a shipping zone initialized with an ID.' );

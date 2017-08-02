@@ -1,5 +1,8 @@
 <?php
 
+<<<<<<< HEAD
+require_once 'components/Updates.php';
+=======
 if ( ! function_exists( 'et_core_enable_automatic_updates' ) ) :
 function et_core_enable_automatic_updates( $url, $version ) {
 	if ( ! is_admin() ) {
@@ -22,3 +25,4 @@ function et_core_enable_automatic_updates( $url, $version ) {
 	$GLOBALS['et_core_updates'] = $et_core_updates;
 }
 endif;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

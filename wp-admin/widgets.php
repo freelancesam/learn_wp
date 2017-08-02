@@ -346,6 +346,29 @@ $errors = array(
 require_once( ABSPATH . 'wp-admin/admin-header.php' ); ?>
 
 <div class="wrap">
+<<<<<<< HEAD
+<h1 class="wp-heading-inline"><?php
+echo esc_html( $title );
+?></h1>
+
+<?php
+if ( current_user_can( 'customize' ) ) {
+	printf(
+		' <a class="page-title-action hide-if-no-customize" href="%1$s">%2$s</a>',
+		esc_url( add_query_arg(
+			array(
+				array( 'autofocus' => array( 'panel' => 'widgets' ) ),
+				'return' => urlencode( remove_query_arg( wp_removable_query_args(), wp_unslash( $_SERVER['REQUEST_URI'] ) ) )
+			),
+			admin_url( 'customize.php' )
+		) ),
+		__( 'Manage with Live Preview' )
+	);
+}
+?>
+
+<hr class="wp-header-end">
+=======
 <h1>
 <?php
 	echo esc_html( $title );
@@ -364,6 +387,7 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' ); ?>
 	}
 ?>
 </h1>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 <?php if ( isset($_GET['message']) && isset($messages[$_GET['message']]) ) { ?>
 <div id="message" class="updated notice is-dismissible"><p><?php echo $messages[$_GET['message']]; ?></p></div>

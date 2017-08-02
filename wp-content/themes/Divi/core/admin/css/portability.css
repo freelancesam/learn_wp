@@ -43,6 +43,13 @@
 	overflow: hidden;
 }
 
+<<<<<<< HEAD
+.rtl .et-core-portability-import-placeholder {
+	float: right;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .et-core-portability-import-form input[type="file"] {
 	position: absolute;
 	left: 0;
@@ -51,6 +58,14 @@
 	opacity: 0;
 }
 
+<<<<<<< HEAD
+.rtl .et-core-portability-import-form input[type="file"] {
+	left: auto;
+	right: 0;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .et-core-portability-import-placeholder {
 	width: 166px;
 }
@@ -63,6 +78,13 @@
 	float: left;
 }
 
+<<<<<<< HEAD
+.rtl .et-core-portability-import-form .et-core-button {
+	float: right;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /*-----------------------------------------------------------------------------
   3.0 - Loader, Progress Bar and Messages
 ------------------------------------------------------------------------------*/
@@ -124,5 +146,8 @@
 .customize-controls-close[data-et-core-modal*="data-et-core-portability"]:before {
 	font-size: 13px;
 	left: 15px;
+<<<<<<< HEAD
+=======
 	top: 2px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }

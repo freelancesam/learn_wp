@@ -76,6 +76,12 @@ abstract class WC_Deprecated_Hooks {
 
 	/**
 	 * Display a deprecated notice for old hooks.
+<<<<<<< HEAD
+	 *
+	 * @param string $old_hook
+	 * @param string $new_hook
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function display_notice( $old_hook, $new_hook ) {
 		wc_deprecated_function( sprintf( 'The "%s" hook uses out of date data structures and', esc_html( $old_hook ) ), WC_VERSION, esc_html( $new_hook ) );

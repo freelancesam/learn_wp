@@ -33,9 +33,18 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<<<<<<< HEAD
+<?php
+	$product_tour_enabled = et_builder_is_product_tour_enabled();
+	$page_container_style = $product_tour_enabled ? ' style="padding-top: 0px;"' : ''; ?>
+	<div id="page-container"<?php echo $page_container_style; ?>>
+<?php
+	if ( $product_tour_enabled || is_page_template( 'page-template-blank.php' ) ) {
+=======
 	<div id="page-container">
 <?php
 	if ( is_page_template( 'page-template-blank.php' ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return;
 	}
 
@@ -139,7 +148,11 @@
 				<?php } ?>
 				<form role="search" method="get" class="et-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<?php
+<<<<<<< HEAD
+						printf( '<input type="search" class="et-search-field" placeholder="%1$s" value="%2$s" name="s" title="%3$s" />',
+=======
 						printf( '<input type="search" class="et-search-field" placeholder="%1$s" placeholder="%2$s" name="s" title="%3$s" />',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							esc_attr__( 'Search &hellip;', 'Divi' ),
 							get_search_query(),
 							esc_attr__( 'Search for:', 'Divi' )
@@ -279,4 +292,8 @@
 			</div>
 		</header> <!-- #main-header -->
 
+<<<<<<< HEAD
 		<div id="et-main-area">
+=======
+		<div id="et-main-area">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

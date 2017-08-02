@@ -15,6 +15,11 @@ jQuery( function ( $ ) {
 			$( '.js_field-country' ).select2().change( this.change_country );
 			$( '.js_field-country' ).trigger( 'change', [ true ] );
 			$( document.body ).on( 'change', 'select.js_field-state', this.change_state );
+<<<<<<< HEAD
+
+			$( document.body ).on( 'click', 'button.js_copy-billing', this.copy_billing );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		},
 
 		change_country: function( e, stickValue ) {
@@ -75,6 +80,26 @@ jQuery( function ( $ ) {
 				country  = $country.val();
 
 			$country.data( 'woocommerce.stickState-' + country, state );
+<<<<<<< HEAD
+		},
+
+		copy_billing: function( event ) {
+			event.preventDefault();
+
+			$( '#fieldset-billing' ).find( 'input, select' ).each( function( i, el ) {
+				// The address keys match up, except for the prefix
+				var shipName = el.name.replace( /^billing_/, 'shipping_' );
+				// Swap prefix, then check if there are any elements
+				var shipEl = $( '[name="' + shipName + '"]' );
+				// No corresponding shipping field, skip this item
+				if ( ! shipEl.length ) {
+					return;
+				}
+				// Found a matching shipping element, update the value
+				shipEl.val( el.value ).trigger( 'change' );
+			} );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	};
 

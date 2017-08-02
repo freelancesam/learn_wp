@@ -94,6 +94,10 @@
 	 * @type {object} filesystemCredentials.ssh                Holds SSH credentials.
 	 * @type {string} filesystemCredentials.ssh.publicKey      The public key. Default empty string.
 	 * @type {string} filesystemCredentials.ssh.privateKey     The private key. Default empty string.
+<<<<<<< HEAD
+	 * @type {string} filesystemCredentials.fsNonce            Filesystem credentials form nonce.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @type {bool}   filesystemCredentials.available          Whether filesystem credentials have been provided.
 	 *                                                         Default 'false'.
 	 */
@@ -108,6 +112,10 @@
 			publicKey:  '',
 			privateKey: ''
 		},
+<<<<<<< HEAD
+		fsNonce: '',
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		available: false
 	};
 
@@ -225,6 +233,10 @@
 		options.data = _.extend( data, {
 			action:          action,
 			_ajax_nonce:     wp.updates.ajaxNonce,
+<<<<<<< HEAD
+			_fs_nonce:       wp.updates.filesystemCredentials.fsNonce,
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			username:        wp.updates.filesystemCredentials.ftp.username,
 			password:        wp.updates.filesystemCredentials.ftp.password,
 			hostname:        wp.updates.filesystemCredentials.ftp.hostname,
@@ -319,6 +331,10 @@
 			$( '.subsubsub .upgrade .count' ).text( '(' + itemCount + ')' );
 		} else {
 			$( '.subsubsub .upgrade' ).remove();
+<<<<<<< HEAD
+			$( '.subsubsub li:last' ).html( function() { return $( this ).children(); } );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	};
 
@@ -370,11 +386,19 @@
 		if ( 'plugins' === pagenow || 'plugins-network' === pagenow ) {
 			$updateRow = $( 'tr[data-plugin="' + args.plugin + '"]' );
 			$message   = $updateRow.find( '.update-message' ).removeClass( 'notice-error' ).addClass( 'updating-message notice-warning' ).find( 'p' );
+<<<<<<< HEAD
+			message    = wp.updates.l10n.pluginUpdatingLabel.replace( '%s', $updateRow.find( '.plugin-title strong' ).text() );
+		} else if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
+			$card    = $( '.plugin-card-' + args.slug );
+			$message = $card.find( '.update-now' ).addClass( 'updating-message' );
+			message  = wp.updates.l10n.pluginUpdatingLabel.replace( '%s', $message.data( 'name' ) );
+=======
 			message    = wp.updates.l10n.updatingLabel.replace( '%s', $updateRow.find( '.plugin-title strong' ).text() );
 		} else if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
 			$card    = $( '.plugin-card-' + args.slug );
 			$message = $card.find( '.update-now' ).addClass( 'updating-message' );
 			message  = wp.updates.l10n.updatingLabel.replace( '%s', $message.data( 'name' ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			// Remove previous error messages, if any.
 			$card.removeClass( 'plugin-card-update-failed' ).find( '.notice.notice-error' ).remove();
@@ -428,8 +452,13 @@
 		}
 
 		$updateMessage
+<<<<<<< HEAD
+			.attr( 'aria-label', wp.updates.l10n.pluginUpdatedLabel.replace( '%s', response.pluginName ) )
+			.text( wp.updates.l10n.pluginUpdated );
+=======
 			.attr( 'aria-label', wp.updates.l10n.updatedLabel.replace( '%s', response.pluginName ) )
 			.text( wp.updates.l10n.updated );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		wp.a11y.speak( wp.updates.l10n.updatedMsg, 'polite' );
 
@@ -475,7 +504,11 @@
 
 			if ( response.pluginName ) {
 				$message.find( 'p' )
+<<<<<<< HEAD
+					.attr( 'aria-label', wp.updates.l10n.pluginUpdateFailedLabel.replace( '%s', response.pluginName ) );
+=======
 					.attr( 'aria-label', wp.updates.l10n.updateFailedLabel.replace( '%s', response.pluginName ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			} else {
 				$message.find( 'p' ).removeAttr( 'aria-label' );
 			}
@@ -492,7 +525,11 @@
 
 			if ( response.pluginName ) {
 				$card.find( '.update-now' )
+<<<<<<< HEAD
+					.attr( 'aria-label', wp.updates.l10n.pluginUpdateFailedLabel.replace( '%s', response.pluginName ) );
+=======
 					.attr( 'aria-label', wp.updates.l10n.updateFailedLabel.replace( '%s', response.pluginName ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			} else {
 				$card.find( '.update-now' ).removeAttr( 'aria-label' );
 			}
@@ -579,7 +616,11 @@
 			.removeClass( 'updating-message' )
 			.addClass( 'updated-message installed button-disabled' )
 			.attr( 'aria-label', wp.updates.l10n.pluginInstalledLabel.replace( '%s', response.pluginName ) )
+<<<<<<< HEAD
+			.text( wp.updates.l10n.pluginInstalled );
+=======
 			.text( wp.updates.l10n.installed );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		wp.a11y.speak( wp.updates.l10n.installedMsg, 'polite' );
 
@@ -840,7 +881,11 @@
 			}
 		} );
 
+<<<<<<< HEAD
+		wp.a11y.speak( wp.updates.l10n.pluginDeleted, 'polite' );
+=======
 		wp.a11y.speak( wp.updates.l10n.deleted, 'polite' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$document.trigger( 'wp-plugin-delete-success', response );
 	};
@@ -964,7 +1009,11 @@
 			$theme         = $( '[data-slug="' + response.slug + '"]' ),
 			updatedMessage = {
 				className: 'updated-message notice-success notice-alt',
+<<<<<<< HEAD
+				message:   wp.updates.l10n.themeUpdated
+=======
 				message:   wp.updates.l10n.updated
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			},
 			$notice, newText;
 
@@ -1101,7 +1150,11 @@
 			.removeClass( 'updating-message' )
 			.addClass( 'updated-message disabled' )
 			.attr( 'aria-label', wp.updates.l10n.themeInstalledLabel.replace( '%s', response.themeName ) )
+<<<<<<< HEAD
+			.text( wp.updates.l10n.themeInstalled );
+=======
 			.text( wp.updates.l10n.installed );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		wp.a11y.speak( wp.updates.l10n.installedMsg, 'polite' );
 
@@ -1177,7 +1230,11 @@
 	};
 
 	/**
+<<<<<<< HEAD
+	 * Sends an Ajax request to the server to delete a theme.
+=======
 	 * Sends an Ajax request to the server to install a theme.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 *
 	 * @since 4.6.0
 	 *
@@ -1272,7 +1329,11 @@
 			} );
 		}
 
+<<<<<<< HEAD
+		wp.a11y.speak( wp.updates.l10n.themeDeleted, 'polite' );
+=======
 		wp.a11y.speak( wp.updates.l10n.deleted, 'polite' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$document.trigger( 'wp-theme-delete-success', response );
 	};
@@ -1705,6 +1766,10 @@
 			wp.updates.filesystemCredentials.ftp.connectionType = $( 'input[name="connection_type"]:checked' ).val();
 			wp.updates.filesystemCredentials.ssh.publicKey      = $( '#public_key' ).val();
 			wp.updates.filesystemCredentials.ssh.privateKey     = $( '#private_key' ).val();
+<<<<<<< HEAD
+			wp.updates.filesystemCredentials.fsNonce            = $( '#_fs_nonce' ).val();
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			wp.updates.filesystemCredentials.available          = true;
 
 			// Unlock and invoke the queue.
@@ -1775,9 +1840,15 @@
 
 				if ( 'plugin-install' === pagenow || 'plugin-install-network' === pagenow ) {
 					if ( 'update-plugin' === job.action ) {
+<<<<<<< HEAD
+						$message.attr( 'aria-label', wp.updates.l10n.pluginUpdateNowLabel.replace( '%s', $message.data( 'name' ) ) );
+					} else if ( 'install-plugin' === job.action ) {
+						$message.attr( 'aria-label', wp.updates.l10n.pluginInstallNowLabel.replace( '%s', $message.data( 'name' ) ) );
+=======
 						$message.attr( 'aria-label', wp.updates.l10n.updateNowLabel.replace( '%s', $message.data( 'name' ) ) );
 					} else if ( 'install-plugin' === job.action ) {
 						$message.attr( 'aria-label', wp.updates.l10n.installNowLabel.replace( '%s', $message.data( 'name' ) ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					}
 				}
 			}
@@ -2260,7 +2331,11 @@
 				} else if ( $oldSubTitle.length ) {
 					$oldSubTitle.replaceWith( $subTitle );
 				} else {
+<<<<<<< HEAD
+					$( '.wp-header-end' ).before( $subTitle );
+=======
 					$( '.wrap h1' ).append( $subTitle );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 
 				$( 'body' ).removeClass( 'loading-content' );

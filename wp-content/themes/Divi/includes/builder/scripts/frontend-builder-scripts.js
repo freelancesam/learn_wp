@@ -1,7 +1,14 @@
 (function($){
 	var $et_window = $(window);
 
+<<<<<<< HEAD
+	window.et_load_event_fired   = false;
+	window.et_is_transparent_nav = $( 'body' ).hasClass( 'et_transparent_nav' );
+	window.et_is_vertical_nav    = $( 'body' ).hasClass( 'et_vertical_nav' );
+	window.et_is_fixed_nav       = $( 'body' ).hasClass( 'et_fixed_nav' );
+=======
 	window.et_load_event_fired = false;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	jQuery.fn.reverse = [].reverse;
 
@@ -87,7 +94,11 @@
 					$et_slider_prev 	= $et_slider.find( settings.prev_arrow );
 					$et_slider_next 	= $et_slider.find( settings.next_arrow );
 
+<<<<<<< HEAD
+					$et_slider.on( 'click.et_pb_simple_slider', settings.next_arrow, function() {
+=======
 					$et_slider_next.click( function(){
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						if ( $et_slider.et_animation_running )	return false;
 
 						$et_slider.et_slider_move_to( 'next' );
@@ -95,7 +106,11 @@
 						return false;
 					} );
 
+<<<<<<< HEAD
+					$et_slider.on( 'click.et_pb_simple_slider', settings.prev_arrow, function() {
+=======
 					$et_slider_prev.click( function(){
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						if ( $et_slider.et_animation_running )	return false;
 
 						$et_slider.et_slider_move_to( 'previous' );
@@ -104,7 +119,11 @@
 					} );
 
 					// swipe support requires et-jquery-touch-mobile
+<<<<<<< HEAD
+					$et_slider.on( 'swipeleft.et_pb_simple_slider', settings.slide, function( event ) {
+=======
 					$et_slider.find( settings.slide ).on( 'swipeleft', function( event ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						// do not switch slide on selecting text in VB
 						if ( $( event.target ).closest( '.et-fb-popover-tinymce' ).length || $( event.target ).closest( '.et-fb-editable-element' ).length ) {
 							return;
@@ -112,7 +131,11 @@
 
 						$et_slider.et_slider_move_to( 'next' );
 					});
+<<<<<<< HEAD
+					$et_slider.on( 'swiperight.et_pb_simple_slider', settings.slide, function( event ) {
+=======
 					$et_slider.find( settings.slide ).on( 'swiperight', function( event ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						// do not switch slide on selecting text in VB
 						if ( $( event.target ).closest( '.et-fb-popover-tinymce' ).length || $( event.target ).closest( '.et-fb-editable-element' ).length ) {
 							return;
@@ -148,7 +171,11 @@
 
 					et_maybe_set_controls_color( $et_slide.eq(0) );
 
+<<<<<<< HEAD
+					$et_slider.on( 'click.et_pb_simple_slider', settings.controls, function () {
+=======
 					$et_slider_controls.click( function(){
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						if ( $et_slider.et_animation_running )	return false;
 
 						$et_slider.et_slider_move_to( $(this).index() );
@@ -177,7 +204,11 @@
 					$et_slider.after( carousel_html );
 
 					$et_slider_carousel_controls = $et_slider.siblings('.et_pb_carousel').find( settings.carousel_controls );
+<<<<<<< HEAD
+					$et_slider_carousel_controls.on( 'click.et_pb_simple_slider', function() {
+=======
 					$et_slider_carousel_controls.click( function(){
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						if ( $et_slider.et_animation_running )	return false;
 
 						var $this = $(this);
@@ -188,7 +219,11 @@
 				}
 
 				if ( settings.slideshow && et_slides_number > 1 ) {
+<<<<<<< HEAD
+					$et_slider.on( 'mouseenter.et_pb_simple_slider', function() {
+=======
 					$et_slider.hover( function() {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						if ( $et_slider.hasClass( 'et_slider_auto_ignore_hover' ) ) {
 							return;
 						}
@@ -198,7 +233,11 @@
 						if ( typeof et_slider_timer != 'undefined' ) {
 							clearInterval( et_slider_timer );
 						}
+<<<<<<< HEAD
+					}).on( 'mouseleave.et_pb_simple_slider', function() {
+=======
 					}, function() {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						if ( $et_slider.hasClass( 'et_slider_auto_ignore_hover' ) ) {
 							return;
 						}
@@ -225,9 +264,14 @@
 						clearInterval( et_slider_timer );
 					}
 
+<<<<<<< HEAD
+					// Deregister all own existing events
+					$et_slider.off( '.et_pb_simple_slider' );
+=======
 					// Deregister existing events
 					$et_slider.unbind('mouseenter mouseleave');
 					$et_slider.find('.et-pb-slider-arrows a, .et-pb-controllers a').unbind('click');
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					// Removing existing style from slide(s)
 					$et_slider.find('.et_pb_slide').css({
@@ -243,7 +287,14 @@
 					// Removing DOM that was added by slider
 					$et_slider.find('.et-pb-slider-arrows, .et-pb-controllers').remove();
 					$et_slider.siblings('.et_pb_carousel').remove();
+<<<<<<< HEAD
+
+					// Remove references
+					$et_slider.removeData( 'et_pb_simple_slider' );
+				};
+=======
 				}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				function et_stop_video( active_slide ) {
 					var $et_video, et_video_src;
@@ -264,6 +315,34 @@
 					}
 				}
 
+<<<<<<< HEAD
+				$et_slider.et_fix_slider_content_images = et_fix_slider_content_images;
+
+				function et_fix_slider_content_images() {
+					var $this_slider                 = $et_slider,
+						$slide_image_container       = $this_slider.find( '.et-pb-active-slide .et_pb_slide_image' ),
+						$slide_video_container       = $this_slider.find( '.et-pb-active-slide .et_pb_slide_video' ),
+						$slide                       = $slide_image_container.closest( '.et_pb_slide' ),
+						$slider                      = $slide.closest( '.et_pb_slider' ),
+						slide_height                 = parseFloat( $slider.innerHeight() ),
+						image_height                 = parseFloat( slide_height * 0.8 ),
+						slide_image_container_height = parseFloat( $slide_image_container.height() ),
+						slide_video_container_height = parseFloat( $slide_video_container.height() );
+
+					if ( ! isNaN( image_height ) ) {
+						$slide_image_container.find( 'img' ).css( 'maxHeight', image_height + 'px' );
+
+						slide_image_container_height = parseInt( $slide_image_container.height() )
+					}
+
+					if ( ! isNaN( slide_image_container_height ) && $slide.hasClass( 'et_pb_media_alignment_center' ) ) {
+						$slide_image_container.css( 'marginTop', '-' + ( slide_image_container_height / 2 ) + 'px' );
+					}
+
+					if ( ! isNaN( slide_video_container_height ) ) {
+						$slide_video_container.css( 'marginTop', '-' + ( slide_video_container_height / 2 ) + 'px' );
+					}
+=======
 				function et_fix_slider_content_images() {
 					var $this_slider           = $et_slider,
 						$slide_image_container = $this_slider.find( '.et-pb-active-slide .et_pb_slide_image' );
@@ -286,6 +365,7 @@
 					$slide_video_container.css( 'marginTop', '-' + parseInt( $slide_video_container.height() / 2 ) + 'px' );
 
 					$slide_image_container.find( 'img' ).addClass( 'active' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 
 				function et_get_bg_layout_color( $slide ) {
@@ -305,7 +385,11 @@
 						next_slide_dot_color = $slide.attr( 'data-dots_color' ) || '';
 
 						if ( next_slide_dot_color !== '' ) {
+<<<<<<< HEAD
+							$et_slider_controls.attr( 'style', 'background-color: ' + hex_to_rgba( next_slide_dot_color, '0.3' ) + ';' );
+=======
 							$et_slider_controls.attr( 'style', 'background-color: ' + hex_to_rgba( next_slide_dot_color, '0.3' ) + ';' )
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							$et_slider_controls.filter( '.et-pb-active-control' ).attr( 'style', 'background-color: ' + hex_to_rgba( next_slide_dot_color ) + '!important;' );
 						} else {
 							$et_slider_controls.removeAttr( 'style' );
@@ -360,6 +444,17 @@
 				}
 
 				if ( window.et_load_event_fired ) {
+<<<<<<< HEAD
+					et_fix_slider_height( $et_slider );
+				} else {
+					$et_window.on( 'load', function() {
+						et_fix_slider_height( $et_slider );
+					} );
+				}
+
+				$et_window.on( 'resize.et_simple_slider', function() {
+					et_fix_slider_height( $et_slider );
+=======
 					et_fix_slider_content_images();
 				} else {
 					$et_window.load( function() {
@@ -369,6 +464,7 @@
 
 				$et_window.resize( function() {
 					et_fix_slider_content_images();
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				} );
 
 				$et_slider.et_slider_move_to = function ( direction ) {
@@ -412,13 +508,53 @@
 						$next_slide.find('video')[0].player.play();
 					}
 
+<<<<<<< HEAD
+					var $active_slide_video = $active_slide.find('.et_pb_video_box iframe');
+
+					if ( $active_slide_video.length ) {
+						var active_slide_video_src = $active_slide_video.attr('src');
+
+						// Removes the "autoplay=1" parameter when switching slides
+						// by covering three possible cases:
+
+						// "?autoplay=1" at the end of the URL
+						active_slide_video_src = active_slide_video_src.replace(/\?autoplay=1$/, '');
+
+						// "?autoplay=1" followed by another parameter
+						active_slide_video_src = active_slide_video_src.replace(/\?autoplay=1&(amp;)?/, '?');
+
+						// "&autoplay=1" anywhere in the URL
+						active_slide_video_src = active_slide_video_src.replace(/&(amp;)?autoplay=1/, '');
+
+						// Delays the URL update so that the cross-fade animation's smoothness is not affected
+						setTimeout(function() {
+							$active_slide_video.attr({
+								'src': active_slide_video_src
+							});
+						}, settings.fade_speed);
+
+						// Restores video overlay
+						$active_slide_video.parents('.et_pb_video_box').next('.et_pb_video_overlay').css({
+							'display' : 'block',
+							'opacity' : 1
+						});
+					}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					$et_slider.trigger( 'simple_slider_before_move_to', { direction : direction, next_slide : $next_slide });
 
 					$et_slide.each( function(){
 						$(this).css( 'zIndex', 1 );
 					} );
+<<<<<<< HEAD
+					// add 'slide-status' data attribute so it can be used to determine active slide in Visual Builder
+					$active_slide.css( 'zIndex', 2 ).removeClass( 'et-pb-active-slide' ).addClass('et-pb-moved-slide').data('slide-status', 'inactive');
+					$next_slide.css( { 'display' : 'block', opacity : 0 } ).addClass( 'et-pb-active-slide' ).data('slide-status', 'active');
+=======
 					$active_slide.css( 'zIndex', 2 ).removeClass( 'et-pb-active-slide' ).addClass('et-pb-moved-slide');
 					$next_slide.css( { 'display' : 'block', opacity : 0 } ).addClass( 'et-pb-active-slide' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					et_fix_slider_content_images();
 
@@ -471,6 +607,16 @@
 
 					et_slider_auto_rotate();
 				}
+<<<<<<< HEAD
+		};
+
+		$.fn.et_pb_simple_slider = function( options ) {
+			return this.each(function() {
+				var slider = $.data( this, 'et_pb_simple_slider' );
+				return slider ? slider : new $.et_pb_simple_slider( this, options );
+			});
+		};
+=======
 		}
 
 		$.fn.et_pb_simple_slider = function( options ) {
@@ -478,6 +624,7 @@
 				new $.et_pb_simple_slider(this, options);
 			});
 		}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		var et_hash_module_seperator = '||',
 			et_hash_module_param_seperator = '|';
@@ -924,6 +1071,16 @@
 					} );
 				}
 			}
+<<<<<<< HEAD
+		};
+
+		$.fn.et_pb_simple_carousel = function( options ) {
+			return this.each(function() {
+				var carousel = $.data( this, 'et_pb_simple_carousel' );
+				return carousel ? carousel : new $.et_pb_simple_carousel( this, options );
+			});
+		};
+=======
 		}
 
 		$.fn.et_pb_simple_carousel = function( options ) {
@@ -931,6 +1088,7 @@
 				new $.et_pb_simple_carousel(this, options);
 			});
 		}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$(document).ready( function(){
 			/**
@@ -959,13 +1117,19 @@
 				et_is_ie9 = navigator.userAgent.match( /MSIE 9.0/ ) !== null,
 				$et_container = ! et_pb_custom.is_builder_plugin_used ? $( '.container' ) : $( '.et_pb_row' ),
 				et_container_width = $et_container.width(),
+<<<<<<< HEAD
+=======
 				et_is_fixed_nav = $( 'body' ).hasClass( 'et_fixed_nav' ),
 				et_is_vertical_nav = $( 'body' ).hasClass( 'et_vertical_nav' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				et_is_vertical_fixed_nav = $( 'body' ).hasClass( 'et_vertical_fixed' ),
 				et_is_rtl = $( 'body' ).hasClass( 'rtl' ),
 				et_hide_nav = $( 'body' ).hasClass( 'et_hide_nav' ),
 				et_header_style_left = $( 'body' ).hasClass( 'et_header_style_left' ),
+<<<<<<< HEAD
+=======
 				et_vertical_navigation = $( 'body' ).hasClass( 'et_vertical_nav' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$top_header = $('#top-header'),
 				$main_header = $('#main-header'),
 				$main_container_wrapper = $( '#page-container' ),
@@ -981,7 +1145,10 @@
 				et_header_modifier,
 				et_header_offset,
 				et_primary_header_top,
+<<<<<<< HEAD
+=======
 				$et_vertical_nav = $('.et_vertical_nav'),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$et_header_style_split = $('.et_header_style_split'),
 				$et_top_navigation = $('#et-top-navigation'),
 				$logo = $('#logo'),
@@ -1003,7 +1170,11 @@
 				var et_slider_settings = {
 						fade_speed 		: 700,
 						slide			: ! $this_slider.hasClass( 'et_pb_gallery' ) ? '.et_pb_slide' : '.et_pb_gallery_item'
+<<<<<<< HEAD
+					};
+=======
 					}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				if ( $this_slider.hasClass('et_pb_slider_no_arrows') )
 					et_slider_settings.use_arrows = false;
@@ -1016,7 +1187,11 @@
 
 					et_slider_settings.slideshow = true;
 
+<<<<<<< HEAD
+					var et_slider_autospeed = et_slider_autospeed_class_value.exec( $this_slider.attr('class') );
+=======
 					et_slider_autospeed = et_slider_autospeed_class_value.exec( $this_slider.attr('class') );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					et_slider_settings.slideshow_speed = et_slider_autospeed === null ? 10 : et_slider_autospeed[1];
 				}
@@ -1241,7 +1416,11 @@
 						success : function( mediaElement, domObject ) {
 							mediaElement.addEventListener( 'loadeddata', function() {
 								et_pb_resize_section_video_bg( $(domObject) );
+<<<<<<< HEAD
+								et_pb_center_video( $(domObject).closest( '.mejs-video' ) );
+=======
 								et_pb_center_video( $(domObject) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							}, false );
 
 							mediaElement.addEventListener( 'canplay', function() {
@@ -1275,7 +1454,11 @@
 						},
 						mainClass: 'mfp-fade',
 						zoom: {
+<<<<<<< HEAD
+							enabled: ! et_pb_custom.is_builder_plugin_used,
+=======
 							enabled: true,
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							duration: 500,
 							opener: function(element) {
 								return element.find('img');
@@ -1298,7 +1481,11 @@
 						removalDelay: 500,
 						mainClass: 'mfp-fade',
 						zoom: {
+<<<<<<< HEAD
+							enabled: ! et_pb_custom.is_builder_plugin_used,
+=======
 							enabled: true,
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							duration: 500,
 							opener: function(element) {
 								return element.find('img');
@@ -1323,7 +1510,11 @@
 				$et_pb_carousel.each( function() {
 					var $this_carousel = $(this),
 						et_carousel_settings = {
+<<<<<<< HEAD
+							slide_duration: 1000
+=======
 							fade_speed 		: 1000
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						};
 
 					$this_carousel.et_pb_simple_carousel( et_carousel_settings );
@@ -1332,7 +1523,11 @@
 
 			if ( $et_pb_fullwidth_portfolio.length || is_frontend_builder ) {
 
+<<<<<<< HEAD
+				window.et_fullwidth_portfolio_init = function( $the_portfolio ) {
+=======
 			 	window.et_fullwidth_portfolio_init = function( $the_portfolio ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					var $portfolio_items = $the_portfolio.find('.et_pb_portfolio_items');
 
 						$portfolio_items.data('items', $portfolio_items.find('.et_pb_portfolio_item').toArray() );
@@ -1379,10 +1574,17 @@
 						// setup fullwidth portfolio grid
 						set_fullwidth_portfolio_columns( $the_portfolio, false );
 					}
+<<<<<<< HEAD
+				}
+
+				function fullwidth_portfolio_carousel_slide( $arrow ) {
+					var $the_portfolio = $arrow.parents('.et_pb_fullwidth_portfolio'),
+=======
 			 	}
 
 			 	function fullwidth_portfolio_carousel_slide( $arrow ) {
 			 		var $the_portfolio = $arrow.parents('.et_pb_fullwidth_portfolio'),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						$portfolio_items = $the_portfolio.find('.et_pb_portfolio_items'),
 						$the_portfolio_items = $portfolio_items.find('.et_pb_portfolio_item'),
 						$active_carousel_group = $portfolio_items.find('.et_pb_carousel_group.active'),
@@ -1632,7 +1834,11 @@
 							}
 						} );
 					}
+<<<<<<< HEAD
+				}
+=======
 			 	}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				function set_fullwidth_portfolio_columns( $the_portfolio, carousel_mode ) {
 					var columns,
@@ -1762,9 +1968,16 @@
 				$time_slider.removeAttr( 'style' );
 
 				var $count_timer = $this_player.find( 'div.mejs-currenttime-container' ),
+<<<<<<< HEAD
+					$count_timer_width_container = $this_player.find( '.mejs-duration-container' ).length ? $this_player.find( '.mejs-duration-container' ) : $this_player.find( '.mejs-currenttime-container' ),
+					player_width = $this_player.width(),
+					controls_play_width = $this_player.find( '.mejs-play' ).outerWidth(),
+					time_width = $count_timer_width_container.outerWidth(),
+=======
 					player_width = $this_player.width(),
 					controls_play_width = $this_player.find( '.mejs-play' ).outerWidth(),
 					time_width = $this_player.find( '.mejs-currenttime-container' ).outerWidth(),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					volume_icon_width = $this_player.find( '.mejs-volume-button' ).outerWidth(),
 					volume_bar_width = $this_player.find( '.mejs-horizontal-volume-slider' ).outerWidth(),
 					new_time_rail_width;
@@ -1797,7 +2010,12 @@
 
 				window.set_filterable_portfolio_init = function( $the_portfolio ) {
 					var $the_portfolio_items = $the_portfolio.find('.et_pb_portfolio_items'),
+<<<<<<< HEAD
+						$left_orientatation = true == $the_portfolio.data( 'rtl' ) ? false : true,
+						all_portfolio_items = $the_portfolio_items.clone(); // cache for all the portfolio items
+=======
 						$left_orientatation = true == $the_portfolio.data( 'rtl' ) ? false : true;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					$the_portfolio.show();
 
@@ -1806,13 +2024,27 @@
 					$the_portfolio.on('click', '.et_pb_portfolio_filter a', function(e){
 						e.preventDefault();
 						var category_slug = $(this).data('category-slug');
+<<<<<<< HEAD
+						var $the_portfolio = $(this).parents('.et_pb_filterable_portfolio');
+						var $the_portfolio_items = $the_portfolio.find('.et_pb_portfolio_items');
+=======
 						$the_portfolio_items = $(this).parents('.et_pb_filterable_portfolio').find('.et_pb_portfolio_items');
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 						if ( 'all' == category_slug ) {
 							$the_portfolio.find('.et_pb_portfolio_filter a').removeClass('active');
 							$the_portfolio.find('.et_pb_portfolio_filter_all a').addClass('active');
+<<<<<<< HEAD
+
+							// remove all items from the portfolio items container
+							$the_portfolio_items.empty();
+
+							// fill the portfolio items container with cached items from memory
+							$the_portfolio_items.append( all_portfolio_items.find( '.et_pb_portfolio_item' ).clone() );
+=======
 							$the_portfolio.find('.et_pb_portfolio_item').removeClass('active inactive');
 							$the_portfolio.find('.et_pb_portfolio_item').show();
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							$the_portfolio.find('.et_pb_portfolio_item').addClass('active');
 						} else {
 							$the_portfolio.find('.et_pb_portfolio_filter_all').removeClass('active');
@@ -1820,10 +2052,20 @@
 							$the_portfolio.find('.et_pb_portfolio_filter_all a').removeClass('active');
 							$(this).addClass('active');
 
+<<<<<<< HEAD
+							// remove all items from the portfolio items container
+							$the_portfolio_items.empty();
+
+							// fill the portfolio items container with cached items from memory
+							$the_portfolio_items.append( all_portfolio_items.find( '.et_pb_portfolio_item.project_category_' + $(this).data('category-slug') ).clone() );
+
+							$the_portfolio_items.find('.et_pb_portfolio_item').removeClass('active');
+=======
 							$the_portfolio_items.find('.et_pb_portfolio_item').hide();
 							$the_portfolio_items.find('.et_pb_portfolio_item').addClass( 'inactive' );
 							$the_portfolio_items.find('.et_pb_portfolio_item').removeClass('active');
 							$the_portfolio_items.find('.et_pb_portfolio_item.project_category_' + $(this).data('category-slug') ).show();
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							$the_portfolio_items.find('.et_pb_portfolio_item.project_category_' + $(this).data('category-slug') ).addClass('active').removeClass( 'inactive' );
 						}
 
@@ -1836,9 +2078,15 @@
 					$the_portfolio.on('click', '.et_pb_portofolio_pagination a', function(e){
 						e.preventDefault();
 
+<<<<<<< HEAD
+						var to_page = $(this).data('page');
+						var $the_portfolio = $(this).parents('.et_pb_filterable_portfolio');
+						var $the_portfolio_items = $the_portfolio.find('.et_pb_portfolio_items');
+=======
 						var to_page = $(this).data('page'),
 							$the_portfolio = $(this).parents('.et_pb_filterable_portfolio'),
 							$the_portfolio_items = $the_portfolio.find('.et_pb_portfolio_items');
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 						et_pb_smooth_scroll( $the_portfolio, false, 800 );
 
@@ -1893,6 +2141,11 @@
 							return $(this).data('page') === to_page;
 						}).show();
 
+<<<<<<< HEAD
+						window.et_pb_set_responsive_grid( $the_portfolio.find( '.et_pb_portfolio_items' ), '.et_pb_portfolio_item' );
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						setTimeout(function(){
 							set_filterable_portfolio_hash( $the_portfolio );
 						}, 500 );
@@ -1926,6 +2179,11 @@
 				}
 
 				function set_filterable_grid_items( $the_portfolio ) {
+<<<<<<< HEAD
+					var active_category = $the_portfolio.find('.et_pb_portfolio_filter > a.active').data('category-slug');
+
+					window.et_pb_set_responsive_grid( $the_portfolio.find( '.et_pb_portfolio_items' ), '.et_pb_portfolio_item' );
+=======
 					var active_category = $the_portfolio.find('.et_pb_portfolio_filter > a.active').data('category-slug'),
 						container_width = $the_portfolio.find( '.et_pb_portfolio_items' ).innerWidth(),
 						item_width = $the_portfolio.find( '.et_pb_portfolio_item' ).outerWidth( true ),
@@ -1950,6 +2208,7 @@
 								counter++;
 							}
 						});
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					if ( 'all' === active_category ) {
 						$the_portfolio_visible_items = $the_portfolio.find('.et_pb_portfolio_item');
@@ -1959,7 +2218,11 @@
 
 					var visible_grid_items = $the_portfolio_visible_items.length,
 						posts_number = $the_portfolio.data('posts-number'),
+<<<<<<< HEAD
+						pages = 0 === posts_number ? 1 : Math.ceil( visible_grid_items / posts_number );
+=======
 						pages = Math.ceil( visible_grid_items / posts_number );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 					set_filterable_grid_pages( $the_portfolio, pages );
 
@@ -2037,7 +2300,12 @@
 						$the_gallery_items = $the_gallery_items_container.find('.et_pb_gallery_item');
 
 					var total_grid_items = $the_gallery_items.length,
+<<<<<<< HEAD
+						posts_number_original = parseInt( $the_gallery_items_container.attr('data-per_page') ),
+						posts_number = isNaN( posts_number_original ) || 0 === posts_number_original ? 4 : posts_number_original,
+=======
 						posts_number = $the_gallery_items_container.attr('data-per_page'),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						pages = Math.ceil( total_grid_items / posts_number );
 
 					set_gallery_grid_pages( $the_gallery, pages );
@@ -2204,6 +2472,11 @@
 
 						$the_gallery.data('paginating', false );
 
+<<<<<<< HEAD
+						window.et_pb_set_responsive_grid( $the_gallery_items_container, '.et_pb_gallery_item' );
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						setTimeout(function(){
 							set_gallery_hash( $the_gallery );
 						}, 100 );
@@ -2223,6 +2496,9 @@
 
 			if ( $et_pb_counter_amount.length ) {
 				$et_pb_counter_amount.each(function(){
+<<<<<<< HEAD
+					window.et_bar_counters_init( $( this ) );
+=======
 					var $bar_item           = $(this),
 						bar_item_width      = $bar_item.attr( 'data-width' ),
 						bar_item_padding    = Math.ceil( parseFloat( $bar_item.css('paddingLeft') ) ) + Math.ceil( parseFloat( $bar_item.css('paddingRight') ) ),
@@ -2233,6 +2509,7 @@
 						'width' : bar_item_width,
 						'min-width' : bar_item_text_width
 					});
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				});
 			} /* $et_pb_counter_amount.length */
 
@@ -2378,6 +2655,11 @@
 
 						return false;
 					} );
+<<<<<<< HEAD
+
+					window.et_pb_set_tabs_height();
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 				window.et_pb_tabs_init( $et_pb_tabs );
 			}
@@ -2530,12 +2812,25 @@
 
 			if ( $et_pb_number_counter.length || is_frontend_builder ) {
 				window.et_pb_reinit_number_counters = function( $et_pb_number_counter ) {
+<<<<<<< HEAD
+
+					function et_format_number( number_value, separator ) {
+						return number_value.toString().replace( /\B(?=(\d{3})+(?!\d))/g, separator );
+					}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					if ( $.fn.fitText ) {
 						$et_pb_number_counter.find( '.percent p' ).fitText( 0.3 );
 					}
 
 					$et_pb_number_counter.each(function(){
 						var $this_counter = $(this);
+<<<<<<< HEAD
+						var separator     = $this_counter.data('number-separator');
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						$this_counter.easyPieChart({
 							animate: {
 								duration: 1800,
@@ -2550,10 +2845,17 @@
 							},
 							onStep: function(from, to, percent) {
 								if ( percent != to )
+<<<<<<< HEAD
+									$(this.el).find('.percent-value').text( et_format_number( Math.round( parseInt( percent ) ), separator ) );
+							},
+							onStop: function(from, to) {
+								$(this.el).find('.percent-value').text( et_format_number( $(this.el).data('number-value'), separator ) );
+=======
 									$(this.el).find('.percent-value').text( Math.round( parseInt( percent ) ) );
 							},
 							onStop: function(from, to) {
 								$(this.el).find('.percent-value').text( $(this.el).data('number-value') );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							}
 						});
 					});
@@ -2574,7 +2876,11 @@
 
 				main_position = 'translate(0, ' + y_pos + 'px)';
 
+<<<<<<< HEAD
+				$this.children('.et_parallax_bg').css( {
+=======
 				$this.find('.et_parallax_bg').css( {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					'-webkit-transform' : main_position,
 					'-moz-transform'    : main_position,
 					'-ms-transform'     : main_position,
@@ -2603,7 +2909,11 @@
 				}
 			}
 
+<<<<<<< HEAD
+			$( 'body' ).on( 'click', '.et_pb_toggle_title, .et_fb_toggle_overlay', function() {
+=======
 			$( 'body' ).on( 'click', '.et_pb_toggle_title', function() {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				var $this_heading         = $(this),
 					$module               = $this_heading.closest('.et_pb_toggle'),
 					$section              = $module.parents( '.et_pb_section' ),
@@ -2656,7 +2966,11 @@
 							fixed_header_height += $('#top-header').height();
 						}
 
+<<<<<<< HEAD
+						if ( $('#main-header').length && ! window.et_is_vertical_nav ) {
+=======
 						if ( $('#main-header').length && ! et_is_vertical_nav ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							fixed_header_height += $('#main-header').height();
 						}
 
@@ -2675,6 +2989,23 @@
 					var $this_contact_container = $( this ),
 						$et_contact_form = $this_contact_container.find( 'form' ),
 						$et_contact_submit = $this_contact_container.find( 'input.et_pb_contact_submit' ),
+<<<<<<< HEAD
+						$et_inputs = $et_contact_form.find( 'input[type=text], input[type=radio]:checked, textarea, .et_pb_contact_select' ),
+						et_email_reg = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/,
+						redirect_url = typeof $this_contact_container.data( 'redirect_url' ) !== 'undefined' ? $this_contact_container.data( 'redirect_url' ) : '';
+
+					$et_contact_form.find( 'input[type=checkbox]' ).on( 'change', function() {
+						var $checkbox = $(this);
+						var $checkbox_field = $checkbox.siblings( 'input[type=text]:first' );
+						var is_checked = $checkbox.prop( 'checked' );
+
+						$checkbox_field.val( is_checked ? $checkbox_field.data( 'checked' ) : $checkbox_field.data( 'unchecked' ) );
+					} );
+
+					$et_contact_form.on( 'submit', function( event ) {
+						var $this_contact_form = $( this ),
+							$this_inputs = $this_contact_form.find( 'input[type=text], .et_pb_contact_field[data-type="checkbox"], .et_pb_contact_field[data-type="radio"], textarea, select' ),
+=======
 						$et_inputs = $et_contact_form.find( 'input[type=text],textarea' ),
 						et_email_reg = /^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$/,
 						redirect_url = typeof $this_contact_container.data( 'redirect_url' ) !== 'undefined' ? $this_contact_container.data( 'redirect_url' ) : '';
@@ -2692,6 +3023,7 @@
 					$et_contact_form.on( 'submit', function( event ) {
 						var $this_contact_form = $( this ),
 							$this_inputs = $this_contact_form.find( 'input[type=text],textarea' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							this_et_contact_error = false,
 							$et_contact_message = $this_contact_form.closest( '.et_pb_contact_form_container' ).find( '.et-pb-contact-message' ),
 							et_message = '',
@@ -2704,6 +3036,92 @@
 
 						$this_inputs.removeClass( 'et_contact_error' );
 
+<<<<<<< HEAD
+						var hidden_fields = [];
+
+						$this_inputs.each( function(){
+							var $this_el        = $( this );
+							var $this_wrapper   = false;
+
+							if ( 'checkbox' === $this_el.data('type') ) {
+								$this_el      = $this_el.find('input[type="checkbox"]');
+								$this_wrapper = $this_el.parents('.et_pb_contact_field');
+							}
+
+							if ( 'radio' === $this_el.data('type') ) {
+								$this_el = $this_el.find('input[type="radio"]');
+								$this_wrapper = $this_el.parents('.et_pb_contact_field');
+							}
+
+							var this_id       = $this_el.attr( 'id' );
+							var this_val      = $this_el.val();
+							var this_label    = $this_el.siblings( 'label:first' ).text();
+							var field_type    = typeof $this_el.data( 'field_type' ) !== 'undefined' ? $this_el.data( 'field_type' ) : 'text';
+							var required_mark = typeof $this_el.data( 'required_mark' ) !== 'undefined' ? $this_el.data( 'required_mark' ) : 'not_required';
+							var original_id   = typeof $this_el.data( 'original_id' ) !== 'undefined' ? $this_el.data( 'original_id' ) : '';
+							var unchecked     = false;
+							var default_value;
+
+							// Escape double quotes in label
+							this_label = this_label.replace(/"/g, "&quot;");
+
+							// radio field properties adjustment
+							if ( 'radio' === field_type ) {
+								if ( 0 !== $this_wrapper.find( 'input[type="radio"]').length ) {
+									field_type = 'radio';
+
+									var $firstRadio = $this_wrapper.find('input[type="radio"]:first');
+
+									required_mark = typeof $firstRadio.data( 'required_mark' ) !== 'undefined' ? $firstRadio.data( 'required_mark' ) : 'not_required';
+									original_id   = typeof $firstRadio.data( 'original_id' ) !== 'undefined' ? $firstRadio.data( 'original_id' ) : '';
+
+									this_val = '';
+									if ( $this_wrapper.find('input[type="radio"]:checked') ) {
+										this_val = $this_wrapper.find('input[type="radio"]:checked').val();
+									}
+								}
+
+								this_label = $this_wrapper.find('.et_pb_contact_form_label').text();
+								this_id = $this_wrapper.find('input[type="radio"]:first').attr('name');
+
+								if ( 0 === $this_wrapper.find('input[type="radio"]:checked').length ) {
+									unchecked = true;
+								}
+							}
+
+							// checkbox field value adjustment
+							if ( 'checkbox' === field_type ) {
+								var $checkbox = $this_el;
+								var $handle   = $checkbox.siblings('[data-checked][data-unchecked]');
+
+								this_id       = $handle.attr('id');
+								this_val      = $checkbox.prop('checked') ? $handle.data('checked') : $handle.data('unchecked');
+								unchecked     = ! $checkbox.prop('checked');
+
+								$handle.val( this_val );
+							}
+
+							// Store the labels of the conditionally hidden fields so that they can be
+							// removed later if a custom message pattern is enabled
+							if ( ! $this_el.is(':visible') ) {
+								hidden_fields.push( this_label );
+								return;
+							}
+
+							// add current field data into array of inputs
+							if ( typeof this_id !== 'undefined' ) {
+								inputs_list.push( { 'field_id' : this_id, 'original_id' : original_id, 'required_mark' : required_mark, 'field_type' : field_type, 'field_label' : this_label } );
+							}
+
+							// add error message for the field if it is required and empty
+							if ( 'required' === required_mark && ( '' === this_val || true === unchecked ) ) {
+								if ( false === $this_wrapper ) {
+									$this_el.addClass( 'et_contact_error' );
+								} else {
+									$this_wrapper.addClass( 'et_contact_error' );
+								}
+
+=======
 						$this_inputs.each( function(){
 							var $this_el = $( this ),
 								this_val = $this_el.val(),
@@ -2721,6 +3139,7 @@
 							// add error message for the field if it is required and empty
 							if ( 'required' === required_mark && ( '' === this_val || this_label === this_val ) ) {
 								$this_el.addClass( 'et_contact_error' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 								this_et_contact_error = true;
 
 								default_value = this_label;
@@ -2733,12 +3152,27 @@
 							}
 
 							// add error message if email field is not empty and fails the email validation
+<<<<<<< HEAD
+							if ( 'email' === field_type ) {
+								// remove trailing/leading spaces and convert email to lowercase
+								var processed_email = this_val.trim().toLowerCase();
+								var is_valid_email = et_email_reg.test( processed_email );
+
+								if ( '' !== processed_email && this_label !== processed_email && ! is_valid_email ) {
+									$this_el.addClass( 'et_contact_error' );
+									this_et_contact_error = true;
+
+									if ( ! is_valid_email ) {
+										et_message += '<li>' + et_pb_custom.invalid + '</li>';
+									}
+=======
 							if ( 'email' === field_type && '' !== this_val && this_label !== this_val && ! et_email_reg.test( this_val ) ) {
 								$this_el.addClass( 'et_contact_error' );
 								this_et_contact_error = true;
 
 								if ( ! et_email_reg.test( this_val ) ) {
 									et_message += '<li>' + et_pb_custom.invalid + '</li>';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 								}
 							}
 						});
@@ -2771,7 +3205,21 @@
 							var $href = $( this ).attr( 'action' ),
 								form_data = $( this ).serializeArray();
 
+<<<<<<< HEAD
+							form_data.push( {
+								'name': 'et_pb_contact_email_fields_' + form_unique_id,
+								'value' : JSON.stringify( inputs_list )
+							} );
+
+							if ( hidden_fields.length > 0 ) {
+								form_data.push( {
+									'name': 'et_pb_contact_email_hidden_fields_' + form_unique_id,
+									'value' : JSON.stringify( hidden_fields )
+								} );
+							}
+=======
 							form_data.push( { 'name': 'et_pb_contact_email_fields_' + form_unique_id, 'value' : JSON.stringify( inputs_list ) } );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 							$this_contact_container.fadeTo( 'fast', 0.2 ).load( $href + ' #' + $this_contact_form.closest( '.et_pb_contact_form_container' ).attr( 'id' ), form_data, function( responseText ) {
 								if ( ! $( responseText ).find( '.et_pb_contact_error_text').length ) {
@@ -2862,7 +3310,11 @@
 
 					$image.css( 'display', 'none' );
 				} );
+<<<<<<< HEAD
+			};
+=======
 			}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			$( '.et_pb_post .et_pb_video_overlay, .et_pb_video .et_pb_video_overlay, .et_pb_video_wrap .et_pb_video_overlay' ).click( function() {
 				var $this = $(this);
@@ -2876,6 +3328,33 @@
 				$element = typeof $video !== 'undefined' ? $video.closest( '.et_pb_section_video_bg' ) : $( '.et_pb_section_video_bg' );
 
 				$element.each( function() {
+<<<<<<< HEAD
+					var $this_el  = $(this);
+
+					if ( is_frontend_builder ) {
+						$this_el.removeAttr('data-ratio');
+						$this_el.find('video').removeAttr('style');
+					}
+
+					var el_ratio  = parseFloat( $this_el.attr( 'data-ratio' ) );
+					var el_width  = parseInt( $this_el.find( 'video' ).attr( 'width' ) || $this_el.find( 'video' ).width() );
+					var el_height = parseInt( $this_el.find( 'video' ).attr( 'height' ) || $this_el.find( 'video' ).height() );
+
+					var ratio = ( ! isNaN( el_ratio ) ) ? el_ratio : ( el_width / el_height );
+
+					var $video_elements = $this_el.find( '.mejs-video, video, object' ).css( 'margin', 0 );
+
+					var  $container = $this_el.closest( '.et_pb_section_video' ).length
+							? $this_el.closest( '.et_pb_section_video' )
+							: $this_el.closest( '.et_pb_slides' );
+
+					var body_width = $container.innerWidth();
+
+					var container_height = $container.innerHeight();
+
+					var width, height;
+
+=======
 					var $this_el = $(this),
 						ratio = ( typeof $this_el.attr( 'data-ratio' ) !== 'undefined' ) && ! is_frontend_builder
 							? $this_el.attr( 'data-ratio' )
@@ -2887,6 +3366,7 @@
 						body_width = $container.innerWidth(),
 						container_height = $container.innerHeight(),
 						width, height;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					if ( typeof $this_el.attr( 'data-ratio' ) == 'undefined' && !isNaN(ratio) ) {
 						$this_el.attr( 'data-ratio', ratio );
 					}
@@ -2908,11 +3388,65 @@
 						}, 0 );
 					}
 				} );
+<<<<<<< HEAD
+			};
+=======
 			}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			window.et_pb_center_video = function( $video ) {
 				$element = typeof $video !== 'undefined' ? $video : $( '.et_pb_section_video_bg .mejs-video' );
 
+<<<<<<< HEAD
+				if ( ! $element.length ) {
+					return;
+				}
+
+				$element.each( function() {
+					var $this_el = $(this);
+
+					et_pb_adjust_video_margin( $this_el );
+
+					// need to re-calculate the values in Frontend builder
+					if ( is_frontend_builder ) {
+						setTimeout( function() {
+							et_pb_adjust_video_margin( $this_el );
+						}, 0 );
+					}
+
+					if ( typeof $video !== 'undefined' ) {
+						if ( $video.closest( '.et_pb_slider' ).length && ! $video.closest( '.et_pb_first_video' ).length ) {
+							return false;
+						}
+					}
+				} );
+			};
+
+			window.et_pb_adjust_video_margin = function( $el ) {
+				var $video_width          = $el.width() / 2;
+				var $video_width_negative = 0 - $video_width;
+
+				$el.css("margin-left", $video_width_negative );
+			}
+
+			window.et_fix_slider_height = function( $slider ) {
+				var $this_slider = $slider || $et_pb_slider;
+
+				if ( ! $this_slider || ! $this_slider.length ) {
+					return;
+				}
+
+				$this_slider.each( function() {
+					var $slide_section = $(this).parent( '.et_pb_section' ),
+						$slides = $(this).find( '.et_pb_slide' ),
+						$slide_containers = $slides.find( '.et_pb_container' ),
+						max_height = 0,
+						image_margin = 0,
+						need_image_margin_top = $(this).hasClass( 'et_pb_post_slider_image_top' ),
+						need_image_margin_bottom = $(this).hasClass( 'et_pb_post_slider_image_bottom' );
+
+					// If this is appears at the first section beneath transparent nav, skip it
+=======
 					$element.each( function() {
 						var $this_el = $(this);
 						var $video_width = $this_el.width() / 2;
@@ -2947,11 +3481,72 @@
 						max_height = 0;
 
 					// If this is appears at the first section benath transparent nav, skip it
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					// leave it to et_fix_page_container_position()
 					if ( $slide_section.is( '.et_pb_section_first' ) ){
 						return true;
 					}
 
+<<<<<<< HEAD
+					$slide_containers.css( 'height', 0 );
+
+					// make slides visible to calculate the height correctly
+					$slides.addClass( 'et_pb_temp_slide' );
+
+					if ( typeof $(this).data('et_pb_simple_slider') === 'object' ) {
+						$(this).data('et_pb_simple_slider').et_fix_slider_content_images();
+					}
+
+					$slides.each( function() {
+						var height = parseFloat( $(this).innerHeight() ),
+							$slide_image = $(this).find( '.et_pb_slide_image' ),
+							adjustedHeight = parseFloat( $(this).data( 'adjustedHeight' ) ),
+							autoTopPadding = isNaN( adjustedHeight ) ? 0 : adjustedHeight;
+
+						// reduce the height by autopadding value if slider height was adjusted. This is required in VB.
+						height = ( autoTopPadding && autoTopPadding < height ) ? ( height - autoTopPadding ) : height;
+
+						if ( need_image_margin_top || need_image_margin_bottom ) {
+							if ( $slide_image.length ) {
+								// get the margin from slides with image
+								image_margin = need_image_margin_top ? parseFloat( $slide_image.css( 'margin-top' ) ) : parseFloat( $slide_image.css( 'margin-bottom' ) );
+								image_margin += 10;
+							} else {
+								// add class to slides without image to adjust their height accordingly
+								$(this).find( '.et_pb_container' ).addClass( 'et_pb_no_image' );
+							}
+						}
+
+						// mark the slides without content
+						if ( 0 === Math.abs( parseInt( $(this).find( '.et_pb_slide_description' ).height() ) ) ) {
+							$(this).find( '.et_pb_container' ).addClass( 'et_pb_empty_slide' );
+						}
+
+						if ( max_height < height ) {
+							max_height = height;
+						}
+					} );
+
+					if ( ( max_height + image_margin ) < 1 ) {
+						// No slides have any content. It's probably being used with background images only.
+						// Reset the height so that it falls back to the default padding for the content.
+						$slide_containers.css( 'height', '' );
+
+					} else {
+						$slide_containers.css( 'height', max_height + image_margin );
+					}
+
+					// remove temp class after getting the slider height
+					$slides.removeClass( 'et_pb_temp_slide' );
+
+					// Show the active slide's image (if exists)
+					$slides.filter('.et-pb-active-slide')
+						.find( '.et_pb_slide_image' )
+						.children( 'img' )
+						.addClass( 'active' );
+				} );
+			};
+=======
 					$slide_container.css( 'height', 0 );
 
 					$slide.each( function() {
@@ -2965,6 +3560,7 @@
 					$slide_container.css( 'height', max_height );
 				} );
 			}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			/**
 			 * Add conditional class to prevent unwanted dropdown nav
@@ -3020,7 +3616,12 @@
 					$email = $newsletter_container.find( 'input[name="et_pb_signup_email"]' ),
 					list_id = $newsletter_container.find( 'input[name="et_pb_signup_list_id"]' ).val(),
 					$result = $newsletter_container.find( '.et_pb_newsletter_result' ).hide(),
+<<<<<<< HEAD
+					service = $submit.closest( '.et_pb_newsletter_form' ).data( 'service' ) || 'mailchimp',
+					account = $newsletter_container.find( 'input[name="et_pb_signup_account_name"]' ).val();
+=======
 					service = $submit.closest( '.et_pb_newsletter_form' ).data( 'service' ) || 'mailchimp';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 				$firstname.removeClass( 'et_pb_signup_error' );
 				$lastname.removeClass( 'et_pb_signup_error' );
@@ -3057,7 +3658,12 @@
 						et_firstname : $firstname.val(),
 						et_lastname : $lastname.val(),
 						et_email : $email.val(),
+<<<<<<< HEAD
+						et_service : service,
+						et_account: account
+=======
 						et_service : service
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					},
 					beforeSend: function() {
 						$newsletter_container
@@ -3089,11 +3695,33 @@
 						}
 					}
 				} );
+<<<<<<< HEAD
+			};
+=======
 			}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			window.et_fix_testimonial_inner_width = function() {
 				var window_width = $( window ).width();
 
+<<<<<<< HEAD
+				if ( window_width > 767 ) {
+					$( '.et_pb_testimonial' ).each( function() {
+						if ( ! $(this).is( ':visible' ) ) {
+							return;
+						}
+
+						var $testimonial            = $(this);
+						var testimonial_width       = $testimonial.width();
+						var $portrait               = $testimonial.find( '.et_pb_testimonial_portrait' );
+						var portrait_width          = $portrait.outerWidth( true );
+						var $testimonial_inner      = $testimonial.find( '.et_pb_testimonial_description_inner' );
+						var $outer_column           = $testimonial.closest( '.et_pb_column' );
+						var testimonial_inner_width = testimonial_width;
+						var subtract                = ! ( $outer_column.hasClass( 'et_pb_column_1_3' ) || $outer_column.hasClass( 'et_pb_column_1_4' ) || $outer_column.hasClass( 'et_pb_column_3_8' ) ) ? portrait_width : 0;
+
+						$testimonial_inner.width( testimonial_inner_width - subtract );
+=======
 				if( window_width > 767 ){
 					$( '.et_pb_testimonial' ).each( function() {
 						if ( ! $(this).is(':visible') ) {
@@ -3110,6 +3738,7 @@
 							subtract = ! ( $outer_column.hasClass( 'et_pb_column_1_3' ) || $outer_column.hasClass( 'et_pb_column_1_4' ) || $outer_column.hasClass( 'et_pb_column_3_8' ) ) ? portrait_width + 31 : 0;
 
 							$testimonial_inner.width( testimonial_inner_width - subtract );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					} );
 				} else {
 					$( '.et_pb_testimonial_description_inner' ).removeAttr( 'style' );
@@ -3118,6 +3747,38 @@
 			window.et_fix_testimonial_inner_width();
 
 			window.et_pb_video_background_init = function( $this_video_background, this_video_background ) {
+<<<<<<< HEAD
+				var $video_background_wrapper = $this_video_background.closest( '.et_pb_section_video_bg' );
+
+				// Initializing video values
+				var onplaying = false;
+				var onpause   = true;
+
+				// On video playing toggle values
+				this_video_background.onplaying = function() {
+					onplaying = true;
+					onpause   = false;
+				};
+
+				// On video pause toggle values
+				this_video_background.onpause = function() {
+					onplaying = false;
+					onpause   = true;
+				};
+
+				// Entering video's top viewport
+				et_waypoint( $video_background_wrapper, {
+					offset: '100%',
+					handler : function( direction ) {
+						if ( $this_video_background.is(':visible') && direction === 'down' ) {
+							if ( this_video_background.paused && ! onplaying ) {
+								this_video_background.play();
+							}
+						} else if ( $this_video_background.is(':visible') && direction === 'up' ) {
+							if ( ! this_video_background.paused && ! onpause ) {
+								this_video_background.pause();
+							}
+=======
 				var $video_background_wrapper = $this_video_background.closest( '.et_pb_section_video_bg' ),
 					this_video_player = this_video_background.player;
 
@@ -3129,11 +3790,53 @@
 							this_video_player.play();
 						} else if ( $this_video_background.is(':visible') && direction === 'up' ) {
 							this_video_player.pause();
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						}
 					}
 				});
 
 				// Entering video's bottom viewport
+<<<<<<< HEAD
+				et_waypoint( $video_background_wrapper, {
+					offset: function() {
+						var video_height = this.element.clientHeight,
+							toggle_offset = Math.ceil( window.innerHeight / 2);
+
+						if ( video_height > toggle_offset ) {
+							toggle_offset = video_height;
+						}
+
+						return toggle_offset * (-1);
+					},
+					handler : function( direction ) {
+						if ( $this_video_background.is(':visible') && direction === 'up' ) {
+							if ( this_video_background.paused && ! onplaying ) {
+								this_video_background.play();
+							}
+						} else if ( $this_video_background.is(':visible') && direction === 'down' ) {
+							if ( ! this_video_background.paused && ! onpause ) {
+								this_video_background.pause();
+							}
+						}
+					}
+				});
+			};
+
+			function et_waypoint( $element, options ) {
+				if ( ! $element.data( 'et_waypoint' ) ) {
+					var instances = $element.waypoint( options );
+
+					if ( instances && instances.length > 0 ) {
+						$element.data( 'et_waypoint', instances[0] );
+					}
+				} else {
+					// Reinit existing
+					$element.data( 'et_waypoint' ).context.refresh();
+				}
+			}
+
+			window.et_reinit_waypoint_modules = et_pb_debounce( function() {
+=======
 				$video_background_wrapper.waypoint({
 					offset: '-50%',
 					handler : function( direction ) {
@@ -3148,11 +3851,17 @@
 
 			window.et_reinit_waypoint_modules = et_pb_debounce( function() {
 				if ( $.fn.waypoint ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					var $et_pb_circle_counter = $( '.et_pb_circle_counter' ),
 						$et_pb_number_counter = $( '.et_pb_number_counter' ),
 						$et_pb_video_background = $( '.et_pb_section_video_bg video' );
 
+<<<<<<< HEAD
+				if ( $.fn.waypoint && 'yes' !== et_pb_custom.ignore_waypoints ) {
+					et_waypoint( $( '.et_pb_counter_container, .et-waypoint' ), {
+=======
 					$( '.et_pb_counter_container, .et-waypoint' ).waypoint( {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						offset: '75%',
 						handler: function() {
 							$(this.element).addClass( 'et-animated' );
@@ -3160,7 +3869,11 @@
 					} );
 
 					// fallback to 'bottom-in-view' offset, to make sure element become visible when it's on the bottom of page and other offsets are not triggered
+<<<<<<< HEAD
+					et_waypoint( $( '.et_pb_counter_container, .et-waypoint' ), {
+=======
 					$( '.et_pb_counter_container, .et-waypoint' ).waypoint( {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						offset: 'bottom-in-view',
 						handler: function() {
 							$(this.element).addClass( 'et-animated' );
@@ -3173,10 +3886,17 @@
 							if ( ! $this_counter.is( ':visible' ) ) {
 								return;
 							}
+<<<<<<< HEAD
+							et_waypoint( $this_counter, {
+								offset: '65%',
+								handler: function() {
+									if ( $this_counter.data( 'PieChartHasLoaded' ) || typeof $this_counter.data('easyPieChart') === 'undefined' ) {
+=======
 							$this_counter.waypoint({
 								offset: '65%',
 								handler: function() {
 									if ( $this_counter.data( 'PieChartHasLoaded' ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 										return;
 									}
 
@@ -3187,10 +3907,17 @@
 							});
 
 							// fallback to 'bottom-in-view' offset, to make sure animation applied when element is on the bottom of page and other offsets are not triggered
+<<<<<<< HEAD
+							et_waypoint( $this_counter, {
+								offset: 'bottom-in-view',
+								handler: function() {
+									if ( $this_counter.data( 'PieChartHasLoaded' ) || typeof $this_counter.data('easyPieChart') === 'undefined' ) {
+=======
 							$this_counter.waypoint({
 								offset: 'bottom-in-view',
 								handler: function() {
 									if ( $this_counter.data( 'PieChartHasLoaded' ) ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 										return;
 									}
 
@@ -3205,7 +3932,11 @@
 					if ( $et_pb_number_counter.length ) {
 						$et_pb_number_counter.each(function(){
 							var $this_counter = $(this);
+<<<<<<< HEAD
+							et_waypoint( $this_counter, {
+=======
 							$this_counter.waypoint({
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 								offset: '75%',
 								handler: function() {
 									$this_counter.data('easyPieChart').update( $this_counter.data('number-value') );
@@ -3213,7 +3944,11 @@
 							});
 
 							// fallback to 'bottom-in-view' offset, to make sure animation applied when element is on the bottom of page and other offsets are not triggered
+<<<<<<< HEAD
+							et_waypoint( $this_counter, {
+=======
 							$this_counter.waypoint({
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 								offset: 'bottom-in-view',
 								handler: function() {
 									$this_counter.data('easyPieChart').update( $this_counter.data('number-value') );
@@ -3225,7 +3960,11 @@
 					if ( $( '.et_pb_ab_goal' ).length ) {
 						var $et_pb_ab_goal = $( '.et_pb_ab_goal' );
 
+<<<<<<< HEAD
+						et_waypoint( $et_pb_ab_goal, {
+=======
 						$et_pb_ab_goal.waypoint({
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							offset: '80%',
 							handler: function() {
 								if ( et_pb_ab_logged_status['read_goal'] || ! $et_pb_ab_goal.length || ! $et_pb_ab_goal.visible( true ) ) {
@@ -3243,6 +3982,63 @@
 							}
 						});
 					}
+<<<<<<< HEAD
+				} else {
+					// if no waypoints supported then apply all the animations right away
+					$( '.et_pb_counter_container, .et-waypoint' ).addClass( 'et-animated' );
+
+					if ( $et_pb_circle_counter.length ) {
+						$et_pb_circle_counter.each(function() {
+							var $this_counter = $(this);
+
+							if ( ! $this_counter.is( ':visible' ) ) {
+								return;
+							}
+
+							if ( $this_counter.data( 'PieChartHasLoaded' ) ) {
+								return;
+							}
+
+							$this_counter.data('easyPieChart').update( $this_counter.data('number-value') );
+
+							$this_counter.data( 'PieChartHasLoaded', true );
+						} );
+					}
+
+					if ( $et_pb_number_counter.length ) {
+						$et_pb_number_counter.each(function(){
+							var $this_counter = $(this);
+
+							$this_counter.data('easyPieChart').update( $this_counter.data('number-value') );
+						});
+					}
+
+					// log the stats without waypoints
+					if ( $( '.et_pb_ab_goal' ).length ) {
+						var $et_pb_ab_goal = $( '.et_pb_ab_goal' );
+
+						if ( et_pb_ab_logged_status['read_goal'] || ! $et_pb_ab_goal.length || ! $et_pb_ab_goal.visible( true ) ) {
+							return;
+						}
+
+						// log the goal_read if goal is still visible after 3 seconds.
+						setTimeout( function() {
+							if ( $et_pb_ab_goal.length && $et_pb_ab_goal.visible( true ) && ! et_pb_ab_logged_status['read_goal'] ) {
+								et_pb_ab_update_stats( 'read_goal' );
+							}
+						}, 3000 );
+
+						et_pb_maybe_log_event( $et_pb_ab_goal, 'view_goal' );
+					}
+				}
+
+				if ( $et_pb_video_background.length ) {
+					$et_pb_video_background.each( function(){
+						var $this_video_background = $(this);
+
+						et_pb_video_background_init( $this_video_background, this );
+					});
+=======
 
 					if ( $et_pb_video_background.length ) {
 						$et_pb_video_background.each( function(){
@@ -3251,6 +4047,7 @@
 							et_pb_video_background_init( $this_video_background, this );
 						});
 					}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			}, 100 );
 
@@ -3350,7 +4147,19 @@
 			}
 
 			function et_pb_get_subject_id() {
+<<<<<<< HEAD
+				var $subject = $( '.et_pb_ab_subject' );
+
+				// In case no subject found
+				if ( $subject.length <= 0 ) {
+					return false;
+				}
+
+				var subject_classname = $subject.attr( 'class' ),
+					subject_id_raw = subject_classname.split( 'et_pb_ab_subject_id-' )[1],
+=======
 				var subject_id_raw = $( '.et_pb_ab_subject' ).attr( 'class' ).split( 'et_pb_ab_subject_id-' )[1],
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					subject_id_clean = subject_id_raw.split( ' ' )[0],
 					subject_id_separated = subject_id_clean.split( '_' ),
 					subject_id = subject_id_separated[1];
@@ -3391,6 +4200,185 @@
 				document.cookie = cookie_content + cookie_expire + "; path=/";
 			}
 
+<<<<<<< HEAD
+			function et_pb_get_fixed_main_header_height() {
+				if ( ! window.et_is_fixed_nav ) {
+					return 0;
+				}
+
+				var fixed_height_onload = typeof $('#main-header').attr('data-fixed-height-onload') === 'undefined' ? 0 : $('#main-header').attr('data-fixed-height-onload');
+
+				return ! window.et_is_fixed_nav ? 0 : parseFloat( fixed_height_onload );
+			}
+
+			var fullscreen_section_width = {};
+			var fullscreen_section_timeout = {};
+
+			window.et_calc_fullscreen_section = function(event) {
+				var isResizing = typeof event === 'object' && event.type === 'resize',
+					$et_window = $(window),
+					$this_section = $(this),
+					section_index = $this_section.index('.et_pb_fullscreen'),
+					timeout = isResizing && typeof fullscreen_section_width[section_index] !== 'undefined' && event.target.window_width > fullscreen_section_width[section_index] ? 800 : 0;
+
+					fullscreen_section_width[section_index] = $et_window.width();
+
+					if ( typeof fullscreen_section_timeout[section_index] !== 'undefined' ) {
+						clearTimeout( fullscreen_section_timeout[section_index] );
+					}
+
+					fullscreen_section_timeout[section_index] = setTimeout( function() {
+					var $body = $( 'body' ),
+						this_section_index = $this_section.index('.et_pb_fullwidth_header'),
+						this_section_offset = $this_section.offset(),
+						$header = $this_section.children('.et_pb_fullwidth_header_container'),
+						$header_content = $header.children('.header-content-container'),
+						$header_image = $header.children('.header-image-container'),
+						sectionHeight = window.innerHeight || $et_window.height(),
+						$wpadminbar = $('#wpadminbar'),
+						has_wpadminbar = $wpadminbar.length,
+						wpadminbar_height = has_wpadminbar ? $wpadminbar.height() : 0,
+						$top_header = $('#top-header'),
+						has_top_header = $top_header.length,
+						top_header_height = has_top_header ? $top_header.height() : 0,
+						$main_header = $('#main-header'),
+						has_main_header = $main_header.length,
+						main_header_height = has_main_header ? $main_header.outerHeight() : 0,
+						fixed_main_header_height = et_pb_get_fixed_main_header_height(),
+						is_mobile_first_module = this_section_offset.top <= (main_header_height + wpadminbar_height),
+						is_wp_relative_admin_bar = $et_window.width() < 782,
+						is_desktop_view = $et_window.width() > 980,
+						is_tablet_view = $et_window.width() <= 980 && $et_window.width() >= 479,
+						is_phone_view = $et_window.width() < 479,
+						overall_header_height = window.et_is_vertical_nav && is_desktop_view ? wpadminbar_height + top_header_height : wpadminbar_height + top_header_height + main_header_height,
+						is_first_module = this_section_offset.top <= overall_header_height;
+
+					// In case theme stored the onload main-header height as data-attribute
+					if ( $main_header.attr('data-height-onload') ) {
+						main_header_height = parseFloat( $main_header.attr('data-height-onload') );
+					}
+
+					/**
+					 * WP Admin Bar:
+					 *
+					 * - Desktop fixed: standard
+					 * - WP Mobile relative: less than 782px window
+					**/
+					if ( has_wpadminbar ) {
+						if ( is_wp_relative_admin_bar ) {
+							if ( is_first_module ) {
+								sectionHeight -= wpadminbar_height;
+							}
+						} else {
+							sectionHeight -= wpadminbar_height;
+						}
+					}
+
+					/**
+					 * Divi Top Header:
+					 *
+					 * - Desktop fixed: standard.
+					 * - Desktop fixed BUT first header's height shouldn't be substracted: hide nav until scroll activated
+					 * - Desktop relative: fixed nav bar disabled
+					 * - Desktop relative: vertical nav activated
+					 */
+					if ( has_top_header ) {
+						if ( is_desktop_view ) {
+							if ( et_hide_nav && ! window.et_is_vertical_nav ) {
+								if ( ! is_first_module ) {
+									sectionHeight -= top_header_height;
+								}
+							} else if ( ! window.et_is_fixed_nav || window.et_is_vertical_nav ) {
+								if ( is_first_module ) {
+									sectionHeight -= top_header_height;
+								}
+							} else {
+								sectionHeight -= top_header_height;
+							}
+						}
+					}
+
+					/**
+					 * Divi Main Header:
+					 *
+					 * - Desktop fixed: standard. Initial and 'fixed' header might have different height
+					 * - Desktop relative: fixed nav bar disabled
+					 * - Desktop fixed BUT height should be ignored: vertical nav activated
+					 * - Desktop fixed BUT height should be ignored for first header only: main header uses rgba
+					 * - Desktop fixed BUT first header's height shouldn't be substracted: hide nav until scroll activated
+					 * - Tablet relative: standard. Including vertical header style
+					 * - Phone relative: standard. Including vertical header style
+					 */
+					if ( has_main_header ) {
+						if ( is_desktop_view ) {
+							if ( et_hide_nav && ! window.et_is_vertical_nav ) {
+								if ( ! is_first_module ) {
+									sectionHeight -= fixed_main_header_height;
+								}
+							} else if ( window.et_is_fixed_nav && ! window.et_is_vertical_nav ) {
+								if ( is_first_module ) {
+									sectionHeight -= main_header_height;
+								} else {
+									sectionHeight -= fixed_main_header_height;
+								}
+							} else if ( ! window.et_is_fixed_nav && ! window.et_is_vertical_nav ) {
+								if ( is_first_module ) {
+									sectionHeight -= main_header_height;
+								}
+							}
+						} else {
+							if ( is_first_module ) {
+								sectionHeight -= main_header_height;
+							}
+						}
+					}
+
+					// If the transparent primary nav + hide nav until scroll is being used,
+					// cancel automatic padding-top added by transparent nav mechanism
+					if ( $body.hasClass('et_transparent_nav') && $body.hasClass( 'et_hide_nav' ) &&  0 === this_section_index ) {
+						$this_section.css( 'padding-top', '' );
+					}
+
+					$this_section.css('min-height', sectionHeight + 'px' );
+					$header.css('min-height', sectionHeight + 'px' );
+
+					if ( $header.hasClass('center') && $header_content.hasClass('bottom') && $header_image.hasClass('bottom') ) {
+						$header.addClass('bottom-bottom');
+					}
+
+					if ( $header.hasClass('center') && $header_content.hasClass('center') && $header_image.hasClass('center') ) {
+						$header.addClass('center-center');
+					}
+
+					if ( $header.hasClass('center') && $header_content.hasClass('center') && $header_image.hasClass('bottom') ) {
+						$header.addClass('center-bottom');
+
+						var contentHeight = sectionHeight - $header_image.outerHeight( true );
+
+						if ( contentHeight > 0 ) {
+							$header_content.css('min-height', contentHeight + 'px' );
+						}
+					}
+
+					if ( $header.hasClass('center') && $header_content.hasClass('bottom') && $header_image.hasClass('center') ) {
+						$header.addClass('bottom-center');
+					}
+
+					if ( ( $header.hasClass('left') || $header.hasClass('right') ) && !$header_content.length && $header_image.length ) {
+						$header.css('justify-content', 'flex-end');
+					}
+
+					if ( $header.hasClass('center') && $header_content.hasClass('bottom') && !$header_image.length ) {
+						$header_content.find('.header-content').css( 'margin-bottom', 80 + 'px' );
+					}
+
+					if ( $header_content.hasClass('bottom') && $header_image.hasClass('center') ) {
+						$header_image.find('.header-image').css( 'margin-bottom', 80 + 'px' );
+						$header_image.css('align-self', 'flex-end');
+					}
+
+				}, timeout );
+=======
 			window.et_calc_fullscreen_section = function() {
 				var $et_window = $(window),
 					$body = $( 'body' ),
@@ -3492,6 +4480,7 @@
 					$header_image.find('.header-image').css( 'margin-bottom', 80 + 'px' );
 					$header_image.css('align-self', 'flex-end');
 				}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 
 			window.et_pb_parallax_init = function( $this_parallax ) {
@@ -3574,6 +4563,15 @@
 				window.et_fix_testimonial_inner_width();
 
 				et_audio_module_set();
+<<<<<<< HEAD
+
+				if ( $et_pb_counter_amount.length ) {
+					$et_pb_counter_amount.each(function(){
+						window.et_bar_counters_init( $( this ) );
+					});
+				} /* $et_pb_counter_amount.length */
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			} );
 
 			$( window ).ready( function(){
@@ -3599,6 +4597,33 @@
 			window.et_pb_fullwidth_header_scroll = function( event ) {
 				event.preventDefault();
 
+<<<<<<< HEAD
+				var window_width             = $et_window.width(),
+					$body                    = $('body'),
+					is_wp_relative_admin_bar = window_width < 782,
+					is_transparent_main_header = $body.hasClass( 'et_transparent_nav' ),
+					is_hide_nav              = $body.hasClass( 'et_hide_nav' ),
+					is_desktop_view          = window_width > 980,
+					is_tablet_view           = window_width <= 980 && window_width >= 479,
+					is_phone_view            = window_width < 479,
+					$this_section            = $(this).parents( 'section' ),
+					this_section_offset      = $this_section.offset(),
+					$wpadminbar              = $('#wpadminbar'),
+					$main_header             = $('#main-header'),
+					wpadminbar_height        = $wpadminbar.length && ! is_wp_relative_admin_bar ? $wpadminbar.height() : 0,
+					top_header_height        = !window.et_is_fixed_nav || !is_desktop_view ? 0 : $top_header.height(),
+					data_height_onload       = typeof $main_header.attr('data-height-onload') === 'undefined' ? 0 : $main_header.attr('data-height-onload');
+					initial_fixed_difference = $main_header.height() === et_pb_get_fixed_main_header_height() || ! is_desktop_view || ! window.et_is_fixed_nav || is_transparent_main_header || is_hide_nav ? 0 : et_pb_get_fixed_main_header_height() - parseFloat( data_height_onload ),
+					section_bottom           = ( this_section_offset.top + $this_section.outerHeight( true ) + initial_fixed_difference ) - ( wpadminbar_height + top_header_height + et_pb_get_fixed_main_header_height() ),
+					animate_modified         = false;
+
+				if ( $this_section.length ) {
+					var fullscreen_scroll_duration = 800;
+
+					$( 'html, body' ).animate( { scrollTop : section_bottom }, {
+						duration: fullscreen_scroll_duration
+					} );
+=======
 				var $this_section      = $(this).parents( 'section' ),
 					is_next_fullscreen = $this_section.next().hasClass( 'et_pb_fullscreen' ),
 					$wpadminbar        = $('#wpadminbar'),
@@ -3631,6 +4656,7 @@
 							$( 'html, body' ).animate( { scrollTop : section_bottom }, 280, 'linear' );
 						}, 780 );
 					}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 			}
 
@@ -3741,6 +4767,12 @@
 					input_padding = $search.hasClass( 'et_pb_text_align_right' ) ? 'paddingLeft' : 'paddingRight',
 					disabled_button = $search.hasClass( 'et_pb_hide_search_button' );
 
+<<<<<<< HEAD
+				// set the relative button position to get its height correctly
+				$button.css( { 'position' : 'relative' } );
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				if ( $button.innerHeight() > $input_field.innerHeight() ) {
 					$input_field.height( $button.innerHeight() );
 				}
@@ -3748,6 +4780,12 @@
 				if ( ! disabled_button ) {
 					$input_field.css( input_padding, $button.innerWidth() + 10 );
 				}
+<<<<<<< HEAD
+
+				// reset the button position back to default
+				$button.css( { 'position' : '' } );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 
 			/**
@@ -3805,6 +4843,189 @@
 				});
 			}
 
+<<<<<<< HEAD
+			window.et_pb_comments_init = function( $comments_module ) {
+				var $comments_module_button = $comments_module.find( '.comment-reply-link, .submit' );
+
+				if ( $comments_module_button.length ) {
+					$comments_module_button.addClass( 'et_pb_button' );
+
+					if ( typeof $comments_module.attr( 'data-icon' ) !== 'undefined' && $comments_module.attr( 'data-icon' ) !== '' ) {
+						$comments_module_button.attr( 'data-icon', $comments_module.attr( 'data-icon' ) );
+						$comments_module_button.addClass( 'et_pb_custom_button_icon' );
+					}
+				}
+			};
+
+			// apply required classes for the Reply buttons in Comments Module
+			if ( $( '.et_pb_comments_module' ).length ) {
+				$( '.et_pb_comments_module' ).each( function() {
+					var $comments_module = $( this );
+
+					et_pb_comments_init( $comments_module );
+				});
+			}
+
+			window.et_fix_pricing_currency_position();
+
+			$('.et_pb_contact_form_container').each( function() {
+				var $form = $(this);
+
+				/* Listen for any field change */
+				$form.on( 'change', 'input, textarea, select', function() {
+					et_conditional_check( $form );
+				} );
+
+				// Conditions may be satisfied on default form state
+				et_conditional_check( $form );
+			} );
+
+			function et_conditional_check( $form ) {
+				var $conditionals = $form.find('[data-conditional-logic]');
+
+				/* Upon change loop all the fields that have conditional logic */
+				$conditionals
+					.hide()
+					.each( function() {
+						var $conditional = $(this);
+
+						/* jQuery automatically parses the JSON */
+						var rules    = $conditional.data('conditional-logic');
+						var relation = $conditional.data('conditional-relation');
+
+						show_field = false;
+
+						/* Loop all the conditional logic rules */
+						var matched_rules = [];
+
+						for ( var i = 0; i < rules.length; i++ ) {
+							var ruleset     = rules[i];
+							var check_id    = ruleset[0];
+							var check_type  = ruleset[1];
+							var check_value = ruleset[2];
+							var $wrapper    = $form.find('.et_pb_contact_field[data-id="' + check_id + '"]');
+							var field_id    = $wrapper.data('id');
+							var field_type  = $wrapper.data('type');
+							var field_value;
+
+							/*
+								Check if the field wrapper is actually visible when including it in the rules check.
+								This avoids the scenario with a parent, child and grandchild field where the parent
+								field is changed but the grandchild remains visible, because the child one has the
+								right value, even though it is not visible
+							*/
+							if ( ! $wrapper.is(':visible') ) {
+								continue;
+							}
+
+							/* Get the proper compare value based on the field type */
+							switch( field_type ) {
+								case 'input':
+								case 'email':
+									field_value = $wrapper.find('input').val();
+									break;
+								case 'text':
+									field_value = $wrapper.find('textarea').val();
+									break;
+								case 'radio':
+									field_value = $wrapper.find('input:checked').val() || '';
+									break;
+								case 'checkbox':
+									var $checkbox      = $wrapper.find(':checkbox');
+									var $checkbox_data = $wrapper.find('[data-checked][data-unchecked]');
+
+									field_value = true === $checkbox.prop('checked') ? $checkbox_data.data('checked') : $checkbox_data.data('unchecked');
+									break;
+								case 'select':
+									field_value = $wrapper.find('select').val();
+									break;
+							}
+
+							/*
+								'is empty' / 'is not empty' are comparing against an empty value so simply
+								reset the `check_value` and update the condition to 'is' / 'is not'
+							*/
+							if ( 'is empty' === check_type || 'is not empty' === check_type ) {
+								check_type  = 'is empty' === check_type ? 'is' : 'is not';
+								check_value = '';
+							}
+
+							/* Check if the value IS matching (if it has to) */
+							if ( 'is' === check_type && field_value !== check_value ) {
+								continue;
+							}
+
+							/* Check if the value IS NOT matching (if it has to) */
+							if ( 'is not' === check_type && field_value === check_value ) {
+								continue;
+							}
+
+							/* Create the contains/not contains regular expresion */
+							var containsRegExp = new RegExp( check_value, 'i' );
+
+							/* Check if the value IS containing */
+							if ( 'contains' === check_type && ! field_value.match( containsRegExp ) ) {
+								continue;
+							}
+
+							/* Check if the value IS NOT containing */
+							if ( 'does not contain' === check_type && field_value.match( containsRegExp ) ) {
+								continue;
+							}
+
+							/* Prepare the values for the 'is greater than' / 'is less than' check */
+							var maybeNumericValue       = parseInt( field_value );
+							var maybeNumbericCheckValue = parseInt( check_value );
+
+							if (
+								( 'is greater' === check_type || 'is less' === check_type ) &&
+								( isNaN( maybeNumericValue ) || isNaN( maybeNumbericCheckValue ) )
+							) {
+								continue;
+							}
+
+							/* Check if the value is greater than */
+							if ( 'is greater' === check_type && maybeNumericValue <= maybeNumbericCheckValue) {
+								continue;
+							}
+
+							/* Check if the value is less than */
+							if ( 'is less' === check_type && maybeNumericValue >= maybeNumbericCheckValue) {
+								continue;
+							}
+
+							matched_rules.push( true );
+						}
+
+						// Hide all the conditional fields initially
+						$conditional.hide();
+
+						/*
+							Input fields may have HTML5 pattern validation which must be ignored
+							if the field is not visible. In order for the pattern to not be
+							taken into account the field must have novalidate property and
+							to not be required (or to not have a pattern attribute)
+						*/
+						var $conditional_input  = $conditional.find('input[type="text"]');
+						var conditional_pattern = $conditional_input.attr('pattern');
+
+						$conditional_input.attr('novalidate', 'novalidate');
+						$conditional_input.attr('data-pattern', conditional_pattern);
+						$conditional_input.removeAttr('pattern');
+
+						if ( 'all' === relation && rules.length === matched_rules.length ) {
+							$conditional.show();
+							$conditional_input.removeAttr('novalidate');
+							$conditional_input.attr('pattern', $conditional_input.data('pattern'));
+						}
+
+						if ( 'any' === relation && 0 < matched_rules.length ) {
+							$conditional.show();
+							$conditional_input.removeAttr('novalidate');
+							$conditional_input.attr('pattern', $conditional_input.data('pattern'));
+						}
+					} );
+=======
 			// apply required classes for the Reply buttons in Comments Module
 			if ( $( '.et_pb_comments_module' ).length ) {
 				$( '.et_pb_comments_module' ).each( function() {
@@ -3820,6 +5041,7 @@
 						}
 					}
 				});
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 
 			/**

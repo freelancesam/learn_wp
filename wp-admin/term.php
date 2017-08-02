@@ -62,7 +62,11 @@ get_current_screen()->set_screen_reader_content( array(
 	'heading_pagination' => $tax->labels->items_list_navigation,
 	'heading_list'       => $tax->labels->items_list,
 ) );
+<<<<<<< HEAD
+wp_enqueue_script( 'admin-tags' );
+=======
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 include( ABSPATH . 'wp-admin/edit-tag-form.php' );
 include( ABSPATH . 'wp-admin/admin-footer.php' );

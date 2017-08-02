@@ -14,7 +14,11 @@ jQuery(function($) {
 			});
 
 			// Search
+<<<<<<< HEAD
+			$('.ls-font-search > button').click(function(e) {
+=======
 			$('.ls-font-search button').click(function(e) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				e.preventDefault();
 				var input = $(this).prev()[0];
 				LS_GoogleFontsAPI.timeout = setTimeout(function() {
@@ -32,6 +36,20 @@ jQuery(function($) {
 				}
 			});
 
+<<<<<<< HEAD
+			// Form save
+			$('form.ls-google-fonts').submit(function() {
+				$('ul.ls-font-list li', this).each(function(idx) {
+					$('input', this).each(function() {
+						$(this).attr('name', 'fontsData['+idx+']['+$(this).data('name')+']');
+					});
+				});
+
+				return true;
+			});
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			// Select font
 			$('.ls-google-fonts .fonts').on('click', 'li:not(.unselectable)', function() {
 				LS_GoogleFontsAPI.showVariants(this);
@@ -241,8 +259,12 @@ jQuery(function($) {
 
 			// Append list item
 			var item = $('ul.ls-font-list li.ls-hidden').clone();
+<<<<<<< HEAD
+				item.children('input:text').val(url);
+=======
 				item.children('input:text').val(url).attr('name', 'urlParams[]');
 				item.children('input:checkbox').attr('name', 'onlyOnAdmin[]');
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				item.appendTo('ul.ls-font-list').attr('class', '');
 
 			// Reset search field

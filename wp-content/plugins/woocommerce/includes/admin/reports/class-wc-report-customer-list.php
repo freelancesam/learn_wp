@@ -78,8 +78,11 @@ class WC_Report_Customer_List extends WP_List_Table {
 	 * @return string
 	 */
 	public function column_default( $user, $column_name ) {
+<<<<<<< HEAD
+=======
 		global $wpdb;
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		switch ( $column_name ) {
 
 			case 'customer_name' :
@@ -222,6 +225,11 @@ class WC_Report_Customer_List extends WP_List_Table {
 	 * Order users by name.
 	 *
 	 * @param WP_User_Query $query
+<<<<<<< HEAD
+	 *
+	 * @return WP_User_Query
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function order_by_last_name( $query ) {
 		global $wpdb;
@@ -245,8 +253,11 @@ class WC_Report_Customer_List extends WP_List_Table {
 	 * Prepare customer list items.
 	 */
 	public function prepare_items() {
+<<<<<<< HEAD
+=======
 		global $wpdb;
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$current_page = absint( $this->get_pagenum() );
 		$per_page     = 20;
 

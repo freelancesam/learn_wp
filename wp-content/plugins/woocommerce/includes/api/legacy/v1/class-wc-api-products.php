@@ -69,8 +69,14 @@ class WC_API_Products extends WC_API_Resource {
 	 */
 	public function get_products( $fields = null, $type = null, $filter = array(), $page = 1 ) {
 
+<<<<<<< HEAD
+		if ( ! empty( $type ) ) {
+			$filter['type'] = $type;
+		}
+=======
 		if ( ! empty( $type ) )
 			$filter['type'] = $type;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$filter['page'] = $page;
 
@@ -80,8 +86,14 @@ class WC_API_Products extends WC_API_Resource {
 
 		foreach ( $query->posts as $product_id ) {
 
+<<<<<<< HEAD
+			if ( ! $this->is_readable( $product_id ) ) {
+				continue;
+			}
+=======
 			if ( ! $this->is_readable( $product_id ) )
 				continue;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			$products[] = current( $this->get_product( $product_id, $fields ) );
 		}
@@ -97,14 +109,24 @@ class WC_API_Products extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the product ID
 	 * @param string $fields
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product( $id, $fields = null ) {
 
 		$id = $this->validate_request( $id, 'product', 'read' );
 
+<<<<<<< HEAD
+		if ( is_wp_error( $id ) ) {
+			return $id;
+		}
+=======
 		if ( is_wp_error( $id ) )
 			return $id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$product = wc_get_product( $id );
 
@@ -128,6 +150,23 @@ class WC_API_Products extends WC_API_Resource {
 	 * Get the total number of orders
 	 *
 	 * @since 2.1
+<<<<<<< HEAD
+	 *
+	 * @param string $type
+	 * @param array $filter
+	 *
+	 * @return array|WP_Error
+	 */
+	public function get_products_count( $type = null, $filter = array() ) {
+
+		if ( ! empty( $type ) ) {
+			$filter['type'] = $type;
+		}
+
+		if ( ! current_user_can( 'read_private_products' ) ) {
+			return new WP_Error( 'woocommerce_api_user_cannot_read_products_count', __( 'You do not have permission to read the products count', 'woocommerce' ), array( 'status' => 401 ) );
+		}
+=======
 	 * @param string $type
 	 * @param array $filter
 	 * @return array
@@ -139,6 +178,7 @@ class WC_API_Products extends WC_API_Resource {
 
 		if ( ! current_user_can( 'read_private_products' ) )
 			return new WP_Error( 'woocommerce_api_user_cannot_read_products_count', __( 'You do not have permission to read the products count', 'woocommerce' ), array( 'status' => 401 ) );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$query = $this->query_products( $filter );
 
@@ -150,14 +190,24 @@ class WC_API_Products extends WC_API_Resource {
 	 *
 	 * @param int $id the product ID
 	 * @param array $data
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function edit_product( $id, $data ) {
 
 		$id = $this->validate_request( $id, 'product', 'edit' );
 
+<<<<<<< HEAD
+		if ( is_wp_error( $id ) ) {
+			return $id;
+		}
+=======
 		if ( is_wp_error( $id ) )
 			return $id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return $this->get_product( $id );
 	}
@@ -167,14 +217,24 @@ class WC_API_Products extends WC_API_Resource {
 	 *
 	 * @param int $id the product ID
 	 * @param bool $force true to permanently delete order, false to move to trash
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_product( $id, $force = false ) {
 
 		$id = $this->validate_request( $id, 'product', 'delete' );
 
+<<<<<<< HEAD
+		if ( is_wp_error( $id ) ) {
+			return $id;
+		}
+=======
 		if ( is_wp_error( $id ) )
 			return $id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		return $this->delete( $id, 'product', ( 'true' === $force ) );
 	}
@@ -185,14 +245,24 @@ class WC_API_Products extends WC_API_Resource {
 	 * @since 2.1
 	 * @param int $id the product ID to get reviews for
 	 * @param string $fields fields to include in response
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_product_reviews( $id, $fields = null ) {
 
 		$id = $this->validate_request( $id, 'product', 'read' );
 
+<<<<<<< HEAD
+		if ( is_wp_error( $id ) ) {
+			return $id;
+		}
+=======
 		if ( is_wp_error( $id ) )
 			return $id;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		$args = array(
 			'post_id' => $id,
@@ -268,6 +338,13 @@ class WC_API_Products extends WC_API_Resource {
 			$product = wc_get_product( $product );
 		}
 
+<<<<<<< HEAD
+		if ( ! is_a( $product, 'WC_Product' ) ) {
+			return array();
+		}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return array(
 			'title'              => $product->get_name(),
 			'id'                 => $product->get_id(),

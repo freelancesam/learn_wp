@@ -4,6 +4,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die('-1');
 }
 
+<<<<<<< HEAD
+et_core_security_check( 'edit_posts', 'et_pb_preview_nonce', '', '_GET' );
+=======
 // Early nonce check
 if ( ! isset( $_GET['et_pb_preview_nonce'] ) || ! wp_verify_nonce( $_GET['et_pb_preview_nonce'], 'et_pb_preview_nonce' ) ) {
 	wp_die( esc_html__( 'Authentication failed. You cannot preview this item.', 'et_builder' ) );
@@ -18,6 +21,7 @@ if ( ! is_user_logged_in() ) {
 if ( ! current_user_can( 'edit_posts' ) ) {
 	wp_die( esc_html__( 'Authentication failed. You have no permission to preview this item.', 'et_builder' ) );
 }
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 $container_style = isset($_POST['is_fb_preview']) ? 'max-width: none; padding: 0;' : '';
 
@@ -61,6 +65,38 @@ $container_style = isset($_POST['is_fb_preview']) ? 'max-width: none; padding: 0
 
 					<?php
 						if ( isset( $_POST['shortcode' ] ) ) {
+<<<<<<< HEAD
+							// process content for builder plugin
+							if ( et_is_builder_plugin_active() ) {
+								$content = do_shortcode( wp_unslash( $_POST['shortcode'] ) );
+								$content = str_replace( ']]>', ']]&gt;', $content );
+
+								$outer_class   = apply_filters( 'et_builder_outer_content_class', array( 'et_builder_outer_content' ) );
+								$outer_classes = implode( ' ', $outer_class );
+
+								$outer_id      = apply_filters( "et_builder_outer_content_id", "et_builder_outer_content" );
+
+								$inner_class   = apply_filters( 'et_builder_inner_content_class', array( 'et_builder_inner_content' ) );
+								$inner_classes = implode( ' ', $inner_class );
+
+								$content = sprintf(
+									'<div class="%2$s" id="%4$s">
+										<div class="%3$s">
+											%1$s
+										</div>
+									</div>',
+									$content,
+									esc_attr( $outer_classes ),
+									esc_attr( $inner_classes ),
+									esc_attr( $outer_id )
+								);
+							} else {
+								$content = apply_filters( 'the_content', wp_unslash( $_POST['shortcode'] ) );
+								$content = str_replace( ']]>', ']]&gt;', $content );
+							}
+
+							echo $content;
+=======
 							if( ! isset( $_POST['et_pb_preview_nonce'] ) || ! wp_verify_nonce( $_POST['et_pb_preview_nonce'], 'et_pb_preview_nonce' ) ) {
 								// Auth nonce
 								printf( '<p class="et-pb-preview-message">%1$s</p>', esc_html__( 'Authentication failed. You cannot preview this item.', 'et_builder' ) );
@@ -99,6 +135,7 @@ $container_style = isset($_POST['is_fb_preview']) ? 'max-width: none; padding: 0
 
 								echo $content;
 							}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						} else {
 							printf( '<p class="et-pb-preview-loading"><span>%1$s</span></p>', esc_html__( 'Loading preview...', 'et_builder' ) );
 						}
@@ -121,4 +158,8 @@ $container_style = isset($_POST['is_fb_preview']) ? 'max-width: none; padding: 0
 		</div> <!-- #page-container -->
 		<?php wp_footer(); ?>
 	</body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

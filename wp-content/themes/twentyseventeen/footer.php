@@ -9,7 +9,11 @@
  * @package WordPress
  * @subpackage Twenty_Seventeen
  * @since 1.0
+<<<<<<< HEAD
+ * @version 1.2
+=======
  * @version 1.0
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 
 ?>
@@ -22,7 +26,11 @@
 				get_template_part( 'template-parts/footer/footer', 'widgets' );
 
 				if ( has_nav_menu( 'social' ) ) : ?>
+<<<<<<< HEAD
+					<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Social Links Menu', 'twentyseventeen' ); ?>">
+=======
 					<nav class="social-navigation" role="navigation" aria-label="<?php _e( 'Footer Social Links Menu', 'twentyseventeen' ); ?>">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<?php
 							wp_nav_menu( array(
 								'theme_location' => 'social',

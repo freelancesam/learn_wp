@@ -65,7 +65,11 @@
 					<form action="<?php echo esc_url( Akismet_Admin::get_page_url() ); ?>" method="POST">
 						<table cellspacing="0" class="akismet-settings">
 							<tbody>
+<<<<<<< HEAD
+								<?php if ( ! Akismet::predefined_api_key() ) { ?>
+=======
 								<?php if ( !defined( 'WPCOM_API_KEY' ) ):?>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 								<tr>
 									<th class="akismet-api-key" width="10%" align="left" scope="row"><?php esc_html_e('API Key', 'akismet');?></th>
 									<td width="5%"/>
@@ -73,7 +77,11 @@
 										<span class="api-key"><input id="key" name="key" type="text" size="15" value="<?php echo esc_attr( get_option('wordpress_api_key') ); ?>" class="<?php echo esc_attr( 'regular-text code ' . $akismet_user->status ); ?>"></span>
 									</td>
 								</tr>
+<<<<<<< HEAD
+								<?php } ?>
+=======
 								<?php endif; ?>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 								<?php if ( isset( $_GET['ssl_status'] ) ) { ?>
 									<tr>
 										<th align="left" scope="row"><?php esc_html_e( 'SSL Status', 'akismet' ); ?></th>
@@ -157,11 +165,19 @@
 							</tbody>
 						</table>
 						<div class="akismet-card-actions">
+<<<<<<< HEAD
+							<?php if ( ! Akismet::predefined_api_key() ) { ?>
+							<div id="delete-action">
+								<a class="submitdelete deletion" href="<?php echo esc_url( Akismet_Admin::get_page_url( 'delete_key' ) ); ?>"><?php esc_html_e('Disconnect this account', 'akismet'); ?></a>
+							</div>
+							<?php } ?>
+=======
 							<?php if ( !defined( 'WPCOM_API_KEY' ) ):?>
 							<div id="delete-action">
 								<a class="submitdelete deletion" href="<?php echo esc_url( Akismet_Admin::get_page_url( 'delete_key' ) ); ?>"><?php esc_html_e('Disconnect this account', 'akismet'); ?></a>
 							</div>
 							<?php endif; ?>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							<?php wp_nonce_field(Akismet_Admin::NONCE) ?>
 							<div id="publishing-action">
 								<input type="hidden" name="action" value="enter-key">
@@ -172,6 +188,65 @@
 					</form>
 				</div>
 			</div>
+<<<<<<< HEAD
+			
+			<?php if ( ! Akismet::predefined_api_key() ) { ?>
+				<div class="akismet-card">
+					<div class="akismet-section-header">
+						<div class="akismet-section-header__label">
+							<span><?php esc_html_e( 'Account' , 'akismet'); ?></span>
+						</div>
+					</div>
+				
+					<div class="inside">
+						<table cellspacing="0" border="0" class="akismet-settings">
+							<tbody>
+								<tr>
+									<th scope="row" align="left"><?php esc_html_e( 'Subscription Type' , 'akismet');?></th>
+									<td width="5%"/>
+									<td align="left">
+										<p><?php echo esc_html( $akismet_user->account_name ); ?></p>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" align="left"><?php esc_html_e( 'Status' , 'akismet');?></th>
+									<td width="5%"/>
+									<td align="left">
+										<p><?php 
+											if ( 'cancelled' == $akismet_user->status ) :
+												esc_html_e( 'Cancelled', 'akismet' ); 
+											elseif ( 'suspended' == $akismet_user->status ) :
+												esc_html_e( 'Suspended', 'akismet' );
+											elseif ( 'missing' == $akismet_user->status ) :
+												esc_html_e( 'Missing', 'akismet' ); 
+											elseif ( 'no-sub' == $akismet_user->status ) :
+												esc_html_e( 'No Subscription Found', 'akismet' );
+											else :
+												esc_html_e( 'Active', 'akismet' );  
+											endif; ?></p>
+									</td>
+								</tr>
+								<?php if ( $akismet_user->next_billing_date ) : ?>
+								<tr>
+									<th scope="row" align="left"><?php esc_html_e( 'Next Billing Date' , 'akismet');?></th>
+									<td width="5%"/>
+									<td align="left">
+										<p><?php echo date( 'F j, Y', $akismet_user->next_billing_date ); ?></p>
+									</td>
+								</tr>
+								<?php endif; ?>
+							</tbody>
+						</table>
+						<div class="akismet-card-actions">
+							<div id="publishing-action">
+								<?php Akismet::view( 'get', array( 'text' => ( $akismet_user->account_type == 'free-api-key' && $akismet_user->status == 'active' ? __( 'Upgrade' , 'akismet') : __( 'Change' , 'akismet') ), 'redirect' => 'upgrade' ) ); ?>
+							</div>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
+=======
 
 			<div class="akismet-card">
 				<div class="akismet-section-header">
@@ -227,6 +302,7 @@
 					</div>
 				</div>
 			</div>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<?php endif;?>
 	</div>
 </div>

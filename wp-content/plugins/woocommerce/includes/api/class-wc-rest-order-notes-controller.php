@@ -33,7 +33,12 @@ class WC_REST_Order_Notes_Controller extends WC_REST_Order_Notes_V1_Controller {
 	 * Get order notes from an order.
 	 *
 	 * @param WP_REST_Request $request
+<<<<<<< HEAD
+	 *
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_items( $request ) {
 		$order = wc_get_order( (int) $request['order_id'] );

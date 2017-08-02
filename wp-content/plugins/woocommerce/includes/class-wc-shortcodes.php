@@ -54,6 +54,11 @@ class WC_Shortcodes {
 	 *
 	 * @param string[] $function
 	 * @param array $atts (default: array())
+<<<<<<< HEAD
+	 * @param array $wrapper
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	public static function shortcode_wrapper(
@@ -99,6 +104,12 @@ class WC_Shortcodes {
 		ob_start();
 
 		if ( $products->have_posts() ) {
+<<<<<<< HEAD
+
+			// Prime caches before grabbing objects.
+			update_post_caches( $products->posts, array( 'product', 'product_variation' ) );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			?>
 
 			<?php do_action( "woocommerce_shortcode_before_{$loop_name}_loop", $atts ); ?>
@@ -429,7 +440,11 @@ class WC_Shortcodes {
 	 * @return string
 	 */
 	public static function product_add_to_cart( $atts ) {
+<<<<<<< HEAD
+		global $post;
+=======
 		global $wpdb, $post;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		if ( empty( $atts ) ) {
 			return '';
@@ -486,8 +501,11 @@ class WC_Shortcodes {
 	 * @return string
 	 */
 	public static function product_add_to_cart_url( $atts ) {
+<<<<<<< HEAD
+=======
 		global $wpdb;
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( empty( $atts ) ) {
 			return '';
 		}
@@ -730,6 +748,27 @@ class WC_Shortcodes {
 
 		ob_start();
 
+<<<<<<< HEAD
+		global $wp_query;
+
+		// Backup query object so following loops think this is a product page.
+		$previous_wp_query = $wp_query;
+		$wp_query          = $single_product;
+
+		wp_enqueue_script( 'wc-single-product' );
+
+		while ( $single_product->have_posts() ) {
+			$single_product->the_post()
+			?>
+			<div class="single-product" data-product-page-preselected-id="<?php echo esc_attr( $preselected_id ); ?>">
+				<?php wc_get_template_part( 'content', 'single-product' ); ?>
+			</div>
+			<?php
+		}
+
+		// restore $previous_wp_query and reset post data.
+		$wp_query = $previous_wp_query;
+=======
 		while ( $single_product->have_posts() ) :
 			$single_product->the_post();
 			wp_enqueue_script( 'wc-single-product' );
@@ -743,6 +782,7 @@ class WC_Shortcodes {
 
 		<?php endwhile; // end of the loop.
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		wp_reset_postdata();
 
 		return '<div class="woocommerce">' . ob_get_clean() . '</div>';

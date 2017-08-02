@@ -30,6 +30,158 @@
 
 		$( 'div.wpcf7 > form' ).each( function() {
 			var $form = $( this );
+<<<<<<< HEAD
+			wpcf7.initForm( $form );
+
+			if ( wpcf7.cached ) {
+				wpcf7.refill( $form );
+			}
+		} );
+	} );
+
+	wpcf7.getId = function( form ) {
+		return parseInt( $( 'input[name="_wpcf7"]', form ).val(), 10 );
+	};
+
+	wpcf7.initForm = function( form ) {
+		var $form = $( form );
+
+		$form.submit( function( event ) {
+			if ( typeof window.FormData !== 'function' ) {
+				return;
+			}
+
+			wpcf7.submit( $form );
+			event.preventDefault();
+		} );
+
+		$( '.wpcf7-submit', $form ).after( '<span class="ajax-loader"></span>' );
+
+		wpcf7.toggleSubmit( $form );
+
+		$form.on( 'click', '.wpcf7-acceptance', function() {
+			wpcf7.toggleSubmit( $form );
+		} );
+
+		// Exclusive Checkbox
+		$( '.wpcf7-exclusive-checkbox', $form ).on( 'click', 'input:checkbox', function() {
+			var name = $( this ).attr( 'name' );
+			$form.find( 'input:checkbox[name="' + name + '"]' ).not( this ).prop( 'checked', false );
+		} );
+
+		// Free Text Option for Checkboxes and Radio Buttons
+		$( '.wpcf7-list-item.has-free-text', $form ).each( function() {
+			var $freetext = $( ':input.wpcf7-free-text', this );
+			var $wrap = $( this ).closest( '.wpcf7-form-control' );
+
+			if ( $( ':checkbox, :radio', this ).is( ':checked' ) ) {
+				$freetext.prop( 'disabled', false );
+			} else {
+				$freetext.prop( 'disabled', true );
+			}
+
+			$wrap.on( 'change', ':checkbox, :radio', function() {
+				var $cb = $( '.has-free-text', $wrap ).find( ':checkbox, :radio' );
+
+				if ( $cb.is( ':checked' ) ) {
+					$freetext.prop( 'disabled', false ).focus();
+				} else {
+					$freetext.prop( 'disabled', true );
+				}
+			} );
+		} );
+
+		// Placeholder Fallback
+		if ( ! wpcf7.supportHtml5.placeholder ) {
+			$( '[placeholder]', $form ).each( function() {
+				$( this ).val( $( this ).attr( 'placeholder' ) );
+				$( this ).addClass( 'placeheld' );
+
+				$( this ).focus( function() {
+					if ( $( this ).hasClass( 'placeheld' ) ) {
+						$( this ).val( '' ).removeClass( 'placeheld' );
+					}
+				} );
+
+				$( this ).blur( function() {
+					if ( '' === $( this ).val() ) {
+						$( this ).val( $( this ).attr( 'placeholder' ) );
+						$( this ).addClass( 'placeheld' );
+					}
+				} );
+			} );
+		}
+
+		if ( wpcf7.jqueryUi && ! wpcf7.supportHtml5.date ) {
+			$form.find( 'input.wpcf7-date[type="date"]' ).each( function() {
+				$( this ).datepicker( {
+					dateFormat: 'yy-mm-dd',
+					minDate: new Date( $( this ).attr( 'min' ) ),
+					maxDate: new Date( $( this ).attr( 'max' ) )
+				} );
+			} );
+		}
+
+		if ( wpcf7.jqueryUi && ! wpcf7.supportHtml5.number ) {
+			$form.find( 'input.wpcf7-number[type="number"]' ).each( function() {
+				$( this ).spinner( {
+					min: $( this ).attr( 'min' ),
+					max: $( this ).attr( 'max' ),
+					step: $( this ).attr( 'step' )
+				} );
+			} );
+		}
+
+		// Character Count
+		$( '.wpcf7-character-count', $form ).each( function() {
+			var $count = $( this );
+			var name = $count.attr( 'data-target-name' );
+			var down = $count.hasClass( 'down' );
+			var starting = parseInt( $count.attr( 'data-starting-value' ), 10 );
+			var maximum = parseInt( $count.attr( 'data-maximum-value' ), 10 );
+			var minimum = parseInt( $count.attr( 'data-minimum-value' ), 10 );
+
+			var updateCount = function( target ) {
+				var $target = $( target );
+				var length = $target.val().length;
+				var count = down ? starting - length : length;
+				$count.attr( 'data-current-value', count );
+				$count.text( count );
+
+				if ( maximum && maximum < length ) {
+					$count.addClass( 'too-long' );
+				} else {
+					$count.removeClass( 'too-long' );
+				}
+
+				if ( minimum && length < minimum ) {
+					$count.addClass( 'too-short' );
+				} else {
+					$count.removeClass( 'too-short' );
+				}
+			};
+
+			$( ':input[name="' + name + '"]', $form ).each( function() {
+				updateCount( this );
+
+				$( this ).keyup( function() {
+					updateCount( this );
+				} );
+			} );
+		} );
+
+		$form.on( 'change', '.wpcf7-validates-as-url', function() {
+			var val = $.trim( $( this ).val() );
+
+			// check the scheme part
+			if ( val && ! val.match( /^[a-z][a-z0-9.+-]*:/i ) ) {
+				val = val.replace( /^\/+/, '' );
+				val = 'http://' + val;
+			}
+
+			$( this ).val( val );
+		} );
+=======
 
 			$form.submit( function( event ) {
 				if ( typeof window.FormData !== 'function' ) {
@@ -175,6 +327,7 @@
 
 	wpcf7.getId = function( form ) {
 		return parseInt( $( 'input[name="_wpcf7"]', form ).val(), 10 );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	};
 
 	wpcf7.submit = function( form ) {
@@ -211,6 +364,15 @@
 					detail.unitTag = field.value;
 				} else if ( '_wpcf7_container_post' == field.name ) {
 					detail.containerPostId = field.value;
+<<<<<<< HEAD
+				} else if ( field.name.match( /^_wpcf7_\w+_free_text_/ ) ) {
+					var owner = field.name.replace( /^_wpcf7_\w+_free_text_/, '' );
+					detail.inputs.push( {
+						name: owner + '-free-text',
+						value: field.value
+					} );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				} else if ( field.name.match( /^_/ ) ) {
 					// do nothing
 				} else {
@@ -285,7 +447,11 @@
 				$( n ).val( $( n ).attr( 'placeholder' ) );
 			} );
 
+<<<<<<< HEAD
+			$message.html( '' ).append( data.message ).slideDown( 'fast' );
+=======
 			$message.append( data.message ).slideDown( 'fast' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$message.attr( 'role', 'alert' );
 
 			$( '.screen-reader-response', $form.closest( '.wpcf7' ) ).each( function() {
@@ -314,8 +480,13 @@
 
 		$.ajax( {
 			type: 'POST',
+<<<<<<< HEAD
+			url: wpcf7.apiSettings.getRoute(
+				'/contact-forms/' + wpcf7.getId( $form ) + '/feedback' ),
+=======
 			url: wpcf7.apiSettings.root + wpcf7.apiSettings.namespace +
 				'/contact-forms/' + wpcf7.getId( $form ) + '/feedback',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			data: formData,
 			dataType: 'json',
 			processData: false,
@@ -384,7 +555,11 @@
 				}, 'fast', function() {
 					$( this ).css( { 'z-index': -100 } );
 				} );
+<<<<<<< HEAD
+			};
+=======
 			}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			$target.on( 'mouseover', '.wpcf7-not-valid-tip', function() {
 				fadeOut( this );
@@ -394,7 +569,11 @@
 				fadeOut( $( '.wpcf7-not-valid-tip', $target ) );
 			} );
 		}
+<<<<<<< HEAD
+	};
+=======
 	}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	wpcf7.refill = function( form, data ) {
 		var $form = $( form );
@@ -419,8 +598,13 @@
 		if ( typeof data === 'undefined' ) {
 			$.ajax( {
 				type: 'GET',
+<<<<<<< HEAD
+				url: wpcf7.apiSettings.getRoute(
+					'/contact-forms/' + wpcf7.getId( $form ) + '/refill' ),
+=======
 				url: wpcf7.apiSettings.root + wpcf7.apiSettings.namespace +
 					'/contact-forms/' + wpcf7.getId( $form ) + '/refill',
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				dataType: 'json'
 			} ).done( function( data, status, xhr ) {
 				if ( data.captcha ) {
@@ -457,6 +641,19 @@
 			.removeClass( 'wpcf7-mail-sent-ok wpcf7-mail-sent-ng wpcf7-validation-errors wpcf7-spam-blocked' );
 	};
 
+<<<<<<< HEAD
+	wpcf7.apiSettings.getRoute = function( path ) {
+		var url = wpcf7.apiSettings.root;
+
+		url = url.replace(
+			wpcf7.apiSettings.namespace,
+			wpcf7.apiSettings.namespace + path );
+
+		return url;
+	};
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 } )( jQuery );
 
 /*

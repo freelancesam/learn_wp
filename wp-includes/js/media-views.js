@@ -3771,12 +3771,42 @@ AttachmentsBrowser = View.extend({
 
 		this.controller.on( 'toggle:upload:attachment', this.toggleUploader, this );
 		this.controller.on( 'edit:selection', this.editSelection );
+<<<<<<< HEAD
+
+		// In the Media Library, the sidebar is used to display errors before the attachments grid.
+		if ( this.options.sidebar && 'errors' === this.options.sidebar ) {
+			this.createSidebar();
+		}
+
+		/*
+		 * For accessibility reasons, place the Inline Uploader before other sections.
+		 * This way, in the Media Library, it's right after the Add New button, see ticket #37188.
+		 */
+		this.createUploader();
+
+		/*
+		 * Create a multi-purpose toolbar. Used as main toolbar in the Media Library
+		 * and also for other things, for example the "Drag and drop to reorder" and
+		 * "Suggested dimensions" info in the media modal.
+		 */
+		this.createToolbar();
+
+		// Create the list of attachments.
+		this.createAttachments();
+
+		// For accessibility reasons, place the normal sidebar after the attachments, see ticket #36909.
+		if ( this.options.sidebar && 'errors' !== this.options.sidebar ) {
+			this.createSidebar();
+		}
+
+=======
 		this.createToolbar();
 		this.createUploader();
 		this.createAttachments();
 		if ( this.options.sidebar ) {
 			this.createSidebar();
 		}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		this.updateContent();
 
 		if ( ! this.options.sidebar || 'errors' === this.options.sidebar ) {
@@ -3956,7 +3986,13 @@ AttachmentsBrowser = View.extend({
 					controller: this.controller,
 					priority: -55,
 					click: function() {
+<<<<<<< HEAD
+						var removed = [],
+							destroy = [],
+							selection = this.controller.state().get( 'selection' );
+=======
 						var removed = [], selection = this.controller.state().get( 'selection' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 						if ( ! selection.length || ! window.confirm( l10n.warnBulkDelete ) ) {
 							return;
@@ -3968,11 +4004,28 @@ AttachmentsBrowser = View.extend({
 								return;
 							}
 
+<<<<<<< HEAD
+							destroy.push( model );
+						} );
+
+						if ( removed.length ) {
+							selection.remove( removed );
+						}
+
+						if ( destroy.length ) {
+							$.when.apply( null, destroy.map( function (item) {
+								return item.destroy();
+							} ) ).then( _.bind( function() {
+								this.controller.trigger( 'selection:action:done' );
+							}, this ) );
+						}
+=======
 							model.destroy();
 						} );
 
 						selection.remove( removed );
 						this.controller.trigger( 'selection:action:done' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 					}
 				}).render() );
 			}
@@ -4018,7 +4071,11 @@ AttachmentsBrowser = View.extend({
 
 		if ( this.options.suggestedWidth && this.options.suggestedHeight ) {
 			this.toolbar.set( 'suggestedDimensions', new View({
+<<<<<<< HEAD
+				el: $( '<div class="instructions">' + l10n.suggestedDimensions.replace( '%1$s', this.options.suggestedWidth ).replace( '%2$s', this.options.suggestedHeight ) + '</div>' )[0],
+=======
 				el: $( '<div class="instructions">' + l10n.suggestedDimensions + ' ' + this.options.suggestedWidth + ' &times; ' + this.options.suggestedHeight + '</div>' )[0],
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				priority: -40
 			}) );
 		}
@@ -4058,7 +4115,11 @@ AttachmentsBrowser = View.extend({
 			canClose:   this.controller.isModeActive( 'grid' )
 		});
 
+<<<<<<< HEAD
+		this.uploader.$el.addClass( 'hidden' );
+=======
 		this.uploader.hide();
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		this.views.add( this.uploader );
 	},
 
@@ -4592,7 +4653,10 @@ EmbedLink = wp.media.view.Settings.extend({
 	}, wp.media.controller.Embed.sensitivity ),
 
 	fetch: function() {
+<<<<<<< HEAD
+=======
 		var embed;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		// check if they haven't typed in 500 ms
 		if ( $('#embed-url-field').val() !== this.model.get('url') ) {
@@ -4603,6 +4667,27 @@ EmbedLink = wp.media.view.Settings.extend({
 			this.dfd.abort();
 		}
 
+<<<<<<< HEAD
+		this.dfd = $.ajax({
+			url: wp.media.view.settings.oEmbedProxyUrl,
+			data: {
+				url: this.model.get( 'url' ),
+				maxwidth: this.model.get( 'width' ),
+				maxheight: this.model.get( 'height' ),
+				_wpnonce: wp.media.view.settings.nonce.wpRestApi
+			},
+			type: 'GET',
+			dataType: 'json',
+			context: this
+		})
+			.done( function( response ) {
+				this.renderoEmbed( {
+					data: {
+						body: response.html || ''
+					}
+				} );
+			} )
+=======
 		embed = new wp.shortcode({
 			tag: 'embed',
 			attrs: _.pick( this.model.attributes, [ 'width', 'height', 'src' ] ),
@@ -4620,6 +4705,7 @@ EmbedLink = wp.media.view.Settings.extend({
 			}
 		})
 			.done( this.renderoEmbed )
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			.fail( this.renderFail );
 	},
 
@@ -4706,7 +4792,11 @@ EmbedUrl = View.extend({
 	},
 
 	url: function( event ) {
+<<<<<<< HEAD
+		this.model.set( 'url', $.trim( event.target.value ) );
+=======
 		this.model.set( 'url', event.target.value );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	},
 
 	/**
@@ -7074,9 +7164,13 @@ Search = wp.media.View.extend({
 
 	events: {
 		'input':  'search',
+<<<<<<< HEAD
+		'keyup':  'search'
+=======
 		'keyup':  'search',
 		'change': 'search',
 		'search': 'search'
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	},
 
 	/**
@@ -7087,13 +7181,21 @@ Search = wp.media.View.extend({
 		return this;
 	},
 
+<<<<<<< HEAD
+	search: _.debounce( function( event ) {
+=======
 	search: function( event ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( event.target.value ) {
 			this.model.set( 'search', event.target.value );
 		} else {
 			this.model.unset('search');
 		}
+<<<<<<< HEAD
+	}, 300 )
+=======
 	}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 });
 
 module.exports = Search;
@@ -7724,9 +7826,17 @@ Toolbar = View.extend({
 				disabled = false;
 
 			// Prevent insertion of attachments if any of them are still uploading
+<<<<<<< HEAD
+			if ( selection && selection.models ) {
+				disabled = _.some( selection.models, function( attachment ) {
+					return attachment.get('uploading') === true;
+				});
+			}
+=======
 			disabled = _.some( selection.models, function( attachment ) {
 				return attachment.get('uploading') === true;
 			});
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			if ( requires.selection && selection && ! selection.length ) {
 				disabled = true;
@@ -8194,9 +8304,24 @@ UploaderInline = View.extend({
 	},
 	show: function() {
 		this.$el.removeClass( 'hidden' );
+<<<<<<< HEAD
+		if ( this.controller.$uploaderToggler.length ) {
+			this.controller.$uploaderToggler.attr( 'aria-expanded', 'true' );
+		}
 	},
 	hide: function() {
 		this.$el.addClass( 'hidden' );
+		if ( this.controller.$uploaderToggler.length ) {
+			this.controller.$uploaderToggler
+				.attr( 'aria-expanded', 'false' )
+				// Move focus back to the toggle button when closing the uploader.
+				.focus();
+		}
+=======
+	},
+	hide: function() {
+		this.$el.addClass( 'hidden' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 });
@@ -8385,7 +8510,11 @@ UploaderWindow = wp.media.View.extend({
 	initialize: function() {
 		var uploader;
 
+<<<<<<< HEAD
+		this.$browser = $( '<button type="button" class="browser" />' ).hide().appendTo( 'body' );
+=======
 		this.$browser = $('<a href="#" class="browser" />').hide().appendTo('body');
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 		uploader = this.options.uploader = _.defaults( this.options.uploader || {}, {
 			dropzone:  this.$el,

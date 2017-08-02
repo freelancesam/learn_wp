@@ -62,7 +62,11 @@ class Akismet_Widget extends WP_Widget {
 	}
 
 	function form( $instance ) {
+<<<<<<< HEAD
+		if ( $instance && isset( $instance['title'] ) ) {
+=======
 		if ( $instance ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$title = $instance['title'];
 		}
 		else {

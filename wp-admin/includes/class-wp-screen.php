@@ -308,6 +308,12 @@ final class WP_Screen {
 					if ( null === $post_type && is_object_in_taxonomy( 'post', $taxonomy ? $taxonomy : 'post_tag' ) )
 						$post_type = 'post';
 					break;
+<<<<<<< HEAD
+				case 'upload':
+					$post_type = 'attachment';
+					break;
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			}
 		}
 
@@ -1163,7 +1169,11 @@ final class WP_Screen {
 			$per_page = apply_filters( 'edit_categories_per_page', $per_page );
 		} else {
 			/** This filter is documented in wp-admin/includes/class-wp-list-table.php */
+<<<<<<< HEAD
+			$per_page = apply_filters( "{$option}", $per_page );
+=======
 			$per_page = apply_filters( $option, $per_page );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 
 		// Back compat
@@ -1193,6 +1203,11 @@ final class WP_Screen {
 	 * Render the list table view mode preferences.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
+	 *
+	 * @global string $mode List table view mode.
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function render_view_mode() {
 		$screen = get_current_screen();

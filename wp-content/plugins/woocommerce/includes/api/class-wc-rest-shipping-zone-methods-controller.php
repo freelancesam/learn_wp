@@ -155,8 +155,11 @@ class WC_REST_Shipping_Zone_Methods_Controller extends WC_REST_Shipping_Zones_Co
 	 * @return WP_REST_Request|WP_Error
 	 */
 	public function create_item( $request ) {
+<<<<<<< HEAD
+=======
 		global $wpdb;
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$method_id = $request['method_id'];
 		$zone      = $this->get_zone( $request['zone_id'] );
 		if ( is_wp_error( $zone ) ) {
@@ -193,8 +196,11 @@ class WC_REST_Shipping_Zone_Methods_Controller extends WC_REST_Shipping_Zones_Co
 	 * @return WP_Error|boolean
 	 */
 	public function delete_item( $request ) {
+<<<<<<< HEAD
+=======
 		global $wpdb;
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$zone = $this->get_zone( $request['zone_id'] );
 		if ( is_wp_error( $zone ) ) {
 			return $zone;
@@ -251,8 +257,11 @@ class WC_REST_Shipping_Zone_Methods_Controller extends WC_REST_Shipping_Zones_Co
 	 * @return WP_REST_Response|WP_Error
 	 */
 	public function update_item( $request ) {
+<<<<<<< HEAD
+=======
 		global $wpdb;
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$zone = $this->get_zone( $request['zone_id'] );
 		if ( is_wp_error( $zone ) ) {
 			return $zone;
@@ -285,10 +294,18 @@ class WC_REST_Shipping_Zone_Methods_Controller extends WC_REST_Shipping_Zones_Co
 	/**
 	 * Updates settings, order, and enabled status on create.
 	 *
+<<<<<<< HEAD
+	 * @param int $instance_id integer
+	 * @param WC_Shipping_Method $method
+	 * @param WP_REST_Request $request
+	 *
+	 * @return WC_Shipping_Method
+=======
 	 * @param $instance_id integer
 	 * @param $method
 	 * @param WP_REST_Request $request
 	 * @return $method
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function update_fields( $instance_id, $method, $request ) {
 		global $wpdb;
@@ -373,6 +390,13 @@ class WC_REST_Shipping_Zone_Methods_Controller extends WC_REST_Shipping_Zones_Co
 
 	/**
 	 * Return settings associated with this shipping zone method instance.
+<<<<<<< HEAD
+	 *
+	 * @param WC_Shipping_Method $item
+	 *
+	 * @return array
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_settings( $item ) {
 		$item->init_instance_settings();

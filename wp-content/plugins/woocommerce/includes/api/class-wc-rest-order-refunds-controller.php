@@ -174,9 +174,17 @@ class WC_REST_Order_Refunds_Controller extends WC_REST_Orders_Controller {
 	 * Prepare a single order output for response.
 	 *
 	 * @since  3.0.0
+<<<<<<< HEAD
+	 *
+	 * @param  WC_Data         $object  Object data.
+	 * @param  WP_REST_Request $request Request object.
+	 *
+	 * @return WP_Error|WP_REST_Response
+=======
 	 * @param  WC_Data         $object  Object data.
 	 * @param  WP_REST_Request $request Request object.
 	 * @return WP_REST_Response
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function prepare_object_for_response( $object, $request ) {
 		$this->request = $request;

@@ -26,7 +26,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <p><?php
 	/* translators: 1: user display name 2: logout url */
 	printf(
+<<<<<<< HEAD
+		__( 'Hello %1$s (not %1$s? <a href="%2$s">Log out</a>)', 'woocommerce' ),
+=======
 		__( 'Hello %1$s (not %1$s? <a href="%2$s">Sign out</a>)', 'woocommerce' ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'<strong>' . esc_html( $current_user->display_name ) . '</strong>',
 		esc_url( wc_logout_url( wc_get_page_permalink( 'myaccount' ) ) )
 	);

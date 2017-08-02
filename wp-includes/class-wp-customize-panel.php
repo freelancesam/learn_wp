@@ -104,6 +104,18 @@ class WP_Customize_Panel {
 	public $description = '';
 
 	/**
+<<<<<<< HEAD
+	 * Auto-expand a section in a panel when the panel is expanded when the panel only has the one section.
+	 *
+	 * @since 4.7.4
+	 * @access public
+	 * @var bool
+	 */
+	public $auto_expand_sole_section = false;
+
+	/**
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Customizer sections for this panel.
 	 *
 	 * @since 4.0.0
@@ -219,6 +231,10 @@ class WP_Customize_Panel {
 		$array['content'] = $this->get_content();
 		$array['active'] = $this->active();
 		$array['instanceNumber'] = $this->instance_number;
+<<<<<<< HEAD
+		$array['autoExpandSoleSection'] = $this->auto_expand_sole_section;
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return $array;
 	}
 

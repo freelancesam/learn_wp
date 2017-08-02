@@ -198,9 +198,17 @@
 			}, 600 );
 		}
 
+<<<<<<< HEAD
+		if ( typeof etCore !== 'undefined' ) {
+			// Portability integration.
+			etCore.portability.save = function( callback ) {
+				et_pb_save_roles( callback, false );
+			}
+=======
 		// Portability integration.
 		etCore.portability.save = function( callback ) {
 			et_pb_save_roles( callback, false );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	});
 })(jQuery)

@@ -341,9 +341,17 @@ class WC_Gateway_Simplify_Commerce extends WC_Payment_Gateway_CC {
 	/**
 	 * Actually saves a customer token to the database.
 	 *
+<<<<<<< HEAD
+	 * @param  WC_Payment_Token $customer_token Payment Token
+	 * @param  string $cart_token CC Token
+	 * @param  array $customer_info 'email', 'name'
+	 *
+	 * @return null|WC_Payment_Token|WC_Payment_Token_CC
+=======
 	 * @param  WC_Payment_Token   $customer_token Payment Token
 	 * @param  string             $cart_token     CC Token
 	 * @param  array              $customer_info  'email', 'name'
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function save_token( $customer_token, $cart_token, $customer_info ) {
 		if ( ! is_null( $customer_token ) ) {
@@ -408,10 +416,19 @@ class WC_Gateway_Simplify_Commerce extends WC_Payment_Gateway_CC {
 	 * Process standard payments.
 	 *
 	 * @param  WC_Order $order
+<<<<<<< HEAD
+	 * @param  string $cart_token
+	 * @param string $customer_token
+	 *
+	 * @return array
+	 * @uses   Simplify_ApiException
+	 * @uses   Simplify_BadRequestException
+=======
 	 * @param  string   $cart_token
 	 * @uses   Simplify_ApiException
 	 * @uses   Simplify_BadRequestException
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function process_standard_payments( $order, $cart_token = '', $customer_token = '' ) {
 		try {
@@ -420,7 +437,11 @@ class WC_Gateway_Simplify_Commerce extends WC_Payment_Gateway_CC {
 				$error_msg = __( 'Please make sure your card details have been entered correctly and that your browser supports JavaScript.', 'woocommerce' );
 
 				if ( 'yes' == $this->sandbox ) {
+<<<<<<< HEAD
+					$error_msg .= ' ' . __( 'Developers: Please make sure that you are including jQuery and there are no JavaScript errors on the page.', 'woocommerce' );
+=======
 					$error_msg .= ' ' . __( 'Developers: Please make sure that you\'re including jQuery and there are no JavaScript errors on the page.', 'woocommerce' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				}
 
 				throw new Simplify_ApiException( $error_msg );
@@ -481,13 +502,24 @@ class WC_Gateway_Simplify_Commerce extends WC_Payment_Gateway_CC {
 		}
 	}
 
+<<<<<<< HEAD
+	/**
+=======
  	/**
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * do payment function.
 	 *
 	 * @param WC_order $order
 	 * @param int $amount (default: 0)
+<<<<<<< HEAD
+	 * @param array $token
+	 *
+	 * @return bool|WP_Error
+	 * @uses  Simplify_BadRequestException
+=======
 	 * @uses  Simplify_BadRequestException
 	 * @return bool|WP_Error
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function do_payment( $order, $amount = 0, $token = array() ) {
 		if ( $amount * 100 < 50 ) {
@@ -568,6 +600,11 @@ class WC_Gateway_Simplify_Commerce extends WC_Payment_Gateway_CC {
 	 * Process the payment.
 	 *
 	 * @param int $order_id
+<<<<<<< HEAD
+	 *
+	 * @return array|void
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function process_payment( $order_id ) {
 		$order = wc_get_order( $order_id );
@@ -660,7 +697,11 @@ class WC_Gateway_Simplify_Commerce extends WC_Payment_Gateway_CC {
 			$order_id  = absint( $_REQUEST['reference'] );
 			$order     = wc_get_order( $order_id );
 
+<<<<<<< HEAD
+			if ( hash_equals( $signature, $_REQUEST['signature'] ) ) {
+=======
 			if ( $signature === $_REQUEST['signature'] ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				$order_complete = $this->process_order_status( $order, $_REQUEST['paymentId'], $_REQUEST['paymentStatus'], $_REQUEST['paymentDate'] );
 
 				if ( ! $order_complete ) {

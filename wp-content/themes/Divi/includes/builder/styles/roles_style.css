@@ -168,4 +168,8 @@ span.et_pb_toggle_all:after { font-family: 'etbuilder'; content: '6'; }
 }
 @media all and ( max-width: 782px ) {
 	#et_pb_loading_animation, #et_pb_success_animation { margin-left: -25px; }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

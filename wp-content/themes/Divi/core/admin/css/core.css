@@ -168,6 +168,15 @@ body button.et-core-button {
 	font-family: 'Open Sans', sans-serif !important;
 }
 
+<<<<<<< HEAD
+.rtl .et-core-button,
+body.rtl button.et-core-button {
+	margin-right: 7px;
+	margin-left: 0;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .et-core-button:focus,
 .et-core-button:hover,
 .et-core-button:active {
@@ -196,7 +205,11 @@ body button.et-core-button {
 	left: -9999px;
 	width: 100%;
 	height: 100%;
+<<<<<<< HEAD
+	background: rgba(255,255,255,0.7);
+=======
 	background: rgb(255,255,255,0.7);
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 20%, rgba(255,255,255,0.7) 100%);
 	background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 20%,rgba(255,255,255,0.7) 100%);
 	background: radial-gradient(ellipse at center, rgba(255,255,255,1) 20%,rgba(255,255,255,0.7) 100%);
@@ -298,6 +311,14 @@ body button.et-core-button {
 	transition: background .5s;
 }
 
+<<<<<<< HEAD
+.rtl .et-core-modal-close {
+	right: auto;
+	left: 0;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .et-core-modal-close:hover,
 .et-core-modal-close:focus,
 .et-core-modal-close:active {
@@ -524,6 +545,14 @@ body button.et-core-button {
 	background: none;
 }
 
+<<<<<<< HEAD
+.rtl .et-core-tabs li,
+.rtl .et-core-tabs li.ui-state-default {
+	float: right;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .et-core-tabs li a,
 .et-core-tabs li.ui-state-default a {
 	color: #fff;
@@ -573,7 +602,11 @@ body button.et-core-button {
   6.0 - Loader
 ------------------------------------------------------------------------------*/
 .et-core-loader {
+<<<<<<< HEAD
+	background: transparent url("../images/loader.gif") 8px 9px no-repeat;
+=======
 	background: transparent url( "../images/loader.gif" ) 8px 9px no-repeat;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	transition: background, box-shadow 0.3s;
 	height: 50px;
 	width: 50px;
@@ -864,4 +897,8 @@ body button.et-core-button {
 	100% {
 		opacity: 0; transform: scale(.9,.9);
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

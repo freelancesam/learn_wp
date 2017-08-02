@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+/* global jQuery, woocommerce_admin_system_status */
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 jQuery( function ( $ ) {
 
 	/**
@@ -112,4 +116,12 @@ jQuery( function ( $ ) {
 	};
 
 	wcSystemStatus.init();
+<<<<<<< HEAD
+
+	$( '#log-viewer-select' ).on( 'click', 'h2 a.page-title-action', function( evt ) {
+		evt.stopImmediatePropagation();
+		return window.confirm( woocommerce_admin_system_status.delete_log_confirmation );
+	});
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 });

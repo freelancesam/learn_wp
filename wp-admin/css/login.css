@@ -59,6 +59,10 @@ p {
 	border-left: 4px solid #00a0d2;
 	padding: 12px;
 	margin-left: 0;
+<<<<<<< HEAD
+	margin-bottom: 20px;
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	background-color: #fff;
 	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);
 	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.1);

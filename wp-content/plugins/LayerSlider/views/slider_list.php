@@ -86,7 +86,11 @@
 ?>
 <div id="ls-screen-options" class="metabox-prefs hidden">
 	<div id="screen-options-wrap" class="hidden">
+<<<<<<< HEAD
+		<form id="ls-screen-options-form" method="post">
+=======
 		<form id="ls-screen-options-form" action="<?php echo $_SERVER['REQUEST_URI']?>" method="post">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			<h5><?php _e('Show on screen', 'LayerSlider') ?></h5>
 			<label><input type="checkbox" name="showTooltips"<?php echo $lsScreenOptions['showTooltips'] == 'true' ? ' checked="checked"' : ''?>> <?php _e('Tooltips', 'LayerSlider') ?></label>
 			<label><input type="checkbox" name="showRemovedSliders" class="reload"<?php echo $lsScreenOptions['showRemovedSliders'] == 'true' ? ' checked="checked"' : ''?>> <?php _e('Removed sliders', 'LayerSlider') ?></label><br><br>
@@ -148,7 +152,11 @@
 	<?php endif; ?>
 
 	<?php if(!empty($sliders)) : ?>
+<<<<<<< HEAD
+	<form method="post" class="ls-slider-list-form">
+=======
 	<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" class="ls-slider-list-form">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		<input type="hidden" name="ls-bulk-action" value="1">
 		<?php wp_nonce_field('bulk-action'); ?>
 		<div class="ls-box ls-sliders-list">
@@ -181,7 +189,11 @@
 						</td>
 						<td class="name">
 							<a href="?page=layerslider&action=edit&id=<?php echo $item['id'] ?>">
+<<<<<<< HEAD
+								<?php echo apply_filters('ls_slider_title', stripslashes($item['name']), 40) ?>
+=======
 								<?php echo apply_filters('ls_slider_title', $item['name'], 40) ?>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							</a>
 						</td>
 						<td><input type="text" class="ls-shortcode" value="[layerslider id=&quot;<?php echo !empty($item['slug']) ? $item['slug'] : $item['id'] ?>&quot;]" readonly></td>
@@ -224,11 +236,17 @@
 					<span class="pagination-links">
 						<a class="first-page<?php echo ($curPage <= 1) ? ' disabled' : ''; ?>" title="Go to the first page" href="admin.php?page=layerslider">«</a>
 						<a class="prev-page <?php echo ($curPage <= 1) ? ' disabled' : ''; ?>" title="Go to the previous page" href="admin.php?page=layerslider&amp;paged=<?php echo ($curPage-1) ?>">‹</a>
+<<<<<<< HEAD
+
+						<?php echo $curPage ?> of
+						<span class="total-pages"><?php echo $maxPage ?></span>
+=======
 						<form action="admin.php" method="get" class="paging-input">
 							<input type="hidden" name="page" value="layerslider">
 							<input class="current-page" title="Current page" type="text" name="paged" value="<?php echo $curPage ?>" size="1"> of
 							<span class="total-pages"><?php echo $maxPage ?></span>
 						</form>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<a class="next-page <?php echo ($curPage >= $maxPage) ? ' disabled' : ''; ?>" title="Go to the next page" href="admin.php?page=layerslider&amp;paged=<?php echo ($curPage+1) ?>">›</a>
 						<a class="last-page <?php echo ($curPage >= $maxPage) ? ' disabled' : ''; ?>" title="Go to the last page" href="admin.php?page=layerslider&amp;paged=<?php echo $maxPage ?>">»</a>
 					</span>
@@ -252,7 +270,11 @@
 		<div class="ls-auto-update active">
 			<figure>
 				<?php _e('Receive update notifications and install new versions with 1-Click.', 'LayerSlider') ?>
+<<<<<<< HEAD
+				<a href="https://support.kreaturamedia.com/docs/layersliderwp/documentation.html#updating" target="_blank"><? _e('Read more', 'LayerSlider') ?></a>
+=======
 				<a href="http://support.kreaturamedia.com/docs/layersliderwp/documentation.html#updating" target="_blank"><? _e('Read more', 'LayerSlider') ?></a>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<span class="status" style="<?php echo ($validity == '1') ? 'color: #76b546;' : 'color: red'?>">
 				<?php
 					if($validity == '1') {
@@ -263,7 +285,11 @@
 				?>
 				</span>
 			</figure>
+<<<<<<< HEAD
+			<form method="post" class="ls-box km-tabs-inner ls-settings">
+=======
 			<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" class="ls-box km-tabs-inner ls-settings">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<input type="hidden" name="action" value="layerslider_authorize_site">
 
 				<div class="inner">
@@ -311,7 +337,11 @@
 			<div class="km-tabs-inner columns clearfix">
 				<div class="half">
 					<div class="ls-import-export-box ls-box">
+<<<<<<< HEAD
+						<form method="post" enctype="multipart/form-data" class="ls-import-box">
+=======
 						<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" enctype="multipart/form-data" class="ls-import-box">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							<?php wp_nonce_field('import-sliders'); ?>
 							<input type="hidden" name="ls-import" value="1">
 							<input type="file" name="import_file" class="ls-import-file">
@@ -326,7 +356,11 @@
 
 				<div class="half">
 					<div class="ls-import-export-box ls-box">
+<<<<<<< HEAD
+						<form method="post" class="ls-export-form">
+=======
 						<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" class="ls-export-form">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							<?php wp_nonce_field('export-sliders'); ?>
 							<input type="hidden" name="ls-export" value="1">
 							<select name="sliders[]" multiple="multiple" data-help="<?php _e('Downloads an export file that contains your selected sliders to import on your new site. You can select multiple sliders by holding the Ctrl/Cmd button while clicking.', 'LayerSlider') ?>">
@@ -352,7 +386,11 @@
 		<!-- Permissions -->
 		<div>
 			<figure><?php _e('Allow non-admin users to change plugin settings and manage your sliders', 'LayerSlider') ?></figure>
+<<<<<<< HEAD
+			<form method="post" class="ls-box km-tabs-inner" id="ls-permission-form">
+=======
 			<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" class="ls-box km-tabs-inner" id="ls-permission-form">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<?php wp_nonce_field('save-access-permissions'); ?>
 				<input type="hidden" name="ls-access-permission" value="1">
 				<div class="inner">
@@ -383,7 +421,11 @@
 		<!-- Google Fonts -->
 		<div>
 			<figure><?php _e('Choose from hundreds of custom fonts faces provided by Google Fonts', 'LayerSlider') ?></figure>
+<<<<<<< HEAD
+			<form method="post" class="ls-box km-tabs-inner ls-google-fonts">
+=======
 			<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" class="ls-box km-tabs-inner ls-google-fonts">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<?php wp_nonce_field('save-google-fonts'); ?>
 				<input type="hidden" name="ls-save-google-fonts" value="1">
 
@@ -392,21 +434,35 @@
 					<ul class="ls-font-list">
 						<li class="ls-hidden">
 							<a href="#" class="remove dashicons dashicons-dismiss" title="Remove this font"></a>
+<<<<<<< HEAD
+							<input type="text" data-name="urlParams" readonly>
+							<input type="checkbox" data-name="onlyOnAdmin">
+=======
 							<input type="text" name="urlParams[]" readonly="readonly">
 							<input type="checkbox" name="onlyOnAdmin[]">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							<?php _e('Load only on admin interface', 'LayerSlider') ?>
 						</li>
 						<?php if(is_array($googleFonts) && !empty($googleFonts)) : ?>
 						<?php foreach($googleFonts as $item) : ?>
 						<li>
 							<a href="#" class="remove dashicons dashicons-dismiss" title="Remove this font"></a>
+<<<<<<< HEAD
+							<input type="text" data-name="urlParams" value="<?php echo htmlspecialchars($item['param']) ?>" readonly>
+							<input type="checkbox" data-name="onlyOnAdmin" <?php echo $item['admin'] ? ' checked="checked"' : '' ?>>
+=======
 							<input type="text" name="urlParams[]" value="<?php echo $item['param'] ?>" readonly="readonly">
 							<input type="checkbox" name="onlyOnAdmin[]" <?php echo $item['admin'] ? ' checked="checked"' : '' ?>>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 							<?php _e('Load only on admin interface', 'LayerSlider') ?>
 						</li>
 						<?php endforeach ?>
 						<?php else : ?>
+<<<<<<< HEAD
+						<li class="ls-notice"><?php _e("You haven't added any Google font to your library yet.", "LayerSlider") ?></li>
+=======
 						<li class="ls-notice"><?php _e("You didn't add any Google font to your library yet.", "LayerSlider") ?></li>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 						<?php endif ?>
 					</ul>
 				</div>
@@ -491,7 +547,11 @@
 				<?php _e('Troubleshooting &amp; Advanced Settings', 'LayerSlider') ?>
 				<span class="warning"><?php _e("Don't change these options without experience, incorrect settings might break your site.", "LayerSlider") ?></span>
 			</figure>
+<<<<<<< HEAD
+			<form method="post" class="ls-box km-tabs-inner">
+=======
 			<form action="<?php echo $_SERVER['REQUEST_URI'] ?>" method="post" class="ls-box km-tabs-inner">
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				<?php wp_nonce_field('save-advanced-settings'); ?>
 				<input type="hidden" name="ls-save-advanced-settings">
 
@@ -550,7 +610,11 @@
 			<div class="ls-version"<?php _e('>You have version', 'LayerSlider') ?> <?php echo LS_PLUGIN_VERSION ?> <?php _e('installed', 'LayerSlider') ?></div>
 		</div>
 		<div>
+<<<<<<< HEAD
+			<iframe src="https://news.kreaturamedia.com/layerslider/"></iframe>
+=======
 			<iframe src="http://news.kreaturamedia.com/layerslider/"></iframe>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		</div>
 	</div>
 </div>

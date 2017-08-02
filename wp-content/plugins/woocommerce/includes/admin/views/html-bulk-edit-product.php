@@ -97,10 +97,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 						$tax_classes = WC_Tax::get_tax_classes();
 
+<<<<<<< HEAD
+						if ( ! empty( $tax_classes ) ) {
+							foreach ( $tax_classes as $class ) {
+								$options[ sanitize_title( $class ) ] = esc_html( $class );
+							}
+						}
+=======
 						if ( ! empty( $tax_classes ) )
 							foreach ( $tax_classes as $class ) {
 								$options[ sanitize_title( $class ) ] = esc_html( $class );
 							}
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 						foreach ( $options as $key => $value ) {
 							echo '<option value="' . esc_attr( $key ) . '">' . $value . '</option>';

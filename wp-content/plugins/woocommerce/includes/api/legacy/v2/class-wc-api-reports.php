@@ -68,7 +68,11 @@ class WC_API_Reports extends WC_API_Resource {
 	 * @since 2.1
 	 * @param string $fields fields to include in response
 	 * @param array $filter date filtering
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_sales_report( $fields = null, $filter = array() ) {
 
@@ -203,7 +207,11 @@ class WC_API_Reports extends WC_API_Resource {
 	 * @since 2.1
 	 * @param string $fields fields to include in response
 	 * @param array $filter date filtering
+<<<<<<< HEAD
+	 * @return array|WP_Error
+=======
 	 * @return array
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_top_sellers_report( $fields = null, $filter = array() ) {
 
@@ -308,10 +316,19 @@ class WC_API_Reports extends WC_API_Resource {
 	 *
 	 * @since 2.1
 	 * @see WC_API_Resource::validate_request()
+<<<<<<< HEAD
+	 *
+	 * @param null $id unused
+	 * @param null $type unused
+	 * @param null $context unused
+	 *
+	 * @return bool|WP_Error
+=======
 	 * @param null $id unused
 	 * @param null $type unused
 	 * @param null $context unused
 	 * @return bool true if the request is valid and should be processed, false otherwise
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function validate_request( $id = null, $type = null, $context = null ) {
 

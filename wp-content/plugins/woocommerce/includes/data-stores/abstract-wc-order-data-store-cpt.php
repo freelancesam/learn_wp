@@ -77,7 +77,14 @@ abstract class Abstract_WC_Order_Data_Store_CPT extends WC_Data_Store_WP impleme
 
 	/**
 	 * Method to read an order from the database.
+<<<<<<< HEAD
+	 *
+	 * @param WC_Data $order
+	 *
+	 * @throws Exception
+=======
 	 * @param WC_Order
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( &$order ) {
 		$order->set_defaults();
@@ -86,7 +93,10 @@ abstract class Abstract_WC_Order_Data_Store_CPT extends WC_Data_Store_WP impleme
 			throw new Exception( __( 'Invalid order.', 'woocommerce' ) );
 		}
 
+<<<<<<< HEAD
+=======
 		$id = $order->get_id();
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$order->set_props( array(
 			'parent_id'     => $post_object->post_parent,
 			'date_created'  => 0 < $post_object->post_date_gmt ? wc_string_to_timestamp( $post_object->post_date_gmt ) : null,
@@ -153,7 +163,11 @@ abstract class Abstract_WC_Order_Data_Store_CPT extends WC_Data_Store_WP impleme
 
 	/**
 	 * Method to delete an order from the database.
+<<<<<<< HEAD
+	 * @param WC_Order $order
+=======
 	 * @param WC_Order
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array $args Array of args to pass to the delete method.
 	 */
 	public function delete( &$order, $args = array() ) {

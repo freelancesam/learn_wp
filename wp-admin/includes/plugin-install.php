@@ -480,9 +480,16 @@ function install_plugin_information() {
 		'abbr' => array( 'title' => array() ), 'acronym' => array( 'title' => array() ),
 		'code' => array(), 'pre' => array(), 'em' => array(), 'strong' => array(),
 		'div' => array( 'class' => array() ), 'span' => array( 'class' => array() ),
+<<<<<<< HEAD
+		'p' => array(), 'br' => array(), 'ul' => array(), 'ol' => array(), 'li' => array(),
+		'h1' => array(), 'h2' => array(), 'h3' => array(), 'h4' => array(), 'h5' => array(), 'h6' => array(),
+		'img' => array( 'src' => array(), 'class' => array(), 'alt' => array() ),
+		'blockquote' => array( 'cite' => true ),
+=======
 		'p' => array(), 'ul' => array(), 'ol' => array(), 'li' => array(),
 		'h1' => array(), 'h2' => array(), 'h3' => array(), 'h4' => array(), 'h5' => array(), 'h6' => array(),
 		'img' => array( 'src' => array(), 'class' => array(), 'alt' => array() )
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	);
 
 	$plugins_section_titles = array(

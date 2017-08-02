@@ -1,4 +1,12 @@
 <?php
+<<<<<<< HEAD
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * Main Command for WooCommere CLI.
  *
@@ -63,7 +71,12 @@ class WC_CLI_REST_Command {
 	 */
 	public function __construct( $name, $route, $schema ) {
 		$this->name   = $name;
+<<<<<<< HEAD
+
+		preg_match_all( '#\([^\)]+\)#', $route, $matches );
+=======
 		$parsed_args  = preg_match_all( '#\([^\)]+\)#', $route, $matches );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$first_match  = $matches[0];
 		$resource_id  = ! empty( $matches[0] ) ? array_pop( $matches[0] ) : null;
 		$this->route  = rtrim( $route );
@@ -100,6 +113,12 @@ class WC_CLI_REST_Command {
 	 * Create a new item.
 	 *
 	 * @subcommand create
+<<<<<<< HEAD
+	 *
+	 * @param array $args
+	 * @param array $assoc_args
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function create_item( $args, $assoc_args ) {
 		$assoc_args = self::decode_json( $assoc_args );
@@ -115,6 +134,12 @@ class WC_CLI_REST_Command {
 	 * Delete an existing item.
 	 *
 	 * @subcommand delete
+<<<<<<< HEAD
+	 *
+	 * @param array $args
+	 * @param array $assoc_args
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_item( $args, $assoc_args ) {
 		list( $status, $body ) = $this->do_request( 'DELETE', $this->get_filled_route( $args ), $assoc_args );
@@ -133,6 +158,12 @@ class WC_CLI_REST_Command {
 	 * Get a single item.
 	 *
 	 * @subcommand get
+<<<<<<< HEAD
+	 *
+	 * @param array $args
+	 * @param array $assoc_args
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_item( $args, $assoc_args ) {
 		$route = $this->get_filled_route( $args );
@@ -162,6 +193,12 @@ class WC_CLI_REST_Command {
 	 * List all items.
 	 *
 	 * @subcommand list
+<<<<<<< HEAD
+	 *
+	 * @param array $args
+	 * @param array $assoc_args
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function list_items( $args, $assoc_args ) {
 		if ( ! empty( $assoc_args['format'] ) && 'count' === $assoc_args['format'] ) {
@@ -206,6 +243,12 @@ class WC_CLI_REST_Command {
 	 * Update an existing item.
 	 *
 	 * @subcommand update
+<<<<<<< HEAD
+	 *
+	 * @param array $args
+	 * @param array $assoc_args
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function update_item( $args, $assoc_args ) {
 		$assoc_args = self::decode_json( $assoc_args );
@@ -221,7 +264,14 @@ class WC_CLI_REST_Command {
 	 * Do a REST Request
 	 *
 	 * @param string $method
+<<<<<<< HEAD
+	 * @param string $route
+	 * @param array  $assoc_args
 	 *
+	 * @return array
+=======
+	 *
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	private function do_request( $method, $route, $assoc_args ) {
 		if ( ! defined( 'REST_REQUEST' ) ) {
@@ -379,6 +429,12 @@ EOT;
 
 	/**
 	 * Output a line that's appropriately nested
+<<<<<<< HEAD
+	 *
+	 * @param string $line
+	 * @param bool|string $change
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	private function nested_line( $line, $change = false ) {
 		if ( 'add' == $change ) {
@@ -437,6 +493,11 @@ EOT;
 	 * This function decodes the json (if present) and tries to get it's value.
 	 *
 	 * @param array $arr
+<<<<<<< HEAD
+	 *
+	 * @return array
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	protected function decode_json( $arr ) {
 		foreach ( $arr as $key => $value ) {

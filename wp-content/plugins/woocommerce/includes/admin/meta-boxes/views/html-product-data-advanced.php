@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <div id="advanced_product_data" class="panel woocommerce_options_panel hidden">
 
 	<div class="options_group hide_if_external">
@@ -28,6 +36,21 @@
 		?>
 	</div>
 
+<<<<<<< HEAD
+	<?php if ( post_type_supports( 'product', 'comments' ) ) : ?>
+		<div class="options_group reviews">
+			<?php
+				woocommerce_wp_checkbox( array(
+					'id'      => '_reviews_allowed',
+					'value'   => $product_object->get_reviews_allowed( 'edit' ) ? 'open' : 'closed',
+					'label'   => __( 'Enable reviews', 'woocommerce' ),
+					'cbvalue' => 'open',
+				) );
+				do_action( 'woocommerce_product_options_reviews' );
+			?>
+		</div>
+	<?php endif; ?>
+=======
 	<div class="options_group reviews">
 		<?php
 			woocommerce_wp_checkbox( array(
@@ -39,6 +62,7 @@
 			do_action( 'woocommerce_product_options_reviews' );
 		?>
 	</div>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	<?php do_action( 'woocommerce_product_options_advanced' ); ?>
 </div>

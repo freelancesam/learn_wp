@@ -1,4 +1,11 @@
 <?php
+<<<<<<< HEAD
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 /**
  * Abstract Widget Class
  *
@@ -115,6 +122,11 @@ abstract class WC_Widget extends WP_Widget {
 	 * Output the html at the start of a widget.
 	 *
 	 * @param  array $args
+<<<<<<< HEAD
+	 * @param array $instance
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	public function widget_start( $args, $instance ) {
@@ -196,6 +208,10 @@ abstract class WC_Widget extends WP_Widget {
 	 * Outputs the settings update form.
 	 *
 	 * @see   WP_Widget->form
+<<<<<<< HEAD
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param array $instance
 	 */
 	public function form( $instance ) {

@@ -152,12 +152,26 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
 
 <div class="wrap">
+<<<<<<< HEAD
+	<h1 class="wp-heading-inline"><?php esc_html_e( 'Themes' ); ?>
+		<span class="title-count theme-count"><?php echo count( $themes ); ?></span>
+	</h1>
+
+	<?php if ( ! is_multisite() && current_user_can( 'install_themes' ) ) : ?>
+		<a href="<?php echo admin_url( 'theme-install.php' ); ?>" class="hide-if-no-js page-title-action"><?php echo esc_html_x( 'Add New', 'Add new theme' ); ?></a>
+	<?php endif; ?>
+
+	<form class="search-form"></form>
+
+	<hr class="wp-header-end">
+=======
 	<h1><?php esc_html_e( 'Themes' ); ?>
 		<span class="title-count theme-count"><?php echo count( $themes ); ?></span>
 	<?php if ( ! is_multisite() && current_user_can( 'install_themes' ) ) : ?>
 		<a href="<?php echo admin_url( 'theme-install.php' ); ?>" class="hide-if-no-js page-title-action"><?php echo esc_html_x( 'Add New', 'Add new theme' ); ?></a>
 	<?php endif; ?>
 	</h1>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <?php
 if ( ! validate_current_theme() || isset( $_GET['broken'] ) ) : ?>
 <div id="message1" class="updated notice is-dismissible"><p><?php _e('The active theme is broken. Reverting to the default theme.'); ?></p></div>

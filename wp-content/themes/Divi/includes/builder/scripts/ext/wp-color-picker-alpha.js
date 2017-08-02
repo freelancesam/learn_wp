@@ -1,10 +1,25 @@
 /**
  * wp-color-picker-alpha
  *
+<<<<<<< HEAD
+ * Version 1.0
+ * Copyright (c) 2017 Elegant Themes.
+ * Licensed under the GPLv2 license.
+ *
+ * Overwrite Automattic Iris for enabled Alpha Channel in wpColorPicker
+ * Only run in input and is defined data alpha in true
+ * Add custom colorpicker UI
+ *
+ * This is modified version made by Elegant Themes based on the work covered by
+ * the following copyright:
+ *
+ * wp-color-picker-alpha Version: 1.1
+=======
  * Overwrite Automattic Iris for enabled Alpha Channel in wpColorPicker
  * Only run in input and is defined data alpha in true
  *
  * Version: 1.1
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  * https://github.com/23r9i0/wp-color-picker-alpha
  * Copyright (c) 2015 Sergio P.A. (23r9i0).
  * Licensed under the GPLv2 license.
@@ -16,7 +31,13 @@
 	var	_before = '<a tabindex="0" class="wp-color-result" />',
 		_after = '<div class="wp-picker-holder" />',
 		_wrap = '<div class="wp-picker-container" />',
+<<<<<<< HEAD
+		_button = '<input type="button" class="button button-small button-clear hidden" />',
+		_close_button = '<button type="button" class="button button-confirm" />',
+		_close_button_icon = '<div style="fill: #3EF400; width: 25px; height: 25px; margin-top: -1px;"><svg viewBox="0 0 28 28" preserveAspectRatio="xMidYMid meet" shapeRendering="geometricPrecision"><g><path d="M19.203 9.21a.677.677 0 0 0-.98 0l-5.71 5.9-2.85-2.95a.675.675 0 0 0-.98 0l-1.48 1.523a.737.737 0 0 0 0 1.015l4.82 4.979a.677.677 0 0 0 .98 0l7.68-7.927a.737.737 0 0 0 0-1.015l-1.48-1.525z" fillRule="evenodd" /></g></svg></div>';
+=======
 		_button = '<input type="button" class="button button-small hidden" />';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	/**
 	 * Overwrite Color
@@ -66,6 +87,10 @@
 			self.toggler = $( _before ).insertBefore( el ).css( { backgroundColor: self.initialValue } ).attr( 'title', wpColorPickerL10n.pick ).attr( 'data-current', wpColorPickerL10n.current );
 			self.pickerContainer = $( _after ).insertAfter( el );
 			self.button = $( _button );
+<<<<<<< HEAD
+			self.close_button = $( _close_button );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 			if ( self.options.defaultColor ) {
 				self.button.addClass( 'wp-picker-default' ).val( wpColorPickerL10n.defaultString );
@@ -75,10 +100,23 @@
 
 			el.wrap( '<span class="wp-picker-input-wrap" />' ).after(self.button);
 
+<<<<<<< HEAD
+			if ( self.options.diviColorpicker ) {
+				self.close_button.html( _close_button_icon );
+				el.after( self.close_button );
+			}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			el.iris( {
 				target: self.pickerContainer,
 				hide: self.options.hide,
 				width: self.options.width,
+<<<<<<< HEAD
+				height: self.options.height,
+				diviColorpicker: self.options.diviColorpicker,
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				mode: self.options.mode,
 				palettes: self.options.palettes,
 				change: function( event, ui ) {
@@ -169,6 +207,14 @@
 					self.element.val( self.options.defaultColor ).change();
 				}
 			});
+<<<<<<< HEAD
+
+			self.close_button.click( function( event ) {
+				event.preventDefault();
+				self.close();
+			});
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	});
 
@@ -329,6 +375,63 @@
 					self.show();
 				});
 			}
+<<<<<<< HEAD
+		},
+		_dimensions: function( reset ) {
+			// whatever size
+			var self = this,
+				opts = self.options,
+				controls = self.controls,
+				square = controls.square,
+				strip = self.picker.find( '.iris-strip' ),
+				squareWidth = '77.5%',
+				stripWidth = '12%',
+				totalPadding = 20,
+				innerWidth = opts.border ? opts.width - totalPadding : opts.width,
+				controlsHeight,
+				paletteCount = $.isArray( opts.palettes ) ? opts.palettes.length : self._palettes.length,
+				paletteMargin, paletteWidth, paletteContainerWidth;
+
+			if ( reset ) {
+				square.css( 'width', '' );
+				strip.css( 'width', '' );
+				self.picker.css( {width: '', height: ''} );
+			}
+
+			squareWidth = innerWidth * ( parseFloat( squareWidth ) / 100 );
+			stripWidth = innerWidth * ( parseFloat( stripWidth ) / 100 );
+			controlsHeight = opts.border ? squareWidth + totalPadding : squareWidth;
+
+			if (opts.diviColorpicker ) {
+				square.width( opts.width ).height( opts.height );
+				controlsHeight = opts.height;
+			} else {
+				square.width( squareWidth ).height( squareWidth );
+			}
+
+			strip.height( squareWidth ).width( stripWidth );
+			self.picker.css( { width: opts.width, height: controlsHeight } );
+
+			if ( ! opts.palettes ) {
+				return self.picker.css( 'paddingBottom', '' );
+			}
+
+			// single margin at 2%
+			paletteMargin = squareWidth * 2 / 100;
+			paletteContainerWidth = squareWidth - ( ( paletteCount - 1 ) * paletteMargin );
+			paletteWidth = paletteContainerWidth / paletteCount;
+			self.picker.find('.iris-palette').each( function( i ) {
+				var margin = i === 0 ? 0 : paletteMargin;
+				$( this ).css({
+					width: paletteWidth,
+					height: paletteWidth,
+					marginLeft: margin
+				});
+			});
+			self.picker.css( 'paddingBottom', paletteWidth + paletteMargin );
+			strip.height( paletteWidth + paletteMargin + squareWidth );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		}
 	} );
 }( jQuery ) );

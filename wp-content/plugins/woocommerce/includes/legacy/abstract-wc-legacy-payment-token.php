@@ -29,6 +29,11 @@ abstract class WC_Legacy_Payment_Token extends WC_Data {
 	/**
 	 * Read a token by ID.
 	 * @deprecated 3.0.0 - Init a token class with an ID.
+<<<<<<< HEAD
+	 *
+	 * @param int $token_id
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function read( $token_id ) {
 		wc_deprecated_function( 'WC_Payment_Token::read', '3.0.0', 'a new token class initialized with an ID.' );

@@ -71,7 +71,11 @@ The MIT License (MIT)
 
 Underscore.js 1.8.3
 http://underscorejs.org
+<<<<<<< HEAD
+(c) 2009-2015 Jeremy Ashkenas,
+=======
 (c) 2009-2015 Jeremy Ashkenas, 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 DocumentCloud and Investigative Reporters & Editors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -429,6 +433,48 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
+<<<<<<< HEAD
+Media Player Elements
+---------------------
+
+includes/builder/frontend-builder/assets/css/mediaelement-images/
+
+```text
+Adapted from WordPress
+
+http://www.wordpress.org
+
+@copyright by the WordPress contributors.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+This program incorporates work covered by the following copyright and
+permission notices:
+
+b2 is (c) 2001, 2002 Michel Valdrighi - m@tidakada.com - http://tidakada.com
+
+b2 is released under the GPL
+
+WordPress - Web publishing software
+
+Copyright 2003-2010 by the contributors
+
+WordPress is released under the GPL
+```
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 WP Color Picker Alpha
 ---------------------
 
@@ -626,6 +672,8 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 ```
 
+<<<<<<< HEAD
+=======
 MailChimp API Wrapper
 ------------------------
 
@@ -687,6 +735,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 Classnames
 ----------
 
@@ -804,7 +853,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
+<<<<<<< HEAD
+Lodash
+=======
 Loadash
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 -------
 
 includes/builder/frontend-builder/bundle.js
@@ -1290,7 +1343,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
+<<<<<<< HEAD
+Underscore
+=======
 Underscoe
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 ---------
 
 includes/builder/frontend-builder/bundle.js
@@ -1384,6 +1441,125 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 ```
 
+<<<<<<< HEAD
+User Specific Localization of Visual Builder
+--------------------------------------------
+
+et-pagebuilder/et-pagebuilder.php
+
+```text
+Adapted from WordPress
+
+@copyright 2016 by the WordPress contributors.
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+This program incorporates work covered by the following copyright and
+permission notices:
+
+b2 is (c) 2001, 2002 Michel Valdrighi - m@tidakada.com - http://tidakada.com
+
+b2 is released under the GPL
+
+WordPress - Web publishing software
+
+Copyright 2003-2010 by the contributors
+
+WordPress is released under the GPL
+```
+
+Autosave and Heartbeat Features
+--------------------------------------------
+
+includes/builder/frontend-builder/app/lib/autosave.js
+includes/builder/frontend-builder/app/lib/heartbeat.js
+includes/builder/core.php
+
+```text
+Adapted from WordPress
+
+@copyright 2016 by the WordPress contributors.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+This program incorporates work covered by the following copyright and
+permission notices:
+
+b2 is (c) 2001, 2002 Michel Valdrighi - m@tidakada.com - http://tidakada.com
+
+b2 is released under the GPL
+
+WordPress - Web publishing software
+
+Copyright 2003-2010 by the contributors
+
+WordPress is released under the GPL
+```
+
+Media Library Features
+----------------------
+
+includes/builder/scripts/ext/media-library.js
+includes/builder/frontend-builder/bundle.js
+
+```text
+Adapted from WordPress
+
+@copyright 2017 by the WordPress contributors.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+This program incorporates work covered by the following copyright and
+permission notices:
+
+b2 is (c) 2001, 2002 Michel Valdrighi - m@tidakada.com - http://tidakada.com
+
+b2 is released under the GPL
+
+WordPress - Web publishing software
+
+Copyright 2003-2010 by the contributors
+
+WordPress is released under the GPL
+```
+
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 ET Theme Options
 ================
 
@@ -1479,7 +1655,11 @@ Dual licensed under the MIT and GPL licenses
 See LICENSE.md for the full GPL license.
 ```
 
+<<<<<<< HEAD
+WP Color Picker Alpha
+=======
 WP Color Picke Alpha
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 --------------------
 
 epanel/js/wp-color-picker-alpha.min.js
@@ -1491,3 +1671,43 @@ Copyright (c) 2015 Sergio P.A. (23r9i0); Licensed GPLv2
 See LICENSE.md for the full GPL license.
 ```
 
+<<<<<<< HEAD
+ET Core
+=======
+
+TwitterOAuth Library
+---------------------
+
+core/components/lib/OAuth.php
+
+```text
+https://github.com/abraham/twitteroauth/releases/tag/0.3.0
+
+The MIT License (MIT)
+
+Copyright © 2009-2016 Abraham Williams
+Copyright © 2007-2009 Andy Smith
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without
+restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+```
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

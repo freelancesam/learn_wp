@@ -664,6 +664,9 @@ body.menu-max-depth-11 { min-width: 1280px !important; }
 .menu-item-settings .field-move .button-link {
 	display: none;
 	margin: 0 2px;
+<<<<<<< HEAD
+	font-style: italic;
+=======
 	color: #0073aa;
 	font-style: italic;
 	text-decoration: underline;
@@ -682,6 +685,7 @@ body.menu-max-depth-11 { min-width: 1280px !important; }
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .menu-item-edit-active .menu-item-settings {

@@ -20,6 +20,13 @@
 }
 
 /* Search form */
+<<<<<<< HEAD
+.themes-php .search-form {
+	display: inline;
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .themes-php .wp-filter-search {
 	position: relative;
 	top: -2px;
@@ -949,9 +956,14 @@ body.folded .theme-browser ~ .theme-overlay .theme-wrap {
 		float: none;
 		clear: both;
 		right: 0;
+<<<<<<< HEAD
+		left: 0;
+		margin: -5px 0 20px 0;
+=======
 		top: 0;
 		left: 0;
 		margin: 10px 0;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		width: 100%;
 		max-width: 280px;
 	}
@@ -1333,7 +1345,13 @@ body.full-overlay-active {
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	position: fixed;
+<<<<<<< HEAD
+	min-width: 300px;
+	max-width: 600px;
+	width: 18%;
+=======
 	width: 300px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	height: 100%;
 	top: 0;
 	bottom: 0;
@@ -1362,6 +1380,29 @@ body.full-overlay-active {
 	margin-right: -300px;
 }
 
+<<<<<<< HEAD
+@media screen and (min-width: 1667px) {
+	.wp-full-overlay.expanded {
+		margin-right: 18%;
+	}
+
+	.wp-full-overlay.collapsed .wp-full-overlay-sidebar {
+		margin-right: -18%;
+	}
+}
+
+@media screen and (min-width: 3333px) {
+	.wp-full-overlay.expanded {
+		margin-right: 600px;
+	}
+
+	.wp-full-overlay.collapsed .wp-full-overlay-sidebar {
+		margin-right: -600px;
+	}
+}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 .wp-full-overlay-sidebar:after {
 	content: "";
 	display: block;
@@ -1521,7 +1562,10 @@ body.full-overlay-active {
 	box-shadow: none !important;
 	-webkit-border-radius: 0 !important;
 	border-radius: 0 !important;
+<<<<<<< HEAD
+=======
 	z-index: -1; /* Below device buttons */
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 .wp-core-ui .wp-full-overlay .collapse-sidebar:hover,
@@ -1617,14 +1661,29 @@ body.full-overlay-active {
 	position: fixed;
 	bottom: 0;
 	right: 0;
+<<<<<<< HEAD
+	min-width: 299px;
+	max-width: 599px;
+	width: 18%;
+=======
 	width: 299px;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	height: 45px;
 	border-top: 1px solid #ddd;
 	background: #eee;
 }
 
+<<<<<<< HEAD
+.wp-full-overlay-footer .devices-wrapper {
+	float: left;
+}
+
+.wp-full-overlay-footer .devices {
+	position: relative;
+=======
 .wp-full-overlay-footer .devices {
 	float: left;
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	background: #eee;
 	-webkit-box-shadow: 20px 0 10px -5px #eee;
 	box-shadow: 20px 0 10px -5px #eee;

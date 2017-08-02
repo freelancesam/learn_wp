@@ -90,7 +90,11 @@ class WC_Template_Loader {
 	 * Get an array of filenames to search for a given template.
 	 *
 	 * @since  3.0.0
+<<<<<<< HEAD
+	 * @param  string $default_file The default file name.
+=======
 	 * @param  string $file The default file name.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string[]
 	 */
 	private static function get_template_loader_files( $default_file ) {

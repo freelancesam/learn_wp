@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <div class="panel-wrap product_data">
 
 	<span class="type_box hidden"> &mdash;

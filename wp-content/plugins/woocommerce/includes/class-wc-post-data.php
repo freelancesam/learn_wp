@@ -61,6 +61,12 @@ class WC_Post_Data {
 	/**
 	 * Link to parent products when getting permalink for variation.
 	 *
+<<<<<<< HEAD
+	 * @param string $permalink
+	 * @param object $post
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return string
 	 */
 	public static function variation_post_link( $permalink, $post ) {
@@ -96,6 +102,16 @@ class WC_Post_Data {
 
 	/**
 	 * Delete transients when terms are set.
+<<<<<<< HEAD
+	 *
+	 * @param int $object_id
+	 * @param mixed $terms
+	 * @param array $tt_ids
+	 * @param string $taxonomy
+	 * @param mixed $append
+	 * @param array $old_tt_ids
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function set_object_terms( $object_id, $terms, $tt_ids, $taxonomy, $append, $old_tt_ids ) {
 		foreach ( array_merge( $tt_ids, $old_tt_ids ) as $id ) {
@@ -105,6 +121,13 @@ class WC_Post_Data {
 
 	/**
 	 * When a post status changes.
+<<<<<<< HEAD
+	 *
+	 * @param string $new_status
+	 * @param string $old_status
+	 * @param object $post
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function transition_post_status( $new_status, $old_status, $post ) {
 		if ( ( 'publish' === $new_status || 'publish' === $old_status ) && in_array( $post->post_type, array( 'product', 'product_variation' ) ) ) {
@@ -379,6 +402,11 @@ class WC_Post_Data {
 
 	/**
 	 * Remove item meta on permanent deletion.
+<<<<<<< HEAD
+	 *
+	 * @param int $postid
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public static function delete_order_items( $postid ) {
 		global $wpdb;
@@ -399,10 +427,17 @@ class WC_Post_Data {
 
 	/**
 	 * Remove downloadable permissions on permanent order deletion.
+<<<<<<< HEAD
+	 *
+	 * @param int $postid
+	 */
+	public static function delete_order_downloadable_permissions( $postid ) {
+=======
 	 */
 	public static function delete_order_downloadable_permissions( $postid ) {
 		global $wpdb;
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		if ( in_array( get_post_type( $postid ), wc_get_order_types() ) ) {
 			do_action( 'woocommerce_delete_order_downloadable_permissions', $postid );
 

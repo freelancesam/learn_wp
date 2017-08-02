@@ -1,9 +1,41 @@
 /* global woocommerce_admin */
+<<<<<<< HEAD
+jQuery( function ( $ ) {
+
+	if ( 'undefined' === typeof woocommerce_admin ) {
+		return;
+	}
+
+	// Add buttons to product screen.
+	var $product_screen = $( '.edit-php.post-type-product' ),
+		$title_action   = $product_screen.find( '.page-title-action:first' ),
+		$blankslate     = $product_screen.find( '.woocommerce-BlankState' );
+
+	if ( 0 === $blankslate.length ) {
+		$title_action.after( '<a href="' + woocommerce_admin.urls.export_products + '" class="page-title-action">' + woocommerce_admin.strings.export_products + '</a>' );
+		$title_action.after( '<a href="' + woocommerce_admin.urls.import_products + '" class="page-title-action">' + woocommerce_admin.strings.import_products + '</a>' );
+	} else {
+		$title_action.hide();
+	}
+
+	// Progress indicators when showing steps.
+	$( '.woocommerce-progress-form-wrapper .button-next' ).on( 'click', function() {
+		$('.wc-progress-form-content').block({
+			message: null,
+			overlayCSS: {
+				background: '#fff',
+				opacity: 0.6
+			}
+		});
+		return true;
+	} );
+=======
 
 /**
  * WooCommerce Admin JS
  */
 jQuery( function ( $ ) {
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 
 	// Field validation error tips
 	$( document.body )
@@ -253,6 +285,18 @@ jQuery( function ( $ ) {
 		}
 	}).change();
 
+<<<<<<< HEAD
+	// Reviews.
+	$( 'input#woocommerce_enable_reviews' ).change(function() {
+		if ( $( this ).is( ':checked' ) ) {
+			$( '#woocommerce_enable_review_rating' ).closest( 'tr' ).show();
+		} else {
+			$( '#woocommerce_enable_review_rating' ).closest( 'tr' ).hide();
+		}
+	}).change();
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	// Attribute term table
 	$( 'table.attributes-table tbody tr:nth-child(odd)' ).addClass( 'alternate' );
 

@@ -33,15 +33,22 @@ class WC_Email_Customer_Note extends WC_Email {
 
 		$this->id             = 'customer_note';
 		$this->customer_email = true;
+<<<<<<< HEAD
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$this->title          = __( 'Customer note', 'woocommerce' );
 		$this->description    = __( 'Customer note emails are sent when you add a note to an order.', 'woocommerce' );
 
 		$this->template_html  = 'emails/customer-note.php';
 		$this->template_plain = 'emails/plain/customer-note.php';
 
+<<<<<<< HEAD
+=======
 		$this->subject        = __( 'Note added to your {site_title} order from {order_date}', 'woocommerce' );
 		$this->heading        = __( 'A note has been added to your order', 'woocommerce' );
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Triggers
 		add_action( 'woocommerce_new_customer_note_notification', array( $this, 'trigger' ) );
 
@@ -50,14 +57,41 @@ class WC_Email_Customer_Note extends WC_Email {
 	}
 
 	/**
+<<<<<<< HEAD
+	 * Get email subject.
+	 *
+	 * @since  3.1.0
+	 * @return string
+	 */
+	public function get_default_subject() {
+		return __( 'Note added to your {site_title} order from {order_date}', 'woocommerce' );
+	}
+
+	/**
+	 * Get email heading.
+	 *
+	 * @since  3.1.0
+	 * @return string
+	 */
+	public function get_default_heading() {
+		return __( 'A note has been added to your order', 'woocommerce' );
+	}
+
+	/**
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * Trigger.
 	 *
 	 * @param array $args
 	 */
 	public function trigger( $args ) {
+<<<<<<< HEAD
+		if ( ! empty( $args ) ) {
+=======
 
 		if ( ! empty( $args ) ) {
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 			$defaults = array(
 				'order_id'      => '',
 				'customer_note' => '',
@@ -85,7 +119,13 @@ class WC_Email_Customer_Note extends WC_Email {
 			return;
 		}
 
+<<<<<<< HEAD
+		$this->setup_locale();
 		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+		$this->restore_locale();
+=======
+		$this->send( $this->get_recipient(), $this->get_subject(), $this->get_content(), $this->get_headers(), $this->get_attachments() );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

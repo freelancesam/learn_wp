@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 <div data-taxonomy="<?php echo esc_attr( $attribute->get_taxonomy() ); ?>" class="woocommerce_attribute wc-metabox closed <?php echo esc_attr( implode( ' ', $metabox_class ) ); ?>" rel="<?php echo esc_attr( $attribute->get_position() ); ?>">
 	<h3>
 		<a href="#" class="remove_row delete"><?php _e( 'Remove', 'woocommerce' ); ?></a>

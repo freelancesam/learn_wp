@@ -13,11 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+<<<<<<< HEAD
+ * Standard way of retrieving orders based on certain parameters.
+=======
  * Wrapper for get_posts specific to orders.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * This function should be used for order retrieval so that when we move to
  * custom tables, functions still work.
  *
+<<<<<<< HEAD
+ * Args and usage: https://github.com/woocommerce/woocommerce/wiki/wc_get_orders-and-WC_Order_Query
+=======
  * Args:
  *      status array|string List of order statuses to find
  *      type array|string Order type, e.g. shop_order or shop_order_refund
@@ -40,6 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *          'orders'        => array of data (return value above),
  *          'total'         => total number of orders matching the query
  *          'max_num_pages' => max number of pages found
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  *
  * @since  2.6.0
  * @param  array $args Array of args (above)
@@ -47,6 +55,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *                             paginate is true, or just an array of values.
  */
 function wc_get_orders( $args ) {
+<<<<<<< HEAD
+=======
 	$args = wp_parse_args( $args, array(
 		'status'      => array_keys( wc_get_order_statuses() ),
 		'type'        => wc_get_order_types( 'view-orders' ),
@@ -66,12 +76,17 @@ function wc_get_orders( $args ) {
 	) );
 
 	// Handle some BW compatibility arg names where wp_query args differ in naming.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	$map_legacy = array(
 		'numberposts'    => 'limit',
 		'post_type'      => 'type',
 		'post_status'    => 'status',
 		'post_parent'    => 'parent',
 		'author'         => 'customer',
+<<<<<<< HEAD
+		'email'          => 'billing_email',
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		'posts_per_page' => 'limit',
 		'paged'          => 'page',
 	);
@@ -82,19 +97,56 @@ function wc_get_orders( $args ) {
 		}
 	}
 
+<<<<<<< HEAD
+	// Map legacy date args to modern date args.
+	$date_before = false;
+	$date_after  = false;
+
+	if ( ! empty( $args['date_before'] ) ) {
+		$datetime    = wc_string_to_datetime( $args['date_before'] );
+		$date_before = strpos( $args['date_before'], ':' ) ? $datetime->getOffsetTimestamp() : $datetime->date( 'Y-m-d' );
+	}
+	if ( ! empty( $args['date_after'] ) ) {
+		$datetime   = wc_string_to_datetime( $args['date_after'] );
+		$date_after = strpos( $args['date_after'], ':' ) ? $datetime->getOffsetTimestamp() : $datetime->date( 'Y-m-d' );
+	}
+
+	if ( $date_before && $date_after ) {
+		$args['date_created'] = $date_after . '...' . $date_before;
+	} elseif ( $date_before ) {
+		$args['date_created'] = '<' . $date_before;
+	} elseif ( $date_after ) {
+		$args['date_created'] = '>' . $date_after;
+	}
+
+	$query = new WC_Order_Query( $args );
+	return $query->get_orders();
+=======
 	return WC_Data_Store::load( 'order' )->get_orders( $args );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 }
 
 /**
  * Main function for returning orders, uses the WC_Order_Factory class.
  *
  * @since  2.2
+<<<<<<< HEAD
+ *
+ * @param  mixed $the_order Post object or post ID of the order.
+ *
+ * @return bool|WC_Order|WC_Refund
+ */
+function wc_get_order( $the_order = false ) {
+	if ( ! did_action( 'woocommerce_after_register_post_type' ) ) {
+		wc_doing_it_wrong( __FUNCTION__, 'wc_get_order should not be called before post types are registered (woocommerce_after_register_post_type action)', '2.5' );
+=======
  * @param  mixed $the_order Post object or post ID of the order.
  * @return WC_Order|WC_Refund
  */
 function wc_get_order( $the_order = false ) {
 	if ( ! did_action( 'woocommerce_after_register_post_type' ) ) {
 		wc_doing_it_wrong( __FUNCTION__, __( 'wc_get_order should not be called before post types are registered (woocommerce_after_register_post_type action).', 'woocommerce' ), '2.5' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		return false;
 	}
 	return WC()->order_factory->get_order( $the_order );
@@ -386,9 +438,16 @@ function wc_downloadable_file_permission( $download_id, $product, $order, $qty =
 }
 
 /**
+<<<<<<< HEAD
+ * Order Status completed - give downloadable product access to customer.
+ *
+ * @param int $order_id
+ * @param bool $force
+=======
  * Order Status completed - GIVE DOWNLOADABLE PRODUCT ACCESS TO CUSTOMER.
  *
  * @param int $order_id
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
  */
 function wc_downloadable_product_permissions( $order_id, $force = false ) {
 	$order = wc_get_order( $order_id );
@@ -557,6 +616,15 @@ function wc_create_refund( $args = array() ) {
 		$refund->calculate_totals( false );
 		$refund->set_total( $args['amount'] * -1 );
 
+<<<<<<< HEAD
+		// this should remain after update_taxes(), as this will save the order, and write the current date to the db
+		// so we must wait until the order is persisted to set the date
+		if ( isset( $args['date_created'] ) ) {
+			$refund->set_date_created( $args['date_created'] );
+		}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		/**
 		 * Action hook to adjust refund before save.
 		 * @since 3.0.0
@@ -858,3 +926,20 @@ function wc_cancel_unpaid_orders() {
 	wp_schedule_single_event( time() + ( absint( $held_duration ) * 60 ), 'woocommerce_cancel_unpaid_orders' );
 }
 add_action( 'woocommerce_cancel_unpaid_orders', 'wc_cancel_unpaid_orders' );
+<<<<<<< HEAD
+
+/**
+ * Sanitize order id removing unwanted characters.
+ *
+ * E.g Users can sometimes try to track an order id using # with no success.
+ * This function will fix this.
+ *
+ * @since 3.1.0
+ * @param int $order_id
+ */
+function wc_sanitize_order_id( $order_id ) {
+	return filter_var( $order_id, FILTER_SANITIZE_NUMBER_INT );
+}
+add_filter( 'woocommerce_shortcode_order_tracking_order_id', 'wc_sanitize_order_id' );
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed

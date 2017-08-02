@@ -85,7 +85,11 @@ class WC_REST_Shipping_Zones_Controller extends WC_REST_Shipping_Zones_Controlle
 	 * Get a single Shipping Zone.
 	 *
 	 * @param WP_REST_Request $request
+<<<<<<< HEAD
+	 * @return WP_REST_Response|WP_Error
+=======
 	 * @return WP_REST_Response
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function get_item( $request ) {
 		$zone = $this->get_zone( $request->get_param( 'id' ) );
@@ -166,6 +170,13 @@ class WC_REST_Shipping_Zones_Controller extends WC_REST_Shipping_Zones_Controlle
 			return $zone;
 		}
 
+<<<<<<< HEAD
+		if ( 0 === $zone->get_id() ) {
+			return new WP_Error( "woocommerce_rest_shipping_zone_invalid_zone", __( 'The "locations not covered by your other zones" zone cannot be updated.', 'woocommerce' ), array( 'status' => 403 ) );
+		}
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		$zone_changed = false;
 
 		if ( ! is_null( $request->get_param( 'name' ) ) ) {

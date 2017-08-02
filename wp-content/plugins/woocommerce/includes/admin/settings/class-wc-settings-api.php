@@ -53,6 +53,39 @@ class WC_Settings_Rest_API extends WC_Settings_Page {
 	/**
 	 * Get settings array.
 	 *
+<<<<<<< HEAD
+	 * @param string $current_section
+	 * @return array
+	 */
+	public function get_settings( $current_section = '' ) {
+		$settings = array();
+
+		if ( '' === $current_section ) {
+			$settings = apply_filters( 'woocommerce_settings_rest_api', array(
+				array(
+					'title' => __( 'General options', 'woocommerce' ),
+					'type'  => 'title',
+					'desc'  => '',
+					'id'    => 'general_options',
+				),
+
+				array(
+					'title'   => __( 'API', 'woocommerce' ),
+					'desc'    => __( 'Enable the REST API', 'woocommerce' ),
+					'id'      => 'woocommerce_api_enabled',
+					'type'    => 'checkbox',
+					'default' => 'yes',
+				),
+
+				array(
+					'type' => 'sectionend',
+					'id' => 'general_options',
+				),
+			) );
+		}
+
+		return apply_filters( 'woocommerce_get_settings_' . $this->id, $settings, $current_section );
+=======
 	 * @return array
 	 */
 	public function get_settings() {
@@ -79,6 +112,7 @@ class WC_Settings_Rest_API extends WC_Settings_Page {
 		) );
 
 		return apply_filters( 'woocommerce_get_settings_' . $this->id, $settings );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	}
 
 	/**

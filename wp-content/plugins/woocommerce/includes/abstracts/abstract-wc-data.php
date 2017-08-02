@@ -248,6 +248,12 @@ abstract class WC_Data {
 	 * Filter null meta values from array.
 	 *
 	 * @since  3.0.0
+<<<<<<< HEAD
+	 *
+	 * @param mixed $meta
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return bool
 	 */
 	protected function filter_null_meta( $meta ) {
@@ -352,8 +358,13 @@ abstract class WC_Data {
 
 	/**
 	 * Update meta data by key or ID, if provided.
+<<<<<<< HEAD
+	 * @since  2.6.0
+	 *
+=======
 	 *
 	 * @since  2.6.0
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @param  string $key
 	 * @param  string $value
 	 * @param  int $meta_id
@@ -375,7 +386,11 @@ abstract class WC_Data {
 	 * Delete meta data.
 	 *
 	 * @since 2.6.0
+<<<<<<< HEAD
+	 * @param string $key Meta key
+=======
 	 * @param array $key Meta key
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function delete_meta_data( $key ) {
 		$this->maybe_read_meta_data();
@@ -533,8 +548,16 @@ abstract class WC_Data {
 	 * Only sets using public methods.
 	 *
 	 * @since  3.0.0
+<<<<<<< HEAD
+	 *
+	 * @param  array $props Key value pairs to set. Key is the prop and should map to a setter function name.
+	 * @param string $context
+	 *
+	 * @return bool|WP_Error
+=======
 	 * @param  array $props Key value pairs to set. Key is the prop and should map to a setter function name.
 	 * @return WP_Error|bool
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function set_props( $props, $context = 'set' ) {
 		$errors = new WP_Error();

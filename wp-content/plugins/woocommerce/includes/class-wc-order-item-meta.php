@@ -35,6 +35,11 @@ class WC_Order_Item_Meta {
 	 * @param \WC_Product $product defaults to null
 	 */
 	public function __construct( $item = array(), $product = null ) {
+<<<<<<< HEAD
+		wc_deprecated_function( 'WC_Order_Item_Meta::__construct', '3.1', 'WC_Order_Item_Product' );
+
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 		// Backwards (pre 2.4) compat
 		if ( ! isset( $item['item_meta'] ) ) {
 			$this->legacy = true;
@@ -133,7 +138,11 @@ class WC_Order_Item_Meta {
 				$formatted_meta[ $meta_id ] = array(
 					'key'   => $meta->key,
 					'label' => wc_attribute_label( $attribute_key, $this->product ),
+<<<<<<< HEAD
+					'value' => apply_filters( 'woocommerce_order_item_display_meta_value', $meta_value, $meta, $this->item ),
+=======
 					'value' => apply_filters( 'woocommerce_order_item_display_meta_value', $meta_value ),
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 				);
 			}
 		}
@@ -144,6 +153,12 @@ class WC_Order_Item_Meta {
 	/**
 	 * Return an array of formatted item meta in format e.g.
 	 * Handles @deprecated args.
+<<<<<<< HEAD
+	 *
+	 * @param string $hideprefix
+	 *
+=======
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 * @return array
 	 */
 	public function get_formatted_legacy( $hideprefix = '_' ) {

@@ -168,7 +168,11 @@ class WC_Payment_Gateways {
 	/**
 	 * Set the current, active gateway.
 	 *
+<<<<<<< HEAD
+	 * @param array $gateways Available payment gateways.
+=======
 	 * @param array $gateway Available payment gateways.
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	 */
 	public function set_current_gateway( $gateways ) {
 		// Be on the defensive

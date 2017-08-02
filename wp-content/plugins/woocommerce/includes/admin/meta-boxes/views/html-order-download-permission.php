@@ -2,7 +2,10 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+<<<<<<< HEAD
+=======
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 ?>
 <div class="wc-metabox closed">
 	<h3 class="fixed">

@@ -71,7 +71,14 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 
 <label for="close_comments_for_old_posts">
 <input name="close_comments_for_old_posts" type="checkbox" id="close_comments_for_old_posts" value="1" <?php checked('1', get_option('close_comments_for_old_posts')); ?> />
+<<<<<<< HEAD
+<?php printf(
+	__( 'Automatically close comments on articles older than %s days' ),
+	'</label> <label for="close_comments_days_old"><input name="close_comments_days_old" type="number" min="0" step="1" id="close_comments_days_old" value="' . esc_attr( get_option( 'close_comments_days_old' ) ) . '" class="small-text" />'
+); ?>
+=======
 <?php printf( __('Automatically close comments on articles older than %s days'), '</label><label for="close_comments_days_old"><input name="close_comments_days_old" type="number" min="0" step="1" id="close_comments_days_old" value="' . esc_attr(get_option('close_comments_days_old')) . '" class="small-text" />'); ?>
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 </label>
 <br />
 <label for="thread_comments">
@@ -86,7 +93,11 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
  */
 $maxdeep = (int) apply_filters( 'thread_comments_depth_max', 10 );
 
+<<<<<<< HEAD
+$thread_comments_depth = '</label> <label for="thread_comments_depth"><select name="thread_comments_depth" id="thread_comments_depth">';
+=======
 $thread_comments_depth = '</label><label for="thread_comments_depth"><select name="thread_comments_depth" id="thread_comments_depth">';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 for ( $i = 2; $i <= $maxdeep; $i++ ) {
 	$thread_comments_depth .= "<option value='" . esc_attr($i) . "'";
 	if ( get_option('thread_comments_depth') == $i ) $thread_comments_depth .= " selected='selected'";
@@ -101,15 +112,28 @@ printf( __('Enable threaded (nested) comments %s levels deep'), $thread_comments
 <label for="page_comments">
 <input name="page_comments" type="checkbox" id="page_comments" value="1" <?php checked( '1', get_option( 'page_comments' ) ); ?> />
 <?php
+<<<<<<< HEAD
+$default_comments_page = '</label> <label for="default_comments_page"><select name="default_comments_page" id="default_comments_page"><option value="newest"';
+=======
 $default_comments_page = '</label><label for="default_comments_page"><select name="default_comments_page" id="default_comments_page"><option value="newest"';
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 if ( 'newest' == get_option('default_comments_page') ) $default_comments_page .= ' selected="selected"';
 $default_comments_page .= '>' . __('last') . '</option><option value="oldest"';
 if ( 'oldest' == get_option('default_comments_page') ) $default_comments_page .= ' selected="selected"';
 $default_comments_page .= '>' . __('first') . '</option></select>';
+<<<<<<< HEAD
+printf(
+	/* translators: 1: Form field control for number of top level comments per page, 2: Form field control for the 'first' or 'last' page */
+	__( 'Break comments into pages with %1$s top level comments per page and the %2$s page displayed by default' ),
+	'</label> <label for="comments_per_page"><input name="comments_per_page" type="number" step="1" min="0" id="comments_per_page" value="' . esc_attr( get_option( 'comments_per_page' ) ) . '" class="small-text" />',
+	$default_comments_page
+);
+=======
 
 /* translators: 1: Form field control for number of top level comments per page, 2: Form field control for the 'first' or 'last' page */
 printf( __('Break comments into pages with %1$s top level comments per page and the %2$s page displayed by default'), '</label><label for="comments_per_page"><input name="comments_per_page" type="number" step="1" min="0" id="comments_per_page" value="' . esc_attr(get_option('comments_per_page')) . '" class="small-text" />', $default_comments_page );
 
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 ?></label>
 <br />
 <label for="comment_order"><?php

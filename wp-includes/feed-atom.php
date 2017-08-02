@@ -32,7 +32,11 @@ do_action( 'rss_tag_pre', 'atom' );
 
 	<updated><?php
 		$date = get_lastpostmodified( 'GMT' );
+<<<<<<< HEAD
+		echo $date ? mysql2date( 'Y-m-d\TH:i:s\Z', $date, false ) : date( 'Y-m-d\TH:i:s\Z' );
+=======
 		echo $date ? mysql2date( 'Y-m-d\TH:i:s\Z', $date ) : date( 'Y-m-d\TH:i:s\Z' );
+>>>>>>> bbfbbb9c81f9c36cbaa8e67ea4b62e0932d77aed
 	?></updated>
 
 	<link rel="alternate" type="<?php bloginfo_rss('html_type'); ?>" href="<?php bloginfo_rss('url') ?>" />
