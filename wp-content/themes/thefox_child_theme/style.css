@@ -1,0 +1,230 @@
+/*
+Template: thefox
+Theme Name: TheFox Child Theme
+Theme URI: http://www.thefoxwp.com
+Description: <strong>A superflexible and responsive Business Theme by Tranmautritam team</strong> - <br/>Update notifications available on twitter and facebook:<br/> <a href='https://twitter.com/tranmautritam'>Follow me on twitter</a><br/> - <a href='https://www.facebook.com/tranmautritam.designer'>Join the Facebook Group</a> A theme by <a href="http://themeforest.net/user/tranmautritam?ref=tranmautritam">Tranmautritam Team</a>.
+Version: 1.50
+Author: Tranmautritam Team
+Author URI: http://themeforest.net/user/tranmautritam?ref=tranmautritam
+License: Themeforest Split Licence
+License URI: -
+
+
+
+*/
+
+#represent_section ul.tabs {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+#represent_section ul.tabs li {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    color: #222;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 15px;
+}
+#represent_section ul.tabs li.current {
+    background: none;
+    color: #222;
+}
+.tab-content {
+    background: #ededed none repeat scroll 0 0;
+    display: none;
+    padding: 15px;
+}
+.tab-content.current {
+    display: inherit;
+}
+#represent_section .tab-content {
+    color: #000;
+}
+
+#represent_section ul.tabs {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee
+}
+#represent_section ul.tabs li {
+    text-align: center;
+}
+#represent_section ul.tabs li a,
+#represent_section ul.tabs li{
+    display: inline-block;
+    position: relative;
+    bottom: 0;
+    margin: 0;
+    padding: 15px 10px;
+    cursor: pointer;
+    background-color: transparent !important;
+    border: 0 !important;
+    border-bottom-width: 1px !important;
+    font-weight: bold;
+    font-size: 13px;
+    transition: .3s all ease-in-out;
+    text-transform: uppercase;
+    border-bottom: 1px solid #eee;
+    line-height: inherit
+}
+#represent_section ul.tabs li a:after,
+#represent_section ul.tabs li:after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    bottom: -2.5px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #47c9e5;
+    z-index: 100;
+    transition: .3s all ease-in-out;
+    opacity: 0
+}
+#represent_section ul.tabs li.active a:after,
+#represent_section ul.tabs li.current a:after,
+#represent_section ul.tabs li.current:after{
+    opacity: 1;
+    transition: 0s all ease-in-out
+}
+#represent_section ul.tabs li.active a,
+#represent_section ul.tabs li.current a{
+    color: #47c9e5 !important;
+    transition: 0s all ease-in-out
+}
+#represent_section ul.tabs li:first-child a {
+    padding-left: 0
+}
+#represent_section ul.tabs li:first-child a:after {
+    left: 0
+}
+#represent_section ul.tabs li:last-child a {
+    padding-right: 0
+}
+#represent_section ul.tabs li:last-child a:after {
+    right: 0
+}
+
+#upper_second {
+    margin: 0 -15px;
+}
+#upper_second .container {
+    position: relative;
+}
+#upper_second .tab-image-container {
+    position: absolute;
+    top: 0;
+    right: 0
+}
+#upper_second h2.section-heading {
+    text-align: left;
+}
+#upper_second .section-subheading {
+    margin-bottom: 30px;
+    margin-top: 5px;
+    text-align: left;
+    max-width: 450px;
+    float: left;
+    line-height: 25px;
+}
+#upper_second .tabs  {
+    margin: 0;
+    padding: 0;
+    width: 1170px;
+    height: 60px;
+    background-color: white;
+    border: 1px solid #d1d1d1;
+    margin-top: 100px;
+}
+#upper_second .tab-link {
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    padding: 0;
+    display: block;
+    zoom: 1;
+    background: none;
+    border: none;
+    border-bottom: none;
+    text-align: center;
+    font-size: 0.875em;
+    font-weight: 700;
+    height: 58px;
+    line-height: 60px;
+    background: #fafafa;
+    width: 33.33%;
+    float: left;
+    position: relative;
+}
+#upper_second .tab-link a {
+    color: #bbb;
+    text-transform: uppercase;
+    display: block;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+#upper_second .tab-link.current,
+#upper_second .tab-link.active {
+    background: #fff;
+}
+#upper_second .panel-container {
+    background: #fff;
+    border: solid #666 1px;
+    padding: 10px;
+    -moz-border-radius: 0 4px 4px 4px;
+    -webkit-border-radius: 0 4px 4px 4px;
+}
+#upper_second .tab-link .triangle,
+#upper_second .tab-link a .triangle {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+#upper_second .tab-link.current .triangle,
+#upper_second .tab-link.active .triangle,
+#upper_second .tab-link a.active .triangle {
+    border-bottom: 0;
+    visibility: visible;
+    width: 0;
+    -webkit-transition: 0s;
+    -o-transition: 0s;
+    transition: 0s;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #d1d1d1;
+    opacity: 1;
+    position: absolute;
+    left: 50%;
+    margin-left: -5px;
+    top: -10px;
+}
+#upper_second .tab-link .triangle .inner-triangle {
+    display: block;
+    -webkit-transition: 0s;
+    -o-transition: 0s;
+    transition: 0s;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    top: 2px;
+    position: absolute;
+    left: -8px;
+}
+#upper_second ul {
+    padding-left: 0px;
+    margin-bottom: 30px;
+}
+#upper_second li {
+    background: url(../img/checked.png) no-repeat left 20px;
+    padding-left: 40px;
+    list-style: none;
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 60px;
+}

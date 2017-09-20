@@ -1,0 +1,344 @@
+11-16-2016 @ 07:44:24 - customers request: Array
+(
+    [email] => thang.testdev@gmail.com
+    [description] => Thang Tran
+)
+
+11-16-2016 @ 07:44:25 - customers/cus_9ZX9DTpEs47XKl/sources request: Array
+(
+    [source] => tok_19GO5ZFzuAKF8nC6OZOxaOaL
+)
+
+11-16-2016 @ 07:44:26 - Error: Your card was declined. Your request was in test mode, but used a non test card. For a list of valid test cards, visit: https://stripe.com/docs/testing.
+11-16-2016 @ 07:45:07 - customers/cus_9ZX9DTpEs47XKl/sources request: Array
+(
+    [source] => tok_19GO6FFzuAKF8nC6xTGGSeWk
+)
+
+11-16-2016 @ 07:45:08 - customers/cus_9ZX9DTpEs47XKl request: Array
+(
+    [default_source] => card_19GO6FFzuAKF8nC6szWb2y0J
+)
+
+11-16-2016 @ 07:45:09 - Info: Begin processing payment for order 11652 for the amount of 18
+11-16-2016 @ 07:45:09 - charges request: Array
+(
+    [currency] => gbp
+    [amount] => 1800
+    [description] => Wordpress - Order 11652
+    [capture] => true
+    [expand[]] => balance_transaction
+    [customer] => cus_9ZX9DTpEs47XKl
+    [source] => card_19GO6FFzuAKF8nC6szWb2y0J
+)
+
+11-16-2016 @ 07:45:11 - Processing response: stdClass Object
+(
+    [id] => ch_19GO6LFzuAKF8nC6yy3TuvAg
+    [object] => charge
+    [amount] => 1800
+    [amount_refunded] => 0
+    [application] => 
+    [application_fee] => 
+    [balance_transaction] => stdClass Object
+        (
+            [id] => txn_19GO6LFzuAKF8nC6m6LMfwfy
+            [object] => balance_transaction
+            [amount] => 2919
+            [available_on] => 1479427200
+            [created] => 1479282301
+            [currency] => aud
+            [description] => Wordpress - Order 11652
+            [fee] => 114
+            [fee_details] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [amount] => 10
+                            [application] => 
+                            [currency] => aud
+                            [description] => GST
+                            [type] => tax
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [amount] => 104
+                            [application] => 
+                            [currency] => aud
+                            [description] => Stripe processing fees
+                            [type] => stripe_fee
+                        )
+
+                )
+
+            [net] => 2805
+            [source] => ch_19GO6LFzuAKF8nC6yy3TuvAg
+            [sourced_transfers] => stdClass Object
+                (
+                    [object] => list
+                    [data] => Array
+                        (
+                        )
+
+                    [has_more] => 
+                    [total_count] => 0
+                    [url] => /v1/transfers?source_transaction=ch_19GO6LFzuAKF8nC6yy3TuvAg
+                )
+
+            [status] => pending
+            [type] => charge
+        )
+
+    [captured] => 1
+    [created] => 1479282301
+    [currency] => gbp
+    [customer] => cus_9ZX9DTpEs47XKl
+    [description] => Wordpress - Order 11652
+    [destination] => 
+    [dispute] => 
+    [failure_code] => 
+    [failure_message] => 
+    [fraud_details] => stdClass Object
+        (
+        )
+
+    [invoice] => 
+    [livemode] => 
+    [metadata] => stdClass Object
+        (
+        )
+
+    [order] => 
+    [outcome] => stdClass Object
+        (
+            [network_status] => approved_by_network
+            [reason] => 
+            [risk_level] => normal
+            [seller_message] => Payment complete.
+            [type] => authorized
+        )
+
+    [paid] => 1
+    [receipt_email] => 
+    [receipt_number] => 
+    [refunded] => 
+    [refunds] => stdClass Object
+        (
+            [object] => list
+            [data] => Array
+                (
+                )
+
+            [has_more] => 
+            [total_count] => 0
+            [url] => /v1/charges/ch_19GO6LFzuAKF8nC6yy3TuvAg/refunds
+        )
+
+    [review] => 
+    [shipping] => 
+    [source] => stdClass Object
+        (
+            [id] => card_19GO6FFzuAKF8nC6szWb2y0J
+            [object] => card
+            [address_city] => Sydney
+            [address_country] => AU
+            [address_line1] => this city
+            [address_line1_check] => pass
+            [address_line2] => 
+            [address_state] => NT
+            [address_zip] => 2000
+            [address_zip_check] => pass
+            [brand] => Visa
+            [country] => US
+            [customer] => cus_9ZX9DTpEs47XKl
+            [cvc_check] => pass
+            [dynamic_last4] => 
+            [exp_month] => 12
+            [exp_year] => 2017
+            [fingerprint] => JVUIoTo9YnsrdVvF
+            [funding] => credit
+            [last4] => 4242
+            [metadata] => stdClass Object
+                (
+                )
+
+            [name] => Thang Tran
+            [tokenization_method] => 
+        )
+
+    [source_transfer] => 
+    [statement_descriptor] => 
+    [status] => succeeded
+)
+
+11-16-2016 @ 07:45:19 - Success: Stripe charge complete (Charge ID: ch_19GO6LFzuAKF8nC6yy3TuvAg)
+11-16-2016 @ 07:45:45 - customers/cus_9ZX9DTpEs47XKl/sources request: Array
+(
+    [limit] => 100
+)
+
+11-23-2016 @ 07:02:19 - customers/cus_9ZX9DTpEs47XKl/sources request: Array
+(
+    [limit] => 100
+)
+
+11-26-2016 @ 09:35:40 - Info: Begin processing subscription payment for order 11804 for the amount of 19.8
+11-26-2016 @ 09:35:40 - charges request: Array
+(
+    [currency] => gbp
+    [amount] => 1980
+    [description] => Wordpress - Order 11804
+    [capture] => true
+    [expand[]] => balance_transaction
+    [customer] => cus_9ZX9DTpEs47XKl
+    [source] => card_19GO6FFzuAKF8nC6szWb2y0J
+    [metadata] => Array
+        (
+            [payment_type] => recurring
+        )
+
+)
+
+11-26-2016 @ 09:35:41 - Processing response: stdClass Object
+(
+    [id] => ch_19K2agFzuAKF8nC6ELxAGSVl
+    [object] => charge
+    [amount] => 1980
+    [amount_refunded] => 0
+    [application] => 
+    [application_fee] => 
+    [balance_transaction] => stdClass Object
+        (
+            [id] => txn_19K2agFzuAKF8nC6xFyKr4ba
+            [object] => balance_transaction
+            [amount] => 3255
+            [available_on] => 1480464000
+            [created] => 1480152926
+            [currency] => aud
+            [description] => Wordpress - Order 11804
+            [fee] => 124
+            [fee_details] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [amount] => 113
+                            [application] => 
+                            [currency] => aud
+                            [description] => Stripe processing fees
+                            [type] => stripe_fee
+                        )
+
+                    [1] => stdClass Object
+                        (
+                            [amount] => 11
+                            [application] => 
+                            [currency] => aud
+                            [description] => GST
+                            [type] => tax
+                        )
+
+                )
+
+            [net] => 3131
+            [source] => ch_19K2agFzuAKF8nC6ELxAGSVl
+            [sourced_transfers] => stdClass Object
+                (
+                    [object] => list
+                    [data] => Array
+                        (
+                        )
+
+                    [has_more] => 
+                    [total_count] => 0
+                    [url] => /v1/transfers?source_transaction=ch_19K2agFzuAKF8nC6ELxAGSVl
+                )
+
+            [status] => pending
+            [type] => charge
+        )
+
+    [captured] => 1
+    [created] => 1480152926
+    [currency] => gbp
+    [customer] => cus_9ZX9DTpEs47XKl
+    [description] => Wordpress - Order 11804
+    [destination] => 
+    [dispute] => 
+    [failure_code] => 
+    [failure_message] => 
+    [fraud_details] => stdClass Object
+        (
+        )
+
+    [invoice] => 
+    [livemode] => 
+    [metadata] => stdClass Object
+        (
+            [payment_type] => recurring
+        )
+
+    [order] => 
+    [outcome] => stdClass Object
+        (
+            [network_status] => approved_by_network
+            [reason] => 
+            [risk_level] => normal
+            [seller_message] => Payment complete.
+            [type] => authorized
+        )
+
+    [paid] => 1
+    [receipt_email] => 
+    [receipt_number] => 
+    [refunded] => 
+    [refunds] => stdClass Object
+        (
+            [object] => list
+            [data] => Array
+                (
+                )
+
+            [has_more] => 
+            [total_count] => 0
+            [url] => /v1/charges/ch_19K2agFzuAKF8nC6ELxAGSVl/refunds
+        )
+
+    [review] => 
+    [shipping] => 
+    [source] => stdClass Object
+        (
+            [id] => card_19GO6FFzuAKF8nC6szWb2y0J
+            [object] => card
+            [address_city] => Sydney
+            [address_country] => AU
+            [address_line1] => this city
+            [address_line1_check] => pass
+            [address_line2] => 
+            [address_state] => NT
+            [address_zip] => 2000
+            [address_zip_check] => pass
+            [brand] => Visa
+            [country] => US
+            [customer] => cus_9ZX9DTpEs47XKl
+            [cvc_check] => 
+            [dynamic_last4] => 
+            [exp_month] => 12
+            [exp_year] => 2017
+            [fingerprint] => JVUIoTo9YnsrdVvF
+            [funding] => credit
+            [last4] => 4242
+            [metadata] => stdClass Object
+                (
+                )
+
+            [name] => Thang Tran
+            [tokenization_method] => 
+        )
+
+    [source_transfer] => 
+    [statement_descriptor] => 
+    [status] => succeeded
+)
+
+11-26-2016 @ 09:35:52 - Success: Stripe charge complete (Charge ID: ch_19K2agFzuAKF8nC6ELxAGSVl)

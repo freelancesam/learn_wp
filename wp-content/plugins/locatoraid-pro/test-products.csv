@@ -1,0 +1,101 @@
+priority,name,street1,street2,city,state,zip,country,phone,website,misc1,misc2,misc3,misc4,misc5,latitude,longitude,product:Pasta,product:Pizza,product:Wheat Beer
+0,A & A Fish Market & Restaurant,2896 Fairfax Street,,DENVER,CO,80207,US,,,,,,,,39.7581015,-104.92787350000003,x
+0,A & M Pizza,Highway 287,,FLORENCE,AZ,85232,US,,,,,,,,32.998537,-111.2655221,x
+0,Ave A Cafe,1202 A Ave,,DOUGLAS,AZ,85607,US,,,,,,,,31.346792,-109.54569400000003,x,x
+0,B & B Cafe,322 Wilcox Street,,CASTLE ROCK,CO,80104,US,,,,,,,,39.3730956,-104.85999240000001,x
+0,B G's Lounge,10831 south 51st street,,PHOENIX,AZ,85044,US,,,,,,,,33.347738,-111.97302100000002,x
+0,Back 9,13236 north 7th street,,PHOENIX,AZ,85022,US,,,,,,,,33.6070197,-112.06640340000001,x,x
+0,Bald Steweys Public & Restaurant,1804 Newport Gap Pike,,WILMINGTON,DE,19808,US,,,,,,,,39.733662,-75.62850889999999,x
+0,Bangkok House Restaurant,104 North Union Street,,WILMINGTON,DE,19805,US,,,,,,,,39.7469719,-75.57452060000003
+0,Banking House Inn,112 Northwest Front Street,,MILFORD,DE,19963,US,,,,,,,,38.91404199999999,-75.43007,x,x
+0,Bankshots Bar & Restaurant,1010 North Union Street,,WILMINGTON,DE,19805,US,,,,,,,,39.754705,-75.56882300000001
+0,Barnacle Bills Seafood & Crab House Restaurant,13 Main,,LITTLE CREEK,DE,19961,US,,,,,,,,39.171074,-75.448238,x,x
+0,Big Al's Place,102 W Brown Street,,BEAVERTON,MI,48612,US,,,,,,,,43.8822918,-84.48546680000004,x
+0,C C Twenty Two,606 Bridgeville Highway,,SEAFORD,DE,19973,US,,,,,,,,38.6510869,-75.60654099999999,x
+0,C J Barts,6 South Scott Street,,WILMINGTON,DE,19805,US,,,,,,,,39.745484,-75.572341,x
+0,Cactus Annie's Restaurant & Bar,211 West 9th Street,,WILMINGTON,DE,19801,US,,,,,,,,39.74553,-75.54994799999997,x,x
+0,Cafe Bellissimo,3421 Kirkwood Highway,,WILMINGTON,DE,19808,US,,,,,,,,39.73577780000001,-75.63239449999998,x
+0,Cafe Francine's,3801 Kennett Pike,,WILMINGTON,DE,19807,US,,,,,,,,39.77696419999999,-75.59501339999997,x
+0,Cafe Milano Pizza & Restaurant,100 Delaware Avenue,,HARRINGTON,DE,19952,US,,,,,,,,38.92377,-75.57678299999998,x,x
+0,Cafe Riviera,Concord Mall,,WILMINGTON,DE,19803,US,,,,,,,,39.781515,-75.545256,x
+0,Caffe Gelato,90 East Main Street,,NEWARK,DE,19711,US,,,,,,,,39.683797,-75.75000299999999,x
+0,Candlelight Music Dinner Theatre,2208 Millers Road,,WILMINGTON,DE,19810,US,,,,,,,,39.8080939,-75.48260800000003,x
+0,Captain's Cove,21 West Market,,PORT PENN,DE,19731,US,,,,,,,,39.5168036,-75.57694349999997,x
+0,Choice Burger,3901 Old Seward Highway,,ANCHORAGE,AK,99503,US,,,,,,,,61.18574330000001,-149.86516270000004,x
+0,Chopsticks,320 West 5th Avenue,,ANCHORAGE,AK,99501,US,,,,,,,,61.21708100000001,-149.88851109999996,x,x
+0,Chowder Boat Deli,5 Salmon Lndg,,KETCHIKAN,AK,99901,US,,,,,,,,55.3396595,-131.64412700000003,x
+0,Coldwater Lake inn,5434 w jordan road,,WEIDMAN,MI,48893,US,,,,,,,,43.6544388,-84.95885450000003,x
+0,D & H Jamaican Cuisine,752 East Chestnut Hill Rd.,,NEWARK,DE,19713,US,,,,,,,,39.6754537,-75.70240050000001,x,x
+0,D & H West Indian & American Takeout,10 East 4th Street,,WILMINGTON,DE,19801,US,,,,,,,,39.739975,-75.550862,x
+0,Daddy G's,247 Dupont Highway,,NEW CASTLE,DE,19720,US,,,,,,,,39.6555276,-75.61564520000002
+0,Daffy Deli,111 Elkton Road,,NEWARK,DE,19711,US,,,,,,,,39.674891,-75.76547160000001,x,x
+0,Dairy Queen Of Newark,374 E. Chestnut Hill Road,,NEWARK,DE,19713,US,,,,,,,,39.663531,-75.72625499999998
+0,Darley Club,3624 Bayard Drive,,CLAYMONT,DE,19703,US,,,,,,,,39.80390390000001,-75.45938560000002,x,x
+0,Dead President's Bar & Restaurant,618 North Union Street,,WILMINGTON,DE,19805,US,,,,,,,,39.7512549,-75.57151979999998,x
+0,Deerhead Hot Dogs,3301 Lancaster Pike,,WILMINGTON,DE,19805,US,,,,,,,,39.753758,-75.58977199999998,x
+0,East End Cafe,270 East Main Street,,NEWARK,DE,19711,US,,,,,,,,39.6841638,-75.742253,x
+0,Eclipse Restaurant,1020 North Union Street,,WILMINGTON,DE,19805,US,,,,,,,,39.754955,-75.56855200000001,x,x
+0,EL Deportido,1644 West 4th Street,,WILMINGTON,DE,19805,US,,,,,,,,39.747561,-75.56942900000001,x
+0,El Sombrero Mexican Restaurant,655 North Dupont Highway,,DOVER,DE,19901,US,,,,,,,,39.178647,-75.526141,x
+0,Enzo's Italian Eatery,823 North Market Street,,WILMINGTON,DE,19801,US,,,,,,,,39.74413,-75.549148,x,x
+0,Essex Restaurant,219 West 8th Street,,WILMINGTON,DE,19801,US,,,,,,,,39.744373,-75.55114600000002,x
+0,European Bistro,1710 Naamans Road,,WILMINGTON,DE,19810,US,,,,,,,,39.82216460000001,-75.48488950000001,x
+0,Evergreen Restaurant,6 Miller Road Cmn A,,WILMINGTON,DE,19801,US,,,,,,,,39.90757809999999,-89.5955035,x
+0,Ewing's Restaurant,308 East 11th Street,,WILMINGTON,DE,19801,US,,,,,,,,39.744974,-75.54402199999998,x
+0,Fat Rick's Cajun Grill,10 Astro Shopping Center,,NEWARK,DE,19711,US,,,,,,,,39.7058279,-75.68630960000002,x
+0,Feasels Cafe,123 North Market Street,,WILMINGTON,DE,19801,US,,,,,,,,39.738713,-75.55272300000001,x,x
+0,Fenwick Crab House,Coastal Highway,,FENWICK ISLAND,DE,19944,US,,,,,,,,38.4800483,-75.05226970000001,x
+0,First State Diner & Restaurant,1108 South College Avenue,,NEWARK,DE,19713,US,,,,,,,,39.6512596,-75.74942970000001,x
+0,Fox Point Grill,321 East Lea Blvd.,,WILMINGTON,DE,19802,US,,,,,,,,-1,-1,x,x
+0,Franco's Pizza & Pasta,1708 East Lebanon Road,,DOVER,DE,19901,US,,,,,,,,39.129611,-75.49354299999999,x
+0,Freedom City Coffee CO Store,10 South Market Street,,FREDERICA,DE,19801,US,,,,,,,,39.008708,-75.46565499999997
+0,Freedom City Coffee CO Store,10 South Market Street,,WILMINGTON,DE,19801,US,,,,,,,,39.7375443,-75.55327899999997,x,x
+0,Garden City Cafe,36 North Walnut Street,,MILFORD,DE,19963,US,,,,,,,,38.914124,-75.42823320000002
+0,Genelles Bakery & Cafe,730 North Market Street,,WILMINGTON,DE,19801,US,,,,,,,,39.743206,-75.54904999999997,x,x
+0,George's Family Restaurant & Pizza Castle,1112 Kirkwood Highway,,WILMINGTON,DE,19805,US,,,,,,,,39.739119,-75.599356,x
+0,Gerados Pizza Restaurant,114 North Union Street,,WILMINGTON,DE,19805,US,,,,,,,,39.747383,-75.57403199999999,x
+0,Gino's Pizza,1402 Lancaster Ave,,WILMINGTON,DE,19805,US,,,,,,,,39.743909,-75.56746269999996,x
+0,Giovanni's Place,2066 New Castle Ave,,NEW CASTLE,DE,19720,US,,,,,,,,39.6926658,-75.55473319999999,x,x
+0,Golden Castle,2722 Concord Pike,,WILMINGTON,DE,19803,US,,,,,,,,39.797443,-75.5479919,x
+0,Golden City Restaurant,796 Old Baltimore Pike,,NEWARK,DE,19702,US,,,,,,,,39.64364750000001,-75.7245145,x
+0,Grizzly's,9773 olive blvd,,ST LOUIS,MO,63132,US,,,,,,,,38.6725566,-90.39370459999998,x,x
+0,Hadfield's Seafood,192 North Dupont Highway,,NEW CASTLE,DE,19720,US,,,,,,,,39.67710599999999,-75.59268889999998,x
+0,Halls Family Restaurant,108 North Railroad Ave,,CAMDEN WYOMING,DE,19934,US,,,,,,,,39.1194579,-75.55848979999996,x
+0,Hangs Express Chinese Restaurant,162 North Dupont Highway,,DOVER,DE,19901,US,,,,,,,,39.16736059999999,-75.5171833,x
+0,Hanifas Kitchen,530 Vandever Ave,,WILMINGTON,DE,19802,US,,,,,,,,39.74932099999999,-75.53724799999998,x
+0,Happy Chinese Restaurant,221 Northeast Front Street,,MILFORD,DE,19963,US,,,,,,,,38.9148884,-75.42491389999998,x
+0,Happy Fortune Restaurant,1808 Marsh Road,,WILMINGTON,DE,19810,US,,,,,,,,39.8025393,-75.50477310000002,x,x
+0,Hardscrabble Country Club,Routes 9 & 20,,GEORGETOWN,DE,19947,US,,,,,,,,38.7481847,-75.17407730000002,x
+0,Imperial Inn Chinese Restaurant,4015 Concord Pike,,WILMINGTON,DE,19803,US,,,,,,,,39.8087167,-75.54912560000002,x
+0,India Palace Indian Restaurant,101 North Maryland Ave,,WILMINGTON,DE,19804,US,,,,,,,,39.729826,-75.58467999999999,x,x
+0,Indian Cuisine,655 North Dupont Highway,,DOVER,DE,19901,US,,,,,,,,39.178647,-75.526141,x
+0,International Grill,654 North Dupont Highway,,DOVER,DE,19901,US,,,,,,,,39.178194,-75.52716900000001
+0,Iron Hill Brewery & Restaurant,147 East Main Street,,NEWARK,DE,19711,US,,,,,,,,39.6834195,-75.74675489999998,x,x
+0,Italian Village Restaurant,550 South Dupont Highway,,NEW CASTLE,DE,19720,US,,,,,,,,39.639439,-75.62057800000002
+0,J & B Restaurant,6 East 15th Street,,WILMINGTON,DE,19801,US,,,,,,,,39.749281,-75.54458199999999,x,x
+0,Jade Palace Restaurant,1300 Lancaster Ave,,WILMINGTON,DE,19805,US,,,,,,,,39.743097,-75.56597999999997,x
+0,Jakes Hamburgers,150 South Dupont Highway,,NEW CASTLE,DE,19720,US,,,,,,,,39.659773,-75.60956099999999,x
+0,Jamn & Java,230 East Main Street,,NEWARK,DE,19711,US,,,,,,,,39.6846266,-75.74430910000001,x
+0,Janes Kitchen,414 Federal Street,,DOVER,DE,19901,US,,,,,,,,39.1556651,-75.52212359999999,x,x
+0,Jay Farmers,809 North Market Street,,WILMINGTON,DE,19801,US,,,,,,,,39.7436649,-75.54910810000001,x
+0,Jeanne's Delectables Inc.,1319 Newport Gap Pike,,WILMINGTON,DE,19804,US,,,,,,,,39.7273924,-75.62097819999997,x
+0,Jennifer's Restaurant,29 Commerce Street,,HARRINGTON,DE,19952,US,,,,,,,,38.9232159,-75.57890989999999,x,x
+0,Jessops Tavern,114 Delaware Street,,NEW CASTLE,DE,19720,US,,,,,,,,39.658852,-75.56332300000003,x
+0,Kahi-Bee Korean Restaurant,2011 Kirkwood Highway,,WILMINGTON,DE,19805,US,,,,,,,,39.7384523,-75.60813859999996,x
+0,Kelly's Logan House,1701 Delaware Ave,,WILMINGTON,DE,19806,US,,,,,,,,39.758358,-75.56230299999999,x
+0,La Familia Pizzeria,439 South New Street,,DOVER,DE,19904,US,,,,,,,,39.1542953,-75.52702899999997,x
+0,La Matesina Pizza Pasta,1047 Walker Road,,DOVER,DE,19904,US,,,,,,,,39.1693739,-75.54656720000003,x,x
+0,La Ortolana Pizza Restaurant,233 Old Camden Road,,CAMDEN WYOMING,DE,19934,US,,,,,,,,39.11771239999999,-75.53793589999998,x
+0,Lamberti's Cucina,1300 Centerville Road,,WILMINGTON,DE,19808,US,,,,,,,,39.7340329,-75.62284599999998,x
+0,Larry's Seafood,380 Pulaski Highway,,NEW CASTLE,DE,19720,US,,,,,,,,39.64902230000001,-75.6265831,x,x
+0,Lazzat Restaurant,3623 Kirkwood Highway,,WILMINGTON,DE,19808,US,,,,,,,,39.734235,-75.63753700000001,x
+0,Madeline's Italian Restaurant,531 North Dupont Street,,WILMINGTON,DE,19805,US,,,,,,,,39.749236,-75.568782
+0,Magnolia Restaurant,3 South Main,,MAGNOLIA,DE,19962,US,,,,,,,,39.071446,-75.47639600000002,x,x
+0,Mama Theresa's Italian Eatery,784 Old Baltimore Pike,,NEWARK,DE,19702,US,,,,,,,,39.6438344,-75.72384620000003
+0,Manhatten Bagel,695 E. Chestnut Hill Road,,NEWARK,DE,19713,US,,,,,,,,39.6739427,-75.70501860000002,x,x
+0,Manor Family Restaurant,800 N. Dupont Highway,,NEW CASTLE,DE,19720,US,,,,,,,,39.686144,-75.58433400000001,x
+0,Market Sub & Steak,210 South Governors Ave,,DOVER,DE,19904,US,,,,,,,,39.1572982,-75.526948,x
+0,Napoli Restaurant & Pizzeria,4391 Kirkwood Highway,,WILMINGTON,DE,19808,US,,,,,,,,39.7267502,-75.6526882,x
+0,New Dragon Restaurant,707 Ace Memorial Drive,,HOCKESSIN,DE,19707,US,,,,,,,,39.793629,-75.70929799999999,x,x
+0,New Family Affair Restaurant,1504 Philadelphia Pike,,WILMINGTON,DE,19809,US,,,,,,,,39.783837,-75.47902999999997,x
+0,New Great Wall,807 Governor's Place,,BEAR,DE,19701,US,,,,,,,,39.6330014,-75.6619857,x

@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=100" />
+        <link type="image/x-icon" href="https://s.vnecdn.net/suckhoe/i/v2/favicon.ico" rel="shortcut icon" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+                    <link rel="dns-prefetch" href="https://s.vnecdn.net"/>
+                <link rel="dns-prefetch" href="//la.vnecdn.net"/>
+        <link rel="dns-prefetch" href="http://usi.saas.vnexpress.net"/>
+        <link rel="dns-prefetch" href="//s.eclick.vn"/>
+        <link rel="dns-prefetch" href="//st.core.polyad.net"/>
+        <link rel="dns-prefetch" href="//www.google-analytics.com"/>
+        <link rel="dns-prefetch" href="//www.googletagmanager.com"/>
+        <link rel="dns-prefetch" href="http://b.scorecardresearch.com"/>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="VnExpress.net" />
+		<meta name="dc.description" content="Sức khỏe, cập nhật và tư vấn thông tin về những bệnh thường gặp, hiếm gặp; mẹo vặt, bài thuốc hay,kinh nghiệm phòng,chữa bệnh cho trẻ em, phụ nữ, đàn ông, các vấn đề về giới tính, phụ nữ mang thai."> 
+		<meta name="dc.subject" content="Sức khỏe - VnExpress">
+		<meta name="dc.created" content="2001-03-03">
+        <meta name="dc.publisher" content="VnExpress">
+        <meta name="dc.rights.copyright" content="VnExpress">
+        <meta name="dc.creator.name" content="VnExpress">
+        <meta name="dc.creator.email" content="webmaster@vnexpress.net">
+        <meta name="dc.identifier" content="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong">
+        <meta name="dc.language" content="vi-VN">
+        <meta name="copyright" content="VnExpress" />
+        <meta name="author" content="VnExpress" />
+        <meta name="robots" content="index,follow" />
+		<meta http-equiv="content-language" content="vi"/>
+		<meta name="geo.placename" content="Ha Noi, Viet Nam" />
+		<meta name="geo.region" content="VN-HN" />
+		<meta name="geo.position" content="21.030624;105.782431" />
+		<meta name="ICBM" content="21.030624, 105.782431" />
+		<meta name="revisit-after" content="days">
+        <meta property="fb:app_id" content="1547540628876392" />
+        <link rel="alternate" href="http://suckhoe.vnexpress.net/" hreflang="vi-vn" />
+        <link rel="canonical" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong" />
+        <!-- Twitter Card -->
+        <meta name="twitter:card" value="summary">
+        <meta name="twitter:url" content="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong">
+        <meta name="twitter:title" content="Sức Khỏe Dinh dưỡng - VnExpress Sức Khỏe">
+        <meta name="twitter:description" content="Sức khỏe - Dinh dưỡng tư vấn dinh dưỡng chia sẽ những mẹo vặt hay trong cuộc sống.">
+        <meta name="twitter:image" content="https://s.vnecdn.net/vnexpress/i/v28/logo_default.jpg"/>
+        <meta name="twitter:site" content="@VnEnews">
+        <meta name="twitter:creator" content="@VnEnews">
+        <!-- End Twitter Card -->
+        <link rel="apple-touch-icon-precomposed" href="https://s.vnecdn.net/vnexpress/i/v46/logos/72x72.png" sizes="72x72" />
+        <link rel="apple-touch-icon-precomposed" href="https://s.vnecdn.net/vnexpress/i/v46/logos/114x114.png" sizes="144x144" />
+        <link rel="apple-touch-icon-precomposed" href="https://s.vnecdn.net/vnexpress/i/v46/logos/57x57.png" sizes="57x57" />
+        <link rel="apple-touch-icon-precomposed" href="https://s.vnecdn.net/vnexpress/i/v46/logos/114x114.png" sizes="114x114" />
+        <link rel="nokia-touch-icon" href="https://s.vnecdn.net/vnexpress/i/v46/logos/57x57.png" />
+        <link rel="apple-touch-icon-precomposed" href="https://s.vnecdn.net/vnexpress/i/v46/logos/114x114.png" sizes="1x1" />
+        <title>Sức Khỏe Dinh dưỡng - VnExpress Sức Khỏe</title>                <meta http-equiv="REFRESH" content="1800" />
+                <meta name="description" content="Sức khỏe - Dinh dưỡng tư vấn dinh dưỡng chia sẽ những mẹo vặt hay trong cuộc sống." >
+<meta name="keywords" content="Tư vấn dinh dưỡng, thừa cân, béo phì, sức khỏe đời sống, sức khỏe gia đình, sức khỏe phụ nữ, khỏe đẹp" >                <meta name="tt_category_id" content="1003792" />
+        <meta name="tt_article_id" content="1003792" />
+        <meta name="tt_site_id" content="1003750" />
+        <meta name="tt_page_type" content="folder" />
+                <meta content="VnExpress Sức Khỏe" property="og:site_name" />
+        <meta property="og:title" itemprop="headline" content="Sức Khỏe Dinh dưỡng - VnExpress Sức Khỏe" />
+        <meta content="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong" itemprop="url" property="og:url" />
+        <meta property="og:image" itemprop="thumbnailUrl" content="https://s.vnecdn.net/vnexpress/i/v28/logo_default.jpg" />
+        <meta property="og:description" itemprop="description" content="Sức khỏe - Dinh dưỡng tư vấn dinh dưỡng chia sẽ những mẹo vặt hay trong cuộc sống." />
+        <script type="text/javascript">
+            var interactions_url='http://usi.saas.vnexpress.net',
+                base_url='http://suckhoe.vnexpress.net',
+                css_url='https://s.vnecdn.net/suckhoe/c/v29',
+                img_url='https://s.vnecdn.net/suckhoe/i/v2',
+                SITE_ID=1003750,
+                vne_url='http://vnexpress.net',
+                js_url_vne='https://s.vnecdn.net/vnexpress/j/v11',
+                css_url_vne='https://s.vnecdn.net/vnexpress/c/v4',
+                img_url_vne='https://s.vnecdn.net/vnexpress/i/v46',
+                flash_url_vne='https://s.vnecdn.net/vnexpress/f/v29',
+                device_env=4,
+                ZONE_ADS=0,
+                link_guitoasoan='http://suckhoe.vnexpress.net/gui-chia-se/dinh-duong',
+                parser_autoplay=0;
+                        var PAGE_FOLDER=1003792,
+                PAGE_DETAIL=0,
+                PageHot=0;
+            document.domain='vnexpress.net';
+        </script>
+        <script language="javascript" type="text/javascript">
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({"pageCategory": "1003750"});
+                            dataLayer.push({"pageType": "Section"});
+                            dataLayer.push({"pagePlatform": "Web"});
+                            dataLayer.push({"pageSubcategory": "Dinh dưỡng"});
+            (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+            ga("create", "UA-249346-12", "auto", {"name": "t0"});
+            ga("t0.send", "pageview");
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+            new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+            "https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,"script","dataLayer","GTM-N3FNJF");
+            var _siteId = "14";
+            var _comscore = _comscore || [];
+            _comscore.push({
+                c1: "2",
+                c2: "19747654"
+            });
+            (function() {
+                var a = document.createElement("script"),
+                    b = document.getElementsByTagName("script")[0];
+                a.async = !0;
+                a.src = ("https:" == document.location.protocol ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+                b.parentNode.insertBefore(a, b)
+            })();
+        </script>
+                <script type="text/javascript">
+            if (window.location.href.indexOf("cvar=SK_UT_RB") != -1) {
+                ga("create", "UA-83913235-7", "auto", {"name": "ab2"}); 
+                ga("ab2.set", "dimension2", "SK_UT_RB_Click");
+                ga('ab2.send', 'pageview');
+            }
+        </script>
+        <link rel="stylesheet" href="https://s.vnecdn.net/vnexpress/c/v4/general_v2_min.css" media="all" />
+        <link rel="stylesheet" href="https://s.vnecdn.net/suckhoe/c/v29/suckhoe.css" media="all" />
+                            <script type="text/javascript" src="https://s.vnecdn.net/vnexpress/libs/jquery-1.7.1.min.js"></script>
+                                <script language="javascript" type="text/javascript" src="http://st.core.polyad.net/ShowAds.js"></script>
+            </head>
+    <body>
+        <noscript>
+                        <img src="https://sb.scorecardresearch.com/p?c1=2&c2=19747654&cv=2.0&cj=1" />
+                        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3FNJF" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+                    </noscript>
+                            <div id="myvne_taskbar"></div>
+        <div class="block_more_info" id="box_col_left">
+            <div class="box_width_common">
+                <div class="btn_control_col_left"><i class="ic ic-menu"></i></div>
+                <div class="block_scoll_menu">
+                    <div class="block_search">
+                        <form action="http://timkiem.vnexpress.net/suckhoe" method="get" id="search">
+                            <input type="text" name="q" maxlength="80" class="input_search" value="Tìm kiếm" onfocus="if (this.value == this.defaultValue) this.value = '';" onblur="if (this.value == '') this.value = this.defaultValue;" />
+                            <button type="submit" class="icon_menu_phone btn_search" value=""><i class="ic ic-search"></i></button>
+                        </form>
+                        <div class="clear">&nbsp;</div>
+                    </div>
+                    <div class="block_swich_en_mobile">
+                    Phiên bản: <a href="http://e.vnexpress.net/?vn_source=VnExpress&vn_medium=btn_site&vn_campaign=btntracking" title="VnExpress International – Vietnam and ASEAN news" target="_blank">VnExpress International – Vietnam and ASEAN news</a>
+                    </div>
+                    <ul class="list_item_panel">
+                        <li><a href="http://vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Trang chủ');" class="bg_666"><i class="ic ic-m-home"></i>Trang chủ</a></li>
+						<li><a href="http://video.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Video');"><i class="ic ic-m-video"></i>Video</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/thoi-su" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Thời sự');"><i class="ic ic-m-news"></i>Thời sự</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/goc-nhin" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Góc nhìn');"><i class="ic ic-m-opinion"></i>Góc nhìn</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/the-gioi" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Thế giới');"><i class="ic ic-m-world"></i>Thế giới</a></li>
+                        <li><a href="http://kinhdoanh.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Kinh doanh');"><i class="ic ic-m-business"></i>Kinh doanh</a></li>
+                        <li><a href="http://giaitri.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Giải trí');"><i class="ic ic-m-entertainment"></i>Giải trí</a></li>
+                        <li><a href="http://thethao.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Thể thao');"><i class="ic ic-m-sport"></i>Thể thao</a></li>
+                        <li><a style="background: #58a12b url(https://s.vnecdn.net/giaitri/images/graphics/menu_seagame_m.jpg) no-repeat right 0; background-size: contain; text-indent: -9000px;" data-transition="flip" href="http://thethao.vnexpress.net/tin-tuc/sea-games-2017" target="_blank">SEA Games 29th</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/phap-luat" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Pháp luật');"><i class="ic ic-m-law"></i>Pháp luật</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/giao-duc" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Giáo dục');"><i class="ic ic-m-education"></i>Giáo dục</a></li>
+                        <li class="active"><a href="/" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Sức khỏe');"><i class="ic ic-m-health"></i>Sức khỏe</a></li>
+                        <li><a href="http://giadinh.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Đời sống');"><i class="ic ic-m-family"></i>Gia đình</a></li>
+                        <li><a href="http://dulich.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Du lịch');"><i class="ic ic-m-travel"></i>Du lịch</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/khoa-hoc" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Khoa học');"><i class="ic ic-m-science"></i>Khoa học</a></li>
+                        <li><a href="http://sohoa.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Số hóa');"><i class="ic ic-m-technology"></i>Số hóa</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/oto-xe-may" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Xe');"><i class="ic ic-m-car"></i>Xe</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/cong-dong" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Cộng đồng');"><i class="ic ic-m-social"></i>Cộng đồng</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/tam-su" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Tâm sự');"><i class="ic ic-m-talk"></i>Tâm sự</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/anh" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Ảnh');"><i class="ic ic-m-photo"></i>Ảnh</a></li>
+                        <li><a href="http://vnexpress.net/infographics" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Infographics');"><i class="ic ic-m-infographic"></i>Infographics</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/cuoi" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Cười');"><i class="ic ic-m-fun"></i>Cười</a></li>
+                        <li><a href="http://raovat.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Rao vặt');"><i class="ic ic-m-ecom"></i>Rao vặt</a></li>
+                        <li><a class="bg_e8e8" href="http://vnexpress.net/24h-qua"><i class="ic ic-m-24h"></i>24h qua</a></li>
+                        <li><a class="bg_e8e8" href="http://vnexpress.net/lien-he-toa-soan/?p=suckhoe"><i class="ic ic-m-contact"></i>Liên hệ Tòa soạn</a></li>
+                        <li class="end"><a class="bg_e8e8" href="http://vnexpress.net/contact.htm"><i class="ic ic-m-mail"></i>Thông tin Tòa soạn</a></li>
+                    </ul>
+                    <div class="coppy_right_left width_common">
+                        <div class="txt_coppy_right">
+                            <p>&copy; Copyright 1997 - VnExpress.net, All rights reserved.</p>
+                            <p>&reg; VnExpress giữ bản quyền nội dung trên website này.</p>
+                        </div>
+                        <div class="txt_lienhe"> Hotline:<br />
+                            <a href="tel:012388801238">0123.888.0123 (Hà Nội)</a><br />
+                            <a href="tel:01292333555">0129.233.3555 (TP HCM) </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear">&nbsp;</div>
+        </div>
+        <div id="page">
+            <div id="wrapper_header">
+                <div id="header">
+                    <div class="width_common">
+                        <div class="logovne">
+                            <a href="http://vnexpress.net" title="vnexpress.net"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/logo.png" alt="vnexpress logo" class="img_logo" /></a>
+                            <div class="right ipad_header">
+                                <div class="block_icon_menu_header right">
+                                    <div class="left block_location_tt" data-component-type="weather" data-component-click=""></div>
+                                   <a href="http://video.vnexpress.net"><img src="https://s.vnecdn.net/vnexpress/i/v46/icons/icon_videomenu.gif" alt="vnexpress" /></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear">&nbsp;</div>
+                    </div>
+                    <div class="clear">&nbsp;</div>
+                </div>
+            </div>
+            <div id="header_web" class="width_common">
+                <div id="header_main">
+                    <div class="header_logo width_common">
+                        <a href="http://vnexpress.net"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/img_logo_vne_web.gif" alt="vnexpress logo" class="left logo_web"/></a>
+                            <div class="banner_728x90 right">
+        <script type="text/javascript">try {Poly_Top();}catch(ex){};</script>    </div>
+                    </div>
+                    <ul id="menu_web" class="width_common">
+                        <li><a href="http://vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Trang chủ');"><i class="ic ic-m-home"></i></a></li>
+						<li><a href="http://video.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Video');" class="mnu_video">Video</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/thoi-su" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Thời sự');" class="mnu_thoisu">Thời sự</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/goc-nhin" onclick="ga('te.send', 'event', 'Menu', 'Click', 'Góc nhìn');" class="mnu_gocnhin">Góc nhìn</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/the-gioi" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Thế giới');" class="mnu_thegioi">Thế giới</a></li>
+                        <li><a href="http://kinhdoanh.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Kinh doanh');" class="mnu_kinhdoanh">Kinh doanh</a></li>
+                        <li><a href="http://giaitri.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Giải trí');" class="mnu_giaitri">Giải trí</a></li>
+                        <li><a href="http://thethao.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Thể thao');" class="mnu_thethao">Thể thao</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/phap-luat" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Pháp luật');" class="mnu_phapluat">Pháp luật</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/giao-duc" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Giáo dục');" class="mnu_giaoduc">Giáo dục</a></li>
+                        <li class="active"><a href="/" class="mnu_suckhoe" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Sức khỏe');">Sức khỏe</a></li>
+                        <li><a href="http://giadinh.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Đời sống');" class="mnu_doisong">Gia đình</a></li>
+                        <li><a href="http://dulich.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Du lịch');" class="mnu_dulich">Du lịch</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/khoa-hoc" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Khoa học');" class="mnu_khoahoc">Khoa học</a></li>
+                        <li><a href="http://sohoa.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Số hóa');" class="mnu_sohoa">Số hóa</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/oto-xe-may" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Xe');" class="mnu_xe">Xe</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/cong-dong" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Cộng đồng');" class="mnu_bandoc">Cộng đồng</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/tam-su" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Tâm sự');" class="mnu_tamsu">Tâm sự</a></li>
+						<li class="end"><a class="mnu_cuoi" href="http://vnexpress.net/tin-tuc/cuoi" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Cười');">Cười</a></li>
+                        <li class="drop_menu end">
+                            <a href="javascript:;"><i class="ic ic-caret-2-down"></i></a>
+                            <div class="drop_menu_hover">
+                                <a href="http://raovat.vnexpress.net" onclick="ga('t0.send', 'event', 'Menu', 'Click', 'Rao vặt');" target="_blank">Rao vặt</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mid_header width_common">
+                        <ul id="breakumb_web">
+                                                        <li >
+                                <h3>
+                                    <a href="/tin-tuc/suc-khoe" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_1', 'SK');">Tin tức</a>
+                                                                    </h3>
+                            </li>
+                                                        <li >
+                                <h3>
+                                    <a href="/tin-tuc/cac-benh" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_2', 'SK');">Các bệnh</a>
+                                    <span class="icon_drop_menu">&nbsp;</span><div class="child_menu"><a href="http://suckhoe.vnexpress.net/cac-benh/mat/can-thi-109.html" title="Cận thị">Cận thị</a><a href="http://suckhoe.vnexpress.net/cac-benh/da-lieu-117.html" title="Da liễu">Da liễu</a><a href="http://suckhoe.vnexpress.net/cac-benh/truyen-nhiem/hiv-aids-86.html" title="HIV/AIDS">HIV/AIDS</a><a href="http://suckhoe.vnexpress.net/cac-benh/nam-khoa/roi-loan-cuong-50.html" title="Rối loạn cương">Rối loạn cương</a><a href="http://suckhoe.vnexpress.net/cac-benh/tim-mach-121.html" title="Tim mạch">Tim mạch</a><a href="http://suckhoe.vnexpress.net/cac-benh/huyet-hoc-126.html" title="Huyết học">Huyết học</a><a href="http://suckhoe.vnexpress.net/cac-benh/than-kinh/roi-loan-tien-dinh-97.html" title="Rối loạn tiền đình">Rối loạn tiền đình</a><div class="block_txt_child_bottom">
+                                <a href="/tin-tuc/cac-benh/cau-lac-bo-benh-nhan" title="Câu lạc bộ bệnh nhân">Câu lạc bộ bệnh nhân</a>
+                                <a href="/tin-tuc/cac-benh/thuoc-va-thuc-pham" title="Thuốc &amp; Thực phẩm">Thuốc &amp; Thực phẩm</a>
+                            </div></div>                                </h3>
+                            </li>
+                                                        <li >
+                                <h3>
+                                    <a href="/tin-tuc/cac-benh/ung-thu" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_3', 'SK');">Ung thư</a>
+                                                                    </h3>
+                            </li>
+                                                        <li >
+                                <h3>
+                                    <a href="/tin-tuc/khoe-dep" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_4', 'SK');">Khỏe đẹp</a>
+                                                                    </h3>
+                            </li>
+                                                        <li class="active">
+                                <h3>
+                                    <a href="/tin-tuc/dinh-duong" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_5', 'SK');">Dinh dưỡng</a>
+                                                                    </h3>
+                            </li>
+                                                    </ul>
+                        <div class="right">
+                            <a href="http://e.vnexpress.net/?vn_source=VnExpress&vn_medium=btn_site&vn_campaign=btntracking" title="VnExpress International – Vietnam and ASEAN news" class="left"><img src="https://s.vnecdn.net/suckhoe/i/v2/icons/icon_swich_en.gif" alt="VnExpress International – Vietnam and ASEAN news" /></a>
+                                                            <a href="http://vnexpress.net/24h-qua" class="txt_24h">24h qua</a>
+                                                        <a href="http://vnexpress.net/rss" class="img_rss left">RSS&nbsp;<i class="ic ic-rss"></i></a>
+                        </div>
+                                                    <div class="block_breakumb_left" style="width: 670px;">
+                                <ul class="list_arrow_breakumb">
+                                    <li class="start have_cap2"><h4><a href="/">Sức khỏe</a><span class="arrow_breakumb">&nbsp;</span></h4></li>
+                                    <li class="cap2"><h4><a href="/tin-tuc/dinh-duong">Dinh dưỡng&nbsp;</a><span class="arrow_breakumb">&nbsp;</span></h4></li>                                </ul>
+                                                                    <ul class="sub_breakumn">
+                                                                                    <li class=" end"><h4><a href="/tin-tuc/dinh-duong/thuc-don">Thực đơn</a></h4></li>
+                                                                            </ul>
+                                                            </div>
+                                            </div>
+                </div>
+            </div>
+            <div id="wrapper_container" class="container_common">
+                <div id="container">
+                    <div class="width_common">
+                        <div class="breakumb_timer width_common">
+                            <div class="timer_header">
+                                <ul>
+                                                                        <li class="start have_cap2"><a href="/">Sức khỏe</a><span class="arrow_breakumb">&nbsp;</span></li>
+                                                                        <li class="cap2"><a href="/tin-tuc/dinh-duong">Dinh dưỡng</a><span class="arrow_breakumb">&nbsp;</span></li>
+                                                                    </ul>
+                            </div>
+                            <div class="rss right">
+                                                                <div class="block_timer left" id="clockDiv1"></div>
+                                                                <a href="javascript:;" class="img_arrow_timer">&nbsp;</a>
+                            </div>
+                            <div class="block_show_breakumb" style="display: none;">
+                                <ul>
+                                                                            <li><a href="/tin-tuc/suc-khoe" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_1', 'SK');">Tin tức</a></li>
+                                                                            <li><a href="/tin-tuc/cac-benh" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_2', 'SK');">Các bệnh</a></li>
+                                                                            <li><a href="/tin-tuc/cac-benh/ung-thu" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_3', 'SK');">Ung thư</a></li>
+                                                                            <li><a href="/tin-tuc/khoe-dep" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_4', 'SK');">Khỏe đẹp</a></li>
+                                                                            <li><a href="/tin-tuc/dinh-duong" onclick="ga('t0.send', 'event', 'Menu', 'Clk_Item_5', 'SK');">Dinh dưỡng</a></li>
+                                                                    </ul>
+                           </div>
+                        </div>
+                        <div class="width_common line_col">
+    <div id="col_1">
+                <div id="box_news_top" class="width_common">
+            <div class="line_col width_common">
+                <div class="box_hot_news">
+                                        <div class="block_news_big">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/sai-lam-cua-nguoi-an-kieng-loai-bo-hoan-toan-tinh-bot-3627957.html" class="txt_link" title="Sai lầm của người ăn kiêng loại bỏ hoàn toàn tinh bột">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/08/16/giam-can-4075-1502846959_500x300.jpg" alt="Sai lầm của người ăn kiêng loại bỏ hoàn toàn tinh bột" class="width_image_common" />
+                                                    </a>
+                    </div>
+                                        <h1 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/sai-lam-cua-nguoi-an-kieng-loai-bo-hoan-toan-tinh-bot-3627957.html" class="txt_link" title="Sai lầm của người ăn kiêng loại bỏ hoàn toàn tinh bột">Sai lầm của người ăn kiêng loại bỏ hoàn toàn tinh bột</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/sai-lam-cua-nguoi-an-kieng-loai-bo-hoan-toan-tinh-bot-3627957.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3627957"></span></a>                    </h1>
+                                        <h4 class="news_lead">Em đang hạn chế tinh bột, hầu như 6 ngày trong một tuần chỉ ăn rau và thịt, cá, trứng và uống trái cây cam, chanh, ổi.</h4>
+                    <ul class="list_news_dot_3x3_300"><li><p><a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/hoc-sinh-lop-9-co-nen-an-kieng-giam-beo-3607605.html" title="Học sinh lớp 9 có nên ăn kiêng giảm béo?">Học sinh lớp 9 có nên ăn kiêng giảm béo?</a>&nbsp;/&nbsp;<a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/u-tuyen-giap-can-kieng-an-gi-3592804.html" title="U tuyến giáp cần kiêng ăn gì?">U tuyến giáp cần kiêng ăn gì?</a></p></li></ul>                </div>
+                <div class="box_sub_hot_news">
+                                        <div class="scroll-pane">
+                        <div class="content_scoller width_common">
+                            <ul>
+                                                                    <li >
+                                                                                <h3 class="title_news">
+                                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/khi-met-moi-nen-an-gi-3627979.html" title="Khi mệt mỏi nên ăn gì?" class="txt_link">Khi mệt mỏi nên ăn gì?</a>
+                                            <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/khi-met-moi-nen-an-gi-3627979.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3627979"></span></a>                                        </h3>
+                                                                                <div class="news_lead">Bạn nên ăn chuối, trứng, salad rau xanh, uống nhiều nước... mỗi khi thấy mệt mỏi.</div>
+                                                                            </li>
+                                                                    <li >
+                                                                                <h3 class="title_news">
+                                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-ngan-ngua-suy-kiet-cho-benh-nhan-ung-thu-3626200.html" title="Cách ngăn ngừa suy kiệt cho bệnh nhân ung thư" class="txt_link">Cách ngăn ngừa suy kiệt cho bệnh nhân ung thư</a>
+                                                                                    </h3>
+                                                                                <div class="news_lead">Người bệnh nên ăn uống đủ chất để bù đắp năng lượng hao hụt, có thể dùng thêm thảo dược ức chế khối u, tập thể dục nhẹ nhàng…</div>
+                                                                            </li>
+                                                                    <li  class="end">
+                                                                                <h3 class="title_news">
+                                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/3-mon-ngon-danh-cho-tre-suy-dinh-duong-3626912.html" title="3 món ngon dành cho trẻ suy dinh dưỡng" class="txt_link">3 món ngon dành cho trẻ suy dinh dưỡng</a>
+                                            <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/3-mon-ngon-danh-cho-tre-suy-dinh-duong-3626912.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3626912"></span></a>                                        </h3>
+                                                                                <div class="news_lead">Gà chiên bột, bò hầm rau củ, yaourt lắc vừa bổ dưỡng, giàu năng lượng vừa kích thích trẻ ăn ngon miệng.</div>
+                                                                            </li>
+                                                            </ul>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+            <ul class="list_news" id="news_home">
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/thuc-don-tuan-phong-tranh-ung-thu-cho-ca-nha-3626376.html" title="Thực đơn tuần phòng tránh ung thư cho cả nhà" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/12/comgiadinh1-1502505056_240x144.jpg" alt="Thực đơn tuần phòng tránh ung thư cho cả nhà">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/thuc-don-tuan-phong-tranh-ung-thu-cho-ca-nha-3626376.html" title="Thực đơn tuần phòng tránh ung thư cho cả nhà" class="txt_link">Thực đơn tuần phòng tránh ung thư cho cả nhà</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/thuc-don-tuan-phong-tranh-ung-thu-cho-ca-nha-3626376.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3626376"></span></a>                    </h3>
+                                        <div class="news_lead">Khởi đầu tuần mới với điểm tâm trứng luộc, bột ngũ cốc, buổi trưa ăn cơm ranh rau ngót, cá hồi kho thơm.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-cho-tre-an-ngon-chong-lon-3622670.html" title="Thực đơn tuần cho trẻ ăn ngon, chóng lớn">Thực đơn tuần cho trẻ ăn ngon, chóng lớn</a>&nbsp;/&nbsp;<a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-danh-cho-tre-beo-phi-3613727.html" title="Thực đơn tuần dành cho trẻ béo phì">Thực đơn tuần dành cho trẻ béo phì</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-don-gian-giup-phai-manh-giam-ham-muon-uong-ruou-bia-3626212.html" title="Cách đơn giản giúp phái mạnh giảm ham muốn uống rượu bia" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/12/biaru-1502543918_240x144.jpg" alt="Cách đơn giản giúp phái mạnh giảm ham muốn uống rượu bia">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-don-gian-giup-phai-manh-giam-ham-muon-uong-ruou-bia-3626212.html" title="Cách đơn giản giúp phái mạnh giảm ham muốn uống rượu bia" class="txt_link">Cách đơn giản giúp phái mạnh giảm ham muốn uống rượu bia</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-don-gian-giup-phai-manh-giam-ham-muon-uong-ruou-bia-3626212.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3626212"></span></a>                    </h3>
+                                        <div class="news_lead">Uống nước ép cần tây hoặc nước mướp đắng giảm tác hại của rượu lên gan, đồng thời giảm ham muốn uống rượu bia, theo Homeveda.</div>
+                                    </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/5-viec-khong-nen-lam-sau-bua-an-co-the-ban-chua-biet-3625087.html" title="5 việc không nên làm sau bữa ăn có thể bạn chưa biết" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/09/nhungdieunenvakhongnenlamdoivoisanphusausinh1-1502268922_240x144.jpg" alt="5 việc không nên làm sau bữa ăn có thể bạn chưa biết">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/5-viec-khong-nen-lam-sau-bua-an-co-the-ban-chua-biet-3625087.html" title="5 việc không nên làm sau bữa ăn có thể bạn chưa biết" class="txt_link">5 việc không nên làm sau bữa ăn có thể bạn chưa biết</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/5-viec-khong-nen-lam-sau-bua-an-co-the-ban-chua-biet-3625087.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3625087"></span></a>                    </h3>
+                                        <div class="news_lead">Không nên hút thuốc, tắm gội, uống nước, ăn hoa quả và ngủ ngay sau bữa ăn, theo Brightside.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chang-trai-an-4-000-calo-moi-toi-van-chuan-bung-6-mui-3624590.html" title="Chàng trai ăn 4.000 calo mỗi tối vẫn chuẩn bụng 6 múi">Chàng trai ăn 4.000 calo mỗi tối vẫn chuẩn bụng 6 múi</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-nau-bat-pho-bo-bo-duong-3624835.html" title="Cách nấu bát phở bò bổ dưỡng" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/09/ph-1502248427_240x144.jpg" alt="Cách nấu bát phở bò bổ dưỡng">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-nau-bat-pho-bo-bo-duong-3624835.html" title="Cách nấu bát phở bò bổ dưỡng" class="txt_link">Cách nấu bát phở bò bổ dưỡng</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-nau-bat-pho-bo-bo-duong-3624835.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3624835"></span></a>                    </h3>
+                                        <div class="news_lead">Nước dùng nấu từ thịt, hành tây, gừng, quế, hạt tiêu; thịt bò thái lát mỏng cho vào bát phở ăn kèm giá đỗ và húng quế, theo Health.</div>
+                                    </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/an-mang-tay-ngua-ung-thu-3624243.html" title="Ăn măng tây ngừa ung thư" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/08/tom-xao-mang-tay-7693-1502161861_240x144.jpg" alt="Ăn măng tây ngừa ung thư">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/an-mang-tay-ngua-ung-thu-3624243.html" title="Ăn măng tây ngừa ung thư" class="txt_link">Ăn măng tây ngừa ung thư</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/an-mang-tay-ngua-ung-thu-3624243.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3624243"></span></a>                    </h3>
+                                        <div class="news_lead">Chất chống ôxy hóa có trong măng tây được chứng minh bảo vệ tế bào và phòng ngừa bệnh tật, đặc biệt là ung thư.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/nguoi-bi-ung-thu-co-nen-dung-thuc-pham-chuc-nang-3623613.html" title="Người bị ung thư có nên dùng thực phẩm chức năng?">Người bị ung thư có nên dùng thực phẩm chức năng?</a>&nbsp;/&nbsp;<a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/8-nguyen-tac-song-giup-ban-tranh-xa-ung-thu-3623440.html" title="8 nguyên tắc sống giúp bạn tránh xa ung thư">8 nguyên tắc sống giúp bạn tránh xa ung thư</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/loi-ich-cua-mot-tuan-an-rau-tranh-thit-3623832.html" title="Lợi ích của một tuần ăn rau tránh thịt" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/07/20668531-1932942260327308-2083-7275-7451-1502081007_240x144.jpg" alt="Lợi ích của một tuần ăn rau tránh thịt">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/loi-ich-cua-mot-tuan-an-rau-tranh-thit-3623832.html" title="Lợi ích của một tuần ăn rau tránh thịt" class="txt_link">Lợi ích của một tuần ăn rau tránh thịt</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/loi-ich-cua-mot-tuan-an-rau-tranh-thit-3623832.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3623832"></span></a>                    </h3>
+                                        <div class="news_lead">Bạn sẽ giảm được cân, kiểm soát cơn thèm ăn vặt, cải thiện hệ thống tiêu hóa và giảm nguy cơ ung thư ruột.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/dieu-gi-xay-ra-trong-co-the-khi-ban-ngung-an-thit-3573139.html" title="Điều gì xảy ra trong cơ thể khi bạn ngưng ăn thịt">Điều gì xảy ra trong cơ thể khi bạn ngưng ăn thịt</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/uong-ruou-bia-the-nao-de-khong-anh-huong-tinh-duc-phai-manh-3623899.html" title="Uống rượu bia thế nào để không ảnh hưởng tình dục phái mạnh" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/07/ruou-bia-7492-1502101890_240x144.jpg" alt="Uống rượu bia thế nào để không ảnh hưởng tình dục phái mạnh">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/uong-ruou-bia-the-nao-de-khong-anh-huong-tinh-duc-phai-manh-3623899.html" title="Uống rượu bia thế nào để không ảnh hưởng tình dục phái mạnh" class="txt_link">Uống rượu bia thế nào để không ảnh hưởng tình dục phái mạnh</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/uong-ruou-bia-the-nao-de-khong-anh-huong-tinh-duc-phai-manh-3623899.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3623899"></span></a>                    </h3>
+                                        <div class="news_lead">Uống rượu giúp làm tăng ham muốn nhưng quá nhiều có thể gây rối loạn cương, teo tinh hoàn, giảm số lượng và chất lượng tinh trùng...</div>
+                                    </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/giam-can/thuc-don-4-bua-moi-ngay-giup-co-gai-giam-20-kg-3623776.html" title="Thực đơn 4 bữa mỗi ngày giúp cô gái giảm 20 kg" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/07/gim20kg-1502077298_240x144.jpg" alt="Thực đơn 4 bữa mỗi ngày giúp cô gái giảm 20 kg">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/giam-can/thuc-don-4-bua-moi-ngay-giup-co-gai-giam-20-kg-3623776.html" title="Thực đơn 4 bữa mỗi ngày giúp cô gái giảm 20 kg" class="txt_link">Thực đơn 4 bữa mỗi ngày giúp cô gái giảm 20 kg</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/giam-can/thuc-don-4-bua-moi-ngay-giup-co-gai-giam-20-kg-3623776.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3623776"></span></a>                    </h3>
+                                        <div class="news_lead">Hana Ramadan ăn chế độ giàu rau xanh, protein, hạn chế tối đa tinh bột kết hợp tập thể dục và "lột xác" xinh đẹp, theo Tips Beauty.</div>
+                                    </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/che-do-an-uong-cho-benh-nhan-tieu-duong-3623842.html" title="Chế độ ăn uống cho bệnh nhân tiểu đường" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/07/asian-family-dinner-5710-1502082352_240x144.jpg" alt="Chế độ ăn uống cho bệnh nhân tiểu đường">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/che-do-an-uong-cho-benh-nhan-tieu-duong-3623842.html" title="Chế độ ăn uống cho bệnh nhân tiểu đường" class="txt_link">Chế độ ăn uống cho bệnh nhân tiểu đường</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/che-do-an-uong-cho-benh-nhan-tieu-duong-3623842.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3623842"></span></a>                    </h3>
+                                        <div class="news_lead">Ăn 5 bữa một ngày với bữa trưa nhiều rau và bữa tối nhiều protein nạc là lưu ý bệnh nhân tiểu đường cần nhớ.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/trac-nghiem-mot-phut-kiem-tra-nguy-co-tieu-duong-cua-ban-3619109.html" title="Trắc nghiệm một phút kiểm tra nguy cơ tiểu đường của bạn">Trắc nghiệm một phút kiểm tra nguy cơ tiểu đường của bạn</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-cho-tre-an-ngon-chong-lon-3622670.html" title="Thực đơn tuần cho trẻ ăn ngon, chóng lớn" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/04/an-1501812382_240x144.jpg" alt="Thực đơn tuần cho trẻ ăn ngon, chóng lớn">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-cho-tre-an-ngon-chong-lon-3622670.html" title="Thực đơn tuần cho trẻ ăn ngon, chóng lớn" class="txt_link">Thực đơn tuần cho trẻ ăn ngon, chóng lớn</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-cho-tre-an-ngon-chong-lon-3622670.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622670"></span></a>                    </h3>
+                                        <div class="news_lead">Khởi đầu tuần mới cho bé với bún mọc, thanh long, uống một ly sữa, buổi trưa ăn cơm thịt kho đậu hũ, canh cá nấu ngót.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-danh-cho-tre-beo-phi-3613727.html" title="Thực đơn tuần dành cho trẻ béo phì">Thực đơn tuần dành cho trẻ béo phì</a>&nbsp;/&nbsp;<a href="http://vnexpress.net/infographics/thuc-don/thuc-don-chong-day-thi-som-cho-tre-6-11-tuoi-3579954.html" title="Thực đơn chống dậy thì sớm cho trẻ 6-11 tuổi">Thực đơn chống dậy thì sớm cho trẻ 6-11 tuổi</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/video-giup-ban-biet-cach-an-uong-thong-minh-hon-3622424.html" title="Video giúp bạn biết cách ăn uống thông minh hơn" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/04/198855271006306905943465727729950283268096nmp4snapshot002820170803154652-1501816897_240x144.jpg" alt="Video giúp bạn biết cách ăn uống thông minh hơn">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/video-giup-ban-biet-cach-an-uong-thong-minh-hon-3622424.html" title="Video giúp bạn biết cách ăn uống thông minh hơn" class="txt_link">Video giúp bạn biết cách ăn uống thông minh hơn</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/video-giup-ban-biet-cach-an-uong-thong-minh-hon-3622424.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622424"></span></a>                    </h3>
+                                        <div class="news_lead">Bạn nên dùng cốc để lấy kiwi, dùng dĩa bóc tôm, dùng đũa để loại bỏ hạt cherry..., theo 5 Minute Craffts.</div>
+                                    </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/uong-bia-ruou-chung-muc-giam-nguy-co-tieu-duong-3623465.html" title="Uống bia rượu chừng mực giảm nguy cơ tiểu đường" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/06/bia-ruou-3839-1501992520_240x144.jpg" alt="Uống bia rượu chừng mực giảm nguy cơ tiểu đường">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/uong-bia-ruou-chung-muc-giam-nguy-co-tieu-duong-3623465.html" title="Uống bia rượu chừng mực giảm nguy cơ tiểu đường" class="txt_link">Uống bia rượu chừng mực giảm nguy cơ tiểu đường</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/uong-bia-ruou-chung-muc-giam-nguy-co-tieu-duong-3623465.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3623465"></span></a>                    </h3>
+                                        <div class="news_lead">Một đến 6 cốc bia mỗi tuần giúp nam giới giảm nguy cơ bệnh đái tháo đường xuống 21%.</div>
+                                    </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/nhieu-nguoi-nhiem-giun-san-vi-an-nem-chua-rau-song-3622894.html" title="Nhiều người nhiễm giun sán vì ăn nem chua, rau sống" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/04/sanlagan1-9810-1501832307_240x144.jpg" alt="Nhiều người nhiễm giun sán vì ăn nem chua, rau sống">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/nhieu-nguoi-nhiem-giun-san-vi-an-nem-chua-rau-song-3622894.html" title="Nhiều người nhiễm giun sán vì ăn nem chua, rau sống" class="txt_link">Nhiều người nhiễm giun sán vì ăn nem chua, rau sống</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/nhieu-nguoi-nhiem-giun-san-vi-an-nem-chua-rau-song-3622894.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622894"></span></a>                    </h3>
+                                        <div class="news_lead">Cụ ông 70 tuổi vào viện vì sốt cao, áp xe gan do nhiễm sán lá gan, nguyên nhân được cho là thói quen ăn thức ăn chưa chín.</div>
+                                    </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/meo-an-hoa-qua-dung-cach-3622475.html" title="Mẹo ăn hoa quả đúng cách" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/04/1991324419837473819011045661859243750326272nmp4snapshot012320170804112016-1501820427_240x144.jpg" alt="Mẹo ăn hoa quả đúng cách">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/meo-an-hoa-qua-dung-cach-3622475.html" title="Mẹo ăn hoa quả đúng cách" class="txt_link">Mẹo ăn hoa quả đúng cách</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/meo-an-hoa-qua-dung-cach-3622475.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622475"></span></a>                    </h3>
+                                        <div class="news_lead">Bạn nên lăn cam trước khi bóc vỏ, cắt dưa hấu thành từng miếng nhỏ để loại bỏ hạt dễ dàng..., theo 5 Minute Crafts.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/3-ly-do-nen-thuong-xuyen-an-dua-3607437.html" title="3 lý do nên thường xuyên ăn dứa">3 lý do nên thường xuyên ăn dứa</a>&nbsp;/&nbsp;<a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/4-loai-nuoc-uong-giup-co-the-khoe-manh-chi-mat-mot-phut-lam-3520486.html" title="4 loại nước uống giúp cơ thể khỏe mạnh chỉ mất một phút làm">4 loại nước uống giúp cơ thể khỏe mạnh chỉ mất một phút làm</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/video-2-phut-giup-ban-biet-da-an-trung-dung-cach-chua-3622414.html" title="Video 2 phút giúp bạn biết đã ăn trứng đúng cách chưa" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/04/1467774864-1501831565_240x144.jpg" alt="Video 2 phút giúp bạn biết đã ăn trứng đúng cách chưa">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/video-2-phut-giup-ban-biet-da-an-trung-dung-cach-chua-3622414.html" title="Video 2 phút giúp bạn biết đã ăn trứng đúng cách chưa" class="txt_link">Video 2 phút giúp bạn biết đã ăn trứng đúng cách chưa</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/video-2-phut-giup-ban-biet-da-an-trung-dung-cach-chua-3622414.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622414"></span></a>                    </h3>
+                                        <div class="news_lead">Khi xếp vào tủ lạnh đặt đầu nhỏ của quả trứng quay xuống dưới, lúc luộc trứng cho lát chanh vào để bóc vỏ dễ hơn, theo 5 Minute Crafts.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/dieu-gi-xay-ra-khi-ban-an-trung-ga-song-3612449.html" title="Điều gì xảy ra khi bạn ăn trứng gà sống?">Điều gì xảy ra khi bạn ăn trứng gà sống?</a>&nbsp;/&nbsp;<a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/bua-sang-dinh-duong-voi-chuoi-va-trung-ga-3511996.html" title="Bữa sáng dinh dưỡng với chuối và trứng gà">Bữa sáng dinh dưỡng với chuối và trứng gà</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/salad-rau-cu-xanh-giau-dinh-duong-3623047.html" title="Salad rau củ xanh giàu dinh dưỡng" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/04/salad-1501844385_240x144.jpeg" alt="Salad rau củ xanh giàu dinh dưỡng">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/salad-rau-cu-xanh-giau-dinh-duong-3623047.html" title="Salad rau củ xanh giàu dinh dưỡng" class="txt_link">Salad rau củ xanh giàu dinh dưỡng</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/salad-rau-cu-xanh-giau-dinh-duong-3623047.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3623047"></span></a>                    </h3>
+                                        <div class="news_lead">Món rau trộn gồm táo, bơ, lê, kiwi cùng nước cốt chanh, dầu olive cung cấp vitamin C, B, A, chất khoáng và chất xơ, theo Health.</div>
+                                    </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/ca-thu-kho-nuoc-dua-giai-nhiet-ngay-he-3622705.html" title="Cá thu kho nước dừa giải nhiệt ngày hè" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/04/monngonmuahe1-nutifood-3508-1501813542_240x144.jpg" alt="Cá thu kho nước dừa giải nhiệt ngày hè">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/ca-thu-kho-nuoc-dua-giai-nhiet-ngay-he-3622705.html" title="Cá thu kho nước dừa giải nhiệt ngày hè" class="txt_link">Cá thu kho nước dừa giải nhiệt ngày hè</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/ca-thu-kho-nuoc-dua-giai-nhiet-ngay-he-3622705.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622705"></span></a>                    </h3>
+                                        <div class="news_lead">Cá thu chiên chín, nước dừa đổ vào nồi đun sôi, nêm chút nước mắm và đường rồi cho cá vào kho.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/4-mon-canh-giai-nhiet-nen-an-khi-troi-nong-3613187.html" title="4 món canh giải nhiệt nên ăn khi trời nóng">4 món canh giải nhiệt nên ăn khi trời nóng</a>&nbsp;/&nbsp;<a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/ga-sot-ca-chua-mon-ngon-it-calo-cho-nguoi-thua-can-3612653.html" title="Gà sốt cà chua - món ngon ít calo cho người thừa cân">Gà sốt cà chua - món ngon ít calo cho người thừa cân</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-tang-can-cho-nguoi-co-chi-so-bmi-gay-do-1-3622265.html" title="Cách tăng cân cho người có chỉ số BMI gầy độ 1" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/03/gay-5916-1501734469_240x144.jpg" alt="Cách tăng cân cho người có chỉ số BMI gầy độ 1">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-tang-can-cho-nguoi-co-chi-so-bmi-gay-do-1-3622265.html" title="Cách tăng cân cho người có chỉ số BMI gầy độ 1" class="txt_link">Cách tăng cân cho người có chỉ số BMI gầy độ 1</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/cach-tang-can-cho-nguoi-co-chi-so-bmi-gay-do-1-3622265.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622265"></span></a>                    </h3>
+                                        <div class="news_lead">Tôi 61 tuổi, <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/tham-my/ban-hieu-biet-the-nao-ve-chi-so-bmi-3397054.html">chỉ số IBM</a> gầy độ 1, nhờ bác sĩ tư vấn cách tăng cân an toàn. Xin cám ơn. (truongkimlang1956).</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chang-trai-gay-go-tu-tap-o-nha-lot-xac-voi-than-hinh-6-mui-3610449.html" title="Chàng trai gầy gò tự tập ở nhà lột xác với thân hình 6 múi">Chàng trai gầy gò tự tập ở nhà lột xác với thân hình 6 múi</a>&nbsp;/&nbsp;<a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chang-trai-gay-go-day-thi-thanh-cong-voi-chuan-6-mui-3583112.html" title="Chàng trai gầy gò 'dậy thì thành công' với chuẩn 6 múi">Chàng trai gầy gò 'dậy thì thành công' với chuẩn 6 múi</a></strong></li></ul>                </div>
+            </li>
+                    <li >
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/5-kieng-ky-sai-lam-cua-nguoi-bi-ung-thu-3622328.html" title="5 kiêng kỵ sai lầm của người bị ung thư" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/03/an-uong-ung-thu-2105-1501750349_240x144.jpg" alt="5 kiêng kỵ sai lầm của người bị ung thư">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/5-kieng-ky-sai-lam-cua-nguoi-bi-ung-thu-3622328.html" title="5 kiêng kỵ sai lầm của người bị ung thư" class="txt_link">5 kiêng kỵ sai lầm của người bị ung thư</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/5-kieng-ky-sai-lam-cua-nguoi-bi-ung-thu-3622328.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622328"></span></a>                    </h3>
+                                        <div class="news_lead">Bệnh nhân ung thư không ăn đường, đậu nành mà thay bằng mật ong... là sai lầm.</div>
+                                    </div>
+            </li>
+                    <li class="end">
+                <div class="block_image_news width_common">
+                                            <div class="thumb">
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/bua-sang-dep-mat-du-dinh-duong-chi-ton-5-phut-3622368.html" title="Bữa sáng đẹp mắt đủ dinh dưỡng chỉ tốn 5 phút" class="txt_link">
+                                <img src="https://i-suckhoe.vnecdn.net/2017/08/03/205441113341987403697388284700719496298496nmp4snapshot000220170803143916-1501745976_240x144.jpg" alt="Bữa sáng đẹp mắt đủ dinh dưỡng chỉ tốn 5 phút">
+                                                            </a>
+                        </div>
+                                        <h3 class="title_news">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/bua-sang-dep-mat-du-dinh-duong-chi-ton-5-phut-3622368.html" title="Bữa sáng đẹp mắt đủ dinh dưỡng chỉ tốn 5 phút" class="txt_link">Bữa sáng đẹp mắt đủ dinh dưỡng chỉ tốn 5 phút</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/bua-sang-dep-mat-du-dinh-duong-chi-ton-5-phut-3622368.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3622368"></span></a>                    </h3>
+                                        <div class="news_lead">Chỉ với trứng, xúc xích và bánh mì, bạn trình bày thu hút để bữa sáng thêm ngon miệng, theo 5 Minute Crafts.</div>
+                    <ul class="list_news_dot_3x3"><li><strong><a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/video-co-gai-an-bua-sang-10-000-calo-khien-nhieu-nguoi-kinh-ngac-3620122.html" title="Video cô gái ăn bữa sáng 10.000 calo khiến nhiều người kinh ngạc">Video cô gái ăn bữa sáng 10.000 calo khiến nhiều người kinh ngạc</a>&nbsp;/&nbsp;<a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/10-phut-cho-bua-sang-du-chat-voi-nguoi-ban-ron-3617069.html" title="10 phút cho bữa sáng đủ chất với người bận rộn">10 phút cho bữa sáng đủ chất với người bận rộn</a></strong></li></ul>                </div>
+            </li>
+            </ul>
+    <div class="bottom_pagination width_common">
+                <div class="view_date_time">
+            <div id="calendar"></div>
+            <script type="text/javascript">
+                $(function(){
+                    if ( typeof(CalendarParser) != "undefined" ) {
+                        CalendarParser.calendar_parser_id               = "calendar";
+                        CalendarParser.calendar_parser_parent           = 1003750;
+                        CalendarParser.calendar_parser_child            = 1003792;
+                        CalendarParser.calendar_parser_child_recursive  = 0;
+                        CalendarParser.parse();
+                    }
+                });
+            </script>
+        </div>
+                <div class="pagination_news right"><div id="pagination"><a class="active" >1</a><a href="/tin-tuc/dinh-duong/page/2.html">2</a><a href="/tin-tuc/dinh-duong/page/3.html">3</a><a href="/tin-tuc/dinh-duong/page/4.html">4</a><a href="/tin-tuc/dinh-duong/page/5.html">5</a><a class="pagination_btn pa_next" href="/tin-tuc/dinh-duong/page/2.html"><i class="ic ic-caret-right"></i></a></div></div>
+    </div>
+    </div>
+    <div id="col_2">
+            <div class="box_category width_common hidden320">
+        <div class="banner_300x250">
+            <script type="text/javascript">try {Poly_Large(1);}catch(ex){};</script>        </div>
+    </div>
+    <div id="photo" class="box_category width_common">
+        <div class="title_box_category width_common">
+            <h2 class="txt_main_category"><a href="/tin-tuc/dinh-duong/thuc-don" title="Thực đơn">Thực đơn</a></h2>
+            <a class="block_arrow_title" href="/tin-tuc/dinh-duong/thuc-don" title="Thực đơn"><i class="ic ic-caret-right"></i></a>
+        </div>
+        <div class="content_box_category width_common">
+                    <ul class="list_new_140 list_col ">
+                            <li>
+                                        <div class="thumb_140 width_common">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/canh-mang-chua-suon-non-giai-nhiet-co-the-trua-he-3621745.html" title="Canh măng chua sườn non giải nhiệt cơ thể trưa hè">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/08/02/monngonmuahe-nutifood-6327-1501644538_180x108.jpg" alt="Canh măng chua sườn non giải nhiệt cơ thể trưa hè" />
+                                                    </a>
+                    </div>
+                                        <h2>
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/canh-mang-chua-suon-non-giai-nhiet-co-the-trua-he-3621745.html" title="Canh măng chua sườn non giải nhiệt cơ thể trưa hè">Canh măng chua sườn non giải nhiệt cơ thể trưa hè</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/canh-mang-chua-suon-non-giai-nhiet-co-the-trua-he-3621745.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3621745"></span></a>                    </h2>
+                                    </li> 
+                            <li>
+                                        <div class="thumb_140 width_common">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/mot-to-hu-tieu-gio-heo-chua-luong-calo-gan-bang-4-chen-com-3620596.html" title="Một tô hủ tiếu giò heo chứa lượng calo gần bằng 4 chén cơm">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/07/31/hu-tieu-7418-1501468381_180x108.jpg" alt="Một tô hủ tiếu giò heo chứa lượng calo gần bằng 4 chén cơm" />
+                                                    </a>
+                    </div>
+                                        <h2>
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/mot-to-hu-tieu-gio-heo-chua-luong-calo-gan-bang-4-chen-com-3620596.html" title="Một tô hủ tiếu giò heo chứa lượng calo gần bằng 4 chén cơm">Một tô hủ tiếu giò heo chứa lượng calo gần bằng 4 chén cơm</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/mot-to-hu-tieu-gio-heo-chua-luong-calo-gan-bang-4-chen-com-3620596.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3620596"></span></a>                    </h2>
+                                    </li> 
+                        
+        </ul>
+                    <ul class="list_new_140 list_col end">
+                            <li>
+                                        <div class="thumb_140 width_common">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-du-chat-cho-phu-nu-moi-sinh-3616551.html" title="Thực đơn tuần đủ chất cho phụ nữ mới sinh">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/07/21/phunumoisinh-1500618923_180x108.jpg" alt="Thực đơn tuần đủ chất cho phụ nữ mới sinh" />
+                                                    </a>
+                    </div>
+                                        <h2>
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-du-chat-cho-phu-nu-moi-sinh-3616551.html" title="Thực đơn tuần đủ chất cho phụ nữ mới sinh">Thực đơn tuần đủ chất cho phụ nữ mới sinh</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thuc-don-tuan-du-chat-cho-phu-nu-moi-sinh-3616551.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3616551"></span></a>                    </h2>
+                                    </li> 
+                            <li>
+                                        <div class="thumb_140 width_common">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thit-bo-xao-khoai-tay-mon-an-thich-hop-cho-phu-nu-van-dong-nhieu-3616049.html" title="Thịt bò xào khoai tây - món ăn thích hợp cho phụ nữ vận động nhiều">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/07/20/monngonchonuvdv1-nutifood-8206-1500535901_180x108.png" alt="Thịt bò xào khoai tây - món ăn thích hợp cho phụ nữ vận động nhiều" />
+                                                    </a>
+                    </div>
+                                        <h2>
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thit-bo-xao-khoai-tay-mon-an-thich-hop-cho-phu-nu-van-dong-nhieu-3616049.html" title="Thịt bò xào khoai tây - món ăn thích hợp cho phụ nữ vận động nhiều">Thịt bò xào khoai tây - món ăn thích hợp cho phụ nữ vận động nhiều</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/dinh-duong/thuc-don/thit-bo-xao-khoai-tay-mon-an-thich-hop-cho-phu-nu-van-dong-nhieu-3616049.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3616049"></span></a>                    </h2>
+                                    </li> 
+                        
+        </ul>
+                
+    </div>
+</div>
+    <div class="box_category width_common hidden320">
+        <div class="banner_300x250">
+            <script type="text/javascript">try {Poly_Large(2);}catch(ex){};</script>        </div>
+    </div>
+<div class="box_category width_common box_style_quangcao">
+    <div class="title_box_category width_common">
+        <h2 class="txt_main_category"><a>Đo chỉ số BMI</a></h2>
+        <a class="txt_timhieu" href="javascript:;" data-type="bmi" onclick="SK_VNE.showLightboxBmiCalo(this);">Tìm hiểu</a>
+    </div>
+    <div class="content_box_category width_common">
+        <div class="chiso_sk">
+            <div class="form_lienhe">
+                <div class="item_input_lienhe width_common">
+                    <div class="block_2_2 left"><input id="bmi_height" name="bmi_height" type="text" class="txt_input" value="Chiều cao (cm)" onblur="if (this.value == '') this.value = this.defaultValue;" onfocus="if (this.value == this.defaultValue) this.value = '';" /></div>
+                    <div class="block_2_2 right"><input id="bmi_weight" name="bmi_weight" type="text" class="txt_input" value="Cân nặng (kg)" onblur="if (this.value == '') this.value = this.defaultValue;" onfocus="if (this.value == this.defaultValue) this.value = '';" /></div>
+                </div>
+                <input type="hidden" id="txt_link" name="txt_link" value="/gui-chia-se/suckhoe">
+                <div class="ketqua">
+                    <button class="btn_xemketqua" onclick="javascript:ga('t0.send', 'event', 'Box_DCS_BMI', 'Clk_Btn_KetQua', 'SK'); SK_VNE.showBmiResult(this,'bmi');">Xem kết quả</button>
+                    <div class="txt_nhanxet txt_error"></div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div><div class="box_category width_common box_style_quangcao">
+    <div class="title_box_category width_common">
+        <h2 class="txt_main_category"><a>Đo chỉ số Calo</a></h2>
+        <a class="txt_timhieu" href="javascript:;" data-type="calo" onclick="SK_VNE.showLightboxBmiCalo(this);">Tìm hiểu</a>
+    </div>
+    <div class="content_box_category width_common">
+        <div class="chiso_sk">
+            <div class="form_lienhe">
+                <div class="item_input_lienhe width_common">
+                    <div class="block_2_2 left"><input id="calo_height" name="calo_height" type="text" class="txt_input" value="Chiều cao (cm)" onblur="if (this.value == '') this.value = this.defaultValue;" onfocus="if (this.value == this.defaultValue) this.value = '';" /></div>
+                    <div class="block_2_2 right"><input id="calo_weight" name="calo_weight" type="text" class="txt_input" value="Cân nặng (kg)" onblur="if (this.value == '') this.value = this.defaultValue;" onfocus="if (this.value == this.defaultValue) this.value = '';" /></div>
+                </div>
+                <div class="item_input_lienhe width_common">
+                    <div class="block_2_2 left"><input id="calo_age" name="calo_age" type="text" class="txt_input" value="Năm sinh" onblur="if (this.value == '') this.value = this.defaultValue;" onfocus="if (this.value == this.defaultValue) this.value = '';" /></div>
+                    <div class="block_2_2 right">
+                        <select id="calo_sex" name="calo_sex">
+                            <option value="">Giới tính</option>
+                            <option value="1">Nam</option>
+                            <option value="0">Nữ</option>
+                        </select>
+                    </div>
+                </div>
+                                <div class="item_input_lienhe width_common">
+                    <div class="block_2_2 left">
+                        <select id="calo_loa" name="calo_loa">
+                            <option value="0">Hoạt động</option>
+                                                        <option value="1.2" data-note="Học, nghỉ ngơi, ngồi, đi lại không thường xuyên">Thụ động</option>
+                                                        <option value="1.375" data-note="Đứng thường xuyên, di chuyển vừa phải trong ngày, dạy học, đánh máy">Nhẹ: 1-3 lần/1 tuần</option>
+                                                        <option value="1.55" data-note="Đi bộ nhanh, chạy bộ chậm, thể dục nhịp điệu, yoga, làm vườn, đạp xe, tập tạ… từ 1 đến 2 tiếng mỗi ngày">Trung bình: 3-5 lần/1 tuần</option>
+                                                        <option value="1.1725" data-note="Tập luyện cường độ cao như chạy bộ nhanh, leo núi, đá bóng, bơi lội… hằng ngày">Năng động: 6-7 lần/1 tuần</option>
+                                                        <option value="1.9" data-note="Tập luyện cường độ rất cao, gắng sức từ 2-4 tiếng/ ngày hoặc tập luyện liên tục 8 tiếng/ ngày">Rất tích cực: Trên 7 lần/1 tuần</option>
+                                                    </select>
+                    </div>
+                    <div class="block_2_2 right">
+                        <select id="calo_exer" name="calo_exer">
+                            <option value="0">Tập luyện</option>
+                                                        <option value="400" data-note="cử tạ, tennis, thể hình, bóng đá....">Nặng</option>
+                                                        <option value="300" data-note="chạy bộ, bơi lội, cầu lông, bóng chuyền...">Trung bình</option>
+                                                        <option value="200" data-note="đi bộ, dưỡng sinh, thái cực quyền...">Nhẹ</option>
+                                                    </select>
+                    </div>
+                </div>                
+                <div class="ketqua">
+                    <button class="btn_xemketqua" onclick="javascript:ga('t0.send', 'event', 'Box_DCS_Calo', 'Clk_Btn_KetQua', 'SK'); SK_VNE.showCaloResult(this,'calo');">Xem kết quả</button>
+                    <div class="txt_nhanxet txt_error"></div>
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>    <div class="box_category width_common box_style_quangcao">
+        <div class="title_box_category width_common">
+            <h2 class="txt_main_category">
+                <a href="/tin-tuc/trac-nghiem" title="Trắc nghiệm">Trắc nghiệm</a>
+            </h2>
+            <a class="block_arrow_title" href="/tin-tuc/trac-nghiem" title="Trắc nghiệm"><i class="ic ic-caret-right"></i></a>
+        </div>
+        <div class="content_box_category width_common">
+            <ul class="list_new_300 list_col">
+                                    <li class="end">
+                                                    <div class="thumb_140 width_common">
+                                <a href="http://suckhoe.vnexpress.net/tin-tuc/trac-nghiem/trac-nghiem-ban-co-bi-tram-cam-3441484.html" title="Trắc nghiệm bạn có bị trầm cảm">
+                                    <img src="https://i-suckhoe.vnecdn.net/2016/07/24/tram-cam-5218-1469367105_180x108.jpg" alt="Trắc nghiệm bạn có bị trầm cảm"/>
+                                                                    </a>
+                            </div>
+                                                <h2>
+                            <a href="http://suckhoe.vnexpress.net/tin-tuc/trac-nghiem/trac-nghiem-ban-co-bi-tram-cam-3441484.html" title="Trắc nghiệm bạn có bị trầm cảm">Trắc nghiệm bạn có bị trầm cảm</a>
+                            <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/trac-nghiem/trac-nghiem-ban-co-bi-tram-cam-3441484.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3441484"></span></a>                        </h2>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+    <div class="box_category width_common">
+        <div class="title_box_category width_common">
+            <h2 class="txt_main_category">
+                <a href="/tin-tuc/cac-benh" title="Các bệnh">Các bệnh</a>
+            </h2>
+            <a class="block_arrow_title" href="/tin-tuc/cac-benh" title="Các bệnh"><i class="ic ic-caret-right"></i></a>
+        </div>
+        <div class="content_box_category width_common">
+            <ul class="list_new_300 box_num_03">
+                                    <li >
+                        <div class="block_image_news width_common">
+                                                            <div class="thumb">
+                                    <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/vi-sao-khong-nen-tu-chua-ung-thu-theo-cach-dan-gian-3627993.html" title="Vì sao không nên tự chữa ung thư theo cách dân gian?">
+                                        <img src="https://i-suckhoe.vnecdn.net/2017/08/16/extra-large-1502709069-cover-i-1647-2994-1502850504_180x108.jpg" alt="Vì sao không nên tự chữa ung thư theo cách dân gian?"/>
+                                                                            </a>
+                                </div>
+                                                        <h2 class="title_news">
+                                <a class="txt_link" href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/vi-sao-khong-nen-tu-chua-ung-thu-theo-cach-dan-gian-3627993.html" title="Vì sao không nên tự chữa ung thư theo cách dân gian?">Vì sao không nên tự chữa ung thư theo cách dân gian?</a>
+                                <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/vi-sao-khong-nen-tu-chua-ung-thu-theo-cach-dan-gian-3627993.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3627993"></span></a>                            </h2>
+                                                            <div class="news_lead" data-mobile-href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/ung-thu/vi-sao-khong-nen-tu-chua-ung-thu-theo-cach-dan-gian-3627993.html">Các phương thuốc dân gian chưa được khoa học chứng minh khiến nguy cơ tử vong của bệnh nhân ung thư tăng từ 2-5 lần.</div>
+                                                        </div>
+                    </li>
+                                    <li >
+                        <div class="block_image_news width_common">
+                                                            <div class="thumb">
+                                    <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/50-phu-nu-tren-40-tuoi-bi-roi-loan-san-chau-3627852.html" title="50% phụ nữ trên 40 tuổi bị rối loạn sàn chậu">
+                                        <img src="https://i-suckhoe.vnecdn.net/2017/08/15/roi-loan-chuc-nang-san-chau-1721-1502795734_180x108.jpg" alt="50% phụ nữ trên 40 tuổi bị rối loạn sàn chậu"/>
+                                                                            </a>
+                                </div>
+                                                        <h2 class="title_news">
+                                <a class="txt_link" href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/50-phu-nu-tren-40-tuoi-bi-roi-loan-san-chau-3627852.html" title="50% phụ nữ trên 40 tuổi bị rối loạn sàn chậu">50% phụ nữ trên 40 tuổi bị rối loạn sàn chậu</a>
+                                <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/50-phu-nu-tren-40-tuoi-bi-roi-loan-san-chau-3627852.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3627852"></span></a>                            </h2>
+                                                            <div class="news_lead" data-mobile-href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/50-phu-nu-tren-40-tuoi-bi-roi-loan-san-chau-3627852.html">Cứ 3 người từng mang thai sinh đẻ thì có một người bị són tiểu, khoảng 40% phụ nữ trên 50 tuổi sa sinh dục.</div>
+                                                        </div>
+                    </li>
+                                    <li class="end">
+                        <div class="block_image_news width_common">
+                                                            <div class="thumb">
+                                    <a href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/bay-benh-ca-nha-de-mac-do-virus-vi-khuan-3627329.html" title="Bảy bệnh cả nhà dễ mắc do virus, vi khuẩn">
+                                        <img src="https://i-suckhoe.vnecdn.net/2017/08/15/1-12-9638-1502781536_180x108.jpg" alt="Bảy bệnh cả nhà dễ mắc do virus, vi khuẩn"/>
+                                                                            </a>
+                                </div>
+                                                        <h2 class="title_news">
+                                <a class="txt_link" href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/bay-benh-ca-nha-de-mac-do-virus-vi-khuan-3627329.html" title="Bảy bệnh cả nhà dễ mắc do virus, vi khuẩn">Bảy bệnh cả nhà dễ mắc do virus, vi khuẩn</a>
+                                                            </h2>
+                                                            <div class="news_lead" data-mobile-href="http://suckhoe.vnexpress.net/tin-tuc/cac-benh/bay-benh-ca-nha-de-mac-do-virus-vi-khuan-3627329.html">Mụn trứng cá, viêm đường hô hấp, cảm cúm... là những bệnh ai cũng từng gặp trong đời.</div>
+                                                        </div>
+                    </li>
+                            </ul>
+        </div>
+    </div>
+    <div id="photo" class="box_category width_common">
+        <div class="title_box_category width_common">
+            <h2 class="txt_main_category"><a href="/tin-tuc/khoe-dep" title="Khỏe đẹp">Khỏe đẹp</a></h2>
+            <a class="block_arrow_title" href="/tin-tuc/khoe-dep" title="Khỏe đẹp"><i class="ic ic-caret-right"></i></a>
+        </div>
+        <div class="content_box_category width_common">
+                    <ul class="list_new_140 list_col ">
+                            <li>
+                                        <div class="thumb_140 width_common">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chua-hep-bao-quy-dau-chang-trai-bi-bac-si-cat-luon-nieu-dao-3628004.html" title="Chữa hẹp bao quy đầu, chàng trai bị bác sĩ cắt luôn niệu đạo">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/08/16/namkhoa-1502852855_180x108.jpg" alt="Chữa hẹp bao quy đầu, chàng trai bị bác sĩ cắt luôn niệu đạo" />
+                                                    </a>
+                    </div>
+                                        <h2>
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chua-hep-bao-quy-dau-chang-trai-bi-bac-si-cat-luon-nieu-dao-3628004.html" title="Chữa hẹp bao quy đầu, chàng trai bị bác sĩ cắt luôn niệu đạo">Chữa hẹp bao quy đầu, chàng trai bị bác sĩ cắt luôn niệu đạo</a>
+                        <a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chua-hep-bao-quy-dau-chang-trai-bi-bac-si-cat-luon-nieu-dao-3628004.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3628004"></span></a>                    </h2>
+                                    </li> 
+                            <li>
+                                        <div class="thumb_140 width_common">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chang-ty-hon-nang-ta-nang-hon-100-kg-3627989.html" title="Chàng tý hon nâng tạ nặng hơn 100 kg">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/08/16/gym-2220-1502850069_180x108.jpg" alt="Chàng tý hon nâng tạ nặng hơn 100 kg" />
+                                                    </a>
+                    </div>
+                                        <h2>
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chang-ty-hon-nang-ta-nang-hon-100-kg-3627989.html" title="Chàng tý hon nâng tạ nặng hơn 100 kg">Chàng tý hon nâng tạ nặng hơn 100 kg</a>
+                        <i class="ic ic-video"></i>&nbsp;<a class="icon_commend" href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/dan-ong/chang-ty-hon-nang-ta-nang-hon-100-kg-3627989.html#box_comment" style="white-space: nowrap; display: none;"><span class="txt_num_comment font_icon" data-type="comment" data-objecttype="1" data-objectid="3627989"></span></a>                    </h2>
+                                    </li> 
+                        
+        </ul>
+                    <ul class="list_new_140 list_col end">
+                            <li>
+                                        <div class="thumb_140 width_common">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/su-khac-nhau-giua-tham-my-cho-canh-may-rau-va-phai-nu-3627495.html" title="Sự khác nhau giữa thẩm mỹ cho cánh mày râu và phái nữ">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/08/15/Image-112830756-ExtractWord-0-9946-8849-1502787140_180x108.jpeg" alt="Sự khác nhau giữa thẩm mỹ cho cánh mày râu và phái nữ" />
+                                                    </a>
+                    </div>
+                                        <h2>
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/su-khac-nhau-giua-tham-my-cho-canh-may-rau-va-phai-nu-3627495.html" title="Sự khác nhau giữa thẩm mỹ cho cánh mày râu và phái nữ">Sự khác nhau giữa thẩm mỹ cho cánh mày râu và phái nữ</a>
+                                            </h2>
+                                    </li> 
+                            <li>
+                                        <div class="thumb_140 width_common">
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/sau-vung-khuyet-lom-can-lam-day-tren-guong-mat-3627130.html" title="Sáu vùng khuyết lõm cần làm đầy trên gương mặt">
+                            <img src="https://i-suckhoe.vnecdn.net/2017/08/14/14820174692315026964791502700578-1502700749_180x108.png" alt="Sáu vùng khuyết lõm cần làm đầy trên gương mặt" />
+                                                    </a>
+                    </div>
+                                        <h2>
+                        <a href="http://suckhoe.vnexpress.net/tin-tuc/khoe-dep/sau-vung-khuyet-lom-can-lam-day-tren-guong-mat-3627130.html" title="Sáu vùng khuyết lõm cần làm đầy trên gương mặt">Sáu vùng khuyết lõm cần làm đầy trên gương mặt</a>
+                                            </h2>
+                                    </li> 
+                        
+        </ul>
+                
+    </div>
+</div>
+<div class="box_category width_common hidden320">
+    <div class="banner_300x250">
+        <script type="text/javascript">try {Poly_Large(3);}catch(ex){};</script>    </div>
+</div><div class="box_category width_common hidden320">
+    <div class="banner_300x250">
+        <script type="text/javascript">try {Poly_Large(4);}catch(ex){};</script>    </div>
+</div>    </div>
+</div>    <div class="banner_980x60">
+        <div class="box_category width_common hidden320">
+            <div id="FOOTER_BANNER"></div>        </div>
+    </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+            <div id="wrapper_footer">
+                <div class="go_head">
+                    <a href="http://vnexpress.net" class="left link_home">Trang chủ</a>
+                    <div class="right link_right_gohead">
+                        <a href="//timkiem.vnexpress.net" class="search_bot"><i class="ic ic-search"></i>&nbsp;Tìm kiếm</a>
+                        <a href="https://www.facebook.com/congdongvnexpress/" target="_blank" rel="nofollow" class="link_fot_facebook"><i class="ic ic-facebook"></i></a>
+                        <a href="https://twitter.com/VnEnews" target="_blank" rel="nofollow" class="link_center link_fot_twitter"><i class="ic ic-twitter"></i></a>
+                    </div>
+                    <div class="clear">&nbsp;</div>
+                </div>
+                <div id="footer">
+                    <div class="footerMenu">
+                        <div class="lineFmenu">
+                            <ul class="ulBlockMenu ulMainMenu">
+                                <li class="liFirst">
+                                    <h2> <a href="http://video.vnexpress.net" class="mnu_video">Video</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/thoi-su" class="mnu_thoisu">Thời sự</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/goc-nhin">Góc nhìn</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/the-gioi" class="mnu_thegioi">Thế giới</a> </h2>
+                                </li>
+                            </ul>
+                            <ul class="ulBlockMenu">
+                                <li class="liFirst business">
+                                    <h2> <a href="http://kinhdoanh.vnexpress.net" class="mnu_kinhdoanh">Kinh doanh</a> </h2>
+                                </li>
+                                <li class="liFirst entertainment">
+                                    <h2> <a href="http://giaitri.vnexpress.net" class="mnu_giaitri">Giải trí</a> </h2>
+                                </li>
+                                <li class="liFirst sporting">
+                                    <h2> <a href="http://thethao.vnexpress.net" class="mnu_thethao">Thể thao</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/phap-luat" class="mnu_phapluat">Pháp luật</a> </h2>
+                                </li>
+                            </ul>
+                            <ul class="ulBlockMenu">
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/giao-duc" class="mnu_giaoduc">Giáo dục</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="/" class="mnu_suckhoe">Sức khỏe</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://giadinh.vnexpress.net" class="mnu_doisong">Gia đình</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://dulich.vnexpress.net" class="mnu_dulich">Du lịch</a> </h2>
+                                </li>
+                            </ul>
+                            <ul class="ulBlockMenu">
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/khoa-hoc" class="mnu_khoahoc">Khoa học</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://sohoa.vnexpress.net" class="mnu_sohoa">Số hóa</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/oto-xe-may" class="mnu_xe">Xe</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/cong-dong" class="mnu_congdong">Cộng đồng</a> </h2>
+                                </li>
+                            </ul>
+                            <ul class="ulBlockMenu">
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/tam-su" class="mnu_tamsu">Tâm sự</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/cuoi" class="mnu_cuoi">Cười</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/tin-tuc/anh" class="mnu_anh">Ảnh</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="http://vnexpress.net/infographics" class="mnu_infographic">Infographics</a> </h2>
+                                </li>
+                            </ul>
+                            <ul class="ulBlockMenu">
+                                <li class="liFirst">
+                                    <h2> <a href="//raovat.vnexpress.net/?utm_campaign=VNEXPRESS&utm_source=footer&utm_medium=menu" class="mnu_shop">Rao vặt</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="https://shop.vnexpress.net/?utm_campaign=VNEXPRESS&utm_source=footer&utm_medium=menu" class="mnu_shop">Shop VnExpress</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="https://pay.vnexpress.net/?utm_campaign=VNEXPRESS&utm_source=footer&utm_medium=menu" class="mnu_pay">Pay VnExpress</a> </h2>
+                                </li>
+                                <li class="liFirst">
+                                    <h2> <a href="https://my.vnexpress.net/qua-tang/?utm_campaign=VNEXPRESS&utm_source=footer&utm_medium=menu" class="mnu_quatang">Quà tặng</a> </h2>
+                                </li>
+                            </ul>
+                            <ul class="vne_app_home">
+                                <li class="liFirst">
+                                    <span class="mnu_vne_app"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/logo_vne.png" alt="vnexpress logo">&nbsp;Tải VnExpress App</span>
+                                </li>
+                                <li>
+                                    <div class="left link_down_app">
+                                        <a href="https://click.google-analytics.com/redirect?tid=UA-41193011-3&url=https%3A%2F%2Fitunes.apple.com%2Fvn%2Fapp%2Fvnexpress-net%2Fid488630446%3Fl%3Dvi%26mt%3D8&aid=net.vnexpress.iphone&idfa={idfa}&cs=google&cm=cpc&anid=admob&hash=md5" target="_blank" rel="nofollow" class="ios_store"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/apple_app.png" alt="vnexpress"></a>
+                                        <a href="https://play.google.com/store/apps/details?id=fr.playsoft.vnexpress&referrer=utm_source%3Dgoogle%26utm_medium%3Dbanner%26anid%3Dadmob" target="_blank" rel="nofollow" class="ch_store"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/android_app.png" alt="vnexpress"></a>
+                                    </div>
+                                    <div class="right qr_code"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/qr.png" alt="vnexpress"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="list_menu_small">
+                        <li><a href="http://vnexpress.net/tin-tuc/thoi-su">Thời sự</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/goc-nhin">Góc nhìn</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/the-gioi">Thế giới</a></li>
+                        <li><a href="http://kinhdoanh.vnexpress.net">Kinh doanh</a></li>
+                        <li><a href="http://giaitri.vnexpress.net">Giải trí</a></li>
+                        <li><a href="http://thethao.vnexpress.net">Thể thao</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/phap-luat">Pháp luật</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/giao-duc">Giáo dục</a></li>
+                        <li><a href="/">Sức khỏe</a></li>
+                        <li><a href="http://giadinh.vnexpress.net">Gia đình</a></li>
+                        <li><a href="http://dulich.vnexpress.net">Du lịch</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/khoa-hoc">Khoa học</a></li>
+                        <li><a href="http://sohoa.vnexpress.net">Số hóa</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/oto-xe-may">Xe</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/cong-dong">Cộng đồng</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/tam-su">Tâm sự</a></li>
+                        <li><a href="http://video.vnexpress.net">Video</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/anh">Ảnh</a></li>
+                        <li><a href="http://vnexpress.net/infographics">Infographics</a></li>
+                        <li><a href="http://vnexpress.net/tin-tuc/cuoi">Cười</a></li>
+                        <li><a href="//raovat.vnexpress.net/?utm_campaign=VNEXPRESS&utm_source=footer&utm_medium=menu">Rao vặt</a></li>
+                        <li><a href="https://shop.vnexpress.net/?utm_campaign=VNEXPRESS&utm_source=footer&utm_medium=menu">Shop VnExpress</a></li>
+                        <li><a href="https://pay.vnexpress.net/?utm_campaign=VNEXPRESS&utm_source=footer&utm_medium=menu">Pay VnExpress</a></li>
+                        <li><a href="https://my.vnexpress.net/qua-tang/?utm_campaign=VNEXPRESS&utm_source=footer&utm_medium=menu">Quà tặng</a></li>
+                    </ul>
+                    <div class="ft-bot">
+                        <div class="ft-botl"><a href="http://vnexpress.net"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/img_logo_vne.jpg" style="width: 170px;" alt="vnexpress logo"></a></div>
+                        <div class="ft-botm">
+                            <p>&copy; <span>Copyright 1997 VnExpress.net,</span> All rights reserved</p>
+                            <p>&reg; VnExpress giữ bản quyền nội dung trên website này.</p>
+                        </div>
+                        <div class="ft-botr">
+                            <p><a href="http://vnexpress.net/tuyen-dung.html">VnExpress tuyển dụng</a> <a href="http://vnexpress.net/lien-he-quang-cao/">Liên hệ quảng cáo</a> / <a href="http://vnexpress.net/lien-he-toa-soan/?p=suckhoe">Tòa soạn</a></p>
+                            <p><a href="http://vnexpress.net/contact.htm" target="_blank" style="color: #686E7A;font: 11px arial;padding: 0 4px;text-decoration: none;">Thông tin Tòa soạn.</a><span style="padding:0 5px;"><img src="https://s.vnecdn.net/vnexpress/i/v46/icons/hotline.gif" alt="vnexpress">:</span> <span>0123.888.0123</span> (HN) - <span>0129.233.3555</span> (TP HCM)</p>
+                        </div>
+                        <div class="coppy_right_small">
+                            <div class="tttoasoan">
+                                <div class="txt_up width_common">
+                                    <div class="width_50"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/img_blank.gif" class="icon_total_vne icon_hotline" alt="vnexpress"> Liên hệ tòa soạn</div>
+                                    <div class="width_50"><img src="https://s.vnecdn.net/vnexpress/i/v46/graphics/img_blank.gif" class="icon_total_vne icon_thongtintx" alt="vnexpress"> Thông tin tòa soạn</div>
+                                </div>
+                                <div class="txt_down width_common">
+                                    <div class="width_50"><b>0123.888.0123</b> (HN) </div>
+                                    <div class="width_50"><b>0129.233.3555</b> (TP HCM)</div>
+                                </div>
+                            </div>
+                            <div class="coppy_right">
+                                <p>&copy; <span>Copyright 1997 VnExpress.net,</span> All rights reserved</p>
+                                <p>&reg; VnExpress giữ bản quyền nội dung trên website này.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear">&nbsp;</div>
+                </div>
+            </div>
+
+            <div class="block_close_menu">&nbsp;</div>
+        </div>
+        <a href="javascript:;" id="to_top"><i class="ic ic-arrow-up"></i></a>
+                <script type="text/javascript" src="https://s.vnecdn.net/vnexpress/j/v11/utils/utils.js"></script>
+        <script language="javascript" type="text/javascript" src="https://s.vnecdn.net/vnexpress/j/v11/interactions/parser_v3.js"></script>
+                <script src="https://s.vnecdn.net/myvne/j/v5/lib/jquery.fancybox.pack.js"></script>
+        <script src="https://s.vnecdn.net/suckhoe/j/v23/sk.utility.js" type="text/javascript"></script>
+        <script src="https://s.vnecdn.net/vnexpress/j/v11/interactions/cmt.widget.js" type="text/javascript" async></script>
+        <script src="https://s.vnecdn.net/myvne/j/v5/myvne_users.js"></script>
+        <script src="https://s.vnecdn.net/myvne/j/v5/plugins/vne.js"></script>
+        <script type="text/javascript" src="https://s.vnecdn.net/vnexpress/j/v11/utils/calendar/calendar.js"></script>        <script type="text/javascript">
+            $(function(){
+                //Show parser
+                Parser.SITE_URL     = "http://vnexpress.net";
+                Parser.URL          = "https://s.vnecdn.net/vnexpress/j/v11";
+                Parser.SITE_ID      = 1003750;
+                Parser.AUTO_PLAY    = 1;
+                Parser.parseAll();
+
+                                //Show clock on breakcumb
+                SK_VNE.clockBC();
+                            });
+        </script>
+                    <script src="http://st.core.polyad.net/Ad.js" type="text/javascript"></script>
+                            <script src="http://st.polyad.net/Vals/64/0/1003792/Val.js" type="text/javascript"></script>
+                            <script type="text/javascript">
+                    try{Poly_showads();}catch(e){}
+                </script>
+                <div class="clear">&nbsp;</div>
+        <div id="show_popup_idm"></div>
+            </body>
+</html>

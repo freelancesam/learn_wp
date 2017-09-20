@@ -1,0 +1,523 @@
+/*
+* Redux custom css
+*/
+
+.redux-container {
+    background: #26282A;
+}
+
+.admin-color-fresh #redux-header {
+    background: #26282A;
+    padding: 15px;
+}
+
+.redux-sidebar {
+    background: #26282A;
+    height: 100%;
+}
+
+.redux-sidebar .redux-group-menu {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+}
+
+.redux-sidebar .redux-group-menu li a {
+    border: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 100%;
+    color: #8C919A;
+    display: inline-block;
+    line-height: 40px;
+    padding: 5px 0 5px 15px;
+}
+
+.redux-sidebar .redux-group-menu li:hover {
+    background: #222;
+    color: #fff;
+}
+
+.redux-container #info_bar {
+    background: #fff;
+    color: #333;
+    padding: 10px 10px;
+    border-bottom: 1px solid #E2E2E2;
+    box-shadow: none;
+}
+
+.redux-container #redux-intro-text {
+    border: 0;
+}
+
+.redux-container #redux-header {
+    border-bottom: 0;
+}
+
+.redux-container #redux-header .display_header h2 {
+    font-weight: bold;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.redux-container #redux-header .display_header h2:first-letter {
+    color: #EC4C51;
+}
+
+.redux-container #redux-header .display_header span {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.redux-main {
+    padding-left: 45px;
+    background: #fff;
+    border-left: 0;
+}
+
+.redux-main .redux-option-image {
+    border: 3px solid #3bc3d5;
+    padding: 0;
+    margin: 5px 15px 10px 0;
+    border-radius: 0;
+}
+
+.redux-container #redux-footer {
+    border-top: 1px solid #E2E2E2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #fff !important;
+}
+
+.redux-main input[type=checkbox], .redux-main input[type=color], .redux-main input[type=date], .redux-main input[type=datetime-local], .redux-main input[type=datetime], .redux-main input[type=email], .redux-main input[type=month], .redux-main input[type=number], .redux-main input[type=password], .redux-main input[type=radio], .redux-main input[type=search], .redux-main input[type=text], .redux-main select, .redux-main textarea {
+    outline: none;
+    box-shadow: none;
+    border-color: #999;
+}
+
+.redux-main .redux-field-container {
+    padding: 30px 0;
+}
+
+.redux-main input[type=text] {
+    padding: 7px 5px;
+    border-radius: 1px;
+    margin-bottom: 10px;
+}
+
+.redux-main input[type=checkbox]:checked:before {
+    color: #4AED77;
+}
+
+.redux-main textarea:focus, .redux-main textarea:hover {
+    border-color: #999;
+}
+
+.redux-main a {
+    color: #CD2D08;
+}
+
+.redux-sidebar .redux-group-tab-link-a i {
+    line-height: 40px;
+    font-size: 18px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.redux-main .button.remove-image:hover , .redux-main .removeCSS:hover {
+    background: #e74c3c;
+}
+
+@media screen and (max-width: 1124px) {
+    .redux-sidebar .redux-group-tab-link-a span.group_title {
+        padding: 0 10px;
+        line-height: 38px;
+    }
+
+    .redux-sidebar .redux-group-menu {
+        padding-left: 0;
+    }
+}
+
+.redux-container .redux-group-tab h3 {
+    font-size: 24px;
+    display: inline-block;
+    line-height: 28px;
+    border-bottom: 2px solid #E2E2E2;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.redux-container .redux-group-tab .redux-section-desc, .redux-main .description {
+    font-style: italic !important;
+}
+
+.select2-container .select2-choice {
+    border: 1px solid #ddd;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 0;
+    background: #fff;
+    padding: 0 0 0 16px;
+    outline: none;
+}
+
+.select2-container .select2-choice abbr {
+    right: 36px;
+    top: 10px;
+}
+
+.select2-container .select2-choice > .select2-chosen {
+    margin-right: 36px !important;
+}
+
+.select2-drop {
+    border-radius: 0 0 0 0;
+}
+
+.admin-color-fresh .select2-drop-active, .admin-color-fresh .select2-container-multi.select2-container-active .select2-choices, .admin-color-fresh .select2-drop.select2-drop-above.select2-drop-active, .admin-color-fresh .select2-container-active .select2-choice, .admin-color-fresh .select2-container-active .select2-choices, .admin-color-fresh .select2-dropdown-open.select2-drop-above .select2-choice, .admin-color-fresh .select2-dropdown-open.select2-drop-above .select2-choices {
+    border-color: #999;
+}
+
+.select2-search input {
+    margin-top: 5px;
+    border-radius: 0;
+    padding-left: 13px;
+}
+
+.select2-search input:hover, .select2-search input:focus {
+    border-color: #999;
+    box-shadow: none;
+}
+
+.select2-container .select2-choice .select2-arrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 0;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    background: #2C3E50;
+    border: 0 none;
+}
+
+.select2-container .select2-choice .select2-arrow b {
+    background: none;
+}
+
+.select2-container .select2-choice .select2-arrow b:before {
+    content: "\e6fe";
+    font-family: 'Elusive-Icons';
+    color: #fff;
+    line-height: 30px;
+    width: 30px;
+    display: block;
+    font-size: 0.6em;
+    position: relative;
+    text-align: center;
+}
+
+.select2-dropdown-open .select2-choice .select2-arrow b:before {
+    content: "\e6fb";
+    line-height: 26px;
+}
+
+.admin-color-fresh .select2-drop-active {
+    border: 1px solid #999;
+    margin-top: 3px;
+    border-radius: 0;
+}
+
+.select2-results .select2-highlighted {
+    background: #2c3e50;
+}
+
+.admin-color-fresh .select2-results .select2-highlighted {
+    background: #2c3e50;
+    border-radius: 0;
+    line-height: 30px;
+}
+
+.select2-drop {
+    box-shadow: none;
+    line-height: 30px;
+}
+
+.switch-options .cb-enable {
+    line-height: 26px;
+    border-radius: 0;
+    background: #fff;
+    box-shadow: none;
+    border: 1px solid #999;
+    margin-top: 0 ! important;
+    margin-bottom: 0 !important;
+}
+
+.switch-options .cb-disable {
+    line-height: 26px;
+    border-radius: 0;
+    padding: 0 7px;
+    background: #fff;
+    box-shadow: none;
+    border: 1px solid #999;
+    margin-top: 0 ! important;
+    margin-bottom: 0 !important;
+}
+
+.redux_field_th {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.redux-main span.description {
+    margin-top: 10px;
+    margin-right: 30px;
+    color: #999;
+    line-height: 1.5em;
+    text-transform: none;
+    font-weight: normal;
+}
+
+.redux-container .expand_options {
+    border: 1px solid #e2e2e2;
+    border-radius: 0;
+    transition: all .2s;
+}
+
+.redux-container-switch .cb-enable span, .redux-container-switch .cb-disable span {
+    text-transform: uppercase;
+    font-size: 11px;
+    padding: 0 5px;
+    font-weight: bold;
+    line-height: 26px;
+}
+
+.admin-color-fresh .redux-container-switch .cb-enable.selected {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background: #2980b9 !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+}
+
+.admin-color-fresh .redux-container-switch .cb-disable, .admin-color-fresh .redux-container-switch .cb-enable, .admin-color-fresh .redux-container .ui-state-default, .admin-color-fresh .redux-container .ui-widget-content .ui-state-default, .admin-color-fresh .redux-container .ui-widget-header .ui-state-default {
+    background: #fff;
+    border-color: #E2E2E2 !important;
+}
+
+.admin-color-fresh .redux-container-switch .cb-disable.selected {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background: #2c3e50 !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+}
+
+#redux_save {
+    border: none !important;
+    background: #2980b9;
+    box-shadow: none !important;
+    color: #fff;
+}
+
+#redux_save:hover, #redux_save:focus {
+    background: #21638E;
+}
+
+.redux-action_bar input[type=submit] {
+    border: none !important;
+    box-shadow: none !important;
+    margin-right: 5px;
+    background: #2c3e50;
+    transition: all .3s;
+    color: #fff;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.redux-action_bar input[type='submit']:hover, .redux-action_bar input[type='submit']:focus {
+    color: #fff;
+    background: #e74c3c;
+}
+
+#redux-import-action {
+    margin-top: 15px !important;
+}
+
+.redux-container-multi_text > a, #redux-import-action input[type=submit], #redux-export-code-dl {
+    border: none !important;
+    background: #2c3e50 !important;
+    box-shadow: none !important;
+    color: #fff;
+    border-radius: 0;
+}
+
+.redux-container-multi_text > a:hover, .redux-container-multi_text > a:focus, #redux-import-action input[type=submit]:hover, #redux-import-action input[type=submit]:focus, #redux-export-code-dl:hover, #redux-export-code-dl:focus {
+    background: #31a6b5 !important;
+}
+
+#import_export_default_section_group a {
+    border: none !important;
+    box-shadow: none !important;
+    background: #999;
+    border-radius: 0;
+    margin-right: 7px;
+    color: #fff;
+}
+
+#import_export_default_section_group a:hover, #import_export_default_section_group a:focus {
+    color: #fff;
+    background: #4d4c4c;
+}
+
+.redux-sidebar .redux-menu-error {
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+.redux-container-multi_text .redux-multi-text-remove {
+    border-radius: 2px;
+    font-size: 0.9em;
+    color: #D71B38;
+}
+
+.redux-container-multi_text .redux-multi-text-remove:hover {
+    background: #ff1b45;
+}
+
+#tn_options-tn_sidebar_multi input[type=text] {
+    padding: 7px 5px;
+    border: 1px solid transparent;
+    margin-bottom: 10px;
+    background: #ddd;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+
+#tn_options-tn_sidebar_multi input[type=text]:focus, #tn_options-multi_sidebars input[type=text]:focus {
+    padding: 7px 5px;
+    border-color: #ddd;
+    margin-bottom: 10px;
+    background: #fff;
+}
+
+.admin-color-fresh .redux-container-image_select .redux-image-select-selected img {
+    border-color: #2c3e50;
+}
+
+.form-table-section {
+    margin-left: 30px;
+}
+
+@media (max-width: 768px) {
+    .form-table-section {
+        margin-left: 0;
+    }
+}
+
+.redux-main .input-append .add-on, .redux-main .input-prepend .add-on {
+    background: #2c3e50;
+    color: #fff;
+    font-size: 12px;
+    border: 0 none;
+    border-radius: 0;
+    padding: 0 5px;
+    line-height: 22px;
+}
+
+.redux-main .redux-typography-container .input_wrapper input.mini {
+    border: 1px solid #ddd;
+    border-radius: 0;
+}
+
+.redux-main .button {
+    margin-top: 2px;
+    font-weight: bold;
+    border: none;
+    color: #fff !important;
+    transition: all .3s;
+    background: #2C3E50;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.redux-main .button:hover, .redux-main .button:focus {
+    background: #2980b9;
+}
+
+.redux-main .input-append {
+    margin-right: 0;
+}
+
+.redux-sidebar .redux-group-menu li {
+    border-bottom: 1px dashed #2f3133;
+    display: block;
+    width: 100%;
+    transition: all .3s;
+    overflow: hidden;
+}
+
+.redux-main .form-table tr {
+    border-bottom: 1px dashed #E2E2E2;
+}
+
+.redux-sidebar .redux-group-menu li a {
+    transition: all .2s;
+}
+
+.redux-sidebar .redux-group-menu li a:hover {
+    background: #26282A;
+    color: #fff;
+}
+
+.redux-sidebar .redux-group-menu li:last-child {
+    border-bottom: 0;
+}
+
+.redux-sidebar .redux-group-menu li a.custom-tab {
+    background: transparent;
+    color: #fff;
+}
+
+.redux-sidebar .redux-group-menu li.active a.custom-tab {
+    background: #fff;
+}
+
+.redux-main .wp-picker-container .wp-color-result {
+    border-radius: 0;
+    box-shadow: none;
+    border: 0;
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-bottom: 2px;
+}
+
+.redux-main .wp-color-result:after {
+    box-shadow: none;
+    border-radius: 0;
+    border: 0;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.wp-picker-container input[type=text].wp-color-picker {
+    padding: 3px 0;
+    margin-left: 15px;
+    border-color: #999;
+}
+
+.redux-main .iris-picker .iris-square, .redux-main .iris-picker .iris-slider, .redux-main .iris-picker .iris-square-inner, .redux-main .iris-picker .iris-palette {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+#tn_options-tn_raw_info {
+    max-width: 550px;
+}
+
