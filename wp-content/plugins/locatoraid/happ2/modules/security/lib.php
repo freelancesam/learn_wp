@@ -25,7 +25,7 @@
  * @link		http://codeigniter.com/user_guide/libraries/security.html
  */
 
-class Security_Lib_HC_MVC extends _HC_MVC {
+class Security_Lib_HC_MVC {
 	protected $_enable_xss = FALSE;
 	protected $_enable_csrf = TRUE;
 

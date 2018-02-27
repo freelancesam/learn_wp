@@ -14,5 +14,6 @@ $config['modules'] = array_merge( $config['modules'], array(
 
 	'publish',
 	'promo',
+	'searchlog',
 	)
 );

@@ -1,21 +1,17 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Front_View_LC_HC_MVC extends _HC_MVC
+class Front_View_LC_HC_MVC
 {
 	public function render( $pass_params = array() )
 	{
 		$enqueuer = $this->app->make('/app/enqueuer');
-
 		$enqueuer
 			->register_script( 'lc_front', 'modules/front/assets/js/front.js' )
 			->enqueue_script( 'lc_front' )
-			// ->register_style( 'lc_front', 'modules/front/assets/css/front.css' )
-			// ->enqueue_style( 'lc_front' )
 			;
 
 	// parse params
 		$default_params = array(
 			'layout'		=> 'map|list',
-			// 'start'			=> NULL,
 			'start'			=> '',
 			'limit'			=> 100,
 
@@ -25,9 +21,9 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 			'map-style'		=> 'height: 400px; width: 100%;',
 			'list-style'	=> 'height: 400px; overflow-y: scroll;',
 
-			// 'search-bias-country'	=> 'Australia',
-			'search-bias-country'	=> '',
-			'radius'				=> '10, 25, 50, 100, 200, 500'
+			'search-bias-country'	=> '', // australia, uk, findland etc
+			'radius'				=> '10, 25, 50, 100, 200, 500',
+			'id'			=> NULL,
 			);
 
 		$p = $this->app->make('/locations/presenter');
@@ -70,15 +66,24 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 			$params[$k] = $v;
 		}
 
-		if( isset($_GET['lpr-search']) ){
+		if( isset($_GET['lpr-search']) ){ 
 			$get_search = sanitize_text_field($_GET['lpr-search']);
 			$params['start'] = $get_search;
 		}
 
+		// also can override any of the params by GET
+		$keys = array_keys($default_params);
+		foreach( $keys as $key ){
+			$get_key = 'lctr-' . $key;
+			if( ! array_key_exists($get_key, $_GET) ){
+				continue;
+			}
+			$get = sanitize_text_field( $_GET[$get_key] );
+			$params[ $key ] = $get;
+		}
+
 // _print_r( $pass_params );
 // _print_r( $params );
-
-		$out = $this->make('/html/view/container');
 
 	// parse layout
 		$layout_conf_setting = $params['layout'];
@@ -117,6 +122,10 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 			$layout = array('map', 'list', '|');
 		}
 
+		if( $params['id'] ){
+			$layout = array('map');
+		}
+
 		$view_type = 'stack';
 		if( (count($layout) > 1) && ($layout[count($layout)-1] == '|') ){
 			$view_type = 'grid';
@@ -124,10 +133,12 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 
 		$lc_front_params = array();
 		if( $params['search-bias-country'] ){
-			$lc_front_params['search_bias_country'] = $params['search-bias-country'];
+			$search_bias_country = $params['search-bias-country'];
+			$search_bias_country = explode(',', $search_bias_country);
+			$lc_front_params['search_bias_country'] = $search_bias_country;
 		}
 		$enqueuer
-			->run('localize-script', 'lc_front', $lc_front_params )
+			->localize_script( 'lc_front', $lc_front_params )
 			;
 
 	// parse radius
@@ -151,11 +162,11 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 			$params['radius'] = array();
 		}
 
-		$form = $this->make('view/form')
-			->run('render', $params)
+		$form = $this->app->make('/front/view/form')
+			->render($params)
 			;
 
-		$form_view = $this->make('/html/view/element')->tag('div')
+		$form_view = $this->app->make('/html/element')->tag('div')
 			->add( $form )
 			->add_attr('class', 'hc-mb3')
 			// ->add_attr('class', 'hc-p3')
@@ -164,8 +175,8 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 
 		$views = array();
 		if( in_array('map', $layout) ){
-			$views['map'] = $this->make('view/map')
-				->run('render', $params)
+			$views['map'] = $this->app->make('/front/view/map')
+				->render($params)
 				;
 			$widths['map'] = 8;
 		}
@@ -183,8 +194,8 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 				}
 				$list_params[$k] = $v;
 			}
-			$views['list'] = $this->make('view/list')
-				->run('render', $list_params)
+			$views['list'] = $this->app->make('/front/view/list')
+				->render($list_params)
 				;
 			$widths['list'] = 4;
 		}
@@ -193,10 +204,8 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 			switch( $view_type ){
 				case 'grid':
 					$grid_id = 'hclc_grid';
-					$out2 = $this->make('/html/view/grid')
-						->add_attr('id', $grid_id)
+					$out2 = $this->app->make('/html/grid')
 						->set_gutter(2)
-						// ->add_attr('style', 'height: 400px;')
 						;
 
 					foreach( $layout as $k ){
@@ -204,13 +213,20 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 							continue;
 						}
 						$out2
-							->add( $k, $views[$k], $widths[$k] )
+							->add( $views[$k], $widths[$k] )
 							;
 					}
+
+					$out2 = $this->app->make('/html/element')->tag('div')
+						->add( $out2 )
+						->add_attr('id', $grid_id)
+						// ->add_attr('style', 'height: 400px;')
+						;
+
 					break;
 
 				default:
-					$out2 = $this->make('/html/view/container');
+					$out2 = $this->app->make('/html/element')->tag(NULL);
 					foreach( $layout as $k ){
 						if( ! isset($views[$k]) ){
 							continue;
@@ -218,7 +234,7 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 
 						$out2
 							->add(
-								$this->make('/html/view/element')->tag('div')
+								$this->app->make('/html/element')->tag('div')
 									->add( $views[$k] )
 									->add_attr('class', 'hc-mb3')
 								)
@@ -231,19 +247,21 @@ class Front_View_LC_HC_MVC extends _HC_MVC
 			$out2 = $views[$layout[0]];
 		}
 
-		$form_view = $this->make('/html/view/element')->tag('div')
+		$form_view = $this->app->make('/html/element')->tag('div')
 			->add( $form_view )
 			->add_attr('id', 'locatoraid-form-container')
 			;
-		$out2 = $this->make('/html/view/element')->tag('div')
+		$out2 = $this->app->make('/html/element')->tag('div')
 			->add( $out2 )
 			->add_attr('id', 'locatoraid-map-list-container')
 			;
+
+		$out = $this->app->make('/html/element')->tag(NULL);
+
 		$out
 			->add( $form_view )
 			->add( $out2 )
 			;
-
 
 		$out = $this->app
 			->after( $this, $out )

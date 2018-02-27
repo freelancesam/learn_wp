@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Geocode_Lib_HC_MVC extends _HC_MVC
+class Geocode_Lib_HC_MVC
 {
 	public function prepare_address( $address )
 	{

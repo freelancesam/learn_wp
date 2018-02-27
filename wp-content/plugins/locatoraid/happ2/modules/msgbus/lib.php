@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Msgbus_Lib_HC_MVC extends _HC_MVC
+class Msgbus_Lib_HC_MVC
 {
 	protected $msg = array();
 

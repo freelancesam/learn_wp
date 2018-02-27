@@ -1,24 +1,27 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Search_View_Prepare_LC_HC_MVC extends _HC_MVC
+class Search_View_Prepare_LC_HC_MVC
 {
 	public function execute( $results = array(), $search = '', $search_coordinates = array() )
 	{
 		$p = $this->app->make('/locations/presenter');
+		$return = array();
 
-		for( $ii = 0; $ii < count($results); $ii++ ){
-			$p->set_data( $results[$ii] );
-			$results[$ii] = $p->present_front($search, $search_coordinates);
+		foreach( $results as $id => $res ){
+			$this_return = $p->present_front($res, $search, $search_coordinates);
 
-			if( array_key_exists('distance', $results[$ii]) ){
-				$results[$ii]['distance_raw'] = $results[$ii]['distance'];
-				$results[$ii]['distance'] = $p->run('present-distance');
+			if( array_key_exists('computed_distance', $res) ){
+				$res['distance'] = $res['computed_distance'];
+				$this_return['distance_raw'] = $res['distance'];
+				$this_return['distance'] = $p->present_distance( $res );
 			}
+
+			$return[] = $this_return;
 		}
 
-		$results = $this->app
-			->after( $this, $results )
+		$return = $this->app
+			->after( $this, $return )
 			;
 
-		return $results;
+		return $return;
 	}
 }

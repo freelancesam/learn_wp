@@ -1,22 +1,21 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Edit_Controller_LC_HC_MVC extends _HC_MVC
+class Locations_Edit_Controller_LC_HC_MVC
 {
 	public function execute( $id )
 	{
-		$model = $this->app->make('/locations/commands/read')
-			->execute( $id, array('with', '-all-') )
-			;
+		$args = array();
+		$args[] = $id;
+		$args[] = array('with', '-all-', 'flat');
 
-		$this->app
-			->before( $this, $model )
+		$model = $this->app->make('/locations/commands/read')
+			->execute( $args )
 			;
 
 		$view = $this->app->make('/locations/edit/view')
-			->run('render', $model)
+			->render($model)
 			;
-
 		$view = $this->app->make('/locations/edit/view/layout')
-			->run('render', $view, $model)
+			->render($view, $model)
 			;
 		$view = $this->app->make('/layout/view/body')
 			->set_content($view)

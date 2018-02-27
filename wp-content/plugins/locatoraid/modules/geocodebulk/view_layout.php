@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class GeocodeBulk_View_Layout_LC_HC_MVC extends _HC_MVC
+class GeocodeBulk_View_Layout_LC_HC_MVC
 {
 	public function header( $total_count )
 	{
@@ -14,26 +14,23 @@ class GeocodeBulk_View_Layout_LC_HC_MVC extends _HC_MVC
 
 	public function menubar( $total_count )
 	{
-		$menubar = $this->make('/html/view/container');
+		$return = array();
 
-	// LIST
-		$menubar->add(
-			'list',
-			$this->make('/html/view/link')
-				->to('/locations')
-				->add( $this->make('/html/view/icon')->icon('arrow-left') )
-				->add( HCM::__('Locations') )
-			);
+		$return['list'] = $this->app->make('/html/ahref')
+			->to('/locations')
+			->add( $this->app->make('/html/icon')->icon('arrow-left') )
+			->add( HCM::__('Locations') )
+			;
 
-		return $menubar;
+		return $return;
 	}
 
 	public function render( $content, $total_count )
 	{
-		$menubar = $this->run('menubar', $total_count);
-		$header = $this->run('header', $total_count);
+		$menubar = $this->menubar($total_count);
+		$header = $this->header($total_count);
 
-		$out = $this->make('/layout/view/content-header-menubar')
+		$out = $this->app->make('/layout/view/content-header-menubar')
 			->set_content( $content )
 			->set_header( $header )
 			->set_menubar( $menubar )

@@ -1,18 +1,18 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_New_Controller_LC_HC_MVC extends _HC_MVC
+class Locations_New_Controller_LC_HC_MVC
 {
 	public function execute()
 	{
-		$view = $this->make('new/view')
-			->run('render')
+		$view = $this->app->make('/locations/new/view')
+			->render()
 			;
-		$view = $this->make('new/view/layout')
-			->run('render', $view)
+		$view = $this->app->make('/locations/new/view/layout')
+			->render($view)
 			;
-		$view = $this->make('/layout/view/body')
+		$view = $this->app->make('/layout/view/body')
 			->set_content($view)
 			;
-		return $this->make('/http/view/response')
+		return $this->app->make('/http/view/response')
 			->set_view($view)
 			;
 	}

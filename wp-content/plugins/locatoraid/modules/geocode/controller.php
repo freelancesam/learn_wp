@@ -1,34 +1,28 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Geocode_Controller_LC_HC_MVC extends _HC_MVC
+class Geocode_Controller_LC_HC_MVC
 {
-	public function execute()
+	public function execute( $id )
 	{
 	// add javascript
-		$this->make('/app/enqueuer')
-			->run('register-script', 'lc-geocode', 'modules/geocode/assets/js/geocode.js')
-			->run('enqueue-script', 'lc-geocode')
+		$this->app->make('/app/enqueuer')
+			->register_script('lc-geocode', 'modules/geocode/assets/js/geocode.js')
+			->enqueue_script('lc-geocode')
 			;
 
-		$args = $this->make('/app/lib/args')->parse( func_get_args() );
-		$id = $args->get('id');
-
-		$location = $this->make('/http/lib/api')
-			->request('/api/locations')
-			->add_param('id', $id)
-			->get()
-			->response()
+		$location = $this->app->make('/locations/commands/read')
+			->execute( $id )
 			;
 
-		$view = $this->make('view')
-			->run('render', $location)
+		$view = $this->app->make('/geocode/view')
+			->render($location)
 			;
-		$view = $this->make('view/layout')
-			->run('render', $view, $location)
+		$view = $this->app->make('/geocode/view/layout')
+			->render($view, $location)
 			;
-		$view = $this->make('/layout/view/body')
+		$view = $this->app->make('/layout/view/body')
 			->set_content($view)
 			;
-		return $this->make('/http/view/response')
+		return $this->app->make('/http/view/response')
 			->set_view($view) 
 			;
 	}

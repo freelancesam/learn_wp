@@ -9,6 +9,8 @@ if ( is_customize_preview() ) {
 	add_filter( 'ampforwp_design_elements', 'ampforwp_add_element_social_icons' );
 	add_filter( 'ampforwp_design_elements', 'ampforwp_add_element_comments' );
 	add_filter( 'ampforwp_design_elements', 'ampforwp_add_element_related_posts' );
+	add_filter( 'ampforwp_design_elements', 'ampforwp_add_element_bread_crumbs' );
+
 	// add_filter( 'ampforwp_design_elements', 'ampforwp_add_element_simple_comment_button' );
 }
 
@@ -16,7 +18,7 @@ if ( is_customize_preview() ) {
 
 	// Adding default Value
 	if ($data['elements'] == '') {
-	 	$data['elements'] = "meta_info:1,title:1,featured_image:1,content:1,meta_taxonomy:1,social_icons:1,comments:1,related_posts:1";
+	 	$data['elements'] = "bread_crumbs:1,meta_info:1,title:1,featured_image:1,content:1,meta_taxonomy:1,social_icons:1,comments:1,related_posts:1";
 	}
 
 	if( isset( $data['elements'] ) || ! empty( $data['elements'] ) ){
@@ -26,6 +28,9 @@ if ( is_customize_preview() ) {
 	if ($options): foreach ($options as $key=>$value) {
 		if ( ! is_customize_preview() ) {
 			switch ($value) {
+				case 'bread_crumbs:1':
+						add_filter( 'ampforwp_design_elements', 'ampforwp_add_element_bread_crumbs' );
+						break;		
 				case 'title:1':
 						add_filter( 'ampforwp_design_elements', 'ampforwp_add_element_the_title' );
 						break;
@@ -66,25 +71,57 @@ function ampforwp_design_selector() {
 
     global $redux_builder_amp;
     if ( $redux_builder_amp['amp-design-selector'] ) {
-        return $redux_builder_amp['amp-design-selector'];
-    } else {
-        return 2;
-    }
-
+		if ( file_exists(AMPFORWP_PLUGIN_DIR . 'templates/design-manager/design-'.$redux_builder_amp['amp-design-selector'] . '/style.php') ) {
+			return $redux_builder_amp['amp-design-selector'];
+		}
+		elseif ( 4 == $redux_builder_amp['amp-design-selector'] && file_exists(AMPFORWP_PLUGIN_DIR . 'templates/design-manager/swift/style.php') ) {
+      			return $redux_builder_amp['amp-design-selector'];
+    	}
+		else {
+			$plugin_data = get_plugins();
+	    	if ( count($plugin_data) > 0 ) {
+	    		foreach ( $plugin_data as $key => $data ) {
+	    			if ( $data['TextDomain'] == $redux_builder_amp['amp-design-selector'] ) {
+	    				if ( file_exists(AMPFORWP_MAIN_PLUGIN_DIR."/".$key) ) {
+	    					return $redux_builder_amp['amp-design-selector'];
+	    				}
+	    				break;
+	    			}
+	    		}
+	    	}
+		}
+    	return 2;
+    } 
+    return 2;
 }
-
 
 add_action('pre_amp_render_post','ampforwp_stylesheet_file_insertion', 12 );
 function ampforwp_stylesheet_file_insertion() {
 
         if ( ! ampforwp_design_selector() ) {
-          $ampforwp_design_selector   = 2;
+          $ampforwp_design_selector   = 4;
         } else {
           $ampforwp_design_selector  = ampforwp_design_selector();
         }
-
         // Add StyleSheet
-        require AMPFORWP_PLUGIN_DIR . 'templates/design-manager/design-'. $ampforwp_design_selector . '/style.php';
+        if ( file_exists(AMPFORWP_PLUGIN_DIR . 'templates/design-manager/design-'. $ampforwp_design_selector . '/style.php') && 4 != $ampforwp_design_selector ) {
+	        //require AMPFORWP_PLUGIN_DIR . 'templates/design-manager/design-'. $ampforwp_design_selector . '/style.php';
+	    }else {
+	    	if ( 4 != $ampforwp_design_selector ) {
+		    	$plugin_data = get_plugins();
+		    	if ( count($plugin_data) > 0 ) {
+		    		foreach ( $plugin_data as $key => $data ) {
+		    			if ( $data['TextDomain'] == $ampforwp_design_selector ) {
+		    				if ( ! file_exists(AMPFORWP_MAIN_PLUGIN_DIR."/".$key) ) {
+		    					echo "plugin theme not exists";
+		    				}
+		    				break;
+		    			}
+		    		}
+		    	}
+    		}
+    		require AMPFORWP_PLUGIN_DIR."/components/theme-loader.php";
+	    }
 }
 
 // Post Title
@@ -118,7 +155,6 @@ function ampforwp_design_element_meta_info( $file, $type, $post ) {
 	return $file;
 }
 
-
 // Featured Image
 function ampforwp_add_element_featured_image( $meta_parts ) {
 	$meta_parts[] = 'ampforwp-featured-image';
@@ -134,7 +170,20 @@ function ampforwp_design_element_featured_image( $file, $type, $post ) {
 	return $file;
 }
 
+// Bread-Crumbs
+function ampforwp_add_element_bread_crumbs( $meta_parts ) {
+	$meta_parts[] = 'ampforwp-bread-crumbs';
+	return $meta_parts;
+}
 
+add_filter( 'amp_post_template_file', 'ampforwp_design_element_bread_crumbs', 10, 3 );
+
+function ampforwp_design_element_bread_crumbs( $file, $type, $post ) {
+	if ( 'ampforwp-bread-crumbs' === $type ) {
+		$file = AMPFORWP_PLUGIN_DIR . 'templates/design-manager/design-'. ampforwp_design_selector() .'/elements/bread-crumbs.php' ;
+	}
+	return $file;
+}
 // The Content
 function ampforwp_add_element_the_content( $meta_parts ) {
 	$meta_parts[] = 'ampforwp-the-content';

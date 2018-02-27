@@ -1,10 +1,15 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Http_View_Response_HC_MVC extends _HC_MVC
+class Http_View_Response_HC_MVC
 {
 	protected $view = NULL;
 	protected $redirect = NULL;
 	protected $params = array();
 	protected $status_code = NULL;
+
+	public function __toString()
+	{
+		return '' . $this->render();
+	}
 
 	public function set_view( $view )
 	{
@@ -50,12 +55,16 @@ class Http_View_Response_HC_MVC extends _HC_MVC
 		return $this->status_code;
 	}
 
+	public function prepare_redirect( $to )
+	{
+		$to = $this->app
+			->after( array($this, __FUNCTION__), $to )
+			;
+		return $to;
+	}
+
 	public function render()
 	{
-		$this->app
-			->before( $this, $this )
-			;
-
 		$code = $this->status_code();
 		if( $code ){
 			hc_http_status_code( $code );
@@ -65,11 +74,23 @@ class Http_View_Response_HC_MVC extends _HC_MVC
 		$redirect = $this->redirect();
 		if( $redirect ){
 			if( ! HC_Lib2::is_full_url($redirect) ){
-				$uri = $this->make('/http/lib/uri');
-				$redirect = $uri->url($redirect);
+				$redirect = $this->app->make('/http/uri')
+					->url($redirect)
+					;
 			}
+
+			$redirect = $this
+				->prepare_redirect( $redirect )
+				;
+
 			if( 1 OR (! headers_sent()) ){
-				header('Location: ' . $redirect);
+				// wordpress?
+				if( defined('WPINC') ){
+					wp_redirect( $redirect );
+				}
+				else {
+					header('Location: ' . $redirect);
+				}
 			}
 			else {
 				$html = "<META http-equiv=\"refresh\" content=\"0;URL=$redirect\">";
@@ -78,7 +99,12 @@ class Http_View_Response_HC_MVC extends _HC_MVC
 			}
 		}
 		elseif( $view ){
-			return $view;
+			if( is_object($view) && method_exists($view, 'render') ){
+				return $view->render();
+			}
+			else {
+				return $view;
+			}
 		}
 	}
 }

@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Index_View_Layout_LC_HC_MVC extends _HC_MVC
+class Locations_Index_View_Layout_LC_HC_MVC
 {
 	public function header()
 	{
@@ -9,24 +9,22 @@ class Locations_Index_View_Layout_LC_HC_MVC extends _HC_MVC
 
 	public function menubar()
 	{
-		$return = $this->make('/html/view/container');
+		$return = array();
 
-		$return->add(
-			'new',
-			$this->make('/html/view/link')
-				->to('/locations/new')
-				->add( HCM::__('Add New') )
-			);
+		$return['new'] = $this->app->make('/html/ahref')
+			->to('/locations/new')
+			->add( HCM::__('Add New') )
+			;
 
 		return $return;
 	}
 
 	public function render( $content )
 	{
-		$header = $this->run('header');
-		$menubar = $this->run('menubar');
+		$header = $this->header();
+		$menubar = $this->menubar();
 
-		$out = $this->make('/layout/view/content-header-menubar')
+		$out = $this->app->make('/layout/view/content-header-menubar')
 			->set_content( $content )
 			->set_header( $header )
 			->set_menubar( $menubar )

@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Validate_Match_HC_MVC extends _HC_MVC
+class Validate_Match_HC_MVC
 {
 	public function validate( $value, $compare_to, $compare_to_label )
 	{

@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class App_Enqueuer_HC_MVC extends _HC_MVC
+class App_Enqueuer_HC_MVC
 {
 	protected $scripts = array();
 	protected $localize_scripts = array();
@@ -106,6 +106,12 @@ class App_Enqueuer_HC_MVC extends _HC_MVC
 			}
 			$src = $this->scripts[$handle];
 			$return[ $handle ] = $src;
+		}
+
+		if( isset($return['jquery']) ){
+			$jquery = $return['jquery'];
+			unset( $return['jquery'] );
+			$return = array('jquery' => $jquery) + $return;
 		}
 
 		return $return;

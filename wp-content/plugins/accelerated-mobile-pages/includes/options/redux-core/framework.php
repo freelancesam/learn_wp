@@ -55,8 +55,8 @@
         // ThemeCheck checks
         require_once dirname( __FILE__ ) . '/inc/themecheck/class.redux_themecheck.php';
 
-        // Welcome
-        require_once dirname( __FILE__ ) . '/inc/welcome/welcome.php';
+        // Welcome page removed #1526
+//        require_once dirname( __FILE__ ) . '/inc/welcome/welcome.php';
 
         /**
          * Main ReduxFramework class
@@ -552,7 +552,7 @@
                     // Path to the templates file for various Redux elements
                     'ajax_save'                 => true,
                     // Disable the use of ajax saving for the panel
-                    'use_cdn'                   => true,
+                    'use_cdn'                   => false,
                     'cdn_check_time'            => 1440,
                     'options_api'               => true,
                 );
@@ -1432,7 +1432,22 @@
 
                     if ( true === $this->args['allow_sub_menu'] ) {
                         if ( ! isset ( $section['type'] ) || $section['type'] != 'divide' ) {
-                            foreach ( $this->sections as $k => $section ) {
+                            $new_menu_sections = apply_filters("ampforwp_add_admin_subpages",$this->sections); 
+                            foreach ( $new_menu_sections as $k => $section ) {
+
+                                if(isset($section['custom_amp_menu']) && $section['custom_amp_menu']){
+                                   
+                                    call_user_func( 'add_submenu_page',
+                                        $this->args['page_slug'],
+                                        $section['page_title'],
+                                        $section['menu_title'],
+                                        $section['page_permissions'],
+                                        $section['menu_slug'],
+                                        $section['callback']
+                                      );
+                                    continue;
+                                }
+
                                 $canBeSubSection = ( $k > 0 && ( ! isset ( $this->sections[ ( $k ) ]['type'] ) || $this->sections[ ( $k ) ]['type'] != "divide" ) ) ? true : false;
 
                                 if ( ! isset ( $section['title'] ) || ( $canBeSubSection && ( isset ( $section['subsection'] ) && $section['subsection'] == true ) ) ) {
@@ -1459,6 +1474,7 @@
                                 call_user_func( 'add_submenu_page', $this->args['page_slug'], $section['title'], $section['title'], $this->args['page_permissions'], $this->args['page_slug'] . '&tab=' . $k,
                                     //create_function( '$a', "return null;" )
                                     '__return_null' );
+                            
                             }
 
                             // Remove parent submenu item instead of adding null item.
@@ -2959,7 +2975,7 @@
 //                                }
 //                            }
 
-                            if ( isset( $this->extensions[ $field['type'] ] ) && method_exists( $this->extensions[ $field['type'] ], '_validate_values' ) ) {
+                            if ( isset($field['type']) && isset( $this->extensions[ $field['type'] ] ) && method_exists( $this->extensions[ $field['type'] ], '_validate_values' ) ) {
                                 $plugin_options = $this->extensions[ $field['type'] ]->_validate_values( $plugin_options, $field );
                             }
 
@@ -3259,6 +3275,15 @@
              */
             public function generate_panel() {
                 require_once 'core/panel.php';
+                if(is_admin()){
+                    echo '<div class="a-f-wp-help"><div class="a-f-wp-help-message">
+                        <a target="_blank" href="http://ampforwp.com/support/?utm_source=options-panel&utm_medium=contact_link_btn&utm_campaign=AMP%20Plugin"> <img src="https://ampforwp.com/wp-content/uploads/2017/03/chatbox-img-1.png" /></a>
+
+                        </div>
+                        <div class="a-f-wp-help-container">
+                          <div class="a-f-wp-help-tear "><span> <i class="dashicons-sos"></i></span></div>
+                        </div></div>';
+                }
                 $panel = new reduxCorePanel ( $this );
                 $panel->init();
                 $this->set_transients();

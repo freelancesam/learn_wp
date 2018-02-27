@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Conf_View_Layout_HC_MVC extends _HC_MVC
+class Conf_View_Layout_HC_MVC
 {
 	public function tabs()
 	{
@@ -9,15 +9,40 @@ class Conf_View_Layout_HC_MVC extends _HC_MVC
 			->after( array($this, __FUNCTION__), $return )
 			;
 
-		return $return;
+	// add sorting order
+		$sort = array();
+		$sort_order = 100;
+
+		$keys = array_keys($return);
+		foreach( $keys as $k ){
+			if( is_array($return[$k]) && isset($return[$k][2]) ){
+				$this_sort_order = $return[$k][2];
+				$sort[$k] = $this_sort_order;
+			}
+			else {
+				$sort[$k] = $sort_order;
+				$sort_order += 10;
+			}
+		}
+
+	// now sort
+		asort($sort);
+
+		$final_return = array();
+		foreach( array_keys($sort) as $k ){
+			$final_return[ $k ] = $return[ $k ];
+		}
+
+		return $final_return;
 	}
 
-	public function menubar( $current_tab = NULL )
+	public function sidebar()
 	{
 		$return = array();
 		$tabs = $this->tabs();
 
 		reset( $tabs );
+
 		foreach( $tabs as $tab_key => $tab ){
 			if( is_array($tab) ){
 				$tab_link = array_shift( $tab );
@@ -31,17 +56,10 @@ class Conf_View_Layout_HC_MVC extends _HC_MVC
 				$tab_label = $tab;
 			}
 
-			$link = $this->app->make('/html/view/link')
-				->to( $tab_link )
+			$link = $this->app->make('/html/ahref')
+				->to( $tab_link, NULL )
 				->add( $tab_label )
 				;
-
-			if( trim($tab_link, '/') == $current_tab ){
-				$link
-					->add_attr('class', 'hc-theme-btn-submit')
-					->add_attr('class', 'hc-theme-btn-primary')
-					;
-			}
 
 			$return[ $tab_key ] = $link;
 		}
@@ -51,15 +69,17 @@ class Conf_View_Layout_HC_MVC extends _HC_MVC
 
 	public function render( $content, $current_tab = NULL )
 	{
-		$header = HCM::__('Settings');
-		$menubar = $this
-			->menubar( $current_tab )
-			;
+		$top_menu = $this->app->make('/layout/top-menu');
+		$top_menu->set_current( 'conf' );
 
-		$out = $this->make('/layout/view/content-header-menubar')
+		$header = HCM::__('Configuration');
+		$sidebar = $this->sidebar();
+
+		// $out = $this->app->make('/layout/view/content-header-menubar')
+		$out = $this->app->make('/layout/header-menubar-sidebar-content')
 			->set_content( $content )
 			->set_header( $header )
-			->set_menubar( $menubar )
+			->set_sidebar( $sidebar, $current_tab )
 			;
 
 		return $out;

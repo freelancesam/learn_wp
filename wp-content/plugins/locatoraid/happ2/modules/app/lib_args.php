@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class App_Lib_Args_HC_MVC extends _HC_MVC
+class App_Lib_Args_HC_MVC
 {
 	protected $args = array();
 

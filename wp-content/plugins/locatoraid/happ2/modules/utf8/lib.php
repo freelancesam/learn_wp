@@ -26,7 +26,7 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/utf8.html
  */
-class Utf8_Lib_HC_MVC extends _HC_MVC {
+class Utf8_Lib_HC_MVC {
 
 	/**
 	 * Constructor

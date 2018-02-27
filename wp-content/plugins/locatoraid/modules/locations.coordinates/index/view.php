@@ -1,129 +1,120 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Coordinates_Index_View_LC_HC_MVC extends _HC_MVC
+class Locations_Coordinates_Index_View_LC_HC_MVC
 {
 	public function render( $location, $can_edit = 1 )
 	{
-		$out = $this->make('/html/view/list')
-			->set_gutter(2)
-			->add_attr('class', 'hcj2-container')
-			;
-
-		$id = $location['id'];
-
-		$p = $this->make('/locations/presenter');
-		$p->set_data( $location );
-		$address = $p->run('present-address');
-
-		$form = $this->make('form');
-		$values = $form->run('from-model', $location);
+		$values = $location;
 
 		$latitude = $values['latitude'];
 		$longitude = $values['longitude'];
 
-	// map
-		$map_id = 'hclc_map';
-		$map = $this->make('/html/view/element')->tag('div')
-			->add_attr('id', $map_id)
-			// ->add_attr('class', 'hc-p2')
-			->add_attr('class', 'hc-border')
-			// ->add( HCM::__('Please wait while the map is loading') )
+		$p = $this->app->make('/locations.coordinates/presenter');
+		$pl = $this->app->make('/locations/presenter');
+
+		$geocoding_status = $p->geocoding_status( $location );
+		if( $geocoding_status > 0 ){
+			$this->app->make('/app/enqueuer')
+				->register_script( 'lc-locations-coordinates', 'modules/locations.coordinates/assets/js/map.js' )
+				->enqueue_script( 'lc-locations-coordinates' )
+				;
+		}
+
+		$out = $this->app->make('/html/list')
+			->set_gutter(2)
 			;
 
-		$p = $this->make('presenter');
-		$p->set_data( $location );
+		$id = $location['id'];
 
-		$pl = $this->make('/locations/presenter');
-		$pl->set_data( $location );
+		$address = $pl->present_address( $location );
+
+	// map
+		$map_id = 'hclc_map';
+		$map = $this->app->make('/html/element')->tag('div')
+			->add_attr('id', $map_id)
+			->add_attr('class', 'hc-border')
+			;
 
 		if( (($latitude == -1) && ($longitude == -1)) ){
 			$map
 				->add_attr('class', 'hc-p2')
-				->add( $p->run('present-coordinates') )
+				->add( $p->present_coordinates($location) )
 				;
 		}
 		else {
 			$map
-				->add_attr('style', 'height: 10rem;')
+				->add_attr('style', 'height: 14rem;')
 				->add_attr('data-latitude',  $latitude)
 				->add_attr('data-longitude', $longitude)
 				->add_attr('data-edit', $can_edit)
 				;
 
-			$icon = $pl->present_icon_url();
+			$icon = $pl->present_icon_url( $location );
 			if( $icon ){
-				$map
-					->add_attr('data-icon', $icon)
-					;
+				$map->add_attr('data-icon', $icon);
 			}
 		}
 
 	// form
-		$form
-			->set_values( $values )
+		$form = $this->app->make('/locations.coordinates/form');
+		$helper = $this->app->make('/form/helper');
+
+		$inputs_view = $helper->prepare_render( $form->inputs(), $values );
+		$out_inputs = $helper->render_inputs( $inputs_view );
+
+		$out_buttons = $this->app->make('/html/list')
+			->set_gutter(2)
 			;
 
-		$link = $this->make('/html/view/link')
-			->to('/locations.coordinates/index/update', array('id' => $id))
-			->href()
-			;
-		$display_form = $this->make('/html/view/form')
-			->add_attr('action', $link )
-			->set_form( $form )
+		$out_buttons->add(
+			$this->app->make('/html/element')->tag('input')
+				->add_attr('type', 'submit')
+				->add_attr('title', HCM::__('Save') )
+				->add_attr('value', HCM::__('Save') )
+				->add_attr('class', 'hc-theme-btn-submit')
+				->add_attr('class', 'hc-theme-btn-primary')
+				->add_attr('class', 'hc-block')
+			);
+
+		if( ! (($latitude == -1) && ($longitude == -1)) ){
+			$out_buttons->add(
+				$this->app->make('/html/ahref')
+					->to('/locations.coordinates/' . $location['id'] . '/reset')
+					->add( HCM::__('Reset') )
+					->add_attr('class', 'hc-theme-btn-submit')
+					->add_attr('class', 'hc-block')
+				);
+		}
+
+		$display_form_content = $this->app->make('/html/list')
+			->set_gutter(2)
 			;
 
 		if( ! (($latitude == -1) && ($longitude == -1)) ){
-			$display_form
+			$display_form_content
 				->add(
-					$this->make('/html/view/element')->tag('div')
+					$this->app->make('/html/element')->tag('div')
 						->add( HCM::__('You can use your mouse to move the location. Or manually enter the coordinates.') )
 						->add_attr('class', 'hc-italic')
 					)
 				;
 		}
 
-		$inputs = $form->inputs();
-		foreach( $inputs as $input_name => $input ){
-			$input_view = $this->make('/html/view/label-input')
-				->set_label( $input->label() )
-				->set_content( $input )
-				->set_error( $input->error() )
-				;
-
-			$display_form
-				->add( $input_view )
-				;
-		}
-
-		$buttons = $this->make('/html/view/buttons-row');
-
-		$buttons->add(
-			'save',
-			$this->make('/html/view/element')->tag('input')
-				->add_attr('type', 'submit')
-				->add_attr('title', HCM::__('Save') )
-				->add_attr('value', HCM::__('Save') )
-				->add_attr('class', 'hc-theme-btn-submit', 'hc-theme-btn-primary')
-				->add_attr('class', 'hc-block-xs')
-			);
-
-		if( ! (($latitude == -1) && ($longitude == -1)) ){
-			$buttons->add(
-				'reset',
-				$this->make('/html/view/link')
-					->to('/locations.coordinates/index/reset', array('id' => $location['id']))
-					->add( HCM::__('Reset') )
-					->add_attr('class', 'hc-theme-btn-submit', 'hc-theme-btn-secondary')
-					->add_attr('class', 'hc-block-xs')
-				);
-		}
-		$display_form
-			->add( $buttons )
+		$display_form_content
+			->add(
+				$this->app->make('/html/grid')
+					->set_gutter(2)
+					->add( $out_inputs, 9, 12 )
+					->add( $out_buttons, 3, 12 )
+				)
 			;
 
-		// $display_form = $this->make('/html/view/collapse')
-			// ->set_title( HCM::__('Edit Coordinates') )
-			// ->set_content( $display_form )
-			// ;
+		$link = $this->app->make('/http/uri')
+			->url('/locations.coordinates/' . $id . '/update')
+			;
+		$display_form = $helper
+			->render( array('action' => $link) )
+			->add( $display_form_content )
+			;
 
 		if( $can_edit ){
 			$out
@@ -140,6 +131,11 @@ class Locations_Coordinates_Index_View_LC_HC_MVC extends _HC_MVC
 				->add( $display_form )
 				;
 		}
+
+		$out = $this->app->make('/html/element')->tag('div')
+			->add( $out )
+			->add_attr('class', 'hcj2-container')
+			;
 
 		return $out;
 	}

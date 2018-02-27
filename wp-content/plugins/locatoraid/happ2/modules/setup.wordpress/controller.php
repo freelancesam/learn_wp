@@ -1,9 +1,9 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Wordpress_Setup_Controller_HC_MVC extends _HC_MVC
+class Wordpress_Setup_Controller_HC_MVC
 {
 	public function extend_do_setup( $return, $args, $src )
 	{
-		$app_settings = $this->make('/app/settings');
+		$app_settings = $this->app->make('/app/settings');
 		$values = array_shift( $args );
 		// $skip = array('wordpress_users:role_administrator');
 

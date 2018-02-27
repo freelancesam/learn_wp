@@ -1,33 +1,28 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Layout_View_Body_HC_MVC extends _HC_MVC
+class Layout_View_Body_HC_MVC
 {
 	private $content = NULL;
+
 	public function set_content( $content )
 	{
 		$this->content = $content;
 		return $this;
 	}
+
 	public function content()
 	{
-		return $this->content;
+		$return = $this->content;
+
+		$return = $this->app
+			->after( array($this, __FUNCTION__), $return )
+			;
+
+		return $return;
 	}
 
 	public function top_header()
 	{
-		$current_slug = $this->make('/http/lib/uri')->slug();
-
-		$slug = explode('/', $current_slug);
-		$module = array_shift($slug);
-		if( in_array($module, array('setup')) ){
-			return;
-		}
-
-		$return = $this->make('/html/view/element')->tag('div')
-			->add_attr('class', 'print-hide')
-			;
-
-	// profile - blank so far
-		$return->add( 'profile', NULL );
+		$return = array();
 
 		$return = $this->app
 			->after( array($this, __FUNCTION__), $return )
@@ -38,43 +33,46 @@ class Layout_View_Body_HC_MVC extends _HC_MVC
 
 	public function render()
 	{
-		$this->app
-			->before( $this, $this )
+		$nts = $this->app->make('/html/element')->tag('div')
+			->add_attr('class', 'hc-app-container')
 			;
 
-		$out = $this->make('/html/view/container');
+		$content = $this->content();
+		// if( is_object($content) && method_exists($content, 'render') ){
+			// $content = $content->render();
+		// }
 
-		$nts = $this->make('/html/view/element')->tag('div')
-			->add_attr('class', 'hc-container')
-			;
+		$top_header = $this->top_header();
+		if( $top_header ){
+			$top_header_view = $this->app->make('/html/list')
+				->set_gutter(1)
+				;
+			foreach( $top_header as $h ){
+				$top_header_view
+					->add( $h )
+					;
+			}
 
-		$top_header = $this->run('top-header');
-
-		if( isset($brand) ){
-			$top_header->add( $brand );
+			$nts
+				->add( $top_header_view )
+				;
 		}
-		if( isset($header) ){
-			$top_header->add( $header );
-		}
-		if( isset($header_ajax) ){
-			$top_header->add( $header_ajax );
-		}
-
-		$content = '' . $this->content();
 
 		$nts
-			->add( 'top-header', $top_header )
+			->add( $content )
 			;
 
-		$nts
-			->add( 'content', $content )
-			;
-
-		$nts = $this->make('/html/view/element')->tag('div')
-			->add_attr('id', 'nts')
-			->add_attr('class', 'wrap')
+		$nts = $this->app->make('/html/element')->tag('div')
 			->add( $nts )
 			;
+
+		if( defined('WPINC') && is_admin() ){
+			$nts
+				->add_attr('class', 'wrap')
+				;
+		}
+
+		$out = $this->app->make('/html/element')->tag(NULL);
 
 		$out->add( $nts );
 		if( isset($js_footer) ){

@@ -1,21 +1,19 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Setup_Model_HC_MVC extends _HC_MVC
+class Setup_Model_HC_MVC
 {
-	public function get_old_db()
+	public function get_old_query_builder()
 	{
+		$q = $this->app->db->query_builder();
+
 		$old_version = $this->get_old_version();
-		$old_db = $this->app->db_copy();
 
-		$old_db_params = $old_db->params();
 		$dbprefix_version = isset($this->app->app_config['dbprefix_version']) ? $this->app->app_config['dbprefix_version'] : '';
-
-		$core_dbprefix = substr( $old_db_params['dbprefix'], 0, -strlen($dbprefix_version)-1 );
+		$current_prefix = $this->app->db->prefix();
+		$core_dbprefix = substr( $current_prefix, 0, -strlen($dbprefix_version)-1 );
 		$old_prefix = strlen($old_version) ? $core_dbprefix . $old_version . '_' :  $core_dbprefix;
 
-		$old_db_params['dbprefix'] = $old_prefix;
-		$old_db->set_params( $old_db_params );
-
-		return $old_db;
+		$q->set_prefix( $old_prefix );
+		return $q;
 	}
 
 	public function get_old_version()
@@ -23,10 +21,10 @@ class Setup_Model_HC_MVC extends _HC_MVC
 		$return = NULL;
 
 		$dbprefix_version = isset($this->app->app_config['dbprefix_version']) ? $this->app->app_config['dbprefix_version'] : '';
-		$db_params = $this->app->db_params();
+		$dbprefix = $this->app->db->prefix();
 
 		if( strlen($dbprefix_version) ){
-			$core_dbprefix = substr( $db_params['dbprefix'], 0, -strlen($dbprefix_version)-1 );
+			$core_dbprefix = substr( $dbprefix, 0, -strlen($dbprefix_version)-1 );
 			$old_prefixes = array();
 
 			$my_version = substr($dbprefix_version, 1);
@@ -39,18 +37,16 @@ class Setup_Model_HC_MVC extends _HC_MVC
 
 			foreach( $old_prefixes as $op ){
 				$test_prefix = strlen($op) ? $core_dbprefix . $op . '_' :  $core_dbprefix;
+				$this->app->db->set_prefix( $test_prefix );
 
-				$db = $this->app->db_copy();
-				$db_params = $db->params();
-				$db_params['dbprefix'] = $test_prefix;
-				$db->set_params( $db_params );
-	
-				if( $db->table_exists('conf') ){
+				if( $this->app->db->table_exists('conf') ){
 					$return = $op;
 					break;
 				}
 			}
 		}
+
+		$this->app->db->set_prefix( $dbprefix );
 		return $return;
 	}
 }

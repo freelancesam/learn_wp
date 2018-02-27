@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Setup_Lib_HC_MVC extends _HC_MVC
+class Setup_Lib_HC_MVC
 {
 	public function is_setup()
 	{
@@ -9,8 +9,7 @@ class Setup_Lib_HC_MVC extends _HC_MVC
 		}
 
 	// check if not setup then don't run bootstraps
-		$db_params = $this->app->db->params();
-		$prefix = $db_params['dbprefix'];
+		$prefix = $this->app->db->prefix();
 		$tables = $this->app->db->list_tables();
 
 		$my_tables = array();

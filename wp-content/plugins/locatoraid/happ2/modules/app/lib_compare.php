@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class App_Lib_Compare_HC_MVC extends _HC_MVC
+class App_Lib_Compare_HC_MVC
 {
 	public function is_valid( $e, $conditions = array() )
 	{

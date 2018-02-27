@@ -1,5 +1,15 @@
 var hcapp = {};
 
+function hc2_get_scripts( scripts, callback )
+{
+	var progress = 0;
+	scripts.forEach( function(script){ 
+		jQuery.getScript( script, function(){
+			if( ++progress == scripts.length ) callback();
+		});
+	});
+}
+
 function hc2_try_parse_json( jsonString )
 {
 	try {
@@ -109,9 +119,9 @@ jQuery(document).on('click', '.hcj2-toggle', function(e)
 });
 
 /* collapse next */
-jQuery(document).on('click', '.hcj2-collapse-next,[data-toggle=collapse-next]', function(e)
+jQuery(document).on('click', '.hcj2-collapse-next', function(e)
 {
-	var this_target = jQuery(this).closest('.hcj2-collapse-panel').children('.hcj2-collapse');
+	var this_target = jQuery(this).closest('.hcj2-collapse-container').children('.hcj2-collapse');
 
 	if( this_target.is(':visible') ){
 		this_target.hide();
@@ -225,44 +235,6 @@ jQuery(document).on( 'click', 'a.hcj2-toggler', function(event)
 	return false;
 });
 
-jQuery(document).on('change', '.hcj2-collector-wrap input.hcj2-collect-me', function(event){
-	var my_val = jQuery(this).val();
-	var me_remove = ( jQuery(this).is(":checked") ) ? 0 : 1;
-	var input_name = jQuery(this).attr('name');
-
-	/* find an input of the same name in the collector form */
-	var collector_form = jQuery(this).closest('.hcj2-collector-wrap').find('form.hcj2-collector-form');
-	var collector_input = collector_form.find("input[name^='" + input_name + "']");
-
-	if( collector_input.length ){
-		var current_value = collector_input.val();
-		if( current_value.length ){
-			current_value = current_value.split('|');
-		}
-		else {
-			current_value = [];
-		}
-
-		var my_pos = jQuery.inArray(my_val, current_value);
-
-	/* remove */
-		if( me_remove ){
-			if( my_pos != -1 ){
-				current_value.splice(my_pos, 1);
-			}
-		}
-	/* add */
-		else {
-			if( my_pos == -1 ){
-				current_value.push(my_val);
-			}
-		}
-
-		current_value = current_value.join('|');
-		collector_input.val( current_value );
-	}
-});
-
 jQuery(document).on( 'click', '.hcj2-all-checker', function(event)
 {
 	var thisLink = jQuery( this );
@@ -270,14 +242,24 @@ jQuery(document).on( 'click', '.hcj2-all-checker', function(event)
 	var whatSet = true;
 
 	var moreCollect = thisLink.data('collect');
+	if( ! moreCollect ){
+		moreCollect = 'id';
+	}
 	if( moreCollect ){
 		var myParent = thisLink.closest('.hcj2-collector-wrap');
-		if( myParent.length > 0 )
-			myParent.first();
-		else
-			myParent = jQuery('#nts');
+		if( ! myParent.length ){
+			myParent = thisLink.closest('form');
+		}
 
-		myParent.find("input[name^='" + moreCollect + "']").each( function()
+		if( myParent.length > 0 ){
+			myParent.first();
+		}
+		else {
+			myParent = jQuery('#nts');
+		}
+
+		var what_find = "input[name='" + moreCollect + "']";
+		myParent.find(what_find).each( function()
 		{
 			if( 
 				( jQuery(this).attr('type') == 'checkbox' )
@@ -536,115 +518,6 @@ jQuery(document).on( 'click', '.hcj2-action-trigger', function(event)
 	return false;
 });
 
-jQuery(document).on( 'click', '.hcj2-ajax-loader', function(event)
-{
-	var me = jQuery(this);
-	var ajax_url = me.attr('href');
-	if( ! ajax_url ){
-		return false;
-	}
-
-	var my_parent = me.closest('.hcj2-ajax-parent');
-	if( my_parent.length ){
-		var target_container = my_parent.find('.hcj2-ajax-container').filter(":first");
-	}
-	else {
-		var target_container = me.closest('.hcj2-ajax-container');
-	}
-
-	if( target_container.length ){
-		// already loaded? then close
-		var current_url = target_container.data('src');
-		if( current_url == ajax_url ){
-			if( target_container.is(':visible') ){
-				// target_container.data('src', '');
-				// target_container.html('');
-				target_container.hide();
-			}
-			else {
-				target_container.show();
-			}
-		}
-		else {
-			hc2_ajax_load( ajax_url, target_container );
-			target_container.data('src', ajax_url);
-		}
-
-		return false;
-	}
-});
-
-jQuery(document).on( 'click', '.hcj2-ajax-form:not(.hcj2-custom-handled) input[type="submit"]', function(event)
-{
-	/* stop form from submitting normally */
-	event.preventDefault(); 
-	/* get some values from elements on the page: */
-	var this_form = jQuery(this).closest('.hcj2-ajax-form');
-	var this_form_data = this_form.find('select, textarea, input').serializeArray();
-
-	var target_container = jQuery(this).closest('.hcj2-ajax-container');
-	if( target_container.length ){
-		var this_referer = target_container.data('src');
-		this_form_data.push( {name: "hc-referrer", value: this_referer} );
-	}
-
-	var current_html = this_form.html();
-	this_form.prepend( hc2_full_spinner );
-
-	var target_url = this_form.attr('action');
-
-	jQuery.ajax({
-		type: 'POST',
-		url: target_url,
-//		dataType: "json",
-		dataType: "text",
-		data: this_form_data,
-		success: function(data, textStatus){
-			var is_json = true;
-			try {
-				var json_data = jQuery.parseJSON( data );
-			}
-			catch( err ){
-				is_json = false;
-			}
-
-			if( is_json ){
-				this_form.trigger('hc2-json-received', json_data );
-				this_form.find('.hcj2-full-spinner').remove();
-				// this_form.html( current_html );
-			}
-			else {
-			// html returned
-				if( target_container.length ){
-					target_container.html(data);
-				}
-				else {
-					this_form.html(data);
-				}
-			}
-		}
-		})
-		.fail( function(jqXHR, textStatus, errorThrown){
-			alert( 'Ajax Error: ' + target_url );
-			alert( jqXHR.responseText );
-			this_form.html( current_html );
-			})
-		;
-	return false;
-});
-
-function hc2_ajax_load( ajax_url, target_container )
-{
-	if( ! target_container.is(':visible') ){
-		target_container.show();
-	}
-
-	target_container.prepend( hc2_full_spinner );
-	target_container.load( ajax_url, function(){
-		hc2_init_page( target_container );
-		target_container.data('src', ajax_url);
-	});
-}
 
 /*
 template engine
@@ -787,44 +660,11 @@ function hc2_php_number_format (number, decimals, decPoint, thousandsSep) { // e
 	return s.join(dec)
 }
 
-function hc2_submit_form( target_url, form_data, this_form )
-{
-	jQuery.ajax({
-		type: 'POST',
-		url: target_url,
-		dataType: "text",
-		data: form_data,
-		success: function(data, textStatus){
-			var is_json = true;
-			try {
-				var json_data = jQuery.parseJSON( data );
-			}
-			catch( err ){
-				is_json = false;
-			}
-
-			if( is_json ){
-				this_form.trigger('hc2-json-received', json_data );
-				this_form.find('.hcj2-full-spinner').remove();
-			}
-			else {
-			// html returned
-				this_form.html(data);
-			}
-		}
-		})
-		.fail( function(jqXHR, textStatus, errorThrown){
-			var error_msg = 'Ajax error: ' + target_url + ', ' + jqXHR.responseText + '<br/>';
-			this_form.find('.hcj2-full-spinner').remove();
-			this_form.prepend( error_msg );
-			})
-		;
-}
-
 jQuery(document).on( 'click', '.hcj2-insert-code', function(e)
 {
 	return false;
 });
+
 jQuery(document).on( 'mousedown', '.hcj2-insert-code', function(e)
 {
 	var $txt = jQuery('textarea:focus');
@@ -839,3 +679,370 @@ jQuery(document).on( 'mousedown', '.hcj2-insert-code', function(e)
 	}
 	return false;
 });
+
+// html
+hcapp.html = {};
+
+hcapp.html.List_Inline = function()
+{
+	var self = this;
+
+	self.items = [];
+	self.gutter = 2;
+
+	this.add = function( item )
+	{
+		self.items.push( item );
+		return this;
+	}
+
+	this.set_gutter = function( gutter )
+	{
+		self.gutter = gutter;
+		return this;
+	}
+
+	this.render = function()
+	{
+var debug = false;
+
+		var $out = jQuery('<div>');
+		$out
+			.addClass('hc-nowrap')
+			;
+
+if( debug ){
+	$out.addClass('hc-border');
+}
+
+		for( var ii = 0; ii < self.items.length; ii++ ){
+			var $out_item = jQuery('<div>')
+				.addClass('hc-inline-block')
+				;
+
+if( debug ){
+	$out_item.addClass('hc-border');
+}
+
+			if( self.gutter && ii < (self.items.length - 1) ){
+				$out_item
+					.addClass( 'hc-mr' + self.gutter )
+					;
+			}
+
+			$out_item
+				.append( self.items[ii] )
+				;
+
+		$out
+			.append( $out_item )
+			;
+		}
+		return $out;
+	}
+}
+
+hcapp.html.List = function()
+{
+	var self = this;
+
+	self.items = [];
+	self.gutter = 2;
+
+	this.add = function( item )
+	{
+		self.items.push( item );
+		return this;
+	}
+
+	this.set_gutter = function( gutter )
+	{
+		self.gutter = gutter;
+		return this;
+	}
+
+	this.render = function()
+	{
+var debug = false;
+
+		var $out = jQuery('<div>');
+
+if( debug ){
+	$out.addClass('hc-border');
+}
+
+		for( var ii = 0; ii < self.items.length; ii++ ){
+			var $out_item = jQuery('<div>')
+				.addClass('hc-block')
+				;
+
+if( debug ){
+	$out_item.addClass('hc-border');
+}
+
+			if( self.gutter && ii ){
+				$out_item
+					.addClass( 'hc-mt' + self.gutter )
+					;
+			}
+
+			$out_item
+				.append( self.items[ii] )
+				;
+
+		$out
+			.append( $out_item )
+			;
+		}
+		return $out;
+	}
+}
+
+hcapp.html.Month_Calendar = function()
+{
+	var self = this;
+	self.dates = [];
+	self.lang = [];
+
+	self._selected_date = null;
+	self._cells = {};
+
+	var $this = jQuery({});
+	this.on = function( e, callback ){
+		$this.on( e, callback );
+	}
+	this.trigger = function( e, params ){
+		$this.trigger( e, params );
+	}
+
+	this.get_selected_date = function()
+	{
+		if( ! (self._selected_date == null) ){
+			return self._selected_date;
+		}
+
+		var this_date = null
+		for( var ii = 0; ii < self.dates.length; ii++ ){
+			if( this_date ){
+				break;
+			}
+			for( var jj = 0; jj < self.dates[ii].length; jj++ ){
+				var this_date = self.dates[ii][jj];
+				if( this_date ){
+					break;
+				}
+			}
+		}
+
+		self._selected_date = this_date;
+		return self._selected_date;
+	}
+
+	this.select_date = function( date )
+	{
+		self._selected_date = date;
+		self.trigger('select-date', date);
+		return this;
+	}
+
+	this.set_dates = function( dates )
+	{
+		self.dates = dates;
+		return this;
+	}
+
+	this.render = function()
+	{
+		// alert('render cal' + self.dates.length);
+		var $out = jQuery('<div>', {
+			class:	'hc-block',
+			});
+
+		var out = new hcapp.html.List()
+			.set_gutter(0)
+			;
+
+	// labels
+		if( self.lang && self.lang.length ){
+			var label_row = new hcapp.html.Grid()
+				.set_gutter(0)
+				;
+			for( var jj = 0; jj < 7; jj++ ){
+				var $this_cell = jQuery('<div>', {
+					class:	'hc-align-center hc-nowrap hc-fs1',
+					})
+					.append( self.lang[jj] )
+					.attr('title', self.lang[jj])
+					;
+				label_row.add( $this_cell, '1-7', '1-7' );
+			}
+			out.add( label_row.render() );
+		}
+
+		if( ! self.dates ){
+			self.dates = [];
+		}
+		for( var ii = 0; ii < self.dates.length; ii++ ){
+			var row = new hcapp.html.Grid()
+				.set_gutter(0)
+				;
+
+			for( var jj = 0; jj < self.dates[ii].length; jj++ ){
+				var this_date = self.dates[ii][jj];
+
+				var $this_cell = jQuery('<div>', {
+					class:	'hc-align-center hc-nowrap',
+					});
+
+				self.trigger( 'render-date', {date: this_date, cell: $this_cell} );
+
+				row.add( $this_cell, '1-7', '1-7' );
+				self._cells[ this_date ] = $this_cell;
+			}
+
+			out.add( row.render() );
+		}
+
+		return out.render();
+	}
+
+	this.get_date_cell = function( date )
+	{
+		return self._cells[date];
+	}
+}
+
+hcapp.html.Grid = function()
+{
+	this.items = [];
+	this.gutter = 2;
+
+	this.add = function( item, width, mobile_width )
+	{
+		if( ! mobile_width ){
+			mobile_width = 12;
+		}
+		this.items.push( {'item': item, 'width': width, 'mobile_width': mobile_width} );
+		return this;
+	}
+
+	this.set_gutter = function( gutter )
+	{
+		this.gutter = gutter;
+		return this;
+	}
+
+	this.render = function()
+	{
+var debug = false;
+		var rows = [];
+
+		var full_width = 12;
+		var current_row = [];
+		var taken_width = 0;
+
+		for( var ii = 0; ii < this.items.length; ii++ ){
+			var this_width  = this.items[ii].width;
+			// this_width = 0;
+
+			if( (taken_width + this_width) > full_width ){
+				rows.push( current_row );
+				taken_width = 0;
+				current_row = [];
+			}
+
+			current_row.push( this.items[ii] );
+			taken_width += this_width;
+		}
+
+		if( current_row.length ){
+			rows.push( current_row );
+			taken_width = 0;
+			current_row = [];
+		}
+
+		var $out = jQuery('<div>', {
+			})
+			;
+
+if( debug ){
+	$out.addClass('hc-border');
+}
+
+		for( var ii = 0; ii < rows.length; ii++ ){
+			var $out_row = jQuery('<div>', {
+				class:	'hc-clearfix',
+				});
+
+if( debug ){
+	$out_row.addClass('hc-border');
+}
+
+			if( this.gutter ){
+				$out_row
+					.addClass( 'hc-mxn' + this.gutter )
+					;
+
+				if( (rows.length > 1) && (ii != (rows.length - 1)) ){
+					$out_row
+						.addClass( 'hc-mb' + this.gutter )
+						;
+				}
+			}
+
+			for( var jj = 0; jj < rows[ii].length; jj++ ){
+				var this_width = rows[ii][jj].width;
+				var this_mobile_width = rows[ii][jj].mobile_width;
+
+				var cell_classes = [];
+
+				if( this_mobile_width != 12 ){
+					cell_classes.push( 'hc-xs-col' );
+					cell_classes.push( 'hc-xs-col-' + this_mobile_width );
+				}
+
+				cell_classes.push( 'hc-col' );
+				cell_classes.push( 'hc-col-' + this_width );
+				if( this.gutter ){
+					cell_classes.push( 'hc-xs-mb' + this.gutter );
+				}
+
+				var $out_cell = jQuery('<div>');
+				for( var kk = 0; kk < cell_classes.length; kk++ ){
+					$out_cell.addClass( cell_classes[kk] );
+				}
+
+				var this_item = rows[ii][jj].item;
+				if( ! Array.isArray(this_item) ){
+					this_item = [this_item];
+				}
+
+				for( var kk = 0; kk < this_item.length; kk++ ){
+					$out_cell
+						.append( this_item[kk] )
+						;
+				}
+
+if( debug ){
+	$out_cell.addClass('hc-border');
+}
+
+				if( this.gutter ){
+					$out_cell
+						.addClass( 'hc-px' + this.gutter )
+						;
+				}
+
+				$out_row
+					.append( $out_cell )
+					;
+			}
+
+			$out
+				.append( $out_row )
+				;
+		}
+		return $out;
+	}
+}
+

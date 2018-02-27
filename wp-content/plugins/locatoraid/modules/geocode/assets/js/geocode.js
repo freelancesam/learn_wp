@@ -57,6 +57,7 @@ jQuery(document).on('hc2-gmaps-loaded', function()
 
 				$map.append( 'Save ' + '<br/>' );
 				// $map.append( save_url + '<br/>' );
+console.log( save_url );
 				jQuery.ajax( save_url )
 					.done( function(){
 						$map.append( 'OK' + '<br/>' );

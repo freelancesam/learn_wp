@@ -1,28 +1,28 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Setup_Wordpress_Index_View_HC_MVC extends _HC_MVC
+class Setup_Wordpress_Index_View_HC_MVC
 {
 	public function render()
 	{
-		$form = $this->make('/conf/controller')
+		$form = $this->app->make('/conf/controller')
 			->form('wordpress-users')
 			;
 
-		$return = $this->make('/html/view/list');
+		$return = $this->app->make('/html/list')
+			->set_gutter(2)
+			;
 
 		$nts_app_title = isset($this->app->app_config['nts_app_title']) ? $this->app->app_config['nts_app_title'] : '';
 		if( $nts_app_title ){
-			$header1 = $this->make('/html/view/element')->tag('h1')
+			$header1 = $this->app->make('/html/element')->tag('h1')
 				->add( $nts_app_title )
-				->add_attr('class', 'hc-mb2')
 				;
 			$return
 				->add( $header1 )
 				;
 		}
 
-		$header = $this->make('/html/view/element')->tag('h2')
+		$header = $this->app->make('/html/element')->tag('h2')
 			->add( HCM::__('Installation') )
-			->add_attr('class', 'hc-mb2')
 			;
 		$return
 			->add( $header )
@@ -32,9 +32,11 @@ class Setup_Wordpress_Index_View_HC_MVC extends _HC_MVC
 		$old_version = $model->get_old_version();
 
 		if( $old_version ){
-			$link = $this->make('/http/lib/uri')->url('setup/upgrade');
+			$link = $this->app->make('/http/uri')
+				->url('setup/upgrade')
+				;
 			$return->add(
-				$this->make('/html/view/element')->tag('a')
+				$this->app->make('/html/element')->tag('a')
 					->add_attr('href', $link)
 					->add('You seem to have an older version already installed. Please click here to upgrade.')
 				);
@@ -43,15 +45,16 @@ class Setup_Wordpress_Index_View_HC_MVC extends _HC_MVC
 				);
 		}
 
-		$link = $this->make('/http/lib/uri')->url('setup/run');
+		$link = $this->app->make('/http/uri')
+			->url('setup/run')
+			;
 
-		$display_form = $this->make('/html/view/form')
+		$display_form = $this->app->make('/html/view/form')
 			->add_attr('action', $link )
 			->set_form( $form )
 			;
 
-		$label = $this->app->make('/html/view/element')->tag('h4')
-			->add_attr('class', 'hc-mb2', 'hc-mt2')
+		$label = $this->app->make('/html/element')->tag('h4')
 			->add( HCM::__('Please define which WordPress user roles will be able to access the plugin.') )
 			;
 
@@ -61,7 +64,7 @@ class Setup_Wordpress_Index_View_HC_MVC extends _HC_MVC
 
 		$inputs = $form->inputs();
 		foreach( $inputs as $input_name => $input ){
-			$row = $this->make('/html/view/label-input')
+			$row = $this->app->make('/html/label-input')
 				->set_label( $input->label() )
 				->set_content( $input )
 				->set_error( $input->error() )
@@ -71,15 +74,17 @@ class Setup_Wordpress_Index_View_HC_MVC extends _HC_MVC
 				;
 		}
 
-		$buttons = $this->make('/html/view/buttons-row')
+		$buttons = $this->app->make('/html/list-inline')
+			->set_gutter(2)
 			;
 
 		$buttons->add(
-			$this->make('/html/view/element')->tag('input')
+			$this->app->make('/html/element')->tag('input')
 				->add_attr('type', 'submit')
 				->add_attr('title', HCM::__('Click To Proceed') )
 				->add_attr('value', HCM::__('Click To Proceed') )
-				->add_attr('class', 'hc-theme-btn-submit', 'hc-theme-btn-primary')
+				->add_attr('class', 'hc-theme-btn-submit')
+				->add_attr('class', 'hc-theme-btn-primary')
 			);
 		$display_form->add( $buttons );
 

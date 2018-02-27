@@ -1,10 +1,9 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Index_View_LC_HC_MVC extends _HC_MVC
+class Locations_Index_View_LC_HC_MVC
 {
 	public function render( $entries, $total_count, $page = 1, $search = '', $per_page = 5 )
 	{
 		$header = $this->header();
-		$sort = $this->sort();
 
 		$rows = array();
 		reset( $entries );
@@ -12,20 +11,16 @@ class Locations_Index_View_LC_HC_MVC extends _HC_MVC
 			$rows[ $e['id'] ] = $this->row( $e );
 		}
 
-		$out = $this->make('/html/view/list')
+		$out = $this->app->make('/html/list')
 			->set_gutter(1)
 			;
 
-		$submenu = $this->make('/html/view/list-inline')
-			->set_scale('sm')
+		$submenu = $this->app->make('/html/list-inline')
+			->set_gutter(2)
 			;
 
 		if( $total_count > $per_page ){
-			$pager_link = $this->make('/html/view/link')
-				// ->add_attr('class', 'hcj2-ajax-loader')
-				;
-			$pager = $this->make('/html/view/pager')
-				->set_link_template( $pager_link )
+			$pager = $this->app->make('/html/pager')
 				->set_total_count( $total_count )
 				->set_current_page( $page )
 				->set_per_page($per_page)
@@ -36,9 +31,9 @@ class Locations_Index_View_LC_HC_MVC extends _HC_MVC
 				;
 		}
 
-		$search_view = $this->make('/modelsearch/view');
+		$search_view = $this->app->make('/modelsearch/view');
 		$submenu
-			->add( $search_view->run('render', $search) )
+			->add( $search_view->render($search) )
 			;
 
 		$out
@@ -46,18 +41,17 @@ class Locations_Index_View_LC_HC_MVC extends _HC_MVC
 			;
 
 		if( $rows ){
-			// $table = $this->make('/html/view/sorted-table')
-				// ->set_header($header)
-				// ->set_rows($rows)
-				// ->set_sort($sort)
-				// ;
-			$table = $this->make('/html/view/table-responsive')
+			$table = $this->app->make('/html/table-responsive')
+				->set_no_footer(FALSE)
 				->set_header($header)
 				->set_rows($rows)
-				->set_sort($sort)
+				;
 
+			$table = $this->app->make('/html/element')->tag('div')
+				->add( $table )
 				->add_attr('class', 'hc-border')
 				;
+
 			$out
 				->add( $table )
 				;
@@ -75,22 +69,14 @@ class Locations_Index_View_LC_HC_MVC extends _HC_MVC
 	public function header()
 	{
 		$return = array(
-			'title' 	=> HCM::__('Title'),
-			'address' 	=> HCM::__('Address'),
+			'title' 	=> HCM::__('Location'),
+			// 'address' 	=> HCM::__('Address'),
 			);
 
 		$return = $this->app
 			->after( array($this, __FUNCTION__), $return )
 			;
 
-		return $return;
-	}
-
-	public function sort()
-	{
-		$return = array(
-			'title'	=> 1,
-			);
 		return $return;
 	}
 
@@ -101,13 +87,10 @@ class Locations_Index_View_LC_HC_MVC extends _HC_MVC
 			return $return;
 		}
 
-		$p = $this->app->make('/locations/presenter')
-			->set_data( $e )
-			;
+		$p = $this->app->make('/locations/presenter');
 
-		$title_view = $p->run('present-title');
-
-		$title_view = $this->make('/html/view/link')
+		$title_view = $p->present_title( $e );
+		$title_view = $this->app->make('/html/ahref')
 			->to('/locations/' . $e['id'] . '/edit')
 			->add( $title_view )
 		// imitate wordpress
@@ -116,17 +99,24 @@ class Locations_Index_View_LC_HC_MVC extends _HC_MVC
 			->add_attr('class', 'hc-decoration-none')
 			;
 
-		$return['title'] = $title_view;
-
 		$return['id']		= $e['id'];
-		$id_view = $this->make('/html/view/element')->tag('span')
+		$id_view = $this->app->make('/html/element')->tag('span')
 			->add_attr('class', 'hc-fs2')
-			->add_attr('class', 'hc-muted-2')
-			->add( $e['id'] )
+			->add_attr('class', 'hc-muted2')
+			->add( 'id: ' . $e['id'] )
 			;
-		$return['id_view']	= $id_view->run('render');
 
-		$address_view = $p->run('present-address');
+		$address_view = $p->present_address( $e );
+
+		$title_view = $this->app->make('/html/list')
+			->set_gutter(0)
+			->add( $title_view )
+			->add( $address_view )
+			->add( $id_view )
+			;
+
+		$return['id_view']	= $id_view;
+		$return['title'] = $title_view;
 		$return['address'] = $address_view;
 
 		$return = $this->app

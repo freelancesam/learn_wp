@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Conf_Model_HC_MVC extends _HC_MVC
+class Conf_Model_HC_MVC
 {
 	public function save()
 	{

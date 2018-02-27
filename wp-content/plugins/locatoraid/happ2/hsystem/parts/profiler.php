@@ -1,45 +1,12 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
 class Benchmark_HC_System {
-	/**
-	 * List of all benchmark markers and when they were added
-	 *
-	 * @var array
-	 */
 	var $marker = array();
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set a benchmark marker
-	 *
-	 * Multiple calls to this function can be made so that several
-	 * execution points can be timed
-	 *
-	 * @access	public
-	 * @param	string	$name	name of the marker
-	 * @return	void
-	 */
 	function mark($name)
 	{
 		$this->marker[$name] = microtime();
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Calculates the time difference between two marked points.
-	 *
-	 * If the first parameter is empty this function instead returns the
-	 * {elapsed_time} pseudo-variable. This permits the full system
-	 * execution time to be shown in a template. The output class will
-	 * swap the real value for this variable.
-	 *
-	 * @access	public
-	 * @param	string	a particular marked point
-	 * @param	string	a particular marked point
-	 * @param	integer	the number of decimal places
-	 * @return	mixed
-	 */
 	function elapsed_time($point1 = '', $point2 = '', $decimals = 4)
 	{
 		if ($point1 == '')
@@ -63,19 +30,6 @@ class Benchmark_HC_System {
 		return number_format(($em + $es) - ($sm + $ss), $decimals);
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Memory Usage
-	 *
-	 * This function returns the {memory_usage} pseudo-variable.
-	 * This permits it to be put it anywhere in a template
-	 * without the memory being calculated until the end.
-	 * The output class will swap the real value for this variable.
-	 *
-	 * @access	public
-	 * @return	string
-	 */
 	function memory_usage()
 	{
 		return '{memory_usage}';
@@ -130,16 +84,6 @@ class Profiler_HC_System {
 		$this->benchmark->mark($name);
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Set Sections
-	 *
-	 * Sets the private _compile_* properties to enable/disable Profiler sections
-	 *
-	 * @param	mixed
-	 * @return	void
-	 */
 	public function set_sections($config)
 	{
 		foreach ($config as $method => $enable)
@@ -151,18 +95,6 @@ class Profiler_HC_System {
 		}
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Auto Profiler
-	 *
-	 * This function cycles through the entire array of mark points and
-	 * matches any two points that are named identically (ending in "_start"
-	 * and "_end" respectively).  It then compiles the execution times for
-	 * all points and returns it as an array
-	 *
-	 * @return	array
-	 */
 	protected function _compile_benchmarks()
 	{
 		$profile = array();
@@ -178,10 +110,6 @@ class Profiler_HC_System {
 				}
 			}
 		}
-
-		// Build a table containing the profile data.
-		// Note: At some point we should turn this into a template that can
-		// be modified.  We also might want to make this data available to be logged
 
 		$output  = "\n\n";
 		$output .= '<fieldset id="ci_profiler_benchmarks" style="border:1px solid #900;padding:6px 10px 10px 10px;margin:20px 0 20px 0;background-color:#eee">';
@@ -202,27 +130,9 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile Queries
-	 *
-	 * @return	string
-	 */
 	protected function _compile_queries()
 	{
 		$dbs = $this->dbs;
-
-		// Let's determine which databases are currently connected to
-		/*
-		foreach (get_object_vars($this->CI) as $CI_object)
-		{
-			if (is_object($CI_object) && is_subclass_of(get_class($CI_object), 'CI_DB') )
-			{
-				$dbs[] = $CI_object;
-			}
-		}
-		*/
 
 		if (count($dbs) == 0)
 		{
@@ -250,7 +160,7 @@ class Profiler_HC_System {
 		{
 			$count++;
 
-			$hide_queries = (count($db->queries) > $this->_query_toggle_count) ? ' display:none' : '';
+			$hide_queries = (count($db->queries()) > $this->_query_toggle_count) ? ' display:none' : '';
 
 			$show_hide_js = '(<span style="cursor: pointer;" onclick="var s=document.getElementById(\'ci_profiler_queries_db_'.$count.'\').style;s.display=s.display==\'none\'?\'\':\'none\';this.innerHTML=this.innerHTML==\''.'profiler_section_hide'.'\'?\''.'profiler_section_show'.'\':\''.'profiler_section_hide'.'\';">'.'profiler_section_hide'.'</span>)';
 
@@ -261,27 +171,20 @@ class Profiler_HC_System {
 
 			$output .= '<fieldset style="border:1px solid #0000FF;padding:6px 10px 10px 10px;margin:20px 0 20px 0;background-color:#eee">';
 			$output .= "\n";
-			$output .= '<legend style="color:#0000FF;">&nbsp;&nbsp;'.'profiler_database'.':&nbsp; '.$db->database.'&nbsp;&nbsp;&nbsp;'.'profiler_queries'.': '.count($db->queries).'&nbsp;&nbsp;'.$show_hide_js.'</legend>';
+			$output .= '<legend style="color:#0000FF;">&nbsp;&nbsp;'.'profiler_queries'.': '.count($db->queries()).'&nbsp;&nbsp;'.$show_hide_js.'</legend>';
 			$output .= "\n";
 			$output .= "\n\n<table style='width:100%;{$hide_queries}' id='ci_profiler_queries_db_{$count}'>\n";
 
-			if (count($db->queries) == 0)
+			if (count($db->queries()) == 0)
 			{
 				$output .= "<tr><td style='width:100%;color:#0000FF;font-weight:normal;background-color:#eee;padding:5px;'>".'profiler_no_queries'."</td></tr>\n";
 			}
 			else
 			{
-				foreach ($db->queries as $key => $val)
+				foreach ($db->queries() as $key => $val)
 				{
-					$time = number_format($db->query_times[$key], 4);
-
-					// $val = highlight_code($val, ENT_QUOTES);
-
-					// foreach ($highlight as $bold)
-					// {
-						// $val = str_replace($bold, '<strong>'.$bold.'</strong>', $val);
-					// }
-
+					list( $val, $time ) = $val;
+					$time = number_format( $time, 4);
 					$output .= "<tr><td style='padding:5px; vertical-align: top;width:1%;color:#900;font-weight:normal;background-color:#ddd;'>".$time."&nbsp;&nbsp;</td><td style='padding:5px; color:#000;font-weight:normal;background-color:#ddd;'>".$val."</td></tr>\n";
 				}
 			}
@@ -294,14 +197,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile $_GET Data
-	 *
-	 * @return	string
-	 */
 	protected function _compile_get()
 	{
 		$output  = "\n\n";
@@ -344,13 +239,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile $_POST Data
-	 *
-	 * @return	string
-	 */
 	protected function _compile_post()
 	{
 		$output  = "\n\n";
@@ -393,13 +281,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Show query string
-	 *
-	 * @return	string
-	 */
 	protected function _compile_uri_string()
 	{
 		return;
@@ -423,13 +304,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Show the controller and function that were called
-	 *
-	 * @return	string
-	 */
 	protected function _compile_controller_info()
 	{
 		return;
@@ -446,15 +320,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile memory usage
-	 *
-	 * Display total used memory
-	 *
-	 * @return	string
-	 */
 	protected function _compile_memory_usage()
 	{
 		$output  = "\n\n";
@@ -477,15 +342,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile header information
-	 *
-	 * Lists HTTP headers
-	 *
-	 * @return	string
-	 */
 	protected function _compile_http_headers()
 	{
 		$output  = "\n\n";
@@ -508,15 +364,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile config information
-	 *
-	 * Lists developer config variables
-	 *
-	 * @return	string
-	 */
 	protected function _compile_config()
 	{
 		return;
@@ -544,13 +391,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Compile session userdata
-	 *
-	 * @return 	string
-	 */
 	private function _compile_session_data()
 	{
 		return;
@@ -578,13 +418,6 @@ class Profiler_HC_System {
 		return $output;
 	}
 
-	// --------------------------------------------------------------------
-
-	/**
-	 * Run the Profiler
-	 *
-	 * @return	string
-	 */
 	public function run()
 	{
 		$output = "<div id='codeigniter_profiler' style='clear:both;background-color:#fff;padding:10px;'>";

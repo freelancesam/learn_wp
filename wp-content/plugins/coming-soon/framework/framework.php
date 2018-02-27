@@ -229,7 +229,7 @@ class SEED_CSP4_ADMIN
         $layout = $this->get_page_layout();
         ?>
         <div class="wrap columns-2 seed-csp4">
-        <?php screen_icon(); ?>
+        
             <h2><?php echo $this->plugin_name; ?> <span class="seed_csp4-version"> <?php echo SEED_CSP4_VERSION; ?></span></h2>
             <?php //settings_errors() ?>
             <?php $this->plugin_options_tabs(); ?>
@@ -374,6 +374,17 @@ class SEED_CSP4_ADMIN
                                     </div>
                                 </div>
                             </div>
+
+                            <form id="seed-bg-form" style="display:none" action="https://www.getdrip.com/forms/39621858/submissions" method="post" data-drip-embedded-form="39621858" target="_blank">
+                                <div>
+                                    <label for="drip-email">Email Address</label><br />
+                                    <input type="email" id="drip-email" name="fields[email]" value="" />
+                                </div>
+                              <div>
+                                <input id="drip-submit" type="submit" name="submit" value="Sign Up" data-drip-attribute="sign-up-button" />
+                              </div>
+                            </form>
+
                            
                                <!-- <div class="postbox like-postbox">
                                     <div class="handlediv" title="Click to toggle"><br /></div>
@@ -468,7 +479,7 @@ class SEED_CSP4_ADMIN
                     if ( empty( $v[ 'desc_callback' ] ) ) {
                         $v[ 'desc_callback' ] = array(
                              &$this,
-                            '__return_empty_string'
+                            'return_empty_string'
                         );
                     } else {
                         $v[ 'desc_callback' ] = $v[ 'desc_callback' ];
@@ -596,7 +607,7 @@ class SEED_CSP4_ADMIN
      * @since 0.1.0
      * @return string Empty
      */
-    function __return_empty_string( )
+    function return_empty_string( )
     {
         echo '';
     }

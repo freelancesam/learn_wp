@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Maps_Google_Conf_Controller_HC_MVC extends _HC_MVC
+class Maps_Google_Conf_Controller_HC_MVC
 {
 	public function execute()
 	{
@@ -7,12 +7,12 @@ class Maps_Google_Conf_Controller_HC_MVC extends _HC_MVC
 			->render()
 			;
 		$view = $this->app->make('/conf/view/layout')
-			->render( $view, 'maps-google.conf' )
+			->render( $view, 'maps-google' )
 			;
-		$view = $this->make('/layout/view/body')
+		$view = $this->app->make('/layout/view/body')
 			->set_content($view)
 			;
-		return $this->make('/http/view/response')
+		return $this->app->make('/http/view/response')
 			->set_view($view)
 			;
 	}

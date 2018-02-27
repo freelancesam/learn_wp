@@ -1,40 +1,39 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Index_Controller_LC_HC_MVC extends _HC_MVC
+class Locations_Index_Controller_LC_HC_MVC
 {
 	public function execute()
 	{
-		$uri = $this->make('/http/lib/uri');
-		$sort = $uri->arg('sort');
-		$skip = $uri->arg('skip');
-		$search = $uri->arg('search');
-		$page = $uri->arg('page') ? $uri->arg('page') : 1;
+		$uri = $this->app->make('/http/uri');
+
+		$sort = $uri->param('sort');
+		$skip = $uri->param('skip');
+		$search = $uri->param('search');
+		$page = $uri->param('page');
+		if( ! $page ){
+			$page = 1;
+		}
 
 		$per_page = 20;
 
-		$api = $this->make('/http/lib/api')
-			->request('/api/locations')
-			;
+		$command = $this->app->make('/locations/commands/read');
 
+		$count_args = array();
+		$count_args[] = 'count';
 		if( $search ){
-			$api->add_param('search', $search);
+			$count_args[] = array('search', $search);
 		}
-
 		if( $skip ){
-			$api->add_param('id', array('NOTIN', $skip));
+			$count_args[] = array('id', 'NOTIN', $skip);
 		}
 
-		// $api->add_param('count', 1);
-		$api->add_param('custom', 'count');
-
-		$total_count = $api
-			->get()
-			->response()
+		$total_count = $command
+			->execute( $count_args )
 			;
 
 		$limit = $per_page;
 
 		if( $total_count > $per_page ){
-			$pager = $this->make('/html/view/pager')
+			$pager = $this->app->make('/html/pager')
 				->set_total_count( $total_count )
 				->set_per_page( $per_page )
 				;
@@ -43,45 +42,40 @@ class Locations_Index_Controller_LC_HC_MVC extends _HC_MVC
 			}
 		}
 
+		$command_args = array();
+		$command_args[] = array('with', '-all-');
+
 		if( $page && $page > 1 ){
-			$limit = array( $per_page, ($page - 1) * $per_page );
+			$command_args[] = array('limit', $per_page, ($page - 1) * $per_page);
 		}
 		else {
-			$limit = $per_page;
+			$command_args[] = array('limit', $per_page);
 		}
-
-		$api
-			->add_param('with', '-all-')
-			->add_param('limit', $limit )
-			;
 
 		if( $sort ){
-			$api->add_param('sort', $sort );
+			$command_args[] = array('sort', $sort);
 		}
 		if( $skip ){
-			$api->add_param('id', array('NOTIN', $skip));
+			$command_args[] = array('id', 'NOTIN', $skip);
 		}
 		if( $search ){
-			$api->add_param('search', $search);
+			$command_args[] = array('search', $search);
 		}
-		// echo $api->url();
-		// exit;
 
-		$entries = $api
-			->get()
-			->response()
+		$entries = $command
+			->execute( $command_args )
 			;
 
-		$view = $this->make('index/view')
-			->run('render', $entries, $total_count, $page, $search, $per_page)
+		$view = $this->app->make('/locations/index/view')
+			->render($entries, $total_count, $page, $search, $per_page)
 			;
-		$view = $this->make('index/view/layout')
-			->run('render', $view)
+		$view = $this->app->make('/locations/index/view/layout')
+			->render($view)
 			;
-		$view = $this->make('/layout/view/body')
+		$view = $this->app->make('/layout/view/body')
 			->set_content($view)
 			;
-		return $this->make('/http/view/response')
+		return $this->app->make('/http/view/response')
 			->set_view($view)
 			;
 	}

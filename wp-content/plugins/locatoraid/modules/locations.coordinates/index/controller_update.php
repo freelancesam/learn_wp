@@ -1,85 +1,43 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Coordinates_Index_Controller_Update_LC_HC_MVC extends _HC_MVC
+class Locations_Coordinates_Index_Controller_Update_LC_HC_MVC
 {
-	public function execute()
+	public function execute( $id )
 	{
-		$args = $this->make('/app/lib/args')->run('parse', func_get_args());
-		$id = $args->get('id');
+		$post = $this->app->make('/input/lib')->post();
 
-		$post = $this->make('/input/lib')->post();
-		if( ! $post ){
-			return;
-		}
+		$inputs = $this->app->make('/locations.coordinates/form')
+			->inputs()
+			;
+		$helper = $this->app->make('/form/helper');
 
-		$form = $this->make('form');
-		$form->grab( $post );
+		list( $values, $errors ) = $helper->grab( $inputs, $post );
 
-		$valid = $form->validate();
-		if( ! $valid ){
-			$form_errors = array(
-				$form->slug()	=> $form->errors()
-				);
-			$form_values = array(
-				$form->slug()	=> $form->values()
-				);
-
-			$session = $this->make('/session/lib');
-			$session
-				->set_flashdata('form_errors', $form_errors)
-				->set_flashdata('form_values', $form_values)
-				;
-
-			$redirect_to = $this->make('/html/view/link')
-				->to('-referrer-')
-				->href()
-				;
-			return $this->make('/http/view/response')
-				->set_redirect($redirect_to) 
+		if( $errors ){
+			return $this->app->make('/http/view/response')
+				->set_redirect('-referrer-') 
 				;
 		}
-
-		$values = $form->values();
 
 	/* API */
-		$api = $this->make('/http/lib/api')
-			->request('/api/locations')
+		$response = $this->app->make('/locations/commands/update')
+			->execute( $id, $values )
 			;
 
-		$api->put( $id, $values );
-
-		$status_code = $api->response_code();
-		$api_out = $api->response();
-
-		if( substr($status_code, 0, 1) != '2' ){
-			$form_errors = array(
-				$form->slug()	=> $api_out['errors']
-				);
-			$form_values = array(
-				$form->slug()	=> $form->values()
-				);
-
-			$session = $this->make('/session/lib');
+		if( isset($response['errors']) ){
+			$session = $this->app->make('/session/lib');
 			$session
-				->set_flashdata('form_errors', $form_errors)
-				->set_flashdata('form_values', $form_values)
+				->set_flashdata('error', $response['errors'])
 				;
-
-			$redirect_to = $this->make('/html/view/link')
-				->to('-referrer-')
-				->href()
-				;
-			return $this->make('/http/view/response')
-				->set_redirect($redirect_to) 
+			return $this->app->make('/http/view/response')
+				->set_redirect('-referrer-') 
 				;
 		}
 
 	// OK
-		$redirect_to = $this->make('/html/view/link')
-			->to('/locations/' . $id . '/edit')
-			->href()
+		$redirect_to = $this->app->make('/http/uri')
+			->url('/locations/' . $id . '/edit')
 			;
-
-		return $this->make('/http/view/response')
+		return $this->app->make('/http/view/response')
 			->set_redirect($redirect_to) 
 			;
 	}

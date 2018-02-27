@@ -1,10 +1,10 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Edit_Form_LC_HC_MVC extends _HC_Form
+class Locations_Edit_Form_LC_HC_MVC
 {
-	public function conf()
+	public function inputs()
 	{
 		$return = $this->app->make('/locations/form')
-			->conf()
+			->inputs()
 			;
 
 		$return = $this->app

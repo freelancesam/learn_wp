@@ -235,4 +235,33 @@ $tag = 'locatoraid';
 		</ul>
 	</li>
 
+	<li class="hc-mt3">
+		<h3 class="hc-underline">id</h3>
+		<ul class="hc-ml3">
+			<li>
+				<?php echo HCM::__('It displays just one location defined by its id.'); ?>
+			</li>
+
+			<li class="hc-p2">
+				<code class="hc-p2">
+				[<?php echo $tag; ?> id="123"]
+				</code>
+			</li>
+		</ul>
+	</li>
+
+</ul>
+
+<h2><?php echo HCM::__('GET Override'); ?></h2>
+
+<ul class="hc-ml3">
+	<li>
+		<?php echo HCM::__('Any of the above parameters can be overridden by GET URL parameters prefixed with "lctr-".'); ?>
+	</li>
+
+	<li class="hc-p2">
+		<code class="hc-p2">
+		http://www.yoursite.com/locator/?lctr-start=florida&lctr-radius=100
+		</code>
+	</li>
 </ul>

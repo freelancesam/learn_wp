@@ -1,6 +1,30 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Http_Lib_Download_HC_MVC extends _HC_MVC
+class Http_Lib_Download_HC_MVC
 {
+	public function download_file( $filename, $short_name )
+	{
+		if( ob_get_contents() ){
+			ob_end_clean();
+		}
+
+		$file_size = filesize( $filename );
+
+		header("Type: application/force-download");
+		header("Content-Type: application/force-download");
+		header("Content-Length: $file_size");
+
+		header("Content-Transfer-Encoding: binary");
+		header("Content-Disposition: attachment; filename=\"$short_name\"");
+
+		header("Pragma: public");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header("Connection: close");
+
+		readfile( $filename );
+		exit;
+	}
+
 	public function download( $filename, $data )
 	{
 	// Try to determine if the filename includes a file extension.

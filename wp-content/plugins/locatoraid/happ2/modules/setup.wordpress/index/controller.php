@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Setup_Wordpress_Index_Controller_HC_MVC extends _HC_MVC
+class Setup_Wordpress_Index_Controller_HC_MVC
 {
 	public function execute()
 	{

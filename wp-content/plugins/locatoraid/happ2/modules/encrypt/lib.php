@@ -26,7 +26,7 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/encryption.html
  */
-class Encrypt_Lib_HC_MVC extends _HC_MVC {
+class Encrypt_Lib_HC_MVC {
 
 	var $encryption_key	= '';
 	var $_hash_type	= 'sha1';
@@ -45,6 +45,7 @@ class Encrypt_Lib_HC_MVC extends _HC_MVC {
 		$this->set_key( md5(__FILE__) );
 		$this->_hash_type = function_exists('sha1') ? 'sha1' : 'md5';
 		$this->_mcrypt_exists = ( ! function_exists('mcrypt_encrypt')) ? FALSE : TRUE;
+		$this->_mcrypt_exists = FALSE;
 	}
 
 	// --------------------------------------------------------------------

@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Edit_View_Layout_LC_HC_MVC extends _HC_MVC
+class Locations_Edit_View_Layout_LC_HC_MVC
 {
 	public function header( $model )
 	{
@@ -13,9 +13,9 @@ class Locations_Edit_View_Layout_LC_HC_MVC extends _HC_MVC
 
 	// LIST
 		$return['list'] = 
-			$this->make('/html/view/link')
+			$this->app->make('/html/ahref')
 				->to('/locations')
-				->add( $this->make('/html/view/icon')->icon('arrow-left') )
+				->add( $this->app->make('/html/icon')->icon('arrow-left') )
 				->add( HCM::__('Locations') )
 			;
 
@@ -28,10 +28,14 @@ class Locations_Edit_View_Layout_LC_HC_MVC extends _HC_MVC
 
 	public function render( $content, $model )
 	{
+		$this->app->make('/layout/top-menu')
+			->set_current( 'locations' )
+			;
+
 		$menubar = $this->menubar( $model);
 		$header = $this->header( $model );
 
-		$out = $this->make('/layout/view/content-header-menubar')
+		$out = $this->app->make('/layout/view/content-header-menubar')
 			->set_content( $content )
 			->set_header( $header )
 			->set_menubar( $menubar )

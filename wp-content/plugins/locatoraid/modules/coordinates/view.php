@@ -1,9 +1,9 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Coordinates_View_LC_HC_MVC extends _HC_MVC
+class Coordinates_View_LC_HC_MVC
 {
 	public function render( $address )
 	{
-		$out = $this->make('/html/view/list')
+		$out = $this->app->make('/html/list')
 			->set_gutter(2)
 			;
 

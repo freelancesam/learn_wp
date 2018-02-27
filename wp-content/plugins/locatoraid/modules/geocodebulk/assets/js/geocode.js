@@ -7,7 +7,7 @@ jQuery(document).on('hc2-gmaps-loaded', function()
 	var remain_to_process = 0;
 
 	var json_url = $map.data('json-url');
-	// console.log( json_url );
+	console.log( json_url );
 
 	jQuery.getJSON(
 		json_url,
@@ -101,7 +101,7 @@ jQuery(document).on('hc2-gmaps-loaded', function()
 
 				$this_result_div.append( 'Saving ... ' + '<br/>' );
 				// $map.append( save_url + '<br/>' );
-
+console.log( save_url );
 				jQuery.ajax( save_url )
 					.done( function(){
 						$this_result_div.append( 'OK' + '<br/>' );

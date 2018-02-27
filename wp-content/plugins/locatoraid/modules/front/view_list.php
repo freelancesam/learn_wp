@@ -1,13 +1,11 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Front_View_List_LC_HC_MVC extends _HC_MVC
+class Front_View_List_LC_HC_MVC
 {
 	public function render( $params = array() )
 	{
-		$out = $this->make('/html/view/container');
-
 		$style = array_key_exists('list-style', $params) ? $params['list-style'] : NULL;
 		$holder_id = 'hclc_list';
-		$div = $this->make('/html/view/element')->tag('div')
+		$div = $this->app->make('/html/element')->tag('div')
 			->add_attr('id', $holder_id)
 			->add_attr('class', 'hc-mb3-xs')
 			->add_attr('class', 'hc-relative')
@@ -22,7 +20,7 @@ class Front_View_List_LC_HC_MVC extends _HC_MVC
 		$app_settings = $this->app->make('/app/settings');
 		$template = $app_settings->get('front_list:template');
 
-		$template = $this->make('/html/view/element')->tag('script')
+		$template = $this->app->make('/html/element')->tag('script')
 			->add_attr('type', 'text/template')
 			->add_attr('id', 'hclc_list_template')
 			->add( $template )
@@ -34,7 +32,7 @@ class Front_View_List_LC_HC_MVC extends _HC_MVC
 		$no_results_template[] = '</div>';
 		$no_results_template = join("\n", $no_results_template);
 
-		$no_results_template = $this->make('/html/view/element')->tag('script')
+		$no_results_template = $this->app->make('/html/element')->tag('script')
 			->add_attr('type', 'text/template')
 			->add_attr('id', 'hclc_list_template_no_results')
 			->add( $no_results_template )
@@ -59,7 +57,7 @@ class Front_View_List_LC_HC_MVC extends _HC_MVC
 				;
 		}
 
-		$out
+		$out = $this->app->make('/html/element')->tag(NULL)
 			->add( $div )
 			->add( $template )
 			->add( $no_results_template )

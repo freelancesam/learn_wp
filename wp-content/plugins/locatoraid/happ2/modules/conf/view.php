@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Conf_View_HC_MVC extends _HC_MVC
+class Conf_View_HC_MVC
 {
 	public function render( $form, $to )
 	{
@@ -7,45 +7,38 @@ class Conf_View_HC_MVC extends _HC_MVC
 			->get()
 			;
 
-		$form
-			->set_values( $values )
-			;
+		$helper = $this->app->make('/form/helper');
+		$inputs_view = $helper->prepare_render( $form->inputs(), $values );
+		$out_inputs = $helper->render_inputs( $inputs_view );
 
-		$link = $this->make('/html/view/link')
-			->to($to)
-			->href()
-			;
-
-		$display_form = $this->make('/html/view/form')
-			->add_attr('action', $link )
-			->set_form( $form )
-			;
-
-		$inputs = $form->inputs();
-		foreach( $inputs as $input_name => $input ){
-			$input_view = $this->make('/html/view/label-input')
-				->set_label( $input->label() )
-				->set_content( $input )
-				->set_error( $input->error() )
-				;
-			$display_form
-				->add( $input_view )
-				;
-		}
-
-		if( ! $form->readonly() ){
-			$buttons = $this->make('/html/view/buttons-row');
-			$buttons->add(
-				'save',
-				$this->make('/html/view/element')->tag('input')
+		$out_buttons = $this->app->make('/html/list')
+			->set_gutter(2)
+			->add(
+				$this->app->make('/html/element')->tag('input')
 					->add_attr('type', 'submit')
 					->add_attr('title', HCM::__('Save') )
 					->add_attr('value', HCM::__('Save') )
-					->add_attr('class', 'hc-theme-btn-submit', 'hc-theme-btn-primary')
-				);
-			$display_form->add( $buttons );
-		}
+					->add_attr('class', 'hc-theme-btn-submit')
+					->add_attr('class', 'hc-theme-btn-primary')
+					->add_attr('class', 'hc-block')
+				)
+			;
 
-		return $display_form;
+		$link = $this->app->make('/http/uri')
+			->url( $to )
+			;
+
+		$out = $helper
+			->render( array('action' => $link) )
+			->add( 
+				$this->app->make('/html/grid')
+					->set_gutter(2)
+					->add( $out_inputs, 9, 12 )
+					->add( $out_buttons, 3, 12 )
+				)
+			;
+
+
+		return $out;
 	}
 }

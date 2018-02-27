@@ -1,15 +1,14 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class ModelSearch_Form_HC_MVC extends _HC_Form
+class ModelSearch_Form_HC_MVC
 {
-	public function _init()
+	public function inputs()
 	{
-		$this
-			->set_input( 'search',
-				$this->make('/form/view/text')
-					->add_attr('size', 16)
-				)
+		$return = array();
+
+		$return['search'] = $this->app->make('/form/text')
+			->set_size(16)
 			;
 
-		return $this;
+		return $return;
 	}
 }

@@ -43,6 +43,9 @@
  * @author		EllisLab Dev Team
  * @link		https://codeigniter.com/user_guide/database/
  */
+
+if( ! class_exists('HC_Database_Forge') ){
+
 abstract class CI_DB_forge_HC_System {
 
 	/**
@@ -51,6 +54,7 @@ abstract class CI_DB_forge_HC_System {
 	 * @var	object
 	 */
 	protected $db;
+	protected $qb;
 
 	/**
 	 * Fields data
@@ -163,9 +167,10 @@ abstract class CI_DB_forge_HC_System {
 	 * @param	object	&$db	Database object
 	 * @return	void
 	 */
-	public function __construct(&$db)
+	public function __construct( $db, $qb )
 	{
-		$this->db =& $db;
+		$this->db = $db;
+		$this->qb = $qb;
 		// log_message('info', 'Database Forge Class Initialized');
 	}
 
@@ -326,7 +331,7 @@ abstract class CI_DB_forge_HC_System {
 		}
 		else
 		{
-			$table = $this->db->dbprefix.$table;
+			$table = $this->qb->prefix().$table;
 		}
 
 		if (count($this->fields) === 0)
@@ -388,7 +393,7 @@ abstract class CI_DB_forge_HC_System {
 		}
 
 		$sql = ($if_not_exists)
-			? sprintf($this->_create_table_if, $this->db->escape_identifiers($table))
+			? sprintf($this->_create_table_if, $this->qb->escape_identifiers($table))
 			: 'CREATE TABLE';
 
 		$columns = $this->_process_fields(TRUE);
@@ -411,7 +416,7 @@ abstract class CI_DB_forge_HC_System {
 		// _create_table will usually have the following format: "%s %s (%s\n)"
 		$sql = sprintf($this->_create_table.'%s',
 			$sql,
-			$this->db->escape_identifiers($table),
+			$this->qb->escape_identifiers($table),
 			$columns,
 			$this->_create_table_attr($attributes)
 		);
@@ -458,7 +463,7 @@ abstract class CI_DB_forge_HC_System {
 			return ($this->db->db_debug) ? $this->db->display_error('db_table_name_required') : FALSE;
 		}
 
-		if (($query = $this->_drop_table($this->db->dbprefix.$table_name, $if_exists)) === TRUE)
+		if (($query = $this->_drop_table($this->qb->prefix().$table_name, $if_exists)) === TRUE)
 		{
 			return TRUE;
 		}
@@ -468,7 +473,7 @@ abstract class CI_DB_forge_HC_System {
 		// Update table list cache
 		if ($query && ! empty($this->db->data_cache['table_names']))
 		{
-			$key = array_search(strtolower($this->db->dbprefix.$table_name), array_map('strtolower', $this->db->data_cache['table_names']), TRUE);
+			$key = array_search(strtolower($this->qb->prefix().$table_name), array_map('strtolower', $this->db->data_cache['table_names']), TRUE);
 			if ($key !== FALSE)
 			{
 				unset($this->db->data_cache['table_names'][$key]);
@@ -504,11 +509,11 @@ abstract class CI_DB_forge_HC_System {
 			}
 			else
 			{
-				$sql = sprintf($this->_drop_table_if, $this->db->escape_identifiers($table));
+				$sql = sprintf($this->_drop_table_if, $this->qb->escape_identifiers($table));
 			}
 		}
 
-		return $sql.' '.$this->db->escape_identifiers($table);
+		return $sql.' '.$this->qb->escape_identifiers($table);
 	}
 
 	// --------------------------------------------------------------------
@@ -533,16 +538,16 @@ abstract class CI_DB_forge_HC_System {
 		}
 
 		$result = $this->db->query(sprintf($this->_rename_table,
-						$this->db->escape_identifiers($this->db->dbprefix.$table_name),
-						$this->db->escape_identifiers($this->db->dbprefix.$new_table_name))
+						$this->qb->escape_identifiers($this->qb->prefix().$table_name),
+						$this->qb->escape_identifiers($this->qb->prefix().$new_table_name))
 					);
 
 		if ($result && ! empty($this->db->data_cache['table_names']))
 		{
-			$key = array_search(strtolower($this->db->dbprefix.$table_name), array_map('strtolower', $this->db->data_cache['table_names']), TRUE);
+			$key = array_search(strtolower($this->qb->prefix().$table_name), array_map('strtolower', $this->db->data_cache['table_names']), TRUE);
 			if ($key !== FALSE)
 			{
-				$this->db->data_cache['table_names'][$key] = $this->db->dbprefix.$new_table_name;
+				$this->db->data_cache['table_names'][$key] = $this->qb->prefix().$new_table_name;
 			}
 		}
 
@@ -576,7 +581,7 @@ abstract class CI_DB_forge_HC_System {
 			$this->add_field(array($k => $field[$k]));
 		}
 
-		$sqls = $this->_alter_table('ADD', $this->db->dbprefix.$table, $this->_process_fields());
+		$sqls = $this->_alter_table('ADD', $this->qb->prefix().$table, $this->_process_fields());
 		$this->_reset();
 		if ($sqls === FALSE)
 		{
@@ -605,7 +610,7 @@ abstract class CI_DB_forge_HC_System {
 	 */
 	public function drop_column($table, $column_name)
 	{
-		$sql = $this->_alter_table('DROP', $this->db->dbprefix.$table, $column_name);
+		$sql = $this->_alter_table('DROP', $this->qb->prefix().$table, $column_name);
 		if ($sql === FALSE)
 		{
 			return ($this->db->db_debug) ? $this->db->display_error('db_unsupported_feature') : FALSE;
@@ -638,7 +643,7 @@ abstract class CI_DB_forge_HC_System {
 			show_error('Field information is required.');
 		}
 
-		$sqls = $this->_alter_table('CHANGE', $this->db->dbprefix.$table, $this->_process_fields());
+		$sqls = $this->_alter_table('CHANGE', $this->qb->prefix().$table, $this->_process_fields());
 		$this->_reset();
 		if ($sqls === FALSE)
 		{
@@ -668,12 +673,12 @@ abstract class CI_DB_forge_HC_System {
 	 */
 	protected function _alter_table($alter_type, $table, $field)
 	{
-		$sql = 'ALTER TABLE '.$this->db->escape_identifiers($table).' ';
+		$sql = 'ALTER TABLE '.$this->qb->escape_identifiers($table).' ';
 
 		// DROP has everything it needs now.
 		if ($alter_type === 'DROP')
 		{
-			return $sql.'DROP COLUMN '.$this->db->escape_identifiers($field);
+			return $sql.'DROP COLUMN '.$this->qb->escape_identifiers($field);
 		}
 
 		$sql .= ($alter_type === 'ADD')
@@ -803,7 +808,7 @@ abstract class CI_DB_forge_HC_System {
 	 */
 	protected function _process_column($field)
 	{
-		return $this->db->escape_identifiers($field['name'])
+		return $this->qb->escape_identifiers($field['name'])
 			.' '.$field['type'].$field['length']
 			.$field['unsigned']
 			.$field['default']
@@ -905,7 +910,7 @@ abstract class CI_DB_forge_HC_System {
 			}
 			else
 			{
-				$field['default'] = $this->_default.$this->db->escape($attributes['DEFAULT']);
+				$field['default'] = $this->_default.$this->qb->escape($attributes['DEFAULT']);
 			}
 		}
 	}
@@ -966,8 +971,8 @@ abstract class CI_DB_forge_HC_System {
 
 		if (count($this->primary_keys) > 0)
 		{
-			$sql .= ",\n\tCONSTRAINT ".$this->db->escape_identifiers('pk_'.$table)
-				.' PRIMARY KEY('.implode(', ', $this->db->escape_identifiers($this->primary_keys)).')';
+			$sql .= ",\n\tCONSTRAINT ".$this->qb->escape_identifiers('pk_'.$table)
+				.' PRIMARY KEY('.implode(', ', $this->qb->escape_identifiers($this->primary_keys)).')';
 		}
 
 		return $sql;
@@ -1006,9 +1011,9 @@ abstract class CI_DB_forge_HC_System {
 
 			is_array($this->keys[$i]) OR $this->keys[$i] = array($this->keys[$i]);
 
-			$sqls[] = 'CREATE INDEX '.$this->db->escape_identifiers($table.'_'.implode('_', $this->keys[$i]))
-				.' ON '.$this->db->escape_identifiers($table)
-				.' ('.implode(', ', $this->db->escape_identifiers($this->keys[$i])).');';
+			$sqls[] = 'CREATE INDEX '.$this->qb->escape_identifiers($table.'_'.implode('_', $this->keys[$i]))
+				.' ON '.$this->qb->escape_identifiers($table)
+				.' ('.implode(', ', $this->qb->escape_identifiers($this->keys[$i])).');';
 		}
 
 		return $sqls;
@@ -1027,5 +1032,202 @@ abstract class CI_DB_forge_HC_System {
 	{
 		$this->fields = $this->keys = $this->primary_keys = array();
 	}
+}
+
+class HC_Database_Forge extends CI_DB_forge_HC_System {
+
+	/**
+	 * CREATE DATABASE statement
+	 *
+	 * @var	string
+	 */
+	protected $_create_database	= 'CREATE DATABASE %s CHARACTER SET %s COLLATE %s';
+
+	/**
+	 * CREATE TABLE keys flag
+	 *
+	 * Whether table keys are created from within the
+	 * CREATE TABLE statement.
+	 *
+	 * @var	bool
+	 */
+	protected $_create_table_keys	= TRUE;
+
+	/**
+	 * UNSIGNED support
+	 *
+	 * @var	array
+	 */
+	protected $_unsigned		= array(
+		'TINYINT',
+		'SMALLINT',
+		'MEDIUMINT',
+		'INT',
+		'INTEGER',
+		'BIGINT',
+		'REAL',
+		'DOUBLE',
+		'DOUBLE PRECISION',
+		'FLOAT',
+		'DECIMAL',
+		'NUMERIC'
+	);
+
+	/**
+	 * NULL value representation in CREATE/ALTER TABLE statements
+	 *
+	 * @var	string
+	 */
+	protected $_null = 'NULL';
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * CREATE TABLE attributes
+	 *
+	 * @param	array	$attributes	Associative array of table attributes
+	 * @return	string
+	 */
+	protected function _create_table_attr($attributes)
+	{
+		$sql = '';
+
+		foreach (array_keys($attributes) as $key)
+		{
+			if (is_string($key))
+			{
+				$sql .= ' '.strtoupper($key).' = '.$attributes[$key];
+			}
+		}
+
+		if ( ! empty($this->db->char_set) && ! strpos($sql, 'CHARACTER SET') && ! strpos($sql, 'CHARSET'))
+		{
+			$sql .= ' DEFAULT CHARACTER SET = '.$this->db->char_set;
+		}
+
+		if ( ! empty($this->db->dbcollat) && ! strpos($sql, 'COLLATE'))
+		{
+			$sql .= ' COLLATE = '.$this->db->dbcollat;
+		}
+
+		return $sql;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * ALTER TABLE
+	 *
+	 * @param	string	$alter_type	ALTER type
+	 * @param	string	$table		Table name
+	 * @param	mixed	$field		Column definition
+	 * @return	string|string[]
+	 */
+	protected function _alter_table($alter_type, $table, $field)
+	{
+		if ($alter_type === 'DROP')
+		{
+			return parent::_alter_table($alter_type, $table, $field);
+		}
+
+		$sql = 'ALTER TABLE '.$this->qb->escape_identifiers($table);
+		for ($i = 0, $c = count($field); $i < $c; $i++)
+		{
+			if ($field[$i]['_literal'] !== FALSE)
+			{
+				$field[$i] = ($alter_type === 'ADD')
+						? "\n\tADD ".$field[$i]['_literal']
+						: "\n\tMODIFY ".$field[$i]['_literal'];
+			}
+			else
+			{
+				if ($alter_type === 'ADD')
+				{
+					$field[$i]['_literal'] = "\n\tADD ";
+				}
+				else
+				{
+					$field[$i]['_literal'] = empty($field[$i]['new_name']) ? "\n\tMODIFY " : "\n\tCHANGE ";
+				}
+
+				$field[$i] = $field[$i]['_literal'].$this->_process_column($field[$i]);
+			}
+		}
+
+		return array($sql.implode(',', $field));
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Process column
+	 *
+	 * @param	array	$field
+	 * @return	string
+	 */
+	protected function _process_column($field)
+	{
+		$extra_clause = isset($field['after'])
+			? ' AFTER '.$this->qb->escape_identifiers($field['after']) : '';
+
+		if (empty($extra_clause) && isset($field['first']) && $field['first'] === TRUE)
+		{
+			$extra_clause = ' FIRST';
+		}
+
+		return $this->qb->escape_identifiers($field['name'])
+			.(empty($field['new_name']) ? '' : ' '.$this->qb->escape_identifiers($field['new_name']))
+			.' '.$field['type'].$field['length']
+			.$field['unsigned']
+			.$field['null']
+			.$field['default']
+			.$field['auto_increment']
+			.$field['unique']
+			.(empty($field['comment']) ? '' : ' COMMENT '.$field['comment'])
+			.$extra_clause;
+	}
+
+	// --------------------------------------------------------------------
+
+	/**
+	 * Process indexes
+	 *
+	 * @param	string	$table	(ignored)
+	 * @return	string
+	 */
+	protected function _process_indexes($table)
+	{
+		$sql = '';
+
+		for ($i = 0, $c = count($this->keys); $i < $c; $i++)
+		{
+			if (is_array($this->keys[$i]))
+			{
+				for ($i2 = 0, $c2 = count($this->keys[$i]); $i2 < $c2; $i2++)
+				{
+					if ( ! isset($this->fields[$this->keys[$i][$i2]]))
+					{
+						unset($this->keys[$i][$i2]);
+						continue;
+					}
+				}
+			}
+			elseif ( ! isset($this->fields[$this->keys[$i]]))
+			{
+				unset($this->keys[$i]);
+				continue;
+			}
+
+			is_array($this->keys[$i]) OR $this->keys[$i] = array($this->keys[$i]);
+
+			$sql .= ",\n\tKEY ".$this->qb->escape_identifiers(implode('_', $this->keys[$i]))
+				.' ('.implode(', ', $this->qb->escape_identifiers($this->keys[$i])).')';
+		}
+
+		$this->keys = array();
+
+		return $sql;
+	}
+}
 
 }

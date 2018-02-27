@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Conf_Controller_HC_MVC extends _HC_MVC
+class Conf_Controller_HC_MVC
 {
 	function execute()
 	{
@@ -24,9 +24,7 @@ class Conf_Controller_HC_MVC extends _HC_MVC
 			$slug = '/conf/' . $tab;
 		}
 
-		list( $controller, $method ) = $this->app->route( $slug );
-		$controller = $this->app->make( $controller );
-		$return = $controller->execute();
-		return $return;
+		list( $callable, $args ) = $this->app->route( $slug );
+		return call_user_func_array( $callable, $args );
 	}
 }

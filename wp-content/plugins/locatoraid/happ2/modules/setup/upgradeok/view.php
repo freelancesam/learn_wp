@@ -1,32 +1,33 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Setup_UpgradeOk_View_HC_MVC extends _HC_MVC
+class Setup_UpgradeOk_View_HC_MVC
 {
 	public function render()
 	{
-		$return = $this->app->make('/html/view/list');
+		$return = $this->app->make('/html/list')
+			->set_gutter(2)
+			;
 
-		$header = $this->app->make('/html/view/element')->tag('h1')
+		$header = $this->app->make('/html/element')->tag('h1')
 			->add( HCM::__('Thank You') )
-			->add_attr('class', 'hc-mb2')
 			;
 
 		$return
 			->add( $header )
 			;
 
-		$link = $this->app->make('/html/view/link')
-			->to('/')
-			->href()
+		$link = $this->app->make('/http/uri')
+			->url()
 			;
 
 		$return->add(
 			'Thank you for upgrading our software!'
 			);
 		$return->add(
-			$this->app->make('/html/view/element')->tag('a')
+			$this->app->make('/html/element')->tag('a')
 				->add_attr('href', $link)
 				->add('Please now proceed to the start page.')
-				->add_attr('class', 'hc-theme-btn-submit', 'hc-theme-btn-primary')
+				->add_attr('class', 'hc-theme-btn-submit')
+				->add_attr('class', 'hc-theme-btn-primary')
 			);
 		// $return->add(
 			// '<META http-equiv="refresh" content="5;URL=' . echo $link . '">'

@@ -1,23 +1,23 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Front_View_Form_LC_HC_MVC extends _HC_MVC
+class Front_View_Form_LC_HC_MVC
 {
 	public function render( $params = array() )
 	{
-		$out = $this->make('/html/view/container');
+		$form = $this->app->make('/front/form');
+		$form_inputs = $form->inputs();
 
-		$form = $this->make('form');
+		$app_settings = $this->app->make('/app/settings');
 
 		if( isset($params['where-product']) && $params['where-product'] ){
-			$form
-				->unset_input('product')
-				;
+			unset( $form_inputs['product'] );
+		}
+
+		$form_values = array();
+		if( isset($params['start']) && ($params['start'] != 'no') ){
+			$form_values['search'] = $params['start'];
 		}
 
 		$search_form_id = 'hclc_search_form';
-
-		if( isset($params['start']) && ($params['start'] != 'no') ){
-			$form->set_value( 'search', $params['start'] );
-		}
 
 		$link_params = array(
 			'search'	=> '_SEARCH_',
@@ -26,22 +26,28 @@ class Front_View_Form_LC_HC_MVC extends _HC_MVC
 			'lng'		=> '_LNG_',
 			);
 
-		if( isset($params['limit']) ){
-			$link_params['limit'] = $params['limit'];
+		if( isset($params['id']) && $params['id'] ){
+			$link_params['id'] = $params['id'];
+			unset($params['radius']);
 		}
-
-		if( isset($params['radius']) && (count($params['radius']) <= 1) ){
-			$link_params['radius'] = $params['radius'];
-		}
-
-		if( isset($params['sort']) ){
-			if( substr($params['sort'], -strlen('-reverse')) == '-reverse' ){
-				$link_params['sort'] = array( substr($params['sort'], 0, -strlen('-reverse')), 0);
+		else {
+			if( isset($params['limit']) ){
+				$link_params['limit'] = $params['limit'];
 			}
-			else {
-				$link_params['sort'] = $params['sort'];
+			if( isset($params['radius']) && (count($params['radius']) <= 1) ){
+				$link_params['radius'] = $params['radius'];
+			}
+			if( isset($params['sort']) ){
+				if( substr($params['sort'], -strlen('-reverse')) == '-reverse' ){
+					$link_params['sort'] = array( substr($params['sort'], 0, -strlen('-reverse')), 0);
+				}
+				else {
+					$link_params['sort'] = $params['sort'];
+				}
 			}
 		}
+// _print_r( $link_params );
+// exit;
 
 		reset( $params );
 		foreach( $params as $k => $v ){
@@ -56,10 +62,9 @@ class Front_View_Form_LC_HC_MVC extends _HC_MVC
 			$link_params['product'] = '_PRODUCT_';
 		}
 
-		$link = $this->make('/html/view/link')
-			->to('/search', $link_params )
-			->ajax()
-			->href()
+		$link = $this->app->make('/http/uri')
+			->mode('api')
+			->url('/search', $link_params )
 			;
 
 	// radius link which will give us links to results
@@ -71,29 +76,23 @@ class Front_View_Form_LC_HC_MVC extends _HC_MVC
 			unset( $radius_link_params['sort'] );
 			// unset( $radius_link_params['limit'] );
 
-			$radius_link = $this->make('/html/view/link')
-				->to('/search/radius', $radius_link_params )
-				->ajax()
-				->href()
+			$radius_link = $this->app->make('/http/uri')
+				->mode('api')
+				->url('/search/radius', $radius_link_params )
 				;
 		}
 
-		$display_form = $this->make('/html/view/form')
-			->add_attr('id', $search_form_id)
-			->add_attr('action', $link )
-			->add_attr('data-radius-link', $radius_link )
-			->set_form( $form )
-			->add_attr('class', 'hc-mb2')
-			;
-
+		$form_attr = array(
+			'id'				=> $search_form_id,
+			'action'			=> $link,
+			'data-radius-link'	=> $radius_link,
+			'class'				=> 'hc-mb2',
+			);
 		if( isset($params['start']) && ($params['start'] != 'no') ){
-			$display_form
-				->add_attr('data-start', $params['start'])
-				;
+			$form_attr['data-start'] = $params['start'];
 		}
 
 		$where_param = array();
-
 		reset( $params );
 		$take_where = array('where-country', 'where-zip', 'where-state', 'where-city');
 		foreach( $params as $k => $v ){
@@ -110,54 +109,67 @@ class Front_View_Form_LC_HC_MVC extends _HC_MVC
 
 		if( $where_param ){
 			$where_param = join(' ', $where_param);
-			$display_form
-				->add_attr('data-where', $where_param)
-				;
+			$form_attr['data-where'] = $where_param;
 		}
 
-		$inputs_view = $this->make('/html/view/element')->tag('div')
-			->add_attr('id', 'locatoraid-search-form-inputs')
+		$helper = $this->app->make('/form/helper');
+		$display_form = $helper->render( $form_attr );
+
+		$inputs_view = $helper->prepare_render( $form_inputs, $form_values );
+
+		$out_inputs = $this->app->make('/html/list')
+			->set_gutter(2)
 			;
-		$inputs = $form->inputs();
-		foreach( $inputs as $k => $input ){
-			$input_view = $this->make('/html/view/element')->tag('div')
+		foreach( $inputs_view as $k => $input ){
+			$input_view = $this->app->make('/html/element')->tag('div')
 				->add_attr('id', 'locatoraid-search-form-' . $k)
 				->add( $input )
 				;
-
-			$inputs_view
+			$out_inputs
 				->add( $input_view )
 				;
 		}
+		$out_inputs = $this->app->make('/html/element')->tag('div')
+			->add_attr('id', 'locatoraid-search-form-inputs')
+			->add( $out_inputs )
+			;
 
-		$buttons = $this->make('/html/view/container');
-		$buttons->add(
-			$this->make('/html/view/element')->tag('input')
-				->add_attr('type', 'submit')
-				->add_attr('title', HCM::__('Search') )
-				->add_attr('value', HCM::__('Search') )
-				->add_attr('class', 'hc-block')
-				->add_attr('id', 'locatoraid-search-form-button')
-			);
+		$btn_label = $app_settings->get('front_text:submit_button');
+		if( $btn_label === NULL ){
+			$btn_label = HCM::__('Search');
+		}
 
-		$form_view = $this->make('/html/view/grid')
+		$out_buttons = $this->app->make('/html/element')->tag('input')
+			->add_attr('type', 'submit')
+			->add_attr('title', $btn_label )
+			->add_attr('value', $btn_label )
+			->add_attr('class', 'hc-block')
+			->add_attr('id', 'locatoraid-search-form-button')
+			;
+
+		$form_view = $this->app->make('/html/grid')
 			->set_gutter(2)
 			;
 
 		$form_view
-			->add( $inputs_view, 8 )
-			->add( $buttons, 4 )
+			->add( $out_inputs, 8 )
+			->add( $out_buttons, 4 )
 			;
 
 	// more results link
-		$more_results_link = $this->make('/html/view/element')->tag('a')
+		$more_results_label = $app_settings->get('front_text:more_results');
+		if( $more_results_label === NULL ){
+			$more_results_label = HCM::__('More Results');
+		}
+	
+		$more_results_link = $this->app->make('/html/element')->tag('a')
 			->add_attr('class', 'hcj2-more-results')
 			->add_attr('id', 'locatoraid-search-more-results')
-			->add( HCM::__('More Results') )
+			->add( $more_results_label )
 			->add_attr('style', 'display: none; cursor: pointer;')
 			;
 
-		$form_view = $this->make('/html/view/list-div')
+		$form_view = $this->app->make('/html/list')
 			->set_gutter(2)
 			->add( $form_view )
 			->add( $more_results_link )
@@ -167,10 +179,13 @@ class Front_View_Form_LC_HC_MVC extends _HC_MVC
 			->add( $form_view )
 			;
 
-		$out
-			->add( $display_form )
-			;
+		if( isset($params['id']) && $params['id'] ){
+			$display_form = $this->app->make('/html/element')->tag('div')
+				->add( $display_form )
+				->add_attr('class', 'hc-hide')
+				;
+		}
 
-		return $out;
+		return $display_form;
 	}
 }

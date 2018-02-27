@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-$config['app_version'] = '3.1.7';
+$config['app_version'] = '3.4.1';
 // $config['dbprefix_version'] = 'v1';
 
 $config['modules'] = array(
@@ -29,12 +29,13 @@ $config['modules'] = array(
 	'auth',
 
 	'users',
-	'print',
+	// 'print',
 	'ormrelations',
 
 	'modelsearch',
 
 	'front',
+	// 'frontpage',
 
 	'locations',
 

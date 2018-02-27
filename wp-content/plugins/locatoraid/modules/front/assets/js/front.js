@@ -79,8 +79,9 @@ this.form = function( html_id )
 				'address': search_string
 			};
 			if( hc2_lc_front_vars['search_bias_country'] ){
+				var search_bias_country = "" + hc2_lc_front_vars['search_bias_country'];
 				try_this['componentRestrictions'] = {
-					country: hc2_lc_front_vars['search_bias_country'],
+					country: search_bias_country,
 				};
 			}
 
@@ -135,8 +136,8 @@ this.form = function( html_id )
 			})
 			.fail( function(jqXHR, textStatus, errorThrown){
 				hc2_unset_loader( $this );
-				alert( 'Ajax Error: ' + search_url );
-				alert( jqXHR.responseText );
+				alert( 'Ajax Error' );
+				console.log( 'Ajax Error: ' + errorThrown + "\n" + jqXHR.responseText );
 				})
 			;
 	}
@@ -176,8 +177,9 @@ this.form = function( html_id )
 				'address': search_string
 			};
 			if( hc2_lc_front_vars['search_bias_country'] ){
+				var search_bias_country = "" + hc2_lc_front_vars['search_bias_country'];
 				try_this['componentRestrictions'] = {
-					country: hc2_lc_front_vars['search_bias_country'],
+					country: search_bias_country,
 				};
 			}
 
@@ -208,24 +210,36 @@ this.form = function( html_id )
 		jQuery.ajax({
 			type: 'GET',
 			url: search_url,
-			dataType: "json",
-			success: function(data, textStatus){
-				self.observers.notify( 'get-results', data );
-				hc2_unset_loader( $this );
+			// dataType: "json",
 
-			// more results link
-				if( self.next_links.length ){
-					self.more_results_link.show();
+			success: function(data, textStatus){
+				data = data.replace( /\\ \/\>/g, "\/>" );
+
+				var ok_data = hc2_try_parse_json( data );
+				if( ok_data ){
+					self.observers.notify( 'get-results', ok_data );
+					hc2_unset_loader( $this );
+
+				// more results link
+					if( self.next_links.length ){
+						self.more_results_link.show();
+					}
+					else {
+						self.more_results_link.hide();
+					}
 				}
 				else {
-					self.more_results_link.hide();
+					hc2_unset_loader( $this );
+					alert( 'Ajax Error' );
+					console.log( 'Ajax Error: ' + 'json parse error' + "\n" + data );
 				}
 			}
 			})
+
 			.fail( function(jqXHR, textStatus, errorThrown){
 				hc2_unset_loader( $this );
-				alert( 'Ajax Error: ' + search_url );
-				alert( jqXHR.responseText );
+				alert( 'Ajax Error' );
+				console.log( 'Ajax Error: ' + errorThrown + "\n" + jqXHR.responseText );
 				})
 			;
 	}
@@ -266,6 +280,7 @@ this.form = function( html_id )
 	}
 
 	$this.on('submit', this.submit );
+	$this.find("input[type='checkbox']").on('change', this.submit );
 
 	// var default_search = $this.find('input[name=hc-search]').val();
 	var where = $this.data('where');
@@ -274,6 +289,7 @@ this.form = function( html_id )
 	// if( default_search || where ){
 	if( where || (start != null) ){
 		var radius_search_url = $this.data('radius-link');
+		start = "" + start;
 		if( start.length && radius_search_url.length ){
 			this.radius_search( {'search': start} );
 		}
@@ -392,8 +408,13 @@ this.list = function( html_id )
 		}
 
 		if( ! entries.length ){
-			var no_results_view = self.template_no_results;
-			var $no_results_view = jQuery('<div>').html( no_results_view );
+			if( results.announce ){
+				var $no_results_view = results.announce;
+			}
+			else {
+				var no_results_view = self.template_no_results;
+				var $no_results_view = jQuery('<div>').html( no_results_view );
+			}
 			$this.append( $no_results_view );
 		}
 	}
@@ -423,6 +444,7 @@ this.map = function( html_id )
 	var self = this;
 	this.observers = new observers;
 	var $this = jQuery( '#' + html_id );
+	$this.hide();
 	self.template = jQuery( '#' + html_id + '_template' ).html();
 	this.markers = {};
 	this.entries = {};
@@ -554,17 +576,26 @@ this.map = function( html_id )
 		for( var id in this.markers ){
 			bound.extend( this.markers[id].position );
 		}
-		this.map.fitBounds( bound );
+
+		if( entries.length && entries.length > 1 ){
+			this.map.fitBounds( bound );
+		}
 		this.map.setCenter( bound.getCenter() );
 
 	// prepare zoom
+		var current_zoom = this.map.getZoom();
 		if( entries.length ){
-			if( this.map.getZoom() > this.max_zoom ){
+			if( current_zoom > this.max_zoom ){
 				this.map.setZoom(this.max_zoom);
+			}
+			else {
+				// alert( 'reset zoom: ' + current_zoom);
+				// bound = new google.maps.LatLngBounds(null);
+				// this.map.setZoom( current_zoom + 1 );
 			}
 		}
 		else {
-			if( this.map.getZoom() > this.max_zoom_no_entries ){
+			if( current_zoom > this.max_zoom_no_entries ){
 				this.map.setZoom(this.max_zoom_no_entries);
 			}
 		}

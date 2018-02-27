@@ -1,31 +1,24 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class GeocodeBulk_View_LC_HC_MVC extends _HC_MVC
+class GeocodeBulk_View_LC_HC_MVC
 {
 	public function render( $total_count )
 	{
-		$out = $this->make('/html/view/list')
+		$out = $this->app->make('/html/list')
 			->set_gutter(2)
-			->add_attr('class', 'hcj2-container')
 			;
 
 		if( $total_count ){
-			$save_url = $this->make('/html/view/link')
-				->to('/geocode/save',
-					array(
-						'id'		=> '_ID_',
-						'latitude'	=> '_LATITUDE_',
-						'longitude'	=> '_LONGITUDE_',
-						)
-					)
-				->href()
+			$save_url = $this->app->make('/http/uri')
+				->mode('api')
+				->url('/geocode/_ID_/save/_LATITUDE_/_LONGITUDE_')
 				;
-			$json_url = $this->make('/html/view/link')
-				->to('/geocodebulk/json')
-				->href()
+			$json_url = $this->app->make('/http/uri')
+				->mode('api')
+				->url('/geocodebulk/json')
 				;
 
 			$map_id = 'hclc_map';
-			$map = $this->make('/html/view/element')->tag('div')
+			$map = $this->app->make('/html/element')->tag('div')
 				->add_attr('id', $map_id)
 				->add_attr('class', 'hc-p1')
 				->add_attr('class', 'hc-b1')
@@ -38,6 +31,11 @@ class GeocodeBulk_View_LC_HC_MVC extends _HC_MVC
 				->add( $map )
 				;
 		}
+
+		$out = $this->app->make('/html/element')->tag('div')
+			->add( $out )
+			->add_attr('class', 'hcj2-container')
+			;
 
 		return $out;
 	}

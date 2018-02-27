@@ -1,34 +1,59 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class GeocodeBulk_Json_Controller_LC_HC_MVC extends _HC_MVC
+class GeocodeBulk_Json_Controller_LC_HC_MVC
 {
 	public function execute()
 	{
 		$limit = 10;
-		$locations = $this->make('/http/lib/api')
-			->request('/api/locations')
-			->add_param('custom', 'notgeocoded')
-			->add_param('limit', $limit)
-			->get()
-			->response()
-			;
+		$command = $this->app->make('/locations/commands/read');
 
-		$total_count = $this->make('/http/lib/api')
-			->request('/api/locations')
-			->add_param('custom', 'notgeocodedcount')
-			->get()
-			->response()
-			;
+		$total_count = $command
+			->execute(
+				array(
+					'count',
+					array( 'latitude', '=', NULL ),
+					array( 'longitude', '=', NULL )
+					)
+				);
+		$total_count2 = $this->app->make('/locations/commands/read')
+			->execute(
+				array(
+					'count',
+					array( 'latitude', '=', '0' ),
+					array( 'longitude', '=', '0' )
+					)
+				);
+		$total_count += $total_count2;
 
-		$p = $this->make('/locations/presenter');
-		$geocoder = $this->make('/geocode/lib');
+		$locations = $command
+			->execute(
+				array(
+					array( 'latitude', '=', NULL ),
+					array( 'longitude', '=', NULL ),
+					array( 'limit', $limit )
+					)
+				);
+
+		if( count($locations) < $limit ){
+			$locations2 = $command
+				->execute(
+					array(
+						array( 'latitude', '=', '0' ),
+						array( 'longitude', '=', '0' ),
+						array( 'limit', $limit - count($locations) )
+						)
+					);
+			$locations = array_merge( $locations, $locations2 );
+		}
+
+		$p = $this->app->make('/locations/presenter');
+		$geocoder = $this->app->make('/geocode/lib');
 
 		$out = array();
 		$out['total'] = $total_count;
 		$out['locations'] = array();
 		foreach( $locations as $e ){
-			$p->set_data( $e );
-			$address = $p->run('present-address');
-			$address = $geocoder->run('prepare-address', $address);
+			$address = $p->present_address( $e );
+			$address = $geocoder->prepare_address( $address );
 			$this_e = array(
 				'id'		=> $e['id'],
 				'address'	=> $address,

@@ -3,11 +3,12 @@
 Plugin Name: Accelerated Mobile Pages
 Plugin URI: https://wordpress.org/plugins/accelerated-mobile-pages/
 Description: AMP for WP - Accelerated Mobile Pages for WordPress
-Version: 0.9.58.1
+Version: 0.9.82.1
 Author: Ahmed Kaludi, Mohammed Kaludi
 Author URI: https://ampforwp.com/
 Donate link: https://www.paypal.me/Kaludi/25
-License: GPL2
+License: GPL2+
+Text Domain: accelerated-mobile-pages
 */
 
 // Exit if accessed directly.
@@ -18,25 +19,43 @@ define('AMPFORWP_PLUGIN_DIR_URI', plugin_dir_url(__FILE__));
 define('AMPFORWP_DISQUS_URL',plugin_dir_url(__FILE__).'includes/disqus.php');
 define('AMPFORWP_IMAGE_DIR',plugin_dir_url(__FILE__).'images');
 define('AMPFORWP_MAIN_PLUGIN_DIR', plugin_dir_path( __DIR__ ) );
-define('AMPFORWP_VERSION','0.9.58.1');
+define('AMPFORWP_VERSION','0.9.82.1');
+
 // any changes to AMP_QUERY_VAR should be refelected here
-define('AMPFORWP_AMP_QUERY_VAR', apply_filters( 'amp_query_var', 'amp' ) );
+function ampforwp_generate_endpoint(){
+    $ampforwp_slug = '';
+    $get_permalink_structure = '';
+
+   	$ampforwp_slug = "amp";
+
+    return $ampforwp_slug;
+}
+
+define('AMPFORWP_AMP_QUERY_VAR', apply_filters( 'amp_query_var', ampforwp_generate_endpoint() ) );
 
 load_plugin_textdomain( 'accelerated-mobile-pages', false, trailingslashit(AMPFORWP_PLUGIN_DIR) . 'languages' );
 
 // Rewrite the Endpoints after the plugin is activate, as priority is set to 11
 function ampforwp_add_custom_post_support() {
 	global $redux_builder_amp;
-	if( $redux_builder_amp['amp-on-off-for-all-pages'] ) {
-		add_rewrite_endpoint( AMPFORWP_AMP_QUERY_VAR, EP_PAGES | EP_PERMALINK | EP_AUTHORS  | EP_ALL_ARCHIVES |  EP_ROOT );
+	add_rewrite_endpoint( AMPFORWP_AMP_QUERY_VAR, EP_PAGES | EP_PERMALINK | EP_AUTHORS | EP_ALL_ARCHIVES | EP_ROOT );
+	// Pages
+	if ( isset($redux_builder_amp['amp-on-off-for-all-pages']) && $redux_builder_amp['amp-on-off-for-all-pages'] ) {
 		add_post_type_support( 'page', AMPFORWP_AMP_QUERY_VAR );
+	}
+	// Custom Post Types
+	if ( isset($redux_builder_amp['ampforwp-custom-type'] ) && $redux_builder_amp['ampforwp-custom-type'] ) {
+	        foreach ( $redux_builder_amp['ampforwp-custom-type'] as $custom_post ) {
+	            add_post_type_support( $custom_post, AMP_QUERY_VAR );
+	        }
 	}
 }
 add_action( 'init', 'ampforwp_add_custom_post_support',11);
 
 // Frontpage and Blog page check from reading settings.
 function ampforwp_name_blog_page() {
-	$page_for_posts  =  get_option( 'page_for_posts' );
+	if ( ! $page_for_posts = get_option('page_for_posts')) return;
+	$page_for_posts = get_option( 'page_for_posts' );
 	$post = get_post($page_for_posts); 
 	if ( $post ) {
 		$slug = $post->post_name;
@@ -44,7 +63,7 @@ function ampforwp_name_blog_page() {
 	}
 }
 function ampforwp_custom_post_page() {
-	$front_page_type  =  get_option( 'show_on_front' );
+	$front_page_type = get_option( 'show_on_front' );
 	if ( $front_page_type ) {
 		return $front_page_type;
 	}
@@ -63,6 +82,7 @@ function ampforwp_get_the_page_id_blog_page(){
 
 // Add Custom Rewrite Rule to make sure pagination & redirection is working correctly
 function ampforwp_add_custom_rewrite_rules() {
+	global $redux_builder_amp;
     // For Homepage
     add_rewrite_rule(
       'amp/?$',
@@ -76,22 +96,20 @@ function ampforwp_add_custom_rewrite_rules() {
         'top'
     );
 	// For /Blog page with Pagination
-	//if ( ampforwp_custom_post_page() && ampforwp_name_blog_page() ) {
 	    add_rewrite_rule(
 	        ampforwp_name_blog_page(). '/amp/page/([0-9]{1,})/?$',
 	        'index.php?amp&paged=$matches[1]&page_id=' .ampforwp_get_the_page_id_blog_page(),
 	        'top'
 	    );
-	//}
 
     // For Author pages
-    add_rewrite_rule(	
+    add_rewrite_rule(
         'author\/([^/]+)\/amp\/?$',
         'index.php?amp&author_name=$matches[1]',
         'top'
     );
 
-    add_rewrite_rule(	
+    add_rewrite_rule(
         'author\/([^/]+)\/amp\/page\/?([0-9]{1,})\/?$',
         'index.php?amp=1&author_name=$matches[1]&paged=$matches[2]',
         'top'
@@ -99,7 +117,7 @@ function ampforwp_add_custom_rewrite_rules() {
 
     // For category pages
     $rewrite_category = get_option('category_base');
-    if (! empty($rewrite_category)) {
+    if ( ! empty($rewrite_category) ) {
     	$rewrite_category = get_option('category_base');
     } else {
     	$rewrite_category = 'category';
@@ -117,9 +135,21 @@ function ampforwp_add_custom_rewrite_rules() {
       'top'
     );
 
+    // For category pages with Pagination (Custom Permalink Structure)
+	$permalink_structure = get_option('permalink_structure');
+	$permalink_structure = preg_replace('/(%.*%)/', '', $permalink_structure);
+	$permalink_structure = preg_replace('/\//', '', $permalink_structure);
+	if ( $permalink_structure ) {
+	  	add_rewrite_rule(
+	      $permalink_structure.'\/'.$rewrite_category.'\/(.+?)\/amp\/page\/?([0-9]{1,})\/?$',
+	      'index.php?amp&category_name=$matches[1]&paged=$matches[2]',
+	      'top'
+	    );
+  	}
+
     // For tag pages
 	$rewrite_tag = get_option('tag_base');
-    if (! empty($rewrite_tag)) {
+    if ( ! empty($rewrite_tag) ) {
     	$rewrite_tag = get_option('tag_base');
     } else {
     	$rewrite_tag = 'tag';
@@ -135,17 +165,25 @@ function ampforwp_add_custom_rewrite_rules() {
       'index.php?amp&tag=$matches[1]&paged=$matches[2]',
       'top'
     );
+    // For tag pages with Pagination (Custom Permalink Structure)
+    if ( $permalink_structure ) {
+	  	add_rewrite_rule(
+	      $permalink_structure.'\/'.$rewrite_tag.'\/(.+?)\/amp\/page\/?([0-9]{1,})\/?$',
+	      'index.php?amp&tag=$matches[1]&paged=$matches[2]',
+	      'top'
+	    );
+  	}
     
 	//Rewrite rule for custom Taxonomies
 	$args = array(
-	  'public'   => true,
-	  '_builtin' => false	  
+	  		'public'   => true,
+	  		'_builtin' => false,  
 	); 
 	$output = 'names'; // or objects
 	$operator = 'and'; // 'and' or 'or'
 	$taxonomies = get_taxonomies( $args, $output, $operator ); 
 	if ( $taxonomies ) {
-	  foreach ( $taxonomies  as $taxonomy ) {	   
+	  foreach ( $taxonomies  as $taxonomy ) {   
 	    add_rewrite_rule(
 	      $taxonomy.'\/(.+?)\/amp/?$',
 	      'index.php?amp&'.$taxonomy.'=$matches[1]',
@@ -169,7 +207,7 @@ function ampforwp_rewrite_activation() {
 	ampforwp_deactivate_amp_plugin();
 
 		if ( ! did_action( 'ampforwp_init' ) ) {
-	 		ampforwp_init();		 	
+	 		ampforwp_init();
 		}
 
 	flush_rewrite_rules();
@@ -181,8 +219,30 @@ function ampforwp_rewrite_activation() {
 	global $wp_rewrite;
 	$wp_rewrite->flush_rules();
 
+	delete_option('ampforwp_rewrite_flush_option');
+
     // Set transient for Welcome page
 	set_transient( 'ampforwp_welcome_screen_activation_redirect', true, 30 );
+
+}
+
+add_action('init', 'ampforwp_flush_rewrite_by_option', 20);
+
+function ampforwp_flush_rewrite_by_option(){
+
+	global $wp_rewrite;
+	$get_current_permalink_settings  = "";
+
+	$get_current_permalink_settings  = get_option('ampforwp_rewrite_flush_option');
+
+	if ( $get_current_permalink_settings ) {
+		return;
+	}
+	// Adding double check to make sure, we are not updating and calling database unnecessarily
+	if ( empty( $get_current_permalink_settings ) ) {
+		$wp_rewrite->flush_rules();
+		update_option('ampforwp_rewrite_flush_option', 'true');
+	}
 
 }
 
@@ -218,7 +278,8 @@ function ampforwp_parent_plugin_check() {
 }
 
 // Redux panel inclusion code
-	if ( !class_exists( 'ReduxFramework' ) ) {
+	if ( ! class_exists( 'ReduxFramework' ) ) {
+	    require_once dirname( __FILE__ ).'/includes/options/extensions/loader.php';
 	    require_once dirname( __FILE__ ).'/includes/options/redux-core/framework.php';
 	}
 	// Register all the main options
@@ -231,7 +292,7 @@ add_action('after_setup_theme','ampforwp_add_module_files');
 function ampforwp_add_module_files() {
 	
 	global $redux_builder_amp;
-	if ( $redux_builder_amp['ampforwp-content-builder'] ) {
+	if ( isset($redux_builder_amp['ampforwp-content-builder']) && $redux_builder_amp['ampforwp-content-builder'] ) {
 		if ( ! function_exists( 'bstw' ) ) {
 			require_once AMPFORWP_PLUGIN_DIR .'/includes/vendor/tinymce-widget/tinymce-widget.php';
 		}
@@ -249,119 +310,36 @@ if ( is_admin() ) {
 	// Include Welcome page only on Admin pages
 	require AMPFORWP_PLUGIN_DIR .'/includes/welcome.php';
 
-	// Deactivate Parent Plugin notice
-    // add_action('init','ampforwp_plugin_notice');
-	function  ampforwp_plugin_notice() {
-
-		if ( ! defined( 'AMP__FILE__' ) ) {
-			add_action( 'admin_notices', 'ampforwp_plugin_not_found_notice' );
-			function ampforwp_plugin_not_found_notice() {
-
-            $current_screen = get_current_screen();
-
-            if( $current_screen ->id == "plugin-install" || $current_screen ->id == "dashboard_page_ampforwp-welcome-page" || $current_screen ->id == "ampforwp-welcome-page" ) {
-                return;
-            }
-
-            ?>
-
-				<div class="notice notice-warning is-dismissible ampinstallation">
-
-						<?php add_thickbox(); ?>
-				        <p>
-                        <strong><?php _e( 'AMP Installation requires one last step:','accelerated-mobile-pages' ); ?></strong> <?php _e( 'AMP by Automattic plugin is not active', 'accelerated-mobile-pages' ); ?>
-				         <strong>	<span style="display: block; margin: 0.5em 0.5em 0 0; clear: both;"><a href="index.php?page=ampforwp-welcome-page"><?php _e( 'Continue Installation', 'accelerated-mobile-pages' ); ?></a>
-                             </span> </strong>
-				        </p>
-				</div> <?php
-			}
-
-			add_action('admin_head','ampforwp_required_plugin_styling');
-			function ampforwp_required_plugin_styling() {
-				if ( ! defined( 'AMP__FILE__' ) ) { ?>
-					<style>
-						#toplevel_page_amp_options a .wp-menu-name:after {
-							content: "1";
-							background-color: #d54e21;
-							color: #fff;
-							border-radius: 10px;
-							font-size: 9px;
-						    line-height: 17px;
-						    font-weight: 600;
-						    padding: 3px 7px;
-						    margin-left: 5px;
-						}
-					</style>
-					<?php
-				}
-				?>
-				<style>
-                    .notice, .notice-error, .is-dismissible, .ampinstallation{}
-					.plugin-card.plugin-card-amp:before{
-                        content: __("FINISH INSTALLATION: Install & Activate this plugin ↓",'accelerated-mobile-pages');
-                        font-weight: bold;
-                        float: right;
-                        position: relative;
-                        color: #dc3232;
-                        top: -28px;
-                        font-size: 18px;
-					}
-                    .plugin-action-buttons a{
-                        color: #fff
-                    }
-					.plugin-card.plugin-card-amp {
-						background: rgb(0, 165, 92);
-						color: #fff;
-					}
-					.plugin-card.plugin-card-amp .column-name a,
-					.plugin-card.plugin-card-amp .column-description a,
-					.plugin-card.plugin-card-amp .column-description p {
-						color: #fff;
-					}
-					.plugin-card-amp .plugin-card-bottom {
-						background: rgba(229, 255, 80, 0);
-					}
-				</style> <?php
-			}
-		}
-	}
-
  	// Add Settings Button in Plugin backend
  	if ( ! function_exists( 'ampforwp_plugin_settings_link' ) ) {
  		
  		// Deactivate Parent Plugin notice
- 		// add_filter( 'plugin_action_links', 'ampforwp_plugin_settings_link', 10, 5 );
+ 		add_filter( 'plugin_action_links', 'ampforwp_plugin_settings_link', 10, 5 );
 
- 		function ampforwp_plugin_settings_link( $actions, $plugin_file )  {
+ 		function ampforwp_plugin_settings_link( $actions, $plugin_file ) {
  			static $plugin;
- 			if (!isset($plugin))
+ 			if ( ! isset($plugin))
  				$plugin = plugin_basename(__FILE__);
- 				if ($plugin == $plugin_file) {
- 					$settings = array('settings' => '<a href="admin.php?page=amp_options&tab=8">' . __('Settings', 'accelerated-mobile-pages') . '</a> | <a href="https://ampforwp.com/priority-support/#utm_source=options-panel&utm_medium=extension-tab_priority_support&utm_campaign=AMP%20Plugin">' . __('Premium Support', 'accelerated-mobile-pages') . '</a>');
+ 				if ( $plugin === $plugin_file ) {
+ 					$settings = array( 'settings' => '<a href="admin.php?page=amp_options&tab=8">' . __('Settings', 'accelerated-mobile-pages') . '</a> | <a href="https://ampforwp.com/extensions/#utm_source=plugin-panel&utm_medium=plugin-extension&utm_campaign=features">' . __('Premium Features', 'accelerated-mobile-pages') . '</a> | <a href="https://ampforwp.com/membership/#utm_source=plugin-panel&utm_medium=plugin-extension&utm_campaign=pro">' . __('Pro', 'accelerated-mobile-pages') . '</a>' );
+ 					
 					include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-					if ( is_plugin_active( 'amp/amp.php' ) ) {
-					    //if parent plugin is activated
-								$actions = array_merge( $actions, $settings );
-					} else{
-						if(is_plugin_active( 'amp/amp.php' )){
-							$actions = array_merge( $actions, $settings );
-						}else{
-						$please_activate_parent_plugin = array(__('Please Activate Parent plugin','accelerated-mobile-pages') => '<a href="'.get_admin_url() .'index.php?page=ampforwp-welcome-page">' . __('<span style="color:#b30000">'.__('Action Required: Continue Installation','accelerated-mobile-pages').'</span>', 'accelerated-mobile-pages') . '</a>');
-						$actions = array_merge( $please_activate_parent_plugin,$actions );
-					}
-					}
-
+					$actions = array_merge( $actions, $settings );
  				}
  		return $actions;
  		}
  	}
-
 } // is_admin() closing
 
-	// AMP endpoint Verifier
-	function ampforwp_is_amp_endpoint() {
+// AMP endpoint Verifier
+function ampforwp_is_amp_endpoint() {
+	if ( ampforwp_is_non_amp() ) {
+		return ampforwp_is_non_amp();
+	}
+	else {
 		return false !== get_query_var( 'amp', false );
 	}
+}
 
 if ( ! class_exists( 'Ampforwp_Init', false ) ) {
 	class Ampforwp_Init {
@@ -375,7 +353,7 @@ if ( ! class_exists( 'Ampforwp_Init', false ) ) {
 			require AMPFORWP_PLUGIN_DIR.'/includes/redirect.php';
 
 			require AMPFORWP_PLUGIN_DIR .'/classes/class-init.php';
-			new Ampforwp_Loader;
+			new Ampforwp_Loader();
 
 		}
 	}
@@ -387,7 +365,7 @@ if ( ! class_exists( 'Ampforwp_Init', false ) ) {
 function ampforwp_plugin_init() {
 	
 	if ( defined( 'AMP__FILE__' ) && defined('AMPFORWP_PLUGIN_DIR') ) {
-		new Ampforwp_Init;
+		new Ampforwp_Init();
 	}
 }
 add_action('init','ampforwp_plugin_init',9);
@@ -437,17 +415,19 @@ function ampforwp_deactivate_amp_plugin() {
 }
 add_action( 'plugins_loaded', 'ampforwp_deactivate_amp_plugin' );
 
-function ampforwp_modify_amp_activatation_link( $actions, $plugin_file )  {
+function ampforwp_modify_amp_activatation_link( $actions, $plugin_file ) {
 	$plugin = '';
 
-	$plugin =  'amp/amp.php'; 
-	if (  $plugin == $plugin_file  ) {
+	$plugin = 'amp/amp.php'; 
+	if ( $plugin == $plugin_file ) {
+		add_thickbox();
 		unset($actions['activate']);
-	}
+		$a = '<span style="cursor:pointer;color:#0089c8" class="warning_activate_amp" onclick="alert(\'AMP is already bundled with AMPforWP. Please do not install this plugin with AMPforWP to avoid conflicts. \')">Activate</span>';
+		array_unshift ($actions,$a);
+	} 
  	return $actions;
 }
 add_filter( 'plugin_action_links', 'ampforwp_modify_amp_activatation_link', 10, 2 );
-
 
 if ( ! function_exists('ampforwp_init') ) {
 	add_action( 'init', 'ampforwp_init' );
@@ -472,8 +452,77 @@ if ( ! function_exists('ampforwp_init') ) {
 		add_filter( 'request', 'amp_force_query_var_value' );
 		add_action( 'wp', 'amp_maybe_add_actions' );
 
-		if ( class_exists( 'Jetpack' ) && ! ( defined( 'IS_WPCOM' ) && IS_WPCOM ) ) {
+		// Redirect the old url of amp page to the updated url. #1033 (Vendor Update)
+		add_filter( 'old_slug_redirect_url', 'ampforwp_redirect_old_slug_to_new_url' );
+
+		if ( class_exists( 'Jetpack' ) && ! (defined( 'IS_WPCOM' ) && IS_WPCOM) ) {
 			require_once( AMP__DIR__ . '/jetpack-helper.php' );
 		}
+	}
+}
+
+
+function amp_update_db_check() {
+	global $redux_builder_amp;
+	$ampforwp_current_version = AMPFORWP_VERSION;
+   	if ( get_option( 'AMPforwp_db_version' ) !== $ampforwp_current_version ) {
+
+   		if ( isset( $_GET['ampforwp-dismiss'] ) && trim( $_GET['ampforwp-dismiss']) === "ampforwp_dismiss_admin_notices" ) {
+			update_option( 'AMPforwp_db_version', $ampforwp_current_version );
+			wp_redirect(remove_query_arg('ampforwp-dismiss'), 301);
+		}
+		if ( isset($redux_builder_amp['ampforwp-update-notification-bar'] ) && $redux_builder_amp['ampforwp-update-notification-bar'] && current_user_can( 'manage_options' ) ) {
+
+	        add_action('admin_notices', 'ampforwp_update_notice');
+	    }
+    }
+}
+add_action( 'plugins_loaded', 'amp_update_db_check' );
+
+function ampforwp_update_notice() {
+	$screen = '';
+	$screen = get_current_screen();
+	$ampforwp_current_version = AMPFORWP_VERSION;
+	if ( 'toplevel_page_amp_options' == $screen->base ) { ?>
+    <div class="notice-success notice is-dismissible amp-update-notice">
+        <div class="amp-update-notice-text-box">
+        	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAn1BMVEUAAADuHCXwHiTuHSTtHST/IjjuHSXuHCTvHSXvHCXwHi3/JyfuHSTuHCTvHSTvHCTxHSb/NDTyHyj0IyruHSTvHSXvHSbuHST1ICftHCXuHCXuHSXwHiXvHyfuHSTuHSTvHSXuHCTuHCTuHCTuHCTvHSXyHibuHCTuHCXuHCXuHCXuHibwICjuHCTuHCTuHSTwHSbuHCXuHCTuHCTtHCSisK2PAAAANHRSTlMA+1T35wiIxm9kEQzu4Yx/NgQlFZV6PrAa16RpUi7MhE3y3LmYXynrz5FYSSC9q55EddGypVN9ggAABlxJREFUeNrVm+mymkAQhQfZBVQEFNz3fbtm3v/ZYqUqyWww0603Vfn+mcr1wMz06QUk/yfZIPRua79KYst2Vgd/fS9aU5f8E6JFx4+pktWPryn5VtKH51u0kXgY9Mk30cv31IhZkH1e/VJU1BzrR+uzJ2I6sigQ5yv63NoPKYa42/6M/JpiWXrvr0I7p+/gnN7U3+7pm1x3BM/Op+9je+iACO2mI+aPcq8ItmHQ7WyGVVOUHHDWFI1qN3Y0HmSiSfYX3atddxhPmNCv1As6HNdvqvuYP6mSDXgbTsq78cdt7YV3HOU2lDD9QBnVZnuZnlXOkYAOwlzjaxjv3PfMs+5dvvsiAh6hofwdD1P9GxUZlQTMeSXlyAkxQrr/6kEwuF1bDKEBav87aCfrH8SDNIWf/3hB8Lgb0cMu2vgXI/9C3uK0FArXTHN4hW27p+RNdomQHZv9vxK2Hyf6ODIfSuE7u6QBIf984fQnNuc5bSGpN4RCSDlCnH7L2ghH8cofxKx2u2z+/rH6SSTu7IyyrEkN/if2f2JROXAz3hW3NfUff/7R+iNVX+Nwm6DMa+09F/8pVn+v3OIeV7PlRAFnWvEFq09PJg7bU1wiZVmg9YekBi4/z4jEmjuAaP24rG1xOEtsNS5A5eL0m73jwdWIjQv0QOtfjX32LCQhrv5B69uNZ7dcsmFWf3HLEqtPA0CtMeB8go3SAuW/8l3JpFWdIResBURYfZvpmfRma7ELXbH5GqNv+JdpIiY7OQaXbaz+08C9x4zS8+8/s1MQD6tvmXQ+LpuUpn8Whk1Dfbg+5Mo93m9li/Kx+isz99yx/arqqsZgfS6s9bDF0UWuhOw2Uj8HNP5i0RkxLjRE6ifG5pHJnr9A70DLklKLHqZfdMgvOvQvO5g+Jn3Jcj5zSTh9B3JyFlJ5HDObgtKnLQKAPXKeeCrGEH3syZ0JZ37A5mi4vroMNCyMKrEhzAD66BayYFJyyvtgjNHfp1DzFDLPjUkEAH18ATMVStO1HAR6fZbVpvPi+CJ/sXlxPzaNdF22PeBtIAfoa0garsDmz08lhCVeX+7+1DDlR/D6mGjqYZy+U1ce8Ipd3giDt/SNu9snv+aWaM14fRNvEE6dcCQ+pT829eLj66Oj2YIP6/PHfv76uOKOBF7f/D4Svjk5mM4lBjh9mSWzVvyR2DS2Vas6Reh4VahI1oYlad9MvwCVpRP+AUnV2FXNPqAvFSBSem7AnXS9X8xfdF/kPhPCZq21VIBI6RlGeeD158CyOBbTs2yg+uUEd9Y/hALEfWc4UcL1SSIOpFfs8xQgZ4i+HE2FuCQ2dEK5BuuTUNryL/yIcgLV52tQ2pYmRHOQftuB6xNHHlnH7OAIwh124dLtdhRz4ilA/4FZuFwxLw5wg/ooAenLAzErUgyOHPM+54hxj4lyIDaTl0VPDzVbvikLp0CaIetxK4x+31IOxDJL7Cj0zIH68pOxG5cfoIOyqYXRL+2azNeiwEhMZ6jHu0da09a7DnAJCpR+adcG/BcFBULfZupfXAjYJW8qjB0bzJ19lP656eltF1LZjVH6LlvXWxcxsS3Z5WmuDS9LjD6ZNz+c9yjDoXET1rr+T99YWfItRg6lZj3SFqWfcd9/1L5BdKr/phiqLz8cd5STtStlWO6aYikE63eF29O/w5KUNfkUpR8avczkUZaqrS4DMfoLi5oEmcs3Wr4qFO4Y/YFtOEDoL/mVilRl4BauH1OWofm7dLNMKgMR+gtbM0PlCwaOlWCYR4R+yOy/8IRXfwyo0+NfBjq9GX96By8TymExf+A+wfrZWtDP9al+T3mGf/asAOsPHMpzMym3l5Qnefy+Nmj+nVOBq2vUcVma14rRLxbPItM3IqnAMkih8uWNSvoZwDlEqm0Kkj8yNyH5mp6pQyWSsWvc/2xkeXoDTV8uKyrjeDuTlmFxs6hMDg3gK+hnZPIP0iQ7QVqYzKGziGpWPhw5VEnCGCrcRWSs2Yj/gWM2CDs/WA9VexneR9XY+9XTn1VJrPlvAUGzdejbXHcf/KkZ/sdmeHozisc6RuR9Wges/L1PPsPZR8jb+YV8jsHagsnvOyX5LOXX0/zmb4uUfAPTTmKy8wY/SMNzEdxW9ulzRL6bXegpfuAY+/diAb51PGn/3AqDrpcf58V4Oxlk5H/lJxdt5e+wtfWRAAAAAElFTkSuQmCC" width="128" height="128" />
+	 		<div class="amp-update-notice-text"> <?php echo esc_attr('AMP has been updated to '.$ampforwp_current_version, 'accelerated-mobile-pages' ); ?></div>
+	    	<a href="https://ampforwp.com/new/" target="_blank" href="admin.php?page=acmforwp_update">What's New?</a> 
+    	</div>
+		<div class="amp-update-notice-dismiss">
+        	<a title="Close this Notification" href="<?php echo esc_url(add_query_arg( 'ampforwp-dismiss', 'ampforwp_dismiss_admin_notices' )) ?>">X</a>
+    	</div> 
+		<div class="amp-update-notice-review-box">
+			<a class="star_icon" href="https://wordpress.org/support/view/plugin-reviews/accelerated-mobile-pages?rate=5#new-post" target="_blank"> Appreciate it?  <br> <span title="Give Us 5 Star">Leave a Review →</span></a>
+		</div>
+	</div>
+<?php }
+}
+if ( ! defined('AMP_FRAMEWORK_COMOPNENT_DIR_PATH') ) {
+	define('AMP_FRAMEWORK_COMOPNENT_DIR_PATH', plugin_dir_path( __FILE__ )."/components"); 
+}
+require_once( AMP_FRAMEWORK_COMOPNENT_DIR_PATH . '/components-core.php' );
+require_once(  AMPFORWP_PLUGIN_DIR. 'pagebuilder/amp-page-builder.php' );
+require_once(  AMPFORWP_PLUGIN_DIR. 'base_remover/base_remover.php' );
+require_once(  AMPFORWP_PLUGIN_DIR. 'includes/thirdparty-compatibility.php' );
+require ( AMPFORWP_PLUGIN_DIR.'/install/index.php' );
+
+/**
+ * Redirects the old AMP URL to the new AMP URL.
+ * If post slug is updated the amp page with old post slug will be redirected to the updated url.
+ *
+ * @param  string $link New URL of the post.
+ *
+ * @return string $link URL to be redirected.
+ */
+ if ( ! function_exists( 'ampforwp_redirect_old_slug_to_new_url' ) ) {
+	function ampforwp_redirect_old_slug_to_new_url( $link ) {
+
+		if ( function_exists( 'ampforwp_is_amp_endpoint' ) && ampforwp_is_amp_endpoint() ) {
+			$link = trailingslashit( trailingslashit( $link ) . AMPFORWP_AMP_QUERY_VAR );
+		}
+
+		return $link;
 	}
 }

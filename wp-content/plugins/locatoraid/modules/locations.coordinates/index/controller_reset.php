@@ -1,58 +1,35 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Coordinates_Index_Controller_Reset_LC_HC_MVC extends _HC_MVC
+class Locations_Coordinates_Index_Controller_Reset_LC_HC_MVC
 {
-	public function execute()
+	public function execute( $id )
 	{
-		$args = $this->make('/app/lib/args')->run('parse', func_get_args());
-		$id = $args->get('id');
-
-		$api = $this->make('/http/lib/api')
-			->request('/api/locations')
-			->add_param('id', $id)
-			;
-		$location = $api
-			->get()
-			->response()
-			;
-
 	/* API */
-		$api = $this->make('/http/lib/api')
-			->request('/api/locations')
-			;
-
 		$values = array(
 			'latitude'	=> NULL, 
 			'longitude'	=> NULL,
 			);
 
-		$api->put( $id, $values );
+		$return = $this->app->make('/locations/commands/update')
+			->execute( $id, $values )
+			;
 
-		$status_code = $api->response_code();
-		$api_out = $api->response();
+		if( isset($return['errors']) ){
+			$errors = $return['errors'];
 
-		if( substr($status_code, 0, 1) != '2' ){
-			$errors = $api_out['errors'];
-
-			$session = $this->make('/session/lib');
+			$session = $this->app->make('/session/lib');
 			$session
 				->set_flashdata('errors', $errors)
 				;
 
-			$redirect_to = $this->make('/html/view/link')
-				->to('-referrer-')
-				->href()
-				;
-			return $this->make('/http/view/response')
-				->set_redirect($redirect_to) 
+			return $this->app->make('/http/view/response')
+				->set_redirect('-referrer-') 
 				;
 		}
 
-		$redirect_to = $this->make('/html/view/link')
-			->to('/locations/' . $id . '/edit')
-			->href()
+		$redirect_to = $this->app->make('/http/uri')
+			->url('/locations/' . $id . '/edit')
 			;
-
-		return $this->make('/http/view/response')
+		return $this->app->make('/http/view/response')
 			->set_redirect($redirect_to) 
 			;
 	}

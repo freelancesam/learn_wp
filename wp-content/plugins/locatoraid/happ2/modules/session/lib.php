@@ -24,7 +24,7 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/sessions.html
  */
-class Session_Lib_HC_MVC extends _HC_MVC
+class Session_Lib_HC_MVC
 {
 	protected $init_done = FALSE;
 
@@ -86,8 +86,8 @@ class Session_Lib_HC_MVC extends _HC_MVC
 			@session_start();
 		}
 
-		$this->encrypt = $this->make('/encrypt/lib');
-		$this->input = $this->make('/input/lib');
+		$this->encrypt = $this->app->make('/encrypt/lib');
+		$this->input = $this->app->make('/input/lib');
 
 		// Set the "now" time.  Can either be GMT or server time, based on the
 		// config prefs.  We use this to set the "last activity" time

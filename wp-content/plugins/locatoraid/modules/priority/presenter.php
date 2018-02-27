@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Priority_Presenter_LC_HC_MVC extends _HC_MVC_Model_Presenter
+class Priority_Presenter_LC_HC_MVC
 {
 	public function present_options()
 	{

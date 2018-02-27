@@ -89,7 +89,6 @@
     background: #4452a7;
     text-shadow: none;
     border: 0;
-    border-radius: 0;
     box-shadow: none;
     padding: 14px 32px 28px 35px;
     line-height: 1;
@@ -141,7 +140,7 @@
 }
 .ampforwp-ad-img-banner{
     width: 560px;
-    height: 99px !important;
+    max-height: 99px;
 }
 .ampforwp-extension-ad-img-banner{
   width: 345px;

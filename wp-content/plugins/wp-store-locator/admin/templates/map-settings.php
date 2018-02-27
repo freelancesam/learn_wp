@@ -2,38 +2,44 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 global $wpdb, $wpsl, $wpsl_admin, $wp_version, $wpsl_settings;
-
-//@todo make settings sections more dynamic with do_actions etc. Look into split sections into tabs?
-//@todo when the wpsl menu contains the extra add-on page, maybe move the license tab to the add-ons page instead of having them here?
 ?>
 
 <div id="wpsl-wrap" class="wrap wpsl-settings <?php if ( floatval( $wp_version ) < 3.8 ) { echo 'wpsl-pre-38'; } // Fix CSS issue with < 3.8 versions ?>">
 	<h2>WP Store Locator <?php _e( 'Settings', 'wpsl' ); ?></h2>
+
     <?php
     settings_errors();
 
-    $current_tab   = isset( $_GET['tab'] ) ? $_GET['tab'] : '';
+    $tabs          = apply_filters( 'wpsl_settings_tab', array( 'general' => __( 'General', 'wpsl' ) ) );
     $wpsl_licenses = apply_filters( 'wpsl_license_settings', array() );
+    $current_tab   = isset( $_GET['tab'] ) ? $_GET['tab'] : '';
 
     if ( $wpsl_licenses ) {
-        $tabs = array( 'general', 'licenses' );        
+        $tabs['licenses'] = __( 'Licenses', 'wpsl' );
+    }
 
+    // Default to the general tab if an unknow tab value is set
+    if ( !array_key_exists( $current_tab, $tabs ) ) {
+        $current_tab = 'general';
+    }
+
+    if ( count( $tabs ) > 1 ) {
         echo '<h2 id="wpsl-tabs" class="nav-tab-wrapper">';
-        
-        foreach ( $tabs as $name ) {
-            if ( !$current_tab && $name == 'general' || $current_tab == $name ) {
+
+        foreach ( $tabs as $tab_key => $tab_name ) {
+            if ( !$current_tab && $tab_key == 'general' || $current_tab == $tab_key ) {
                 $active_tab = 'nav-tab-active';
             } else {
                 $active_tab = '';
             }
 
-            echo '<a class="nav-tab ' . $active_tab . '" title="' . ucfirst( $name ) . '" href="' . admin_url( 'edit.php?post_type=wpsl_stores&page=wpsl_settings&tab=' . $name ) . '">' . ucfirst( $name ) . '</a>';
+            echo '<a class="nav-tab ' . $active_tab . '" title="' . esc_attr( $tab_name ) . '" href="' . admin_url( 'edit.php?post_type=wpsl_stores&page=wpsl_settings&tab=' . $tab_key ) . '">' . esc_attr( $tab_name ) . '</a>';
         }
-        
+
         echo '</h2>';
     }
         
-    if ( $current_tab == 'licenses' ) {
+    if ( $wpsl_licenses && $current_tab == 'licenses' ) {
         ?>
 
         <form action="" method="post">
@@ -80,7 +86,7 @@ global $wpdb, $wpsl, $wpsl_admin, $wp_version, $wpsl_settings;
             </p>
         </form>
     <?php
-    } else {
+    } else if ( $current_tab == 'general' || !$current_tab ) {
     ?>
     
     <div id="general">
@@ -92,7 +98,7 @@ global $wpdb, $wpsl, $wpsl_admin, $wp_version, $wpsl_settings;
                         <div class="inside">
                             <p>
                                 <label for="wpsl-api-server-key"><?php _e( 'Server key', 'wpsl' ); ?>:<span class="wpsl-info"><span class="wpsl-info-text wpsl-hide"><?php echo sprintf( __( 'A %sserver key%s allows you to monitor the usage of the Google Maps %sGeocoding API%s. %s %sRequired%s for %sapplications%s created after June 22, 2016.', 'wpsl' ), '<a href="https://wpstorelocator.co/document/create-google-api-keys/#server-key" target="_blank">', '</a>', '<a href="https://developers.google.com/maps/documentation/geocoding/intro">', '</a>', '<br><br>', '<strong>', '</strong>', '<a href="https://googlegeodevelopers.blogspot.nl/2016/06/building-for-scale-updates-to-google.html">', '</a>' ); ?></span></span></label> 
-                                <input type="text" value="<?php echo esc_attr( $wpsl_settings['api_server_key'] ); ?>" name="wpsl_api[server_key]"  class="textinput" id="wpsl-api-server-key">
+                                <input type="text" value="<?php echo esc_attr( $wpsl_settings['api_server_key'] ); ?>" name="wpsl_api[server_key]"  class="textinput<?php if ( !get_option( 'wpsl_valid_server_key' ) ) { echo ' wpsl-validate-me wpsl-error'; } ?>" id="wpsl-api-server-key">
                             </p>
                             <p>
                                 <label for="wpsl-api-browser-key"><?php _e( 'Browser key', 'wpsl' ); ?>:<span class="wpsl-info"><span class="wpsl-info-text wpsl-hide"><?php echo sprintf( __( 'A %sbrowser key%s allows you to monitor the usage of the Google Maps %sJavaScript API%s. %s %sRequired%s for %sapplications%s created after June 22, 2016.', 'wpsl' ), '<a href="https://wpstorelocator.co/document/create-google-api-keys/#browser-key" target="_blank">', '</a>', '<a href="https://developers.google.com/maps/documentation/javascript/">', '</a>', '<br><br>', '<strong>', '</strong>', '<a href="https://googlegeodevelopers.blogspot.nl/2016/06/building-for-scale-updates-to-google.html">', '</a>' ); ?></span></span></label> 
@@ -180,7 +186,7 @@ global $wpdb, $wpsl, $wpsl_admin, $wp_version, $wpsl_settings;
                         <h3 class="hndle"><span><?php _e( 'Map', 'wpsl' ); ?></span></h3>
                         <div class="inside">
                             <p>
-                                <label for="wpsl-auto-locate"><?php _e( 'Attempt to auto-locate the user', 'wpsl' ); ?>:<span class="wpsl-info"><span class="wpsl-info-text wpsl-hide"><?php echo sprintf( __( 'Safari and Chrome %srequire%s a HTTPS connection before the Geolocation feature works.', 'wpsl' ), '<a href="https://wpstorelocator.co/document/html-5-geolocation-not-working-chrome-safari/">', '</a>' ); ?></span></span></label>
+                                <label for="wpsl-auto-locate"><?php _e( 'Attempt to auto-locate the user', 'wpsl' ); ?>:<span class="wpsl-info"><span class="wpsl-info-text wpsl-hide"><?php echo sprintf( __( 'Most modern browsers %srequire%s a HTTPS connection before the Geolocation feature works.', 'wpsl' ), '<a href="https://wpstorelocator.co/document/html-5-geolocation-not-working/">', '</a>' ); ?></span></span></label>
                                 <input type="checkbox" value="" <?php checked( $wpsl_settings['auto_locate'], true ); ?> name="wpsl_map[auto_locate]" id="wpsl-auto-locate">
                             </p>
                             <p>
@@ -607,6 +613,9 @@ global $wpdb, $wpsl, $wpsl_admin, $wp_version, $wpsl_settings;
         </form>
     </div>
     
-    <?php } ?>
-    
+    <?php
+    } else {
+        do_action( 'wpsl_settings_section', $current_tab );
+    }
+    ?>
 </div>    

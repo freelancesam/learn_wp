@@ -3,6 +3,7 @@
 require_once( AMP__DIR__ . '/includes/utils/class-amp-dom-utils.php' );
 require_once( AMP__DIR__ . '/includes/utils/class-amp-html-utils.php' );
 require_once( AMP__DIR__ . '/includes/utils/class-amp-string-utils.php' );
+require_once( AMP__DIR__ . '/includes/utils/class-amp-wp-utils.php' );
 
 require_once( AMP__DIR__ . '/includes/class-amp-content.php' );
 
@@ -12,13 +13,18 @@ require_once( AMP__DIR__ . '/includes/sanitizers/class-amp-img-sanitizer.php' );
 require_once( AMP__DIR__ . '/includes/sanitizers/class-amp-video-sanitizer.php' );
 require_once( AMP__DIR__ . '/includes/sanitizers/class-amp-iframe-sanitizer.php' );
 require_once( AMP__DIR__ . '/includes/sanitizers/class-amp-audio-sanitizer.php' );
+require_once( AMP__DIR__ . '/includes/sanitizers/class-amp-playbuzz-sanitizer.php' );
 
 require_once( AMP__DIR__ . '/includes/embeds/class-amp-twitter-embed.php' );
 require_once( AMP__DIR__ . '/includes/embeds/class-amp-youtube-embed.php' );
+require_once( AMP__DIR__ . '/includes/embeds/class-amp-dailymotion-embed.php' );
 require_once( AMP__DIR__ . '/includes/embeds/class-amp-gallery-embed.php' );
 require_once( AMP__DIR__ . '/includes/embeds/class-amp-instagram-embed.php' );
 require_once( AMP__DIR__ . '/includes/embeds/class-amp-vine-embed.php' );
 require_once( AMP__DIR__ . '/includes/embeds/class-amp-facebook-embed.php' );
+require_once( AMP__DIR__ . '/includes/embeds/class-amp-vimeo-embed.php' );
+require_once( AMP__DIR__ . '/includes/embeds/class-amp-soundcloud-embed.php' );
+require_once( AMP__DIR__ . '/includes/embeds/class-amp-pinterest-embed.php' );
 
 class AMP_Post_Template {
 	const SITE_ICON_SIZE = 32;
@@ -55,7 +61,7 @@ class AMP_Post_Template {
 			'body_class' => '',
 
 			'site_icon_url' => apply_filters( 'amp_site_icon_url', function_exists( 'get_site_icon_url' ) ? get_site_icon_url( self::SITE_ICON_SIZE ) : '' ),
-			'placeholder_image_url' => amp_get_asset_url( 'images/placeholder-icon.png' ),
+			'placeholder_image_url' => AMPFORWP_IMAGE_DIR. '/placeholder-icon.png' ,
 
 			'featured_image' => false,
 			'comments_link_url' => false,
@@ -70,6 +76,8 @@ class AMP_Post_Template {
 				'merriweather' => 'https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic',
 			),
 
+			'post_amp_styles' => array(),
+
 			/**
 			 * Add amp-analytics tags.
 			 *
@@ -81,7 +89,7 @@ class AMP_Post_Template {
 			 * @param	object	$post	The current post.
 			 */
 			'amp_analytics' => apply_filters( 'amp_post_template_analytics', array(), $this->post ),
- 		);
+ 			);
 
 		$this->build_post_content();
 		$this->build_post_data();
@@ -95,10 +103,19 @@ class AMP_Post_Template {
 		if ( isset( $this->data[ $property ] ) ) {
 			return $this->data[ $property ];
 		} else {
-			_doing_it_wrong( __METHOD__, sprintf( __( 'Called for non-existant key ("%s").', 'amp' ), esc_html( $property ) ), '0.1' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Called for non-existant key ("%s").', 'amp' ), esc_html( $property ) ), '0.1' );
 		}
 
 		return $default;
+	}
+	public function set( $property, $value = '' ) {
+		if ( isset( $this->data[ $property ]  ) ) {
+			return $this->data[ $property ] = $value ;
+		} else {
+			_doing_it_wrong( __METHOD__, sprintf( __( 'Called for non-existant key ("%s").', 'amp' ), esc_html( $property ) ), '0.1' );
+		}
+
+		return $value;
 	}
 
 	public function get_customizer_setting( $name, $default = null ) {
@@ -142,11 +159,18 @@ class AMP_Post_Template {
 	}
 
 	private function build_post_data() {
+		$post_author = '';
+		$post_author_name = '';
 		$post_title = get_the_title( $this->ID );
 		$post_publish_timestamp = get_the_date( 'U', $this->ID );
+		$post_publish_timestamp = intval( $post_publish_timestamp );
 		$post_modified_timestamp = get_post_modified_time( 'U', false, $this->post );
-		$post_author = get_userdata( $this->post->post_author );
-
+		if(!empty($this->post)){
+			$post_author = get_userdata( $this->post->post_author );
+			if ( $post_author ) {
+				$post_author_name = $post_author->display_name;
+			}
+		}
 		$this->add_data( array(
 			'post' => $this->post,
 			'post_id' => $this->ID,
@@ -169,7 +193,7 @@ class AMP_Post_Template {
 			'dateModified' => date( 'c', $post_modified_timestamp ),
 			'author' => array(
 				'@type' => 'Person',
-				'name' => $post_author->display_name,
+				'name' => $post_author_name,
 			),
 		);
 
@@ -195,57 +219,70 @@ class AMP_Post_Template {
 	}
 
 	private function build_post_commments_data() {
-		if ( ! post_type_supports( $this->post->post_type, 'comments' ) ) {
-			return;
+		if(!empty($this->post)){
+			if ( ! post_type_supports( $this->post->post_type, 'comments' ) ) {
+				return;
+			}
+
+			$comments_open = comments_open( $this->ID );
+
+			// Don't show link if close and no comments
+			if ( ! $comments_open
+				&& ! $this->post->comment_count ) {
+				return;
+			}
+
+			$comments_link_url = get_comments_link( $this->ID );
+			$comments_link_text = $comments_open
+				? __( 'Leave a Comment', 'amp' )
+				: __( 'View Comments', 'amp' );
+
+			$this->add_data( array(
+				'comments_link_url' => $comments_link_url,
+				'comments_link_text' => $comments_link_text,
+			) );
 		}
-
-		$comments_open = comments_open( $this->ID );
-
-		// Don't show link if close and no comments
-		if ( ! $comments_open
-			&& ! $this->post->comment_count ) {
-			return;
-		}
-
-		$comments_link_url = get_comments_link( $this->ID );
-		$comments_link_text = $comments_open
-			? __( 'Leave a Comment', 'amp' )
-			: __( 'View Comments', 'amp' );
-
-		$this->add_data( array(
-			'comments_link_url' => $comments_link_url,
-			'comments_link_text' => $comments_link_text,
-		) );
 	}
 
 	private function build_post_content() {
-		$amp_content = new AMP_Content( $this->post->post_content,
-			apply_filters( 'amp_content_embed_handlers', array(
-				'AMP_Twitter_Embed_Handler' => array(),
-				'AMP_YouTube_Embed_Handler' => array(),
-				'AMP_Instagram_Embed_Handler' => array(),
-				'AMP_Vine_Embed_Handler' => array(),
-				'AMP_Facebook_Embed_Handler' => array(),
-				'AMP_Gallery_Embed_Handler' => array(),
-			), $this->post ),
-			apply_filters( 'amp_content_sanitizers', array(
-				 'AMP_Style_Sanitizer' => array(),
-				 'AMP_Blacklist_Sanitizer' => array(),
-				 'AMP_Img_Sanitizer' => array(),
-				 'AMP_Video_Sanitizer' => array(),
-				 'AMP_Audio_Sanitizer' => array(),
-				 'AMP_Iframe_Sanitizer' => array(
-					 'add_placeholder' => true,
-				 ),
-			), $this->post ),
-			array(
-				'content_max_width' => $this->get( 'content_max_width' ),
-			)
-		);
+		if(!empty($this->post->post_content)){
+			$amp_content = new AMP_Content( $this->post->post_content,
+				apply_filters( 'amp_content_embed_handlers', array(
+					'AMP_Twitter_Embed_Handler' => array(),
+					'AMP_YouTube_Embed_Handler' => array(),
+					'AMP_DailyMotion_Embed_Handler' => array(),
+					'AMP_Vimeo_Embed_Handler' => array(),
+					'AMP_SoundCloud_Embed_Handler' => array(),
+					'AMP_Instagram_Embed_Handler' => array(),
+					'AMP_Vine_Embed_Handler' => array(),
+					'AMP_Facebook_Embed_Handler' => array(),
+					'AMP_Pinterest_Embed_Handler' => array(),
+					'AMP_Gallery_Embed_Handler' => array(),
+				), $this->post ),
+				apply_filters( 'amp_content_sanitizers', array(
+					 'AMP_Style_Sanitizer' => array(),
+					 'AMP_Blacklist_Sanitizer' => array(),
+					 'AMP_Img_Sanitizer' => array(),
+					 'AMP_Video_Sanitizer' => array(),
+					 'AMP_Audio_Sanitizer' => array(),
+					 'AMP_Playbuzz_Sanitizer' => array(),
+					 'AMP_Iframe_Sanitizer' => array(
+						 'add_placeholder' => true,
+					 ),
+				), $this->post ),
+				array(
+					'content_max_width' => $this->get( 'content_max_width' ),
+				)
+			);
 
-		$this->add_data_by_key( 'post_amp_content', $amp_content->get_amp_content() );
-		$this->merge_data_for_key( 'amp_component_scripts', $amp_content->get_amp_scripts() );
-		$this->add_data_by_key( 'post_amp_styles', $amp_content->get_amp_styles() );
+			$this->add_data_by_key( 'post_amp_content', $amp_content->get_amp_content() );
+			$this->merge_data_for_key( 'amp_component_scripts', $amp_content->get_amp_scripts() );
+			$this->merge_data_for_key( 'post_amp_styles', $amp_content->get_amp_styles() );
+		}else{
+			$this->add_data_by_key( 'post_amp_content', '' );
+			$this->merge_data_for_key( 'amp_component_scripts', array() );
+			$this->add_data_by_key( 'post_amp_styles', array() );
+		}
 	}
 
 	private function build_post_featured_image() {
@@ -262,9 +299,16 @@ class AMP_Post_Template {
 		// If an image with the same ID as the featured image exists in the content, skip the featured image markup.
 		// Prevents duplicate images, which is especially problematic for photo blogs.
 		// A bit crude but it's fast and should cover most cases.
+		// $post_content = $this->post->post_content;
+		// if ( false !== strpos( $post_content, 'wp-image-' . $featured_id )
+		// 	|| false !== strpos( $post_content, 'attachment_' . $featured_id ) ) {
+		// 	return;
+		// }
+
+		// Updated the code with a filter (ampforwp_allow_featured_image), so users can change defaul settings. #1071 and #670
+
 		$post_content = $this->post->post_content;
-		if ( false !== strpos( $post_content, 'wp-image-' . $featured_id )
-			|| false !== strpos( $post_content, 'attachment_' . $featured_id ) ) {
+		if ( true !== apply_filters('ampforwp_allow_featured_image', false) && ( false !== strpos( $post_content, 'wp-image-' . $featured_id ) || false !== strpos( $post_content, 'attachment_' . $featured_id ) ) ) {
 			return;
 		}
 
@@ -274,7 +318,7 @@ class AMP_Post_Template {
 			$featured_html,
 			array( 'AMP_Img_Sanitizer' => array() ),
 			array(
-				'content_max_width' => $this->get( 'content_max_width' )
+				'content_max_width' => $this->get( 'content_max_width' ),
 			)
 		);
 
@@ -288,7 +332,7 @@ class AMP_Post_Template {
 		}
 
 		if ( $featured_styles ) {
-			$this->add_data_by_key( 'post_amp_styles', $featured_styles );
+			$this->merge_data_for_key( 'post_amp_styles', $featured_styles );
 		}
 	}
 
@@ -381,7 +425,7 @@ class AMP_Post_Template {
 
 		$file = apply_filters( 'amp_post_template_file', $file, $template_type, $this->post );
 		if ( ! $this->is_valid_template( $file ) ) {
-			_doing_it_wrong( __METHOD__, sprintf( __( 'Path validation for template (%s) failed. Path cannot traverse and must be located in `%s`.', 'amp' ), esc_html( $file ), 'WP_CONTENT_DIR' ), '0.1' );
+			_doing_it_wrong( __METHOD__, sprintf( esc_html__( 'Path validation for template (%s) failed. Path cannot traverse and must be located in `%s`.', 'amp' ), esc_html( $file ), 'WP_CONTENT_DIR' ), '0.1' );
 			return;
 		}
 
@@ -391,7 +435,7 @@ class AMP_Post_Template {
 
 
 	private function locate_template( $file ) {
-		$search_file = sprintf( 'amp/%s', basename( $file ) );
+		$search_file = sprintf( 'ampforwp/%s', basename( $file ) );
 		return locate_template( array( $search_file ), false );
 	}
 

@@ -1,51 +1,74 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Commands_Manager_HC_MVC extends _HC_MVC
+class Commands_Manager_HC_MVC
 {
+	protected $errors = array();
+	protected $results = array();
+	protected $before = array();
+
 	public function single_instance()
 	{
 	}
 
-	public function get( $id )
+	public function set_errors( $command_obj, $errors )
+	{
+		$key = $this->_key( $command_obj );
+		$this->errors[ $key ] = $errors;
+		return $this;
+	}
+
+	public function set_results( $command_obj, $results )
+	{
+		$key = $this->_key( $command_obj );
+		$this->results[ $key ] = $results;
+		return $this;
+	}
+
+	public function set_before( $command_obj, $before )
+	{
+		$key = $this->_key( $command_obj );
+		$this->before[ $key ] = $before;
+		return $this;
+	}
+
+	public function errors( $command_obj )
 	{
 		$return = NULL;
 
-		$config_loader = $this->make('/app/lib/config-loader');
-		$config = $config_loader->get('commands');
+		$key = $this->_key( $command_obj );
+		if( array_key_exists($key, $this->errors) ){
+			$return = $this->errors[ $key ];
+		}
 
-		if( array_key_exists($id, $config) ){
-			$return = $this->make($config[$id]);
-		}
-		else {
-			echo "COMMAND '$id' IS NOT AVAILABLE<br>";
-		}
 		return $return;
 	}
 
-	public function all( $class, $model )
+	public function results( $command_obj )
 	{
-		$commands = $this->commands;
-		$compare = $this->make('/app/lib/compare');
+		$return = NULL;
 
-		$return = array();
-		reset( $commands );
-		foreach( $commands as $k => $command )
-		{
-			list( $command_class, $command_command ) = explode('/', $k, 2);
-			if( $command_class != $class ){
-				continue;
-			}
-
-			$which = array();
-			if( method_exists($command, 'which') ){
-				$which = call_user_func( array($command, 'which') );
-			}
-
-			$on = $compare->is_valid( $model, $which );
-			if( $on ){
-				$return[$k] = $command;
-			}
+		$key = $this->_key( $command_obj );
+		if( array_key_exists($key, $this->results) ){
+			$return = $this->results[ $key ];
 		}
 
+		return $return;
+	}
+
+	public function before( $command_obj )
+	{
+		$return = NULL;
+
+		$key = $this->_key( $command_obj );
+		if( array_key_exists($key, $this->before) ){
+			$return = $this->before[ $key ];
+		}
+
+		return $return;
+	}
+
+	protected function _key( $command_obj )
+	{
+		$return = get_class($command_obj);
 		return $return;
 	}
 }

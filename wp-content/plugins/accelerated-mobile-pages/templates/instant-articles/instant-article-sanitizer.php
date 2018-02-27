@@ -12,6 +12,10 @@ if(class_exists("DOMDocument")){
 	add_filter( 'fbia_content_dom','resize_images');
 	// The empty P tags class should run last
 	add_filter( 'fbia_content_dom','no_empty_p_tags');
+	// Wrap the Tables and Iframes inside Figure
+	add_filter( 'fbia_content_dom','ampforwp_fbia_wrap_elements');
+	// Video Filter
+	add_filter( 'fbia_content_dom','ampforwp_fbia_video_element');
 	}
 function headlines($content){
 		// Replace h3, h4, h5, h6 with h2
@@ -227,11 +231,60 @@ function no_empty_p_tags($DOMDocument){
 
 		return $DOMDocument;
 	}
+function ampforwp_fbia_wrap_elements( $DOMDocument ){
+
+	$figure_object = $DOMDocument->createElement( 'figure' );
+	$figure_object->setAttribute( 'class', 'op-interactive' );
+
+		// The elements to wrap.
+		$elements_to_wrap = array( 'iframe', 'table' );
+
+		foreach ( $elements_to_wrap as $element_to_wrap ) {
+
+			foreach ( $elements = $DOMDocument->getElementsByTagName( $element_to_wrap ) as $element ) {
+				if ( 'figure' !== $element->parentNode->tagName ) {
+
+					$figure_template = clone $figure_object;
+					$element->parentNode->replaceChild( $figure_template, $element );
+					$figure_template->appendChild( $element );
+
+				}
+			}
+		}
+	return $DOMDocument;
+}
+// Video Element
+function ampforwp_fbia_video_element( $DOMDocument ){
+	$video_elements = $DOMDocument->getElementsByTagName( 'video' );
+
+	// Iterate over all the video items
+	for ( $i = 0; $i < $video_elements->length; ++$i ) {
+		$video = $video_elements->item( $i );
+
+		if($video->parentNode->nodeName == "figure"){
+				// This element is already wrapped in a figure tag, we only need to make sure it's placed right
+				$video = $video->parentNode;
+			} else {
+				// Wrap this video into a figure tag
+				$figure = $DOMDocument->createElement('figure');
+				$video->parentNode->replaceChild($figure, $video);
+				$figure->appendChild($video);
+				$video = $figure;
+			}
+	}
+	return $DOMDocument;
+}
 
 	function get_ia_placement_id(){
 		global $redux_builder_amp;
 		$instant_article_ad_id = $redux_builder_amp['fb-instant-article-ad-id'];
 		return $instant_article_ad_id;
+	}
+
+	function get_ia_ad_density(){
+		global $redux_builder_amp;
+		$instant_article_ad_density = $redux_builder_amp['fb-instant-article-ad-density-setup'];
+		return $instant_article_ad_density;
 	}
 
 	function get_ia_analytics_code(){

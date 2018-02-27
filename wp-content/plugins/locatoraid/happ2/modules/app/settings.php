@@ -1,12 +1,12 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class App_Settings_HC_MVC extends _HC_MVC
+class App_Settings_HC_MVC
 {
 	private $db = NULL;
 	private $config_loader = NULL;
 	private $settings = array();
 	private $defaults = array();
 
-	public static function single_instance()
+	public function single_instance()
 	{
 	}
 
@@ -15,29 +15,8 @@ class App_Settings_HC_MVC extends _HC_MVC
 		$this->settings = array();
 		$this->defaults = array();
 
-		$settings_conf = $config_loader->get('settings');
-// _print_r( $settings_conf );
-		$settings = array();
-		foreach( $settings_conf as $k => $va ){
-			$this_value = NULL;
-			if( ! is_array($va) ){
-				$this_value = $va;
-			}
-			else {
-				if( isset($va['default']) ){
-					$this_value = $va['default'];
-				}
-				else {
-					if( isset($va['type']) && in_array($va['type'], array('checkbox_set')) ){
-						$this_value = array();
-					}
-					else {
-						$this_value = NULL;
-					}
-				}
-			}
-			$settings[ $k ] = $this_value;
-		}
+		$settings = $config_loader->get('settings');
+// _print_r( $settings );
 		$this->settings = array_merge( $this->settings, $settings );
 		$this->defaults = array_merge( $this->defaults, $settings );
 	}
@@ -82,26 +61,6 @@ class App_Settings_HC_MVC extends _HC_MVC
 	{
 		$this->db = $db;
 		return $this->reload();
-
-		$this->db = $db;
-		$settings = $this->_get_all();
-
-		foreach( $settings as $k => $v ){
-			if( 
-				array_key_exists($k, $this->settings) && 
-				is_array($this->settings[$k])
-				){
-				if( is_array($v) ){
-					$this->settings[$k] = $v;
-				}
-				else {
-					$this->settings[$k] = array($v);
-				}
-			}
-			else {
-				$this->settings[$k] = $v;
-			}
-		}
 	}
 
 	public function get( $pname = NULL )
@@ -163,11 +122,12 @@ class App_Settings_HC_MVC extends _HC_MVC
 			return $return;
 		}
 
-		$this->db->reset_data_cache();
-		$this->db->select('name, value');
-		$result	= $this->db->get('conf');
+		$q = $this->db->query_builder();
+		$q->select( array('name', 'value') );
+		$sql = $q->get_compiled_select('conf');
+		$results = $this->db->query($sql);
 
-		foreach($result->result_array() as $i){
+		foreach( $results as $i ){
 			if( isset($return[$i['name']]) ){
 				if( ! is_array($return[$i['name']]) )
 					$return[$i['name']] = array( $return[$i['name']] );
@@ -188,13 +148,20 @@ class App_Settings_HC_MVC extends _HC_MVC
 			return $return;
 		}
 
+		$q = $this->db->query_builder();
+
 		if( is_array($pvalue) ){
-			$this->db->where( 'name', $pname );
-			$this->db->select('name, value');
-			$result	= $this->db->get('conf');
+
+			$q
+				->where('name', $pname)
+				->select( array('name', 'value') )
+				;
+			$sql = $q->get_compiled_select('conf');
+
+			$results = $this->db->query( $sql );
 
 			$current = array();
-			foreach($result->result_array() as $i){
+			foreach($results as $i){
 				$current[] = $i['value'];
 			}
 
@@ -205,32 +172,46 @@ class App_Settings_HC_MVC extends _HC_MVC
 					'name'	=> $pname,
 					'value'	=> $v
 					);
-				$this->db->insert('conf', $item);
+				$q->set( $item );
+				$sql = $q->get_compiled_insert('conf');
+				$this->db->query( $sql );
 			}
 			foreach( $to_delete as $v ){
-				$this->db->where('name', $pname);
-				$this->db->where('value', $v);
-				$this->db->delete('conf');
+				$q
+					->where( 'name', $pname )
+					->where( 'value', $v )
+					;
+				$sql = $q->get_compiled_delete('conf');
+				$this->db->query( $sql );
 			}
 		}
 		else
 		{
-			$exists = $this->db->get_where('conf', array('name'=>$pname))->row_array();
+			$q->where('name', $pname);
+			$sql = $q->get_compiled_select('conf');
+
+			$exists = $this->db->query($sql);
 
 			if( $exists ){
 				$item = array(
 					'value'	=> $pvalue
 					);
-				$this->db->where('name', $pname);
-				$this->db->update('conf', $item);
+				$q
+					->set( $item )
+					->where( 'name', $pname )
+					;
+				$sql = $q->get_compiled_update('conf');
 			}
 			else {
 				$item = array(
 					'name'	=> $pname,
 					'value'	=> $pvalue
 					);
-				$this->db->insert('conf', $item);
+				$q->set( $item );
+				$sql = $q->get_compiled_insert('conf');
 			}
+
+			$this->db->query( $sql );
 		}
 	}
 
@@ -241,7 +222,10 @@ class App_Settings_HC_MVC extends _HC_MVC
 			return $return;
 		}
 
-		$this->db->where('name', $pname);
-		$this->db->delete('conf');
+		$q = $this->db->query_builder();
+
+		$q->where('name', $pname);
+		$sql = $q->get_compiled_delete('conf');
+		$this->db->query( $sql );
 	}
 }

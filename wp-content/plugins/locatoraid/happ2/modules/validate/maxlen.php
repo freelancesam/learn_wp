@@ -1,17 +1,25 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Validate_Maxlen_HC_MVC extends _HC_MVC
+class Validate_Maxlen_HC_MVC
 {
-	public function validate( $value, $maxlen )
+	protected $maxlen = 100;
+
+	public function params( $maxlen )
+	{
+		$this->maxlen = $maxlen;
+		return $this;
+	}
+
+	public function validate( $value )
 	{
 		$return = TRUE;
 		$msg = HCM::__('It can not exceed %s characters in length');
 
 		$size = $this->_get_size( $value );
-		if( $size <= $maxlen ){
+		if( $size <= $this->maxlen ){
 			$return = TRUE;
 		}
 		else {
-			$return = sprintf( $msg, $maxlen );
+			$return = sprintf( $msg, $this->maxlen );
 		}
 		return $return;
 	}

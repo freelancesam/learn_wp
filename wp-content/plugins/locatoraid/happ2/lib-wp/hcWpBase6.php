@@ -13,6 +13,37 @@ if( ! function_exists('_print_r') ){
 	}
 }
 
+// a nice helper
+if( ! function_exists('hc2_wp_get_id_by_shortcode') ){
+	function hc2_wp_get_id_by_shortcode( $shortcode )
+	{
+		global $wpdb;
+		$return = array();
+
+		$pages = $wpdb->get_results( 
+			"
+			SELECT 
+				ID 
+			FROM $wpdb->posts 
+			WHERE 
+				( post_type = 'post' OR post_type = 'page' ) 
+				AND 
+				( post_content LIKE '%[" . $shortcode . "%]%' )
+				AND 
+				( post_status = 'publish' )
+			"
+			);
+
+		if( $pages ){
+			foreach( $pages as $p ){
+				$return[] = $p->ID;
+			}
+		}
+
+		return $return;
+	}
+}
+
 if( ! class_exists('hcWpBase6') )
 {
 class hcWpBase6
@@ -108,8 +139,6 @@ class hcWpBase6
 		// add_action('profile_update',		array($this, '_user_sync'), 10);
 		// add_action('deleted_user',			array($this, '_user_sync'), 10);
 		// add_action('remove_user_from_blog',	array($this, '_user_sync'), 10);
-
-		add_action( 'save_post',			array($this, 'save_meta'));
 	}
 
 	function _init()
@@ -122,45 +151,41 @@ class hcWpBase6
 			global $wpdb, $table_prefix;
 			$myprefix = $table_prefix . $this->db_prefix . '_';
 			$this->my_db_prefix = $myprefix;
-
-			$wpdb_array = (array) $wpdb;
-			foreach( $wpdb_array as $k => $v ){
-				if( substr($k, -3) == 'dbh' ){
-					$db_conn_id = $v;
-					break;
-				}
-			}
-
-			if( $db_conn_id ){
-				$db_params = array(
-					'conn_id'	=> $db_conn_id,
-					'database'	=> DB_NAME,
-					);
-			}
-			else {
-				$dp_params = array(
-					'hostname'	=> DB_HOST,
-					'username'	=> DB_USER,
-					'password'	=> DB_PASSWORD,
-					'database'	=> DB_NAME,
-					);
-			}
-			$db_params['dbprefix'] = $myprefix;
 		}
 
-		$app_dirs = array(
-			array($this->app_dir, $this->app_code),
-			$this->happ_path
-			);
-		$app_dirs = apply_filters( $this->app . '_app_dirs', $app_dirs );
+		// $app_dirs = array(
+			// array($this->app_dir, $this->app_code),
+			// $this->happ_path
+			// );
+		$app_dirs = array( $this->app_dir, $this->happ_path );
+
+		$filter_name = $this->app . '_app_dirs';
+		$app_dirs = apply_filters( $filter_name, $app_dirs );
+
+		$extension_modules = array();
+		$filter_name = $this->app . '_extension_modules';
+		$extension_modules = apply_filters( $filter_name, $extension_modules );
 
 		include_once( $this->happ_path . '/hsystem/index.php' );
+
 		$this->hcapp = new HC_Application(
 			$this->app,
 			$app_dirs,
-			$db_params
+			$this->app_code,
+			$extension_modules
 			);
 		// $this->app_short_name = $this->hcapp->app_short_name();
+
+		if( $this->db_prefix !== NULL ){
+			include_once( $this->happ_path . '/hsystem/database/index.php' );
+			include_once( $this->happ_path . '/hsystem/database/wordpress/engine.php' );
+
+			global $wpdb;
+
+			$db_engine = new HC_Database_Engine_Wordpress( $wpdb );
+			$db = new HC_Database( $db_engine, $myprefix ); 
+			$this->hcapp->set_db( $db );
+		}
 
 		$this->hcapp->web_dir = plugins_url( '', $this->full_path );
 		$this->hcapp->add_app_page( $this->slug );
@@ -169,7 +194,12 @@ class hcWpBase6
 		// $lang_domain = $this->app;
 		$lang_domain = $this->slug;
 		$lang_dir = plugin_basename($this->dir) . '/languages';
-		load_plugin_textdomain( $lang_domain, '', $lang_dir );
+// echo "LOADING LANG DOMAIN: " . $lang_domain . '<br>';
+// echo "LANG DIR '$lang_dir'" . '<br>';
+// exit;
+		$load_result = load_plugin_textdomain( $lang_domain, '', $lang_dir );
+
+		// echo $load_result ? 'LOADOK<br>' : 'LOADFAIL<br>';
 
 //		session_name( $session_name );
 //		@session_start();
@@ -179,12 +209,11 @@ class hcWpBase6
 	public function admin_app_menu()
 	{
 		$menu_slug = $this->slug;
-
-		$menu_items = $this->hcapp->make('/html/view/top-menu')
+		$menu_items = $this->hcapp->make('/layout/top-menu')
 			->options()
 			;
-		$my_submenu_count = 0;
 
+		$my_submenu_count = 0;
 		global $submenu;
 
 		foreach( $menu_items as $child_key => $child ){
@@ -195,16 +224,29 @@ class hcWpBase6
 				continue;
 			}
 
-			$child->admin();
-			$child->set_persist( FALSE );
-			$href = $child->href( TRUE ); // relative
-
+			$href = $child->href(); // relative
 			if( ! strlen($href) ){
 				continue;
 			}
 
+			$is_outside = FALSE;
+			if( method_exists($child, 'is_outside') ){
+				$is_outside = $child->is_outside();
+			}
+
+		// relative href
+			if( ! $is_outside ){
+				$pos1 = strpos($href, '?');
+				$pos2 = ( $pos1 === FALSE ) ? 
+					strrpos($href, '/') : 
+					strrpos(substr($href, 0, $pos1), '/')
+					;
+				$href = substr($href, $pos2 + 1);
+			}
+
 			$page_title = '';
-			$menu_title = $child->run('content');
+			$menu_title = $child->content();
+			$menu_title = strip_tags( $menu_title );
 
 			remove_submenu_page( $menu_slug, $href );
 
@@ -224,8 +266,8 @@ class hcWpBase6
 			$my_submenu = $submenu[$menu_slug];
 			$my_submenu_ids = array_keys($my_submenu);
 			$my_submenu_id = array_pop($my_submenu_ids);
-			$submenu[$menu_slug][$my_submenu_id][2] = $href;
 
+			$submenu[$menu_slug][$my_submenu_id][2] = $href;
 			$my_submenu_count++;
 		}
 
@@ -262,9 +304,15 @@ class hcWpBase6
 				break;
 
 			case 'admin.php':
-				$uri = $this->make('/http/lib/uri');
-				$slug = $uri->slug();
-				$submenu_file = 'admin.php?page=' . $menu_slug . '&' . $uri->hca_param() . '=' . $slug;
+				$uri = $this->make('/http/uri');
+
+				$top_menu = $this->make('/layout/top-menu');
+				$submenu_slug = $top_menu->current();
+				if( ! $submenu_slug ){
+					$submenu_slug = $uri->slug();
+				}
+
+				$submenu_file = 'admin.php?page=' . $menu_slug . '&' . $uri->url_param($submenu_slug);
 				break;
 
 			default:
@@ -282,37 +330,32 @@ class hcWpBase6
 
 		$this->hcapp->start();
 
-		$this
-			->init_ajax_url()
-			->init_admin_url()
-			;
-		$this->hcapp->bootstrap();
-	}
+	// init mode urls
+		$uri = $this->hcapp->make('/http/uri');
 
-	public function init_ajax_url()
-	{
+	// api
 		$url = parse_url( site_url('/') );
 		$base_url = $url['scheme'] . '://'. $url['host'] . $url['path'];
-		$ajax_url = (isset($url['query']) && $url['query']) ? '?' . $url['query'] . '&' : '?';
-		$ajax_url .= $this->hcs . '=' . $this->slug;
+		$api_url = (isset($url['query']) && $url['query']) ? '?' . $url['query'] . '&' : '?';
+		$api_url .= $this->hcs . '=' . $this->slug;
+		$api_url = $base_url . $api_url;
 
-		$ajax_url = $base_url . $ajax_url;
+	// web
+		if( is_admin() ){
+			$web_url = get_admin_url() . 'admin.php?page=' . $this->slug;
+		}
+		else {
+			$web_url = $uri->current();
+			$uri->from_url( $web_url );
+			$web_url = $uri->url();
+		}
 
-		$uri = $this->hcapp->make('/http/lib/uri')
-			->set_ajax_url( $ajax_url )
+		$uri
+			->set_mode_url( 'api', $api_url )
+			->set_mode_url( 'web', $web_url )
 			;
 
-		return $this;
-	}
-
-	public function init_admin_url()
-	{
-		$admin_url = get_admin_url() . 'admin.php?page=' . $this->slug;
-		$uri = $this->hcapp->make('/http/lib/uri')
-			->set_admin_url( $admin_url )
-			;
-
-		return $this;
+		$this->hcapp->bootstrap();
 	}
 
 	public function make( $slug )
@@ -398,6 +441,7 @@ class hcWpBase6
 		add_action( 'admin_menu', array($this, 'admin_menu') );
 
 		add_action( 'admin_menu', array($this, 'admin_app_menu') );
+
 		add_filter( 'parent_file', array($this, 'set_current_app_menu') );
 
 		$submenu = is_multisite() ? 'network_admin_menu' : 'admin_menu';
@@ -632,23 +676,6 @@ class hcWpBase6
 				return FALSE;
 		}
 		return TRUE;
-	}
-
-	function save_meta( $post_id )
-	{
-		$mypref = $this->app_short_name . '-';
-		$post_type = get_post_type( $post_id );
-		if( ! (substr($post_type, 0, strlen($mypref)) == $mypref) ){
-			return $post_id;
-		}
-
-		if( $_POST && isset($_POST['hc-route']) ){
-			$slug = sanitize_text_field( $_POST['hc-route'] );
-			$args = array('id' => $post_id);
-			$this->hcapp->handle_request($slug, $args);
-		}
-
-		return $post_id;
 	}
 
 	function make_input( $start, $props )

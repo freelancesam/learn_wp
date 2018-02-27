@@ -1,6 +1,6 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
 // Is a Natural number (0,1,2,3, etc.)
-class Validate_Natural_HC_MVC extends _HC_MVC
+class Validate_Natural_HC_MVC
 {
 	protected $msg;
 	protected $min = 1;

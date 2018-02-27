@@ -3,7 +3,7 @@
 Plugin Name: Locatoraid
 Plugin URI: http://www.locatoraid.com/
 Description: Store locator plugin
-Version: 3.1.7
+Version: 3.4.1
 Author: hitcode.com
 Author URI: http://www.locatoraid.com/
 Text Domain: locatoraid

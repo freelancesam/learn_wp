@@ -7,7 +7,16 @@ msgstr[1] ""
 msgid ".CSV Only"
 msgstr ""
 
-msgid "Access denied"
+msgid "1 Week"
+msgstr ""
+
+msgid "2 Weeks"
+msgstr ""
+
+msgid "4 Weeks"
+msgstr ""
+
+msgid "8 Weeks"
 msgstr ""
 
 msgid "Add New"
@@ -31,16 +40,19 @@ msgstr ""
 msgid "Address or Zip Code"
 msgstr ""
 
-msgid "Admin"
-msgstr ""
-
 msgid "Administrator"
 msgstr ""
 
 msgid "Always Show"
 msgstr ""
 
+msgid "Any of the above parameters can be overridden by GET URL parameters prefixed with "lctr-"."
+msgstr ""
+
 msgid "Append To Current Locations"
+msgstr ""
+
+msgid "Apply"
 msgstr ""
 
 msgid "At least %s characters required"
@@ -49,13 +61,16 @@ msgstr ""
 msgid "At least %s is required"
 msgstr ""
 
+msgid "Bulk Actions"
+msgstr ""
+
 msgid "CSV Delimiter"
 msgstr ""
 
 msgid "Can not open the uploaded file"
 msgstr ""
 
-msgid "Check Duplicates"
+msgid "Checkbox"
 msgstr ""
 
 msgid "City"
@@ -74,6 +89,9 @@ msgid "Country"
 msgstr ""
 
 msgid "Custom Map Style"
+msgstr ""
+
+msgid "Database Error"
 msgstr ""
 
 msgid "Days"
@@ -127,16 +145,10 @@ msgstr ""
 msgid "Edit Product"
 msgstr ""
 
-msgid "Email"
-msgstr ""
-
 msgid "Empty file"
 msgstr ""
 
 msgid "Enable Scroll Wheel Zoom"
-msgstr ""
-
-msgid "Equals To"
 msgstr ""
 
 msgid "Export"
@@ -151,16 +163,16 @@ msgstr ""
 msgid "Fields not recognized"
 msgstr ""
 
-msgid "From Date"
+msgid "Front Text"
+msgstr ""
+
+msgid "GET Override"
 msgstr ""
 
 msgid "Geocode"
 msgstr ""
 
 msgid "Get Google Maps API key"
-msgstr ""
-
-msgid "Get New Password"
 msgstr ""
 
 msgid "Google Maps"
@@ -184,13 +196,13 @@ msgstr ""
 msgid "Import Locations"
 msgstr ""
 
-msgid "In Stock"
-msgstr ""
-
 msgid "Installation"
 msgstr ""
 
 msgid "It can not exceed %s characters in length"
+msgstr ""
+
+msgid "It displays just one location defined by its id."
 msgstr ""
 
 msgid "Km"
@@ -203,6 +215,9 @@ msgid "Latitude"
 msgstr ""
 
 msgid "Limits the number of returned search results."
+msgstr ""
+
+msgid "Location"
 msgstr ""
 
 msgid "Location Added"
@@ -226,13 +241,10 @@ msgstr ""
 msgid "Locations imported"
 msgstr ""
 
-msgid "Log In"
+msgid "Log Searches"
 msgstr ""
 
 msgid "Longitude"
-msgstr ""
-
-msgid "Lost your password?"
 msgstr ""
 
 msgid "Makes the system search within the specified radius (in km or miles, depending on your settings). You can supply several options separated by commas. If several options are given, then it first searches within the first option and gives the More Results link to search within the next radius option. If no matches are found within the largest radius, it shows No Results message."
@@ -256,9 +268,6 @@ msgstr ""
 msgid "Miles"
 msgstr ""
 
-msgid "Minutes"
-msgstr ""
-
 msgid "Misc"
 msgstr ""
 
@@ -268,10 +277,10 @@ msgstr ""
 msgid "More Results"
 msgstr ""
 
-msgid "Name"
+msgid "More Results Link"
 msgstr ""
 
-msgid "New Password"
+msgid "Name"
 msgstr ""
 
 msgid "No Locations To Geocode"
@@ -286,28 +295,19 @@ msgstr ""
 msgid "No Role"
 msgstr ""
 
-msgid "Normal"
+msgid "None"
 msgstr ""
 
-msgid "Not Equals To"
+msgid "Normal"
 msgstr ""
 
 msgid "Not Geocoded"
 msgstr ""
 
-msgid "OK"
-msgstr ""
-
 msgid "Or enter "none" to skip it"
 msgstr ""
 
-msgid "Password"
-msgstr ""
-
-msgid "Password Reset"
-msgstr ""
-
-msgid "Password reset message has been sent to your email"
+msgid "Pages with shortcode"
 msgstr ""
 
 msgid "Phone"
@@ -319,16 +319,10 @@ msgstr ""
 msgid "Please define which WordPress user roles will be able to access the plugin."
 msgstr ""
 
-msgid "Please wait while the map is loading"
-msgstr ""
-
 msgid "Plugin Role"
 msgstr ""
 
 msgid "Possible options"
-msgstr ""
-
-msgid "Print View"
 msgstr ""
 
 msgid "Priority"
@@ -352,6 +346,9 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
+msgid "Radio"
+msgstr ""
+
 msgid "Required Field"
 msgstr ""
 
@@ -368,6 +365,15 @@ msgid "Save"
 msgstr ""
 
 msgid "Search"
+msgstr ""
+
+msgid "Search Field"
+msgstr ""
+
+msgid "Search Log"
+msgstr ""
+
+msgid "Selection Type In Front View"
 msgstr ""
 
 msgid "Set Custom Icon"
@@ -409,6 +415,9 @@ msgstr ""
 msgid "Street Address 2"
 msgstr ""
 
+msgid "Submit Button"
+msgstr ""
+
 msgid "Switch To Advanced Mode"
 msgstr ""
 
@@ -424,6 +433,9 @@ msgstr ""
 msgid "This field does not match the %s field"
 msgstr ""
 
+msgid "This field must contain an IP address."
+msgstr ""
+
 msgid "This field must contain only positive numbers."
 msgstr ""
 
@@ -433,10 +445,10 @@ msgstr ""
 msgid "This value is already used"
 msgstr ""
 
-msgid "Title"
+msgid "Time"
 msgstr ""
 
-msgid "To Date"
+msgid "Title"
 msgstr ""
 
 msgid "Upload"
@@ -449,21 +461,6 @@ msgid "Use"
 msgstr ""
 
 msgid "Use Default Icon"
-msgstr ""
-
-msgid "User"
-msgstr ""
-
-msgid "User added"
-msgstr ""
-
-msgid "User deleted"
-msgstr ""
-
-msgid "User not found"
-msgstr ""
-
-msgid "User updated"
 msgstr ""
 
 msgid "Users"
@@ -484,16 +481,10 @@ msgstr ""
 msgid "With Label"
 msgstr ""
 
-msgid "Wrong username or password"
-msgstr ""
-
 msgid "You can combine the map and the list together with either | or /. The | options means the map and the list will be placed horizontally side by side, the / option will render them vertically stacked one after one."
 msgstr ""
 
 msgid "You can use your mouse to move the location. Or manually enter the coordinates."
-msgstr ""
-
-msgid "You do not have sufficient permissions to access this page"
 msgstr ""
 
 msgid "Zip Code"

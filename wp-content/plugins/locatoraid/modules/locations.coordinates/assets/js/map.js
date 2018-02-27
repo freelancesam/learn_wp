@@ -3,9 +3,16 @@
 jQuery(document).on('hc2-gmaps-loaded', function()
 {
 	var map_div = "hclc_map";
-	var map = hc2_init_gmaps( map_div );
 
 	var $map = jQuery('#' + map_div);
+	if( ! $map.data('latitude') ){
+		return false;
+	}
+
+	var map = hc2_init_gmaps( map_div );
+
+	map.setOptions({ zoomControl: true });
+
 	var can_edit = $map.data('edit');
 	var custom_icon = $map.data('icon');
 

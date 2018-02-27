@@ -1,13 +1,18 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Front_Form_LC_HC_MVC extends _HC_Form
+class Front_Form_LC_HC_MVC
 {
-	public function conf()
+	public function inputs()
 	{
 		$return = array();
 
-		$return['search'] = $this->app->make('/form/view/text')
-			->add_attr('placeholder', HCM::__('Address or Zip Code'))
-			->add_attr('class', 'hc-block')
+		$app_settings = $this->app->make('/app/settings');
+		$label = $app_settings->get('front_text:search_field');
+		if( $label === NULL ){
+			$label = HCM::__('Address or Zip Code');
+		}
+
+		$return['search'] = $this->app->make('/form/text')
+			->set_label( $label )
 			;
 
 		$return = $this->app

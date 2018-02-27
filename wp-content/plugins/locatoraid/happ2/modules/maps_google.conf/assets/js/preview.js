@@ -17,7 +17,7 @@ jQuery(document).on('hc2-gmaps-loaded', function()
 
 	this.$preview_button = jQuery('.hcj2-map-preview');
 	this.$preview_button.on('click', function(e){
-		var style_code = jQuery('.hcj2-map-style').val();
+		var style_code = jQuery('.hcj2-map-style').find('textarea').val();
 		if( style_code.length ){
 			var validStyle = hc2_try_parse_json( style_code );
 			if( validStyle ){

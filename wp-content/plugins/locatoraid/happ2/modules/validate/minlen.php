@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Validate_Minlen_HC_MVC extends _HC_MVC
+class Validate_Minlen_HC_MVC
 {
 	public function validate( $value, $required )
 	{

@@ -1,24 +1,10 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Coordinates_Presenter_LC_HC_MVC extends _HC_MVC_Model_Presenter
+class Locations_Coordinates_Presenter_LC_HC_MVC
 {
-	public function is_geocoded()
+	public function geocoding_status( $data )
 	{
-		$return = TRUE;
-
-		$lat = $this->data('latitude');
-		$lon = $this->data('longitude');
-
-		if( ((! $lat) OR ($lat == -1)) && ((! $lon) OR ($lon == -1)) ){
-			$return = FALSE;
-		}
-
-		return $return;
-	}
-
-	public function geocoding_status()
-	{
-		$lat = $this->data('latitude');
-		$lng = $this->data('longitude');
+		$lat = isset($data['latitude']) ? $data['latitude'] : NULL;
+		$lng = isset($data['longitude']) ? $data['longitude'] : NULL;
 
 		if( ! ($lat && $lng) ){
 			$return = 0;
@@ -33,14 +19,17 @@ class Locations_Coordinates_Presenter_LC_HC_MVC extends _HC_MVC_Model_Presenter
 		return $return;
 	}
 
-	public function present_coordinates()
+	public function present_coordinates( $data )
 	{
-		$geocoded = $this->run('is-geocoded');
+		$lat = isset($data['latitude']) ? $data['latitude'] : NULL;
+		$lng = isset($data['longitude']) ? $data['longitude'] : NULL;
 
-		$lat = $this->data('latitude');
-		$lng = $this->data('longitude');
+		$geocoded = TRUE;
+		if( ((! $lat) OR ($lat == -1)) && ((! $lng) OR ($lng == -1)) ){
+			$geocoded = FALSE;
+		}
 
-		$wrap = $this->make('/html/view/element')->tag('span')
+		$wrap = $this->app->make('/html/element')->tag('span')
 			->add_attr('class', 'hc-inline-block')
 			->add_attr('class', 'hc-p1')
 			->add_attr('class', 'hc-rounded')

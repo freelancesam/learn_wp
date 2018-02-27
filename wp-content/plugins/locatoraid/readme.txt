@@ -4,38 +4,42 @@ Tags: business locations, dealer locator, dealer locater, store locator, post, s
 License: GPLv2 or later
 Stable tag: trunk
 Requires at least: 3.3
-Tested up to: 4.8
+Tested up to: 4.9
+Requires PHP: 5.3
 
 Add a store locator map to your site and get your visitors to start finding you faster!
 
 == Description ==
 
-Locatoraid is WordPress store locator, zip code locator plugin for any business that needs to let customers search online for their stores, dealers, hotels, restaurants, ATMs, products, locations, etc. 
+Locatoraid is a lightweight, easy to use WordPress store locator, dealer locator, zip code locator plugin for any business that needs to let their customers find their stores, dealers, hotels, restaurants, ATMs, products, or any other types of locations. 
 
-This locator plugin takes the address or zip code input from your customer and returns nearest matches sorted by distance, complete with online Google map, driving directions, contact info, links and more. 
+__Start In Minutes__
+Just start adding your locations, then the automatic geocoding function finds the coordinates, and your locations are on the map waiting for your customers! 
 
-If needed, enter your Google Maps API Key in Configuration > Google Maps API Key.
+__Works Worldwide__
+More than 200 countries covered. USA, Australia, Canada, Hong Kong, Italy, Japan, Mexico, Singapore, South Africa, Spain, UK and more. As long as it is on the Google Maps, it will be found. 
 
-###Lite Version Features###
-* Automatic geocoding to quickly locate your stores
-* Insert a store locator map with a shortcode
-* Filter and group results by state or city with shorcode parameters
-* Sort and limit results with shorcode parameters
-* Customizable options
-* Featured locations
-* Driving directions
+__Mobile Friendly__
+Responsive design that works perfectly well for iPhone, Android, Blackberry, Windows as well as for desktops, laptops and tablets.
+
+__Shortcode Parameters__
+A number of shortcode parameters that can be used to configure the front end view, like default search text, search radius, view layout, limit to a state or a country, and more. 
+
+__Custom Map Styles__
+Easily configurable map styles to match your website.
 
 ###Pro Version Features###
 
 * __CSV Import / Export__ to bulk add and update your locations
 * __Custom Fields__    to show more detailed information
 * __Custom Map Icons__ for various types of locations
-* __Products__ manage different products offered in your locations
+* __Products / Categories__ to categorize your locations
 
 [Get the Pro version of Locatoraid store locator plugin!](http://www.locatoraid.com/order/)
 
 == Support ==
-Please contact us at http://www.locatoraid.com/contact/
+Please contact us at [http://www.locatoraid.com/contact/](http://www.locatoraid.com/contact/)
+[Follow on Facebook](https://www.facebook.com/Locatoraid-165233107413846/)
 
 Author: HitCode
 Author URI: http://www.locatoraid.com
@@ -52,6 +56,63 @@ Author URI: http://www.locatoraid.com
 The upgrade is simply - upload everything up again to your `/wp-content/plugins/` directory, then go to the Locatoraid menu item in the admin panel. It will automatically start the upgrade process if any needed.
 
 == Changelog ==
+
+= 3.4.1 =
+* Fixed permissions settings for the search log module as it may be visible for backend users who were not allowed to access Locatoraid.
+* Added the list of posts and pages with Locatoraid shortcode on the Publish admin page.
+* The front end search form is automatically resubmitted if the product checkbox is clicked.
+* Redesigned a bit the admin location fields configuration form (more convenient for custom HTML code if needed).
+
+= 3.4.0 =
+* Added the search log module.
+* Added an option to override any shortcode parameter with GET parameters.
+* In the admin aread adjusted the paging view so that it now displays the total number of locations.
+
+= 3.3.2 =
+* BUG: A fatal error appeared when the "where-product" shorcode parameter was used (Pro version).
+
+= 3.3.1 =
+* BUG: When searching for more than one product, it returned less results then it should (Pro version).
+* BUG: The export file didn't properly link locations to products if any (Pro version).
+
+= 3.3.0 =
+* Added the id parameter for the shortcode, so it displays the map for this location only, with no search form.
+* BUG: There might be fatal errors when both free and pro versions are enabled.
+
+= 3.2.9 =
+* BUG: An ajax error when using the limit="1" parameter for the shortcode.
+
+= 3.2.8 =
+* BUG: Another fix for the Ajax Error (JSON.parse: bad escaped character) message with certain configurations.
+
+= 3.2.7 =
+* BUG: The search form widget didn't work properly if only digits search string was posted, like zip (postal) code.
+* BUG: Attempted to fix the Ajax Error (JSON.parse: bad escaped character) message with certain configurations.
+
+= 3.2.6 =
+* BUG: When uploading a CSV file, and it contained new products, the location to product relations were not built properly.
+* Minor code updates.
+
+= 3.2.5 =
+* BUG: When it was configured not to start with default results, the map outline was still displayed.
+* Minor code updates.
+
+= 3.2.4 =
+* BUG: Error saying "required field" that did not allow to update a location.
+
+= 3.2.3 =
+* BUG: Fatal error when upgrading from several older versions.
+
+= 3.2.2 =
+* BUG: The bulk geocoding process did not save the coordinates properly.
+
+= 3.2.1 =
+* Minor bug fixes.
+
+= 3.2.0 =
+* Front text (submit button, search field, more results link) can be edited.
+* Bulk delete option for products (Pro version).
+* Code refactoring improved speed and reduced size.
 
 = 3.1.7 =
 * BUG: The initial Google Maps API Key entry check didn't work correctly.

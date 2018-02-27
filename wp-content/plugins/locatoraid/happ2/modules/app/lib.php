@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class App_Lib_HC_MVC extends _HC_MVC
+class App_Lib_HC_MVC
 {
 	public function isme()
 	{
@@ -15,16 +15,16 @@ class App_Lib_HC_MVC extends _HC_MVC
 	public function time()
 	{
 		if( ! class_exists('HC_Time') ){
-			$this->make('/time/lib');
+			$this->app->make('/time/lib');
 		}
 
-		static $return = NULL;
-		if( $return !== NULL ){
-			return $return;
-		}
+		// static $return = NULL;
+		// if( $return !== NULL ){
+			// return $return;
+		// }
 
 		$return = new HC_Time;
-		$conf = $this->make('lib/settings');
+		$conf = $this->app->make('/app/settings');
 
 		if( $conf ){
 			$week_starts_on = $conf->get('datetime:week_starts');

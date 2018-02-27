@@ -1,25 +1,19 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_Coordinates_Form_LC_HC_MVC extends _HC_Form
+class Locations_Coordinates_Form_LC_HC_MVC
 {
-	public function _init()
+	public function inputs()
 	{
-		$inputs = array(
-			'latitude'	=>
-				$this->make('/form/view/text')
-					->set_label( HCM::__('Latitude') )
-				,
-			'longitude'	=>
-				$this->make('/form/view/text')
-					->set_label( HCM::__('Longitude') )
-				,
+		$return = array(
+			'latitude'	=> array(
+				'input'	=> $this->app->make('/form/text'),
+				'label'	=> HCM::__('Latitude')
+				),
+
+			'longitude'	=> array(
+				'input'	=> $this->app->make('/form/text'),
+				'label'	=> HCM::__('Longitude')
+				),
 			);
-
-		foreach( $inputs as $k => $v ){
-			$this
-				->set_input( $k, $v )
-				;
-		}
-
-		return $this;
+		return $return;
 	}
 }

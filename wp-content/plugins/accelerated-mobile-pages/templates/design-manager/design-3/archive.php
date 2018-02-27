@@ -33,7 +33,9 @@
 	<?php do_action( 'amp_post_template_css', $this ); ?>
 	</style>
 </head>
-<body class="amp_home_body archives_body design_3_wrapper">
+
+<body <?php ampforwp_body_class('amp_home_body design_3_wrapper');?> >
+<?php do_action('ampforwp_body_beginning', $this); ?>
 <?php $this->load_parts( array( 'header-bar' ) ); ?>
 
 <?php do_action( 'ampforwp_after_header', $this );
@@ -50,6 +52,7 @@ if ( get_query_var( 'paged' ) ) {
 
 <main>
 	<?php do_action('ampforwp_post_before_loop') ?>
+	<?php $count = 1; ?>
 	<?php
 
 	    $exclude_ids = get_option('ampforwp_exclude_post');
@@ -64,54 +67,86 @@ if ( get_query_var( 'paged' ) ) {
 			'post_status'=> 'publish'
 		) ); ?>
 
- 	<?php if ( is_archive() ) {
- 			the_archive_title( '<h3 class="amp-wp-content page-title">', '</h3>' );
- 			
-			$arch_desc 		= $sanitizer->get_amp_content();
-			if( $arch_desc ) {  
-				if($wp->query_vars['paged'] <= '1') {?>
-					<div class="amp-wp-content taxonomy-description">
-						<?php echo $arch_desc ; ?>
-				  </div> <?php
+ 	<?php if ( is_archive() ) { ?>
+ 		<div class="amp-wp-content">
+ 	<?php 
+ 			if( is_author() ){
+			$curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
+				if( true == ampforwp_gravatar_checker($curauth->user_email) ){
+					$curauth_url = get_avatar_url( $curauth->user_email, array('size'=>180) );
+					if($curauth_url){ ?>
+						<div class="amp-wp-content author-img">
+							<amp-img src="<?php echo esc_url($curauth_url); ?>" width="90" height="90" layout="responsive"></amp-img>
+						</div>
+					<?php }
 				}
 			}
+ 			the_archive_title( '<h1 class="amp-wp-content page-title archive-heading">', '</h1>' );
+			$arch_desc 		= $sanitizer->get_amp_content();
+			if( $arch_desc ) {  
+				if($paged <= '1') {?>
+					<div class="taxonomy-description">
+						<?php echo $arch_desc ; ?>
+				  </div>
+			  </div> <?php
+				}
+			}
+			if(is_category() && 1 == $redux_builder_amp['ampforwp-sub-categories-support']){
+				$parent_cat_id 	= '';
+			    $cat_childs		= array();
+ 			    $parent_cat_id 	= get_queried_object_id();
+ 			 	$cat_childs 	= get_terms( array(
+ 			  						'taxonomy' => get_queried_object()->taxonomy,
+ 			  						'parent'   => $parent_cat_id)
+									);
+	 			if(!empty($cat_childs)){
+	 				echo "<div class='amp-sub-archives'><ul>";
+	 				foreach ($cat_childs as $cat_child ) {
+	 					 echo '<li><a href="' . get_term_link( $cat_child ) . '">' . $cat_child->name . '</a></li>'; 
+	 				}
+	 				echo "</ul></div>";
+	 			}
+	 		}	
  		} ?>
 
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
-  		$ampforwp_amp_post_url = trailingslashit( get_permalink() ) . AMPFORWP_AMP_QUERY_VAR ;
-  		$ampforwp_amp_post_url  = trailingslashit( $ampforwp_amp_post_url );
+  		$ampforwp_amp_post_url  = ampforwp_url_controller( get_permalink() );
 
 			if( in_array( 'ampforwp-custom-type-amp-endpoint' , $redux_builder_amp ) ) {
-	  		if ( $redux_builder_amp['ampforwp-custom-type-amp-endpoint']) {
+	  		if (isset($redux_builder_amp['ampforwp-custom-type-amp-endpoint']) && $redux_builder_amp['ampforwp-custom-type-amp-endpoint']) {
 	  			$ampforwp_amp_post_url = trailingslashit( get_permalink() ) . '?amp';
 	  		}
 			}?>
 
-		<div class="amp-wp-content amp-loop-list">
-			<?php if ( has_post_thumbnail() ) { ?>
-				<?php
-				$thumb_id = get_post_thumbnail_id();
-				$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'medium', true);
-				$thumb_url = $thumb_url_array[0];
-				?>
-				<div class="home-post_image">
-					<a href="<?php echo esc_url( $ampforwp_amp_post_url ); ?>">
-						<amp-img
-						layout="responsive"
-						src=<?php echo $thumb_url ?>
-						<?php ampforwp_thumbnail_alt(); ?>
-						width=450
-						height=270
-					></amp-img>
-				</a>
-			</div>
-			<?php } ?>
+		<div class="amp-wp-content amp-loop-list <?php if ( ! ampforwp_has_post_thumbnail() ) {  ?>amp-loop-list-noimg<?php } ?>">
+			<?php if ( ampforwp_has_post_thumbnail() ) {
+				$thumb_url = ampforwp_get_post_thumbnail();
+				if($thumb_url){
+					?>
+					<div class="home-post_image">
+						<a href="<?php echo esc_url( $ampforwp_amp_post_url ); ?>">
+							<amp-img
+							layout="responsive"
+							src=<?php echo esc_url($thumb_url); ?>
+							<?php ampforwp_thumbnail_alt(); ?>
+							width=450
+							height=270
+						></amp-img>
+					</a>
+				</div>
+				<?php } 
+			}?>
 
 			<div class="amp-wp-post-content">
                 <ul class="amp-wp-tags">
-					<?php foreach((get_the_category()) as $category) { ?>
-					    <li class="amp-cat-<?php echo $category->term_id;?>"><?php echo $category->cat_name ?></li>
-					<?php } ?>
+					<?php foreach((get_the_category()) as $category) { 
+						if ( true == $redux_builder_amp['ampforwp-archive-support'] ) { ?>
+						<li class="amp-cat-<?php echo $category->term_id;?>"><a href="<?php echo esc_url(ampforwp_url_controller( get_category_link( $category->term_id ) )); ?>" ><?php echo $category->cat_name ?></a></li>
+					<?php }
+					else { ?>
+					   <li class="amp-cat-<?php echo $category->term_id;?>"><?php echo $category->cat_name ?></li>
+					<?php }
+					} ?> 
                 </ul>
 				<h2 class="amp-wp-title"> <a href="<?php echo esc_url( $ampforwp_amp_post_url ); ?>"> <?php the_title(); ?></a></h2>
 
@@ -123,7 +158,30 @@ if ( get_query_var( 'paged' ) ) {
 						$content = get_the_content();
 					}
 				?>
-		        <p><?php echo wp_trim_words( strip_shortcodes(  $content ) , '15' ); ?></p>
+		        <p class="large-screen-excerpt-design-3">
+				<?php  
+					$excerpt_length	='';
+					$excerpt_length = 15;
+					$final_content 	= ""; 					
+					$final_content  = apply_filters('ampforwp_modify_index_content', $content,  $excerpt_length );
+
+					if ( false === has_filter('ampforwp_modify_index_content' ) ) {
+						$final_content = wp_trim_words( strip_shortcodes( $content ) ,  $excerpt_length );
+					}
+					echo $final_content; ?> </p>
+		        <p class="small-screen-excerpt-design-3" > <?php    
+					if($redux_builder_amp['excerpt-option-design-3']== true) {
+						$excerpt_length='';
+						$excerpt_length = $redux_builder_amp['amp-design-3-excerpt'];
+						$final_content  = "";  					
+						$final_content  = apply_filters('ampforwp_modify_index_content', $content,  $excerpt_length );
+
+						if ( false === has_filter('ampforwp_modify_index_content' ) ) {
+							$final_content = wp_trim_words( strip_shortcodes( $content ) ,  $excerpt_length );
+						}
+						echo $final_content; 
+					} ?> 
+				</p>
                 <div class="featured_time">
                   <?php
                        $post_date =  human_time_diff( get_the_time('U', get_the_ID() ), current_time('timestamp') ) .' '. ampforwp_translation( $redux_builder_amp['amp-translator-ago-date-text'],'ago' );
@@ -135,15 +193,18 @@ if ( get_query_var( 'paged' ) ) {
             <div class="cb"></div>
 	</div>
 
-	<?php endwhile;  ?>
+	<?php 
+	do_action('ampforwp_between_loop',$count,$this);
+		         $count++;
+	endwhile;  ?>
 
 	<div class="amp-wp-content pagination-holder">
 
 
 		<div id="pagination">
-			<div class="next"><?php next_posts_link( ampforwp_translation ($redux_builder_amp['amp-translator-show-more-posts-text'] , 'Show more Posts') ,0 ) ?></div>
+			<div class="next"><?php next_posts_link( ampforwp_translation ($redux_builder_amp['amp-translator-show-more-posts-text']. ' &raquo;' , 'Show more Posts') ,0 ) ?></div>
 					<?php if ( $paged > 1 ) { ?>
-						<div class="prev"><?php previous_posts_link( ampforwp_translation($redux_builder_amp['amp-translator-show-previous-posts-text'], 'Show previous Posts') ); ?></div>
+						<div class="prev"><?php previous_posts_link( '&laquo; '.ampforwp_translation($redux_builder_amp['amp-translator-show-previous-posts-text'], 'Show previous Posts') ); ?></div>
 					<?php } ?>
 			<div class="clearfix"></div>
 		</div>

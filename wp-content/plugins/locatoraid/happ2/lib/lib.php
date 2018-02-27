@@ -6,7 +6,12 @@ if( ! function_exists('__') ){
 		include_once( dirname( __FILE__ ) . '/php-gettext/PHP.php' );
 	}
 }
-
+if( ! function_exists('sanitize_text_field') ){
+	function sanitize_text_field( $str )
+	{
+		return $str;
+	}
+}
 // template
 // https://github.com/ramon82/t.php
 if( ! class_exists('HC_T') ){
@@ -654,7 +659,7 @@ if ( ! function_exists('hc2_string_to_array'))
 
 if ( ! function_exists('hc2_parse_args'))
 {
-	function hc2_parse_args( $args, $multiple_values = FALSE, $persist = TRUE )
+	function hc2_parse_args( $args, $multiple_values = TRUE, $persist = TRUE )
 	{
 		$return = array();
 		if( count($args) == 1 ){
@@ -838,7 +843,7 @@ if ( ! function_exists('hc_random'))
 //		$salt .= 'abcdefghijklmnopqrstuvxyz';
 //		$salt .= 'ABCDEFGHIJKLMNOPQRSTUVXYZ';
 
-		srand( (double) microtime() * 1000000 );
+		// srand( (double) microtime() * 1000000 );
 		$return = '';
 		$i = 1;
 		$array = array();
@@ -915,6 +920,26 @@ class HC_Binary_Array
 }
 
 class HC_lib2 {
+	public static function array_to_string( $array, $output = 'text' )
+	{
+		reset( $array );
+		foreach( $array as $k => $v ){
+			$out[] = $k . ': ' . $v;
+		}
+
+		switch( $output ){
+			case 'html':
+				$join = '<br>';
+				break;
+			case 'text':
+				$join = ', ';
+				break;
+		}
+
+		$out = implode( $join, $out );
+		return $out;
+	}
+
 	public static function esc_attr( $value )
 	{
 		if( function_exists('esc_attr') ){
@@ -1098,14 +1123,18 @@ class HC_lib2 {
 		$useCaps = isset($conf['caps']) ? $conf['caps'] : FALSE;
 
 		$salt = '';
-		if( $useHex )
-			$salt .= '0123456789abcdef';
+		if( $useHex ){
+			$salt .= 'abcdef';
+		}
 		if( $useLetters )
 			$salt .= 'abcdefghijklmnopqrstuvxyz';
-		if( $useDigits )
-			$salt .= '0123456789';
-		if( $useCaps )
+		if( $useDigits ){
+			// $salt .= '0123456789';
+			$salt .= '123456789';
+		}
+		if( $useCaps ){
 			$salt .= 'ABCDEFGHIJKLMNOPQRSTUVXYZ';
+		}
 
 		// srand( (double) microtime() * 1000000 );
 		$return = '';

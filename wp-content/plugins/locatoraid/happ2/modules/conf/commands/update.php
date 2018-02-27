@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Conf_Commands_Update_HC_MVC extends _HC_MVC
+class Conf_Commands_Update_HC_MVC
 {
 	public function execute( $values = array() )
 	{

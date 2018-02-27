@@ -1,13 +1,13 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Front_View_Map_Template_LC_HC_MVC extends _HC_MVC
+class Front_View_Map_Template_LC_HC_MVC
 {
 	public function render()
 	{
 		$out = array();
 
-		$app_settings = $this->make('/app/settings');
-		$p = $this->make('/locations/presenter');
-		$fields = $p->run('fields-labels');
+		$app_settings = $this->app->make('/app/settings');
+		$p = $this->app->make('/locations/presenter');
+		$fields = $p->fields_labels();
 
 		$out[] = '<div class="hc-black hc-bg-lightsilver hc-p2 hc-rounded">';
 

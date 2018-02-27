@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Wordpress_Lib_Custom_Search_HC_MVC extends _HC_MVC
+class Wordpress_Lib_Custom_Search_HC_MVC
 {
 	protected $types = array();
 	

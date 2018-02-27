@@ -1,61 +1,55 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Search_Controller_LC_HC_MVC extends _HC_MVC
+class Search_Controller_LC_HC_MVC
 {
 	public function execute()
 	{
-		$args = $this->make('/app/lib/args')->parse( func_get_args() );
+		$return = $this->app
+			->after( array($this, 'check') )
+			;
+		if( $return ){
+			return $return;
+		}
 
-		$search = $args->get('search');
-		$lat = $args->get('lat');
-		$lng = $args->get('lng');
-		$limit = $args->get('limit');
-		$sort = $args->get('sort');
-		$radius = $args->get('radius');
-		$offset = $args->get('offset');
+		$uri = $this->app->make('/http/uri');
+
+		$id = $uri->param('id');
+
+		$search = $uri->param('search');
+		$lat = $uri->param('lat');
+		$lng = $uri->param('lng');
+		$limit = $uri->param('limit');
+		$sort = $uri->param('sort');
+		$radius = $uri->param('radius');
+		$offset = $uri->param('offset');
+
+		if( $id ){
+			$search = NULL;
+			$lat = NULL;
+			$lng = NULL;
+			$limit = 1;
+			$sort = NULL;
+			$radius = NULL;
+			$offset = NULL;
+		}
 
 		$results = array();
 
-		$api = $this->make('/http/lib/api')
-			->request('/api/locations') 
-			// ->add_param('search', $search)
-			->add_param('osearch', $search)
-			->add_param('with', '-all-')
-			// ->add_param('by', 'id')
-			// ->add_param('limit', 2)
-			;
+		$command = $this->app->make('/locations/commands/read');
+		$command_args = array();
 
+		$command_args[] = array('osearch', $search);
+		$command_args[] = array('with', '-all-');
+		if( $id ){
+			$command_args[] = $id;
+		}
 		if( $limit ){
-			$api
-				->add_param('limit', $limit)
-				;
+			$command_args[] = array('limit', $limit);
 		}
-
 		if( $sort ){
-			$api
-				->add_param('sort', $sort)
-				;
+			$command_args[] = array('sort', $sort);
 		}
-
 		if( $offset ){
-			$api
-				->add_param('offset', $offset)
-				;
-		}
-
-		$search_coordinates = array();
-		if( $lat && $lng && ($lat != '_LAT_') && ($lng != '_LNG_') ){
-			$search_coordinates = array($lat, $lng);
-			$api
-				->add_param('lat', $lat)
-				->add_param('lng', $lng)
-				;
-
-			if( $radius ){
-				$radius = (int) $radius;
-				$api
-					->add_param('having_computed_distance', array('<=', $radius))
-					;
-			}
+			$command_args[] = array('offset', $offset);
 		}
 
 		$p = $this->app->make('/locations/presenter');
@@ -64,11 +58,9 @@ class Search_Controller_LC_HC_MVC extends _HC_MVC
 
 		reset( $also_take );
 		foreach( $also_take as $tk ){
-			$v = $args->get($tk);
+			$v = $uri->param($tk);
 			if( is_array($v) ){
-				$api
-					->add_param($tk, array('IN', $v))
-					;
+				$command_args[] = array($tk, 'IN', $v);
 			}
 			else {
 				if( ! strlen($v) ){
@@ -77,22 +69,36 @@ class Search_Controller_LC_HC_MVC extends _HC_MVC
 				if( substr($v, 0, 1) == '_' ){
 					continue;
 				}
-				$api
-					->add_param($tk, $v)
-					;
+				$command_args[] = array($tk, '=', $v);
 			}
 		}
 
-		$results = $api
-			->get()
-			->response()
+		$search_coordinates = array();
+		if( $lat && $lng && ($lat != '_LAT_') && ($lng != '_LNG_') ){
+			$search_coordinates = array($lat, $lng);
+
+			$command_args[] = array('lat', $lat);
+			$command_args[] = array('lng', $lng);
+
+			if( $radius ){
+				$radius = (int) $radius;
+				$command_args[] = array('having', 'computed_distance', '<=', $radius);
+			}
+		}
+
+		$results = $command->execute( $command_args );
+		if( $results && $limit && ($limit == 1) ){
+			$results = array( $results['id'] => $results );
+		}
+
+		$return = $this->app->make('/search/view')
+			->render($results, $search, $search_coordinates)
 			;
 
-		$view = $this->make('view')
-			->run('render', $results, $search, $search_coordinates)
+		$return = $this->app
+			->after( $this, $return )
 			;
-		// echo $view;
-		// exit;
-		return $view;
+
+		return $return;
 	}
 }

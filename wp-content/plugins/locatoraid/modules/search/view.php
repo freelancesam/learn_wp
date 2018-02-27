@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Search_View_LC_HC_MVC extends _HC_MVC
+class Search_View_LC_HC_MVC
 {
 	public function render( $results = array(), $search = '', $search_coordinates = array() )
 	{

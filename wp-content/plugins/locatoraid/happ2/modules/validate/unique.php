@@ -1,34 +1,39 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Validate_Unique_HC_MVC extends _HC_MVC
+class Validate_Unique_HC_MVC
 {
-	public function validate( $value, $model, $field, $skip = NULL )
+	protected $table = NULL;
+	protected $field = NULL;
+	protected $skip_id = NULL;
+
+	public function params( $table, $field, $skip_id = NULL )
+	{
+		$this->table = $table;
+		$this->field = $field;
+		$this->skip_id = $skip_id;
+		return $this;
+	}
+
+	public function validate( $value )
 	{
 		$return = TRUE;
 		$msg = HCM::__('This value is already used');
 		// $msg .= ': ' . strip_tags($value);
 		$id_field = 'id';
 
-		$model_slug = '/' . $model . '/model';
-		$model = $this->make($model_slug);
+		$command_slug = '/' . $this->table . '/commands/read';
+		$command = $this->app->make( $command_slug );
 
-		$model
-			->where( $field, '=', $value )
-			->limit(1)
-			;
+		$command_args = array();
+		$command_args[] = array( 'limit', 1 );
+		$command_args[] = array( $this->field, '=', $value );
 
-		if( $skip ){
-			if( ! is_array($skip) ){
-				$skip = array($skip);
-			}
-			$model
-				->where( $id_field, 'NOT IN', $skip )
-				;
+		if( $this->skip_id ){
+			$command_args[] = array( $id_field, 'NOTIN', $this->skip_id );
 		}
 
-		$count = $model
-			->run('count')
-			;
-		if( $count ){
+		$already = $command->execute( $command_args );
+		
+		if( $already ){
 			$return = $msg;
 		}
 

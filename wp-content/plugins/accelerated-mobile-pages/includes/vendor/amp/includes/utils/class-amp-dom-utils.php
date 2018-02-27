@@ -34,6 +34,7 @@ class AMP_DOM_Utils {
 		foreach ( $body->childNodes as $node ) {
 			$out .= $dom->saveXML( $node );
 		}
+		$out = apply_filters('amp_get_content_from_dom', $out);
 		return $out;
 	}
 
@@ -95,10 +96,27 @@ class AMP_DOM_Utils {
 			// https://www.w3.org/TR/html5/syntax.html#serializing-html-fragments
 			// Not all are valid AMP, but we include them for completeness.
 			$self_closing_tags = array(
-				'area', 'base', 'basefont', 'bgsound', 'br', 'col', 'embed', 'frame', 'hr', 'img', 'input', 'keygen', 'link', 'meta', 'param', 'source', 'track', 'wbr',
+				'area',
+				'base',
+				'basefont',
+				'bgsound',
+				'br',
+				'col',
+				'embed',
+				'frame',
+				'hr',
+				'img',
+				'input',
+				'keygen',
+				'link',
+				'meta',
+				'param',
+				'source',
+				'track',
+				'wbr',
 			);
 		}
 
-		return in_array( $tag, $self_closing_tags );
+		return in_array( $tag, $self_closing_tags, true );
 	}
 }

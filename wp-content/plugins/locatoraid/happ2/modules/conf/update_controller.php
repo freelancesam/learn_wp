@@ -1,74 +1,45 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Conf_Update_Controller_HC_MVC extends _HC_MVC
+class Conf_Update_Controller_HC_MVC
 {
 	function execute( $form )
 	{
-		$post = $this->make('/input/lib')->post();
-		if( ! $post ){
-			return;
-		}
+		$post = $this->app->make('/input/lib')->post();
 
-		$form->grab( $post );
+		$inputs = $form->inputs();
+		$helper = $this->app->make('/form/helper');
+		list( $values, $errors ) = $helper->grab( $inputs, $post );
 
-		$valid = $form->validate();
-		if( ! $valid ){
-			$form_errors = array(
-				$form->slug()	=> $form->errors()
-				);
-			$form_values = array(
-				$form->slug()	=> $form->values()
-				);
-
-			$session = $this->make('/session/lib');
-			$session
-				->set_flashdata('form_errors', $form_errors)
-				->set_flashdata('form_values', $form_values)
+		if( $errors ){
+			$redirect_to = $this->app->make('/http/uri')
+				->url('-referrer-')
 				;
-
-			$redirect_to = $this->make('/html/view/link')
-				->to('-referrer-')
-				->href()
-				;
-			return $this->make('/http/view/response')
+			return $this->app->make('/http/view/response')
 				->set_redirect($redirect_to) 
 				;
 		}
 
-		$values = $form->values();
-
 	/* run */
-		$return = $this->make('/conf/commands/update')
+		$response = $this->app->make('/conf/commands/update')
 			->execute( $values )
 			;
 
-		if( isset($return['errors']) ){
-			$form_errors = array(
-				$form->slug()	=> $return['errors']
-				);
-			$form_values = array(
-				$form->slug()	=> $form->values()
-				);
-			$session = $this->make('/session/lib')
-				->set_flashdata('form_errors', $form_errors)
-				->set_flashdata('form_values', $form_values)
+		if( isset($response['errors']) ){
+			$session = $this->app->make('/session/lib');
+			$session
+				->set_flashdata('error', $response['errors'])
 				;
-			$redirect_to = $this->make('/html/view/link')
-				->to('-referrer-')
-				->href()
-				;
-			return $this->make('/http/view/response')
-				->set_redirect($redirect_to) 
+			return $this->app->make('/http/view/response')
+				->set_redirect('-referrer-') 
 				;
 		}
 
 	// OK
-		$redirect_to = $this->make('/html/view/link')
-			->to('-referrer-')
-			->href()
+		$this->app->make('/session/lib')
+			->set_flashdata('form_errors', array())
+			->set_flashdata('form_values', array())
 			;
-
-		return $this->make('/http/view/response')
-			->set_redirect($redirect_to) 
+		return $this->app->make('/http/view/response')
+			->set_redirect('-referrer-') 
 			;
 	}
 }

@@ -26,7 +26,7 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/libraries/input.html
  */
-class Input_Lib_HC_MVC extends _HC_MVC {
+class Input_Lib_HC_MVC {
 
 	/**
 	 * IP address of the current user

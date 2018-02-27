@@ -248,8 +248,10 @@ class WC_Gateway_PPEC_Client {
 		$settings = wc_gateway_ppec()->settings;
 
 		$params              = array();
-		$params['LOGOIMG']   = $settings->logo_image_url;
-		$params['HDRIMG']    = $settings->header_image_url;
+		$logo_url_or_id      = $settings->logo_image_url;
+		$header_url_or_id    = $settings->header_image_url;
+		$params['LOGOIMG']   = filter_var( $logo_url_or_id, FILTER_VALIDATE_URL )   ? $logo_url_or_id   : wp_get_attachment_image_url( $logo_url_or_id, 'thumbnail' );
+		$params['HDRIMG']    = filter_var( $header_url_or_id, FILTER_VALIDATE_URL ) ? $header_url_or_id : wp_get_attachment_image_url( $header_url_or_id, 'thumbnail' );
 		$params['PAGESTYLE'] = $settings->page_style;
 		$params['BRANDNAME'] = $settings->get_brand_name();
 		$params['RETURNURL'] = $this->_get_return_url( $args );
@@ -408,11 +410,14 @@ class WC_Gateway_PPEC_Client {
 	 * @return array Line item
 	 */
 	protected function _get_extra_offset_line_item( $amount ) {
+		$settings = wc_gateway_ppec()->settings;
+		$decimals = $settings->get_number_of_decimal_digits();
+
 		return array(
 			'name'        => 'Line Item Amount Offset',
 			'description' => 'Adjust cart calculation discrepancy',
 			'quantity'    => 1,
-			'amount'      => $amount,
+			'amount'      => round( $amount, $decimals ),
 		);
 	}
 
@@ -426,11 +431,14 @@ class WC_Gateway_PPEC_Client {
 	 * @return array Line item
 	 */
 	protected function _get_extra_discount_line_item( $amount ) {
+		$settings = wc_gateway_ppec()->settings;
+		$decimals = $settings->get_number_of_decimal_digits();
+
 		return  array(
 			'name'        => 'Discount',
 			'description' => 'Discount Amount',
 			'quantity'    => 1,
-			'amount'      => '-' . $amount,
+			'amount'      => '-' . round( $amount, $decimals ),
 		);
 	}
 
@@ -474,7 +482,7 @@ class WC_Gateway_PPEC_Client {
 
 		$items = array();
 		foreach ( WC()->cart->cart_contents as $cart_item_key => $values ) {
-			$amount = round( $values['line_subtotal'] / $values['quantity'] , $decimals );
+			$amount = round( $values['line_total'] / $values['quantity'] , $decimals );
 
 			if ( version_compare( WC_VERSION, '3.0', '<' ) ) {
 				$name = $values['data']->post->post_title;
@@ -542,12 +550,14 @@ class WC_Gateway_PPEC_Client {
 		// if they do not match, check to see what the merchant would like to do.
 		// Options are to remove line items or add a line item to adjust for
 		// the difference.
+		$diff = 0;
+
 		if ( $details['total_item_amount'] != $rounded_total ) {
 			if ( 'add' === $settings->get_subtotal_mismatch_behavior() ) {
 				// Add line item to make up different between WooCommerce
 				// calculations and PayPal calculations.
 				$diff = round( $details['total_item_amount'] - $rounded_total, $decimals );
-				if ( abs( $diff ) > 0.000001 ) {
+				if ( abs( $diff ) > 0.000001 && 0.0 !== (float) $diff ) {
 					$extra_line_item = $this->_get_extra_offset_line_item( $diff );
 
 					$details['items'][]            = $extra_line_item;
@@ -599,11 +609,13 @@ class WC_Gateway_PPEC_Client {
 
 		$lisum = 0;
 
-		foreach ( $details['items'] as $li => $values ) {
-			$lisum += $values['quantity'] * $values['amount'];
+		if ( ! empty( $details['items'] ) ) {
+			foreach ( $details['items'] as $li => $values ) {
+				$lisum += $values['quantity'] * $values['amount'];
+			}
 		}
 
-		if ( abs( $lisum ) > 0.000001 ) {
+		if ( abs( $lisum ) > 0.000001 && 0.0 !== (float) $diff ) {
 			$details['items'][] = $this->_get_extra_offset_line_item( $details['total_item_amount'] - $lisum );
 		}
 
@@ -784,13 +796,14 @@ class WC_Gateway_PPEC_Client {
 	 * @return array Params for DoExpressCheckoutPayment call
 	 */
 	public function get_do_express_checkout_params( array $args ) {
-		$settings  = wc_gateway_ppec()->settings;
-		$order     = wc_get_order( $args['order_id'] );
+		$settings     = wc_gateway_ppec()->settings;
+		$order        = wc_get_order( $args['order_id'] );
 
-		$old_wc    = version_compare( WC_VERSION, '3.0', '<' );
-		$order_id  = $old_wc ? $order->id : $order->get_id();
-		$details   = $this->_get_details_from_order( $order_id );
-		$order_key = $old_wc ? $order->order_key : $order->get_order_key();
+		$old_wc       = version_compare( WC_VERSION, '3.0', '<' );
+		$order_id     = $old_wc ? $order->id : $order->get_id();
+		$order_number = $order->get_order_number();
+		$details      = $this->_get_details_from_order( $order_id );
+		$order_key    = $old_wc ? $order->order_key : $order->get_order_key();
 
 		$params = array(
 			'TOKEN'                          => $args['token'],
@@ -807,8 +820,9 @@ class WC_Gateway_PPEC_Client {
 			'PAYMENTREQUEST_0_PAYMENTACTION' => $settings->get_paymentaction(),
 			'PAYMENTREQUEST_0_INVNUM'        => $settings->invoice_prefix . $order->get_order_number(),
 			'PAYMENTREQUEST_0_CUSTOM'        => json_encode( array(
-				'order_id'  => $order_id,
-				'order_key' => $order_key,
+				'order_id'     => $order_id,
+				'order_number' => $order_number,
+				'order_key'    => $order_key,
 			) ),
 			'NOSHIPPING'                     => WC_Gateway_PPEC_Plugin::needs_shipping() ? 0 : 1,
 		);

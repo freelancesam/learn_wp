@@ -1,72 +1,48 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-class Locations_New_Controller_Add_LC_HC_MVC extends _HC_MVC
+class Locations_New_Controller_Add_LC_HC_MVC
 {
 	public function execute()
 	{
 		$post = $this->app->make('/input/lib')->post();
 
-		$form = $this->app->make('/locations/new/form');
-		$form->grab( $post );
+		$inputs = $this->app->make('/locations/form')
+			->inputs()
+			;
+		$helper = $this->app->make('/form/helper');
 
-		$valid = $form->validate();
-		if( ! $valid ){
-			$form_errors = array(
-				$form->slug()	=> $form->errors()
-				);
-			$form_values = array(
-				$form->slug()	=> $form->values()
-				);
+		list( $values, $errors ) = $helper->grab( $inputs, $post );
 
-			$session = $this->make('/session/lib');
-			$session
-				->set_flashdata('form_errors', $form_errors)
-				->set_flashdata('form_values', $form_values)
-				;
-			$redirect_to = $this->make('/html/view/link')
-				->to('-referrer-')
-				->href()
-				;
-			return $this->make('/http/view/response')
-				->set_redirect($redirect_to) 
+		if( $errors ){
+			return $this->app->make('/http/view/response')
+				->set_redirect('-referrer-') 
 				;
 		}
 
-		$values = $form->values();
+		$cm = $this->app->make('/commands/manager');
 
-		$command = $this->make('/locations/commands/create')
-			;
-		$response = $command
+		$command = $this->app->make('/locations/commands/create');
+		$command
 			->execute( $values )
 			;
 
-		if( isset($response['errors']) ){
-			$form_errors = array(
-				$form->slug()	=> $response['errors']
-				);
-			$form_values = array(
-				$form->slug()	=> $form->values()
-				);
-
-			$session = $this->make('/session/lib');
+		$errors = $cm->errors( $command );
+		if( $errors ){
+			$session = $this->app->make('/session/lib');
 			$session
-				->set_flashdata('form_errors', $form_errors)
-				->set_flashdata('form_values', $form_values)
+				->set_flashdata('error', $errors)
 				;
-			$redirect_to = $this->make('/html/view/link')
-				->to('-referrer-')
-				->href()
-				;
-			return $this->make('/http/view/response')
-				->set_redirect($redirect_to) 
+			return $this->app->make('/http/view/response')
+				->set_redirect('-referrer-') 
 				;
 		}
 
+		$results = $cm->results( $command );
+
 	// OK
-		$redirect_to = $this->make('/html/view/link')
-			->to('/locations/' . $response['id'] . '/edit')
-			->href()
+		$redirect_to = $this->app->make('/http/uri')
+			->url('/locations/' . $results['id'] . '/edit')
 			;
-		return $this->make('/http/view/response')
+		return $this->app->make('/http/view/response')
 			->set_redirect($redirect_to) 
 			;
 	}
