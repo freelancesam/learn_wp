@@ -1,3 +1,4 @@
+/*! ET custom.js */
 (function($){
 	window.et_calculating_scroll_position = false;
 	window.et_side_nav_links_initialized  = false;
@@ -7,16 +8,14 @@
 		et_is_ipad = navigator.userAgent.match( /iPad/ ),
 		$et_container = $( '.container' ),
 		et_container_width = $et_container.width(),
-		et_is_fixed_nav = $( 'body' ).hasClass( 'et_fixed_nav' ),
+		et_is_fixed_nav = $( 'body' ).hasClass( 'et_fixed_nav' ) || $( 'body' ).hasClass( 'et_vertical_fixed' ),
 		et_is_vertical_fixed_nav = $( 'body' ).hasClass( 'et_vertical_fixed' ),
 		et_is_rtl = $( 'body' ).hasClass( 'rtl' ),
 		et_hide_nav = $( 'body' ).hasClass( 'et_hide_nav' ),
 		et_header_style_left = $( 'body' ).hasClass( 'et_header_style_left' ),
-		et_vertical_navigation = $( 'body' ).hasClass( 'et_vertical_nav' ),
 		$top_header = $('#top-header'),
 		$main_header = $('#main-header'),
 		$main_container_wrapper = $( '#page-container' ),
-		$et_transparent_nav = $( '.et_transparent_nav' ),
 		$et_main_content_first_row = $( '#main-content .container:first-child' ),
 		$et_main_content_first_row_meta_wrapper = $et_main_content_first_row.find('.et_post_meta_wrapper:first'),
 		$et_main_content_first_row_meta_wrapper_title = $et_main_content_first_row_meta_wrapper.find( 'h1.entry-title' ),
@@ -28,92 +27,65 @@
 		et_header_modifier,
 		et_header_offset,
 		et_primary_header_top,
-		$et_vertical_nav = $('.et_vertical_nav'),
 		$et_header_style_split = $('.et_header_style_split'),
 		$et_top_navigation = $('#et-top-navigation'),
 		$logo = $('#logo'),
-		$et_pb_first_row = $( 'body.et_pb_pagebuilder_layout .et_pb_section:first-child' ),
+		$et_pb_first_row = $( 'body.et_pb_pagebuilder_layout .et_pb_section:visible:first' ),
 		et_is_touch_device = 'ontouchstart' in window || navigator.maxTouchPoints;
 
+	// We need to check first to see if we are on a woocommerce single product.
+	if ( $("body").hasClass("woocommerce") && $("body").hasClass("single-product") && $(".woocommerce-product-gallery").length > 0 ) {
+		// get the gallery container.
+		var gal = $(".woocommerce-product-gallery")[0];
+
+		// let's replace the data attribute since Salvatorre reconfigures
+		// data-columns on the resize event.
+		var newstr = gal.outerHTML.replace( 'data-columns', 'data-cols' );
+
+		// finally we re-insert.
+		gal.outerHTML = newstr;
+	}
+
 	$(document).ready( function(){
-		var $et_top_menu = $( 'ul.nav' ),
+		var $et_top_menu = $( 'ul.nav, ul.menu' ),
 			$et_search_icon = $( '#et_search_icon' ),
 			et_parent_menu_longpress_limit = 300,
 			et_parent_menu_longpress_start,
-			et_parent_menu_click = true;
+			et_parent_menu_click = true,
+			is_customize_preview = $('body').hasClass('et_is_customize_preview');
 
-		$et_top_menu.find( 'li' ).hover( function() {
-			if ( ! $(this).closest( 'li.mega-menu' ).length || $(this).hasClass( 'mega-menu' ) ) {
-				$(this).addClass( 'et-show-dropdown' );
-				$(this).removeClass( 'et-hover' ).addClass( 'et-hover' );
-			}
-		}, function() {
-			var $this_el = $(this);
-
-			$this_el.removeClass( 'et-show-dropdown' );
-
-			setTimeout( function() {
-				if ( ! $this_el.hasClass( 'et-show-dropdown' ) ) {
-					$this_el.removeClass( 'et-hover' );
-				}
-			}, 200 );
-		} );
-
-		// Dropdown menu adjustment for touch screen
-		$et_top_menu.find('.menu-item-has-children > a').on( 'touchstart', function(){
-			et_parent_menu_longpress_start = new Date().getTime();
-		} ).on( 'touchend', function(){
-			var et_parent_menu_longpress_end = new Date().getTime();
-			if ( et_parent_menu_longpress_end  >= et_parent_menu_longpress_start + et_parent_menu_longpress_limit ) {
-				et_parent_menu_click = true;
-			} else {
-				et_parent_menu_click = false;
-
-				// Close sub-menu if toggled
-				var $et_parent_menu = $(this).parent('li');
-				if ( $et_parent_menu.hasClass( 'et-hover') ) {
-					$et_parent_menu.trigger( 'mouseleave' );
-				} else {
-					$et_parent_menu.trigger( 'mouseenter' );
-				}
-			}
-			et_parent_menu_longpress_start = 0;
-		} ).click(function() {
-			if ( et_parent_menu_click ) {
-				return true;
-			}
-
-			return false;
-		} );
-
-		$et_top_menu.find( 'li.mega-menu' ).each(function(){
-			var $li_mega_menu           = $(this),
-				$li_mega_menu_item      = $li_mega_menu.children( 'ul' ).children( 'li' ),
-				li_mega_menu_item_count = $li_mega_menu_item.length;
-
-			if ( li_mega_menu_item_count < 4 ) {
-				$li_mega_menu.addClass( 'mega-menu-parent mega-menu-parent-' + li_mega_menu_item_count );
-			}
-		});
+		window.et_pb_init_nav_menu( $et_top_menu );
 
 		function et_header_menu_split(){
 			var $logo_container = $( '#main-header > .container > .logo_container' ),
 				$logo_container_splitted = $('.centered-inline-logo-wrap > .logo_container'),
 				et_top_navigation_li_size = $et_top_navigation.children('nav').children('ul').children('li').size(),
-				et_top_navigation_li_break_index = Math.round( et_top_navigation_li_size / 2 ) - 1;
+				et_top_navigation_li_break_index = Math.round( et_top_navigation_li_size / 2 ) - 1,
+				window_width = window.innerWidth || $et_window.width();
 
-			if ( $et_window.width() > 980 && $logo_container.length ) {
+			if ( window_width > 980 && $logo_container.length && $('body').hasClass('et_header_style_split') ) {
 				$('<li class="centered-inline-logo-wrap"></li>').insertAfter($et_top_navigation.find('nav > ul >li:nth('+et_top_navigation_li_break_index+')') );
 				$logo_container.appendTo( $et_top_navigation.find('.centered-inline-logo-wrap') );
 			}
 
-			if ( $et_window.width() <= 980 && $logo_container_splitted.length ) {
+			if ( window_width <= 980 && $logo_container_splitted.length ) {
 				$logo_container_splitted.prependTo('#main-header > .container');
 				$('#main-header .centered-inline-logo-wrap').remove();
 			}
 		}
 
-		if ( $et_header_style_split.length && $et_vertical_nav.length < 1 ) {
+		function et_set_right_vertical_menu() {
+			var $body = $( 'body' );
+			if ( $body.hasClass( 'et_boxed_layout' ) && $body.hasClass( 'et_vertical_fixed' ) && $body.hasClass( 'et_vertical_right' ) ) {
+				var header_offset = parseFloat( $( '#page-container' ).css( 'margin-right' ) );
+				header_offset += ( parseFloat( $( '#et-main-area' ).css( 'margin-right' ) ) - 225 );
+				header_offset = 0 > header_offset ? 0 : header_offset;
+
+				$( '#main-header' ).addClass( 'et_vertical_menu_set' ).css( { 'left': '', 'right': header_offset } );
+			}
+		}
+
+		if ( ( $et_header_style_split.length && ! window.et_is_vertical_nav ) || is_customize_preview ) {
 			et_header_menu_split();
 
 			$(window).resize(function(){
@@ -125,10 +97,11 @@
 			$("ul.et_disable_top_tier > li > ul").prev('a').attr('href','#');
 		}
 
-		if ( $( '.et_vertical_nav' ).length ) {
+		if ( window.et_is_vertical_nav ) {
 			if ( $( '#main-header' ).height() < $( '#et-top-navigation' ).height() ) {
 				$( '#main-header' ).height( $( '#et-top-navigation' ).height() + $( '#logo' ).height() + 100 );
 			}
+			et_set_right_vertical_menu();
 		}
 
 		window.et_calculate_header_values = function() {
@@ -192,13 +165,13 @@
 					et_primary_header_top += $top_header.innerHeight();
 				}
 
-				if ( ! $body.hasClass( 'et_vertical_nav' ) && ( $body.hasClass( 'et_fixed_nav' ) ) ) {
+				if ( ! window.et_is_vertical_nav && ( $body.hasClass( 'et_fixed_nav' ) ) ) {
 					$('#main-header').css( 'top', et_primary_header_top );
 				}
 			}, delay );
 		}
 
-		function et_hide_nav_transofrm( ) {
+		function et_hide_nav_transform( ) {
 			var $body = $( 'body' ),
 				$body_height = $( document ).height(),
 				$viewport_height = $( window ).height() + et_header_height + 200;
@@ -217,10 +190,31 @@
 					$body.removeClass( 'et_hide_nav' );
 					$body.addClass( 'et_hide_nav_disabled' );
 				}
+
+				// Run fix page container again, needed when body height is not tall enough and
+				// adjustment has been aded
+				et_fix_page_container_position();
 			}
 		}
 
+		// Saving current styling for the next resize cycle
+		function et_save_initial_page_container_style( $selector, property ) {
+			var styling = {};
+
+			styling[property] = $selector.css( property );
+
+			$selector.attr({
+				'data-fix-page-container' : 'on'
+			}).data({
+				'fix_page_container_style' : styling
+			});
+		}
+
 		function et_page_load_scroll_to_anchor() {
+			if ( $( window.et_location_hash ).length === 0 ) {
+				return;
+			}
+
 			var $map_container = $( window.et_location_hash + ' .et_pb_map_container' ),
 				$map = $map_container.children( '.et_pb_map' ),
 				$target = $( window.et_location_hash );
@@ -248,12 +242,35 @@
 			}, 700 );
 		}
 
+		// Retrieving padding/margin value based on formatted saved padding/margin strings
+		function et_get_saved_padding_margin_value( saved_value, order ) {
+			if ( typeof saved_value === 'undefined' ) {
+				return false;
+			}
+
+			var values = saved_value.split('|');
+
+			return typeof values[order] !== 'undefined' ? values[order] : false;
+		}
+
 		function et_fix_page_container_position(){
 			var et_window_width     = parseInt( $et_window.width() ),
 				$top_header          = $( '#top-header' ),
-				secondary_nav_height = $top_header.length && $top_header.is( ':visible' ) ? parseInt( $top_header.innerHeight() ) : 0;
+				$et_pb_first_row     = $( 'body.et_pb_pagebuilder_layout .et_pb_section:visible:first' ),
+				secondary_nav_height = $top_header.length && $top_header.is( ':visible' ) ? parseInt( $top_header.innerHeight() ) : 0,
+				main_header_fixed_height = 0,
+				header_height,
+				et_pb_first_row_padding_top;
 
-			var header_height;
+			// Replace previous resize cycle's adjustment
+			$('*[data-fix-page-container="on"]').each(function(){
+				var $adjusted_element = $(this),
+					styling = $adjusted_element.data();
+
+				// Reapply previous styling
+				$adjusted_element.css( styling.fix_page_container_style );
+
+			});
 
 			// Set data-height-onload for header if the page is loaded on large screen
 			// If the page is loaded from small screen, rely on data-height-onload printed on the markup,
@@ -268,7 +285,7 @@
 
 				// If transparent is detected, #main-content .container's padding-top needs to be added to header_height
 				// And NOT a pagebuilder page
-				if ( $et_transparent_nav.length && ! $et_pb_first_row.length ) {
+				if ( window.et_is_transparent_nav && ! $et_pb_first_row.length ) {
 					header_height += 58;
 				}
 			} else {
@@ -277,13 +294,34 @@
 				header_height = parseInt( $main_header.attr( 'data-height-onload' ) ) + secondary_nav_height;
 
 				// Non page builder page needs to be added by #main-content .container's fixed height
-				if ( $et_transparent_nav.length && ! $et_vertical_nav.length && $et_main_content_first_row.length ) {
+				if ( window.et_is_transparent_nav && ! window.et_is_vertical_nav && $et_main_content_first_row.length ) {
 					header_height += 58;
 				}
+
+				// Calculate fixed header height by cloning, emulating, and calculating its height
+				$main_header.clone().addClass(
+					'main-header-clone et-fixed-header'
+				).css({
+					opacity: 0,
+					position: 'fixed',
+					top: 'auto',
+					right: 0,
+					bottom: 0,
+					left: 0
+				}).appendTo( $('body') );
+
+				main_header_fixed_height = $('.main-header-clone').height();
+
+				$('.main-header-clone').remove();
 			}
 
+			// Saved fixed main header height calculation
+			$main_header.attr({
+				'data-fixed-height-onload': main_header_fixed_height
+			});
+
 			// Specific adjustment required for transparent nav + not vertical nav
-			if ( $et_transparent_nav.length && ! $et_vertical_nav.length ){
+			if ( window.et_is_transparent_nav && ! window.et_is_vertical_nav ){
 
 				// Add class for first row for custom section padding purpose
 				$et_pb_first_row.addClass( 'et_pb_section_first' );
@@ -330,11 +368,23 @@
 
 					} else if ( is_post_pb_full_layout_no_title ) {
 
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row,
+							'paddingTop'
+						);
+
 						$et_pb_first_row.css({
 							'paddingTop' : header_height
 						});
 
 					} else {
+
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_main_content_first_row,
+							'paddingTop'
+						);
 
 						// Add header height to first row content as padding top
 						$et_main_content_first_row.css({
@@ -347,7 +397,7 @@
 
 					/* Desktop / Mobile + Pagebuilder + Fullwidth Section */
 
-					var $et_pb_first_row_first_module = $et_pb_first_row.children( '.et_pb_module:first' );
+					var $et_pb_first_row_first_module = $et_pb_first_row.children( '.et_pb_module:visible:first' );
 
 					// Quirks: If this is post with fullwidth layout + no title + fullwidth section at first row,
 					// Remove the added height at line 2656
@@ -367,6 +417,12 @@
 							$et_pb_first_row_first_module_slider_arrow 		= $et_pb_first_row_first_module.find( '.et-pb-slider-arrows a'),
 							et_pb_first_row_slider_arrow_height = $et_pb_first_row_first_module_slider_arrow.height();
 
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module_slide,
+							'paddingTop'
+						);
+
 						// Adding padding top to each slide so the transparency become useful
 						$et_pb_first_row_first_module_slide.css({
 							'paddingTop' : header_height
@@ -377,10 +433,23 @@
 							'min-height' : ''
 						});
 
+
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module_slide_image,
+							'marginTop'
+						);
+
 						// Adjusting slider's image, considering additional top padding of slideshow
 						$et_pb_first_row_first_module_slide_image.css({
 							'marginTop' : et_pb_slide_image_margin_top
 						});
+
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module_slider_arrow,
+							'marginTop'
+						);
 
 						// Adjusting slider's arrow, considering additional top padding of slideshow
 						$et_pb_first_row_first_module_slider_arrow.css({
@@ -412,6 +481,12 @@
 							}
 						});
 
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module_slide_container,
+							'min-height'
+						);
+
 						// Setting appropriate min-height, considering additional top padding of slideshow
 						$et_pb_first_row_first_module_slide_container.css({
 							'min-height' : et_pb_first_row_slide_container_height_new
@@ -427,6 +502,12 @@
 						// Get paddingTop from stylesheet
 						var et_pb_first_row_first_module_fullwidth_header_padding_top = parseInt( $et_pb_first_row_first_module.css( 'paddingTop' ) );
 
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module,
+							'paddingTop'
+						);
+
 						// Implement stylesheet's padding-top + header_height
 						$et_pb_first_row_first_module.css({
 							'paddingTop' : ( header_height + et_pb_first_row_first_module_fullwidth_header_padding_top )
@@ -435,6 +516,12 @@
 					} else if ( $et_pb_first_row_first_module.is( '.et_pb_fullwidth_portfolio' ) ) {
 
 						/* Desktop / Mobile + Pagebuilder + Fullwidth Portfolio */
+
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module,
+							'paddingTop'
+						);
 
 						$et_pb_first_row_first_module.css({ 'paddingTop' : header_height });
 
@@ -458,6 +545,13 @@
 					} else if ( $et_pb_first_row_first_module.is( '.et_pb_fullwidth_menu' ) ) {
 
 						/* Desktop / Mobile + Pagebuilder + Fullwidth Menu */
+
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module,
+							'marginTop'
+						);
+
 						$et_pb_first_row_first_module.css({ 'marginTop' : header_height });
 
 					} else if ( $et_pb_first_row_first_module.is( '.et_pb_fullwidth_code' ) ) {
@@ -470,6 +564,12 @@
 
 						var et_pb_first_row_first_module_code_padding_top = parseInt( $et_pb_first_row_first_module_code.css( 'paddingTop' ) );
 
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module_code,
+							'paddingTop'
+						);
+
 						$et_pb_first_row_first_module_code.css({
 							'paddingTop' : header_height + et_pb_first_row_first_module_code_padding_top
 						});
@@ -477,10 +577,59 @@
 					} else if ( $et_pb_first_row_first_module.is( '.et_pb_post_title' ) ) {
 
 						/* Desktop / Mobile + Pagebuilder + Fullwidth Post Title */
+						var $et_pb_first_row_first_module_title = $et_pb_first_row_first_module;
+
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row_first_module_title,
+							'paddingTop'
+						);
 
 						$et_pb_first_row_first_module.css({
 							'paddingTop' : header_height + 50
 						});
+					} else if ( ! $et_pb_first_row_first_module.length ) {
+						// Get current padding top
+						et_pb_first_row_padding_top = parseFloat($et_pb_first_row.css('paddingTop'));
+
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row,
+							'paddingTop'
+						);
+
+						// Keep the state of previous cycle. The padding top is reset to the first
+						// cycle by default (padding-top: 0px) so if previous cycle didn't hide the
+						// nav, automatically add the additional padding top
+						if ( ! $et_pb_first_row.data( 'is_hide_nav' ) ) {
+							$et_pb_first_row.css({
+								'paddingTop' : et_pb_first_row_padding_top + header_height
+							});
+						}
+
+						// Use timeout to avoid flickering padding top when window is resized vertically
+						// and hidden nav is transitioned to visible nav, vice versa.
+						clearTimeout(window.et_fallback_transparent_adjustment_timeout);
+						window.et_fallback_transparent_adjustment_timeout = setTimeout(function() {
+							// Hidden nav can be decided by the existance of et_hide_nav class AND
+							// the css transform attribute value because the visibility of nav is
+							// modified by CSS transition
+							var is_hide_nav = $('body').hasClass('et_hide_nav') && $('#main-header').css('transform') !== 'matrix(1, 0, 0, 1, 0, 0)';
+
+							// Add / remove additional top padding accordingly
+							if ( is_hide_nav ) {
+								$et_pb_first_row.css({
+									'paddingTop' : ''
+								});
+							} else {
+								$et_pb_first_row.css({
+									'paddingTop' : et_pb_first_row_padding_top + header_height
+								});
+							}
+
+							// Save current nav state for next cycle assessment
+							$et_pb_first_row.data( 'is_hide_nav', is_hide_nav );
+						}, 300)
 					}
 
 				} else if ( is_pb ) {
@@ -490,15 +639,55 @@
 					// Remove first row's inline padding top styling to prevent looping padding-top calculation
 					$et_pb_first_row.css({ 'paddingTop' : '' });
 
-					// Pagebuilder ignores #main-content .container's fixed height and uses its row's padding
-					// Anticipate the use of custom section padding.
-					et_pb_first_row_padding_top = header_height + parseInt( $et_pb_first_row.css( 'paddingBottom' ) );
+					// Get saved custom padding from data-* attributes. Builder automatically adds
+					// saved custom paddings to data-* attributes on first section
+					var saved_custom_padding            = $et_pb_first_row.attr('data-padding'),
+						saved_custom_padding_top        = et_get_saved_padding_margin_value( saved_custom_padding, 0 ),
+						saved_custom_padding_tablet     = $et_pb_first_row.attr('data-padding-tablet'),
+						saved_custom_padding_tablet_top = et_get_saved_padding_margin_value( saved_custom_padding_tablet, 0 ),
+						saved_custom_padding_phone      = $et_pb_first_row.attr('data-padding-phone'),
+						saved_custom_padding_phone_top  = et_get_saved_padding_margin_value( saved_custom_padding_phone, 0 ),
+						applied_saved_custom_padding;
 
-					// Implementing padding-top + header_height
-					$et_pb_first_row.css({
-						'paddingTop' : et_pb_first_row_padding_top
-					});
+					if ( saved_custom_padding_top || saved_custom_padding_tablet_top || saved_custom_padding_phone_top ) {
+						// Applies padding top to first section to automatically convert saved unit into px
+						if ( et_window_width > 980 && saved_custom_padding_top ) {
+							$et_pb_first_row.css({
+								paddingTop: saved_custom_padding_top
+							});
+						} else if ( et_window_width > 767 && saved_custom_padding_tablet_top ) {
+							$et_pb_first_row.css({
+								paddingTop: saved_custom_padding_tablet_top
+							});
+						} else if ( saved_custom_padding_phone_top ) {
+							$et_pb_first_row.css({
+								paddingTop: saved_custom_padding_phone_top
+							});
+						}
 
+						// Get converted custom padding top value
+						applied_saved_custom_padding = parseInt( $et_pb_first_row.css( 'paddingTop' ) );
+
+						// Implemented saved & converted padding top + header height
+						$et_pb_first_row.css({
+							paddingTop: ( header_height + applied_saved_custom_padding )
+						});
+					} else {
+						// Pagebuilder ignores #main-content .container's fixed height and uses its row's padding
+						// Anticipate the use of custom section padding.
+						et_pb_first_row_padding_top = header_height + parseInt( $et_pb_first_row.css( 'paddingBottom' ) );
+
+						// Save current styling for the next resize cycle
+						et_save_initial_page_container_style(
+							$et_pb_first_row,
+							'paddingTop'
+						);
+
+						// Implementing padding-top + header_height
+						$et_pb_first_row.css({
+							'paddingTop' : et_pb_first_row_padding_top
+						});
+					}
 				} else if ( is_no_pb_mobile ) {
 
 					// Mobile + not pagebuilder
@@ -561,7 +750,7 @@
 			}
 
 			if ( et_hide_nav ) {
-				et_hide_nav_transofrm();
+				et_hide_nav_transform();
 			}
 
 			if ( $( '#wpadminbar' ).length && et_is_fixed_nav && window_width >= 740 && window_width <= 782 ) {
@@ -606,6 +795,8 @@
 
 				$slide_menu_container.css( { 'padding-top': top_bar_height + 20 } );
 			}
+
+			et_set_right_vertical_menu();
 		} );
 
 		$( window ).ready( function(){
@@ -621,12 +812,19 @@
 
 			et_fix_page_container_position();
 
+			// Minified JS is ordered differently to avoid jquery-migrate to cause js error.
+			// This might cause hiccup on some specific configuration (ie. parallax of first module on transparent nav)
+			// Triggerring resize, in most case, re-calculate the UI correctly
+			if ( window.et_is_minified_js && window.et_is_transparent_nav && ! window.et_is_vertical_nav ){
+				$( window ).trigger( 'resize' );
+			}
+
 			if ( window.hasOwnProperty( 'et_location_hash' ) && '' !== window.et_location_hash ) {
 				// Handle the page scroll that we prevented earlier in the <head>
 				et_page_load_scroll_to_anchor();
 			}
 
-			if ( et_header_style_left && !et_vertical_navigation) {
+			if ( et_header_style_left && !window.et_is_vertical_nav) {
 				$logo_width = parseInt( $( '#logo' ).width() );
 				if ( et_is_rtl ) {
 					$et_top_navigation.css( 'padding-right', $logo_width + 30 );
@@ -659,7 +857,7 @@
 
 				if ( et_is_fixed_nav ) {
 
-					if ( $et_transparent_nav.length && ! $et_vertical_nav.length && $et_pb_first_row.length ){
+					if ( window.et_is_transparent_nav && ! window.et_is_vertical_nav && $et_pb_first_row.length ){
 
 						// Fullscreen section at the first row requires specific adjustment
 						if ( $et_pb_first_row.is( '.et_pb_fullwidth_section' ) ){
@@ -667,11 +865,26 @@
 						} else {
 							$waypoint_selector = $et_pb_first_row.find('.et_pb_row');
 						}
-					} else if ( $et_transparent_nav.length && ! $et_vertical_nav.length && $et_main_content_first_row.length ) {
+
+						// Fallback for a less likely but possible scenario: a) fullwidth section
+						// has no module OR b) other section has no row. When this happened,
+						// the safest option is look for the first visible module and use it
+						// as waypoint selector
+						if ( ! $waypoint_selector.length ) {
+							$waypoint_selector = $( 'body.et_pb_pagebuilder_layout .et_pb_module:visible:first' );
+						}
+					} else if ( window.et_is_transparent_nav && ! window.et_is_vertical_nav && $et_main_content_first_row.length ) {
 						$waypoint_selector = $('#content-area');
 					} else {
 						$waypoint_selector = $('#main-content');
 					}
+
+					// Disabled section/row/module can cause waypoint to trigger 'down' event during its setup even if
+					// no scrolling happened, which would result in 'et-fixed-header' class being prematurely added.
+					// Since this only happens when page is loaded, we add an extra check that is no longer needed
+					// as soon as waypoint initialization is finished.
+					var checkIfScrolled = true;
+					setTimeout(function() { checkIfScrolled = false; }, 0);
 
 					$waypoint_selector.waypoint( {
 						offset: function() {
@@ -700,13 +913,15 @@
 							et_fix_logo_transition();
 
 							if ( direction === 'down' ) {
+								if (checkIfScrolled && $et_window.scrollTop() === 0) {
+									return;
+								}
 								$main_header.addClass( 'et-fixed-header' );
 								$main_container_wrapper.addClass ( 'et-animated-content' );
 								$top_header.addClass( 'et-fixed-header' );
 
-								if ( ! et_hide_nav && ! $et_transparent_nav.length && ! $( '.mobile_menu_bar_toggle' ).is(':visible') ) {
+								if ( ! et_hide_nav && ! window.et_is_transparent_nav && ! $( '.mobile_menu_bar_toggle' ).is(':visible') ) {
 									var secondary_nav_height = $top_header.length ? parseInt( $top_header.height() ) : 0,
-										et_is_vertical_nav = $( 'body' ).hasClass( 'et_vertical_nav' ),
 										$clone_header,
 										clone_header_height,
 										fix_padding;
@@ -716,7 +931,7 @@
 									clone_header_height = parseInt( $clone_header.prependTo( 'body' ).height() );
 
 									// Vertical nav doesn't need #page-container margin-top adjustment
-									if ( ! et_is_vertical_nav ) {
+									if ( ! window.et_is_vertical_nav ) {
 										fix_padding = parseInt( $main_container_wrapper.css( 'padding-top' ) ) - clone_header_height - secondary_nav_height + 1 ;
 
 										$main_container_wrapper.css( 'margin-top', -fix_padding );
@@ -738,7 +953,7 @@
 				}
 
 				if ( et_hide_nav ) {
-					et_hide_nav_transofrm();
+					et_hide_nav_transform();
 				}
 			}
 		}
@@ -747,14 +962,22 @@
 			var $this_link = $( this ),
 				has_closest_smooth_scroll_disabled = $this_link.closest( '.et_smooth_scroll_disabled' ).length,
 				has_closest_woocommerce_tabs = ( $this_link.closest( '.woocommerce-tabs' ).length && $this_link.closest( '.tabs' ).length ),
+				has_closest_timetable_tab = $this_link.closest( '.tt_tabs_navigation' ).length,
 				has_closest_eab_cal_link = $this_link.closest( '.eab-shortcode_calendar-navigation-link' ).length,
+				has_closest_ee_cart_link = $this_link.closest( '.view-cart-lnk' ).length,
 				has_acomment_reply = $this_link.hasClass( 'acomment-reply' ),
-				disable_scroll = has_closest_smooth_scroll_disabled || has_closest_woocommerce_tabs || has_closest_eab_cal_link || has_acomment_reply;
+				is_woocommerce_review_link = $this_link.hasClass( 'woocommerce-review-link' ),
+				disable_scroll = has_closest_smooth_scroll_disabled || has_closest_ee_cart_link || has_closest_woocommerce_tabs || has_closest_eab_cal_link || has_acomment_reply || is_woocommerce_review_link || has_closest_timetable_tab;
 
 			if ( ( location.pathname.replace( /^\//,'' ) == this.pathname.replace( /^\//,'' ) && location.hostname == this.hostname ) && ! disable_scroll ) {
 				var target = $( this.hash );
 				target = target.length ? target : $( '[name=' + this.hash.slice(1) +']' );
 				if ( target.length ) {
+
+					// automatically close fullscreen menu if clicked from there
+					if ( $this_link.closest( '.et_pb_fullscreen_menu_opened' ).length > 0 ) {
+						et_pb_toggle_fullscreen_menu();
+					}
 
 					et_pb_smooth_scroll( target, false, 800 );
 
@@ -785,7 +1008,7 @@
 				add_offset += parseInt( $( '#wpadminbar' ).outerHeight() );
 			}
 
-			if ( $( 'body' ).hasClass( 'et_vertical_nav' ) ) {
+			if ( window.et_is_vertical_nav ) {
 				side_offset = top_header_height + add_offset + 60;
 			} else {
 				side_offset = top_header_height + main_header_height + add_offset;
@@ -798,7 +1021,7 @@
 			var total_links = $( '.side_nav_item a' ).length - 1;
 
 			for ( var link = 0; link <= total_links; link++ ) {
-				var $target_section = $( '.et_pb_section:not(.et_pb_section div)' ).eq( link );
+				var $target_section = $( '.et_pb_section:visible:not(.et_pb_section div)' ).eq( link );
 				var at_top_of_page = 'undefined' === typeof $target_section.offset();
 				var current_active = $( '.side_nav_item a.active' ).parent().index();
 				var next_active = null;
@@ -822,7 +1045,7 @@
 		};
 
 		window.et_pb_side_nav_page_init = function() {
-			var $sections = $( '.et_pb_section:not(.et_pb_section div)' );
+			var $sections = $( '.et_pb_section:visible:not(.et_pb_section div)' );
 			var total_sections = $sections.length;
 			var side_nav_offset = parseInt( ( total_sections * 20 + 40 ) / 2 );
 
@@ -835,10 +1058,8 @@
 				$( '#main-content' ).append( '<ul class="et_pb_side_nav"></ul>' );
 
 				$sections.each( function( index, element ) {
-					if ( parseInt( $( this ).height() ) > 0 ) {
-						var active_class = ( 0 === index ) ? 'active' : '';
-						$( '.et_pb_side_nav' ).append( '<li class="side_nav_item"><a href="#" id="side_nav_item_id_' + index + '" class= "' + active_class + '">' + index + '</a></li>' );
-					}
+					var active_class = ( 0 === index ) ? 'active' : '';
+					$( '.et_pb_side_nav' ).append( '<li class="side_nav_item"><a href="#" id="side_nav_item_id_' + index + '" class= "' + active_class + '">' + index + '</a></li>' );
 
 					if ( total_sections - 1 === index ) {
 						window.et_side_nav_links_initialized = true;
@@ -848,25 +1069,12 @@
 				$( 'ul.et_pb_side_nav' ).css( 'marginTop', '-' + side_nav_offset + 'px' );
 				$( '.et_pb_side_nav' ).addClass( 'et-visible' );
 
-
 				$( '.et_pb_side_nav a' ).click( function() {
 					// We use the index position of the sections to locate them instead of custom classes so
 					// that we have the same implementation for the frontend website and the Visual Builder.
 					var index = parseInt( $( this ).text() );
-					var $target = $( '.et_pb_section:not(.et_pb_section div)' ).eq( index );
+					var $target = $( '.et_pb_section:visible:not(.et_pb_section div)' ).eq( index );
 					var top_section = $(this).text() == "0";
-
-					// Since we are finding the target based on its index position within its parent, its possible
-					// that our index actually points to a hidden section. So we need to check for that.
-					if ( ! $target.is( ':visible' ) ) {
-						// Target section is hidden. Find the next visible section and make it the target.
-						$target = $target.nextAll( ':visible' ).first();
-
-						if ( ! $target.length ) {
-							// There aren't anymore visible sections, bail out.
-							return;
-						}
-					}
 
 					et_pb_smooth_scroll( $target, top_section, 800 );
 
@@ -1061,7 +1269,6 @@
 			$main_header          = $('#main-header'),
 			is_header_split      = $body.hasClass( 'et_header_style_split' ),
 			is_fixed_nav         = $main_header.hasClass( 'et-fixed-header' ),
-			is_vertical_nav      = $body.hasClass( 'et_vertical_nav' ),
 			is_hide_primary_logo = $body.hasClass( 'et_hide_primary_logo' ),
 			is_hide_fixed_logo   = $body.hasClass( 'et_hide_fixed_logo' ),
 			logo_height_base     = is_fixed_nav ? top_nav_height : top_nav_fixed_height,
@@ -1071,7 +1278,7 @@
 		is_onload = typeof is_onload === 'undefined' ? false : is_onload;
 
 		// Fix for inline centered logo in horizontal nav
-		if ( is_header_split && ! is_vertical_nav ) {
+		if ( is_header_split && ! window.et_is_vertical_nav ) {
 			// On page load, logo_height_base should be top_nav_height
 			if ( is_onload ) {
 				logo_height_base = top_nav_height;
@@ -1189,6 +1396,10 @@
 	}
 
 	$( '#page-container' ).on( 'click', '.et_toggle_fullscreen_menu', function() {
+		et_pb_toggle_fullscreen_menu();
+	});
+
+	function et_pb_toggle_fullscreen_menu() {
 		var $menu_container = $( '.et_header_style_fullscreen .et_slide_in_menu_container' ),
 			top_bar_height = $menu_container.find( '.et_slide_menu_top' ).innerHeight();
 
@@ -1205,7 +1416,7 @@
 				$menu_container.removeClass( 'et_pb_fullscreen_menu_animated' );
 			}, 1000 );
 		}
-	});
+	}
 
 	$( window ).unload( function () {
 		/**
