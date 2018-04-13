@@ -98,6 +98,7 @@ if ( !class_exists( 'WPSL_Settings' ) ) {
                 'mouse_focus',
                 'reset_map',
                 'show_contact_details',
+                'clickable_contact_details',
                 'hide_country',
                 'hide_distance'
             );
@@ -1086,7 +1087,7 @@ if ( !class_exists( 'WPSL_Settings' ) ) {
             
             global $wpsl_settings;
             
-			$dropdown_lists = array(
+			$dropdown_lists = apply_filters( 'wpsl_setting_dropdowns', array(
                 'hour_input' => array(
                     'values' => array(
                         'textarea' => __( 'Textarea', 'wpsl' ), 
@@ -1148,7 +1149,7 @@ if ( !class_exists( 'WPSL_Settings' ) ) {
                     'name'     => 'wpsl_search[category_filter_type]',
                     'selected' => $wpsl_settings['category_filter_type']
                 )
-            );
+            ) );
                         
 			$dropdown = '<select id="' . esc_attr( $dropdown_lists[$type]['id'] ) . '" name="' . esc_attr( $dropdown_lists[$type]['name'] ) . '" autocomplete="off">';
 			

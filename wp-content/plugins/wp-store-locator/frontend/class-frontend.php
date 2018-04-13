@@ -58,10 +58,10 @@ if ( !class_exists( 'WPSL_Frontend' ) ) {
             
             add_filter( 'the_content',                 array( $this, 'cpt_template' ) );
             
-            add_shortcode( 'wpsl',                     array( $this, 'show_store_locator' ) );
-            add_shortcode( 'wpsl_address',             array( $this, 'show_store_address' ) );
-            add_shortcode( 'wpsl_hours',               array( $this, 'show_opening_hours' ) );
-            add_shortcode( 'wpsl_map',                 array( $this, 'show_store_map' ) );
+            add_shortcode( 'wpsl',                 array( $this, 'show_store_locator' ) );
+            add_shortcode( 'wpsl_address',         array( $this, 'show_store_address' ) );
+            add_shortcode( 'wpsl_hours',           array( $this, 'show_opening_hours' ) );
+            add_shortcode( 'wpsl_map',             array( $this, 'show_store_map' ) );
 		}
         
         /**
@@ -584,7 +584,9 @@ if ( !class_exists( 'WPSL_Frontend' ) ) {
        
             global $wpsl_settings, $post;
 
-			if ( isset( $post->post_type ) && $post->post_type == 'wpsl_stores' && is_single() && in_the_loop() ) {
+            $skip_cpt_template = apply_filters( 'wpsl_skip_cpt_template', false );
+
+            if ( isset( $post->post_type ) && $post->post_type == 'wpsl_stores' && is_single() && in_the_loop() && !$skip_cpt_template ) {
                 array_push( $this->load_scripts, 'wpsl_base' );
                
                 $content .= '[wpsl_map]';
@@ -707,18 +709,20 @@ if ( !class_exists( 'WPSL_Frontend' ) ) {
             global $post, $wpsl_settings, $wpsl;
             
             $atts = wpsl_bool_check( shortcode_atts( apply_filters( 'wpsl_address_shortcode_defaults', array(
-                'id'       => '',
-                'name'     => true,
-                'address'  => true,
-                'address2' => true,
-                'city'     => true,
-                'state'    => true,
-                'zip'      => true,
-                'country'  => true,
-                'phone'    => true,
-                'fax'      => true,
-                'email'    => true,
-                'url'      => true
+                'id'                        => '',
+                'name'                      => true,
+                'address'                   => true,
+                'address2'                  => true,
+                'city'                      => true,
+                'state'                     => true,
+                'zip'                       => true,
+                'country'                   => true,
+                'phone'                     => true,
+                'fax'                       => true,
+                'email'                     => true,
+                'url'                       => true,
+                'directions'                => false,
+                'clickable_contact_details' => (bool) $wpsl_settings['clickable_contact_details']
             ) ), $atts ) );
             
             if ( get_post_type() == 'wpsl_stores' ) {
@@ -732,76 +736,94 @@ if ( !class_exists( 'WPSL_Frontend' ) ) {
             } else if ( empty( $atts['id'] ) ) {
                 return __( 'If you use the [wpsl_address] shortcode outside a store page you need to set the ID attribute.', 'wpsl' );
             }
-            
+
             $content = '<div class="wpsl-locations-details">';
-            
-            if ( $atts['name'] && $store_name = get_the_title( $atts['id'] ) ) {
-                $content .= '<span><strong>' . esc_html( $store_name ) . '</strong></span>';
+
+            if ( $atts['name'] && $name = get_the_title( $atts['id'] ) ) {
+                $content .= '<span><strong>' . esc_html( $name ) . '</strong></span>';
             }
-            
+
             $content .= '<div class="wpsl-location-address">';
-            
-            if ( $atts['address'] && $store_address = get_post_meta( $atts['id'], 'wpsl_address', true ) ) {
-                $content .= '<span>' . esc_html( $store_address ) . '</span><br/>';
+
+            if ( $atts['address'] && $address = get_post_meta( $atts['id'], 'wpsl_address', true ) ) {
+                $content .= '<span>' . esc_html( $address ) . '</span><br/>';
             }
-            
-            if ( $atts['address2'] && $store_address2 = get_post_meta( $atts['id'], 'wpsl_address2', true ) ) {
-                $content .= '<span>' . esc_html( $store_address2 ) . '</span><br/>';
+
+            if ( $atts['address2'] && $address2 = get_post_meta( $atts['id'], 'wpsl_address2', true ) ) {
+                $content .= '<span>' . esc_html( $address2 ) . '</span><br/>';
             }
-                        
+
             $address_format = explode( '_', $wpsl_settings['address_format'] );
             $count = count( $address_format );
             $i = 1;
 
             // Loop over the address parts to make sure they are shown in the right order.
             foreach ( $address_format as $address_part ) {
-                
+
                 // Make sure the shortcode attribute is set to true for the $address_part, and it's not the 'comma' part.
                 if ( $address_part != 'comma' && $atts[$address_part] ) {
                     $post_meta = get_post_meta( $atts['id'], 'wpsl_' . $address_part, true );
 
                     if ( $post_meta ) {
 
-                        /* 
-                         * Check if the next part of the address is set to 'comma'. 
-                         * If so add the, after the current address part, otherwise just show a space 
+                        /*
+                         * Check if the next part of the address is set to 'comma'.
+                         * If so add the, after the current address part, otherwise just show a space
                          */
                         if ( isset( $address_format[$i] ) && ( $address_format[$i] == 'comma' ) ) {
-                            $punctuation = ', ';   
+                            $punctuation = ', ';
                         } else {
-                            $punctuation = ' '; 
+                            $punctuation = ' ';
                         }
-                        
+
                         // If we have reached the last item add a <br /> behind it.
                         $br = ( $count == $i ) ? '<br />' : '';
-                        
-                        $content .= '<span>' . esc_html( $post_meta ) . $punctuation . '</span>' . $br; 
+
+                        $content .= '<span>' . esc_html( $post_meta ) . $punctuation . '</span>' . $br;
                     }
                 }
-                
+
                 $i++;
             }
-            
-            if ( $atts['country'] && $store_country = get_post_meta( $atts['id'], 'wpsl_country', true ) ) {
-                $content .= '<span>' . esc_html( $store_country ) . '</span>';
+
+            if ( $atts['country'] && $country = get_post_meta( $atts['id'], 'wpsl_country', true ) ) {
+                $content .= '<span>' . esc_html( $country ) . '</span>';
             }
-            
+
             $content .= '</div>';
-            
+
             // If either the phone, fax, email or url is set to true, then add the wrap div for the contact details.
             if ( $atts['phone'] || $atts['fax'] || $atts['email'] || $atts['url'] ) {
+                $phone = get_post_meta( $atts['id'], 'wpsl_phone', true );
+                $fax   = get_post_meta( $atts['id'], 'wpsl_fax', true );
+                $email = get_post_meta( $atts['id'], 'wpsl_email', true );
+
+                if ( $atts['clickable_contact_details'] ) {
+                    $contact_details = array(
+                        'phone' => '<a href="tel:' . esc_attr( $phone ) . '">' . esc_html( $phone ) . '</a>',
+                        'fax'   => '<a href="tel:' . esc_attr( $fax ) . '">' . esc_html( $fax ) . '</a>',
+                        'email' => '<a href="mailto:' . sanitize_email( $email ) . '">' . sanitize_email( $email ) . '</a>'
+                    );
+                } else {
+                    $contact_details = array(
+                        'phone' => esc_html( $phone ),
+                        'fax'   => esc_html( $fax ),
+                        'email' => sanitize_email( $email )
+                    );
+                }
+
                 $content .= '<div class="wpsl-contact-details">';
 
-                if ( $atts['phone'] && $store_phone = get_post_meta( $atts['id'], 'wpsl_phone', true ) ) {
-                    $content .= esc_html( $wpsl->i18n->get_translation( 'phone_label', __( 'Phone', 'wpsl' ) ) ) . ': <span>' . esc_html( $store_phone ) . '</span><br/>';
+                if ( $atts['phone'] && $phone ) {
+                    $content .= esc_html( $wpsl->i18n->get_translation( 'phone_label', __( 'Phone', 'wpsl' ) ) ) . ': <span>' . $contact_details['phone'] . '</span><br/>';
                 }
 
-                if ( $atts['fax'] && $store_fax = get_post_meta( $atts['id'], 'wpsl_fax', true ) ) {
-                    $content .= esc_html( $wpsl->i18n->get_translation( 'fax_label', __( 'Fax', 'wpsl' ) ) ) . ': <span>' . esc_html( $store_fax ) . '</span><br/>';
+                if ( $atts['fax'] && $fax ) {
+                    $content .= esc_html( $wpsl->i18n->get_translation( 'fax_label', __( 'Fax', 'wpsl' ) ) ) . ': <span>' . $contact_details['fax'] . '</span><br/>';
                 }
 
-                if ( $atts['email'] && $store_email = get_post_meta( $atts['id'], 'wpsl_email', true ) ) {
-                    $content .= esc_html( $wpsl->i18n->get_translation( 'email_label', __( 'Email', 'wpsl' ) ) ) . ': <span>' . sanitize_email( $store_email ) . '</span><br/>';
+                if ( $atts['email'] && $email ) {
+                    $content .= esc_html( $wpsl->i18n->get_translation( 'email_label', __( 'Email', 'wpsl' ) ) ) . ': <span>' . $contact_details['email'] . '</span><br/>';
                 }
 
                 if ( $atts['url'] && $store_url = get_post_meta( $atts['id'], 'wpsl_url', true ) ) {
@@ -811,7 +833,25 @@ if ( !class_exists( 'WPSL_Frontend' ) ) {
 
                 $content .= '</div>';
             }
-            
+
+            if ( $atts['directions'] && $address ) {
+                if ( $wpsl_settings['new_window'] ) {
+                    $new_window = ' target="_blank"';
+                } else {
+                    $new_window = '';
+                }
+
+                $content .= '<div class="wpsl-location-directions">';
+
+                $city          = get_post_meta( $atts['id'], 'wpsl_city', true );
+                $country       = get_post_meta( $atts['id'], 'wpsl_country', true );
+                $destination   = $address . ',' . $city . ',' . $country;
+                $direction_url = "https://maps.google.com/maps?saddr=&daddr=" . urlencode( $destination ) . "&travelmode=" . strtolower( $this->get_directions_travel_mode() );
+
+                $content .= '<p><a ' . $new_window . ' href="' . esc_url( $direction_url ) . '">' . __( 'Directions', 'wpsl' ) . '</a></p>';
+                $content .= '</div>';
+            }
+
             $content .= '</div>';
 
             return $content;
@@ -1677,28 +1717,29 @@ if ( !class_exists( 'WPSL_Frontend' ) ) {
             );
 
 			$locator_map_settings = array(
-                'startMarker'       => $this->create_retina_filename( $wpsl_settings['start_marker'] ),
-                'markerClusters'    => $wpsl_settings['marker_clusters'],
-                'streetView'        => $wpsl_settings['streetview'],
-                'autoComplete'      => $wpsl_settings['autocomplete'],
-				'autoLocate'        => $wpsl_settings['auto_locate'],
-                'autoLoad'          => $wpsl_settings['autoload'],
-				'markerEffect'      => $wpsl_settings['marker_effect'],
-                'markerStreetView'  => $wpsl_settings['marker_streetview'],
-                'markerZoomTo'      => $wpsl_settings['marker_zoom_to'],
-                'newWindow'         => $wpsl_settings['new_window'],
-                'resetMap'          => $wpsl_settings['reset_map'],
-                'directionRedirect' => $wpsl_settings['direction_redirect'],
-                'phoneUrl'          => $wpsl_settings['phone_url'],
-                'moreInfoLocation'  => $wpsl_settings['more_info_location'],
-                'mouseFocus'        => $wpsl_settings['mouse_focus'],
-                'templateId'        => $wpsl_settings['template_id'],
-                'maxResults'        => $dropdown_defaults['max_results'],
-                'searchRadius'      => $dropdown_defaults['search_radius'],
-				'distanceUnit'      => wpsl_get_distance_unit(),
-                'geoLocationTimout' => apply_filters( 'wpsl_geolocation_timeout', 7500 ),
-				'ajaxurl'           => wpsl_get_ajax_url(),
-                'mapControls'       => $this->get_map_controls()
+                'startMarker'        => $this->create_retina_filename( $wpsl_settings['start_marker'] ),
+                'markerClusters'     => $wpsl_settings['marker_clusters'],
+                'streetView'         => $wpsl_settings['streetview'],
+                'autoComplete'       => $wpsl_settings['autocomplete'],
+				'autoLocate'         => $wpsl_settings['auto_locate'],
+                'autoLoad'           => $wpsl_settings['autoload'],
+				'markerEffect'       => $wpsl_settings['marker_effect'],
+                'markerStreetView'   => $wpsl_settings['marker_streetview'],
+                'markerZoomTo'       => $wpsl_settings['marker_zoom_to'],
+                'newWindow'          => $wpsl_settings['new_window'],
+                'resetMap'           => $wpsl_settings['reset_map'],
+                'directionRedirect'  => $wpsl_settings['direction_redirect'],
+                'phoneUrl'           => $wpsl_settings['phone_url'],
+                'clickableDetails'   => $wpsl_settings['clickable_contact_details'],
+                'moreInfoLocation'   => $wpsl_settings['more_info_location'],
+                'mouseFocus'         => $wpsl_settings['mouse_focus'],
+                'templateId'         => $wpsl_settings['template_id'],
+                'maxResults'         => $dropdown_defaults['max_results'],
+                'searchRadius'       => $dropdown_defaults['search_radius'],
+				'distanceUnit'       => wpsl_get_distance_unit(),
+                'geoLocationTimeout' => apply_filters( 'wpsl_geolocation_timeout', 7500 ),
+				'ajaxurl'            => wpsl_get_ajax_url(),
+                'mapControls'        => $this->get_map_controls()
 			);
             
             /*
@@ -1823,6 +1864,4 @@ if ( !class_exists( 'WPSL_Frontend' ) ) {
             return $settings;
         }
     }
-
-    new WPSL_Frontend();
 }

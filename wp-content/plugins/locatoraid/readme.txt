@@ -57,6 +57,10 @@ The upgrade is simply - upload everything up again to your `/wp-content/plugins/
 
 == Changelog ==
 
+= 3.4.2 =
+* Fixed a few bugs that might appear after upgrading to the Pro version saying that certain table fields are missing.
+* Added a setting to hide the product selection in the front end search form.
+
 = 3.4.1 =
 * Fixed permissions settings for the search log module as it may be visible for backend users who were not allowed to access Locatoraid.
 * Added the list of posts and pages with Locatoraid shortcode on the Publish admin page.

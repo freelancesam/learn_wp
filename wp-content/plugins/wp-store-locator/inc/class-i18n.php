@@ -115,14 +115,19 @@ if ( !class_exists( 'WPSL_i18n' ) ) {
 
             if ( defined( 'WPML_ST_VERSION' ) ) {
                 $translation = $text;
-            } elseif ( defined( 'POLYLANG_VERSION' ) ) {
+            } elseif ( defined( 'POLYLANG_VERSION' ) && defined( 'PLL_INC' ) ) {
+
+                if ( !function_exists( 'pll__' ) ) {
+                    require_once PLL_INC . '/api.php';
+                }
+
                 $translation = pll__( $text );
             } else {
                 $translation = stripslashes( $wpsl_settings[$name] );
             }
 
             return $translation;
-        }  
+        }
         
         /**
          * If a multilingual plugin like WPML or qTranslate X is active
@@ -135,7 +140,7 @@ if ( !class_exists( 'WPSL_i18n' ) ) {
             
             $language_code = '';
             
-            if ( $this->wpml_exists() ) {
+            if ( $this->wpml_exists() && defined( 'ICL_LANGUAGE_CODE' ) ) {
                 $language_code = ICL_LANGUAGE_CODE;
             } else if ( $this->qtrans_exists() ) {
                 

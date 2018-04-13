@@ -6,7 +6,22 @@
 	<div class="f-w-f1">
 		<div class="cntr">
 			<div class="f-w">
-				<?php dynamic_sidebar( 'swift-footer-widget-area' ); ?>
+				<?php 
+				ob_start();
+				dynamic_sidebar('swift-footer-widget-area');
+				$swift_footer_widget = ob_get_contents();
+				ob_end_clean();
+				$sanitizer_obj = new AMPFORWP_Content( 
+									$swift_footer_widget,
+									array(), 
+									apply_filters( 'ampforwp_content_sanitizers', 
+										array( 'AMP_Img_Sanitizer' => array(), 'AMP_Style_Sanitizer' => array(), 
+										) 
+									) 
+								);
+				 $sanitized_footer_widget =  $sanitizer_obj->get_amp_content();
+	              echo $sanitized_footer_widget;
+				?>
 			</div>
 		</div>
 	</div>
@@ -120,6 +135,11 @@
 		<?php if($redux_builder_amp['enable-single-viber-share']){?>
 		<li>
 			<a class="s_vb" target="_blank" href="viber://forward?text=<?php the_permalink(); ?>"></a>
+		</li>
+		<?php } ?>
+		<?php if ( isset($redux_builder_amp['enable-single-yummly-share']) && $redux_builder_amp['enable-single-yummly-share'] ) { ?>
+		<li>
+			<a class="s_ym" target="_blank" href="http://www.yummly.com/urb/verify?url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&yumtype=button"></a>
 		</li>
 		<?php } ?>
 	</ul>

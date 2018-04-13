@@ -422,7 +422,7 @@ amp-user-notification button { background-color:  <?php echo esc_attr($redux_bui
 .toggle-navigationv2 a { color:#fff; }
 <?php } ?>
 <?php if ( $redux_builder_amp['ampforwp-callnow-button'] ) { ?>
-.callnow{ position: relative; top: -37px; right: 39px }
+.callnow{ position: absolute; top: 15px; right: 20px }
 .callnow a:before { content: ""; position: absolute; right: 23px; width: 4px; height: 8px; border-width: 6px 0 6px 3px; border-style: solid; border-color:<?php echo esc_attr($redux_builder_amp['amp-opt-color-rgba-colorscheme-call']['color']); ?>; background: transparent; transform: rotate(-30deg); box-sizing: initial; border-top-left-radius: 3px 5px; border-bottom-left-radius: 3px 5px; }
 <?php } ?>
 <?php
@@ -454,6 +454,7 @@ if ( ! is_home() && 1 == $redux_builder_amp['ampforwp-bread-crumb'] ) { ?>
 .menu-item amp-img {width: 16px; height: 11px; display: inline-block; margin-right: 5px; }
 .amp-carousel-container {position: relative;width: 100%;height: 100%;} 
 .amp-carousel-img img {object-fit: contain;}
+.amp-ad-wrapper span { display: inherit; font-size: 12px; line-height: 1;}
 <?php // Ads (sitewide)
 if ( (isset($redux_builder_amp['enable-amp-ads-1'] ) && $redux_builder_amp['enable-amp-ads-1']) || (isset($redux_builder_amp['enable-amp-ads-2'] ) && $redux_builder_amp['enable-amp-ads-2']) ) { ?> .amp-ad-wrapper{ text-align: center } .amp_ad_1{ margin-top: 15px; margin-bottom: 10px; } .single-post .amp_ad_1{ margin-bottom: -15px; } .amp-ad-2{ margin-bottom: -5px; margin-top: 20px; } .amp-ad-wrapper{ text-align: center; margin-left: -13px; }.amp-ad-wrapper, .amp-wp-article amp-ad{ direction: ltr; } <?php }
 if ( true == $redux_builder_amp['amp-pagination'] ) { ?>

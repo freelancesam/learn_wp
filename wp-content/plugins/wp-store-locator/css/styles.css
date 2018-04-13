@@ -31,13 +31,7 @@
     cursor: pointer;
 }
 
-/* Fix an overlay issue with the map style */
-.gmnoprint,
-.gm-style-mtc {
-    z-index: 9999 !important;    
-}
-
-/* 
+/*
 Some themes set a box-shadow or max-width for all image / 
 div elements, we disable it to prevent it from messing up the map
 
@@ -825,6 +819,45 @@ table.wpsl-opening-hours td {
 
 #wpsl-result-list .wpsl-contact-details span {
     display: block !important;
+}
+
+/*
+Hide the select2 ( https://select2.org/ ) dropdowns to
+prevent duplicate dropdowns from showing up in the search bar.
+*/
+#wpsl-search-wrap .select2 {
+    display: none !important;
+}
+
+/*
+Make a few adjustments for themes that use RTL languages
+*/
+.rtl #wpsl-result-list {
+    float: left;
+}
+
+.rtl #wpsl-checkbox-filter input,
+.rtl .wpsl-custom-checkboxes input {
+    margin-right: 0;
+    margin-left: 5px;
+}
+
+.rtl .wpsl-info-actions a {
+    float: right;
+    margin: 0 0 0 7px;
+}
+
+.rtl #wpsl-gmap .wpsl-info-window {
+    padding-right: 22px;
+}
+
+.rtl #wpsl-wrap #wpsl-result-list li.wpsl-preloader {
+    padding: 10px 35px 10px 0;
+}
+
+.rtl .wpsl-preloader img {
+    left: 0;
+    right: 10px;
 }
 
 @media (max-width: 825px) {

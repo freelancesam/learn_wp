@@ -56,6 +56,11 @@ class Locations_Migration_1_LC_HC_MVC
 					'null'		=> FALSE,
 					'default'	=> 0
 					),
+				'mapicon' => array(
+					'type' 		=> 'VARCHAR(255)',
+					'null'		=> TRUE,
+					'default'	=> ''
+					),
 				)
 			);
 		$dbforge->add_key('id', TRUE);

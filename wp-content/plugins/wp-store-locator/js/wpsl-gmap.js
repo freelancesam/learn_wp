@@ -1,5 +1,5 @@
 jQuery( document ).ready( function( $ ) { 
-var geocoder, map, directionsDisplay, directionsService, geolocationLatlng, autoCompleteLatLng,
+var geocoder, map, directionsDisplay, directionsService, autoCompleteLatLng,
 	activeWindowMarkerId, infoWindow, markerClusterer, startMarkerData, startAddress,
 	openInfoWindow = [],
 	markersArray = [],
@@ -9,7 +9,12 @@ var geocoder, map, directionsDisplay, directionsService, geolocationLatlng, auto
 	mapDefaults = {},
 	resetMap = false,
 	streetViewAvailable = false,
-	autoLoad = ( typeof wpslSettings !== "undefined" ) ? wpslSettings.autoLoad : "";
+    autoLoad = ( typeof wpslSettings !== "undefined" ) ? wpslSettings.autoLoad : "",
+    userGeolocation = {},
+    statistics = {
+        enabled: ( typeof wpslSettings.collectStatistics !== "undefined" ) ? true : false,
+		address_components: ''
+	};
 
 /** 
  * Set the underscore template settings.
@@ -486,7 +491,7 @@ function checkGeolocation( startLatLng, infoWindow ) {
 	if ( navigator.geolocation ) {
 		var geolocationInProgress, locationTimeout,
 			keepStartMarker = false,
-			timeout			= Number( wpslSettings.geoLocationTimout );	
+			timeout			= Number( wpslSettings.geoLocationTimeout );
 	
 		// Make the direction icon flash every 600ms to indicate the geolocation attempt is in progress.
 		geolocationInProgress = setInterval( function() {
@@ -495,7 +500,7 @@ function checkGeolocation( startLatLng, infoWindow ) {
 
 		/* 
 		 * If the user doesn't approve the geolocation request within the value set in 
-		 * wpslSettings.geoLocationTimout, then the default map is loaded. 
+		 * wpslSettings.geoLocationTimeout, then the default map is loaded.
 		 * 
 		 * You can increase the timeout value with the wpsl_geolocation_timeout filter. 
 		 */
@@ -604,9 +609,11 @@ function handleGeolocationQuery( startLatLng, position, resetMap, infoWindow ) {
 		 * Store the latlng from the geolocation for when the user hits "reset" again 
 		 * without having to ask for permission again.
 		 */
-		geolocationLatlng = position;
+        userGeolocation = {
+            position: position,
+			newRequest: true
+		};
 
-		reverseGeocode( latLng ); // Set the zipcode that belongs to the latlng in the input field
 		map.setCenter( latLng );
 		addMarker( latLng, 0, '', true, infoWindow ); // This marker is the 'start location' marker. With a storeId of 0, no name and is draggable
 		findStoreLocations( latLng, resetMap, autoLoad, infoWindow );
@@ -763,7 +770,7 @@ function resetMapBtn( startLatLng, infoWindow ) {
 			resetDropdowns();
 
 			if ( wpslSettings.autoLocate == 1 ) {
-				handleGeolocationQuery( startLatLng, geolocationLatlng, resetMap, infoWindow );
+				handleGeolocationQuery( startLatLng, userGeolocation.position, resetMap, infoWindow );
 			} else {
 				showStores( startLatLng, infoWindow );
 			}
@@ -1001,9 +1008,9 @@ function letsBounce( storeId, status ) {
  * @returns {void}
  */
 function calcRoute( start, end ) {
-    var legs, len, step, index, direction, i, j, distanceUnit, directionOffset,
-		directionStops = "",    
-		request = {};
+    var legs, len, step, index, direction, i, j,
+		distanceUnit, directionOffset, request,
+		directionStops = "";
 		
 	if ( wpslSettings.distanceUnit == "km" ) {
 		distanceUnit = 'METRIC';
@@ -1089,6 +1096,11 @@ function codeAddress( infoWindow ) {
 
     geocoder.geocode( request, function( response, status ) {
 		if ( status == google.maps.GeocoderStatus.OK ) {
+
+			if ( statistics.enabled ) {
+                statistics.address_components = response[0].address_components;
+			}
+
 			latLng = response[0].geometry.location;
 
 			prepareStoreSearch( latLng, infoWindow );
@@ -1102,7 +1114,7 @@ function codeAddress( infoWindow ) {
  * Prepare a new location search.
  * 
  * @since	2.2.0
- * @param	{object} latLng
+ * @param	{object} latLng 	The coordinates
  * @param	{object} infoWindow The infoWindow object.
  * @returns {void}
  */
@@ -1121,18 +1133,36 @@ function prepareStoreSearch( latLng, infoWindow ) {
  *
  * @since	1.0.0
  * @param	{object} latLng The coordinates of the location that should be reverse geocoded
- * @returns {void}
+ * @returns {object} response The address components if the stats add-on is active.
  */
-function reverseGeocode( latLng ) {
-    var zipCode;
+function reverseGeocode( latLng, callback ) {
 
     geocoder.geocode( {'latLng': latLng}, function( response, status ) {
 		if ( status == google.maps.GeocoderStatus.OK ) {
-			zipCode = filterApiResponse( response );
 
-			if ( zipCode !== "" ) {
-				$( "#wpsl-search-input" ).val( zipCode );
+        	if ( wpslSettings.autoLocate == 1 && userGeolocation.newRequest ) {
+                var zipCode = filterApiResponse( response );
+
+				if ( zipCode !== "" ) {
+					$( "#wpsl-search-input" ).val( zipCode );
+				}
+
+                /*
+                 * Prevent the zip from being placed in the input field
+                 * again after the users location is determined.
+                 */
+                userGeolocation.newRequest = false;
 			}
+
+            if ( wpslSettings.directionRedirect ) {
+                startAddress = response[0].formatted_address;
+            }
+
+            if ( statistics.enabled ) {
+                statistics.address_components = response[0].address_components;
+            }
+
+            callback();
 		} else {
 			geocodeErrors( status );
 		}
@@ -1170,7 +1200,7 @@ function filterApiResponse( response ) {
  * we first need to geocode the start latlng into a formatted address.
  * 
  * @since	1.0.0
- * @param	{object}  startLatLng The latlng used as the starting point
+ * @param	{object}  startLatLng The coordinates
  * @param	{boolean} resetMap    Whether we should reset the map or not
  * @param	{string}  autoLoad    Check if we need to autoload all the stores
  * @param	{object}  infoWindow  The infoWindow object
@@ -1178,33 +1208,13 @@ function filterApiResponse( response ) {
  */
 function findStoreLocations( startLatLng, resetMap, autoLoad, infoWindow ) {
 	
-	// Check if we need to open a new window and show the route on the Google Maps site itself.
-	if ( wpslSettings.directionRedirect == 1 ) {
-		findFormattedAddress( startLatLng, function() {
+	if ( wpslSettings.directionRedirect == 1 || statistics.enabled ) {
+        reverseGeocode( startLatLng, function() {
 			makeAjaxRequest( startLatLng, resetMap, autoLoad, infoWindow );
 		});
 	} else {
 		makeAjaxRequest( startLatLng, resetMap, autoLoad, infoWindow );
 	}
-}
-
-/**
- * Convert the latlng into a formatted address.
- * 
- * @since	1.0.0
- * @param	{object} latLng The latlng to geocode
- * @param	{callback} callback
- * @returns {void}
- */
-function findFormattedAddress( latLng, callback ) {
-	geocoder.geocode( {'latLng': latLng}, function( response, status ) {
-		if ( status == google.maps.GeocoderStatus.OK ) {
-			startAddress = response[0].formatted_address;
-			callback();
-		} else {
-			geocodeErrors( status );
-		}
-	});
 }
 
 /**
@@ -1237,7 +1247,7 @@ function makeAjaxRequest( startLatLng, resetMap, autoLoad, infoWindow ) {
 	    // Remove the preloaders and no results msg.
 	    $( ".wpsl-preloader, .no-results" ).remove();
 
-		if ( response.length > 0 ) {
+		if ( response.length > 0 && typeof response.addon == "undefined" ) {
 
 			// Loop over the returned locations.
 			$.each( response, function( index ) {
@@ -1450,7 +1460,7 @@ function collectAjaxData( startLatLng, resetMap, autoLoad ) {
 	* start location from the settings page, instead of the users actual location. 
 	*/
     if ( autoLoad == 1 ) {
-		if ( typeof geolocationLatlng !== "undefined" ) {
+		if ( typeof userGeolocation.position !== "undefined" ) {
 			ajaxData.skip_cache = 1;
 		} else {
 			ajaxData.autoload = 1;
@@ -1466,9 +1476,10 @@ function collectAjaxData( startLatLng, resetMap, autoLoad ) {
 	}
 	
 	// If the collection of statistics is enabled, then we include the searched value.
-	if ( typeof wpslSettings.collectStatistics !== "undefined" && autoLoad == 0 ) {
+	if ( statistics.enabled && autoLoad == 0 ) {
 		ajaxData.search = $( "#wpsl-search-input" ).val();
-	}
+        ajaxData.statistics = statistics.address_components;
+    }
 	
 	return ajaxData;
 }
@@ -1887,6 +1898,7 @@ function checkStreetViewStatus( latLng, callback ) {
  * 
  * @link	 http://underscorejs.org/#template
  * @requires underscore.js
+ * @todo move it to another JS file to make it accessible for add-ons?
  * @since	 2.0.0
  */
 var templateHelpers = {
@@ -1898,7 +1910,7 @@ var templateHelpers = {
 	 * @returns {string} phoneNumber Either just the plain number, or with a link wrapped around it with tel:
 	 */
 	formatPhoneNumber: function( phoneNumber ) {
-		if ( ( wpslSettings.phoneUrl == 1 ) && ( checkMobileUserAgent() ) ) {
+		if ( ( wpslSettings.phoneUrl == 1 ) && ( checkMobileUserAgent() ) || wpslSettings.clickableDetails == 1 ) {
 			phoneNumber = "<a href='tel:" + templateHelpers.formatClickablePhoneNumber( phoneNumber ) + "'>" + phoneNumber + "</a>";
 		}
 
@@ -1918,6 +1930,20 @@ var templateHelpers = {
 		}
 
 		return phoneNumber.replace( /(-| |\(|\)|\.|)/g, "" );	
+	},
+    /**
+	 * Check if we need to make the email address clickable.
+	 *
+	 * @since 2.2.13
+     * @param   {string} email The email address
+	 * @returns {string} email Either the normal email address, or the clickable version.
+     */
+	formatEmail: function( email ) {
+        if ( wpslSettings.clickableDetails == 1 ) {
+            email = "<a href='mailto:" + email + "'>" + email + "</a>";
+        }
+
+		return email;
 	},
 	/**
 	 * Create the html for the info window action.

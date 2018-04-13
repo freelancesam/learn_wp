@@ -12,7 +12,7 @@
 		    </div>
 		<?php } ?>
 	</div>
-	<?php if ( has_post_thumbnail() ) {?>
+	<?php if ( ampforwp_has_post_thumbnail() ) {?>
 	<div class="sf-img">
 		<?php amp_featured_image();?>
 	</div>
@@ -65,9 +65,15 @@
 								<a class="s_em" target="_blank" href="mailto:?subject=<?php the_title(); ?>&body=<?php the_permalink(); ?>"></a>
 							</li>
 							<?php } ?>
-							<?php if($redux_builder_amp['enable-single-pinterest-share']){?>
+							<?php if($redux_builder_amp['enable-single-pinterest-share']){
+								$thumb_id = $image = '';
+								if (has_post_thumbnail( ) ){
+	 								$thumb_id = get_post_thumbnail_id(get_the_ID());
+									$image = wp_get_attachment_image_src( $thumb_id, 'full' );
+									$image = $image[0]; 
+	 							}?>
 							<li>
-								<a class="s_pt" target="_blank" href="http://pinterest.com/pin/create/button/?url=&media=&description=<?php the_permalink(); ?>"></a>
+								<a class="s_pt" target="_blank" href="https://pinterest.com/pin/create/bookmarklet/?media=<?php echo $image; ?>&url=<?php the_permalink(); ?>&description=<?php the_title(); ?>"></a>
 							</li>
 							<?php } ?>
 							<?php if($redux_builder_amp['enable-single-linkedin-share']){?>
@@ -123,6 +129,11 @@
 							<?php if($redux_builder_amp['enable-single-viber-share']){?>
 							<li>
 								<a class="s_vb" target="_blank" href="viber://forward?text=<?php the_permalink(); ?>"></a>
+							</li>
+							<?php } ?>
+							<?php if ( isset($redux_builder_amp['enable-single-yummly-share']) && $redux_builder_amp['enable-single-yummly-share']){?>
+							<li>
+								<a class="s_ym" target="_blank" href="http://www.yummly.com/urb/verify?url=<?php the_permalink(); ?>&title=<?php the_title(); ?>&yumtype=button"></a>
 							</li>
 							<?php } ?>
 							<?php if($redux_builder_amp['ampforwp-facebook-like-button']){?>
@@ -183,10 +194,10 @@
 		    </div>
 		</div>
 	</div>
-</div>
 <?php } 
 do_action("ampforwp_single_design_type_handle");
 	?>
+<?php if($redux_builder_amp['single-design-type'] == '1' && isset($redux_builder_amp['ampforwp-swift-recent-posts']) && $redux_builder_amp['ampforwp-swift-recent-posts']=='1'){?>
 <div class="r-pf">
 	<div class="cntr">
 		<h3><?php echo ampforwp_translation($redux_builder_amp['amp-translator-recent-text'], 'Recent Posts' ); ?></h3>
@@ -215,5 +226,6 @@ do_action("ampforwp_single_design_type_handle");
 	<?php endwhile; amp_loop('end');  ?>
 	</div>
 </div>
-	<?php amp_footer()?>
 </div>
+<?php } ?>
+	<?php amp_footer()?>

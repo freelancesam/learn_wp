@@ -57,99 +57,100 @@ function wpsl_get_gmap_api_params( $api_key_type, $geocode_params = false ) {
  * Get the default plugin settings.
  *
  * @since 1.0.0
- * @return void
+ * @return array $default_settings The default settings
  */
 function wpsl_get_default_settings() {
 
     $default_settings = array(
-        'api_browser_key'         => '',
-        'api_server_key'          => '',
-        'api_language'            => 'en',
-        'api_region'              => '',
-        'api_geocode_component'   => 0,
-        'distance_unit'           => 'km',
-        'max_results'             => '[25],50,75,100',
-        'search_radius'           => '10,25,[50],100,200,500',
-        'marker_effect'           => 'bounce',
-        'address_format'          => 'city_state_zip',
-        'hide_distance'           => 0,
-        'hide_country'            => 0,
-        'show_contact_details'    => 0,
-        'auto_locate'             => 1,
-        'autocomplete'            => 0,
-        'autoload'                => 1,
-        'autoload_limit'          => 50,
-        'run_fitbounds'           => 1,
-        'zoom_level'              => 3,
-        'auto_zoom_level'         => 15,
-        'start_name'              => '',
-        'start_latlng'            => '',
-        'height'                  => 350,
-        'map_type'                => 'roadmap',
-        'map_style'               => '',
-        'type_control'            => 0,
-        'streetview'              => 0,
-        'results_dropdown'        => 1,
-        'radius_dropdown'         => 1,
-        'category_filter'         => 0,
-        'category_filter_type'    => 'dropdown',
-        'infowindow_width'        => 225,
-        'search_width'            => 179,
-        'label_width'             => 95,
-        'control_position'        => 'left',
-        'scrollwheel'             => 1,
-        'marker_clusters'         => 0,
-        'cluster_zoom'            => 0,
-        'cluster_size'            => 0,
-        'new_window'              => 0,
-        'reset_map'               => 0,
-        'template_id'             => 'default',
-        'listing_below_no_scroll' => 0,
-        'direction_redirect'      => 0,
-        'more_info'               => 0,
-        'store_url'               => 0,
-        'phone_url'               => 0,
-        'marker_streetview'       => 0,
-        'marker_zoom_to'          => 0,
-        'more_info_location'      => 'info window',
-        'mouse_focus'             => 1,
-        'start_marker'            => 'red.png',
-        'store_marker'            => 'blue.png',
-        'editor_country'          => '',
-        'editor_hours'            => wpsl_default_opening_hours(),
-        'editor_hour_input'       => 'dropdown',
-        'editor_hour_format'      => 12,
-        'editor_map_type'         => 'roadmap',
-        'hide_hours'              => 0,
-        'permalinks'              => 0,
-        'permalink_slug'          => __( 'stores', 'wpsl' ),
-        'category_slug'           => __( 'store-category', 'wpsl' ),
-        'infowindow_style'        => 'default',
-        'show_credits'            => 0,
-        'debug'                   => 0,
-        'deregister_gmaps'        => 0,
-        'start_label'             => __( 'Start location', 'wpsl' ),
-        'search_label'            => __( 'Your location', 'wpsl' ),
-        'search_btn_label'        => __( 'Search', 'wpsl' ),
-        'preloader_label'         => __( 'Searching...', 'wpsl' ),
-        'radius_label'            => __( 'Search radius', 'wpsl' ),
-        'no_results_label'        => __( 'No results found', 'wpsl' ),
-        'results_label'           => __( 'Results', 'wpsl' ),
-        'more_label'              => __( 'More info', 'wpsl' ),
-        'directions_label'        => __( 'Directions', 'wpsl' ),
-        'no_directions_label'     => __( 'No route could be found between the origin and destination', 'wpsl' ),
-        'back_label'              => __( 'Back', 'wpsl' ),
-        'street_view_label'       => __( 'Street view', 'wpsl' ),
-        'zoom_here_label'         => __( 'Zoom here', 'wpsl' ),
-        'error_label'             => __( 'Something went wrong, please try again!', 'wpsl' ),
-        'limit_label'             => __( 'API usage limit reached', 'wpsl' ),
-        'phone_label'             => __( 'Phone', 'wpsl' ),
-        'fax_label'               => __( 'Fax', 'wpsl' ),
-        'email_label'             => __( 'Email', 'wpsl' ),
-        'url_label'               => __( 'Url', 'wpsl' ),
-        'hours_label'             => __( 'Hours', 'wpsl' ),
-        'category_label'          => __( 'Category filter', 'wpsl' ),
-        'category_default_label'  => __( 'Any', 'wpsl' )
+        'api_browser_key'           => '',
+        'api_server_key'            => '',
+        'api_language'              => 'en',
+        'api_region'                => '',
+        'api_geocode_component'     => 0,
+        'distance_unit'             => 'km',
+        'max_results'               => '[25],50,75,100',
+        'search_radius'             => '10,25,[50],100,200,500',
+        'marker_effect'             => 'bounce',
+        'address_format'            => 'city_state_zip',
+        'hide_distance'             => 0,
+        'hide_country'              => 0,
+        'show_contact_details'      => 0,
+        'clickable_contact_details' => 0,
+        'auto_locate'               => 1,
+        'autocomplete'              => 0,
+        'autoload'                  => 1,
+        'autoload_limit'            => 50,
+        'run_fitbounds'             => 1,
+        'zoom_level'                => 3,
+        'auto_zoom_level'           => 15,
+        'start_name'                => '',
+        'start_latlng'              => '',
+        'height'                    => 350,
+        'map_type'                  => 'roadmap',
+        'map_style'                 => '',
+        'type_control'              => 0,
+        'streetview'                => 0,
+        'results_dropdown'          => 1,
+        'radius_dropdown'           => 1,
+        'category_filter'           => 0,
+        'category_filter_type'      => 'dropdown',
+        'infowindow_width'          => 225,
+        'search_width'              => 179,
+        'label_width'               => 95,
+        'control_position'          => 'left',
+        'scrollwheel'               => 1,
+        'marker_clusters'           => 0,
+        'cluster_zoom'              => 0,
+        'cluster_size'              => 0,
+        'new_window'                => 0,
+        'reset_map'                 => 0,
+        'template_id'               => 'default',
+        'listing_below_no_scroll'   => 0,
+        'direction_redirect'        => 0,
+        'more_info'                 => 0,
+        'store_url'                 => 0,
+        'phone_url'                 => 0,
+        'marker_streetview'         => 0,
+        'marker_zoom_to'            => 0,
+        'more_info_location'        => 'info window',
+        'mouse_focus'               => 1,
+        'start_marker'              => 'red.png',
+        'store_marker'              => 'blue.png',
+        'editor_country'            => '',
+        'editor_hours'              => wpsl_default_opening_hours(),
+        'editor_hour_input'         => 'dropdown',
+        'editor_hour_format'        => 12,
+        'editor_map_type'           => 'roadmap',
+        'hide_hours'                => 0,
+        'permalinks'                => 0,
+        'permalink_slug'            => __( 'stores', 'wpsl' ),
+        'category_slug'             => __( 'store-category', 'wpsl' ),
+        'infowindow_style'          => 'default',
+        'show_credits'              => 0,
+        'debug'                     => 0,
+        'deregister_gmaps'          => 0,
+        'start_label'               => __( 'Start location', 'wpsl' ),
+        'search_label'              => __( 'Your location', 'wpsl' ),
+        'search_btn_label'          => __( 'Search', 'wpsl' ),
+        'preloader_label'           => __( 'Searching...', 'wpsl' ),
+        'radius_label'              => __( 'Search radius', 'wpsl' ),
+        'no_results_label'          => __( 'No results found', 'wpsl' ),
+        'results_label'             => __( 'Results', 'wpsl' ),
+        'more_label'                => __( 'More info', 'wpsl' ),
+        'directions_label'          => __( 'Directions', 'wpsl' ),
+        'no_directions_label'       => __( 'No route could be found between the origin and destination', 'wpsl' ),
+        'back_label'                => __( 'Back', 'wpsl' ),
+        'street_view_label'         => __( 'Street view', 'wpsl' ),
+        'zoom_here_label'           => __( 'Zoom here', 'wpsl' ),
+        'error_label'               => __( 'Something went wrong, please try again!', 'wpsl' ),
+        'limit_label'               => __( 'API usage limit reached', 'wpsl' ),
+        'phone_label'               => __( 'Phone', 'wpsl' ),
+        'fax_label'                 => __( 'Fax', 'wpsl' ),
+        'email_label'               => __( 'Email', 'wpsl' ),
+        'url_label'                 => __( 'Url', 'wpsl' ),
+        'hours_label'               => __( 'Hours', 'wpsl' ),
+        'category_label'            => __( 'Category filter', 'wpsl' ),
+        'category_default_label'    => __( 'Any', 'wpsl' )
     ); 
 
     return $default_settings;
@@ -615,11 +616,41 @@ function wpsl_get_ajax_url() {
 
     $param = '';
 
-    if ( $i18n->wpml_exists() ) {
+    if ( $i18n->wpml_exists() && defined( 'ICL_LANGUAGE_CODE' ) ) {
         $param = '?lang=' . ICL_LANGUAGE_CODE;
     }
 
     $ajax_url = admin_url( 'admin-ajax.php' . $param );
 
     return $ajax_url;
+}
+
+/**
+ * Get the used location fields
+ *
+ * @since 2.2.14
+ * @return array $fields
+ */
+function wpsl_get_location_fields() {
+
+    global $wpsl_admin;
+
+    $fields = array();
+
+    $meta_fields = $wpsl_admin->metaboxes->meta_box_fields();
+
+    $fields['id']       = 'id';
+    $fields['distance'] = 'distance';
+
+    foreach ( $meta_fields as $k => $field_section ) {
+        foreach ( $field_section as $field_name => $field_value ) {
+            if ( in_array( $field_name, array( 'lat', 'lng', 'country_iso' ) ) ) {
+                continue;
+            }
+
+            $fields[$field_name] = $field_name;
+        }
+    }
+
+    return $fields;
 }

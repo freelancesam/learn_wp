@@ -3,7 +3,7 @@ function amp_archive_title(){
 	global $redux_builder_amp;
 	if( is_author() ){
 		$curauth = (get_query_var('author_name')) ? get_user_by('slug', get_query_var('author_name')) : get_userdata(get_query_var('author'));
-		if( true == ampforwp_comment_gravatar_checker($curauth->user_email) ){
+		if( true == ampforwp_gravatar_checker($curauth->user_email) ){
 			$curauth_url = get_avatar_url( $curauth->user_email, array('size'=>180) );
 			if($curauth_url){ ?>
 				<div class="amp-wp-content author-img">
@@ -273,9 +273,9 @@ function amp_loop_permalink($return,$amp_query_var ='amp'){
 	}
 	echo ampforwp_url_controller( get_permalink() );
 }
-function amp_loop_image( $data=array() ){
+function amp_loop_image( $data=array() ) {
 	global $ampLoopData,$counterOffset;
-	if (has_post_thumbnail()  ) {
+	if (ampforwp_has_post_thumbnail()  ) {
 
 		$tag 				= 'div';
 		$tag_class 			= '';
@@ -283,45 +283,48 @@ function amp_loop_image( $data=array() ){
 		$imageClass 		= '';
 		$imageSize 			= 'thumbnail';
 
-		if(isset($data['tag']) && $data['tag']!=""){
+		if ( isset($data['tag']) && $data['tag'] != "" ) {
 			$tag = $data['tag'];
 		}
 
-		if(isset($data['responsive']) && $data['responsive']!=""){
+		if ( isset($data['responsive']) && $data['responsive'] != "" ) {
 			$layout_responsive = 'layout=responsive';
 			}
 
-		if(isset($data['tag_class']) && $data['tag_class']!=""){
+		if ( isset($data['tag_class']) && $data['tag_class'] != "" ) {
 			$tag_class = $data['tag_class'];
 		}
-		if(isset($data['image_class']) && $data['image_class']!=""){
+		if ( isset($data['image_class']) && $data['image_class'] != "" ) {
 			$imageClass = $data['image_class'];
 		}
-		if(isset($data['image_size']) && $data['image_size']!=""){
+		if ( isset($data['image_size']) && $data['image_size'] != "" ) {
 			$imageSize = $data['image_size'];
 		}
-
-		$thumb_id = get_post_thumbnail_id();
-		$thumb_url_array = wp_get_attachment_image_src($thumb_id, $imageSize, true);
+		$thumb_url = ampforwp_get_post_thumbnail('url', $imageSize);
+		$thumb_width = ampforwp_get_post_thumbnail('width', $imageSize);
+		$thumb_height = ampforwp_get_post_thumbnail('height', $imageSize);
 		
-		if(isset($data['image_crop']) && $data['image_crop'] != ""){
-			$width 	= $data['image_crop_width'];
-			if(empty($width)){
-				$width = $thumb_url_array[1];
+		if ( isset($data['image_crop']) && $data['image_crop'] != "" ) {
+			$width = $data['image_crop_width'];
+			if ( empty($width) ) {
+				$width = $thumb_width;
 			}
 			$height = $data['image_crop_height'];
-			if(empty($height)){
-				$height = $thumb_url_array[2];
+			if ( empty($height) ) {
+				$height = $thumb_height;
 			}
-			$thumb_url_array = aq_resize( $thumb_url_array[0], $width, $height, true, false, true ); //resize & crop the image
+			$thumb_url_array = ampforwp_aq_resize( $thumb_url, $width, $height, true, false, true ); //resize & crop the image
+			$thumb_url = $thumb_url_array[0];
+			$thumb_width = $thumb_url_array[1];
+			$thumb_height = $thumb_url_array[2];
 		}
-		$thumb_url = $thumb_url_array[0];
-		
-		echo '<'.$tag.' class="loop-img '.$tag_class.'">';
-		echo '<a href="'.amp_loop_permalink(true).'">';
-		echo '<amp-img src="'. $thumb_url .'" width="'.$thumb_url_array[1].'" height="'.$thumb_url_array[2].'" '. $layout_responsive .' class="'.$imageClass.'"></amp-img>';
-		echo '</a>';
-		echo '</'.$tag.'>';
+		if ( $thumb_url ) {
+			echo '<'.$tag.' class="loop-img '.$tag_class.'">';
+			echo '<a href="'.amp_loop_permalink(true).'">';
+			echo '<amp-img src="'. $thumb_url .'" width="'.$thumb_width.'" height="'.$thumb_height.'" '. $layout_responsive .' class="'.$imageClass.'"></amp-img>';
+			echo '</a>';
+			echo '</'.$tag.'>';
+		}
      } 
 } 
 

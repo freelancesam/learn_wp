@@ -165,7 +165,7 @@ require_once  ABSPATH . WPINC . '/category.php';
 
                               <div class="cat_mod_l"> 
                                <a href="{{ampforwp_post_url}}">
-                               <amp-img  class="ampforwp_wc_shortcode_img"  src="{{image}}" width="{{width}}" height="{{height}}" layout="responsive"> </amp-img></a>
+                               {{if_image}}<amp-img  class="ampforwp_wc_shortcode_img"  src="{{image}}" width="{{width}}" height="{{height}}" layout="responsive"> </amp-img>{{ifend_image}}</a>
                               </div>
                               <div class="cat_mod_r">
                                 <a href="{{ampforwp_post_url}}">{{title}}</a>
@@ -207,11 +207,19 @@ require_once  ABSPATH . WPINC . '/category.php';
                       $width = $fieldValues['img-width-3'];
                       $height = $fieldValues['img-height-3'];
                     break;
+                    case 4:
+                      $width = $fieldValues['img-width-4'];
+                      $height = $fieldValues['img-height-4'];
+                    break;
+                    case 5:
+                      $width = $fieldValues['img-width-5'];
+                      $height = $fieldValues['img-height-5'];
+                    break;
                     default:
                     break;
                    }
                    try{
-                    $thumb_url = aq_resize( $image, $width, $height, true, false ); //resize & crop the image
+                    $thumb_url = ampforwp_aq_resize( $image, $width, $height, true, false ); //resize & crop the image
                     if($thumb_url!=false){
                       $image   =  $thumb_url[0];
                       $width   =  $thumb_url[1];
@@ -233,13 +241,19 @@ require_once  ABSPATH . WPINC . '/category.php';
                  <p>'.wp_trim_words( strip_tags( strip_shortcodes( $content ) ) , '15'  ).'</p>';   
               }
                $title = get_the_title();
-             $contenthtml .= str_replace(array(
+               $postid = get_the_ID();
+               $author = get_the_author();
+              // get_the_author_meta( string $field = '', int $user_id = false );
+               $postdate = get_the_date(  ' F j, Y', $postid );
+              $rawhtml = str_replace(array(
                                 "{{ampforwp_post_url}}",
                                 "{{image}}",
                                 "{{width}}",
                                 "{{height}}",
                                 "{{title}}",
-                                "{{excerptContent}}"
+                                "{{excerptContent}}",
+                                "{{authorname}}",
+                                "{{postdate}}"
                                 ), 
                               array(
                                 $ampforwp_post_url,
@@ -247,9 +261,20 @@ require_once  ABSPATH . WPINC . '/category.php';
                                 $width,
                                 $height,
                                 $title,
-                                $excerptContent
+                                $excerptContent,
+                                $author,
+                                $postdate
                               ), 
                               $loopHtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("ampforwp_post_url", $ampforwp_post_url, $rawhtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("image", $image, $rawhtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("width", $width, $rawhtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("height", $height, $rawhtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("title", $title, $rawhtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("excerptContent", $excerptContent, $rawhtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("authorname", $author, $rawhtml);
+            $rawhtml = ampforwp_replaceIfContentConditional("postdate", $postdate, $rawhtml);
+            $contenthtml .= $rawhtml;
              /* $contenthtml.='<li> 
                               <div class="cat_mod_l"> 
                                 <a href="'. $ampforwp_post_url .'"><amp-img  class="ampforwp_wc_shortcode_img"  src="'. $image.'" width="'. $width . '" height="' . $height . '" layout="fixed"></amp-img></a> 

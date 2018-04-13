@@ -32,7 +32,7 @@ function wpsl_create_underscore_templates( $template ) {
         $info_window_template .= "\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'fax_label', __( 'Fax', 'wpsl' ) ) ) . '</strong>: <%= fax %></span>' . "\r\n";
         $info_window_template .= "\t\t" . '<% } %>' . "\r\n";
         $info_window_template .= "\t\t" . '<% if ( email ) { %>' . "\r\n";
-        $info_window_template .= "\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'email_label', __( 'Email', 'wpsl' ) ) ) . '</strong>: <%= email %></span>' . "\r\n";
+        $info_window_template .= "\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'email_label', __( 'Email', 'wpsl' ) ) ) . '</strong>: <%= formatEmail( email ) %></span>' . "\r\n";
         $info_window_template .= "\t\t" . '<% } %>' . "\r\n";
         $info_window_template .= "\t\t" . '<%= createInfoWindowActions( id ) %>' . "\r\n";
         $info_window_template .= "\t" . '</div>';
@@ -68,7 +68,7 @@ function wpsl_create_underscore_templates( $template ) {
             $listing_template .= "\t\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'fax_label', __( 'Fax', 'wpsl' ) ) ) . '</strong>: <%= fax %></span>' . "\r\n";
             $listing_template .= "\t\t\t" . '<% } %>' . "\r\n";
             $listing_template .= "\t\t\t" . '<% if ( email ) { %>' . "\r\n";
-            $listing_template .= "\t\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'email_label', __( 'Email', 'wpsl' ) ) ) . '</strong>: <%= email %></span>' . "\r\n";
+            $listing_template .= "\t\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'email_label', __( 'Email', 'wpsl' ) ) ) . '</strong>: <%= formatEmail( email ) %></span>' . "\r\n";
             $listing_template .= "\t\t\t" . '<% } %>' . "\r\n";
             $listing_template .= "\t\t\t" . '</p>' . "\r\n";
         }
@@ -150,7 +150,7 @@ function wpsl_more_info_template() {
                 $more_info_template .= "\t\t\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'fax_label', __( 'Fax', 'wpsl' ) ) ) . '</strong>: <%= fax %></span>' . "\r\n";
                 $more_info_template .= "\t\t\t\t" . '<% } %>' . "\r\n";
                 $more_info_template .= "\t\t\t\t" . '<% if ( email ) { %>' . "\r\n";
-                $more_info_template .= "\t\t\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'email_label', __( 'Email', 'wpsl' ) ) ) . '</strong>: <%= email %></span>' . "\r\n";
+                $more_info_template .= "\t\t\t\t" . '<span><strong>' . esc_html( $wpsl->i18n->get_translation( 'email_label', __( 'Email', 'wpsl' ) ) ) . '</strong>: <%= formatEmail( email ) %></span>' . "\r\n";
                 $more_info_template .= "\t\t\t\t" . '<% } %>' . "\r\n";
                 $more_info_template .= "\t\t\t\t" . '</p>' . "\r\n";
             }

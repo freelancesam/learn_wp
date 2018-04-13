@@ -5,8 +5,22 @@ Show Front Data
 
 add_action('pre_amp_render_post','amp_pagebuilder_content');
 function amp_pagebuilder_content(){ 
-	if (ampforwp_empty_content(get_post()->post_content)) { 
-		$arr['ID'] = get_post()->ID;
+	global $post,  $redux_builder_amp;
+	$postId = $post->ID;
+	if( ampforwp_is_front_page() && isset($redux_builder_amp['amp-frontpage-select-option-pages']) ){
+		$postId = $redux_builder_amp['amp-frontpage-select-option-pages'];
+	}
+	if ( ampforwp_polylang_front_page() ) {
+		$front_page_id = get_option('page_on_front');
+		if($front_page_id){
+			$postId = pll_get_post($front_page_id);
+		}
+	}
+
+	$ampforwp_pagebuilder_enable = get_post_meta($postId,'ampforwp_page_builder_enable', true);
+	
+	if (ampforwp_empty_content(get_post($postId)->post_content) && $ampforwp_pagebuilder_enable=='yes') { 
+		$arr['ID'] = get_post($postId)->ID;
 		$arr['post_content'] = '&nbsp;';
 		wp_update_post($arr);
 	}
@@ -25,14 +39,98 @@ function  ampforwp_insert_pb_content( $content ){
 	return $content;
 }
 
+add_action('amp_post_template_head','ampforwp_pagebuilder_header_html_output',11);
+function ampforwp_pagebuilder_header_html_output(){
+	//To load css of modules which are in use
+	global $redux_builder_amp, $moduleTemplate, $post, $containerCommonSettings;
+	$postId = $post->ID;
+	if( ampforwp_is_front_page() && isset($redux_builder_amp['amp-frontpage-select-option-pages']) ){
+		$postId = $redux_builder_amp['amp-frontpage-select-option-pages'];
+	}
+	$previousData = get_post_meta($postId,'amp-page-builder');
+	$previousData = isset($previousData[0])? $previousData[0]: null;
+	$ampforwp_pagebuilder_enable = get_post_meta($postId,'ampforwp_page_builder_enable', true);
+	if($previousData!="" && $ampforwp_pagebuilder_enable=='yes'){
+		$previousData = (str_replace("'", "", $previousData));
+		$previousData = json_decode($previousData,true);
+		if(isset($previousData['settingdata']['scripts_data']) && $previousData['settingdata']['scripts_data']!=""){
+			echo $previousData['settingdata']['scripts_data'];
+		}
+	}
+}
+add_action('amp_post_template_data','amp_pagebuilder_script_loader',100);
+function amp_pagebuilder_script_loader($scriptData){
+	//To load css of modules which are in use
+	global $redux_builder_amp, $moduleTemplate, $post, $containerCommonSettings;
+	$postId = $post->ID;
+	if( ampforwp_is_front_page() && isset($redux_builder_amp['amp-frontpage-select-option-pages']) ){
+		$postId = $redux_builder_amp['amp-frontpage-select-option-pages'];
+	}
+	$previousData = get_post_meta($postId,'amp-page-builder');
+	$previousData = isset($previousData[0])? $previousData[0]: null;
+	$ampforwp_pagebuilder_enable = get_post_meta($postId,'ampforwp_page_builder_enable', true);
+	if($previousData!="" && $ampforwp_pagebuilder_enable=='yes'){
+		$previousData = (str_replace("'", "", $previousData));
+		$previousData = json_decode($previousData,true);
+		if(count($previousData['rows'])>0){
+			foreach ($previousData['rows'] as $key => $rowsData) {
+				$container = $rowsData['cell_data'];
+				if(count($container)>0){
+					//Module specific styles
+					$moduleCommonCss = array();
+					foreach($container as $contentArray){
+						if(!isset($moduleTemplate[$contentArray['type']])){
+							continue;
+						}
+						foreach($moduleTemplate[$contentArray['type']]['fields'] as $modulefield){
+							$replaceModule = "";
+							if(isset($contentArray[$modulefield['name']])){
+								$replaceModule = $contentArray[$modulefield['name']];
+							}
+							if($modulefield['content_type']=='js'){
+
+								if(isset($modulefield['required']) && count($modulefield['required'])>0){
+									foreach($modulefield['required'] as $requiredKey=>$requiredValue){
+										$userSelectedvalue = $contentArray[$requiredKey];
+										if($userSelectedvalue != $requiredValue){
+											$replaceModule ='';
+										} 
+									}
+								}//Require IF Closed
+
+								if ($replaceModule !="" && empty( $scriptData['amp_component_scripts'][$modulefield['label']] ) ) {
+									$scriptData['amp_component_scripts'][$modulefield['label']] = $replaceModule;
+								}
+							}//content_type Check if Closed
+						}
+
+					}
+				}
+			}
+		}
+
+
+	}
+
+
+
+	
+	return $scriptData;
+}
 
 add_action('amp_post_template_css','amp_pagebuilder_content_styles',100);
 function amp_pagebuilder_content_styles(){
 	//To load css of modules which are in use
 	global $redux_builder_amp, $moduleTemplate, $post, $containerCommonSettings;
 	$postId = $post->ID;
-	if(is_home() && $redux_builder_amp['ampforwp-homepage-on-off-support']==1 && ampforwp_get_blog_details() == false){
+	if( ampforwp_is_front_page() && isset($redux_builder_amp['amp-frontpage-select-option-pages']) ) {
 		$postId = $redux_builder_amp['amp-frontpage-select-option-pages'];
+	}
+	if ( ampforwp_polylang_front_page() ) {
+		$front_page_id = get_option('page_on_front');
+		if($front_page_id){
+			$postId = pll_get_post($front_page_id);
+		}
 	}
 	$previousData = get_post_meta($postId,'amp-page-builder');
 	$previousData = isset($previousData[0])? $previousData[0]: null;
@@ -65,6 +163,9 @@ function amp_pagebuilder_content_styles(){
 				
 				if(isset($containerCommonSettings['front_css'])){
 					$rowCss = $containerCommonSettings['front_css'];
+					if( true == $redux_builder_amp['amp-rtl-select-option'] && isset($containerCommonSettings['front_rtl_css'])) {
+						$rowCss .= $containerCommonSettings['front_rtl_css'];
+					}
 					$rowCss = str_replace('{{row-class}}', '.ap_r_'.$rowsData['id'], $rowCss);
 					foreach($containerCommonSettings['fields'] as $rowfield){
 							$replaceRow = '';
@@ -135,6 +236,9 @@ function amp_pagebuilder_content_styles(){
 						
 						if(isset($moduleTemplate[$contentArray['type']]['front_css'])){
 							$completeCss = $moduleTemplate[$contentArray['type']]['front_css'];
+							if( true == $redux_builder_amp['amp-rtl-select-option'] && isset($moduleTemplate[$contentArray['type']]['front_rtl_css'])) {
+								$completeCss .= $moduleTemplate[$contentArray['type']]['front_rtl_css'];
+							}
 							$completeCss = str_replace("{{module-class}}", '.ap_m_'.$contentArray['cell_id'], $completeCss );
 						}
 						if(isset($moduleTemplate[$contentArray['type']]['front_common_css'])){
@@ -271,6 +375,10 @@ function amp_pagebuilder_content_styles(){
 
 			}//foreach closed complete data
 		}//if closed  count($previousData['rows'])>0
+
+		if(isset($previousData['settingdata']['style_data']) && $previousData['settingdata']['style_data']!=""){
+			echo amppb_validateCss($previousData['settingdata']['style_data']);
+		}
 	}//If Closed  $previousData!="" && $ampforwp_pagebuilder_enable=='yes'
 } 
 function amppb_validateCss($css){
@@ -284,13 +392,15 @@ function amppb_post_content($content){
 	global $post,  $redux_builder_amp;
 	global $moduleTemplate, $layoutTemplate, $containerCommonSettings;
 	$postId = $post->ID;
-	if( is_home() && 
-		$redux_builder_amp['ampforwp-homepage-on-off-support']==1 &&
-		ampforwp_get_blog_details() == false
-	){
+	if( ampforwp_is_front_page() && isset($redux_builder_amp['amp-frontpage-select-option-pages']) ){
 		$postId = $redux_builder_amp['amp-frontpage-select-option-pages'];
 	}
-
+	if ( ampforwp_polylang_front_page() ) {
+		$front_page_id = get_option('page_on_front');
+		if($front_page_id){
+			$postId = pll_get_post($front_page_id);
+		}
+	}
 	$previousData = get_post_meta($postId,'amp-page-builder');
 	$previousData = isset($previousData[0])? $previousData[0]: null;
 	$ampforwp_pagebuilder_enable = get_post_meta($postId,'ampforwp_page_builder_enable', true);
@@ -460,7 +570,10 @@ function rowData($container,$col,$moduleTemplate){
 					case 'contents':
 						$fieldValues = array();
 						foreach($moduleTemplate[$contentArray['type']]['fields'] as $key => $field){
-							$fieldValues[$field['name']]= $contentArray[$field['name']];
+							$fieldValues[$field['name']] ='';
+							if(isset($contentArray[$field['name']])){
+								$fieldValues[$field['name']]= $contentArray[$field['name']];
+							}
 						}
 						
 						$args = array(
@@ -600,7 +713,7 @@ function sortByIndex($contentArray){
 	}
 }
 function ampforwp_empty_content($str) {
-    return trim(str_replace('&nbsp;','',strip_tags($str))) == '';
+    return trim(str_replace('&nbsp;','',$str)) == '';
 }
 
 function ampforwp_get_attachment_id( $url , $imagetype='full') {

@@ -4,7 +4,7 @@ Tags: AMP, accelerated mobile pages, mobile, amp project, google amp, amp wp, go
 Donate link: https://www.paypal.me/Kaludi/25
 Requires at least: 3.0
 Tested up to: 4.9.4
-Stable tag: 0.9.82.1
+Stable tag: 0.9.84.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ AMP for WP is the most recommended AMP plugin by the community. Automatically ad
 == Description ==
 AMP for WP automatically adds Accelerated Mobile Pages (Google AMP Project) functionality to your WordPress site. AMP makes your website faster for Mobile visitors.
 
-[What's New in this Version?](http://ampforwp.com/new/) | [Priority Support](https://ampforwp.com/priority-support/#utm_source=wp_org&utm_medium=description-tab-pro-box&utm_campaign=AMP%20Plugin) | [View Demo](https://demo.ampforwp.com/amp/) | [Screenshots](https://wordpress.org/plugins/accelerated-mobile-pages/screenshots/) | [Community](http://ampforwp.com/community/)
+[What's New in this Version?](http://ampforwp.com/new/) | [Priority Support](https://ampforwp.com/priority-support/#utm_source=wp_org&utm_medium=description-tab-pro-box&utm_campaign=AMP%20Plugin) | [View Demo](https://ampforwp.com/demo/) | [Screenshots](https://wordpress.org/plugins/accelerated-mobile-pages/screenshots/) | [Community](http://ampforwp.com/community/)
 
 [youtube https://www.youtube.com/watch?v=Em1nsE_KaKw]
 
@@ -181,6 +181,97 @@ You can contact us from [here](http://ampforwp.com/contact/)
 
 
 == Changelog ==
+
+= 0.9.84.1 (21st March 2018) =
+* Fixed: Validation issues in Design One and Two due to image
+* Fixed: Memory exhausted problem on homepage 
+
+= 0.9.84 (14th March 2018) =
+* Added: Polylang Frontpage compatibility added #1779
+* Fixed: Proper link for Linkedin added #1820 
+* Fixed: Incorrect function name was Added #1827
+* Fixed: Thumbnail resizing issue in Swift #1828 
+* Fixed: Thumbnail issue in Loops of Design 3 #1714 
+* Fixed: Hide post builder for Swift #1824 
+* Fixed: To avoid warnings when there are no pages in WordPress #1810 
+* Fixed: Condition for the Thumbnail for Swift #1733 
+* Fixed: Proper Styling for footer for Swift #1733 
+* Fixed: Line height issue and CSS editor not working in Swift #1821
+* Fixed: Renamed aq_resize to ampfrowp_aq_resize to avoid conflicts #1838
+* Fixed: Add the prefix to avoid conflicts #1817
+* Fixed: Added Custom format option in amp_date #1845
+* Fixed: Removed amp-img tag where blank SRC in Page builder #1843
+* Fixed: Pagebuilder modal max-height removed so it will become full width #1843
+* Added: An option for select target type in Button Module #1822
+* Fixed: Remove AMP category widget if swift is enabled #1790
+* Fixed: Filter added change mode type #1833
+* Added: Rewrite rule for .html blog page #1775
+* Fixed: Filter added change mode type #1833
+* Fixed: Swift Footer Widget Sanitizer Added #1800
+* Fixed: No OneSignal widget when PageBuilder is enabled #1840
+* Fixed: span tag added around the pagination text #1834
+* Added: Page specific option to add script/html and styles in page builder #1831
+* Fixed: noindex,nofollow in AMP when Dev mode is enabled #1839
+* Added: Jarida theme compatibility added #1842
+* Fixed: noindex,nofollow in AMP when Dev mode is enabled #1839
+* Fixed: Replace value attribute only from html tags. Otherwise it is removing value from * shortcodes which is breaking the whole page. #1738
+* Added: Underline option for content links added #1808
+* Added: Page specific option to add RTL in page builder #1858
+* Added: Converts AMP ads to normal so ads show when takeover is enabled in Normal Mode #1724
+* Added: Converts AMP Analytics to normal so Analytics works when takeover is enabled in Normal Mode #1724
+* Fixed: Phone icon proper alignment in Design3 #1730
+* Added: ADS for WP activation box in Extensions tab
+* Added: New design field added #1861
+
+= 0.9.83.1 (8th March 2018) =
+* Fixed: Pagebuilder contents not shows on custom home page #1794
+* Added: Header hook added `ampforwp_advance_header_layout_options`
+* Fixed: Load admin files only in admin pages #1799
+* Fixed: Conflict with WP bakery pagebuilder #1783
+* Fixed: Slide in Menu break in RTL mode #1825
+* Fixed: Validation issue in loops due to empty attributes #1795
+* Fixed: Featrued Image connected Properly with Swift theme #1733
+* Fixed: Changed the disqus.php to disqus.html to pass authentication #1788 
+* Added: CSS styling for Loop on shop page #1803 
+* Fixed: Facebook comments not work in swift #1789
+* Fixed: Style AMP Category module in Footer swift #1790
+* Fixed: Load aq_resizer only in AMP #1805 
+* Fixed: Proper markup for Pinterest in Design3 and Swift #1793
+* Fixed: Proper url for vk
+
+= 0.9.83 (03rd March 2018) =
+* Added: Ability to add amp-carousel and amp-selector directly into WYSIWYG Editor #1588
+* Fixed: Debug error caused by Playbuzz Sanitizer #1674
+* Added: Show default gravatar for comments #1758
+* Fixed: Implement Swift Thumbnail Regeneration in all the designs #1709
+* Fixed: To avoid debug error in swift
+* Fixed: Translation improved for some strings #1678
+* Fixed: Stop AMP takeover for Feed pages #1767
+* Fixed: Menu issues In Design 1 & Design 2 after changing from AMP-Sidebar #1565
+* Fixed: AMP Options panel Not Working After Update (0.9.82.1) version #1761
+* Fixed: Move the label to the top [UX improvement] #1746
+* Fixed: Error with Vue #1745
+* Added: Video Module added in AMP Page Builder #1750
+* Fixed: Sidebar menu is not scrollable swift theme #1769
+* Fixed: View Non-AMP should be usertrailingslashit #1772
+* Fixed: Proper structured data for Blogpage #1660
+* Fixed: Legacy Page Builder not working after the update #1773
+* Fixed: Content blank when only image in content #1778
+* Fixed: Comment ID display issue fixed #1758
+* Fixed: PHP Warning: A non-numeric value encountered in components/logo/logo.php on line 52 #1764
+* Fixed: Yummly support added in Swift #1708
+* Fixed: Demo Link updated #1781
+* Fixed: CSS is not loading in Swift Theme #1780
+* Added: Ability to add Advertisement or Sponsored label under ads #1710
+* Fixed: Featured images distortion in related posts #1684
+* Fixed: Implement Swift Thumbnail Regeneration in all the designs #1709
+* Fixed: noarchive instead of nofollow in Archive pages #1693
+* Fixed: Internal links of tags are showing “/amp” after changing the end point to “?amp” in design 2 #1752
+* Fixed: line height is added for the logo in Swift design
+* Added: Class for Custom Frontpage #1787
+* Fixed: Recent post enable disable for Swift theme #1784
+* Fixed: Connect Show/Hide AMP option with AMP takeover#1786
+* Fixed: Added sanitizer to footer Widget #1756
 
 = 0.9.82.1 (18th February 2018) =
 * Selector code reverted due to it's effect on carousel

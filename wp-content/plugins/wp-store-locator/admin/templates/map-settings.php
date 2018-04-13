@@ -319,6 +319,10 @@ global $wpdb, $wpsl, $wpsl_admin, $wp_version, $wpsl_settings;
                                <input type="checkbox" value="" <?php checked( $wpsl_settings['show_contact_details'], true ); ?> name="wpsl_ux[show_contact_details]" id="wpsl-contact-details">
                             </p>
                             <p>
+                                <label for="wpsl-clickable-contact-details"><?php _e( 'Make the contact details always clickable?', 'wpsl' ); ?></label>
+                                <input type="checkbox" value="" <?php checked( $wpsl_settings['clickable_contact_details'], true ); ?> name="wpsl_ux[clickable_contact_details]" id="wpsl-clickable-contact-details">
+                            </p>
+                            <p>
                                <label for="wpsl-store-url"><?php _e( 'Make the store name clickable if a store URL exists?', 'wpsl' ); ?><span class="wpsl-info"><span class="wpsl-info-text wpsl-hide"><?php echo sprintf( __( 'If %spermalinks%s are enabled, the store name will always link to the store page.', 'wpsl' ), '<a href="' . admin_url( 'edit.php?post_type=wpsl_stores&page=wpsl_settings#wpsl-permalink-settings' ) . '">', '</a>' ); ?></span></span></label> 
                                <input type="checkbox" value="" <?php checked( $wpsl_settings['store_url'], true ); ?> name="wpsl_ux[store_url]" id="wpsl-store-url">
                             </p>
