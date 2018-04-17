@@ -1,0 +1,8 @@
+2018-02-27T08:44:28+00:00 CRITICAL Out of memory (allocated 2097152) (tried to allocate 864516619 bytes)
+
+2018-03-06T10:41:39+00:00 CRITICAL Maximum execution time of 60 seconds exceeded
+
+2018-03-06T10:43:04+00:00 CRITICAL Maximum execution time of 60 seconds exceeded
+
+2018-03-17T09:13:02+00:00 CRITICAL Maximum execution time of 60 seconds exceeded
+
