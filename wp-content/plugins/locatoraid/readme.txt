@@ -57,6 +57,10 @@ The upgrade is simply - upload everything up again to your `/wp-content/plugins/
 
 == Changelog ==
 
+= 3.4.3 =
+* Exact name match, if a visitor searches for a location name, and there is a full match, it now sets it as a starting point of search.
+* Shortcode parameter search-bias-country.
+
 = 3.4.2 =
 * Fixed a few bugs that might appear after upgrading to the Pro version saying that certain table fields are missing.
 * Added a setting to hide the product selection in the front end search form.

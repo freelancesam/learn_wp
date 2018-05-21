@@ -35,6 +35,20 @@ class Search_Controller_LC_HC_MVC
 		$results = array();
 
 		$command = $this->app->make('/locations/commands/read');
+
+	// name match
+		if( strlen($search) ){
+			$name_args = array();
+			$name_args[] = array('name', '=', $search);
+			$name_args[] = array('limit', 1);
+
+			$name_result = $command->execute( $name_args );
+			if( $name_result ){
+				$lat = $name_result['latitude'];
+				$lng = $name_result['longitude'];
+			}
+		}
+
 		$command_args = array();
 
 		$command_args[] = array('osearch', $search);

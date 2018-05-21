@@ -136,6 +136,9 @@ msgstr ""
 msgid "Distance"
 msgstr ""
 
+msgid "Do Not Show"
+msgstr ""
+
 msgid "Edit Coordinates"
 msgstr ""
 

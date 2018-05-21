@@ -217,6 +217,11 @@ this.form = function( html_id )
 
 				var ok_data = hc2_try_parse_json( data );
 				if( ok_data ){
+					var real_coord = ok_data.search_coordinates;
+					if( real_coord.length ){
+						self.observers.notify( 'get-search', [real_coord[0], real_coord[1], search_string] );
+					}
+
 					self.observers.notify( 'get-results', ok_data );
 					hc2_unset_loader( $this );
 
@@ -410,6 +415,13 @@ this.list = function( html_id )
 		if( ! entries.length ){
 			if( results.announce ){
 				var $no_results_view = results.announce;
+
+				var $more_results_link = jQuery('.hcj2-more-results');
+				$more_results_link.html('');
+				$more_results_link.hide();
+
+				var $container = jQuery('#locatoraid-map-list-container');
+				$container.html( results.announce );
 			}
 			else {
 				var no_results_view = self.template_no_results;

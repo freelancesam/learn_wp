@@ -250,6 +250,21 @@ $tag = 'locatoraid';
 		</ul>
 	</li>
 
+	<li class="hc-mt3">
+		<h3 class="hc-underline">search-bias-country</h3>
+		<ul class="hc-ml3">
+			<li>
+				<?php echo HCM::__('It makes the map search prefer matches in the specified country.'); ?>
+			</li>
+
+			<li class="hc-p2">
+				<code class="hc-p2">
+				[<?php echo $tag; ?> search-bias-country="finland"]
+				</code>
+			</li>
+		</ul>
+	</li>
+
 </ul>
 
 <h2><?php echo HCM::__('GET Override'); ?></h2>

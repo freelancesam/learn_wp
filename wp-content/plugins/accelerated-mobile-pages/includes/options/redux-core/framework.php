@@ -3195,11 +3195,12 @@
 
                     // DOVY! REPLACE $k with $section['ID'] when used properly.
                     //$active = ( ( is_numeric($this->current_tab) && $this->current_tab == $k ) || ( !is_numeric($this->current_tab) && $this->current_tab === $k )  ) ? ' active' : '';
+                    $addClass = ''; $style="";
                     $subsections      = ( isset ( $sections[ ( $k + 1 ) ] ) && isset ( $sections[ ( $k + 1 ) ]['subsection'] ) && $sections[ ( $k + 1 ) ]['subsection'] == true ) ? true : false;
                     $subsectionsClass = $subsections ? ' hasSubSections' : '';
                     $subsectionsClass .= ( ! isset ( $section['fields'] ) || empty ( $section['fields'] ) ) ? ' empty_section' : '';
                     $extra_icon = $subsections ? '<span class="extraIconSubsections"><i class="el el-chevron-down">&nbsp;</i></span>' : '';
-                    $string .= '<li id="' . esc_attr( $k . $suffix ) . '_section_group_li" class="redux-group-tab-link-li' . esc_attr( $hide_section ) . esc_attr( $section['class'] ) . esc_attr( $subsectionsClass ) . '">';
+                    $string .= '<li id="' . esc_attr( $k . $suffix ) . '_section_group_li" class="redux-group-tab-link-li '.$addClass.'' . esc_attr( $hide_section ) . esc_attr( $section['class'] ) . esc_attr( $subsectionsClass ) . ' ' . strtolower( wp_kses_post( $section['id'] )) . '" '.$style.'>';
                     $string .= '<a href="javascript:void(0);" id="' . esc_attr( $k . $suffix ) . '_section_group_li_a" class="redux-group-tab-link-a" data-key="' . esc_attr( $k ) . '" data-rel="' . esc_attr( $k . $suffix ) . '">' . $extra_icon . $icon . '<span class="group_title">' . wp_kses_post( $section['title'] ) . '</span></a>';
 
                     $nextK = $k;

@@ -90,7 +90,7 @@ class Locations_Presenter_LC_HC_MVC
 		$measure = $app_settings->get('core:measure');
 
 		if( $return < 1 ){
-			$return = ceil( $return * 100 ) / 100;
+			$return = floor( $return * 100 ) / 100;
 		}
 		elseif( $return < 100 ){
 			$return = ceil( $return * 10 ) / 10;

@@ -21,7 +21,7 @@ class Front_View_LC_HC_MVC
 			'map-style'		=> 'height: 400px; width: 100%;',
 			'list-style'	=> 'height: 400px; overflow-y: scroll;',
 
-			'search-bias-country'	=> '', // australia, uk, findland etc
+			'search-bias-country'	=> '', // australia, uk, finland etc
 			'radius'				=> '10, 25, 50, 100, 200, 500',
 			'id'			=> NULL,
 			);

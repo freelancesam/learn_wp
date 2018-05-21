@@ -46,10 +46,10 @@ $extension_listing_array = array(
                             'img_src'=>AMPFORWP_IMAGE_DIR . '/click.png',
                             'price'=>'$29',
                             'url_link'=>'http://ampforwp.com/advanced-amp-ads/#utm_source=options-panel&utm_medium=extension-tab_advanced-amp-ads&utm_campaign=AMP%20Plugin',
-'plugin_active_path'=> 'amp-incontent-ads/amptoolkit-incontent-ads.php',
+                            'plugin_active_path'=> 'amp-incontent-ads/amptoolkit-incontent-ads.php',
                             'item_name'=>'Advanced AMP Ads',
                             'store_url'=>'https://accounts.ampforwp.com',
-'is_activated'=>(is_plugin_active('amp-incontent-ads/amptoolkit-incontent-ads.php')? 1:2),
+                            'is_activated'=>(is_plugin_active('amp-incontent-ads/amptoolkit-incontent-ads.php')? 1:2),
                         ),
                         array(
                             'name'=>'Contact Form 7',
@@ -61,6 +61,7 @@ $extension_listing_array = array(
                             'item_name'=>'Contact Form 7 for AMP',
                             'store_url'=>'https://accounts.ampforwp.com',
                             'is_activated'=>(is_plugin_active('amp-cf7/amp-cf7.php')? 1 : 2),
+                            'settingUrl'=>'',
                         ),
                         array(
                             'name'=>'Gravity Forms',
@@ -72,6 +73,7 @@ $extension_listing_array = array(
                             'item_name'=>'Gravity Forms',
                             'store_url'=>'https://accounts.ampforwp.com',
                             'is_activated'=>(is_plugin_active('amp-gravity-forms/amp-gravity-forms.php')? 1 : 2),
+                            'settingUrl'=>'',
                         ),
                         array(
                             'name'=>'Email Opt-in Forms',
@@ -83,6 +85,7 @@ $extension_listing_array = array(
                             'item_name'=>'Opt-in-Forms for AMP',
                             'store_url'=>'https://accounts.ampforwp.com',
                             'is_activated'=>(is_plugin_active('amp-optin/amp-optin.php')? 1 : 2),
+                            'settingUrl'=>'',
                         ),
                         array(
                             'name'=>'AMP Cache',
@@ -94,6 +97,7 @@ $extension_listing_array = array(
                             'item_name'=>'AMP Cache',
                             'store_url'=>'https://accounts.ampforwp.com',
                             'is_activated'=>(is_plugin_active('amp-cache/ampforwp-cache.php')? 1 : 2),
+                            'settingUrl'=>'',
                         ),
                         array(
                             'name'=>'Call To Action (CTA)',
@@ -101,10 +105,10 @@ $extension_listing_array = array(
                             'img_src'=>AMPFORWP_IMAGE_DIR . '/mac-click.png',
                             'price'=>'$29',
                             'url_link'=>'http://ampforwp.com/call-to-action/#utm_source=options-panel&utm_medium=extension-tab_amp-cta&utm_campaign=AMP%20Plugin',
-                            'plugin_active_path'=> 'AMP-cta/amp-cta.php',
+                            'plugin_active_path'=> 'amp-cta/amp-cta.php',
                             'item_name'=>'Call To Action for AMP',
                             'store_url'=>'https://accounts.ampforwp.com',
-                            'is_activated'=>(is_plugin_active('AMP-cta/amp-cta.php')? 1 : 2),
+                            'is_activated'=>(is_plugin_active('amp-cta/amp-cta.php')? 1 : 2),
                         ),
                         array(
                             'name'=>'AMP WooCommerce Pro',
@@ -116,7 +120,21 @@ $extension_listing_array = array(
                             'item_name'=>'WooCommerce',
                             'store_url'=>'https://accounts.ampforwp.com',
                             'is_activated'=>(is_plugin_active('amp-woocommerce-pro/amp-woocommerce.php')? 1 : 2),
+                            'settingUrl'=>'',
                         ),
+
+                        array(
+                            'name'=>'AMP Layouts',
+                            'desc'=>'layout system built for AMP that makes easy to create your own AMP templates.',
+                            'img_src'=>AMPFORWP_IMAGE_DIR . '/email.png',
+                            'price'=>'$89',
+                            'url_link'=>'https://ampforwp.com/amp-layouts/',
+                            'plugin_active_path'=> 'amp-layouts/amp-layouts.php',
+                            'item_name'=>'AMP Layouts',
+                            'store_url'=>'https://accounts.ampforwp.com',
+                            'is_activated'=>(is_plugin_active('amp-layouts/amp-layouts.php')? 1 : 2),
+                            'settingUrl'=>'',
+                        ),                      
 
                         array(
                             'name'=>'Newspaper AMP Theme',
@@ -124,22 +142,22 @@ $extension_listing_array = array(
                             'img_src'=>AMPFORWP_IMAGE_DIR . '/click.png',
                             'price'=>'$49',
                             'url_link'=>'https://ampforwp.com/themes/newspaper/',
-                            'plugin_active_path'=> 'AMP-Theme/ampforwp-custom-theme.php',
+                            'plugin_active_path'=> 'amp-newspaper-theme/ampforwp-custom-theme.php',
                             'item_name'=>'Newspaper Theme for AMP',
                             'store_url'=>'https://accounts.ampforwp.com',
-                            'is_activated'=>(is_plugin_active('AMP-Theme/ampforwp-custom-theme.php')? 1 : 2),
+                            'is_activated'=>(is_plugin_active('amp-newspaper-theme/ampforwp-custom-theme.php')? 1 : 2),
                         ),
 
                         array(
-                            'name'=>'Advanced Custom Fields',
+                            'name'=>'ACF for AMP',
                             'desc'=>'Easily add ACF support in AMP.',
                             'img_src'=>AMPFORWP_IMAGE_DIR . '/acf.png',
                             'price'=>'$29',
                             'url_link'=>'http://ampforwp.com/acf-amp/#utm_source=options-panel&utm_medium=extension-tab_opt-in-forms&utm_campaign=AMP%20Plugin',
-                            'plugin_active_path'=> 'advanced-custom-fields/acf.php',
+                            'plugin_active_path'=> 'acf-for-amp-v2/amp-acf.php',
                             'item_name'=>'ACF for AMP',
                             'store_url'=>'https://accounts.ampforwp.com',
-                            'is_activated'=>(is_plugin_active('advanced-custom-fields/acf.php')? 1 : 2),
+                            'is_activated'=>(is_plugin_active('acf-for-amp-v2/amp-acf.php')? 1 : 2),
                         ),
                         array(
                             'name'=>'AMP Comments',
@@ -173,6 +191,7 @@ $extension_listing_array = array(
                             'item_name'=>'Custom Post Type Support for AMP',
                             'store_url'=>'https://accounts.ampforwp.com',
                             'is_activated'=>(is_plugin_active('amp-custom-post-type/amp-custom-post-type.php')? 1 : 2),
+                            'settingUrl'=>'',
                         ), 
                         array(
                             'name'=>'Structured Data for WP',
@@ -184,6 +203,7 @@ $extension_listing_array = array(
                             'item_name'=>'Structured Data for WP',
                             'store_url'=>'https://accounts.ampforwp.com',
                             'is_activated'=>(is_plugin_active('structured-data-for-wp/structured-data-for-wp.php')? 1: 2),
+                            'settingUrl'=>'',
                         ),
                         array(
                             'name'=>'Polylang For AMP',
@@ -197,6 +217,17 @@ $extension_listing_array = array(
                             'is_activated'=>(is_plugin_active('polylang-for-amp/amp_polylang.php')? 1: 2),
                         ),
                         array(
+                            'name'=>'WPML for AMP',
+                            'desc'=>'WPML compatibility with AMP',
+                            'img_src'=>AMPFORWP_IMAGE_DIR . '/click.png',
+                            'price'=>'$29',
+                            'url_link'=>'https://ampforwp.com/wpml-for-amp/',
+                            'plugin_active_path'=> 'wpml-for-amp/wpml_for_amp.php',
+                            'item_name'=>'WPML For AMP',
+                            'store_url'=>'https://accounts.ampforwp.com',
+                            'is_activated'=>(is_plugin_active('wpml-for-amp/wpml_for_amp.php')? 1: 2),
+                        ),
+                        array(
                             'name'=>'AMP Teaser',
                             'desc'=>'AMP Teaser automatically clips the content based on your selection',
                             'img_src'=>AMPFORWP_IMAGE_DIR . '/click.png',
@@ -206,6 +237,7 @@ $extension_listing_array = array(
                             'item_name'=>'AMP Teaser',
                             'store_url'=>'https://accounts.ampforwp.com',
                             'is_activated'=>(is_plugin_active('amp-teaser/amp-teaser.php')? 1: 2),
+                            'settingUrl'=>'',
                         ),
                         array(
                             'name'=>'View All Extensions',
@@ -217,8 +249,10 @@ $extension_listing_array = array(
                             'item_name'=>'',
                             'store_url'=>'',
                             'is_activated'=>2,
+                            'settingUrl'=>'',
                         ),
                     );
+
 $extension_listing_array = apply_filters( 'ampforwp_extension_lists_filter', $extension_listing_array );
 $ampforwp_extension_list_html = '';
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -248,7 +282,7 @@ foreach ($extension_listing_array as $key => $extension) {
         if(isset($selectedOption['amp-license'][$pathExploded])){
             $amplicense = $selectedOption['amp-license'][$pathExploded]['license'];
         }
-        $verify = '<button type="submit" id="'.$pathExploded.'">Activate</button>';
+        $verify = '<button type="button" id="'.$pathExploded.'" class="redux-ampforwp-ext-activate">Activate</button>';
         if(isset($selectedOption['amp-license'][$pathExploded]['status']) && $selectedOption['amp-license'][$pathExploded]['status']==='valid'){
              $currentStatus = 'active valid';
              $verify = '<button type="button" id="'.$pathExploded.'" class="redux-ampforwp-ext-deactivate">Deactivate</button>';
@@ -266,7 +300,7 @@ foreach ($extension_listing_array as $key => $extension) {
         
         $pluginReview .= $verify;
         if(isset($selectedOption['amp-license'][$pathExploded]['message']) && $selectedOption['amp-license'][$pathExploded]['message']!=""){
-            $pluginReview .= "<br/>".$selectedOption['amp-license'][$pathExploded]['message'];
+            $pluginReview .= "<div class='afw-license-response-message'>".$selectedOption['amp-license'][$pathExploded]['message']."</div>";
         }
         
     }
@@ -428,7 +462,7 @@ $upcomingLayoutsDesign = '';
 $layouts = ampforwp_upcomming_layouts_demo();
 if(is_array($layouts)){
     foreach($layouts as $k=>$val){
-    	$upcomingLayoutsDesign .=  '<div class="amp_layout_upcomming"> 
+        $upcomingLayoutsDesign .=  '<div class="amp_layout_upcomming"> 
         <div class="amppb_ad-layout-layout">
             <div class="amppb_ad-layout-wrapper">
             <div class="amppb_ad-layout_pro"><a href="https://ampforwp.com/amp-layouts/" target="_blank">PRO</a></div>
@@ -447,9 +481,9 @@ if(is_array($layouts)){
 //$amp_redux_header = '<span id="name"><span style="color: #4dbefa;">U</span>ltimate <span style="color: #4dbefa;">W</span>idgets</span>';
 $proDetailsProvide = '<a class="premium_features_btn_txt" href="https://ampforwp.com/membership/#utm_source=options-panel&utm_medium=view_pro_features_btn&utm_campaign=AMP%20Plugin" target="_blank">'.__('Get more out of AMP','accelerated-mobile-pages').'</a> <a class="premium_features_btn" href="https://ampforwp.com/membership/#utm_source=options-panel&utm_medium=view_pro_features_btn&utm_campaign=AMP%20Plugin" target="_blank">Get PRO Version</a> ';
 if($ampforwp_nameOfUser!=""){
-    $proDetailsProvide = "<span class='extension-menu-call'><span class='activated-plugins' style='color:#f2f2f2'>Hello, ".$ampforwp_nameOfUser."</span> <a class='' href='".admin_url('admin.php?page=amp_options&tab=29')."'><i class='dashicons-before dashicons-admin-generic'></i></a></span>";
+    $proDetailsProvide = "<span class='extension-menu-call'><span class='activated-plugins' style='color:#f2f2f2'>Hello, ".$ampforwp_nameOfUser."</span> <a class='' href='".admin_url('admin.php?page=amp_options&tabid=opt-go-premium')."'><i class='dashicons-before dashicons-admin-generic'></i></a></span>";
 }elseif($ampforwp_is_productActivated){
-    $proDetailsProvide = "<span class='extension-menu-call'>One more Step <a class='premium_features_btn' href='".admin_url('admin.php?page=amp_options&tab=29')."'>Enter license here</a></span>";
+    $proDetailsProvide = "<span class='extension-menu-call'>One more Step <a class='premium_features_btn' href='".admin_url('admin.php?tabid=opt-go-premium&page=amp_options')."'>Enter license here</a></span>";
 }
 $args = array(
     // TYPICAL -> Change these values as you need/desire
@@ -557,37 +591,37 @@ Redux::setArgs( "redux_builder_amp", $args );
     padding: 8px 11px;background: #4CAF50;
     font-size: 13px;margin: -24px 0 0 10px;
     border-radius: 5px;line-height: 22px;position:relative;top:30px"><a style="color: #fff;text-decoration: none;" href="https://wordpress.org/support/view/plugin-reviews/accelerated-mobile-pages?rate=5#postform">Like this plugin? <br /> Leave a 5 Star Rating</a></h2>We are actively working on updating the plugin. We have built user friendly options which allows you to make changes on your AMP version.', 'accelerated-mobile-pages' ), 'accelerated-mobile-pages' )                      
-			               . '<div style="width:100%;margin:20px 0px 10px 0px" class="getstarted_wrapper">
+                           . '<div style="width:100%;margin:20px 0px 10px 0px" class="getstarted_wrapper">
             <div class="getstarted_options">
             <p><b>Getting Started</b></p>
-				<ul class="getstarted_ul">
-					<li><a href="https://ampforwp.com/tutorials/article-categories/installation-updating/" target="_blank">Installation & Setup</a></li>
-					<li><a href="https://ampforwp.com/tutorials/article-categories/settings-options/" target="_blank">Settings & Options</a></li>
-					<li><a href="https://ampforwp.com/tutorials/article-categories/setup-amp/" target="_blank">Setup AMP</a></li>
-					<li><a href="https://ampforwp.com/tutorials/article-categories/page-builder/" target="_blank">Page Builder</a></li>
-				</ul>  
+                <ul class="getstarted_ul">
+                    <li><a href="https://ampforwp.com/tutorials/article-categories/installation-updating/" target="_blank">Installation & Setup</a></li>
+                    <li><a href="https://ampforwp.com/tutorials/article-categories/settings-options/" target="_blank">Settings & Options</a></li>
+                    <li><a href="https://ampforwp.com/tutorials/article-categories/setup-amp/" target="_blank">Setup AMP</a></li>
+                    <li><a href="https://ampforwp.com/tutorials/article-categories/page-builder/" target="_blank">Page Builder</a></li>
+                </ul>  
             </div>
             <div class="getstarted_options">
             <p><b>Useful Links</b></p>
-				<ul class="getstarted_ul">
-					<li><a href="https://ampforwp.com/tutorials/article-categories/extension/" target="_blank">Extensions & Themes Docs</a></li>
-					<li><a href="https://ampforwp.com/tutorials/article-categories/extending/" target="_blank">Developers Docs</a></li>
-					<li><a href="https://ampforwp.com/amp-theme-framework/" target="_blank">Create a Custom Theme for AMP</a></li>
-					<li><a href="https://ampforwp.com/tutorials/article-categories/how-to/" target="_blank">General How To\'s</a></li>
-				</ul>  
+                <ul class="getstarted_ul">
+                    <li><a href="https://ampforwp.com/tutorials/article-categories/extension/" target="_blank">Extensions & Themes Docs</a></li>
+                    <li><a href="https://ampforwp.com/tutorials/article-categories/extending/" target="_blank">Developers Docs</a></li>
+                    <li><a href="https://ampforwp.com/amp-theme-framework/" target="_blank">Create a Custom Theme for AMP</a></li>
+                    <li><a href="https://ampforwp.com/tutorials/article-categories/how-to/" target="_blank">General How To\'s</a></li>
+                </ul>  
             </div>
             <div class="clear"></div>
             </div>'
            . '<p><strong>' . __( '1. <a href="https://ampforwp.com/priority-support/" target="_blank">Fixing AMP Validation Errors</a>: ', 'accelerated-mobile-pages' ) . '</strong>' . __( 'We will personally take care that your website’s AMP version is perfectly validated. We will make sure that your AMP version gets approved and indexed by Google Webmaster Tools properly and we will even keep an eye on AMP updates from Google and implement them into your website.' ) . '</p>'
-			               . '<p><strong>' . __( '2. <a href="https://ampforwp.com/help/#support-forum" target="_blank">Community Support Forum</a>: ', 'accelerated-mobile-pages' ) . '</strong>' . __( 'We have a special community support forum where you can ask us questions and get help about your AMP related questions. Delivering a good user experience means alot to us and so we try our best to reply each and every question that gets asked.' ) . '</p>'
-			               . '<p><strong>' . __( '3. <a href="https://ampforwp.com/help/#contact" target="_blank">Hire Us / Other queries</a>: ', 'accelerated-mobile-pages' ) . '</strong>' . __( 'We try to answer each and every email, so remember to give us some time. For any other queries, please use the contact form. Please be descriptive as possible.' ) . '</p>'
-			               . '<p><strong>' . __( '4. <a href="http://ampforwp.com/new/" target="_blank"> What\'s New in this Version?</a>: ', 'accelerated-mobile-pages' ) . '</strong>' . __( 'If you want to know whats new in the latest version of the plugin, then please use this link. ') . '</p>'
+                           . '<p><strong>' . __( '2. <a href="https://ampforwp.com/help/#support-forum" target="_blank">Community Support Forum</a>: ', 'accelerated-mobile-pages' ) . '</strong>' . __( 'We have a special community support forum where you can ask us questions and get help about your AMP related questions. Delivering a good user experience means alot to us and so we try our best to reply each and every question that gets asked.' ) . '</p>'
+                           . '<p><strong>' . __( '3. <a href="https://ampforwp.com/help/#contact" target="_blank">Hire Us / Other queries</a>: ', 'accelerated-mobile-pages' ) . '</strong>' . __( 'We try to answer each and every email, so remember to give us some time. For any other queries, please use the contact form. Please be descriptive as possible.' ) . '</p>'
+                           . '<p><strong>' . __( '4. <a href="http://ampforwp.com/new/" target="_blank"> What\'s New in this Version?</a>: ', 'accelerated-mobile-pages' ) . '</strong>' . __( 'If you want to know whats new in the latest version of the plugin, then please use this link. ') . '</p>'
 
-						         . '</p></div>
+                                 . '</p></div>
                                  <br /><p><h3>Take AMP to the Next Level with Premium Extensions</h3></p>
                                  ' .$gettingstarted_extension_listing
 
-				 , 'accelerated-mobile-pages' ),
+                 , 'accelerated-mobile-pages' ),
         'icon'  => 'el el-cogs'
     ) );
     
@@ -705,7 +739,7 @@ Redux::setArgs( "redux_builder_amp", $args );
                'default'   => 1,
 //               'desc'      => __( 'Re-Save permalink if you make changes in this option, please have a look <a href="https://ampforwp.com/flush-rewrite-urls/">here</a> on how to do it', 'accelerated-mobile-pages' ),
             ),
-			array(
+            array(
                'id'        =>'amp-on-off-for-all-pages',
                'type'      => 'switch',
                'title'     => __('Pages', 'accelerated-mobile-pages'),
@@ -2408,8 +2442,8 @@ Redux::setSection( $opt_name, array(
                         'default'   => 0,
                         //'required'  => array('ampforwp-amp-menu', '=' , '1')
                     ),
-					//Category Base Removal in AMP
-					array(
+                    //Category Base Removal in AMP
+                    array(
                         'id'       => 'ampforwp-category-base-removel-link',
                         'type'     => 'switch',
                         'title'    => __('Category base remove in AMP', 'accelerated-mobile-pages'),
@@ -2419,8 +2453,8 @@ Redux::setSection( $opt_name, array(
                         'default'   => 0,
                         
                     ),
-					//Tag base Removal in AMP
-					array(
+                    //Tag base Removal in AMP
+                    array(
                         'id'       => 'ampforwp-tag-base-removal-link',
                         'type'     => 'switch',
                         'title'    => __('Tag base remove in AMP', 'accelerated-mobile-pages'),
@@ -2860,30 +2894,30 @@ Redux::setSection( $opt_name, array(
     }
     add_filter("extra_plugin_headers","amp_extra_plugin_theme_header");
     $themeDesign = array(
-			array(
+            array(
                 'demo_link' => 'https://ampforwp.com/demo/#one',
-				'upgrade'=>true,
-				'title'=>__('Design One', 'accelerated-mobile-pages' ),
-				'value'=>1,
-				'alt'=>__('Design One', 'accelerated-mobile-pages' ),
-				'img'=>AMPFORWP_PLUGIN_DIR_URI.'/images/design-1.png',
-			),
-			array(
+                'upgrade'=>true,
+                'title'=>__('Design One', 'accelerated-mobile-pages' ),
+                'value'=>1,
+                'alt'=>__('Design One', 'accelerated-mobile-pages' ),
+                'img'=>AMPFORWP_PLUGIN_DIR_URI.'/images/design-1.png',
+            ),
+            array(
                 'demo_link' => 'https://ampforwp.com/demo/#two',
-				'upgrade'=>true,
-				'title'=>__('Design Two', 'accelerated-mobile-pages' ),
-				'value'=>2,
-				'alt'=>__('Design Two', 'accelerated-mobile-pages' ),
-				'img'=>AMPFORWP_PLUGIN_DIR_URI.'/images/design-2.png',
-			),
-			array(
+                'upgrade'=>true,
+                'title'=>__('Design Two', 'accelerated-mobile-pages' ),
+                'value'=>2,
+                'alt'=>__('Design Two', 'accelerated-mobile-pages' ),
+                'img'=>AMPFORWP_PLUGIN_DIR_URI.'/images/design-2.png',
+            ),
+            array(
                 'demo_link' => 'https://ampforwp.com/demo/#three',
-				'upgrade'=>true,
-				'title'=>__('Design Three', 'accelerated-mobile-pages' ),
-				'value'=>3,
-				'alt'=>__('Design Three', 'accelerated-mobile-pages' ),
-				'img'=>AMPFORWP_PLUGIN_DIR_URI.'/images/design-3.png',
-			),
+                'upgrade'=>true,
+                'title'=>__('Design Three', 'accelerated-mobile-pages' ),
+                'value'=>3,
+                'alt'=>__('Design Three', 'accelerated-mobile-pages' ),
+                'img'=>AMPFORWP_PLUGIN_DIR_URI.'/images/design-3.png',
+            ),
             array(
                 'demo_link' => 'https://ampforwp.com/demo/amp-pagebuilder/amp/',
                 'upgrade' => true,
@@ -2897,18 +2931,18 @@ Redux::setSection( $opt_name, array(
         foreach (get_plugins() as $key => $value) {
             $plugin = get_plugin_data(WP_PLUGIN_DIR.'/'.$key);
             if(!empty($plugin['AMP'])){//$plugin['AMP']
-				$imageUrl = '';
-				if(file_exists(AMPFORWP_MAIN_PLUGIN_DIR.$value['TextDomain'].'/screenshot.png')){
-					$imageUrl = plugins_url($value['TextDomain'].'/screenshot.png');
-				}
+                $imageUrl = '';
+                if(file_exists(AMPFORWP_MAIN_PLUGIN_DIR.$value['TextDomain'].'/screenshot.png')){
+                    $imageUrl = plugins_url($value['TextDomain'].'/screenshot.png');
+                }
                 $themeDesign[] = array(
                                     'demo_link' => $plugin['AMP Demo'],
-									'upgrade'=>true,
-									'title'=>$plugin['AMP'],
-									'value'=>$value['TextDomain'],
-									'alt'=>$plugin['AMP'],
-									'img'=>$imageUrl,
-								);
+                                    'upgrade'=>true,
+                                    'title'=>$plugin['AMP'],
+                                    'value'=>$value['TextDomain'],
+                                    'alt'=>$plugin['AMP'],
+                                    'img'=>$imageUrl,
+                                );
             }
         }
     }
