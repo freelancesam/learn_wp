@@ -150,15 +150,22 @@ class Commands_Read_HC_MVC
 						break;
 
 					case 'sort':
-						if( is_array($return['SORT']) ){
-							$sort_by = array_shift( $arg );
-							$sort_how = strtolower( $arg ? array_shift( $arg ) : 'asc' );
-							if( ! in_array($sort_how, array('asc', 'desc')) ){
-								echo "SORTING '$sort_how' IS NOT ALLOWED, ONLY ASC OR DESC!<br>";
-								$sort_how = 'asc';
-							}
-							$return['SORT'][] = array( $sort_by, $sort_how );
+						$sort_by = array_shift( $arg );
+
+						if( is_array($sort_by) ){
+							$arg2 = $sort_by;
+							$sort_by = array_shift($arg2);
+							$sort_how = $arg2 ? array_shift($arg2) : 'asc';
 						}
+						else {
+							$sort_how = strtolower( $arg ? array_shift( $arg ) : 'asc' );
+						}
+
+						if( ! in_array($sort_how, array('asc', 'desc')) ){
+							echo "SORTING '$sort_how' IS NOT ALLOWED, ONLY ASC OR DESC!<br>";
+							$sort_how = 'asc';
+						}
+						$return['SORT'][] = array( $sort_by, $sort_how );
 						break;
 				}
 

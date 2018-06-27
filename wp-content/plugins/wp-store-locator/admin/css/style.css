@@ -271,7 +271,7 @@
     left: -88px;
 }
 
-#wpsl-map-preview .wpsl-info-text::after {
+#wpsl-map-preview .wpsl-info-text::after{
     left: auto;
     right: 87px;
 }

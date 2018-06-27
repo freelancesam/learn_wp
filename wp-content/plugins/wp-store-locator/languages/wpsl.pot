@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Store Locator v2.2.13\n"
+"Project-Id-Version: WP Store Locator v2.2.15\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-28 17:53+0100\n"
+"POT-Creation-Date: 2018-05-24 16:26+0200\n"
 "PO-Revision-Date: 2015-09-01 13:49+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -21,87 +21,87 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: admin/EDD_SL_Plugin_Updater.php\n"
 
-#: admin/class-admin.php:117
+#: admin/class-admin.php:118
 #, php-format
 msgid ""
 "You need to create %sAPI keys%s for Google Maps before you can use the store "
 "locator! %sDismiss%s"
 msgstr ""
 
-#: admin/class-admin.php:119
+#: admin/class-admin.php:120
 #, php-format
 msgid ""
 "Before adding the [wpsl] shortcode to a page, please don't forget to define "
 "a start point on the %ssettings%s page. %sDismiss%s"
 msgstr ""
 
-#: admin/class-admin.php:156
+#: admin/class-admin.php:157
 msgid "Security check failed. Please reload the page and try again."
 msgstr ""
 
-#: admin/class-admin.php:175 admin/class-admin.php:176
-#: admin/class-admin.php:466 admin/templates/map-settings.php:8
+#: admin/class-admin.php:176 admin/class-admin.php:177
+#: admin/class-admin.php:467 admin/templates/map-settings.php:8
 msgid "Settings"
 msgstr ""
 
-#: admin/class-admin.php:182 admin/class-admin.php:183
-#: admin/class-admin.php:486
+#: admin/class-admin.php:183 admin/class-admin.php:184
+#: admin/class-admin.php:487
 msgid "Add-Ons"
 msgstr ""
 
-#: admin/class-admin.php:294
+#: admin/class-admin.php:295
 msgid "Cannot determine the address at this location."
 msgstr ""
 
-#: admin/class-admin.php:295
+#: admin/class-admin.php:296
 msgid "Geocode was not successful for the following reason"
 msgstr ""
 
-#: admin/class-admin.php:296 admin/upgrade.php:458
+#: admin/class-admin.php:297 admin/upgrade.php:458
 msgid "Security check failed, reload the page and try again."
 msgstr ""
 
-#: admin/class-admin.php:297
+#: admin/class-admin.php:298
 msgid "Please fill in all the required store details."
 msgstr ""
 
-#: admin/class-admin.php:298
+#: admin/class-admin.php:299
 msgid "The map preview requires all the location details."
 msgstr ""
 
-#: admin/class-admin.php:299 admin/class-metaboxes.php:525
+#: admin/class-admin.php:300 admin/class-metaboxes.php:534
 #: frontend/class-frontend.php:560
 msgid "Closed"
 msgstr ""
 
-#: admin/class-admin.php:300
+#: admin/class-admin.php:301
 msgid "The code for the map style is invalid."
 msgstr ""
 
-#: admin/class-admin.php:301
+#: admin/class-admin.php:302
 #, php-format
 msgid ""
 "There's a problem with the provided %sbrowser key%s. %s You can read more "
 "about how to determine the exact issue, and how to solve it %shere%s."
 msgstr ""
 
-#: admin/class-admin.php:302
+#: admin/class-admin.php:303
 msgid "Dismiss this notice."
 msgstr ""
 
-#: admin/class-admin.php:421
+#: admin/class-admin.php:422
 msgid "Welcome to WP Store Locator"
 msgstr ""
 
-#: admin/class-admin.php:422
+#: admin/class-admin.php:423
 msgid "Sign up for the latest plugin updates and announcements."
 msgstr ""
 
-#: admin/class-admin.php:485
+#: admin/class-admin.php:486
 msgid "Documentation"
 msgstr ""
 
-#: admin/class-admin.php:508
+#: admin/class-admin.php:509
 #, php-format
 msgid "If you like this plugin please leave us a %s5 star%s rating."
 msgstr ""
@@ -215,77 +215,81 @@ msgid ""
 "or contact support. Error code: %s"
 msgstr ""
 
-#: admin/class-metaboxes.php:33
+#: admin/class-metaboxes.php:36
 msgid "Store Details"
 msgstr ""
 
-#: admin/class-metaboxes.php:34
+#: admin/class-metaboxes.php:37
 msgid "Store Map"
 msgstr ""
 
-#: admin/class-metaboxes.php:48
+#: admin/class-metaboxes.php:42
+msgid "Export"
+msgstr ""
+
+#: admin/class-metaboxes.php:57
 msgid "Location"
 msgstr ""
 
-#: admin/class-metaboxes.php:50 inc/class-post-types.php:159
+#: admin/class-metaboxes.php:59 inc/class-post-types.php:159
 msgid "Address"
 msgstr ""
 
-#: admin/class-metaboxes.php:54
+#: admin/class-metaboxes.php:63
 msgid "Address 2"
 msgstr ""
 
-#: admin/class-metaboxes.php:57 inc/class-post-types.php:160
+#: admin/class-metaboxes.php:66 inc/class-post-types.php:160
 msgid "City"
 msgstr ""
 
-#: admin/class-metaboxes.php:61 inc/class-post-types.php:161
+#: admin/class-metaboxes.php:70 inc/class-post-types.php:161
 msgid "State"
 msgstr ""
 
-#: admin/class-metaboxes.php:64
+#: admin/class-metaboxes.php:73
 msgid "Zip Code"
 msgstr ""
 
-#: admin/class-metaboxes.php:67
+#: admin/class-metaboxes.php:76
 msgid "Country"
 msgstr ""
 
-#: admin/class-metaboxes.php:74
+#: admin/class-metaboxes.php:83
 msgid "Latitude"
 msgstr ""
 
-#: admin/class-metaboxes.php:77
+#: admin/class-metaboxes.php:86
 msgid "Longitude"
 msgstr ""
 
-#: admin/class-metaboxes.php:80 admin/class-metaboxes.php:129
-#: admin/class-metaboxes.php:144
+#: admin/class-metaboxes.php:89 admin/class-metaboxes.php:138
+#: admin/class-metaboxes.php:153
 msgid "Opening Hours"
 msgstr ""
 
-#: admin/class-metaboxes.php:82 admin/templates/map-settings.php:548
+#: admin/class-metaboxes.php:91 admin/templates/map-settings.php:548
 #: admin/templates/map-settings.php:549 frontend/underscore-functions.php:160
 #: inc/wpsl-functions.php:151
 msgid "Hours"
 msgstr ""
 
-#: admin/class-metaboxes.php:86
+#: admin/class-metaboxes.php:95
 msgid "Additional Information"
 msgstr ""
 
-#: admin/class-metaboxes.php:88
+#: admin/class-metaboxes.php:97
 msgid "Tel"
 msgstr ""
 
-#: admin/class-metaboxes.php:91 admin/templates/map-settings.php:536
+#: admin/class-metaboxes.php:100 admin/templates/map-settings.php:536
 #: admin/templates/map-settings.php:537 frontend/class-frontend.php:822
 #: frontend/underscore-functions.php:32 frontend/underscore-functions.php:68
 #: frontend/underscore-functions.php:150 inc/wpsl-functions.php:148
 msgid "Fax"
 msgstr ""
 
-#: admin/class-metaboxes.php:94 admin/templates/map-settings.php:540
+#: admin/class-metaboxes.php:103 admin/templates/map-settings.php:540
 #: admin/templates/map-settings.php:541 admin/upgrade.php:198
 #: frontend/class-frontend.php:826 frontend/underscore-functions.php:35
 #: frontend/underscore-functions.php:71 frontend/underscore-functions.php:153
@@ -293,90 +297,94 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: admin/class-metaboxes.php:97 admin/templates/map-settings.php:544
+#: admin/class-metaboxes.php:106 admin/templates/map-settings.php:544
 #: admin/templates/map-settings.php:545 admin/upgrade.php:202
 #: frontend/class-frontend.php:831 inc/wpsl-functions.php:150
 msgid "Url"
 msgstr ""
 
-#: admin/class-metaboxes.php:447
+#: admin/class-metaboxes.php:456
 msgid "Hour format"
 msgstr ""
 
-#: admin/class-metaboxes.php:454
+#: admin/class-metaboxes.php:463
 msgid "Days"
 msgstr ""
 
-#: admin/class-metaboxes.php:455
+#: admin/class-metaboxes.php:464
 msgid "Opening Periods"
 msgstr ""
 
-#: admin/class-metaboxes.php:705
+#: admin/class-metaboxes.php:714
 msgid "Failed to publish the store. Please fill in the required store details."
 msgstr ""
 
-#: admin/class-metaboxes.php:841
+#: admin/class-metaboxes.php:850
 msgid "Preview Location"
 msgstr ""
 
-#: admin/class-metaboxes.php:842
+#: admin/class-metaboxes.php:851
 #, php-format
 msgid ""
 "The map preview is based on the provided address, city and country details. "
 "%s It will ignore any custom latitude or longitude values."
 msgstr ""
 
-#: admin/class-metaboxes.php:843
+#: admin/class-metaboxes.php:852
 msgid "You can drag the marker to adjust the exact location of the marker."
 msgstr ""
 
-#: admin/class-metaboxes.php:863 admin/class-metaboxes.php:866
+#: admin/class-metaboxes.php:871
+msgid "Export Location Data"
+msgstr ""
+
+#: admin/class-metaboxes.php:891 admin/class-metaboxes.php:894
 msgid "Store updated."
 msgstr ""
 
-#: admin/class-metaboxes.php:864
+#: admin/class-metaboxes.php:892
 msgid "Custom field updated."
 msgstr ""
 
-#: admin/class-metaboxes.php:865
+#: admin/class-metaboxes.php:893
 msgid "Custom field deleted."
 msgstr ""
 
-#: admin/class-metaboxes.php:867
+#: admin/class-metaboxes.php:895
 #, php-format
 msgid "Store restored to revision from %s"
 msgstr ""
 
-#: admin/class-metaboxes.php:868
+#: admin/class-metaboxes.php:896
 msgid "Store published."
 msgstr ""
 
-#: admin/class-metaboxes.php:869
+#: admin/class-metaboxes.php:897
 msgid "Store saved."
 msgstr ""
 
-#: admin/class-metaboxes.php:870
+#: admin/class-metaboxes.php:898
 msgid "Store submitted."
 msgstr ""
 
-#: admin/class-metaboxes.php:872
+#: admin/class-metaboxes.php:900
 #, php-format
 msgid "Store scheduled for: <strong>%1$s</strong>."
 msgstr ""
 
-#: admin/class-metaboxes.php:873
+#: admin/class-metaboxes.php:901
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: admin/class-metaboxes.php:875
+#: admin/class-metaboxes.php:903
 msgid "Store draft updated."
 msgstr ""
 
-#: admin/class-metaboxes.php:881
+#: admin/class-metaboxes.php:909
 msgid "View store"
 msgstr ""
 
-#: admin/class-metaboxes.php:887
+#: admin/class-metaboxes.php:915
 msgid "Preview store"
 msgstr ""
 

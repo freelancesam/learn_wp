@@ -64,6 +64,7 @@ if(!function_exists('ampforwp_amp_nonamp_convert')){
 				img{height:auto;}
 				.amp-featured-image img{width:100%;height:auto;}
 				.content-wrapper, .header, .header-2, .header-3{width:100% !important;}
+				.image-mod img{width:100%}
 				
 				';
 				$re = '/<style type="text\/css">(.*?)<\/style>/';
@@ -80,7 +81,9 @@ if(!function_exists('ampforwp_amp_nonamp_convert')){
 	add_filter( 'amp_post_template_file', 'ampforwp_child_designing_custom_template', 20, 3 );
 	add_filter( 'amp_post_template_file', 'ampforwp_child_custom_footer_file', 20, 3 );
 	function ampforwp_theme_template_directry(){
-		return get_stylesheet_directory() . '/ampforwp/';
+		$folder_name = 'ampforwp';
+		$folder_name = apply_filters('ampforwp_template_locate', $folder_name);	
+		return get_stylesheet_directory() . '/' . $folder_name;
 	}
 	// Custom Header
 	function ampforwp_child_custom_header_file( $file, $type, $post ) {
@@ -301,7 +304,7 @@ function ampforwp_add_upcomminglayouts($layoutTemplate){
 		$layouts_demo = ampforwp_upcomming_layouts_demo();
 		if(is_array($layouts_demo)){
 			foreach($layouts_demo as $k=>$val){
-				$layoutTemplate['upcoming'] =  array(
+				$layoutTemplate[$val['name'].'-upcomming'] =  array(
 									'Upcoming'=>array(
 											'name'=> $val['name'],
 											'preview_demo'=>$val['link'],

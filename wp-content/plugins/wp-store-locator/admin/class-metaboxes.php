@@ -30,8 +30,17 @@ if ( !class_exists( 'WPSL_Metaboxes' ) ) {
          * @return void
          */
         public function add_meta_boxes() {
+
+            global $pagenow;
+
             add_meta_box( 'wpsl-store-details', __( 'Store Details', 'wpsl' ), array( $this, 'create_meta_fields' ), 'wpsl_stores', 'normal', 'high' );
             add_meta_box( 'wpsl-map-preview', __( 'Store Map', 'wpsl' ), array( $this, 'map_preview' ), 'wpsl_stores', 'side' );
+
+            $enable_option = apply_filters( 'wpsl_enable_export_option', true );
+
+            if ( $enable_option && $pagenow == 'post.php' ) {
+                add_meta_box( 'wpsl-data-export', __( 'Export', 'wpsl' ), array( $this, 'export_data' ), 'wpsl_stores', 'side', 'low' );
+            }
         }
 
         /**
@@ -841,6 +850,25 @@ if ( !class_exists( 'WPSL_Metaboxes' ) ) {
                 <a id="wpsl-lookup-location" class="button-primary" href="#wpsl-meta-nav"><?php _e( 'Preview Location', 'wpsl' ); ?></a>
                 <span class="wpsl-info"><span class="wpsl-info-text wpsl-hide"><?php echo sprintf( __( 'The map preview is based on the provided address, city and country details. %s It will ignore any custom latitude or longitude values.', 'wpsl' ), '<br><br>' ); ?></span></span>
                 <em class="wpsl-desc"><?php _e( 'You can drag the marker to adjust the exact location of the marker.', 'wpsl' ); ?></em>
+            </p>
+            <?php
+        }
+
+        /**
+         * The html for the export details section in the sidebar.
+         *
+         * @since 2.2.15
+         * @return void
+         */
+        public function export_data() {
+
+            global $post;
+
+            $link_url = wp_nonce_url( admin_url( 'post.php?'. $_SERVER['QUERY_STRING'] . '&wpsl_data_export=1' ), 'wpsl_export_' . $post->ID, 'wpsl_export_nonce' );
+
+            ?>
+            <p class="wpsl-submit-wrap">
+                <a id="wpsl-export-data" class="button-primary" href="<?php echo esc_url( $link_url ); ?>"><?php _e( 'Export Location Data', 'wpsl' ); ?></a>
             </p>
             <?php
         }

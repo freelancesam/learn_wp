@@ -50,11 +50,11 @@ if ( !class_exists( 'WPSL_Admin' ) ) {
 
             add_action( 'init',                                 array( $this, 'init' ) );
             add_action( 'admin_menu',                           array( $this, 'create_admin_menu' ) );
-			add_action( 'admin_init',                           array( $this, 'setting_warnings' ) );
+            add_action( 'admin_init',                           array( $this, 'setting_warnings' ) );
             add_action( 'delete_post',                          array( $this, 'maybe_delete_autoload_transient' ) );
             add_action( 'wp_trash_post',                        array( $this, 'maybe_delete_autoload_transient' ) );
             add_action( 'untrash_post',                         array( $this, 'maybe_delete_autoload_transient' ) );
-            add_action( 'admin_enqueue_scripts',                array( $this, 'admin_scripts' ) );	
+            add_action( 'admin_enqueue_scripts',                array( $this, 'admin_scripts' ) );
             add_filter( 'plugin_row_meta',                      array( $this, 'add_plugin_meta_row' ), 10, 2 );
             add_filter( 'plugin_action_links_' . WPSL_BASENAME, array( $this, 'add_action_links' ), 10, 2 );
             add_filter( 'admin_footer_text',                    array( $this, 'admin_footer_text' ), 1 );
@@ -75,6 +75,7 @@ if ( !class_exists( 'WPSL_Admin' ) ) {
             require_once( WPSL_PLUGIN_DIR . 'admin/class-geocode.php' );
             require_once( WPSL_PLUGIN_DIR . 'admin/class-settings.php' );
             require_once( WPSL_PLUGIN_DIR . 'admin/upgrade.php' );
+            require_once( WPSL_PLUGIN_DIR . 'admin/data-export.php' );
 		}
         
         /**
@@ -86,7 +87,7 @@ if ( !class_exists( 'WPSL_Admin' ) ) {
 		public function init() {
             $this->notices       = new WPSL_Notices();
             $this->metaboxes     = new WPSL_Metaboxes();
-			$this->geocode       = new WPSL_Geocode();
+            $this->geocode       = new WPSL_Geocode();
             $this->settings_page = new WPSL_Settings();
 		}
                 

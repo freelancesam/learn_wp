@@ -57,6 +57,15 @@ The upgrade is simply - upload everything up again to your `/wp-content/plugins/
 
 == Changelog ==
 
+= 3.4.6 =
+* BUG: JavaScript error in the front end if the map or the list output was hidden by the "layout" shortcode parameter.
+
+= 3.4.5 =
+* BUG: "sort" shortcode parameter was not working.
+
+= 3.4.4 =
+* A fix for a possible JSON error when bulk geocoding locations.
+
 = 3.4.3 =
 * Exact name match, if a visitor searches for a location name, and there is a full match, it now sets it as a starting point of search.
 * Shortcode parameter search-bias-country.

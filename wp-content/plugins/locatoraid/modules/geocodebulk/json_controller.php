@@ -33,6 +33,10 @@ class GeocodeBulk_Json_Controller_LC_HC_MVC
 					)
 				);
 
+		if( ! $locations ){
+			$locations = array();
+		}
+
 		if( count($locations) < $limit ){
 			$locations2 = $command
 				->execute(
@@ -42,6 +46,11 @@ class GeocodeBulk_Json_Controller_LC_HC_MVC
 						array( 'limit', $limit - count($locations) )
 						)
 					);
+
+			if( ! $locations2 ){
+				$locations2 = array();
+			}
+
 			$locations = array_merge( $locations, $locations2 );
 		}
 

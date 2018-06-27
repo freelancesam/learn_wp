@@ -7,7 +7,7 @@ class Locations_Commands_Read_LC_HC_MVC
 			$return = array( $return );
 		}
 
-		$return[] = array('sort', 'name', 'asc');
+		// $return[] = array('sort', 'name', 'asc');
 
 		$return = $this->app
 			->after( array($this, __FUNCTION__), $return )
@@ -87,6 +87,31 @@ class Locations_Commands_Read_LC_HC_MVC
 				}
 				$args['SORT'] = array_merge( array(array('computed_distance', 'asc')), $args['SORT'] );
 			}
+		}
+
+	// if sort by name then move it up, otherwise add to the end 
+		$argSortByName = array();
+		$argSortCount = count( $args['SORT'] );
+		for( $ii = 0; $ii < $argSortCount; $ii++ ){
+			$argSort = $args['SORT'][$ii];
+			if( 'name' == $argSort[0] ){
+				$argSortByName = $argSort;
+				array_splice( $args['SORT'], $ii, 1 );
+				break;
+			}
+		}
+
+		if( $argSortByName ){
+			$args['SORT'] = array_merge( array($argSortByName), $args['SORT'] );
+		}
+		else {
+			if( ! isset($args['SORT']) ){
+				$args['SORT'] = array();
+			}
+			if( ! $args['SORT'] ){
+				$args['SORT'] = array();
+			}
+			$args['SORT'] = array_merge( $args['SORT'], array(array('name', 'asc')) );
 		}
 
 		$return = $command

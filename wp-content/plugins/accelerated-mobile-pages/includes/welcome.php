@@ -78,7 +78,7 @@ function ampforwp_welcome_screen_content() {
                 <div class="amp_user_avatar"></div>
                 <h3>I'm an Experienced User!</h3>
                 <p>We have many settings in Options Panel to help you setup the AMP perfectly to according to your taste & needs.</p>
-                <a href="<?php echo admin_url('admin.php?page=amp_options');?>">AMP Options Panel</a>                    
+                <a href="<?php echo admin_url('admin.php?tabid=opt-text-subsection&page=amp_options');?>">AMP Options Panel</a>                    
             </div>
             <div class="clear"></div>
             </div>
@@ -340,6 +340,9 @@ function ampforwp_add_welcome_styling(){
 	$current = "";
 	$current = get_current_screen();
 
+	if(!is_object($current)){
+		return ;
+	}
 	if ( 'amp_page_ampforwp-welcome-page' == $current->base || 'toplevel_page_amp_options' == $current->base ) {
 	?>
     <style>

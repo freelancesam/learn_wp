@@ -1,10 +1,10 @@
 === WooCommerce Stripe Payment Gateway ===
 Contributors: automattic, royho, akeda, mattyza, bor0, woothemes
-Tags: credit card, stripe, apple pay, payment request, google pay, sepa, sofort, bancontact, alipay, giropay, ideal, bitcoin, p24, woocommerce, automattic
+Tags: credit card, stripe, apple pay, payment request, google pay, sepa, sofort, bancontact, alipay, giropay, ideal, p24, woocommerce, automattic
 Requires at least: 4.4
 Tested up to: 4.9
 Requires PHP: 5.6
-Stable tag: 4.1.2
+Stable tag: 4.1.7
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Attributions: thorsten-stripe
@@ -101,11 +101,9 @@ If you get stuck, you can ask for help in the Plugin Forum.
 
 == Changelog ==
 
-= 4.1.2 - 2018-04-23 =
-* Fix - When payment method is invalid while trying to force save card, unexpected error can occur.
-* Fix - Pass name attribute when adding payment method from my account to allow Radar to work properly.
-* Tweak - Icon CSS styling to work for more different theme setups.
-* Remove - Bitcoin method as it is hard deprecated by Stripe as of April 23, 2018.
+= 4.1.7 - 2018-06-06 =
+* Fix - Asynchronous payment methods such as SEPA, did not show order Stripe fees/net after payment succeed.
+* Fix - Missing semicolon on a CSS style value which causes display issues in some browsers.
 
 [See changelog for all versions](https://raw.githubusercontent.com/woothemes/woocommerce-gateway-stripe/master/changelog.txt).
 

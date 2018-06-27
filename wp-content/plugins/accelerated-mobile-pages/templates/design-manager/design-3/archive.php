@@ -76,7 +76,7 @@ if ( get_query_var( 'paged' ) ) {
 					$curauth_url = get_avatar_url( $curauth->user_email, array('size'=>180) );
 					if($curauth_url){ ?>
 						<div class="amp-wp-content author-img">
-							<amp-img src="<?php echo esc_url($curauth_url); ?>" width="90" height="90" layout="responsive"></amp-img>
+							<amp-img data-block-on-consent src="<?php echo esc_url($curauth_url); ?>" width="90" height="90" layout="responsive"></amp-img>
 						</div>
 					<?php }
 				}
@@ -150,7 +150,7 @@ if ( get_query_var( 'paged' ) ) {
 					<?php }
 					} ?> 
                 </ul>
-				<h2 class="amp-wp-title"> <a href="<?php echo esc_url( $ampforwp_amp_post_url ); ?>"> <?php the_title(); ?></a></h2>
+				<h2 class="amp-wp-title"><a href="<?php echo esc_url( $ampforwp_amp_post_url ); ?>"> <?php the_title(); ?></a></h2>
 
 
 				<?php
@@ -204,7 +204,7 @@ if ( get_query_var( 'paged' ) ) {
 
 
 		<div id="pagination">
-			<div class="next"><?php next_posts_link( ampforwp_translation ($redux_builder_amp['amp-translator-show-more-posts-text']. ' &raquo;' , 'Show more Posts') ,0 ) ?></div>
+			<div class="next"><?php next_posts_link( ampforwp_translation ($redux_builder_amp['amp-translator-show-more-posts-text'], 'Show more Posts') . ' &raquo;' ,0 ) ?></div>
 					<?php if ( $paged > 1 ) { ?>
 						<div class="prev"><?php previous_posts_link( '&laquo; '.ampforwp_translation($redux_builder_amp['amp-translator-show-previous-posts-text'], 'Show previous Posts') ); ?></div>
 					<?php } ?>

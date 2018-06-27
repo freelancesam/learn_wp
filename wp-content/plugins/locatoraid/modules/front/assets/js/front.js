@@ -63,7 +63,7 @@ this.form = function( html_id )
 		}
 
 		var where = $this.data('where');
-		if( where && self.add_my_bias ){
+		if( where && self.add_my_bias && search_string.length ){
 			search_string = search_string + ' ' + where;
 		}
 
@@ -161,7 +161,7 @@ this.form = function( html_id )
 		// search_url = search_url.replace( '_SEARCH_', search_string );
 
 		var where = $this.data('where');
-		if( where && self.add_my_bias ){
+		if( where && self.add_my_bias && search_string.length ){
 			search_string = search_string + ' ' + where;
 		}
 
@@ -217,20 +217,33 @@ this.form = function( html_id )
 
 				var ok_data = hc2_try_parse_json( data );
 				if( ok_data ){
-					var real_coord = ok_data.search_coordinates;
-					if( real_coord.length ){
-						self.observers.notify( 'get-search', [real_coord[0], real_coord[1], search_string] );
-					}
-
-					self.observers.notify( 'get-results', ok_data );
 					hc2_unset_loader( $this );
 
-				// more results link
-					if( self.next_links.length ){
-						self.more_results_link.show();
+					if( ok_data.announce ){
+						var $no_results_view = ok_data.announce;
+
+						var $more_results_link = jQuery('.hcj2-more-results');
+						$more_results_link.html('');
+						$more_results_link.hide();
+
+						var $container = jQuery('#locatoraid-map-list-container');
+						$container.html( $no_results_view );
 					}
 					else {
-						self.more_results_link.hide();
+						var real_coord = ok_data.search_coordinates;
+						if( real_coord.length ){
+							self.observers.notify( 'get-search', [real_coord[0], real_coord[1], search_string] );
+						}
+
+						self.observers.notify( 'get-results', ok_data );
+
+					// more results link
+						if( self.next_links.length ){
+							self.more_results_link.show();
+						}
+						else {
+							self.more_results_link.hide();
+						}
 					}
 				}
 				else {
@@ -317,6 +330,16 @@ this.list = function( html_id )
 
 	self.template = jQuery( '#' + html_id + '_template' ).html();
 	self.template_no_results = jQuery( '#' + html_id + '_template_no_results' ).html();
+
+	var toStrip = ['/*<![CDATA[*/', '/*]]>*/', '/*]]&gt;*/' ];
+	for( var ii = 0; ii < toStrip.length; ii++ ){
+		if( self.template ){
+			self.template = self.template.replace( toStrip[ii], '' );
+		}
+		if( self.template_no_results ){
+			self.template_no_results = self.template_no_results.replace( toStrip[ii], '' );
+		}
+	}
 
 	this.entries = {};
 
@@ -457,7 +480,16 @@ this.map = function( html_id )
 	this.observers = new observers;
 	var $this = jQuery( '#' + html_id );
 	$this.hide();
+
 	self.template = jQuery( '#' + html_id + '_template' ).html();
+
+	var toStrip = ['/*<![CDATA[*/', '/*]]>*/', '/*]]&gt;*/' ];
+	for( var ii = 0; ii < toStrip.length; ii++ ){
+		if( self.template ){
+			self.template = self.template.replace( toStrip[ii], '' );
+		}
+	}
+
 	this.markers = {};
 	this.entries = {};
 	$this.map = null;

@@ -39,7 +39,7 @@ class Front_View_Form_LC_HC_MVC
 			}
 			if( isset($params['sort']) ){
 				if( substr($params['sort'], -strlen('-reverse')) == '-reverse' ){
-					$link_params['sort'] = array( substr($params['sort'], 0, -strlen('-reverse')), 0);
+					$link_params['sort'] = array( substr($params['sort'], 0, -strlen('-reverse')), 'desc');
 				}
 				else {
 					$link_params['sort'] = $params['sort'];

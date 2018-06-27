@@ -1,5 +1,5 @@
 <?php if (! defined('ABSPATH')) exit; // Exit if accessed directly
-$config['app_version'] = '3.4.3';
+$config['app_version'] = '3.4.6';
 // $config['dbprefix_version'] = 'v1';
 
 $config['modules'] = array(

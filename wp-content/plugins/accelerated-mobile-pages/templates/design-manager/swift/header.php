@@ -2,6 +2,7 @@
 <?php amp_header_core() ?>
 <?php if($redux_builder_amp['header-type'] == '1'){?>
 <header class="header h_m h_m_1">
+    <?php do_action('ampforwp_header_top_design4'); ?>
     <input type="checkbox" id="offcanvas-menu" class="tg" />
     <div class="hamb-mnu">
         <aside class="m-ctr">
@@ -9,9 +10,14 @@
                 <div class="menu-heading clearfix">
                     <label for="offcanvas-menu" class="c-btn"></label>
                 </div><!--end menu-heading-->
-                <nav class="m-menu">
-                   <?php amp_menu(); ?>
-                </nav><!--end slide-menu -->
+
+                <?php if ( amp_menu(false) ) : ?>
+                    <nav class="m-menu">
+                       <?php amp_menu();?>
+                    </nav><!--end slide-menu -->
+                <?php endif; ?>
+                <?php do_action('ampforwp_after_amp_menu');?>
+
                 <?php if ($redux_builder_amp['menu-search'] ) { ?>
                     <div class="m-srch">
                         <?php amp_search();?>
@@ -117,10 +123,12 @@
             </div>
         </div>
     </div>
+    <?php do_action('ampforwp_header_bottom_design4'); ?>
 </header>
 <?php } ?>
 <?php if($redux_builder_amp['header-type'] == '2'){?>
 <header class="header-2 h_m h_m_1">
+    <?php do_action('ampforwp_header_top_design4'); ?>
     <input type="checkbox" id="offcanvas-menu" class="tg" />
     <div class="hamb-mnu">
         <aside class="m-ctr">
@@ -128,9 +136,12 @@
                 <div class="menu-heading clearfix">
                     <label for="offcanvas-menu" class="c-btn"></label>
                 </div><!--end menu-heading-->
-                <nav class="m-menu">
-                   <?php amp_menu(); ?>
-                </nav><!--end slide-menu -->
+                <?php if ( amp_menu(false) ) : ?>
+                    <nav class="m-menu">
+                       <?php amp_menu();?>
+                    </nav><!--end slide-menu -->
+                <?php endif; ?>
+                <?php do_action('ampforwp_after_amp_menu');?>
                 <?php if ( $redux_builder_amp['menu-search'] ) { ?>
                 <div class="m-srch">
                     <?php amp_search();?>
@@ -229,10 +240,12 @@
             </div>
         </div>
     </div>
+    <?php do_action('ampforwp_header_bottom_design4'); ?>
 </header>
 <?php } ?>
 <?php if($redux_builder_amp['header-type'] == '3'){?>
 <header class="header-3 h_m h_m_1">
+    <?php do_action('ampforwp_header_top_design4'); ?>
     <input type="checkbox" id="offcanvas-menu" class="tg" />
     <div class="hamb-mnu">
         <aside class="m-ctr">
@@ -240,9 +253,12 @@
                 <div class="menu-heading clearfix">
                     <label for="offcanvas-menu" class="c-btn"></label>
                 </div><!--end menu-heading-->
-                <nav class="m-menu">
-                   <?php amp_menu(); ?>
-                </nav><!--end slide-menu -->
+                <?php if ( amp_menu(false) ) : ?>
+                    <nav class="m-menu">
+                       <?php amp_menu();?>
+                    </nav><!--end slide-menu -->
+                <?php endif; ?>
+                <?php do_action('ampforwp_after_amp_menu');?>
                 <?php if ( $redux_builder_amp['menu-search'] ) { ?>
                 <div class="m-srch">
                     <?php amp_search();?>
@@ -347,6 +363,7 @@
             </div>
         </div>
     </div>
+    <?php do_action('ampforwp_header_bottom_design4'); ?>
 </header>
 <?php }
 do_action("ampforwp_advance_header_layout_options");
@@ -354,9 +371,12 @@ do_action("ampforwp_advance_header_layout_options");
 <div class="content-wrapper">
 <?php if($redux_builder_amp['primary-menu']){?>
 <div class="p-m-fl">
-    <div class="p-menu">
-        <?php amp_menu(); ?>
-    </div>
+<?php if ( amp_menu(false) ) : ?>
+  <div class="p-menu">
+    <?php amp_menu(); ?>
+  </div>
+  <?php endif; ?>
+ <?php do_action('ampforwp_after_primary_menu');  ?>
 </div>
 <?php } ?>
 

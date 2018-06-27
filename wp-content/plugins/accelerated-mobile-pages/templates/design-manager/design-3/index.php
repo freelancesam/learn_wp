@@ -106,8 +106,8 @@ if ( get_query_var( 'paged' ) ) {
 
 		$q = new WP_Query( $filtered_args );  
 		$blog_title = ampforwp_get_blog_details('title');
-		if($blog_title){  ?>
-			<h1 class="amp-wp-content page-title archive-heading"><?php echo $blog_title ?> </h1>
+		if( ampforwp_is_blog() && $blog_title){  ?>
+			<h1 class="amp-wp-content page-title archive-heading"><?php echo $blog_title ?></h1>
 		<?php }	
 		 if ( $q->have_posts() ) : while ( $q->have_posts() ) : $q->the_post(); ?>
 
@@ -143,7 +143,7 @@ if ( get_query_var( 'paged' ) ) {
 					<?php } 
 					} ?>
                 </ul>
-				<h2 class="amp-wp-title"> <a href="<?php echo ampforwp_url_controller( get_the_permalink() ); ?>"> <?php the_title(); ?></a></h2>
+				<h2 class="amp-wp-title"><a href="<?php echo ampforwp_url_controller( get_the_permalink() ); ?>"> <?php the_title(); ?></a></h2>
 
 
 				<?php
@@ -200,7 +200,7 @@ if ( get_query_var( 'paged' ) ) {
 	<div class="amp-wp-content pagination-holder">
 
 		<div id="pagination">
-			<div class="next"><?php next_posts_link( ampforwp_translation( $redux_builder_amp['amp-translator-show-more-posts-text']. ' &raquo;' , 'Show more Posts'), 0 ) ?></div>
+			<div class="next"><?php next_posts_link( ampforwp_translation( $redux_builder_amp['amp-translator-show-more-posts-text'], 'Show more Posts') . ' &raquo;' , 0 ) ?></div>
 					<?php if ( $paged > 1 ) { ?>
 						<div class="prev"><?php previous_posts_link( '&laquo; '.ampforwp_translation($redux_builder_amp['amp-translator-show-previous-posts-text'], 'Show previous Posts') ); ?></div>
 					<?php } ?>
